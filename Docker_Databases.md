@@ -16,7 +16,8 @@ Ensure you have the latest version of Docker installed.
     In `QTRAN` directory, build the image using the Dockerfile:
     
     ```shell
-    docker-compose up --build -d
+    docker compose 2.0
+    docker compose up --build -d
     ```
 
 ## Step 2: Run Docker Images
@@ -242,7 +243,7 @@ tikv_servers:
           config:
                   server.labels: { host: "logic-host-2" }
 
-        - host:127.0.0.1
+        - host: 127.0.0.1
           port: 20162
           status_port: 20182
           config:

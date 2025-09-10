@@ -57,7 +57,7 @@
         "port": 50000,
         "container_port": 50000,
         "username": "monetdb",
-        "password": "monetdb"
+        "password": "123456"
     },
     "clickhouse": {
         "container_name": "clickhouse_QTRAN",
