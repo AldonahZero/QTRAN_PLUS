@@ -1,0 +1,40 @@
+# 忽略 Python 虚拟环境目录
+venv/
+.env/
+env/
+ENV/
+
+# 可选：添加其他常见 Python 忽略项
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# 忽略 IDE 配置（如 PyCharm）
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+# 忽略日志和临时文件
+logs/
+tmp/
+*.log
