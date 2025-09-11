@@ -4,6 +4,8 @@ venv/
 env/
 ENV/
 
+FeatureKnowledgeBase/
+
 # 可选：添加其他常见 Python 忽略项
 __pycache__/
 *.py[cod]
