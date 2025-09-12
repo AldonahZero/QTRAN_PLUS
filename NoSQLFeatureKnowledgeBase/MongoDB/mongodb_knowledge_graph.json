@@ -1,0 +1,70 @@
+{
+    "operators": {
+        "$eq": {
+            "equivalent_to": [
+                "implicit_form"
+            ],
+            "used_with_methods": []
+        },
+        "$in": {
+            "equivalent_to": [],
+            "used_with_methods": [
+                "find"
+            ]
+        },
+        "$lt": {
+            "equivalent_to": [],
+            "used_with_methods": [
+                "find"
+            ]
+        },
+        "$or": {
+            "equivalent_to": [],
+            "used_with_methods": [
+                "find"
+            ]
+        },
+        "$all": {
+            "equivalent_to": [],
+            "used_with_methods": [
+                "find"
+            ]
+        },
+        "$gt": {
+            "equivalent_to": [],
+            "used_with_methods": [
+                "find"
+            ]
+        },
+        "$elemMatch": {
+            "equivalent_to": [],
+            "used_with_methods": [
+                "find"
+            ]
+        },
+        "$size": {
+            "equivalent_to": [],
+            "used_with_methods": [
+                "find"
+            ]
+        },
+        "$lte": {
+            "equivalent_to": [],
+            "used_with_methods": [
+                "find"
+            ]
+        },
+        "$slice": {
+            "equivalent_to": [],
+            "used_with_methods": [
+                "find"
+            ]
+        },
+        "$type": {
+            "equivalent_to": [],
+            "used_with_methods": [
+                "find"
+            ]
+        }
+    }
+}
