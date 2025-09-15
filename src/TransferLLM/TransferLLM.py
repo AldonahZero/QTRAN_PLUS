@@ -25,6 +25,16 @@ from langchain.output_parsers import StructuredOutputParser
 from langchain.callbacks import get_openai_callback
 from src.Tools.DatabaseConnect.database_connector import exec_sql_statement
 
+# Optional: Redis KB adapter for prompt augmentation (lazy import)
+try:
+    from src.NoSQLKnowledgeBaseConstruction.Redis.redis_kb_adapter import (
+        select_redis_candidates,
+        build_prompt_with_kb,
+    )
+    _REDIS_KB_AVAILABLE = True
+except Exception:
+    _REDIS_KB_AVAILABLE = False
+
 
 db_names = ["mysql", "mariadb", "tidb"]
 
@@ -359,7 +369,7 @@ def get_feature_knowledge_string(origin_db, target_db, with_knowledge, mapping_i
             cnt += 1
     return knowledge_string
 
-def transfer_llm(tool, exp, conversation, error_iteration, iteration_num, FewShot, with_knowledge, origin_db, target_db, test_info):
+def transfer_llm(tool, exp, conversation, error_iteration, iteration_num, FewShot, with_knowledge, origin_db, target_db, test_info, use_redis_kb: bool = False):
     """
     # transfer llm:单条sql语句的转换及结果处理
     # 返回结果：costs, transfer_results, exec_results, exec_times, error_messages, str(origin_exec_result), str(origin_exec_time), str(origin_error_message), exec_equalities
@@ -377,6 +387,23 @@ def transfer_llm(tool, exp, conversation, error_iteration, iteration_num, FewSho
     if target_db == "postgres" and tool.lower() == "pinolo":
         sql_statement_processed = sql_statement_process(sql_statement)
 
+    # Optional Redis-KB snippet (only when targeting Redis and enabled)
+    kb_snippet = ""
+    if use_redis_kb and _REDIS_KB_AVAILABLE and str(target_db).lower() == 'redis':
+        try:
+            semantics = sql_statement_processed
+            candidates = select_redis_candidates(semantics)
+            if candidates:
+                kb = build_prompt_with_kb(candidates[0], semantics)
+                kb_snippet = (
+                    "\n[Redis-KB Hints]\n"
+                    f"Target Command: {kb.get('target_command')}\n"
+                    f"Constraints: {json.dumps(kb.get('constraints'))}\n"
+                    f"Examples: {kb.get('few_shot')}\n"
+                )
+        except Exception:
+            kb_snippet = ""
+
     transfer_llm_string = """  
     Let's think step by step.You are an expert in sql statement translation between different database.\
     With the assistance of feature knowledge,transfer the following {origin_db} statement to executable {target_db} statement with similar semantics.\
@@ -389,6 +416,7 @@ def transfer_llm(tool, exp, conversation, error_iteration, iteration_num, FewSho
 
     Transfer by carrying out following instructions step by step.\
     {feature_knowledge}\
+    {kb_snippet}\
     
     Check if transfer result satisfies requirements mentioned before.If not,modify the result.
 
@@ -451,6 +479,7 @@ def transfer_llm(tool, exp, conversation, error_iteration, iteration_num, FewSho
                 sql_statement=sql_statement_processed,
                 examples=examples_string,
                 feature_knowledge=feature_knowledge_string,
+                kb_snippet=kb_snippet,
                 format_instructions=format_instructions
             )
         else:

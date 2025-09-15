@@ -14,6 +14,16 @@
 
 import json
 
+# Optional Redis KB adapter for RAG-like assistance
+try:
+    from src.NoSQLKnowledgeBaseConstruction.Redis.redis_kb_adapter import (
+        select_redis_candidates,
+        build_prompt_with_kb,
+    )
+    _REDIS_KB_AVAILABLE = True
+except Exception:
+    _REDIS_KB_AVAILABLE = False
+
 def evaluate_sql_length(results, ranges):
     """分别评估固定区间内的成功率数据"""
     evaluations = {}
@@ -131,6 +141,16 @@ def evaluate_sql_length(results, ranges):
         # print("\n\n")
         evaluations[str(range_item)] = evaluation_temp
     return evaluations
+
+
+def suggest_redis_candidates(sql_semantics: str, enable_kb: bool = False):
+    """Optional helper to surface Redis candidate commands for downstream prompts."""
+    if enable_kb and _REDIS_KB_AVAILABLE:
+        try:
+            return select_redis_candidates(sql_semantics)
+        except Exception:
+            return []
+    return []
 
 
 def evaluate_transfer_llm(result_filename, ranges):
