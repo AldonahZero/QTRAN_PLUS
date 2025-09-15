@@ -39,6 +39,12 @@ def load_data(output_name, db_name, len_low, len_high, is_random, num):
 
     说明：不会修改业务逻辑，仅整理并持久化筛选后的 SQL/SQLsim 与其索引。
     """
+    # 加载数据：
+    # 加载所有的originalSql及对应的originalSqlsim数据：长度在[len_low,len_high)。
+    # len_high = float('inf')代表无穷大;len_low=1,len_high = float('inf')则表示获取所有数据
+    # random=True时,则随机选择num条数据；random=False时，则返回长度在[len_low,len_high)的所有数据
+    # 源文件：Pinolo Output/output(1-4)/dbname文件夹内的originalSql_all.json,originalSqlsim_all.json
+    # 目标文件：Pinolo Output/output_test下ALL和RANDOM文件夹内的output1_mariadb_x_x_originalSql_all.json，output1_mariadb_x_x_originalSqlsim_all.json，output1_mariadb_x_x_originalSqlIndex_all.json
     if len_low >= len_high:
         return
     # sql语句的文件名

@@ -56,6 +56,20 @@ eval_filenames = {
 # 处理mutate llm生成的结果，依次处理所有可能的变异：计算oracle，运行并记录结果，oracle check以检测bug
 def process_mutate_llm_result(muatate_name, muatate_result, exec_result_before):
     """
+    [
+        {
+            "isUpper": True,
+            "transferredSqlsim_exec": {
+                "exec_result": str(exec_result),
+                "exec_time": str(exec_time),
+                "error_message": str(error_message)
+            },
+            "CheckOracle":{
+                "end":True,
+                "error":""
+            }
+        }
+    ]
     处理 Mutate LLM 的变异结果并执行预言机检查。
 
     输入示例（简化）：
