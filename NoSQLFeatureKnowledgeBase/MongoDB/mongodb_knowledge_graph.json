@@ -1,70 +1,139 @@
 {
     "operators": {
         "$eq": {
-            "equivalent_to": [
-                "implicit_form"
+            "equivalent_forms": [
+                "implicit_equality"
             ],
-            "used_with_methods": []
+            "used_with_methods": [
+                "find"
+            ],
+            "properties": [],
+            "relations": []
         },
         "$in": {
-            "equivalent_to": [],
+            "equivalent_forms": [],
             "used_with_methods": [
                 "find"
-            ]
+            ],
+            "properties": [],
+            "relations": []
         },
         "$lt": {
-            "equivalent_to": [],
+            "equivalent_forms": [],
             "used_with_methods": [
                 "find"
+            ],
+            "properties": [],
+            "relations": []
+        },
+        "$and": {
+            "equivalent_forms": [
+                "implicit_conjunction"
+            ],
+            "used_with_methods": [
+                "find"
+            ],
+            "properties": [
+                "commutative"
+            ],
+            "relations": [
+                {
+                    "type": "equivalent_to",
+                    "law": "De Morgan's Law",
+                    "construct": {
+                        "operator": "$not",
+                        "nested_operator": "$or"
+                    }
+                }
             ]
         },
         "$or": {
-            "equivalent_to": [],
+            "equivalent_forms": [],
             "used_with_methods": [
                 "find"
+            ],
+            "properties": [
+                "commutative"
+            ],
+            "relations": [
+                {
+                    "type": "equivalent_to",
+                    "law": "De Morgan's Law",
+                    "construct": {
+                        "operator": "$not",
+                        "nested_operator": "$and"
+                    }
+                }
             ]
         },
         "$all": {
-            "equivalent_to": [],
+            "equivalent_forms": [],
             "used_with_methods": [
                 "find"
-            ]
+            ],
+            "properties": [],
+            "relations": []
         },
         "$gt": {
-            "equivalent_to": [],
+            "equivalent_forms": [],
             "used_with_methods": [
                 "find"
+            ],
+            "properties": [],
+            "relations": [
+                {
+                    "type": "inverse_of",
+                    "via_operator": "$not",
+                    "target_operator": "$lte"
+                }
             ]
         },
         "$elemMatch": {
-            "equivalent_to": [],
+            "equivalent_forms": [],
             "used_with_methods": [
                 "find"
-            ]
+            ],
+            "properties": [],
+            "relations": []
         },
         "$size": {
-            "equivalent_to": [],
+            "equivalent_forms": [],
             "used_with_methods": [
                 "find"
-            ]
+            ],
+            "properties": [],
+            "relations": []
         },
         "$lte": {
-            "equivalent_to": [],
+            "equivalent_forms": [],
             "used_with_methods": [
                 "find"
+            ],
+            "properties": [],
+            "relations": [
+                {
+                    "type": "inverse_of",
+                    "via_operator": "$not",
+                    "target_operator": "$gt"
+                }
             ]
         },
         "$slice": {
-            "equivalent_to": [],
+            "equivalent_forms": [],
             "used_with_methods": [
                 "find"
-            ]
+            ],
+            "properties": [],
+            "relations": []
         },
         "$type": {
-            "equivalent_to": [],
+            "equivalent_forms": [],
             "used_with_methods": [
                 "find"
-            ]
+            ],
+            "properties": [],
+            "relations": []
         }
-    }
+    },
+    "methods": {}
 }
