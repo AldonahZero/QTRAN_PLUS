@@ -1,10 +1,15 @@
-# !/usr/bin/env python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time    : 2024/9/28 10:16
-# @Author  : shaocanfan
-# @File    : Info_Crawler.py
-# @Intro   :
+"""
+Postgres 信息抓取模块
 
+职责：
+- 从 PostgreSQL 官方文档解析函数、运算符、数据类型和表格化的参考信息。
+- 支持复杂表格解析、列名/列值提取以及对 Examples/Description 的结构化输出，供后续分类与知识库构建使用。
+
+文件位置：src/FeatureKnowledgeBaseConstruction/Postgres/Info_Crawler.py
+说明：仅添加/替换模块级注释，不修改实现逻辑。
+"""
 
 import json
 import os

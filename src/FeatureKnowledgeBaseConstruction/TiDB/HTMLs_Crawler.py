@@ -1,3 +1,7 @@
+"""
+TiDB HTML 抓取脚本：抓取 TiDB 文档目录与页面 HTML，供 Info_Crawler 解析。
+"""
+
 from src.Tools.Crawler.crawler_options import set_options
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait

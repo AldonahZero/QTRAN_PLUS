@@ -1,9 +1,23 @@
-# !/usr/bin/env python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time    : 2024/7/23 16:07
-# @Author  : zql
-# @File    : SReference_Table_Crawler.py
-# @Intro   : 获取MySQL的关于functions和operators的Reference table信息：Name，Description，Reference html,Title,HTML
+"""
+MySQL Reference Table 抓取模块
+
+职责：
+- 抓取 MySQL 文档中每个函数/运算符条目的 Reference Table（包含 Name、Description、Reference HTML 等），并保存为 JSON 文件。
+- 对常见类别（Categories）做映射，便于后续合并与分类处理。
+
+位置：src/FeatureKnowledgeBaseConstruction/MySQL/Reference_Table_Crawler.py
+说明：仅添加模块级注释，不更改现有实现逻辑。
+"""
+
+import json
+import os
+from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from bs4 import BeautifulSoup
+from src.Tools.Crawler.crawler_options import set_options
+from urllib.parse import urljoin
 
 import json
 import os

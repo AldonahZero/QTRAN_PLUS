@@ -1,3 +1,6 @@
+"""
+MariaDB 爬虫入口：协调 HTML 抓取与信息提取，输出结构化特征数据。
+"""
 import os
 import json
 from src.FeatureKnowledgeBaseConstruction.MariaDB.HTMLs_Crawler import ops_htmls_crawler, funcs_htmls_crawler

@@ -1,10 +1,16 @@
-# !/usr/bin/env python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time    : 2024/9/28 10:16
-# @Author  : shaocanfan
-# @File    : Info_Crawler.py
-# @Intro   :
+"""
+ClickHouse 信息抓取模块
 
+此文件实现从 ClickHouse 文档页面中解析并提取函数、运算符、数据类型的详细条目（feature、description、examples 等）。
+主要职责：
+- 使用 Selenium + BeautifulSoup 加载并解析目标页面。
+- 将解析出的条目写入指定的 results 目录供后续分类和知识库构建使用。
+
+该模块与 ClickHouse 的 HTML 抓取器（HTMLs_Crawler.py）配合使用。
+注：仅添加模块级说明和保持原有实现不变。
+"""
 
 import json
 import os

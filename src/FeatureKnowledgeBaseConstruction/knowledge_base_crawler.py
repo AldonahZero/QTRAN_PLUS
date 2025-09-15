@@ -1,3 +1,10 @@
+"""
+知识库构建：聚合各数据库官方文档爬虫入口
+
+作用概述：
+- 收敛调用各数据库的爬虫，拉取函数/操作符等文档，为后续预处理与嵌入做准备。
+"""
+
 from src.FeatureKnowledgeBaseConstruction.TiDB.tidb_crawler import tidb_crawler
 from src.FeatureKnowledgeBaseConstruction.ClickHouse.clickhouse_crawler import clickhouse_crawler
 from src.FeatureKnowledgeBaseConstruction.DuckDB.duckdb_crawler import duckdb_crawler

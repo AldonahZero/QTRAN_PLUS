@@ -1,3 +1,7 @@
+"""
+DuckDB 爬虫入口：协调 HTML 抓取与信息抽取，输出特征 JSON 文件。
+"""
+
 import os
 import json
 from src.FeatureKnowledgeBaseConstruction.DuckDB.HTMLs_Crawler import htmls_crawler

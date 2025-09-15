@@ -1,3 +1,10 @@
+"""
+TokenType_not_op：非操作符类 Token 列表，用于从 sqlglot tokens 中粗分非运算符
+
+作用概述：
+- 作为白名单集合，帮助在方言特征识别时区分“潜在操作符”与其他 token。
+"""
+
 from sqlglot.helper import AutoName
 from enum import auto
 

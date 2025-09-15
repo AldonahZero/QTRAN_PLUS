@@ -1,3 +1,11 @@
+"""
+容器环境管理：拉取镜像、启动容器与创建测试数据库
+
+作用概述：
+- 依据配置文件生成各数据库容器，创建工具/实验隔离的数据库实例。
+- 提供 run_container 与 docker_create_databases 以供主流程在启动时准备环境。
+"""
+
 import json
 import subprocess
 import time
@@ -89,11 +97,28 @@ def format_dict_strings(data, **args):
         return data  # 如果既不是字典、列表，也不是字符串，原样返回
 
 def is_container_running(container_name):
+    """
+    判断指定容器当前是否处于运行状态。
+
+    输入：container_name (str)
+    输出：布尔值，True 表示正在运行，False 表示未运行。
+    """
     result = run_command(["docker", "ps", "--filter", f"name={container_name}", "--format", "{{.Names}}"])
     return container_name in result.stdout   # 如果 stdout 非空，表示镜像存在
 
 
 def docker_create_databases(tool, exp, dbType):
+    """
+    按配置自动创建并初始化数据库容器。
+
+    输入:
+      - tool: 工具名称（字符串），用于构造 dbname。
+      - exp: 实验 id 或名称（字符串），用于构造 dbname。
+      - dbType: 数据库类型（字符串），对应 docker_create_commands.json 中的键。
+
+    行为：根据 dbType 的不同走不同逻辑（例如 TiDB/ClickHouse/其他），包含拉镜像、启动容器、进入容器执行建库语句等操作。
+    错误处理：若命令返回非零会捕获 subprocess.CalledProcessError 并打印错误信息（保留原有行为）。
+    """
     if dbType.lower() not in docker_commands:
         return
     commands = docker_commands[dbType.lower()]
@@ -152,6 +177,12 @@ def docker_create_databases(tool, exp, dbType):
 
 
 def run_container(tool, exp, dbType):
+    """
+    尝试启动或恢复指定类型的容器实例。
+
+    输入与 docker_create_databases 相同的参数含义（tool, exp, dbType）。
+    行为：若 dbType 为 TiDB 使用专用命令，否则使用 docker start 启动容器并等待生效。
+    """
     if dbType.lower() not in docker_commands:
         return
     commands = docker_commands[dbType.lower()]

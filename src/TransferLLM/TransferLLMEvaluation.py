@@ -1,9 +1,16 @@
+"""
+转换阶段评估工具：按 SQL 长度区间统计转换与执行成效
+
+作用概述：
+- 针对保存的转换结果（json/jsonl），按长度区间聚合评估执行成功率、错误迭代占比、结果一致性等指标。
+- 输出简明的区间统计字符串，辅助对比不同参数/模型下的效果。
+"""
+
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Time    : 2024/7/27 17:31
 # @Author  : shaocanfan
 # @File    : TransferLLMEvaluation.py
-# @Intro   :
 
 import json
 
@@ -127,6 +134,7 @@ def evaluate_sql_length(results, ranges):
 
 
 def evaluate_transfer_llm(result_filename, ranges):
+    """加载结果文件并驱动区间评估，打印评估摘要。"""
     if "jsonl" in result_filename:
         with open(result_filename, "r", encoding="utf-8") as rf:
             results = rf.readlines()

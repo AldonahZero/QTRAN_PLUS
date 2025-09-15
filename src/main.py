@@ -1,3 +1,14 @@
+"""
+QTRAN 项目入口：解析命令行参数并启动两阶段流程
+
+作用概述：
+- 程序入口，负责解析 --input_filename、--tool 等参数。
+- 调用 qtran_run，根据选择的来源工具（sqlancer / pinolo）驱动“转换阶段(Transfer)”与后续流程数据准备。
+- 在首次运行时，按需创建各数据库与实验环境所需容器/库实例。
+
+关联流程参考：见 abstract.md 中《核心目标》《调用链概览》《阶段一：转换》章节。
+"""
+
 import sys
 import os
 import openai
@@ -17,6 +28,20 @@ current_dir = os.path.dirname(current_file_path)
 
 def qtran_run(input_filename, tool, temperature=0.3, model="gpt-4o-mini", error_iteration=True, iteration_num=4,
               FewShot=False, with_knowledge=True):
+    """
+    启动 QTRAN 主流程（转换阶段入口）。
+
+    参数：
+    - input_filename: 输入文件（jsonl），包含 SQL 或 bug 报告等。
+    - tool: 来源工具，"sqlancer" 或 "pinolo"。
+    - temperature/model: LLM 相关设置。
+    - error_iteration/iteration_num: 是否进行错误迭代及最大迭代次数。
+    - FewShot/with_knowledge: 是否启用 Few-Shot 示例与特征知识库提示。
+
+    行为：
+    - 初始化并创建不同 fuzzer 和数据库的容器/数据库实例。
+    - 分发到对应的翻译流程：sqlancer_qtran_run 或 pinolo_qtran_run。
+    """
     if tool.lower() not in ["pinolo", "sqlancer"]:
         print(tool + " hasn't been supported.")
         return
@@ -38,6 +63,10 @@ def qtran_run(input_filename, tool, temperature=0.3, model="gpt-4o-mini", error_
 
 
 def main():
+    """
+    命令行入口：解析参数并调用 qtran_run。
+    示例：python -m src.main --input_filename Input/demo.jsonl --tool sqlancer
+    """
     parser = argparse.ArgumentParser(description="Run QTRAN for SQL translation.")
     parser.add_argument("--input_filename", type=str, required=True, help="Path to the input file (JSONL format).")
     parser.add_argument("--tool", type=str, required=True, choices=["sqlancer", "pinolo"],

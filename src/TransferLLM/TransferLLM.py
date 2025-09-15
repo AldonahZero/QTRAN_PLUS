@@ -1,3 +1,14 @@
+"""
+转换阶段核心：基于 LLM 的跨方言 SQL 转换与错误迭代修正
+
+作用概述：
+- 接收来源 SQL（如来自 sqlancer/pinolo），结合 Few-Shot 示例与方言特征知识库，调用 LLM 生成目标数据库可执行 SQL。
+- 若执行失败，利用错误信息进行若干次迭代修正，直到成功或达上限；全程记录消耗、结果与错误。
+- 提供数据加载/初始化工具（pinolo 数据）与列名预处理等辅助能力。
+
+关联流程参考：见 abstract.md《阶段一：转换 (Transfer Phase)》《调用链概览》中的 transfer_llm。
+"""
+
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Time    : 2024/7/26 17:09
@@ -19,12 +30,14 @@ db_names = ["mysql", "mariadb", "tidb"]
 
 def load_data(output_name, db_name, len_low, len_high, is_random, num):
     """
-    # 加载数据：
-    # 加载所有的originalSql及对应的originalSqlsim数据：长度在[len_low,len_high)。
-    # len_high = float('inf')代表无穷大;len_low=1,len_high = float('inf')则表示获取所有数据
-    # random=True时,则随机选择num条数据；random=False时，则返回长度在[len_low,len_high)的所有数据
-    # 源文件：Pinolo Output/output(1-4)/dbname文件夹内的originalSql_all.json,originalSqlsim_all.json
-    # 目标文件：Pinolo Output/output_test下ALL和RANDOM文件夹内的output1_mariadb_x_x_originalSql_all.json，output1_mariadb_x_x_originalSqlsim_all.json，output1_mariadb_x_x_originalSqlIndex_all.json
+    加载 pinolo 原始 SQL 及 SQLsim 数据，并按长度与是否随机抽样导出到输出集。
+
+    参数：
+    - output_name/db_name: 数据源目录定位。
+    - len_low/len_high: 过滤长度 [low, high)。
+    - is_random/num: 随机抽样与抽样数。
+
+    说明：不会修改业务逻辑，仅整理并持久化筛选后的 SQL/SQLsim 与其索引。
     """
     if len_low >= len_high:
         return
@@ -193,6 +206,7 @@ def init_data(output_name, db_name, len_low, len_high, is_random, num):
 
 # 处理传递给transfer llm的sql statement(这是针对pinolo的process)
 def sql_statement_process(origin_sql):
+    """Pinolo 到 Postgres 前的列名预处理：统一某些特殊列名写法，便于后续转换与执行。"""
     map_list = {
         "col_decimal(40, 20)_undef_signed": "col_decimal_40_20_undef_signed",
         "col_decimal(40, 20)_undef_unsigned": "col_decimal_40_20_undef_unsigned",

@@ -1,3 +1,15 @@
+"""
+SQLancer 路径：Bug 报告解析 -> 方言特征识别 -> LLM 转换 -> 变异与检查
+
+作用概述：
+- 读取 SQLancer 生成的 bug 报告，抽取 SQL 并进行潜在方言特征识别与映射。
+*- 调用 transfer_llm 将 a_db 的 SQL 转为 b_db 方言，并支持错误迭代修正。
+- 将最终可执行的 SELECT 语句交给 Mutate LLM 生成变异候选，供后续预言机检查。
+- 负责组织输入/输出文件与过程持久化（Input/Output 目录）。
+
+关联流程参考：见 abstract.md《调用链概览》《阶段一：转换》《阶段二：变异与检测》。
+"""
+
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Time    : 2024/10/20 19:21
@@ -41,6 +53,7 @@ NoRec_extended_dbs = ["mysql", "tidb", "monetdb", "duckdb", "clickhouse"]
 
 # 获取sqlancer的bug report,并进行potential dialect feature识别
 def load_sqlancer_bug_report(fuzzer, a_db, b_db, bug):
+    """按行拆分 SQLancer bug 报告中的 SQL，附带必要上下文，作为后续转换输入单元。"""
     # 以列表形式返回bug经过处理得到的input信息
     bug_input = []
     # 有多条数据，存储在jsonl文件中，每一句sql存为一行
@@ -64,6 +77,13 @@ def load_sqlancer_bug_report(fuzzer, a_db, b_db, bug):
     return bug_input
 
 def sqlancer_translate(input_filepath,tool="sqlancer",temperature=0.3, model="gpt-4o-mini",error_iteration=True,iteration_num=4,FewShot=False,with_knowledge=True):
+    """
+    SQLancer 全流程驱动：
+    - 构建 Input/Output 目录；
+    - 解析 bug 报告，提取待转换 SQL；
+    - 调用 transfer_llm 执行跨方言转换及错误迭代；
+    - 调用 Mutate LLM 获取变异结果并持久化。
+    """
     input_filename = os.path.basename(input_filepath).replace(".jsonl", "")
     input_dic = os.path.join(current_dir, "..", "..", "Input", input_filename)
     if not os.path.exists(input_dic):

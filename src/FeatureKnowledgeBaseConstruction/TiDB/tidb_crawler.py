@@ -1,11 +1,18 @@
+"""
+模块：TiDB 爬虫入口
+
+说明：
+- 负责构建 TiDB 特征知识库目录、抓取 HTML 列表并调用 Info_Crawler 进行信息抽取。
+"""
+
 import os
 import json
 from src.FeatureKnowledgeBaseConstruction.TiDB.HTMLs_Crawler import ops_htmls_crawler, funcs_htmls_crawler
 from src.FeatureKnowledgeBaseConstruction.TiDB.Info_Crawler import crawler_results
 from src.Tools.Crawler.crawler_options import category_classifier
+
 current_file_path = os.path.abspath(__file__)
 current_dir = os.path.dirname(current_file_path)
-
 
 def tidb_crawler():
     dic_path = os.path.join(current_dir,"..", "..", "..", "FeatureKnowledgeBase", "tidb")

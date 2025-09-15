@@ -7,6 +7,19 @@ from src.Tools.Crawler.crawler_options import category_classifier
 current_file_path = os.path.abspath(__file__)
 current_dir = os.path.dirname(current_file_path)
 
+
+"""
+MySQL 爬虫协调模块
+
+本模块负责统筹 MySQL 官方文档的抓取：
+- 抓取数据类型、函数、运算符对应的 HTML 列表并保存为 HTMLs.json。
+- 抓取参考表（Reference Table）并合并去重，生成便于后续解析的结果文件。
+- 对抓取出的条目调用分类器进行初步分类。
+
+该文件位于: src/FeatureKnowledgeBaseConstruction/MySQL
+只添加模块级说明，不改动原有实现。
+"""
+
 def mysql_crawler():
     dic_path = os.path.join(current_dir,"..", "..", "..", "FeatureKnowledgeBase", "mysql")
     feature_types = ["datatype", "function", "operator"]

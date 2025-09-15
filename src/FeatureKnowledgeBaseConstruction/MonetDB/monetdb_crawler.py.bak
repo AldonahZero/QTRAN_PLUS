@@ -67,4 +67,3 @@ def monetdb_crawler():
     data_results_dic = os.path.join(dic_path, "datatype", "results")
     data_results_category_dic = os.path.join(dic_path, "datatype", "results_category")
     crawler_results("datatype", htmls_filename, data_results_dic, "")
-    category_classifier(data_results_dic, data_results_category_dic)

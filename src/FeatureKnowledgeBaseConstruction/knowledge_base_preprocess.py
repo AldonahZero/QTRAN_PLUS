@@ -1,9 +1,16 @@
+"""
+知识库预处理：将爬取的原始文档加工为统一特征条目
+
+作用概述：
+- 解析函数/操作符等文档，抽取 Feature/Description/Examples/Category。
+- 为 RAG 向量化与后续映射构建结构化数据文件。
+"""
+
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Time    : 2024/9/17 16:39
 # @Author  : shaocanfan
 # @File    : dialect_feature_recognizer.py
-# @Intro   : transfer a_db to b_db时，识别a_db sql中对于d_db是方言的所有feature元素(functions+operators)
 import json
 import os
 import sqlglot

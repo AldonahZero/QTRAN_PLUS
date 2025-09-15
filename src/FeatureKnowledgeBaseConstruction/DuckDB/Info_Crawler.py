@@ -4,6 +4,18 @@
 # @Author  : shaocanfan
 # @File    : Info_Crawler.py
 # @Intro   :
+"""
+DuckDB 信息抓取模块
+
+职责：
+- 从 DuckDB 官方文档中提取函数、数据类型、示例、别名等信息。
+- 使用 Selenium + BeautifulSoup 加载并解析页面，解析表格和文档结构，生成结构化字典供后续分类与知识库构建使用。
+
+模块位置：src/FeatureKnowledgeBaseConstruction/DuckDB/Info_Crawler.py
+与 abstract.md 中“FeatureKnowledgeBaseConstruction -> DuckDB”章节对应。
+注意：本改动仅替换模块说明，不改变实现逻辑或函数行为。
+"""
+
 import json
 import os
 from selenium import webdriver

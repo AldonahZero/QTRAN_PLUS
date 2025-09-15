@@ -6,6 +6,20 @@ from src.Tools.Crawler.crawler_options import category_classifier
 current_file_path = os.path.abspath(__file__)
 current_dir = os.path.dirname(current_file_path)
 
+
+"""
+ClickHouse 爬虫入口模块
+
+本模块负责协调 ClickHouse 文档的抓取流程：
+- 抓取各类特征（数据类型、函数、运算符）对应的 HTML 列表并存储为 HTMLs.json。
+- 基于抓取的 HTML 列表逐页提取函数/运算符/数据类型的详细信息，保存到 results 目录。
+- 对抓取结果进行简单的分类（调用 crawler_options 中的分类器）。
+
+该模块位置：src/FeatureKnowledgeBaseConstruction/ClickHouse
+与 abstract.md 中“FeatureKnowledgeBaseConstruction -> ClickHouse”章节对应。
+只添加模块级说明，不修改已有实现逻辑。
+"""
+
 def clickhouse_crawler():
     dic_path = os.path.join(current_dir,"..", "..", "..", "FeatureKnowledgeBase", "clickhouse")
     feature_types = ["datatype", "function", "operator"]

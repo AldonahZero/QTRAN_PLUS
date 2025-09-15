@@ -1,9 +1,19 @@
-# !/usr/bin/env python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Time    : 2024/7/22 23:17
 # @Author  : zql
 # @File    : HTMLs_Crawler_MySQL.py
 # @Intro   : Get all of mysql's htmls for data types, functions, operators
+"""
+MySQL HTML 列表抓取模块
+
+职责：
+- 遍历 MySQL 官方文档的目录（toc）并收集各子页面的 URL，生成供 Info_Crawler 使用的 HTML 列表。
+- 处理分页和目录嵌套，构建标准化的 URL 映射，返回的结构便于后续逐页抓取信息。
+
+文件位置：src/FeatureKnowledgeBaseConstruction/MySQL/HTMLs_Crawler.py
+说明：仅添加模块级注释，不改动实现逻辑。
+"""
 from src.Tools.Crawler.crawler_options import set_options
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait

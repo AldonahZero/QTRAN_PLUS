@@ -1,9 +1,17 @@
+"""
+RAG 特征映射：跨数据库方言特征的相似项检索与 LLM 映射解释
+
+作用概述：
+- 将各数据库的函数/操作符/示例等特征合并并向量化，建立检索语料。
+- 对 a_db 的特征查询 b_db 的相似项，并通过 LLM 给出映射候选与解释。
+- 供转换阶段作为“特征知识库”注入提示，提升翻译准确性。
+"""
+
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Time    : 2024/9/30 10:58
 # @Author  : shaocanfan
 # @File    : rag_based_feature_mapping.py
-# @Intro   :
 
 import json
 import os
@@ -32,6 +40,7 @@ feature_knowledge_base = "FeatureKnowledgeBase"
 
 # 合并每个feature type中所有的feature数据，并将它们以jsonl格式存储起来
 def feature_knowledge_merge(db, feature_type):
+    """合并某数据库某类特征到单一 jsonl，便于后续向量化处理。"""
     merge_data_filename = os.path.join("..", "..", feature_knowledge_base, db, "RAG_Embedding_Data", feature_type + ".jsonl")
     if not os.path.exists(merge_data_filename):
         # 创建embedding_data_filename
@@ -50,6 +59,7 @@ def feature_knowledge_merge(db, feature_type):
 
 # 合并不同类别的feature到一个jsonl文件
 def feature_type_merge(db, feature_types):
+    """将多类特征合并为统一 jsonl，顺带标注顺序 index。"""
     names = "merge"
     for feature_type in feature_types:
         names = names + "_" + feature_type
@@ -71,6 +81,7 @@ def feature_type_merge(db, feature_types):
 
 
 def load_feature_knowledge_embedding(db, feature_types, content_keys):
+    """构建或加载嵌入输入文件，并用 JSONLoader 读取为 Document 集合。"""
     names = "embedding"
     for feature_type in feature_types:
         names = names + "_" + feature_type
@@ -111,6 +122,7 @@ def load_feature_knowledge_embedding(db, feature_types, content_keys):
     return data
 
 def rag_feature_mapping_llm_v1(version_id, search_k, a_db, b_db, feature_types, content_keys):
+    """以向量检索召回 b_db 相似特征，调用 LLM 生成映射与说明，并写入结果。"""
     # 先为a_db,b_db的所有feature_types分别进行数据合并
     for feature_type in feature_types:
         feature_knowledge_merge(a_db, feature_type)

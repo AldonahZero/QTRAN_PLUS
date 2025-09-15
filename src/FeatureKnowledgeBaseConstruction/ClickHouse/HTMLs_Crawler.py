@@ -6,6 +6,18 @@ from selenium.webdriver.support.ui import WebDriverWait
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 
+
+"""
+ClickHouse HTML 列表抓取器
+
+功能：
+- 给定 ClickHouse 文档的入口页面，遍历目录（toc）并收集每个子页面的 URL，生成 HTMLs 列表用于后续信息抓取。
+- 提供对某些 SQL 语句类别的专门抓取函数，返回结构化的 htmls 字典。
+
+位置：src/FeatureKnowledgeBaseConstruction/ClickHouse/HTMLs_Crawler.py
+该改动仅添加模块级说明，不改动现有实现逻辑。
+"""
+
 statements_category_htmls = {
     "Account Management SQL Commands":"https://mariadb.com/kb/en/account-management-sql-commands/",
     "Administrative SQL Statements":"https://mariadb.com/kb/en/administrative-sql-statements/",

@@ -1,9 +1,18 @@
+"""
+方言特征识别：基于 sqlglot 的 tokens 解析潜在函数与操作符
+
+作用概述：
+- 将 SQL 分词并识别潜在函数名与操作符，作为“方言特征”的候选。
+- 支持批量处理与与知识库/映射的后续联动。
+
+关联流程参考：见 abstract.md《转换阶段》的“特征知识库”与“特征识别”环节。
+"""
+
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Time    : 2024/9/17 16:39
 # @Author  : shaocanfan
 # @File    : dialect_feature_recognizer.py
-# @Intro   : transfer a_db to b_db时，识别a_db sql中对于d_db是方言的所有feature元素(functions+operators)
 import json
 import os
 import sqlglot
@@ -49,16 +58,19 @@ effective_sqls_generator_v2_skip = [
 
 
 def tokenize_sql(sql):
+    """对 SQL 进行分词，返回 sqlglot 的 token 列表。"""
     lists = sqlglot.tokenize(sql)
     return lists
 
 
 # 判断枚举成员的名称
 def is_member_name(name):
+    """判断名称是否为 TokenType_not_op（非操作符集合）中的成员名。"""
     return name in TokenType_not_op.__members__
 
 
 def potential_features_refiner_single_sql(origin_sql):
+    """识别单条 SQL 的潜在函数与操作符特征，返回对应下标与名称列表。"""
     lists = tokenize_sql(origin_sql)  # 利用sqlglot分词函数得到origin_sql的分词列表
     val_indexes = []  # 类型为VAL的分词的下标
     function_name_indexes = []  # potential functions的分词的下标
@@ -100,6 +112,7 @@ def potential_features_refiner_single_sql(origin_sql):
 
 
 def potential_features_refiner(db_name, filename, dir_filename):
+    """批量处理文件中的 SQL 列表，补充潜在函数/操作符下标并写回结果。"""
     # 从filename中获取测试集(数据库类型为db_name)，提取测试集中所有数据项的sql的potential features
     with open(filename, "r", encoding="utf-8") as r:
         contents = json.load(r)

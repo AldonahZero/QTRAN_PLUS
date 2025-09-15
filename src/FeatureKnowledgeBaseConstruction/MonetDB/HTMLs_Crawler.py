@@ -1,3 +1,10 @@
+"""
+模块：MonetDB HTML 抓取器
+
+说明：
+- 抓取 MonetDB 文档页面的目录与表格项，提取页面名称与链接集合，返回供 Info_Crawler 使用的字典结构。
+"""
+
 from src.Tools.Crawler.crawler_options import set_options
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait

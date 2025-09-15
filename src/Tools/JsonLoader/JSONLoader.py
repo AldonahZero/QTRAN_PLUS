@@ -1,3 +1,11 @@
+"""
+JSON 文档加载器：将 JSON/JSONL 转为 LangChain 文档集合
+
+作用概述：
+- 支持指定 content_key 或全量展开，将嵌套结构拍平成可检索文本。
+- 供 RAG 向量化阶段使用（如特征知识库嵌入构建）。
+"""
+
 import json
 from pathlib import Path
 from typing import Callable, Dict, List, Optional, Union
@@ -18,6 +26,7 @@ class JSONLoader(BaseLoader):
         self._json_lines = json_lines
 
     def create_documents(self, processed_data):
+        """根据预处理后的字符串列表创建 LangChain Document 列表。"""
         documents = []
         for item in processed_data:
             content = ''.join(item)
@@ -27,6 +36,7 @@ class JSONLoader(BaseLoader):
 
     #处理dict{}
     def process_item(self, item, prefix=""):
+        """递归拍平 JSON 节点，保留键路径前缀，返回文本片段列表。"""
         if isinstance(item, dict):
             result = []
             if self._content_key is not None:
@@ -51,6 +61,7 @@ class JSONLoader(BaseLoader):
             return [f"{prefix}: {item}"]
 
     def process_json(self, data):
+        """处理最顶层 JSON（list 或 dict），返回拍平后的字符串列表。"""
         if isinstance(data, list):
             processed_data = []
             for item in data:

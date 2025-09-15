@@ -5,6 +5,10 @@
 # @File    : Info_Crawler.py
 # @Intro   : 获取MySQL的关于sql statements的所有信息
 
+"""
+MariaDB 信息爬取：解析 MariaDB 文档页面并提取函数/示例/描述等条目。
+"""
+
 import json
 import os
 import glob

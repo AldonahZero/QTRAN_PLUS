@@ -4,6 +4,18 @@ from selenium.webdriver.support.ui import WebDriverWait
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 
+
+"""
+Postgres HTML 列表抓取模块
+
+职责：
+- 遍历 PostgreSQL 官方文档目录，收集函数/运算符/数据类型的子页面 URL，生成 HTML 列表供 Info_Crawler 使用。
+- 处理层级目录与跳过规则，返回结构为 {"No Category": {...}}。
+
+文件位置：src/FeatureKnowledgeBaseConstruction/Postgres/HTMLs_Crawler.py
+说明：仅加入模块级注释，不更改实现。
+"""
+
 def htmls_crawler(html):
     timeout = 5  # 等待时间
     options = set_options()

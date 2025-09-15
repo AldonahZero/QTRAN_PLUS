@@ -6,6 +6,10 @@
 # @Intro   :
 
 
+"""
+MonetDB 信息爬取：从 HTML/REST 提取函数描述、示例与分类信息并输出 json 文件。
+"""
+
 import json
 import os
 

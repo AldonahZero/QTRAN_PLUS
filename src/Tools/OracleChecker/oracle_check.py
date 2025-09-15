@@ -1,3 +1,12 @@
+"""
+预言机检查：比较两次查询结果集关系，判断是否满足 metamorphic 关系
+
+作用概述：
+- 定义 Result 结构及其比较逻辑（相等、子集、超集、部分不匹配等）。
+- 提供 Check(origin, mutated, isUpper, isSame) 以表达预言机关系判断。
+- 提供 execSQL_result_convertor 将执行结果转为标准 Result 输入。
+"""
+
 from typing import Tuple,Sequence
 from sqlalchemy.engine.row import Row
 from typing import List, Tuple, Optional, Union,Sequence
@@ -93,6 +102,12 @@ class Result:
             return 2, None
 
 def Check(originResult: Result, mutatedResult: Result, isUpper: bool, isSame: bool) -> Tuple[bool, str]:
+    """
+    预言机判断：
+    - isSame=True：要求完全相等；
+    - isSame=False：允许包含关系，若 isUpper=True 则 mutated 是 origin 的超集，反之是子集。
+    返回 (是否满足, 错误或 None)。
+    """
     cmp, err = originResult.cmp(mutatedResult)
     if err:
         return False, err
@@ -111,6 +126,7 @@ def Check(originResult: Result, mutatedResult: Result, isUpper: bool, isSame: bo
 
 
 def convert_to_result(data: Sequence[Row]) -> Result:
+    """将 SQLAlchemy Row 列表转换为 Result 结构。空结果返回空列与空行。"""
     if not data:
         return Result(column_names=[], column_types=[], rows=[], err=None)
     

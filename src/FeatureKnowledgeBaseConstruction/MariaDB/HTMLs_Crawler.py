@@ -1,4 +1,9 @@
 import json
+"""
+MariaDB HTML 抓取：获取 MariaDB 官方文档 HTML，作为后续信息抽取输入。
+"""
+
+import json
 import os
 from src.Tools.Crawler.crawler_options import set_options
 from selenium import webdriver

@@ -1,3 +1,11 @@
+"""
+爬虫通用选项：Selenium Chrome 的基础参数与工具函数
+
+作用概述：
+- 统一设置 Chrome headless、窗口、证书与插件等选项。
+- 提供标题清洗、路径生成等辅助函数供各知识库爬虫使用。
+"""
+
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Time    : 2024/7/22 17:47
@@ -12,6 +20,7 @@ import glob
 import os
 import json
 def set_options():
+    """构造并返回统一的 Chrome Options（headless、禁插件、禁图片等）。"""
     option = Options()
     option.page_load_strategy = 'eager'
     option.add_argument("--window-size=1920,1080")

@@ -1,9 +1,15 @@
+"""
+变异 LLM 微调脚本：提交训练集并启动 OpenAI 微调任务
+
+作用概述：
+- 上传训练数据集，创建作业，追踪状态并导出模型 ID，以供变异阶段使用。
+"""
+
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Time    : 2024/8/2 21:24
 # @Author  : shaocanfan
 # @File    : FineTuning_MutationLLM.py
-# @Intro   :
 
 import os
 from openai import OpenAI

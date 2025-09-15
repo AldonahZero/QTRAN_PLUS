@@ -1,9 +1,17 @@
+"""
+数据库连接与执行抽象：统一不同引擎的连接池与 SQL 执行
+
+作用概述：
+- 为 MySQL/MariaDB/TiDB/Postgres/SQLite/DuckDB/ClickHouse/MonetDB 提供统一的连接与执行接口。
+- 提供按测试场景命名隔离的库名/文件名策略，支持数据库清理（database_clear）。
+- 供转换与变异阶段调用 exec_sql_statement 执行 SQL 并返回结果/耗时/错误。
+"""
+
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Time    : 2024/8/24 9:57
 # @Author  : shaocanfan
 # @File    : database_connector.py
-# @Intro   :
 
 import pymysql
 from sqlalchemy import text, exc, PoolProxiedConnection
@@ -153,6 +161,7 @@ class DatabaseConnectionPool:
 
 # 每次执行后要清除数据库内的所有表格
 def database_clear(tool, exp, dbType):
+    """按场景重置数据库：删除文件型库或在容器内重建/清空表。"""
     args = get_database_connector_args(dbType.lower())
     args["dbname"] = f"{tool}_{exp}_{dbType}".lower() if "tlp" not in exp else f"{tool}_tlp_{dbType}".lower()
     # 特殊处理：删除对应的db文件即可
@@ -192,6 +201,7 @@ def database_clear(tool, exp, dbType):
         pool.close()
 
 def exec_sql_statement(tool, exp, dbType, sql_statement):
+    """统一入口：根据 dbType 获取连接参数并执行 SQL，返回 (结果, 耗时, 错误)。"""
     # 创建连接池实例
     if tool.lower() in ["sqlancer", "sqlright"]:
         tool = "sqlancer"

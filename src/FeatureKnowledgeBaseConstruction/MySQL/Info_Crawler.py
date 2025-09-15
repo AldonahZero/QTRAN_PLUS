@@ -4,6 +4,16 @@
 # @Author  : zql
 # @File    : Info_Crawler.py
 # @Intro   : 获取MySQL的关于functions和operators的所有信息
+"""
+MySQL 信息抓取模块
+
+该模块负责从 MySQL 官方文档中提取函数、运算符、数据类型的详细信息（Feature/Description/Examples 等），
+并将解析结果写入 results 目录供后续分类与知识库构建使用。实现基于 Selenium + BeautifulSoup。
+
+位置：src/FeatureKnowledgeBaseConstruction/MySQL/Info_Crawler.py
+仅添加本模块说明，不改动实现逻辑。
+"""
+
 import json
 import os
 from selenium import webdriver

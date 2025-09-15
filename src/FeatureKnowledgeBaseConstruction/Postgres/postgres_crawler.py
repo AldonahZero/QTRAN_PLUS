@@ -6,6 +6,18 @@ from src.Tools.Crawler.crawler_options import category_classifier
 current_file_path = os.path.abspath(__file__)
 current_dir = os.path.dirname(current_file_path)
 
+
+"""
+Postgres 爬虫协调模块
+
+职责：
+- 抓取 PostgreSQL 官方文档中数据类型、函数、运算符对应的 HTML 列表并保存为 HTMLs.json。
+- 基于 HTML 列表调用信息抓取器提取详细条目，并对结果做初步分类。
+
+文件位置：src/FeatureKnowledgeBaseConstruction/Postgres
+仅添加模块级注释，不修改实现。
+"""
+
 def postgres_crawler():
     dic_path = os.path.join(current_dir,"..", "..", "..", "FeatureKnowledgeBase", "postgres")
     feature_types = ["datatype", "function", "operator"]

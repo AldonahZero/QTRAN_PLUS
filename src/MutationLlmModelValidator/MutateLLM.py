@@ -1,9 +1,19 @@
+"""
+变异与检测阶段核心：针对转换后的 SQL 进行 LLM 变异并执行预言机检查
+
+作用概述：
+- 接收转换阶段成功的 SQL，调用微调的 Mutate LLM 生成等价/相关的变体查询。
+- 执行原始与变异 SQL，将结果交给预言机 Check 比较，判断逻辑是否满足预期关系。
+- 汇总执行成功率与不满足预言机的可疑案例，用于 bug 发现与报告。
+
+关联流程参考：见 abstract.md《阶段二：变异与检测》与《调用链概览》中的 run_muatate_llm_single_sql、process_mutate_llm_result、detect_bug。
+"""
+
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Time    : 2024/8/2 21:19
 # @Author  : shaocanfan
 # @File    : MutationLlmModelFineTuning.py
-# @Intro   :
 import json
 import os
 from src.Tools.DatabaseConnect.database_connector import exec_sql_statement
@@ -46,20 +56,13 @@ eval_filenames = {
 # 处理mutate llm生成的结果，依次处理所有可能的变异：计算oracle，运行并记录结果，oracle check以检测bug
 def process_mutate_llm_result(muatate_name, muatate_result, exec_result_before):
     """
-    [
-        {
-            "isUpper": True,
-            "transferredSqlsim_exec": {
-                "exec_result": str(exec_result),
-                "exec_time": str(exec_time),
-                "error_message": str(error_message)
-            },
-            "CheckOracle":{
-                "end":True,
-                "error":""
-            }
-        }
-    ]
+    处理 Mutate LLM 的变异结果并执行预言机检查。
+
+    输入示例（简化）：
+    - muatate_result: 列表，每个元素形如 {"mutated sql": "...", "flag": 0/1}
+    - exec_result_before: 变异前 SQL 的执行结果
+
+    返回：列表，含每个变体的执行信息与 CheckOracle 结果。
     """
     procrssed_result = []
     for result in muatate_result:
@@ -133,6 +136,7 @@ def run_muatate_llm(tool, mutate_name):
 """
 
 def run_muatate_llm_single_sql(tool, client, model_id, mutate_name, oracle, db_type, sql):
+    """针对单条 SQL 调用 Mutate LLM 生成候选变体，并返回原始响应文本与开销统计。"""
     # 为Mutate LLM构造满足特定格式的testing data数据项
     if tool.lower() == "sqlancer":
         # 构造格式化输入词
@@ -174,6 +178,7 @@ def run_muatate_llm_single_sql(tool, client, model_id, mutate_name, oracle, db_t
 
 # 评估mutate llm的变异结果并检测bug
 def detect_bug(mutate_name):
+    """分析变异结果与预言机检查，统计执行成功率并收集不满足预言机的可疑索引。"""
     detect_results = {}
     exec_fail_mutate_sql_indexes = []
     oracle_false_indexes = []
