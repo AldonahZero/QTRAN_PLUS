@@ -1,0 +1,14 @@
+{
+  "command": "GETSET",
+  "examples": [
+    {
+      "command": "GETSET",
+      "args": [
+        "test",
+        "test"
+      ],
+      "raw": "GETSET test test",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

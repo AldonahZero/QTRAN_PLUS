@@ -1,0 +1,15 @@
+{
+  "command": "ZADD",
+  "examples": [
+    {
+      "command": "ZADD",
+      "args": [
+        "test",
+        "1",
+        "key1"
+      ],
+      "raw": "ZADD test 1 key1",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

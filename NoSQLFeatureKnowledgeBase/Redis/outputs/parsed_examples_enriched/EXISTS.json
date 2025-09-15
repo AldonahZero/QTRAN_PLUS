@@ -1,0 +1,13 @@
+{
+  "command": "EXISTS",
+  "examples": [
+    {
+      "command": "EXISTS",
+      "args": [
+        "test"
+      ],
+      "raw": "EXISTS test",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

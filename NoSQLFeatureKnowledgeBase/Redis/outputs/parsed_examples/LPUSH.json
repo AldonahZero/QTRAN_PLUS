@@ -1,0 +1,13 @@
+{
+  "command": "LPUSH",
+  "examples": [
+    {
+      "command": "LPUSH",
+      "args": [
+        "test",
+        "key"
+      ],
+      "raw": "LPUSH test key"
+    }
+  ]
+}

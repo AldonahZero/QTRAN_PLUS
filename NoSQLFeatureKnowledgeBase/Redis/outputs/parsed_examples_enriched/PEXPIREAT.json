@@ -1,0 +1,13 @@
+{
+  "command": "PEXPIREAT",
+  "examples": [
+    {
+      "command": "PEXPIRETIME",
+      "args": [
+        "test"
+      ],
+      "raw": "PEXPIRETIME test",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

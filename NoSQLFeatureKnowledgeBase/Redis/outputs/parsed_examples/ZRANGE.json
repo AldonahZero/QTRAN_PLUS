@@ -1,0 +1,14 @@
+{
+  "command": "ZRANGE",
+  "examples": [
+    {
+      "command": "ZRANGE",
+      "args": [
+        "test",
+        "lex1",
+        "lex2"
+      ],
+      "raw": "ZRANGE test lex1 lex2"
+    }
+  ]
+}

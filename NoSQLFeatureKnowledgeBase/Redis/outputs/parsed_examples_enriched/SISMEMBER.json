@@ -1,0 +1,14 @@
+{
+  "command": "SISMEMBER",
+  "examples": [
+    {
+      "command": "SISMEMBER",
+      "args": [
+        "test",
+        "key"
+      ],
+      "raw": "SISMEMBER test key",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

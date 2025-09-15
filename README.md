@@ -116,3 +116,30 @@ The suspicious logical bugs detected by QTRAN are stored in the `Output` folder,
 
 
 
+## Developer Utilities: Redis Semantic KB CLI
+
+We provide a lightweight CLI to query the Redis semantic knowledge base (auto-generated from grammar labels and annotations).
+
+Entry (through src.main):
+
+```shell
+python -m src.main redis-kb list-commands --grep '^bit'
+python -m src.main redis-kb show bitop --args
+python -m src.main redis-kb find-type sorted_set_key --action UseSymbol
+python -m src.main redis-kb tag2cmd 'AppendRule1->elem'
+```
+
+Data source:
+- `NoSQLFeatureKnowledgeBase/Redis/outputs/redis_semantic_kb.json`
+
+Notes:
+- The CLI is dependency-light and uses lazy imports; it does not require the full SQL transfer stack to be installed.
+
+Further reading:
+- Redis Semantic KB Worklog: `Redis_Semantic_KB_Worklog.md`
+
+
+
+
+
+

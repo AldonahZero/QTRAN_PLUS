@@ -1,0 +1,13 @@
+{
+  "command": "SPOP",
+  "examples": [
+    {
+      "command": "SPOP",
+      "args": [
+        "test"
+      ],
+      "raw": "SPOP test",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "patterns": [
+    {
+      "name": "TopN using ZSET",
+      "description": "Maintain top-N scores via ZADD/ZREMRANGEBYRANK and query via ZREVRANGE",
+      "commands": ["ZADD", "ZCARD", "ZREVRANGE", "ZREMRANGEBYRANK"]
+    }
+  ]
+}

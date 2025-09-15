@@ -1,0 +1,15 @@
+{
+  "command": "LPOS",
+  "examples": [
+    {
+      "command": "LPOS",
+      "args": [
+        "test",
+        "key",
+        "RANK",
+        "1"
+      ],
+      "raw": "LPOS test key RANK 1"
+    }
+  ]
+}

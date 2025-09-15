@@ -1,0 +1,13 @@
+{
+  "command": "RENAME",
+  "examples": [
+    {
+      "command": "RENAME",
+      "args": [
+        "test1",
+        "test2"
+      ],
+      "raw": "RENAME test1 test2"
+    }
+  ]
+}

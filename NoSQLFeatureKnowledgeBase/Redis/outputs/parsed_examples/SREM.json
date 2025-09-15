@@ -1,0 +1,13 @@
+{
+  "command": "SREM",
+  "examples": [
+    {
+      "command": "SREM",
+      "args": [
+        "test",
+        "1"
+      ],
+      "raw": "SREM test 1"
+    }
+  ]
+}

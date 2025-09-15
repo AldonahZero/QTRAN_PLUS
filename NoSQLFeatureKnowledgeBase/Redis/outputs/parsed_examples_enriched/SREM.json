@@ -1,0 +1,14 @@
+{
+  "command": "SREM",
+  "examples": [
+    {
+      "command": "SREM",
+      "args": [
+        "test",
+        "1"
+      ],
+      "raw": "SREM test 1",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

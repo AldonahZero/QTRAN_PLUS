@@ -1,0 +1,16 @@
+{
+  "command": "SET",
+  "examples": [
+    {
+      "command": "SET",
+      "args": [
+        "test",
+        "test",
+        "PXAT",
+        "123"
+      ],
+      "raw": "SET test test PXAT 123",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

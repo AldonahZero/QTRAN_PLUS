@@ -1,0 +1,14 @@
+{
+  "command": "LINDEX",
+  "examples": [
+    {
+      "command": "LINDEX",
+      "args": [
+        "test",
+        "1"
+      ],
+      "raw": "LINDEX test 1",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "command": "SCAN",
+  "examples": [
+    {
+      "command": "SCAN",
+      "args": [
+        "0",
+        "MATCH",
+        "*",
+        "COUNT",
+        "1",
+        "TYPE",
+        "string"
+      ],
+      "raw": "SCAN 0 MATCH * COUNT 1 TYPE string"
+    }
+  ]
+}

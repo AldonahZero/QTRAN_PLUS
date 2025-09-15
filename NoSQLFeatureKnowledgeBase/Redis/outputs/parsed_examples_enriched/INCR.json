@@ -1,0 +1,13 @@
+{
+  "command": "INCR",
+  "examples": [
+    {
+      "command": "INCR",
+      "args": [
+        "test"
+      ],
+      "raw": "INCR test",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

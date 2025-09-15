@@ -1,0 +1,13 @@
+{
+  "command": "ZREM",
+  "examples": [
+    {
+      "command": "ZREM",
+      "args": [
+        "test",
+        "member"
+      ],
+      "raw": "ZREM test member"
+    }
+  ]
+}

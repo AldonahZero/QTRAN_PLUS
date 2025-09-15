@@ -1,0 +1,12 @@
+{
+  "command": "HLEN",
+  "examples": [
+    {
+      "command": "HLEN",
+      "args": [
+        "test"
+      ],
+      "raw": "HLEN test"
+    }
+  ]
+}

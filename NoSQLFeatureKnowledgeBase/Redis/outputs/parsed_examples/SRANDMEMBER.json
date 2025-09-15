@@ -1,0 +1,13 @@
+{
+  "command": "SRANDMEMBER",
+  "examples": [
+    {
+      "command": "SRANDMEMBER",
+      "args": [
+        "test",
+        "1"
+      ],
+      "raw": "SRANDMEMBER test 1"
+    }
+  ]
+}

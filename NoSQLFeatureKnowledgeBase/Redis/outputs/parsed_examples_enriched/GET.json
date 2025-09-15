@@ -1,0 +1,13 @@
+{
+  "command": "GET",
+  "examples": [
+    {
+      "command": "GET",
+      "args": [
+        "test"
+      ],
+      "raw": "GET test",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

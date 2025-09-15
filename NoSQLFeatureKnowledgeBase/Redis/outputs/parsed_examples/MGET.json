@@ -1,0 +1,13 @@
+{
+  "command": "MGET",
+  "examples": [
+    {
+      "command": "MGET",
+      "args": [
+        "test1",
+        "test2"
+      ],
+      "raw": "MGET test1 test2"
+    }
+  ]
+}

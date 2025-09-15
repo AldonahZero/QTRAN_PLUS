@@ -68,4 +68,21 @@
         "username": "admin",
         "password": "123456"
     }
+    ,
+    "mongodb": {
+        "container_name": "mongodb_QTRAN",
+        "dbType": "mongodb",
+        "host": "127.0.0.1",
+        "port": 27017,
+        "username": "",
+        "password": ""
+    },
+    "redis": {
+        "container_name": "redis_QTRAN",
+        "dbType": "redis",
+        "host": "127.0.0.1",
+        "port": 6379,
+        "username": "",
+        "password": ""
+    }
 }

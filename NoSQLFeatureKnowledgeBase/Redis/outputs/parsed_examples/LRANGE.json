@@ -1,0 +1,14 @@
+{
+  "command": "LRANGE",
+  "examples": [
+    {
+      "command": "LRANGE",
+      "args": [
+        "test",
+        "-1",
+        "1"
+      ],
+      "raw": "LRANGE test -1 1"
+    }
+  ]
+}

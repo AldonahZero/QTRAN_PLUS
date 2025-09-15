@@ -1,0 +1,15 @@
+{
+  "command": "ZLEXCOUNT",
+  "examples": [
+    {
+      "command": "ZLEXCOUNT",
+      "args": [
+        "test",
+        "lex1",
+        "lex2"
+      ],
+      "raw": "ZLEXCOUNT test lex1 lex2",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

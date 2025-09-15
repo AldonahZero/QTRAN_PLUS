@@ -1,0 +1,12 @@
+{
+  "command": "EXISTS",
+  "examples": [
+    {
+      "command": "EXISTS",
+      "args": [
+        "test"
+      ],
+      "raw": "EXISTS test"
+    }
+  ]
+}

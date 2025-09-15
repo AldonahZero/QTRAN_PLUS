@@ -1,0 +1,13 @@
+{
+  "command": "TTL",
+  "examples": [
+    {
+      "command": "TTL",
+      "args": [
+        "test"
+      ],
+      "raw": "TTL test",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "command": "SCARD",
+  "examples": [
+    {
+      "command": "SCARD",
+      "args": [
+        "test"
+      ],
+      "raw": "SCARD test",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

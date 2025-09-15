@@ -1,0 +1,14 @@
+{
+  "command": "LSET",
+  "examples": [
+    {
+      "command": "LSET",
+      "args": [
+        "test",
+        "-1",
+        "key"
+      ],
+      "raw": "LSET test -1 key"
+    }
+  ]
+}

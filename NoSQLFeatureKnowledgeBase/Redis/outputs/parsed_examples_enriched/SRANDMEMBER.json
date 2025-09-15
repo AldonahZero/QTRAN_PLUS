@@ -1,0 +1,14 @@
+{
+  "command": "SRANDMEMBER",
+  "examples": [
+    {
+      "command": "SRANDMEMBER",
+      "args": [
+        "test",
+        "1"
+      ],
+      "raw": "SRANDMEMBER test 1",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

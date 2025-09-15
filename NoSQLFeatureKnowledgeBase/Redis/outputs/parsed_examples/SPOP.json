@@ -1,0 +1,12 @@
+{
+  "command": "SPOP",
+  "examples": [
+    {
+      "command": "SPOP",
+      "args": [
+        "test"
+      ],
+      "raw": "SPOP test"
+    }
+  ]
+}

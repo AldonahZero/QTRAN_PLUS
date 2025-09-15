@@ -1,0 +1,12 @@
+{
+  "command": "PEXPIREAT",
+  "examples": [
+    {
+      "command": "PEXPIRETIME",
+      "args": [
+        "test"
+      ],
+      "raw": "PEXPIRETIME test"
+    }
+  ]
+}

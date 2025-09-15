@@ -1,0 +1,13 @@
+{
+  "command": "HEXISTS",
+  "examples": [
+    {
+      "command": "HEXISTS",
+      "args": [
+        "test",
+        "key1"
+      ],
+      "raw": "HEXISTS test key1"
+    }
+  ]
+}

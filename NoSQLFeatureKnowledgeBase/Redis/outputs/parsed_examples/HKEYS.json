@@ -1,0 +1,12 @@
+{
+  "command": "HKEYS",
+  "examples": [
+    {
+      "command": "HKEYS",
+      "args": [
+        "test"
+      ],
+      "raw": "HKEYS test"
+    }
+  ]
+}

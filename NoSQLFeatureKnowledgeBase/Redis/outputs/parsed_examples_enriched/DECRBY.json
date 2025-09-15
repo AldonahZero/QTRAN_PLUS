@@ -1,0 +1,14 @@
+{
+  "command": "DECRBY",
+  "examples": [
+    {
+      "command": "DECRBY",
+      "args": [
+        "test",
+        "1"
+      ],
+      "raw": "DECRBY test 1",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

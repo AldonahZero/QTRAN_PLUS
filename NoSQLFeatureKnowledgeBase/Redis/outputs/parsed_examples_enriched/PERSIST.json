@@ -1,0 +1,13 @@
+{
+  "command": "PERSIST",
+  "examples": [
+    {
+      "command": "PERSIST",
+      "args": [
+        "test"
+      ],
+      "raw": "PERSIST test",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

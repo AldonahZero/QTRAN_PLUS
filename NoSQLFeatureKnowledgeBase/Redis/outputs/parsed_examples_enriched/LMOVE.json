@@ -1,0 +1,16 @@
+{
+  "command": "LMOVE",
+  "examples": [
+    {
+      "command": "LMOVE",
+      "args": [
+        "test1",
+        "test2",
+        "LEFT",
+        "RIGHT"
+      ],
+      "raw": "LMOVE test1 test2 LEFT RIGHT",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "command": "HLEN",
+  "examples": [
+    {
+      "command": "HLEN",
+      "args": [
+        "test"
+      ],
+      "raw": "HLEN test",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

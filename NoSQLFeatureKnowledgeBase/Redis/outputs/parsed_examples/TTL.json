@@ -1,0 +1,12 @@
+{
+  "command": "TTL",
+  "examples": [
+    {
+      "command": "TTL",
+      "args": [
+        "test"
+      ],
+      "raw": "TTL test"
+    }
+  ]
+}

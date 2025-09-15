@@ -1,0 +1,15 @@
+{
+  "command": "HSET",
+  "examples": [
+    {
+      "command": "HSET",
+      "args": [
+        "test",
+        "key1",
+        "val1"
+      ],
+      "raw": "HSET test key1 val1",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

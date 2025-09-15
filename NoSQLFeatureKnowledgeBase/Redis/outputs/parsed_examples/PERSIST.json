@@ -1,0 +1,12 @@
+{
+  "command": "PERSIST",
+  "examples": [
+    {
+      "command": "PERSIST",
+      "args": [
+        "test"
+      ],
+      "raw": "PERSIST test"
+    }
+  ]
+}

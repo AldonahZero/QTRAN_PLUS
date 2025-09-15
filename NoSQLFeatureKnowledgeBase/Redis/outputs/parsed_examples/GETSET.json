@@ -1,0 +1,13 @@
+{
+  "command": "GETSET",
+  "examples": [
+    {
+      "command": "GETSET",
+      "args": [
+        "test",
+        "test"
+      ],
+      "raw": "GETSET test test"
+    }
+  ]
+}

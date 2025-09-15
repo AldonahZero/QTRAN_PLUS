@@ -1,0 +1,18 @@
+{
+  "command": "HSCAN",
+  "examples": [
+    {
+      "command": "HSCAN",
+      "args": [
+        "test",
+        "0",
+        "MATCH",
+        "*",
+        "COUNT",
+        "1"
+      ],
+      "raw": "HSCAN test 0 MATCH * COUNT 1",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

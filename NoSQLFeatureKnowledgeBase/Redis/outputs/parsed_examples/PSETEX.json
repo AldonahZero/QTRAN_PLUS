@@ -1,0 +1,14 @@
+{
+  "command": "PSETEX",
+  "examples": [
+    {
+      "command": "PSETEX",
+      "args": [
+        "test",
+        "1",
+        "test"
+      ],
+      "raw": "PSETEX test 1 test"
+    }
+  ]
+}

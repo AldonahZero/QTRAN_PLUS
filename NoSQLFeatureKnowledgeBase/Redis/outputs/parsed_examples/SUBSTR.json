@@ -1,0 +1,14 @@
+{
+  "command": "SUBSTR",
+  "examples": [
+    {
+      "command": "SUBSTR",
+      "args": [
+        "test",
+        "-1",
+        "-3"
+      ],
+      "raw": "SUBSTR test -1 -3"
+    }
+  ]
+}

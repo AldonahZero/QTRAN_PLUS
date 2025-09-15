@@ -1,0 +1,15 @@
+{
+  "command": "BRPOP",
+  "examples": [
+    {
+      "command": "BRPOP",
+      "args": [
+        "test1",
+        "test2",
+        "1"
+      ],
+      "raw": "BRPOP test1 test2 1",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

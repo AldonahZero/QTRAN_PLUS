@@ -1,0 +1,14 @@
+{
+  "command": "LPUSH",
+  "examples": [
+    {
+      "command": "LPUSH",
+      "args": [
+        "test",
+        "key"
+      ],
+      "raw": "LPUSH test key",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

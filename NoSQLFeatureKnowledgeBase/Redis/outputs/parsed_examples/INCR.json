@@ -1,0 +1,12 @@
+{
+  "command": "INCR",
+  "examples": [
+    {
+      "command": "INCR",
+      "args": [
+        "test"
+      ],
+      "raw": "INCR test"
+    }
+  ]
+}

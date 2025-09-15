@@ -1,0 +1,16 @@
+{
+  "command": "COPY",
+  "examples": [
+    {
+      "command": "COPY",
+      "args": [
+        "test1",
+        "test2",
+        "DB",
+        "1",
+        "REPLACE"
+      ],
+      "raw": "COPY test1 test2 DB 1 REPLACE"
+    }
+  ]
+}

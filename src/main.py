@@ -11,7 +11,6 @@ QTRAN 项目入口：解析命令行参数并启动两阶段流程
 
 import sys
 import os
-import openai
 import argparse
 from src.TransferLLM.translate_sqlancer import sqlancer_qtran_run
 from src.TransferLLM.TransferLLM import pinolo_qtran_run

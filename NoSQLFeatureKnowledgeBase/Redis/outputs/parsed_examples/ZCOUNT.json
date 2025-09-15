@@ -1,0 +1,14 @@
+{
+  "command": "ZCOUNT",
+  "examples": [
+    {
+      "command": "ZCOUNT",
+      "args": [
+        "test",
+        "-1",
+        "1"
+      ],
+      "raw": "ZCOUNT test -1 1"
+    }
+  ]
+}

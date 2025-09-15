@@ -1,0 +1,17 @@
+{
+  "command": "BLMPOP",
+  "examples": [
+    {
+      "command": "BLMPOP",
+      "args": [
+        "1",
+        "2",
+        "test1",
+        "LEFT",
+        "COUNT",
+        "1"
+      ],
+      "raw": "BLMPOP 1 2 test1 LEFT COUNT 1"
+    }
+  ]
+}

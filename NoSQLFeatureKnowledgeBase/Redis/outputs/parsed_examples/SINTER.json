@@ -1,0 +1,14 @@
+{
+  "command": "SINTER",
+  "examples": [
+    {
+      "command": "SINTER",
+      "args": [
+        "test1",
+        "test2",
+        "test3"
+      ],
+      "raw": "SINTER test1 test2 test3"
+    }
+  ]
+}

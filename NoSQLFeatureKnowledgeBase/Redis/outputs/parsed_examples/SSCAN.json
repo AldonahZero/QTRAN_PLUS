@@ -1,0 +1,17 @@
+{
+  "command": "SSCAN",
+  "examples": [
+    {
+      "command": "SSCAN",
+      "args": [
+        "test",
+        "0",
+        "MATCH",
+        "*",
+        "COUNT",
+        "1"
+      ],
+      "raw": "SSCAN test 0 MATCH * COUNT 1"
+    }
+  ]
+}

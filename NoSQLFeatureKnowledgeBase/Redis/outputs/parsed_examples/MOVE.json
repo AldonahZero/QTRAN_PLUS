@@ -1,0 +1,13 @@
+{
+  "command": "MOVE",
+  "examples": [
+    {
+      "command": "MOVE",
+      "args": [
+        "test",
+        "1"
+      ],
+      "raw": "MOVE test 1"
+    }
+  ]
+}

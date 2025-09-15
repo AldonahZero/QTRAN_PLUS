@@ -1,0 +1,14 @@
+{
+  "command": "ZINTER",
+  "examples": [
+    {
+      "command": "ZINTER",
+      "args": [
+        "1",
+        "test"
+      ],
+      "raw": "ZINTER 1 test",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

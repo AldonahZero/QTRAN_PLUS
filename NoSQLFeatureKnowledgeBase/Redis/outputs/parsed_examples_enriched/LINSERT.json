@@ -1,0 +1,16 @@
+{
+  "command": "LINSERT",
+  "examples": [
+    {
+      "command": "LINSERT",
+      "args": [
+        "test",
+        "BEFORE",
+        "key1",
+        "key2"
+      ],
+      "raw": "LINSERT test BEFORE key1 key2",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

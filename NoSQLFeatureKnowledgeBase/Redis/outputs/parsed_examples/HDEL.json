@@ -1,0 +1,13 @@
+{
+  "command": "HDEL",
+  "examples": [
+    {
+      "command": "HDEL",
+      "args": [
+        "test",
+        "key1"
+      ],
+      "raw": "HDEL test key1"
+    }
+  ]
+}

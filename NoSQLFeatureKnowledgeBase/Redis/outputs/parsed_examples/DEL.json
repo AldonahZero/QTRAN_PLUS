@@ -1,0 +1,13 @@
+{
+  "command": "DEL",
+  "examples": [
+    {
+      "command": "DEL",
+      "args": [
+        "test1",
+        "test2"
+      ],
+      "raw": "DEL test1 test2"
+    }
+  ]
+}

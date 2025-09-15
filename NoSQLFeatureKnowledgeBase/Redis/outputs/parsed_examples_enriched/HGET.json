@@ -1,0 +1,14 @@
+{
+  "command": "HGET",
+  "examples": [
+    {
+      "command": "HGET",
+      "args": [
+        "test",
+        "key1"
+      ],
+      "raw": "HGET test key1",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

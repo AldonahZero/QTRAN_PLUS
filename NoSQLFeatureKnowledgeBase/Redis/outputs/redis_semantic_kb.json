@@ -1,0 +1,4057 @@
+{
+  "alter_orders": [
+    {
+      "args": {
+        "after": "{.parent.rsib(1)@id}_{.parent.rsib(2)@id}"
+      },
+      "tag": "BitopRule0->elem"
+    },
+    {
+      "args": {
+        "after": "{.parent.rsib(1).child(0)@id}"
+      },
+      "tag": "GeoSearchStoreRule1->elem"
+    }
+  ],
+  "by_command": {
+    "append": {
+      "actions": {
+        "DefineSymbol": [
+          "##str_key_type_resolver",
+          "str_key?"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "##str_key_type_resolver",
+            "str_key?"
+          ]
+        }
+      },
+      "tags": [
+        "AppendRule1->elem"
+      ]
+    },
+    "bitfield": {
+      "actions": {
+        "UseSymbol": [
+          "str_key",
+          "str_key_type_num"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "str_key",
+            "str_key_type_num"
+          ]
+        }
+      },
+      "tags": [
+        "BitfieldRule1->elem"
+      ]
+    },
+    "bitop": {
+      "actions": {
+        "AlterOrder": [
+          "{\"after\": \"{.parent.rsib(1)@id}_{.parent.rsib(2)@id}\"}"
+        ],
+        "UseSymbol": [
+          "str_key",
+          "str_key_type_num"
+        ]
+      },
+      "args": {
+        "elem": {
+          "AlterOrder": [
+            "{\"after\": \"{.parent.rsib(1)@id}_{.parent.rsib(2)@id}\"}"
+          ],
+          "UseSymbol": [
+            "str_key",
+            "str_key_type_num"
+          ]
+        }
+      },
+      "tags": [
+        "BitopRule0->elem",
+        "BitopRule1->elem",
+        "BitopRule2->elem"
+      ]
+    },
+    "bitpos": {
+      "actions": {
+        "UseSymbol": [
+          "str_key",
+          "str_key_type_num"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "str_key",
+            "str_key_type_num"
+          ]
+        }
+      },
+      "tags": [
+        "BitPosRule1->elem"
+      ]
+    },
+    "blmove": {
+      "actions": {
+        "DefineSymbol": [
+          "list_key"
+        ],
+        "UseSymbol": [
+          "list_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "list_key"
+          ],
+          "UseSymbol": [
+            "list_key"
+          ]
+        }
+      },
+      "tags": [
+        "BlMoveRule1->elem",
+        "BlMoveRule2->elem"
+      ]
+    },
+    "blmpop": {
+      "actions": {
+        "UseSymbol": [
+          "list_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "list_key"
+          ]
+        }
+      },
+      "tags": [
+        "BLMPopRule1->elem",
+        "BLMPopRule2->elem"
+      ]
+    },
+    "blpop": {
+      "actions": {
+        "UseSymbol": [
+          "list_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "list_key"
+          ]
+        }
+      },
+      "tags": [
+        "BLPopRule1->elem",
+        "BLPopRule2->elem"
+      ]
+    },
+    "brpop": {
+      "actions": {
+        "UseSymbol": [
+          "list_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "list_key"
+          ]
+        }
+      },
+      "tags": [
+        "BRPopRule1->elem",
+        "BRPopRule2->elem"
+      ]
+    },
+    "brpoplpush": {
+      "actions": {
+        "DefineSymbol": [
+          "list_key"
+        ],
+        "UseSymbol": [
+          "list_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "list_key"
+          ],
+          "UseSymbol": [
+            "list_key"
+          ]
+        }
+      },
+      "tags": [
+        "BRPopLPushRule1->elem",
+        "BRPopLPushRule2->elem"
+      ]
+    },
+    "bzmpop": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "BZMPopRule1->elem",
+        "BZMPopRule2->elem"
+      ]
+    },
+    "bzpopmax": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "BZPopMaxRule1->elem",
+        "BZPopMaxRule2->elem"
+      ]
+    },
+    "bzpopmin": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "BZPopMinRule1->elem",
+        "BZPopMinRule2->elem"
+      ]
+    },
+    "copy": {
+      "actions": {
+        "DefineSymbol": [
+          "{.lsib(1)@sym_use_type}"
+        ],
+        "UseSymbol": [
+          "data_to_save",
+          "multi_start"
+        ]
+      },
+      "args": {
+        "elem1": {
+          "UseSymbol": [
+            "data_to_save",
+            "multi_start"
+          ]
+        },
+        "elem2": {
+          "DefineSymbol": [
+            "{.lsib(1)@sym_use_type}"
+          ]
+        }
+      },
+      "tags": [
+        "CopyRule1->elem1",
+        "CopyRule1->elem2"
+      ]
+    },
+    "decr": {
+      "actions": {
+        "UseSymbol": [
+          "str_key_type_num"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "str_key_type_num"
+          ]
+        }
+      },
+      "tags": [
+        "DecrRule1->elem"
+      ]
+    },
+    "decrby": {
+      "actions": {
+        "UseSymbol": [
+          "str_key_type_num"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "str_key_type_num"
+          ]
+        }
+      },
+      "tags": [
+        "DecrByRule1->elem"
+      ]
+    },
+    "del": {
+      "actions": {
+        "InvalidateSymbol": [
+          "hash_key",
+          "list_key",
+          "set_key",
+          "sorted_set_key",
+          "str_key",
+          "str_key_type_num",
+          "stream_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "InvalidateSymbol": [
+            "hash_key",
+            "list_key",
+            "set_key",
+            "sorted_set_key",
+            "str_key",
+            "str_key_type_num",
+            "stream_key"
+          ]
+        }
+      },
+      "tags": [
+        "DelRule1->elem",
+        "DelRule2->elem"
+      ]
+    },
+    "dump": {
+      "actions": {
+        "UseSymbol": [
+          "data_to_save",
+          "multi_start"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "data_to_save",
+            "multi_start"
+          ]
+        }
+      },
+      "tags": [
+        "DumpRule1->elem"
+      ]
+    },
+    "entrypoint": {
+      "actions": {
+        "CreateScope": [
+          "{\"scope_name\": \"scope_{@id}\"}"
+        ]
+      },
+      "args": {
+        "elem": {
+          "CreateScope": [
+            "{\"scope_name\": \"scope_{@id}\"}"
+          ]
+        }
+      },
+      "tags": [
+        "EntryPoint->elem"
+      ]
+    },
+    "exec": {
+      "actions": {
+        "InvalidateSymbol": [
+          "multi_start"
+        ]
+      },
+      "args": {
+        "elem": {
+          "InvalidateSymbol": [
+            "multi_start"
+          ]
+        }
+      },
+      "tags": [
+        "ExecRule1->elem"
+      ]
+    },
+    "expire": {
+      "actions": {
+        "UseSymbol": [
+          "data_to_save",
+          "multi_start"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "data_to_save",
+            "multi_start"
+          ]
+        }
+      },
+      "tags": [
+        "ExpireRule1->elem"
+      ]
+    },
+    "geoadd": {
+      "actions": {
+        "DefineSymbol": [
+          "geo_key",
+          "geo_member"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "geo_key",
+            "geo_member"
+          ]
+        }
+      },
+      "tags": [
+        "GeoAddRule1->elem",
+        "GeoAddRuleMember1->elem"
+      ]
+    },
+    "geodist": {
+      "actions": {
+        "UseSymbol": [
+          "geo_key",
+          "geo_member"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "geo_key",
+            "geo_member"
+          ]
+        }
+      },
+      "tags": [
+        "GeoDistRule1->elem",
+        "GeoDistRule2->elem",
+        "GeoDistRule3->elem"
+      ]
+    },
+    "geohash": {
+      "actions": {
+        "UseSymbol": [
+          "geo_key",
+          "geo_member"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "geo_key",
+            "geo_member"
+          ]
+        }
+      },
+      "tags": [
+        "GeoHashRule1->elem",
+        "GeoHashRule3->elem"
+      ]
+    },
+    "geopos": {
+      "actions": {
+        "UseSymbol": [
+          "geo_key",
+          "geo_member"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "geo_key",
+            "geo_member"
+          ]
+        }
+      },
+      "tags": [
+        "GeoPosRule1->elem",
+        "GeoPosRule2->elem",
+        "GeoPosRule3->elem"
+      ]
+    },
+    "georadius": {
+      "actions": {
+        "UseSymbol": [
+          "geo_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "geo_key"
+          ]
+        }
+      },
+      "tags": [
+        "GeoRadiusRule1->elem"
+      ]
+    },
+    "geosearch": {
+      "actions": {
+        "UseSymbol": [
+          "geo_key",
+          "geo_member"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "geo_key",
+            "geo_member"
+          ]
+        }
+      },
+      "tags": [
+        "GeoSearchRule1->elem",
+        "GeoSearchRule2->elem"
+      ]
+    },
+    "geosearchstore": {
+      "actions": {
+        "AlterOrder": [
+          "{\"after\": \"{.parent.rsib(1).child(0)@id}\"}"
+        ],
+        "DefineSymbol": [
+          "geo_key"
+        ],
+        "UseSymbol": [
+          "geo_key",
+          "geo_member"
+        ]
+      },
+      "args": {
+        "elem": {
+          "AlterOrder": [
+            "{\"after\": \"{.parent.rsib(1).child(0)@id}\"}"
+          ],
+          "DefineSymbol": [
+            "geo_key"
+          ],
+          "UseSymbol": [
+            "geo_key",
+            "geo_member"
+          ]
+        }
+      },
+      "tags": [
+        "GeoSearchStoreRule1->elem",
+        "GeoSearchStoreRule2->elem",
+        "GeoSearchStoreRule3->elem"
+      ]
+    },
+    "get": {
+      "actions": {
+        "UseSymbol": [
+          "str_key",
+          "str_key_type_num"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "str_key",
+            "str_key_type_num"
+          ]
+        }
+      },
+      "tags": [
+        "GetRule1->elem"
+      ]
+    },
+    "getdel": {
+      "actions": {
+        "InvalidateSymbol": [
+          "str_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "InvalidateSymbol": [
+            "str_key"
+          ]
+        }
+      },
+      "tags": [
+        "GetDelRule1->elem"
+      ]
+    },
+    "getex": {
+      "actions": {
+        "UseSymbol": [
+          "str_key",
+          "str_key_type_num"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "str_key",
+            "str_key_type_num"
+          ]
+        }
+      },
+      "tags": [
+        "GetExRule1->elem"
+      ]
+    },
+    "getrange": {
+      "actions": {
+        "UseSymbol": [
+          "str_key",
+          "str_key_type_num"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "str_key",
+            "str_key_type_num"
+          ]
+        }
+      },
+      "tags": [
+        "GetRangeRule1->elem"
+      ]
+    },
+    "getset": {
+      "actions": {
+        "UseSymbol": [
+          "str_key",
+          "str_key_type_num"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "str_key",
+            "str_key_type_num"
+          ]
+        }
+      },
+      "tags": [
+        "GetSetRule1->elem"
+      ]
+    },
+    "hdel": {
+      "actions": {
+        "InvalidateSymbol": [
+          "hash_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "InvalidateSymbol": [
+            "hash_key"
+          ]
+        }
+      },
+      "tags": [
+        "HDelRule1->elem"
+      ]
+    },
+    "hexists": {
+      "actions": {
+        "UseSymbol": [
+          "hash_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "hash_key"
+          ]
+        }
+      },
+      "tags": [
+        "HExistsRule1->elem"
+      ]
+    },
+    "hget": {
+      "actions": {
+        "UseSymbol": [
+          "hash_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "hash_key"
+          ]
+        }
+      },
+      "tags": [
+        "HGetRule1->elem"
+      ]
+    },
+    "hgetall": {
+      "actions": {
+        "UseSymbol": [
+          "hash_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "hash_key"
+          ]
+        }
+      },
+      "tags": [
+        "HGetAllRule1->elem"
+      ]
+    },
+    "hgetfield": {
+      "actions": {
+        "UseSymbol": [
+          "##hget_field_type_resolver",
+          "hset_key_?"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "##hget_field_type_resolver",
+            "hset_key_?"
+          ]
+        }
+      },
+      "tags": [
+        "HGetField->elem"
+      ]
+    },
+    "hincrby": {
+      "actions": {
+        "UseSymbol": [
+          "hash_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "hash_key"
+          ]
+        }
+      },
+      "tags": [
+        "HIncrByRule1->elem"
+      ]
+    },
+    "hincrbyfield": {
+      "actions": {
+        "UseSymbol": [
+          "##hincrby_field_type_resolver",
+          "hset_key_?_numtype"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "##hincrby_field_type_resolver",
+            "hset_key_?_numtype"
+          ]
+        }
+      },
+      "tags": [
+        "HIncrByField->elem"
+      ]
+    },
+    "hincrbyfloat": {
+      "actions": {
+        "UseSymbol": [
+          "hash_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "hash_key"
+          ]
+        }
+      },
+      "tags": [
+        "HIncrByFloatRule1->elem"
+      ]
+    },
+    "hincrbyfloatfield": {
+      "actions": {
+        "UseSymbol": [
+          "##hincrby_field_type_resolver",
+          "hset_key_?_numtype"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "##hincrby_field_type_resolver",
+            "hset_key_?_numtype"
+          ]
+        }
+      },
+      "tags": [
+        "HIncrByFloatField->elem"
+      ]
+    },
+    "hkeys": {
+      "actions": {
+        "UseSymbol": [
+          "hash_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "hash_key"
+          ]
+        }
+      },
+      "tags": [
+        "HKeysRule1->elem"
+      ]
+    },
+    "hlen": {
+      "actions": {
+        "UseSymbol": [
+          "hash_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "hash_key"
+          ]
+        }
+      },
+      "tags": [
+        "HLenRule1->elem"
+      ]
+    },
+    "hmget": {
+      "actions": {
+        "UseSymbol": [
+          "hash_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "hash_key"
+          ]
+        }
+      },
+      "tags": [
+        "HMGetRule1->elem"
+      ]
+    },
+    "hmgetfield1": {
+      "actions": {
+        "UseSymbol": [
+          "##hmget_field_type_resolver",
+          "hset_key_?"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "##hmget_field_type_resolver",
+            "hset_key_?"
+          ]
+        }
+      },
+      "tags": [
+        "HMGetField1->elem"
+      ]
+    },
+    "hmgetfield2": {
+      "actions": {
+        "UseSymbol": [
+          "##hmget_field_type_resolver",
+          "hset_key_?"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "##hmget_field_type_resolver",
+            "hset_key_?"
+          ]
+        }
+      },
+      "tags": [
+        "HMGetField2->elem"
+      ]
+    },
+    "hmset": {
+      "actions": {
+        "DefineSymbol": [
+          "hash_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "hash_key"
+          ]
+        }
+      },
+      "tags": [
+        "HMSetRule1->elem"
+      ]
+    },
+    "hrandfield": {
+      "actions": {
+        "UseSymbol": [
+          "hash_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "hash_key"
+          ]
+        }
+      },
+      "tags": [
+        "HRandFieldRule1->elem"
+      ]
+    },
+    "hscan": {
+      "actions": {
+        "UseSymbol": [
+          "hash_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "hash_key"
+          ]
+        }
+      },
+      "tags": [
+        "HScanRule1->elem"
+      ]
+    },
+    "hset": {
+      "actions": {
+        "DefineSymbol": [
+          "hash_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "hash_key"
+          ]
+        }
+      },
+      "tags": [
+        "HSetRule1->elem"
+      ]
+    },
+    "hsetfield1": {
+      "actions": {
+        "DefineSymbol": [
+          "##hset_field_type_resolver",
+          "hset_key_?"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "##hset_field_type_resolver",
+            "hset_key_?"
+          ]
+        }
+      },
+      "tags": [
+        "HSetField1->elem"
+      ]
+    },
+    "hsetfield2": {
+      "actions": {
+        "DefineSymbol": [
+          "##hset_field_type_resolver",
+          "hset_key_?"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "##hset_field_type_resolver",
+            "hset_key_?"
+          ]
+        }
+      },
+      "tags": [
+        "HSetField2->elem"
+      ]
+    },
+    "hsetlenfield": {
+      "actions": {
+        "UseSymbol": [
+          "##hget_field_type_resolver",
+          "hset_key_?"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "##hget_field_type_resolver",
+            "hset_key_?"
+          ]
+        }
+      },
+      "tags": [
+        "HSetLenField->elem"
+      ]
+    },
+    "hsetnx": {
+      "actions": {
+        "DefineSymbol": [
+          "hash_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "hash_key"
+          ]
+        }
+      },
+      "tags": [
+        "HSetNXRule1->elem"
+      ]
+    },
+    "hsetnxfield": {
+      "actions": {
+        "DefineSymbol": [
+          "##hset_field_type_resolver",
+          "hset_key_?"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "##hset_field_type_resolver",
+            "hset_key_?"
+          ]
+        }
+      },
+      "tags": [
+        "HSetNXField->elem"
+      ]
+    },
+    "hstrlen": {
+      "actions": {
+        "UseSymbol": [
+          "hash_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "hash_key"
+          ]
+        }
+      },
+      "tags": [
+        "HStrLenRule1->elem"
+      ]
+    },
+    "hvals": {
+      "actions": {
+        "UseSymbol": [
+          "hash_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "hash_key"
+          ]
+        }
+      },
+      "tags": [
+        "HValsRule1->elem"
+      ]
+    },
+    "incr": {
+      "actions": {
+        "UseSymbol": [
+          "str_key_type_num"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "str_key_type_num"
+          ]
+        }
+      },
+      "tags": [
+        "IncrRule1->elem"
+      ]
+    },
+    "incrby": {
+      "actions": {
+        "UseSymbol": [
+          "str_key_type_num"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "str_key_type_num"
+          ]
+        }
+      },
+      "tags": [
+        "IncrByRule1->elem"
+      ]
+    },
+    "incrbyfloat": {
+      "actions": {
+        "UseSymbol": [
+          "str_key_type_num"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "str_key_type_num"
+          ]
+        }
+      },
+      "tags": [
+        "IncrByFloatRule1->elem"
+      ]
+    },
+    "lcs": {
+      "actions": {
+        "UseSymbol": [
+          "str_key",
+          "str_key_type_num"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "str_key",
+            "str_key_type_num"
+          ]
+        }
+      },
+      "tags": [
+        "LCSRule1->elem",
+        "LCSRule2->elem"
+      ]
+    },
+    "lindex": {
+      "actions": {
+        "UseSymbol": [
+          "list_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "list_key"
+          ]
+        }
+      },
+      "tags": [
+        "LIndexRule1->elem"
+      ]
+    },
+    "linsert": {
+      "actions": {
+        "UseSymbol": [
+          "list_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "list_key"
+          ]
+        }
+      },
+      "tags": [
+        "LInsertRule1->elem"
+      ]
+    },
+    "llen": {
+      "actions": {
+        "UseSymbol": [
+          "list_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "list_key"
+          ]
+        }
+      },
+      "tags": [
+        "LLenRule1->elem"
+      ]
+    },
+    "lmove": {
+      "actions": {
+        "DefineSymbol": [
+          "list_key"
+        ],
+        "UseSymbol": [
+          "list_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "list_key"
+          ],
+          "UseSymbol": [
+            "list_key"
+          ]
+        }
+      },
+      "tags": [
+        "LMoveRule1->elem",
+        "LMoveRule2->elem"
+      ]
+    },
+    "lmpop": {
+      "actions": {
+        "UseSymbol": [
+          "list_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "list_key"
+          ]
+        }
+      },
+      "tags": [
+        "LMPopRule1->elem",
+        "LMPopRule2->elem"
+      ]
+    },
+    "lpop": {
+      "actions": {
+        "UseSymbol": [
+          "list_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "list_key"
+          ]
+        }
+      },
+      "tags": [
+        "LPopRule1->elem"
+      ]
+    },
+    "lpos": {
+      "actions": {
+        "UseSymbol": [
+          "list_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "list_key"
+          ]
+        }
+      },
+      "tags": [
+        "LPosRule1->elem"
+      ]
+    },
+    "lpush": {
+      "actions": {
+        "DefineSymbol": [
+          "list_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "list_key"
+          ]
+        }
+      },
+      "tags": [
+        "LPushRule1->elem"
+      ]
+    },
+    "lpushx": {
+      "actions": {
+        "UseSymbol": [
+          "list_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "list_key"
+          ]
+        }
+      },
+      "tags": [
+        "LPushXRule1->elem"
+      ]
+    },
+    "lrange": {
+      "actions": {
+        "UseSymbol": [
+          "list_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "list_key"
+          ]
+        }
+      },
+      "tags": [
+        "LRangeRule1->elem"
+      ]
+    },
+    "lrem": {
+      "actions": {
+        "UseSymbol": [
+          "list_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "list_key"
+          ]
+        }
+      },
+      "tags": [
+        "LRemRule1->elem"
+      ]
+    },
+    "lset": {
+      "actions": {
+        "UseSymbol": [
+          "list_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "list_key"
+          ]
+        }
+      },
+      "tags": [
+        "LSetRule1->elem"
+      ]
+    },
+    "ltrim": {
+      "actions": {
+        "UseSymbol": [
+          "list_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "list_key"
+          ]
+        }
+      },
+      "tags": [
+        "LTrimRule1->elem"
+      ]
+    },
+    "mget": {
+      "actions": {
+        "UseSymbol": [
+          "str_key",
+          "str_key_type_num"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "str_key",
+            "str_key_type_num"
+          ]
+        }
+      },
+      "tags": [
+        "MGetRule1->elem",
+        "MGetRule2->elem"
+      ]
+    },
+    "mset": {
+      "actions": {
+        "DefineSymbol": [
+          "str_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "str_key"
+          ]
+        }
+      },
+      "tags": [
+        "MSetRule1->elem",
+        "MSetRule2->elem"
+      ]
+    },
+    "msetnx": {
+      "actions": {
+        "DefineSymbol": [
+          "str_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "str_key"
+          ]
+        }
+      },
+      "tags": [
+        "MSetNxRule1->elem",
+        "MSetNxRule2->elem"
+      ]
+    },
+    "multi": {
+      "actions": {
+        "DefineSymbol": [
+          "multi_start"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "multi_start"
+          ]
+        }
+      },
+      "tags": [
+        "MultiRule1->elem"
+      ]
+    },
+    "pexpire": {
+      "actions": {
+        "UseSymbol": [
+          "data_to_save",
+          "multi_start"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "data_to_save",
+            "multi_start"
+          ]
+        }
+      },
+      "tags": [
+        "PExpireRule1->elem"
+      ]
+    },
+    "program": {
+      "actions": {
+        "DefineSymbol": [
+          "data_to_save"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "data_to_save"
+          ]
+        }
+      },
+      "tags": [
+        "ProgramRule->elem"
+      ]
+    },
+    "psetex": {
+      "actions": {
+        "DefineSymbol": [
+          "str_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "str_key"
+          ]
+        }
+      },
+      "tags": [
+        "PSetExRule1->elem"
+      ]
+    },
+    "rpop": {
+      "actions": {
+        "UseSymbol": [
+          "list_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "list_key"
+          ]
+        }
+      },
+      "tags": [
+        "RPopRule1->elem"
+      ]
+    },
+    "rpoplpush": {
+      "actions": {
+        "DefineSymbol": [
+          "list_key"
+        ],
+        "UseSymbol": [
+          "list_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "list_key"
+          ],
+          "UseSymbol": [
+            "list_key"
+          ]
+        }
+      },
+      "tags": [
+        "RPopLPushRule1->elem",
+        "RPopLPushRule2->elem"
+      ]
+    },
+    "rpush": {
+      "actions": {
+        "DefineSymbol": [
+          "list_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "list_key"
+          ]
+        }
+      },
+      "tags": [
+        "RPushRule1->elem"
+      ]
+    },
+    "rpushx": {
+      "actions": {
+        "UseSymbol": [
+          "list_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "list_key"
+          ]
+        }
+      },
+      "tags": [
+        "RPushXRule1->elem"
+      ]
+    },
+    "sadd": {
+      "actions": {
+        "DefineSymbol": [
+          "set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "set_key"
+          ]
+        }
+      },
+      "tags": [
+        "SAddRule1->elem"
+      ]
+    },
+    "save": {
+      "actions": {
+        "UseSymbol": [
+          "data_to_save"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "data_to_save"
+          ]
+        }
+      },
+      "tags": [
+        "SaveRule->elem"
+      ]
+    },
+    "scard": {
+      "actions": {
+        "UseSymbol": [
+          "set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "set_key"
+          ]
+        }
+      },
+      "tags": [
+        "SCardRule1->elem"
+      ]
+    },
+    "sdiff": {
+      "actions": {
+        "UseSymbol": [
+          "set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "set_key"
+          ]
+        }
+      },
+      "tags": [
+        "SDiffRule1->elem",
+        "SDiffRule2->elem"
+      ]
+    },
+    "sdiffstore": {
+      "actions": {
+        "DefineSymbol": [
+          "set_key"
+        ],
+        "UseSymbol": [
+          "set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "set_key"
+          ],
+          "UseSymbol": [
+            "set_key"
+          ]
+        }
+      },
+      "tags": [
+        "SDiffStoreRule1->elem",
+        "SDiffStoreRule2->elem",
+        "SDiffStoreRule3->elem"
+      ]
+    },
+    "set": {
+      "actions": {
+        "DefineSymbol": [
+          "##str_key_type_resolver",
+          "str_key?"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "##str_key_type_resolver",
+            "str_key?"
+          ]
+        }
+      },
+      "tags": [
+        "SetRule1->elem"
+      ]
+    },
+    "setbit": {
+      "actions": {
+        "UseSymbol": [
+          "str_key",
+          "str_key_type_num"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "str_key",
+            "str_key_type_num"
+          ]
+        }
+      },
+      "tags": [
+        "SetBitRule1->elem"
+      ]
+    },
+    "setex": {
+      "actions": {
+        "DefineSymbol": [
+          "str_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "str_key"
+          ]
+        }
+      },
+      "tags": [
+        "SetExRule1->elem"
+      ]
+    },
+    "setnx": {
+      "actions": {
+        "DefineSymbol": [
+          "str_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "str_key"
+          ]
+        }
+      },
+      "tags": [
+        "SetNxRule1->elem"
+      ]
+    },
+    "setrange": {
+      "actions": {
+        "UseSymbol": [
+          "str_key",
+          "str_key_type_num"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "str_key",
+            "str_key_type_num"
+          ]
+        }
+      },
+      "tags": [
+        "SetRangeRule1->elem"
+      ]
+    },
+    "sinter": {
+      "actions": {
+        "UseSymbol": [
+          "set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "set_key"
+          ]
+        }
+      },
+      "tags": [
+        "SInterRule1->elem",
+        "SInterRule2->elem"
+      ]
+    },
+    "sintercard": {
+      "actions": {
+        "UseSymbol": [
+          "set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "set_key"
+          ]
+        }
+      },
+      "tags": [
+        "SInterCardRule1->elem",
+        "SInterCardRule2->elem"
+      ]
+    },
+    "sinterstore": {
+      "actions": {
+        "DefineSymbol": [
+          "set_key"
+        ],
+        "UseSymbol": [
+          "set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "set_key"
+          ],
+          "UseSymbol": [
+            "set_key"
+          ]
+        }
+      },
+      "tags": [
+        "SInterStoreRule1->elem",
+        "SInterStoreRule2->elem",
+        "SInterStoreRule3->elem"
+      ]
+    },
+    "sismember": {
+      "actions": {
+        "UseSymbol": [
+          "set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "set_key"
+          ]
+        }
+      },
+      "tags": [
+        "SIsMemberRule1->elem"
+      ]
+    },
+    "smembers": {
+      "actions": {
+        "UseSymbol": [
+          "set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "set_key"
+          ]
+        }
+      },
+      "tags": [
+        "SMembersRule1->elem"
+      ]
+    },
+    "smismember": {
+      "actions": {
+        "UseSymbol": [
+          "set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "set_key"
+          ]
+        }
+      },
+      "tags": [
+        "SMIsMemberRule1->elem"
+      ]
+    },
+    "smove": {
+      "actions": {
+        "DefineSymbol": [
+          "set_key"
+        ],
+        "UseSymbol": [
+          "set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "set_key"
+          ],
+          "UseSymbol": [
+            "set_key"
+          ]
+        }
+      },
+      "tags": [
+        "SMoveRule1->elem",
+        "SMoveRule2->elem"
+      ]
+    },
+    "sort": {
+      "actions": {
+        "UseSymbol": [
+          "list_key",
+          "set_key",
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "list_key",
+            "set_key",
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "SortRule1->elem"
+      ]
+    },
+    "spop": {
+      "actions": {
+        "UseSymbol": [
+          "set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "set_key"
+          ]
+        }
+      },
+      "tags": [
+        "SPopRule1->elem"
+      ]
+    },
+    "srandmember": {
+      "actions": {
+        "UseSymbol": [
+          "set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "set_key"
+          ]
+        }
+      },
+      "tags": [
+        "SRandMemberRule1->elem"
+      ]
+    },
+    "srem": {
+      "actions": {
+        "UseSymbol": [
+          "set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "set_key"
+          ]
+        }
+      },
+      "tags": [
+        "SRemRule1->elem"
+      ]
+    },
+    "sscan": {
+      "actions": {
+        "UseSymbol": [
+          "set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "set_key"
+          ]
+        }
+      },
+      "tags": [
+        "SScanRule1->elem"
+      ]
+    },
+    "strlen": {
+      "actions": {
+        "UseSymbol": [
+          "str_key",
+          "str_key_type_num"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "str_key",
+            "str_key_type_num"
+          ]
+        }
+      },
+      "tags": [
+        "StrLenRule1->elem"
+      ]
+    },
+    "substr": {
+      "actions": {
+        "UseSymbol": [
+          "str_key",
+          "str_key_type_num"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "str_key",
+            "str_key_type_num"
+          ]
+        }
+      },
+      "tags": [
+        "SubStrRule1->elem"
+      ]
+    },
+    "sunion": {
+      "actions": {
+        "UseSymbol": [
+          "set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "set_key"
+          ]
+        }
+      },
+      "tags": [
+        "SUnionRule1->elem",
+        "SUnionRule2->elem"
+      ]
+    },
+    "sunionstore": {
+      "actions": {
+        "DefineSymbol": [
+          "set_key"
+        ],
+        "UseSymbol": [
+          "set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "set_key"
+          ],
+          "UseSymbol": [
+            "set_key"
+          ]
+        }
+      },
+      "tags": [
+        "SUnionStoreRule0->elem",
+        "SUnionStoreRule1->elem",
+        "SUnionStoreRule2->elem"
+      ]
+    },
+    "xack": {
+      "actions": {
+        "UseSymbol": [
+          "stream_key",
+          "xgroup_groupname_of_key_{.lsib(1)@text}"
+        ]
+      },
+      "args": {
+        "elem1": {
+          "UseSymbol": [
+            "stream_key"
+          ]
+        },
+        "elem2": {
+          "UseSymbol": [
+            "xgroup_groupname_of_key_{.lsib(1)@text}"
+          ]
+        }
+      },
+      "tags": [
+        "XAckRule1->elem1",
+        "XAckRule1->elem2"
+      ]
+    },
+    "xadd": {
+      "actions": {
+        "DefineSymbol": [
+          "stream_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "stream_key"
+          ]
+        }
+      },
+      "tags": [
+        "XAddRule1->elem"
+      ]
+    },
+    "xautoclaim": {
+      "actions": {
+        "UseSymbol": [
+          "stream_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "stream_key"
+          ]
+        }
+      },
+      "tags": [
+        "XAutoClaimRule1->elem"
+      ]
+    },
+    "xclaim": {
+      "actions": {
+        "UseSymbol": [
+          "stream_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "stream_key"
+          ]
+        }
+      },
+      "tags": [
+        "XClaimRule1->elem"
+      ]
+    },
+    "xdel": {
+      "actions": {
+        "InvalidateSymbol": [
+          "stream_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "InvalidateSymbol": [
+            "stream_key"
+          ]
+        }
+      },
+      "tags": [
+        "XDelRule1->elem"
+      ]
+    },
+    "xgroupcreate": {
+      "actions": {
+        "DefineSymbol": [
+          "xgroup_groupname_of_key_{.parent.lsib(1)@text}"
+        ],
+        "UseSymbol": [
+          "stream_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "xgroup_groupname_of_key_{.parent.lsib(1)@text}"
+          ],
+          "UseSymbol": [
+            "stream_key"
+          ]
+        }
+      },
+      "tags": [
+        "XGroupCreateRule1->elem",
+        "XGroupCreateRule2->elem"
+      ]
+    },
+    "xgroupcreateconsumer": {
+      "actions": {
+        "DefineSymbol": [
+          "xgroup_consumername_of_key_{.lsib(2)@text}_group_{.lsib(1)@text}"
+        ],
+        "UseSymbol": [
+          "stream_key",
+          "xgroup_groupname_of_key_{.lsib(1)@text}"
+        ]
+      },
+      "args": {
+        "elem1": {
+          "UseSymbol": [
+            "stream_key"
+          ]
+        },
+        "elem2": {
+          "UseSymbol": [
+            "xgroup_groupname_of_key_{.lsib(1)@text}"
+          ]
+        },
+        "elem3": {
+          "DefineSymbol": [
+            "xgroup_consumername_of_key_{.lsib(2)@text}_group_{.lsib(1)@text}"
+          ]
+        }
+      },
+      "tags": [
+        "XGroupCreateconsumerRule1->elem1",
+        "XGroupCreateconsumerRule1->elem2",
+        "XGroupCreateconsumerRule1->elem3"
+      ]
+    },
+    "xgroupdelconsumer": {
+      "actions": {
+        "InvalidateSymbol": [
+          "xgroup_consumername_of_key_{.lsib(2)@text}_group_{.lsib(1)@text}"
+        ],
+        "UseSymbol": [
+          "stream_key",
+          "xgroup_groupname_of_key_{.lsib(1)@text}"
+        ]
+      },
+      "args": {
+        "elem1": {
+          "UseSymbol": [
+            "stream_key"
+          ]
+        },
+        "elem2": {
+          "UseSymbol": [
+            "xgroup_groupname_of_key_{.lsib(1)@text}"
+          ]
+        },
+        "elem3": {
+          "InvalidateSymbol": [
+            "xgroup_consumername_of_key_{.lsib(2)@text}_group_{.lsib(1)@text}"
+          ]
+        }
+      },
+      "tags": [
+        "XGroupDelconsumerRule1->elem1",
+        "XGroupDelconsumerRule1->elem2",
+        "XGroupDelconsumerRule1->elem3"
+      ]
+    },
+    "xgroupdestroy": {
+      "actions": {
+        "InvalidateSymbol": [
+          "xgroup_groupname_of_key_{.parent.lsib(1)@text}"
+        ],
+        "UseSymbol": [
+          "stream_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "InvalidateSymbol": [
+            "xgroup_groupname_of_key_{.parent.lsib(1)@text}"
+          ],
+          "UseSymbol": [
+            "stream_key"
+          ]
+        }
+      },
+      "tags": [
+        "XGroupDestroyRule1->elem",
+        "XGroupDestroyRule2->elem"
+      ]
+    },
+    "xgroupsetid": {
+      "actions": {
+        "UseSymbol": [
+          "stream_key",
+          "xgroup_groupname_of_key_{.lsib(1)@text}"
+        ]
+      },
+      "args": {
+        "elem1": {
+          "UseSymbol": [
+            "stream_key"
+          ]
+        },
+        "elem2": {
+          "UseSymbol": [
+            "xgroup_groupname_of_key_{.lsib(1)@text}"
+          ]
+        }
+      },
+      "tags": [
+        "XGroupSetidRule1->elem1",
+        "XGroupSetidRule1->elem2"
+      ]
+    },
+    "xinfoconsumers": {
+      "actions": {
+        "UseSymbol": [
+          "stream_key",
+          "xgroup_groupname_of_key_{.lsib(1)@text}"
+        ]
+      },
+      "args": {
+        "elem1": {
+          "UseSymbol": [
+            "stream_key"
+          ]
+        },
+        "elem2": {
+          "UseSymbol": [
+            "xgroup_groupname_of_key_{.lsib(1)@text}"
+          ]
+        }
+      },
+      "tags": [
+        "XInfoConsumersRule1->elem1",
+        "XInfoConsumersRule1->elem2"
+      ]
+    },
+    "xinfogroups": {
+      "actions": {
+        "UseSymbol": [
+          "stream_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "stream_key"
+          ]
+        }
+      },
+      "tags": [
+        "XInfoGroupsRule1->elem"
+      ]
+    },
+    "xinfostream": {
+      "actions": {
+        "UseSymbol": [
+          "stream_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "stream_key"
+          ]
+        }
+      },
+      "tags": [
+        "XInfoStreamRule1->elem"
+      ]
+    },
+    "xlen": {
+      "actions": {
+        "UseSymbol": [
+          "stream_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "stream_key"
+          ]
+        }
+      },
+      "tags": [
+        "XLenRule1->elem"
+      ]
+    },
+    "xpending": {
+      "actions": {
+        "UseSymbol": [
+          "stream_key",
+          "xgroup_groupname_of_key_{.lsib(1)@text}"
+        ]
+      },
+      "args": {
+        "elem1": {
+          "UseSymbol": [
+            "stream_key"
+          ]
+        },
+        "elem2": {
+          "UseSymbol": [
+            "xgroup_groupname_of_key_{.lsib(1)@text}"
+          ]
+        }
+      },
+      "tags": [
+        "XPendingRule1->elem1",
+        "XPendingRule1->elem2"
+      ]
+    },
+    "xrange": {
+      "actions": {
+        "UseSymbol": [
+          "stream_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "stream_key"
+          ]
+        }
+      },
+      "tags": [
+        "XRangeRule1->elem"
+      ]
+    },
+    "xread": {
+      "actions": {
+        "UseSymbol": [
+          "stream_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "stream_key"
+          ]
+        }
+      },
+      "tags": [
+        "XReadRule1->elem",
+        "XReadRule2->elem"
+      ]
+    },
+    "xreadgroup": {
+      "actions": {
+        "UseSymbol": [
+          "stream_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "stream_key"
+          ]
+        }
+      },
+      "tags": [
+        "XReadGroupRule1->elem",
+        "XReadGroupRule2->elem"
+      ]
+    },
+    "xrevrange": {
+      "actions": {
+        "UseSymbol": [
+          "stream_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "stream_key"
+          ]
+        }
+      },
+      "tags": [
+        "XRevRangeRule1->elem"
+      ]
+    },
+    "xtrim": {
+      "actions": {
+        "UseSymbol": [
+          "stream_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "stream_key"
+          ]
+        }
+      },
+      "tags": [
+        "XTrimRule1->elem"
+      ]
+    },
+    "zadd": {
+      "actions": {
+        "DefineSymbol": [
+          "sorted_set_key",
+          "zadd_member"
+        ]
+      },
+      "args": {
+        "elem": {
+          "DefineSymbol": [
+            "sorted_set_key",
+            "zadd_member"
+          ]
+        }
+      },
+      "tags": [
+        "ZAddRule->elem",
+        "ZAddRule2->elem",
+        "ZAddRule3->elem"
+      ]
+    },
+    "zcard": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZCardRule->elem"
+      ]
+    },
+    "zcount": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZCountRule->elem"
+      ]
+    },
+    "zdiff": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZDiffRule1->elem",
+        "ZDiffRule2->elem"
+      ]
+    },
+    "zincrby": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZIncrBy->elem"
+      ]
+    },
+    "zinter1": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZInter1->elem"
+      ]
+    },
+    "zinter2": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZInter2->elem"
+      ]
+    },
+    "zintercard1": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZInterCard1->elem"
+      ]
+    },
+    "zintercard2": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZInterCard2->elem"
+      ]
+    },
+    "zinterstore1": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZInterStore1->elem"
+      ]
+    },
+    "zinterstore2": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZInterStore2->elem"
+      ]
+    },
+    "zinterstore3": {
+      "actions": {
+        "DefineSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "dest": {
+          "DefineSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZInterStore3->dest"
+      ]
+    },
+    "zlexcount": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZLexCount->elem"
+      ]
+    },
+    "zmpop1": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZMPop1->elem"
+      ]
+    },
+    "zmpop2": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZMPop2->elem"
+      ]
+    },
+    "zmscore": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZMScore->elem"
+      ]
+    },
+    "zpopmax": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZPopMax->elem"
+      ]
+    },
+    "zpopmin": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZPopMin->elem"
+      ]
+    },
+    "zrandmember": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZRandMember->elem"
+      ]
+    },
+    "zrange": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZRange->elem"
+      ]
+    },
+    "zrangebylex": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZRangeByLex->elem"
+      ]
+    },
+    "zrangebyscore": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZRangeByScore->elem"
+      ]
+    },
+    "zrangestore1": {
+      "actions": {
+        "DefineSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "dest": {
+          "DefineSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZRangeStore1->dest"
+      ]
+    },
+    "zrangestore2": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZRangeStore2->elem"
+      ]
+    },
+    "zrank": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZRankRule->elem"
+      ]
+    },
+    "zrem": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZRemRule->elem"
+      ]
+    },
+    "zremrangebylex": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZRemRangeByLex->elem"
+      ]
+    },
+    "zremrangebyrank": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZRemRangeByRank->elem"
+      ]
+    },
+    "zremrangebyscore": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZRemRangeByScore->elem"
+      ]
+    },
+    "zrevrange": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZRevRange->elem"
+      ]
+    },
+    "zrevrangebylex": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZRevRangeByLex->elem"
+      ]
+    },
+    "zrevrangebyscore": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZRevRangeByScore->elem"
+      ]
+    },
+    "zrevrank": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key",
+          "zadd_member"
+        ]
+      },
+      "args": {
+        "elemkey": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        },
+        "elemmember": {
+          "UseSymbol": [
+            "zadd_member"
+          ]
+        }
+      },
+      "tags": [
+        "ZRevRank->elemkey",
+        "ZRevRank->elemmember"
+      ]
+    },
+    "zscan": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZScanRule->elem"
+      ]
+    },
+    "zscore": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZScoreRule->elem"
+      ]
+    },
+    "zstore": {
+      "actions": {
+        "DefineSymbol": [
+          "sorted_set_key"
+        ],
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "dest": {
+          "DefineSymbol": [
+            "sorted_set_key"
+          ]
+        },
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZStoreRule1->dest",
+        "ZStoreRule2->elem",
+        "ZStoreRule3->elem"
+      ]
+    },
+    "zunion": {
+      "actions": {
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZUnionRule1->elem",
+        "ZUnionRule2->elem"
+      ]
+    },
+    "zunionstore": {
+      "actions": {
+        "DefineSymbol": [
+          "sorted_set_key"
+        ],
+        "UseSymbol": [
+          "sorted_set_key"
+        ]
+      },
+      "args": {
+        "dest": {
+          "DefineSymbol": [
+            "sorted_set_key"
+          ]
+        },
+        "elem": {
+          "UseSymbol": [
+            "sorted_set_key"
+          ]
+        }
+      },
+      "tags": [
+        "ZUnionStoreRule1->dest",
+        "ZUnionStoreRule2->elem",
+        "ZUnionStoreRule3->elem"
+      ]
+    }
+  },
+  "by_tag": {
+    "BitPosRule1->elem,BitopRule1->elem,BitopRule2->elem,BitfieldRule1->elem": [
+      {
+        "action": "UseSymbol",
+        "args": {
+          "type": [
+            "str_key",
+            "str_key_type_num"
+          ]
+        },
+        "ast_context": []
+      }
+    ],
+    "BitopRule0->elem": [
+      {
+        "action": "AlterOrder",
+        "args": {
+          "after": "{.parent.rsib(1)@id}_{.parent.rsib(2)@id}"
+        },
+        "ast_context": []
+      }
+    ],
+    "BlMoveRule1->elem,BLMPopRule1->elem,BLMPopRule2->elem,BLPopRule1->elem,BLPopRule2->elem,BRPopRule1->elem,BRPopRule2->elem,BRPopLPushRule1->elem,LIndexRule1->elem,LInsertRule1->elem,LLenRule1->elem,LMoveRule1->elem,LMPopRule1->elem,LMPopRule2->elem,LPopRule1->elem,LPosRule1->elem,LPushXRule1->elem,LRangeRule1->elem,LRemRule1->elem,LSetRule1->elem,LTrimRule1->elem,RPopRule1->elem,RPopLPushRule1->elem,RPushXRule1->elem": [
+      {
+        "action": "UseSymbol",
+        "args": {
+          "type": "list_key"
+        },
+        "ast_context": []
+      }
+    ],
+    "CopyRule1->elem1": [
+      {
+        "action": "UseSymbol",
+        "args": {
+          "type_block": [
+            "multi_start",
+            "data_to_save"
+          ]
+        },
+        "ast_context": []
+      }
+    ],
+    "CopyRule1->elem2": [
+      {
+        "action": "DefineSymbol",
+        "args": {
+          "type": "{.lsib(1)@sym_use_type}"
+        },
+        "ast_context": []
+      }
+    ],
+    "DelRule1->elem,DelRule2->elem": [
+      {
+        "action": "InvalidateSymbol",
+        "args": {
+          "type": [
+            "sorted_set_key",
+            "stream_key",
+            "str_key",
+            "list_key",
+            "set_key",
+            "hash_key",
+            "str_key_type_num"
+          ]
+        },
+        "ast_context": []
+      }
+    ],
+    "DumpRule1->elem": [
+      {
+        "action": "UseSymbol",
+        "args": {
+          "type_block": [
+            "multi_start",
+            "data_to_save"
+          ]
+        },
+        "ast_context": []
+      }
+    ],
+    "EntryPoint->elem": [
+      {
+        "action": "CreateScope",
+        "args": {
+          "scope_name": "scope_{@id}"
+        },
+        "ast_context": []
+      }
+    ],
+    "ExecRule1->elem": [
+      {
+        "action": "InvalidateSymbol",
+        "args": {
+          "type": "multi_start"
+        },
+        "ast_context": []
+      }
+    ],
+    "ExpireRule1->elem,PExpireRule1->elem": [
+      {
+        "action": "UseSymbol",
+        "args": {
+          "type_block": [
+            "multi_start",
+            "data_to_save"
+          ]
+        },
+        "ast_context": []
+      }
+    ],
+    "GeoAddRuleMember1->elem": [
+      {
+        "action": "DefineSymbol",
+        "args": {
+          "type": "geo_member"
+        },
+        "ast_context": []
+      }
+    ],
+    "GeoSearchStoreRule1->elem": [
+      {
+        "action": "AlterOrder",
+        "args": {
+          "after": "{.parent.rsib(1).child(0)@id}"
+        },
+        "ast_context": []
+      }
+    ],
+    "GeoSearchStoreRule1->elem,GeoAddRule1->elem": [
+      {
+        "action": "DefineSymbol",
+        "args": {
+          "type": "geo_key"
+        },
+        "ast_context": []
+      }
+    ],
+    "GeoSearchStoreRule2->elem,GeoSearchRule1->elem,GeoRadiusRule1->elem,GeoPosRule1->elem,GeoDistRule1->elem,GeoHashRule1->elem": [
+      {
+        "action": "UseSymbol",
+        "args": {
+          "type": "geo_key"
+        },
+        "ast_context": []
+      }
+    ],
+    "GeoSearchStoreRule3->elem,GeoSearchRule2->elem,GeoPosRule2->elem,GeoPosRule3->elem,GeoHashRule3->elem,GeoDistRule2->elem,GeoDistRule2->elem,GeoDistRule3->elem": [
+      {
+        "action": "UseSymbol",
+        "args": {
+          "type": "geo_member"
+        },
+        "ast_context": []
+      }
+    ],
+    "GetDelRule1->elem": [
+      {
+        "action": "InvalidateSymbol",
+        "args": {
+          "type": "str_key"
+        },
+        "ast_context": []
+      }
+    ],
+    "GetRule1->elem,GetExRule1->elem,GetSetRule1->elem,MGetRule1->elem,MGetRule2->elem": [
+      {
+        "action": "UseSymbol",
+        "args": {
+          "type": [
+            "str_key",
+            "str_key_type_num"
+          ]
+        },
+        "ast_context": []
+      }
+    ],
+    "HDelRule1->elem": [
+      {
+        "action": "InvalidateSymbol",
+        "args": {
+          "type": "hash_key"
+        },
+        "ast_context": []
+      }
+    ],
+    "HExistsRule1->elem,HGetRule1->elem,HGetAllRule1->elem,HIncrByRule1->elem,HIncrByFloatRule1->elem,HKeysRule1->elem,HLenRule1->elem,HMGetRule1->elem,HRandFieldRule1->elem,HScanRule1->elem,HStrLenRule1->elem,HValsRule1->elem": [
+      {
+        "action": "UseSymbol",
+        "args": {
+          "type": "hash_key"
+        },
+        "ast_context": []
+      }
+    ],
+    "HGetField->elem,HSetLenField->elem": [
+      {
+        "action": "UseSymbol",
+        "args": {
+          "custom_types": [
+            "hset_key_?"
+          ],
+          "type": "##hget_field_type_resolver"
+        },
+        "ast_context": []
+      }
+    ],
+    "HIncrByField->elem,HIncrByFloatField->elem": [
+      {
+        "action": "UseSymbol",
+        "args": {
+          "custom_types": [
+            "hset_key_?_numtype"
+          ],
+          "type": "##hincrby_field_type_resolver"
+        },
+        "ast_context": []
+      }
+    ],
+    "HMGetField1->elem,HMGetField2->elem": [
+      {
+        "action": "UseSymbol",
+        "args": {
+          "custom_types": [
+            "hset_key_?"
+          ],
+          "type": "##hmget_field_type_resolver"
+        },
+        "ast_context": []
+      }
+    ],
+    "HSetField1->elem,HSetField2->elem,HSetNXField->elem": [
+      {
+        "action": "DefineSymbol",
+        "args": {
+          "custom_types": [
+            "hset_key_?"
+          ],
+          "type": "##hset_field_type_resolver"
+        },
+        "ast_context": []
+      }
+    ],
+    "HSetRule1->elem,HMSetRule1->elem,HSetNXRule1->elem": [
+      {
+        "action": "DefineSymbol",
+        "args": {
+          "type": "hash_key"
+        },
+        "ast_context": []
+      }
+    ],
+    "IncrByRule1->elem,IncrRule1->elem,DecrRule1->elem,DecrByRule1->elem,IncrByFloatRule1->elem": [
+      {
+        "action": "UseSymbol",
+        "args": {
+          "type": "str_key_type_num"
+        },
+        "ast_context": []
+      }
+    ],
+    "MSetRule1->elem,MSetRule2->elem,MSetNxRule1->elem,MSetNxRule2->elem,PSetExRule1->elem,SetExRule1->elem,SetNxRule1->elem": [
+      {
+        "action": "DefineSymbol",
+        "args": {
+          "type": "str_key"
+        },
+        "ast_context": []
+      }
+    ],
+    "MultiRule1->elem": [
+      {
+        "action": "DefineSymbol",
+        "args": {
+          "name": "exec",
+          "type": "multi_start"
+        },
+        "ast_context": []
+      }
+    ],
+    "ProgramRule->elem": [
+      {
+        "action": "DefineSymbol",
+        "args": {
+          "name": "save",
+          "type": "data_to_save"
+        },
+        "ast_context": []
+      }
+    ],
+    "RPushRule1->elem,BlMoveRule2->elem,BRPopLPushRule2->elem,LMoveRule2->elem,LPushRule1->elem,RPopLPushRule2->elem": [
+      {
+        "action": "DefineSymbol",
+        "args": {
+          "type": "list_key"
+        },
+        "ast_context": []
+      }
+    ],
+    "SAddRule1->elem,SDiffStoreRule1->elem,SInterStoreRule1->elem,SMoveRule2->elem,SUnionStoreRule0->elem": [
+      {
+        "action": "DefineSymbol",
+        "args": {
+          "type": "set_key"
+        },
+        "ast_context": []
+      }
+    ],
+    "SCardRule1->elem,SDiffRule1->elem,SDiffRule2->elem,SDiffStoreRule2->elem,SDiffStoreRule3->elem,SInterRule1->elem,SInterRule2->elem,SInterCardRule1->elem,SInterCardRule2->elem,SInterStoreRule2->elem,SInterStoreRule3->elem,SIsMemberRule1->elem,SMembersRule1->elem,SMIsMemberRule1->elem,SMoveRule1->elem,SPopRule1->elem,SRandMemberRule1->elem,SRemRule1->elem,SScanRule1->elem,SUnionRule1->elem,SUnionRule2->elem,SUnionStoreRule1->elem,SUnionStoreRule2->elem": [
+      {
+        "action": "UseSymbol",
+        "args": {
+          "type": "set_key"
+        },
+        "ast_context": []
+      }
+    ],
+    "SaveRule->elem": [
+      {
+        "action": "UseSymbol",
+        "args": {
+          "type": "data_to_save"
+        },
+        "ast_context": []
+      }
+    ],
+    "SetBitRule1->elem,StrLenRule1->elem,SubStrRule1->elem,LCSRule1->elem,LCSRule2->elem,GetRangeRule1->elem,SetRangeRule1->elem": [
+      {
+        "action": "UseSymbol",
+        "args": {
+          "type": [
+            "str_key",
+            "str_key_type_num"
+          ]
+        },
+        "ast_context": []
+      }
+    ],
+    "SetRule1->elem,AppendRule1->elem": [
+      {
+        "action": "DefineSymbol",
+        "args": {
+          "custom_types": [
+            "str_key?"
+          ],
+          "type": "##str_key_type_resolver"
+        },
+        "ast_context": []
+      }
+    ],
+    "SortRule1->elem": [
+      {
+        "action": "UseSymbol",
+        "args": {
+          "type": [
+            "list_key",
+            "set_key",
+            "sorted_set_key"
+          ]
+        },
+        "ast_context": []
+      }
+    ],
+    "XAckRule1->elem1,XAutoClaimRule1->elem,XClaimRule1->elem,XGroupCreateRule1->elem,XGroupCreateconsumerRule1->elem1,XGroupDelconsumerRule1->elem1,XGroupDestroyRule1->elem,XGroupSetidRule1->elem1,XInfoConsumersRule1->elem1,XInfoGroupsRule1->elem,XInfoStreamRule1->elem,XLenRule1->elem,XPendingRule1->elem1,XRangeRule1->elem,XReadRule1->elem,XReadRule2->elem,XReadGroupRule1->elem,XReadGroupRule2->elem,XRevRangeRule1->elem,XTrimRule1->elem": [
+      {
+        "action": "UseSymbol",
+        "args": {
+          "type": "stream_key"
+        },
+        "ast_context": []
+      }
+    ],
+    "XAddRule1->elem": [
+      {
+        "action": "DefineSymbol",
+        "args": {
+          "type": "stream_key"
+        },
+        "ast_context": []
+      }
+    ],
+    "XDelRule1->elem": [
+      {
+        "action": "InvalidateSymbol",
+        "args": {
+          "type": "stream_key"
+        },
+        "ast_context": []
+      }
+    ],
+    "XGroupCreateRule2->elem": [
+      {
+        "action": "DefineSymbol",
+        "args": {
+          "type": "xgroup_groupname_of_key_{.parent.lsib(1)@text}"
+        },
+        "ast_context": []
+      }
+    ],
+    "XGroupCreateconsumerRule1->elem2,XGroupDelconsumerRule1->elem2,XInfoConsumersRule1->elem2,XPendingRule1->elem2,XAckRule1->elem2,XGroupSetidRule1->elem2": [
+      {
+        "action": "UseSymbol",
+        "args": {
+          "type": "xgroup_groupname_of_key_{.lsib(1)@text}"
+        },
+        "ast_context": []
+      }
+    ],
+    "XGroupCreateconsumerRule1->elem3": [
+      {
+        "action": "DefineSymbol",
+        "args": {
+          "type": "xgroup_consumername_of_key_{.lsib(2)@text}_group_{.lsib(1)@text}"
+        },
+        "ast_context": []
+      }
+    ],
+    "XGroupDelconsumerRule1->elem3": [
+      {
+        "action": "InvalidateSymbol",
+        "args": {
+          "type": "xgroup_consumername_of_key_{.lsib(2)@text}_group_{.lsib(1)@text}"
+        },
+        "ast_context": []
+      }
+    ],
+    "XGroupDestroyRule2->elem": [
+      {
+        "action": "InvalidateSymbol",
+        "args": {
+          "type": "xgroup_groupname_of_key_{.parent.lsib(1)@text}"
+        },
+        "ast_context": []
+      }
+    ],
+    "ZAddRule->elem,ZStoreRule1->dest,ZInterStore3->dest,ZRangeStore1->dest,ZUnionStoreRule1->dest": [
+      {
+        "action": "DefineSymbol",
+        "args": {
+          "type": "sorted_set_key"
+        },
+        "ast_context": []
+      }
+    ],
+    "ZAddRule2->elem,ZAddRule3->elem": [
+      {
+        "action": "DefineSymbol",
+        "args": {
+          "type": "zadd_member"
+        },
+        "ast_context": []
+      }
+    ],
+    "ZCardRule->elem,ZCountRule->elem,ZDiffRule1->elem,ZDiffRule2->elem,ZStoreRule2->elem,ZStoreRule3->elem,ZIncrBy->elem,ZInter1->elem,ZInter2->elem,ZInterCard1->elem,ZInterCard2->elem,ZInterStore1->elem,ZInterStore2->elem,ZLexCount->elem,ZMPop1->elem,ZMPop2->elem,ZMScore->elem,ZPopMax->elem,ZPopMin->elem,ZRandMember->elem,ZRange->elem,ZRangeByLex->elem,ZRangeByScore->elem,ZRangeStore2->elem,ZRankRule->elem,ZRemRule->elem,ZRemRangeByLex->elem,ZRemRangeByRank->elem,ZRemRangeByScore->elem,ZRevRange->elem,ZRevRangeByLex->elem,ZRevRangeByScore->elem,ZRevRank->elemkey,ZScanRule->elem,ZScoreRule->elem,ZUnionRule1->elem,ZUnionRule2->elem,ZUnionStoreRule2->elem,ZUnionStoreRule3->elem,BZMPopRule1->elem,BZMPopRule2->elem,BZPopMaxRule1->elem,BZPopMaxRule2->elem,BZPopMinRule1->elem,BZPopMinRule2->elem": [
+      {
+        "action": "UseSymbol",
+        "args": {
+          "type": "sorted_set_key"
+        },
+        "ast_context": []
+      }
+    ],
+    "ZRevRank->elemmember": [
+      {
+        "action": "UseSymbol",
+        "args": {
+          "type": "zadd_member"
+        },
+        "ast_context": []
+      }
+    ]
+  },
+  "by_type": {
+    "define": {
+      "##hset_field_type_resolver": [
+        "HSetField1->elem,HSetField2->elem,HSetNXField->elem"
+      ],
+      "##str_key_type_resolver": [
+        "SetRule1->elem,AppendRule1->elem"
+      ],
+      "data_to_save": [
+        "ProgramRule->elem"
+      ],
+      "geo_key": [
+        "GeoSearchStoreRule1->elem,GeoAddRule1->elem"
+      ],
+      "geo_member": [
+        "GeoAddRuleMember1->elem"
+      ],
+      "hash_key": [
+        "HSetRule1->elem,HMSetRule1->elem,HSetNXRule1->elem"
+      ],
+      "list_key": [
+        "RPushRule1->elem,BlMoveRule2->elem,BRPopLPushRule2->elem,LMoveRule2->elem,LPushRule1->elem,RPopLPushRule2->elem"
+      ],
+      "multi_start": [
+        "MultiRule1->elem"
+      ],
+      "set_key": [
+        "SAddRule1->elem,SDiffStoreRule1->elem,SInterStoreRule1->elem,SMoveRule2->elem,SUnionStoreRule0->elem"
+      ],
+      "sorted_set_key": [
+        "ZAddRule->elem,ZStoreRule1->dest,ZInterStore3->dest,ZRangeStore1->dest,ZUnionStoreRule1->dest"
+      ],
+      "str_key": [
+        "MSetRule1->elem,MSetRule2->elem,MSetNxRule1->elem,MSetNxRule2->elem,PSetExRule1->elem,SetExRule1->elem,SetNxRule1->elem"
+      ],
+      "stream_key": [
+        "XAddRule1->elem"
+      ],
+      "xgroup_consumername_of_key_{.lsib(2)@text}_group_{.lsib(1)@text}": [
+        "XGroupCreateconsumerRule1->elem3"
+      ],
+      "xgroup_groupname_of_key_{.parent.lsib(1)@text}": [
+        "XGroupCreateRule2->elem"
+      ],
+      "zadd_member": [
+        "ZAddRule2->elem,ZAddRule3->elem"
+      ],
+      "{.lsib(1)@sym_use_type}": [
+        "CopyRule1->elem2"
+      ]
+    },
+    "invalidate": {
+      "hash_key": [
+        "DelRule1->elem,DelRule2->elem",
+        "HDelRule1->elem"
+      ],
+      "list_key": [
+        "DelRule1->elem,DelRule2->elem"
+      ],
+      "multi_start": [
+        "ExecRule1->elem"
+      ],
+      "set_key": [
+        "DelRule1->elem,DelRule2->elem"
+      ],
+      "sorted_set_key": [
+        "DelRule1->elem,DelRule2->elem"
+      ],
+      "str_key": [
+        "DelRule1->elem,DelRule2->elem",
+        "GetDelRule1->elem"
+      ],
+      "str_key_type_num": [
+        "DelRule1->elem,DelRule2->elem"
+      ],
+      "stream_key": [
+        "XDelRule1->elem",
+        "DelRule1->elem,DelRule2->elem"
+      ],
+      "xgroup_consumername_of_key_{.lsib(2)@text}_group_{.lsib(1)@text}": [
+        "XGroupDelconsumerRule1->elem3"
+      ],
+      "xgroup_groupname_of_key_{.parent.lsib(1)@text}": [
+        "XGroupDestroyRule2->elem"
+      ]
+    },
+    "use": {
+      "##hget_field_type_resolver": [
+        "HGetField->elem,HSetLenField->elem"
+      ],
+      "##hincrby_field_type_resolver": [
+        "HIncrByField->elem,HIncrByFloatField->elem"
+      ],
+      "##hmget_field_type_resolver": [
+        "HMGetField1->elem,HMGetField2->elem"
+      ],
+      "data_to_save": [
+        "SaveRule->elem"
+      ],
+      "geo_key": [
+        "GeoSearchStoreRule2->elem,GeoSearchRule1->elem,GeoRadiusRule1->elem,GeoPosRule1->elem,GeoDistRule1->elem,GeoHashRule1->elem"
+      ],
+      "geo_member": [
+        "GeoSearchStoreRule3->elem,GeoSearchRule2->elem,GeoPosRule2->elem,GeoPosRule3->elem,GeoHashRule3->elem,GeoDistRule2->elem,GeoDistRule2->elem,GeoDistRule3->elem"
+      ],
+      "hash_key": [
+        "HExistsRule1->elem,HGetRule1->elem,HGetAllRule1->elem,HIncrByRule1->elem,HIncrByFloatRule1->elem,HKeysRule1->elem,HLenRule1->elem,HMGetRule1->elem,HRandFieldRule1->elem,HScanRule1->elem,HStrLenRule1->elem,HValsRule1->elem"
+      ],
+      "list_key": [
+        "BlMoveRule1->elem,BLMPopRule1->elem,BLMPopRule2->elem,BLPopRule1->elem,BLPopRule2->elem,BRPopRule1->elem,BRPopRule2->elem,BRPopLPushRule1->elem,LIndexRule1->elem,LInsertRule1->elem,LLenRule1->elem,LMoveRule1->elem,LMPopRule1->elem,LMPopRule2->elem,LPopRule1->elem,LPosRule1->elem,LPushXRule1->elem,LRangeRule1->elem,LRemRule1->elem,LSetRule1->elem,LTrimRule1->elem,RPopRule1->elem,RPopLPushRule1->elem,RPushXRule1->elem",
+        "SortRule1->elem"
+      ],
+      "set_key": [
+        "SCardRule1->elem,SDiffRule1->elem,SDiffRule2->elem,SDiffStoreRule2->elem,SDiffStoreRule3->elem,SInterRule1->elem,SInterRule2->elem,SInterCardRule1->elem,SInterCardRule2->elem,SInterStoreRule2->elem,SInterStoreRule3->elem,SIsMemberRule1->elem,SMembersRule1->elem,SMIsMemberRule1->elem,SMoveRule1->elem,SPopRule1->elem,SRandMemberRule1->elem,SRemRule1->elem,SScanRule1->elem,SUnionRule1->elem,SUnionRule2->elem,SUnionStoreRule1->elem,SUnionStoreRule2->elem",
+        "SortRule1->elem"
+      ],
+      "sorted_set_key": [
+        "ZCardRule->elem,ZCountRule->elem,ZDiffRule1->elem,ZDiffRule2->elem,ZStoreRule2->elem,ZStoreRule3->elem,ZIncrBy->elem,ZInter1->elem,ZInter2->elem,ZInterCard1->elem,ZInterCard2->elem,ZInterStore1->elem,ZInterStore2->elem,ZLexCount->elem,ZMPop1->elem,ZMPop2->elem,ZMScore->elem,ZPopMax->elem,ZPopMin->elem,ZRandMember->elem,ZRange->elem,ZRangeByLex->elem,ZRangeByScore->elem,ZRangeStore2->elem,ZRankRule->elem,ZRemRule->elem,ZRemRangeByLex->elem,ZRemRangeByRank->elem,ZRemRangeByScore->elem,ZRevRange->elem,ZRevRangeByLex->elem,ZRevRangeByScore->elem,ZRevRank->elemkey,ZScanRule->elem,ZScoreRule->elem,ZUnionRule1->elem,ZUnionRule2->elem,ZUnionStoreRule2->elem,ZUnionStoreRule3->elem,BZMPopRule1->elem,BZMPopRule2->elem,BZPopMaxRule1->elem,BZPopMaxRule2->elem,BZPopMinRule1->elem,BZPopMinRule2->elem",
+        "SortRule1->elem"
+      ],
+      "str_key": [
+        "BitPosRule1->elem,BitopRule1->elem,BitopRule2->elem,BitfieldRule1->elem",
+        "SetBitRule1->elem,StrLenRule1->elem,SubStrRule1->elem,LCSRule1->elem,LCSRule2->elem,GetRangeRule1->elem,SetRangeRule1->elem",
+        "GetRule1->elem,GetExRule1->elem,GetSetRule1->elem,MGetRule1->elem,MGetRule2->elem"
+      ],
+      "str_key_type_num": [
+        "BitPosRule1->elem,BitopRule1->elem,BitopRule2->elem,BitfieldRule1->elem",
+        "IncrByRule1->elem,IncrRule1->elem,DecrRule1->elem,DecrByRule1->elem,IncrByFloatRule1->elem",
+        "SetBitRule1->elem,StrLenRule1->elem,SubStrRule1->elem,LCSRule1->elem,LCSRule2->elem,GetRangeRule1->elem,SetRangeRule1->elem",
+        "GetRule1->elem,GetExRule1->elem,GetSetRule1->elem,MGetRule1->elem,MGetRule2->elem"
+      ],
+      "stream_key": [
+        "XAckRule1->elem1,XAutoClaimRule1->elem,XClaimRule1->elem,XGroupCreateRule1->elem,XGroupCreateconsumerRule1->elem1,XGroupDelconsumerRule1->elem1,XGroupDestroyRule1->elem,XGroupSetidRule1->elem1,XInfoConsumersRule1->elem1,XInfoGroupsRule1->elem,XInfoStreamRule1->elem,XLenRule1->elem,XPendingRule1->elem1,XRangeRule1->elem,XReadRule1->elem,XReadRule2->elem,XReadGroupRule1->elem,XReadGroupRule2->elem,XRevRangeRule1->elem,XTrimRule1->elem"
+      ],
+      "xgroup_groupname_of_key_{.lsib(1)@text}": [
+        "XGroupCreateconsumerRule1->elem2,XGroupDelconsumerRule1->elem2,XInfoConsumersRule1->elem2,XPendingRule1->elem2,XAckRule1->elem2,XGroupSetidRule1->elem2"
+      ],
+      "zadd_member": [
+        "ZRevRank->elemmember"
+      ]
+    }
+  },
+  "scopes": [
+    {
+      "args": {
+        "scope_name": "scope_{@id}"
+      },
+      "tag": "EntryPoint->elem"
+    }
+  ],
+  "sources": {
+    "Redis.g4": {
+      "mtime": 1757941809,
+      "path": "NoSQLFeatureKnowledgeBase/Redis/inputs/grammars/Redis.g4",
+      "size": 175312
+    }
+  },
+  "tag_to_command": {
+    "AppendRule1->elem": "append",
+    "BLMPopRule1->elem": "blmpop",
+    "BLMPopRule2->elem": "blmpop",
+    "BLPopRule1->elem": "blpop",
+    "BLPopRule2->elem": "blpop",
+    "BRPopLPushRule1->elem": "brpoplpush",
+    "BRPopLPushRule2->elem": "brpoplpush",
+    "BRPopRule1->elem": "brpop",
+    "BRPopRule2->elem": "brpop",
+    "BZMPopRule1->elem": "bzmpop",
+    "BZMPopRule2->elem": "bzmpop",
+    "BZPopMaxRule1->elem": "bzpopmax",
+    "BZPopMaxRule2->elem": "bzpopmax",
+    "BZPopMinRule1->elem": "bzpopmin",
+    "BZPopMinRule2->elem": "bzpopmin",
+    "BitPosRule1->elem": "bitpos",
+    "BitfieldRule1->elem": "bitfield",
+    "BitopRule0->elem": "bitop",
+    "BitopRule1->elem": "bitop",
+    "BitopRule2->elem": "bitop",
+    "BlMoveRule1->elem": "blmove",
+    "BlMoveRule2->elem": "blmove",
+    "CopyRule1->elem1": "copy",
+    "CopyRule1->elem2": "copy",
+    "DecrByRule1->elem": "decrby",
+    "DecrRule1->elem": "decr",
+    "DelRule1->elem": "del",
+    "DelRule2->elem": "del",
+    "DumpRule1->elem": "dump",
+    "EntryPoint->elem": "entrypoint",
+    "ExecRule1->elem": "exec",
+    "ExpireRule1->elem": "expire",
+    "GeoAddRule1->elem": "geoadd",
+    "GeoAddRuleMember1->elem": "geoadd",
+    "GeoDistRule1->elem": "geodist",
+    "GeoDistRule2->elem": "geodist",
+    "GeoDistRule3->elem": "geodist",
+    "GeoHashRule1->elem": "geohash",
+    "GeoHashRule3->elem": "geohash",
+    "GeoPosRule1->elem": "geopos",
+    "GeoPosRule2->elem": "geopos",
+    "GeoPosRule3->elem": "geopos",
+    "GeoRadiusRule1->elem": "georadius",
+    "GeoSearchRule1->elem": "geosearch",
+    "GeoSearchRule2->elem": "geosearch",
+    "GeoSearchStoreRule1->elem": "geosearchstore",
+    "GeoSearchStoreRule2->elem": "geosearchstore",
+    "GeoSearchStoreRule3->elem": "geosearchstore",
+    "GetDelRule1->elem": "getdel",
+    "GetExRule1->elem": "getex",
+    "GetRangeRule1->elem": "getrange",
+    "GetRule1->elem": "get",
+    "GetSetRule1->elem": "getset",
+    "HDelRule1->elem": "hdel",
+    "HExistsRule1->elem": "hexists",
+    "HGetAllRule1->elem": "hgetall",
+    "HGetField->elem": "hgetfield",
+    "HGetRule1->elem": "hget",
+    "HIncrByField->elem": "hincrbyfield",
+    "HIncrByFloatField->elem": "hincrbyfloatfield",
+    "HIncrByFloatRule1->elem": "hincrbyfloat",
+    "HIncrByRule1->elem": "hincrby",
+    "HKeysRule1->elem": "hkeys",
+    "HLenRule1->elem": "hlen",
+    "HMGetField1->elem": "hmgetfield1",
+    "HMGetField2->elem": "hmgetfield2",
+    "HMGetRule1->elem": "hmget",
+    "HMSetRule1->elem": "hmset",
+    "HRandFieldRule1->elem": "hrandfield",
+    "HScanRule1->elem": "hscan",
+    "HSetField1->elem": "hsetfield1",
+    "HSetField2->elem": "hsetfield2",
+    "HSetLenField->elem": "hsetlenfield",
+    "HSetNXField->elem": "hsetnxfield",
+    "HSetNXRule1->elem": "hsetnx",
+    "HSetRule1->elem": "hset",
+    "HStrLenRule1->elem": "hstrlen",
+    "HValsRule1->elem": "hvals",
+    "IncrByFloatRule1->elem": "incrbyfloat",
+    "IncrByRule1->elem": "incrby",
+    "IncrRule1->elem": "incr",
+    "LCSRule1->elem": "lcs",
+    "LCSRule2->elem": "lcs",
+    "LIndexRule1->elem": "lindex",
+    "LInsertRule1->elem": "linsert",
+    "LLenRule1->elem": "llen",
+    "LMPopRule1->elem": "lmpop",
+    "LMPopRule2->elem": "lmpop",
+    "LMoveRule1->elem": "lmove",
+    "LMoveRule2->elem": "lmove",
+    "LPopRule1->elem": "lpop",
+    "LPosRule1->elem": "lpos",
+    "LPushRule1->elem": "lpush",
+    "LPushXRule1->elem": "lpushx",
+    "LRangeRule1->elem": "lrange",
+    "LRemRule1->elem": "lrem",
+    "LSetRule1->elem": "lset",
+    "LTrimRule1->elem": "ltrim",
+    "MGetRule1->elem": "mget",
+    "MGetRule2->elem": "mget",
+    "MSetNxRule1->elem": "msetnx",
+    "MSetNxRule2->elem": "msetnx",
+    "MSetRule1->elem": "mset",
+    "MSetRule2->elem": "mset",
+    "MultiRule1->elem": "multi",
+    "PExpireRule1->elem": "pexpire",
+    "PSetExRule1->elem": "psetex",
+    "ProgramRule->elem": "program",
+    "RPopLPushRule1->elem": "rpoplpush",
+    "RPopLPushRule2->elem": "rpoplpush",
+    "RPopRule1->elem": "rpop",
+    "RPushRule1->elem": "rpush",
+    "RPushXRule1->elem": "rpushx",
+    "SAddRule1->elem": "sadd",
+    "SCardRule1->elem": "scard",
+    "SDiffRule1->elem": "sdiff",
+    "SDiffRule2->elem": "sdiff",
+    "SDiffStoreRule1->elem": "sdiffstore",
+    "SDiffStoreRule2->elem": "sdiffstore",
+    "SDiffStoreRule3->elem": "sdiffstore",
+    "SInterCardRule1->elem": "sintercard",
+    "SInterCardRule2->elem": "sintercard",
+    "SInterRule1->elem": "sinter",
+    "SInterRule2->elem": "sinter",
+    "SInterStoreRule1->elem": "sinterstore",
+    "SInterStoreRule2->elem": "sinterstore",
+    "SInterStoreRule3->elem": "sinterstore",
+    "SIsMemberRule1->elem": "sismember",
+    "SMIsMemberRule1->elem": "smismember",
+    "SMembersRule1->elem": "smembers",
+    "SMoveRule1->elem": "smove",
+    "SMoveRule2->elem": "smove",
+    "SPopRule1->elem": "spop",
+    "SRandMemberRule1->elem": "srandmember",
+    "SRemRule1->elem": "srem",
+    "SScanRule1->elem": "sscan",
+    "SUnionRule1->elem": "sunion",
+    "SUnionRule2->elem": "sunion",
+    "SUnionStoreRule0->elem": "sunionstore",
+    "SUnionStoreRule1->elem": "sunionstore",
+    "SUnionStoreRule2->elem": "sunionstore",
+    "SaveRule->elem": "save",
+    "SetBitRule1->elem": "setbit",
+    "SetExRule1->elem": "setex",
+    "SetNxRule1->elem": "setnx",
+    "SetRangeRule1->elem": "setrange",
+    "SetRule1->elem": "set",
+    "SortRule1->elem": "sort",
+    "StrLenRule1->elem": "strlen",
+    "SubStrRule1->elem": "substr",
+    "XAckRule1->elem1": "xack",
+    "XAckRule1->elem2": "xack",
+    "XAddRule1->elem": "xadd",
+    "XAutoClaimRule1->elem": "xautoclaim",
+    "XClaimRule1->elem": "xclaim",
+    "XDelRule1->elem": "xdel",
+    "XGroupCreateRule1->elem": "xgroupcreate",
+    "XGroupCreateRule2->elem": "xgroupcreate",
+    "XGroupCreateconsumerRule1->elem1": "xgroupcreateconsumer",
+    "XGroupCreateconsumerRule1->elem2": "xgroupcreateconsumer",
+    "XGroupCreateconsumerRule1->elem3": "xgroupcreateconsumer",
+    "XGroupDelconsumerRule1->elem1": "xgroupdelconsumer",
+    "XGroupDelconsumerRule1->elem2": "xgroupdelconsumer",
+    "XGroupDelconsumerRule1->elem3": "xgroupdelconsumer",
+    "XGroupDestroyRule1->elem": "xgroupdestroy",
+    "XGroupDestroyRule2->elem": "xgroupdestroy",
+    "XGroupSetidRule1->elem1": "xgroupsetid",
+    "XGroupSetidRule1->elem2": "xgroupsetid",
+    "XInfoConsumersRule1->elem1": "xinfoconsumers",
+    "XInfoConsumersRule1->elem2": "xinfoconsumers",
+    "XInfoGroupsRule1->elem": "xinfogroups",
+    "XInfoStreamRule1->elem": "xinfostream",
+    "XLenRule1->elem": "xlen",
+    "XPendingRule1->elem1": "xpending",
+    "XPendingRule1->elem2": "xpending",
+    "XRangeRule1->elem": "xrange",
+    "XReadGroupRule1->elem": "xreadgroup",
+    "XReadGroupRule2->elem": "xreadgroup",
+    "XReadRule1->elem": "xread",
+    "XReadRule2->elem": "xread",
+    "XRevRangeRule1->elem": "xrevrange",
+    "XTrimRule1->elem": "xtrim",
+    "ZAddRule->elem": "zadd",
+    "ZAddRule2->elem": "zadd",
+    "ZAddRule3->elem": "zadd",
+    "ZCardRule->elem": "zcard",
+    "ZCountRule->elem": "zcount",
+    "ZDiffRule1->elem": "zdiff",
+    "ZDiffRule2->elem": "zdiff",
+    "ZIncrBy->elem": "zincrby",
+    "ZInter1->elem": "zinter1",
+    "ZInter2->elem": "zinter2",
+    "ZInterCard1->elem": "zintercard1",
+    "ZInterCard2->elem": "zintercard2",
+    "ZInterStore1->elem": "zinterstore1",
+    "ZInterStore2->elem": "zinterstore2",
+    "ZInterStore3->dest": "zinterstore3",
+    "ZLexCount->elem": "zlexcount",
+    "ZMPop1->elem": "zmpop1",
+    "ZMPop2->elem": "zmpop2",
+    "ZMScore->elem": "zmscore",
+    "ZPopMax->elem": "zpopmax",
+    "ZPopMin->elem": "zpopmin",
+    "ZRandMember->elem": "zrandmember",
+    "ZRange->elem": "zrange",
+    "ZRangeByLex->elem": "zrangebylex",
+    "ZRangeByScore->elem": "zrangebyscore",
+    "ZRangeStore1->dest": "zrangestore1",
+    "ZRangeStore2->elem": "zrangestore2",
+    "ZRankRule->elem": "zrank",
+    "ZRemRangeByLex->elem": "zremrangebylex",
+    "ZRemRangeByRank->elem": "zremrangebyrank",
+    "ZRemRangeByScore->elem": "zremrangebyscore",
+    "ZRemRule->elem": "zrem",
+    "ZRevRange->elem": "zrevrange",
+    "ZRevRangeByLex->elem": "zrevrangebylex",
+    "ZRevRangeByScore->elem": "zrevrangebyscore",
+    "ZRevRank->elemkey": "zrevrank",
+    "ZRevRank->elemmember": "zrevrank",
+    "ZScanRule->elem": "zscan",
+    "ZScoreRule->elem": "zscore",
+    "ZStoreRule1->dest": "zstore",
+    "ZStoreRule2->elem": "zstore",
+    "ZStoreRule3->elem": "zstore",
+    "ZUnionRule1->elem": "zunion",
+    "ZUnionRule2->elem": "zunion",
+    "ZUnionStoreRule1->dest": "zunionstore",
+    "ZUnionStoreRule2->elem": "zunionstore",
+    "ZUnionStoreRule3->elem": "zunionstore"
+  }
+}

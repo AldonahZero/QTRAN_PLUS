@@ -1,0 +1,44 @@
+{
+  "mappings": {
+    "SELECT BY KEY": {
+      "redis": "GET/HGET/HMGET by exact key",
+      "notes": "Key-value direct lookup maps to GET or HGET; multi-field use HMGET"
+    },
+    "SELECT+WHERE": {
+      "redis": "Secondary index pattern via SET/ZSET of IDs; read IDs then MGET/HMGET",
+      "example": "Maintain index: SADD idx:user:city:beijing <userId>. Query: SMEMBERS + HMGET",
+      "tradeoffs": "Write amplification; eventual consistency if not transactional"
+    },
+    "JOIN": {
+      "redis": "Model join as key composition or precomputed index; Lua for atomic multi-key",
+      "example": "user:{id} and order:{id} -> store order IDs in set user:{id}:orders"
+    },
+    "GROUP BY": {
+      "redis": "Incremental aggregates via HASH or ZSET; or Lua scripts",
+      "example": "HINCRBY stats:city beijing 1; ZINCRBY for weighted counts"
+    },
+    "ORDER BY": {
+      "redis": "ZSET with score as sort key",
+      "example": "ZADD rank <score> <member>; ZREVRANGE rank 0 N WITHSCORES"
+    },
+    "ORDER BY LIMIT": {
+      "redis": "ZSET range queries",
+      "example": "ZREVRANGE rank 0 N"
+    },
+    "DISTINCT": {
+      "redis": "SET semantics; SCARD/SMEMBERS",
+      "example": "SADD unique:emails <email>; SCARD unique:emails"
+    },
+    "COUNT(*)": {
+      "redis": "Use SCARD/ZCARD/LLEN/HLEN depending on structure; or maintain a counter",
+      "example": "ZCARD rank; LLEN list:k"
+    },
+    "UPDATE": {
+      "redis": "SET/HSET; update secondary indexes accordingly",
+      "pitfalls": "Keep indexes in sync; consider Lua/transaction"
+    },
+    "DELETE": {
+      "redis": "DEL key; SREM/ZREM for index maintenance"
+    }
+  }
+}

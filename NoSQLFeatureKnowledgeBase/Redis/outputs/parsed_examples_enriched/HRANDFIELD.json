@@ -1,0 +1,15 @@
+{
+  "command": "HRANDFIELD",
+  "examples": [
+    {
+      "command": "HRANDFIELD",
+      "args": [
+        "test",
+        "1",
+        "WITHVALUES"
+      ],
+      "raw": "HRANDFIELD test 1 WITHVALUES",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

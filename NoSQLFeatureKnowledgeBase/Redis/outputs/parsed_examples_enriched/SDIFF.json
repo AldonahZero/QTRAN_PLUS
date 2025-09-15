@@ -1,0 +1,13 @@
+{
+  "command": "SDIFF",
+  "examples": [
+    {
+      "command": "SDIFF",
+      "args": [
+        "test"
+      ],
+      "raw": "SDIFF test",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

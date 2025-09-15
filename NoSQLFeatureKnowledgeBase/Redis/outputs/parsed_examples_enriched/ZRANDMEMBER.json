@@ -1,0 +1,15 @@
+{
+  "command": "ZRANDMEMBER",
+  "examples": [
+    {
+      "command": "ZRANDMEMBER",
+      "args": [
+        "test",
+        "1",
+        "WITHSCORES"
+      ],
+      "raw": "ZRANDMEMBER test 1 WITHSCORES",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

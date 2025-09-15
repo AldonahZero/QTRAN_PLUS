@@ -1,0 +1,17 @@
+{
+  "command": "HEXPIREAT",
+  "examples": [
+    {
+      "command": "HEXPIREAT",
+      "args": [
+        "test",
+        "1",
+        "FIELDS",
+        "1",
+        "key1"
+      ],
+      "raw": "HEXPIREAT test 1 FIELDS 1 key1",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "command": "MSET",
+  "examples": [
+    {
+      "command": "MSET",
+      "args": [
+        "test1",
+        "test2"
+      ],
+      "raw": "MSET test1 test2"
+    }
+  ]
+}

@@ -1,0 +1,935 @@
+{
+  "commands": {
+    "BLMPOP": {
+      "command": "BLMPOP",
+      "cards": [],
+      "examples": [
+        {
+          "command": "BLMPOP",
+          "args": [
+            "1",
+            "2",
+            "test1",
+            "LEFT",
+            "COUNT",
+            "1"
+          ],
+          "raw": "BLMPOP 1 2 test1 LEFT COUNT 1",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "BRPOP": {
+      "command": "BRPOP",
+      "cards": [],
+      "examples": [
+        {
+          "command": "BRPOP",
+          "args": [
+            "test1",
+            "test2",
+            "1"
+          ],
+          "raw": "BRPOP test1 test2 1",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "BZMPOP": {
+      "command": "BZMPOP",
+      "cards": [],
+      "examples": [
+        {
+          "command": "BZMPOP",
+          "args": [
+            "1",
+            "1",
+            "test",
+            "MIN"
+          ],
+          "raw": "BZMPOP 1 1 test MIN",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "COPY": {
+      "command": "COPY",
+      "cards": [],
+      "examples": [
+        {
+          "command": "COPY",
+          "args": [
+            "test1",
+            "test2",
+            "DB",
+            "1",
+            "REPLACE"
+          ],
+          "raw": "COPY test1 test2 DB 1 REPLACE",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "DECRBY": {
+      "command": "DECRBY",
+      "cards": [],
+      "examples": [
+        {
+          "command": "DECRBY",
+          "args": [
+            "test",
+            "1"
+          ],
+          "raw": "DECRBY test 1",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "DEL": {
+      "command": "DEL",
+      "cards": [],
+      "examples": [
+        {
+          "command": "DEL",
+          "args": [
+            "test1",
+            "test2"
+          ],
+          "raw": "DEL test1 test2",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "EXISTS": {
+      "command": "EXISTS",
+      "cards": [],
+      "examples": [
+        {
+          "command": "EXISTS",
+          "args": [
+            "test"
+          ],
+          "raw": "EXISTS test",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "EXPIREAT": {
+      "command": "EXPIREAT",
+      "cards": [],
+      "examples": [
+        {
+          "command": "EXPIREAT",
+          "args": [
+            "test",
+            "1",
+            "NX"
+          ],
+          "raw": "EXPIREAT test 1 NX",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "GET": {
+      "command": "GET",
+      "cards": [],
+      "examples": [
+        {
+          "command": "GET",
+          "args": [
+            "test"
+          ],
+          "raw": "GET test",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "GETSET": {
+      "command": "GETSET",
+      "cards": [],
+      "examples": [
+        {
+          "command": "GETSET",
+          "args": [
+            "test",
+            "test"
+          ],
+          "raw": "GETSET test test",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "HDEL": {
+      "command": "HDEL",
+      "cards": [],
+      "examples": [
+        {
+          "command": "HDEL",
+          "args": [
+            "test",
+            "key1"
+          ],
+          "raw": "HDEL test key1",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "HEXISTS": {
+      "command": "HEXISTS",
+      "cards": [],
+      "examples": [
+        {
+          "command": "HEXISTS",
+          "args": [
+            "test",
+            "key1"
+          ],
+          "raw": "HEXISTS test key1",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "HEXPIREAT": {
+      "command": "HEXPIREAT",
+      "cards": [],
+      "examples": [
+        {
+          "command": "HEXPIREAT",
+          "args": [
+            "test",
+            "1",
+            "FIELDS",
+            "1",
+            "key1"
+          ],
+          "raw": "HEXPIREAT test 1 FIELDS 1 key1",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "HGET": {
+      "command": "HGET",
+      "cards": [],
+      "examples": [
+        {
+          "command": "HGET",
+          "args": [
+            "test",
+            "key1"
+          ],
+          "raw": "HGET test key1",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "HKEYS": {
+      "command": "HKEYS",
+      "cards": [],
+      "examples": [
+        {
+          "command": "HKEYS",
+          "args": [
+            "test"
+          ],
+          "raw": "HKEYS test",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "HLEN": {
+      "command": "HLEN",
+      "cards": [],
+      "examples": [
+        {
+          "command": "HLEN",
+          "args": [
+            "test"
+          ],
+          "raw": "HLEN test",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "HRANDFIELD": {
+      "command": "HRANDFIELD",
+      "cards": [],
+      "examples": [
+        {
+          "command": "HRANDFIELD",
+          "args": [
+            "test",
+            "1",
+            "WITHVALUES"
+          ],
+          "raw": "HRANDFIELD test 1 WITHVALUES",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "HSCAN": {
+      "command": "HSCAN",
+      "cards": [],
+      "examples": [
+        {
+          "command": "HSCAN",
+          "args": [
+            "test",
+            "0",
+            "MATCH",
+            "*",
+            "COUNT",
+            "1"
+          ],
+          "raw": "HSCAN test 0 MATCH * COUNT 1",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "HSET": {
+      "command": "HSET",
+      "cards": [],
+      "examples": [
+        {
+          "command": "HSET",
+          "args": [
+            "test",
+            "key1",
+            "val1"
+          ],
+          "raw": "HSET test key1 val1",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "HTTL": {
+      "command": "HTTL",
+      "cards": [],
+      "examples": []
+    },
+    "INCR": {
+      "command": "INCR",
+      "cards": [],
+      "examples": [
+        {
+          "command": "INCR",
+          "args": [
+            "test"
+          ],
+          "raw": "INCR test",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "LINDEX": {
+      "command": "LINDEX",
+      "cards": [],
+      "examples": [
+        {
+          "command": "LINDEX",
+          "args": [
+            "test",
+            "1"
+          ],
+          "raw": "LINDEX test 1",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "LINSERT": {
+      "command": "LINSERT",
+      "cards": [],
+      "examples": [
+        {
+          "command": "LINSERT",
+          "args": [
+            "test",
+            "BEFORE",
+            "key1",
+            "key2"
+          ],
+          "raw": "LINSERT test BEFORE key1 key2",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "LMOVE": {
+      "command": "LMOVE",
+      "cards": [],
+      "examples": [
+        {
+          "command": "LMOVE",
+          "args": [
+            "test1",
+            "test2",
+            "LEFT",
+            "RIGHT"
+          ],
+          "raw": "LMOVE test1 test2 LEFT RIGHT",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "LPOS": {
+      "command": "LPOS",
+      "cards": [],
+      "examples": [
+        {
+          "command": "LPOS",
+          "args": [
+            "test",
+            "key",
+            "RANK",
+            "1"
+          ],
+          "raw": "LPOS test key RANK 1",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "LPUSH": {
+      "command": "LPUSH",
+      "cards": [],
+      "examples": [
+        {
+          "command": "LPUSH",
+          "args": [
+            "test",
+            "key"
+          ],
+          "raw": "LPUSH test key",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "LRANGE": {
+      "command": "LRANGE",
+      "cards": [],
+      "examples": [
+        {
+          "command": "LRANGE",
+          "args": [
+            "test",
+            "-1",
+            "1"
+          ],
+          "raw": "LRANGE test -1 1",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "LREM": {
+      "command": "LREM",
+      "cards": [],
+      "examples": [
+        {
+          "command": "LREM",
+          "args": [
+            "test",
+            "-1",
+            "key"
+          ],
+          "raw": "LREM test -1 key",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "LSET": {
+      "command": "LSET",
+      "cards": [],
+      "examples": [
+        {
+          "command": "LSET",
+          "args": [
+            "test",
+            "-1",
+            "key"
+          ],
+          "raw": "LSET test -1 key",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "MGET": {
+      "command": "MGET",
+      "cards": [],
+      "examples": [
+        {
+          "command": "MGET",
+          "args": [
+            "test1",
+            "test2"
+          ],
+          "raw": "MGET test1 test2",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "MOVE": {
+      "command": "MOVE",
+      "cards": [],
+      "examples": [
+        {
+          "command": "MOVE",
+          "args": [
+            "test",
+            "1"
+          ],
+          "raw": "MOVE test 1",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "MSET": {
+      "command": "MSET",
+      "cards": [],
+      "examples": [
+        {
+          "command": "MSET",
+          "args": [
+            "test1",
+            "test2"
+          ],
+          "raw": "MSET test1 test2",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "PERSIST": {
+      "command": "PERSIST",
+      "cards": [],
+      "examples": [
+        {
+          "command": "PERSIST",
+          "args": [
+            "test"
+          ],
+          "raw": "PERSIST test",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "PEXPIREAT": {
+      "command": "PEXPIREAT",
+      "cards": [],
+      "examples": [
+        {
+          "command": "PEXPIRETIME",
+          "args": [
+            "test"
+          ],
+          "raw": "PEXPIRETIME test",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "PSETEX": {
+      "command": "PSETEX",
+      "cards": [],
+      "examples": [
+        {
+          "command": "PSETEX",
+          "args": [
+            "test",
+            "1",
+            "test"
+          ],
+          "raw": "PSETEX test 1 test",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "RENAME": {
+      "command": "RENAME",
+      "cards": [],
+      "examples": [
+        {
+          "command": "RENAME",
+          "args": [
+            "test1",
+            "test2"
+          ],
+          "raw": "RENAME test1 test2",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "SADD": {
+      "command": "SADD",
+      "cards": [],
+      "examples": [
+        {
+          "command": "SADD",
+          "args": [
+            "test",
+            "key1",
+            "key2"
+          ],
+          "raw": "SADD test key1 key2",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "SCAN": {
+      "command": "SCAN",
+      "cards": [],
+      "examples": [
+        {
+          "command": "SCAN",
+          "args": [
+            "0",
+            "MATCH",
+            "*",
+            "COUNT",
+            "1",
+            "TYPE",
+            "string"
+          ],
+          "raw": "SCAN 0 MATCH * COUNT 1 TYPE string",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "SCARD": {
+      "command": "SCARD",
+      "cards": [],
+      "examples": [
+        {
+          "command": "SCARD",
+          "args": [
+            "test"
+          ],
+          "raw": "SCARD test",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "SDIFF": {
+      "command": "SDIFF",
+      "cards": [],
+      "examples": [
+        {
+          "command": "SDIFF",
+          "args": [
+            "test"
+          ],
+          "raw": "SDIFF test",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "SET": {
+      "command": "SET",
+      "cards": [],
+      "examples": [
+        {
+          "command": "SET",
+          "args": [
+            "test",
+            "test",
+            "PXAT",
+            "123"
+          ],
+          "raw": "SET test test PXAT 123",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "SETRANGE": {
+      "command": "SETRANGE",
+      "cards": [],
+      "examples": [
+        {
+          "command": "SETRANGE",
+          "args": [
+            "test",
+            "1",
+            "test"
+          ],
+          "raw": "SETRANGE test 1 test",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "SINTER": {
+      "command": "SINTER",
+      "cards": [],
+      "examples": [
+        {
+          "command": "SINTER",
+          "args": [
+            "test1",
+            "test2",
+            "test3"
+          ],
+          "raw": "SINTER test1 test2 test3",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "SISMEMBER": {
+      "command": "SISMEMBER",
+      "cards": [],
+      "examples": [
+        {
+          "command": "SISMEMBER",
+          "args": [
+            "test",
+            "key"
+          ],
+          "raw": "SISMEMBER test key",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "SMOVE": {
+      "command": "SMOVE",
+      "cards": [],
+      "examples": [
+        {
+          "command": "SMOVE",
+          "args": [
+            "test1",
+            "test2"
+          ],
+          "raw": "SMOVE test1 test2",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "SPOP": {
+      "command": "SPOP",
+      "cards": [],
+      "examples": [
+        {
+          "command": "SPOP",
+          "args": [
+            "test"
+          ],
+          "raw": "SPOP test",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "SRANDMEMBER": {
+      "command": "SRANDMEMBER",
+      "cards": [],
+      "examples": [
+        {
+          "command": "SRANDMEMBER",
+          "args": [
+            "test",
+            "1"
+          ],
+          "raw": "SRANDMEMBER test 1",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "SREM": {
+      "command": "SREM",
+      "cards": [],
+      "examples": [
+        {
+          "command": "SREM",
+          "args": [
+            "test",
+            "1"
+          ],
+          "raw": "SREM test 1",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "SSCAN": {
+      "command": "SSCAN",
+      "cards": [],
+      "examples": [
+        {
+          "command": "SSCAN",
+          "args": [
+            "test",
+            "0",
+            "MATCH",
+            "*",
+            "COUNT",
+            "1"
+          ],
+          "raw": "SSCAN test 0 MATCH * COUNT 1",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "SUBSTR": {
+      "command": "SUBSTR",
+      "cards": [],
+      "examples": [
+        {
+          "command": "SUBSTR",
+          "args": [
+            "test",
+            "-1",
+            "-3"
+          ],
+          "raw": "SUBSTR test -1 -3",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "TTL": {
+      "command": "TTL",
+      "cards": [],
+      "examples": [
+        {
+          "command": "TTL",
+          "args": [
+            "test"
+          ],
+          "raw": "TTL test",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "ZADD": {
+      "command": "ZADD",
+      "cards": [],
+      "examples": [
+        {
+          "command": "ZADD",
+          "args": [
+            "test",
+            "1",
+            "key1"
+          ],
+          "raw": "ZADD test 1 key1",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "ZCOUNT": {
+      "command": "ZCOUNT",
+      "cards": [],
+      "examples": [
+        {
+          "command": "ZCOUNT",
+          "args": [
+            "test",
+            "-1",
+            "1"
+          ],
+          "raw": "ZCOUNT test -1 1",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "ZDIFF": {
+      "command": "ZDIFF",
+      "cards": [],
+      "examples": [
+        {
+          "command": "ZDIFF",
+          "args": [
+            "1",
+            "test1",
+            "test2"
+          ],
+          "raw": "ZDIFF 1 test1 test2",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "ZINCRBY": {
+      "command": "ZINCRBY",
+      "cards": [],
+      "examples": [
+        {
+          "command": "ZINCRBY",
+          "args": [
+            "test",
+            "1",
+            "key"
+          ],
+          "raw": "ZINCRBY test 1 key",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "ZINTER": {
+      "command": "ZINTER",
+      "cards": [],
+      "examples": [
+        {
+          "command": "ZINTER",
+          "args": [
+            "1",
+            "test"
+          ],
+          "raw": "ZINTER 1 test",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "ZLEXCOUNT": {
+      "command": "ZLEXCOUNT",
+      "cards": [],
+      "examples": [
+        {
+          "command": "ZLEXCOUNT",
+          "args": [
+            "test",
+            "lex1",
+            "lex2"
+          ],
+          "raw": "ZLEXCOUNT test lex1 lex2",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "ZRANDMEMBER": {
+      "command": "ZRANDMEMBER",
+      "cards": [],
+      "examples": [
+        {
+          "command": "ZRANDMEMBER",
+          "args": [
+            "test",
+            "1",
+            "WITHSCORES"
+          ],
+          "raw": "ZRANDMEMBER test 1 WITHSCORES",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "ZRANGE": {
+      "command": "ZRANGE",
+      "cards": [],
+      "examples": [
+        {
+          "command": "ZRANGE",
+          "args": [
+            "test",
+            "lex1",
+            "lex2"
+          ],
+          "raw": "ZRANGE test lex1 lex2",
+          "expected_error": "redis client not available"
+        }
+      ]
+    },
+    "ZREM": {
+      "command": "ZREM",
+      "cards": [],
+      "examples": [
+        {
+          "command": "ZREM",
+          "args": [
+            "test",
+            "member"
+          ],
+          "raw": "ZREM test member",
+          "expected_error": "redis client not available"
+        }
+      ]
+    }
+  }
+}

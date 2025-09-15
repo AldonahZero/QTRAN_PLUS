@@ -1,0 +1,16 @@
+{
+  "command": "BZMPOP",
+  "examples": [
+    {
+      "command": "BZMPOP",
+      "args": [
+        "1",
+        "1",
+        "test",
+        "MIN"
+      ],
+      "raw": "BZMPOP 1 1 test MIN",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

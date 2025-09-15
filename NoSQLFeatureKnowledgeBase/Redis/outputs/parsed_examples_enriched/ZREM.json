@@ -1,0 +1,14 @@
+{
+  "command": "ZREM",
+  "examples": [
+    {
+      "command": "ZREM",
+      "args": [
+        "test",
+        "member"
+      ],
+      "raw": "ZREM test member",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

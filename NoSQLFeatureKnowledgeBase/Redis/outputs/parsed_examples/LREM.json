@@ -1,0 +1,14 @@
+{
+  "command": "LREM",
+  "examples": [
+    {
+      "command": "LREM",
+      "args": [
+        "test",
+        "-1",
+        "key"
+      ],
+      "raw": "LREM test -1 key"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "command": "EXPIREAT",
+  "examples": [
+    {
+      "command": "EXPIREAT",
+      "args": [
+        "test",
+        "1",
+        "NX"
+      ],
+      "raw": "EXPIREAT test 1 NX",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

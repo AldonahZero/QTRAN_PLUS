@@ -1,0 +1,15 @@
+{
+  "command": "ZINCRBY",
+  "examples": [
+    {
+      "command": "ZINCRBY",
+      "args": [
+        "test",
+        "1",
+        "key"
+      ],
+      "raw": "ZINCRBY test 1 key",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

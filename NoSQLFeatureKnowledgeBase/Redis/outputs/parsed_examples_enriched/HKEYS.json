@@ -1,0 +1,13 @@
+{
+  "command": "HKEYS",
+  "examples": [
+    {
+      "command": "HKEYS",
+      "args": [
+        "test"
+      ],
+      "raw": "HKEYS test",
+      "expected_error": "redis client not available"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "command": "SETRANGE",
+  "examples": [
+    {
+      "command": "SETRANGE",
+      "args": [
+        "test",
+        "1",
+        "test"
+      ],
+      "raw": "SETRANGE test 1 test",
+      "expected_error": "redis client not available"
+    }
+  ]
+}
