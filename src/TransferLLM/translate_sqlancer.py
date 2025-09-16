@@ -192,7 +192,7 @@ def sqlancer_translate(input_filepath,tool="sqlancer",temperature=0.3, model="gp
             if len(mutate_results) and len(mutate_results[-1]["TransferResult"]):
                 mutate_sql = mutate_results[-1]["TransferResult"][-1]["TransferSQL"]
                 # mutate llm client
-                client = OpenAI(api_key=os.environ['OPENAI_API_key'])
+                client = OpenAI(api_key=os.environ.get('OPENAI_API_KEY', ''))
                 mutate_start_time = datetime.now()  # 使用 ISO 8601 格式
                 if fuzzer.lower() == "norec":
                     # mutate_llm_model_ID = sqlancer_norec_mutate_id
@@ -241,7 +241,7 @@ def sqlancer_translate(input_filepath,tool="sqlancer",temperature=0.3, model="gp
 
             # 对于sqlancer的tlp，谓词的随机性比较大，这里将重复几次，以生成可执行的mutate sql
             if fuzzer.lower() == "tlp":
-                client = OpenAI(api_key=os.environ['OPENAI_API_BASE'])
+                client = OpenAI(api_key=os.environ.get('OPENAI_API_KEY', ''))
                 mutate_cnt = 1
                 while mutate_cnt <= iteration_num:
                     if after_error_message != None:

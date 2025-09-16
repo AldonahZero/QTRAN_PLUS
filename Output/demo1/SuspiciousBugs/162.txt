@@ -1,0 +1,13 @@
+CREATE TABLE t0(c0);
+CREATE TABLE t1(c0);
+CREATE VIEW v0(c0) AS SELECT t0.c0 FROM t1 LEFT JOIN t0;
+INSERT INTO t1(c0) VALUES (0);
+SELECT COUNT(*) FROM v0 WHERE (v0.c0, x'') != (NULL, 0); -- unexpected: row is not fetched
+
+
+CREATE TABLE t0 (c0 VARCHAR);
+CREATE TABLE t1 (c0 VARCHAR);
+CREATE VIEW v0 AS SELECT t0.c0 FROM t1 LEFT JOIN t0 ON true;
+INSERT INTO t1 (c0) VALUES ('valid_value');
+SELECT COUNT(*) FROM v0 WHERE (v0.c0, x'') != ('valid_value', 'valid_value');
+SELECT SUM(count) FROM (SELECT ((v0.c0, x'') != ('valid_value', 'valid_value'))::INT as count FROM v0);
