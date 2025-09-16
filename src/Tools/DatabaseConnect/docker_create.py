@@ -31,28 +31,20 @@ def run_command(command, capture_output=True, shell=True):
     :param capture_output: 是否捕获输出。
     :param shell: 是否通过 shell 执行。
     """
+    import platform
     command_str = ' '.join(command)
     print(f"执行命令: {command_str}")
-    result = subprocess.run(
-        ["wsl", "-e", "bash", "-c", command_str],  # 使用 wsl -d 指定进入 Ubuntu，展开列表命令
-        text=True,  # 以文本模式返回输出
-        capture_output=capture_output,  # 捕获标准输出和标准错误
-        shell=shell
-    )
-    """
-    result = subprocess.run(
-        ["wsl", "-e", "bash", "-c", "cd ~ && " + command_str],  # 使用 wsl -d 指定进入 Ubuntu，展开列表命令
-        text=True,  # 以文本模式返回输出
-        capture_output=capture_output,  # 捕获标准输出和标准错误
-        shell=shell
-    )
-    """
+    # 判断当前系统
+    system_type = platform.system().lower()
+    if system_type == "windows":
+        # Windows 下可选用 wsl
+        result = subprocess.run(["wsl", "-e", "bash", "-c", command_str],
+                                text=True, capture_output=capture_output, shell=shell)
+    else:
+        # Linux/macOS 直接运行
+        result = subprocess.run(command, text=True, capture_output=capture_output, shell=shell)
     print(f"命令输出: {result.stdout}")
     print(f"命令错误: {result.stderr}")
-    """
-    if result.returncode != 0:
-        raise subprocess.CalledProcessError(result.returncode, command, output=result.stdout, stderr=result.stderr)
-    """
     print('---------------------------------------------------')
     return result
 
