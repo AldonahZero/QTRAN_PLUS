@@ -20,7 +20,7 @@
     "tidb": {
         "container_name": "tidb_QTRAN",
         "dbType": "tidb",
-        "host": "172.24.89.100",
+        "host": "127.0.0.1",
         "port": 4000,
         "username": "root",
         "password": ""
