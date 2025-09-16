@@ -1,0 +1,42 @@
+# Clash OpenAI rules snippet
+# 将下列规则粘贴到你的 Clash 配置文件的 `rules:` 列表中，
+# 建议放在列表靠前以覆盖其它更宽泛规则（例如 GEOIP、IP-CIDR 或 FINAL）
+
+# 示例出口名：Proxy（请改为你实际的出口名称，如 "🟢Proxy"、"Proxy-US" 等）
+# Rules:
+# - DOMAIN-SUFFIX,api.openai.com,Proxy
+# - DOMAIN-SUFFIX,openai.com,Proxy
+# - DOMAIN-SUFFIX,ai.openai.com,Proxy
+# - DOMAIN-SUFFIX,openai.azure.com,Proxy
+# - DOMAIN-SUFFIX,openai.cn,Proxy
+# - DOMAIN-SUFFIX,openai-azure.com,Proxy
+# - DOMAIN-SUFFIX,vercel.pub,Proxy   # 用于一些自托管 / CDN 转发
+# - DOMAIN-SUFFIX,s3.amazonaws.com,Proxy
+# - IP-CIDR,13.224.0.0/12,Proxy
+# - IP-CIDR,15.0.0.0/8,Proxy
+# - GEOIP,US,Proxy
+# - FINAL,DIRECT
+
+# 说明：
+# - 请将 "Proxy" 替换为你 Clash 配置中实际存在的出口名称。
+# - 如果你只想匹配精确域名，也可使用 DOMAIN 方式：
+#   - DOMAIN,api.openai.com,Proxy
+# - 将这段放在自定义规则（USER-DEFINED）前面或直接插入到前部，以确保优先匹配。
+# - 若使用 Azure OpenAI，请额外添加相应的 region 主机名和 `*.openai.azure.com` 通配。
+
+# 另外的可选项（更严格/更宽松）：
+# - 使用 DOMAIN-KEYWORD,openai,Proxy 以匹配包含 openai 的域名（较宽松，会匹配更多）
+# - 如果你的 Clash 支持 DOMAIN-SET，可把这些域名放入一个集合并优先匹配。
+
+# 使用示例：将以下行复制到你的 Clash 配置 rules 区域：
+# - DOMAIN-SUFFIX,api.openai.com,Proxy
+# - DOMAIN-SUFFIX,openai.com,Proxy
+# - DOMAIN-SUFFIX,ai.openai.com,Proxy
+# - DOMAIN-SUFFIX,openai.azure.com,Proxy
+# - DOMAIN-SUFFIX,openai.cn,Proxy
+# - DOMAIN-SUFFIX,vercel.pub,Proxy
+# - DOMAIN-SUFFIX,s3.amazonaws.com,Proxy
+# - IP-CIDR,13.224.0.0/12,Proxy
+# - IP-CIDR,15.0.0.0/8,Proxy
+# - GEOIP,US,Proxy
+# - FINAL,DIRECT
