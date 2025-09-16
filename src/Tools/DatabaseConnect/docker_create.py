@@ -42,7 +42,12 @@ def run_command(command, capture_output=True, shell=True):
                                 text=True, capture_output=capture_output, shell=shell)
     else:
         # Linux/macOS 直接运行
-        result = subprocess.run(command, text=True, capture_output=capture_output, shell=shell)
+        if shell:
+            # shell=True 时传递字符串
+            result = subprocess.run(command_str, text=True, capture_output=capture_output, shell=True)
+        else:
+            # shell=False 时传递列表
+            result = subprocess.run(command, text=True, capture_output=capture_output, shell=False)
     print(f"命令输出: {result.stdout}")
     print(f"命令错误: {result.stderr}")
     print('---------------------------------------------------')
