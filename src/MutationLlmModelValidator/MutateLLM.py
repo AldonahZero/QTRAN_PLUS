@@ -227,3 +227,83 @@ def detect_bug(mutate_name):
     with open(eval_filenames[mutate_name], "w", encoding="utf-8") as w:
         json.dump(detect_results, w, indent=4)
 
+
+# ------------ SQLancer 汇总报告（基于 Output 产物） ------------
+def generate_sqlancer_eval_report(input_name: str):
+    """
+    从 Output/<input_name>/SuspiciousBugs 与 MutationLLM 产物生成评估报告：
+    - 变异成功率：以 MutationLLM/*.jsonl 的最后一条记录中 MutateSqlExecError 是否为空判断
+    - 可疑 Bug 列表：SuspiciousBugs/*.jsonl 中的 index 汇总去重
+
+    输出：Output/<input_name>/eval_report.json
+    """
+    base_dir = os.path.abspath(os.path.join(current_dir, "..", "..", "Output", input_name))
+    suspicious_dir = os.path.join(base_dir, "SuspiciousBugs")
+    mutate_dir = os.path.join(base_dir, "MutationLLM")
+
+    report = {
+        "input": input_name,
+        "mutation_success_rate": 0.0,
+        "total_cases": 0,
+        "success_cases": 0,
+        "suspicious_bug_indexes": [],
+        "paths": {"suspicious": suspicious_dir, "mutation": mutate_dir},
+    }
+
+    # 统计 suspicious bug 索引
+    suspicious_indexes = set()
+    if os.path.isdir(suspicious_dir):
+        for fname in os.listdir(suspicious_dir):
+            if not fname.endswith(".jsonl"):
+                continue
+            fpath = os.path.join(suspicious_dir, fname)
+            try:
+                with open(fpath, "r", encoding="utf-8") as r:
+                    for line in r:
+                        if not line.strip():
+                            continue
+                        try:
+                            item = json.loads(line)
+                            if isinstance(item, dict) and "index" in item:
+                                suspicious_indexes.add(item["index"])
+                        except Exception:
+                            pass
+            except FileNotFoundError:
+                pass
+
+    # 统计变异执行成功率
+    total = 0
+    success = 0
+    if os.path.isdir(mutate_dir):
+        for fname in os.listdir(mutate_dir):
+            if not fname.endswith(".jsonl"):
+                continue
+            fpath = os.path.join(mutate_dir, fname)
+            try:
+                records = []
+                with open(fpath, "r", encoding="utf-8") as r:
+                    for line in r:
+                        if line.strip():
+                            records.append(json.loads(line))
+                if not records:
+                    continue
+                total += 1
+                last = records[-1]
+                err = last.get("MutateSqlExecError", None)
+                if err in (None, "None", "none", ""):
+                    success += 1
+            except Exception:
+                # 忽略坏文件，继续统计
+                continue
+
+    report["total_cases"] = total
+    report["success_cases"] = success
+    report["mutation_success_rate"] = (success / total) if total else 0.0
+    report["suspicious_bug_indexes"] = sorted(list(suspicious_indexes))
+
+    os.makedirs(base_dir, exist_ok=True)
+    out_file = os.path.join(base_dir, "eval_report.json")
+    with open(out_file, "w", encoding="utf-8") as w:
+        json.dump(report, w, ensure_ascii=False, indent=2)
+    return out_file
+
