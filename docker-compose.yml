@@ -58,6 +58,28 @@ services:
     networks:
       - db_network
 
+  mongodb:
+    image: mongo:7.0
+    container_name: mongodb_QTRAN
+    # 与 database_connector_args.json 保持一致：无认证、默认端口
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - db_network
+
+  redis:
+    image: redis:7.2
+    container_name: redis_QTRAN
+    # 与 database_connector_args.json 保持一致：无密码、默认端口
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - db_network
+
 networks:
   db_network:
     driver: bridge
@@ -68,3 +90,5 @@ volumes:
   clickhouse_data:
   monetdb_data:
   postgres_data:
+  mongodb_data:
+  redis_data:
