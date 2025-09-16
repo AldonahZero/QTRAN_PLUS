@@ -47,17 +47,39 @@ def qtran_run(input_filename, tool, temperature=0.3, model="gpt-4o-mini", error_
         return
     fuzzers = ["norec", "tlp", "pinolo", "dqe"]
     dbs = ["clickhouse", "duckdb", "mariadb", "monetdb", "mysql", "postgres", "sqlite", "tidb"]
-    for db in dbs:
-        docker_create_databases(tool, "temp", db)
-        for fuzzer in fuzzers:
-            docker_create_databases(tool, fuzzer, db)
+    # 可选：通过环境变量跳过 Docker 初始化（快速校验模式）
+    if os.environ.get("QTRAN_SKIP_DOCKER", "0") != "1":
+        for db in dbs:
+            docker_create_databases(tool, "temp", db)
+            for fuzzer in fuzzers:
+                docker_create_databases(tool, fuzzer, db)
+
+    # 解析输入文件路径：支持绝对路径、工作目录相对路径，以及项目根目录相对路径
+    def _resolve_input_path(path_like: str) -> str:
+        # 1) 绝对路径
+        if os.path.isabs(path_like) and os.path.exists(path_like):
+            return path_like
+        # 2) 当前工作目录
+        cwd_path = os.path.abspath(os.path.join(os.getcwd(), path_like))
+        if os.path.exists(cwd_path):
+            return cwd_path
+        # 3) 项目根目录（src 的上一级）
+        project_root = os.path.dirname(current_dir)
+        root_path = os.path.abspath(os.path.join(project_root, path_like))
+        if os.path.exists(root_path):
+            return root_path
+        raise FileNotFoundError(
+            f"Input file not found. Tried: '{path_like}', '{cwd_path}', '{root_path}'."
+        )
+
+    resolved_input = _resolve_input_path(input_filename)
 
     if tool.lower() == "sqlancer":
-        sqlancer_qtran_run(input_filepath=os.path.join(current_dir, input_filename), tool=tool,
+        sqlancer_qtran_run(input_filepath=resolved_input, tool=tool,
                            temperature=temperature, model=model, error_iteration=error_iteration,
                            iteration_num=iteration_num, FewShot=FewShot, with_knowledge=with_knowledge)
     elif tool.lower() == "pinolo":
-        pinolo_qtran_run(input_filename=os.path.join(current_dir, input_filename), tool=tool,
+        pinolo_qtran_run(input_filename=resolved_input, tool=tool,
                          temperature=temperature, model=model, error_iteration=error_iteration,
                          iteration_num=iteration_num, FewShot=FewShot, with_knowledge=with_knowledge)
 

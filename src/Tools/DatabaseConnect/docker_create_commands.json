@@ -36,7 +36,7 @@
         "pull_docker": [],
         "container_name": "tidb_QTRAN",
         "run_container": [
-            "export PATH=/home/zhuqinglin/.tiup/bin && tiup cluster start tidb_QTRAN"
+            "export PATH=/root/.tiup/bin && tiup cluster start tidb_QTRAN"
         ],
         "enter_container": [],
         "login_in": ["mysql", "-h", "{host}", "-P", "{port}", "-u", "{username}", "-e"],
