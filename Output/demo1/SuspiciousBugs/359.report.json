@@ -1,0 +1,14 @@
+{
+  "index": 359,
+  "input": "demo1",
+  "suspicious_view": {
+    "sql": "SELECT 0 FROM t0 WHERE false UNION SELECT 0 FROM t0 WHERE NOT t0.c1; -- expected: {0}, actual: {}",
+    "transfer_sql": "SELECT 1 FROM t0 WHERE false UNION SELECT 1 FROM t0 WHERE NOT t0.c1;",
+    "mutate_sql": "SELECT 1 FROM t0 WHERE false AND (NOT (0)) UNION ALL SELECT 1 FROM t0 WHERE NOT (false AND (NOT (0))) UNION ALL SELECT 1 FROM t0 WHERE (false AND (NOT (0))) IS NULL;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}
