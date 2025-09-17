@@ -7,7 +7,6 @@ ENV/
 FeatureKnowledgeBase/
 sync_dir/
 sync_dir.zip
-Input/redis/
 
 # 可选：添加其他常见 Python 忽略项
 __pycache__/
