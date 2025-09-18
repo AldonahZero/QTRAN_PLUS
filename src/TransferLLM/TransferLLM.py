@@ -319,6 +319,40 @@ def get_feature_knowledge_string(origin_db, target_db, with_knowledge, mapping_i
     steps_string = ""
     examples_data = None
     if with_knowledge:  # 给出样例
+        # 特殊处理：如果来源或目标是 Redis，则加载 NoSQL Redis 知识库
+        # 目前实现：当 origin_db 为 redis 时，注入 Redis 命令/示例知识；
+        # 后续可扩展 target_db == redis 的映射提示（比如 SQL -> Redis）。
+        if str(origin_db).lower() == "redis":
+            try:
+                redis_kb_path = os.path.join("..", "..", "NoSQLFeatureKnowledgeBase", "Redis", "outputs", "redis_commands_knowledge.json")
+                if os.path.exists(redis_kb_path):
+                    with open(redis_kb_path, 'r', encoding='utf-8') as rf:
+                        redis_kb = json.load(rf)
+                    commands = redis_kb.get("commands", {})
+                    # 仅取前若干条以控制 prompt 长度，可根据需要调节
+                    max_commands = 20
+                    cnt = 0
+                    knowledge_string += "[Redis Feature Knowledge]\n"
+                    for cmd_name, meta in commands.items():
+                        if cnt >= max_commands:
+                            break
+                        examples = meta.get("examples", [])
+                        example_snippet = ""
+                        if examples:
+                            # 选取最短的一个 raw 作为示例
+                            shortest = min(examples, key=lambda x: len(x.get("raw", "")))
+                            example_snippet = shortest.get("raw", "")
+                        knowledge_string += f"Command: {cmd_name}\n"
+                        if example_snippet:
+                            knowledge_string += f"Example: {example_snippet}\n"
+                        cnt += 1
+                    knowledge_string += "\n"
+                else:
+                    knowledge_string += "[Redis Feature Knowledge] (file not found)\n"
+            except Exception as e:
+                knowledge_string += f"[Redis Feature Knowledge Load Error]: {e}\n"
+            # Redis 当前不使用 mapping_indexes（命令之间暂未建立映射对），直接返回
+            return knowledge_string
         # 获取对应的详细信息
         names_ = "merge"
         for feature_type in ["function"]:
