@@ -372,99 +372,6 @@ def get_feature_knowledge_string(origin_db, target_db, with_knowledge, mapping_i
     steps_string = ""
     examples_data = None
     if with_knowledge:  # 给出样例
-        # 特殊处理：如果来源或目标是 Redis，则加载 NoSQL Redis 知识库
-        # 目前实现：当 origin_db 为 redis 时，注入 Redis 命令/示例知识；
-        # 后续可扩展 target_db == redis 的映射提示（比如 SQL -> Redis）。
-        if str(origin_db).lower() == "redis":
-            try:
-                redis_kb_path = os.path.join("..", "..", "NoSQLFeatureKnowledgeBase", "Redis", "outputs", "redis_commands_knowledge.json")
-                if os.path.exists(redis_kb_path):
-                    with open(redis_kb_path, 'r', encoding='utf-8') as rf:
-                        redis_kb = json.load(rf)
-                    commands = redis_kb.get("commands", {})
-                    # 基于调用栈检索当前原始“sql”字段（此处实际为 redis 命令串）
-                    import inspect
-                    frame = inspect.currentframe()
-                    redis_line = None
-                    while frame:
-                        if "test_info" in frame.f_locals and "sql" in frame.f_locals["test_info"]:
-                            redis_line = frame.f_locals["test_info"]["sql"]
-                            break
-                        frame = frame.f_back
-                    primary_cmd = None
-                    if redis_line:
-                        primary_cmd = redis_line.strip().split()[0].upper()
-                    # 命令分组（面向从 Redis -> 关系型/其它方言的“语义提示”）
-                    command_groups = {
-                        "STRING": ["GET","SET","MGET","MSET","GETSET","INCR","DECR","STRLEN"],
-                        "HASH": ["HGET","HSET","HDEL","HKEYS","HLEN","HMGET","HINCRBY","HSCAN"],
-                        "LIST": ["LPUSH","RPUSH","LPOP","RPOP","LSET","LRANGE","LREM","LLEN"],
-                        "SET": ["SADD","SREM","SMEMBERS","SCARD","SISMEMBER","SDIFF","SINTER","SUNION"],
-                        "ZSET": ["ZADD","ZREM","ZRANGE","ZREVRANGE","ZCARD","ZCOUNT","ZINCRBY","ZRANGEBYSCORE"],
-                        "KEY": ["DEL","EXISTS","EXPIRE","TTL","PERSIST","RENAME","SCAN"],
-                    }
-                    # 反向索引：命令 -> 分组
-                    cmd_to_group = {}
-                    for g, lst in command_groups.items():
-                        for c in lst:
-                            cmd_to_group[c] = g
-                    selected_cmds = []
-                    if primary_cmd and primary_cmd in cmd_to_group:
-                        group = cmd_to_group[primary_cmd]
-                        # 选出同组命令
-                        selected_cmds = command_groups[group]
-                    else:
-                        # 回退：常用核心命令
-                        selected_cmds = ["GET","SET","HGET","HSET","ZADD","ZRANGE","SADD","SCARD"]
-                    # 过滤只保留知识库中存在的命令
-                    selected_cmds_filtered = []
-                    for c in selected_cmds:
-                        if c in commands:
-                            selected_cmds_filtered.append(c)
-                    # 限制数量
-                    max_commands = 16
-                    selected_cmds_filtered = selected_cmds_filtered[:max_commands]
-                    knowledge_string += "[Redis Feature Knowledge - Origin Commands]\n"
-                    if primary_cmd:
-                        knowledge_string += f"Primary Command Detected: {primary_cmd}\n"
-                    if primary_cmd and primary_cmd in cmd_to_group:
-                        knowledge_string += f"Command Group: {cmd_to_group[primary_cmd]}\n"
-                    for c in selected_cmds_filtered:
-                        meta = commands.get(c, {})
-                        examples = meta.get("examples", [])
-                        example_snippet = ""
-                        if examples:
-                            shortest = min(examples, key=lambda x: len(x.get("raw", "")))
-                            example_snippet = shortest.get("raw", "")
-                        knowledge_string += f"Command: {c}\n"
-                        if example_snippet:
-                            knowledge_string += f"Example: {example_snippet}\n"
-                    knowledge_string += "\n"
-                else:
-                    knowledge_string += "[Redis Feature Knowledge] (file not found)\n"
-            except Exception as e:
-                knowledge_string += f"[Redis Feature Knowledge Load Error]: {e}\n"
-            # Redis 当前不使用 mapping_indexes（命令之间暂未建立映射对），直接返回
-            return knowledge_string
-        # 新增：如果目标库为redis，注入SQL→Redis语义映射
-        if str(target_db).lower() == "redis":
-            # 需要test_info["sql"]，但本函数参数没有，尝试从mapping_indexes推断或要求外部传入
-            # 这里假设mapping_indexes为None或空时，直接返回空，否则取第一个元素的sql
-            # 更推荐在transfer_llm调用时传入test_info["sql"]作为参数
-            # 这里用全局变量hack（不推荐），或要求后续重构
-            import inspect
-            frame = inspect.currentframe()
-            sql_text = None
-            while frame:
-                if "test_info" in frame.f_locals and "sql" in frame.f_locals["test_info"]:
-                    sql_text = frame.f_locals["test_info"]["sql"]
-                    break
-                frame = frame.f_back
-            if sql_text:
-                knowledge_string += build_sql_to_redis_semantic_hints(sql_text)
-            else:
-                knowledge_string += "[SQL→Redis Semantic Mapping] (sql text not found)\n"
-            return knowledge_string
         # 获取对应的详细信息
         names_ = "merge"
         for feature_type in ["function"]:
@@ -529,26 +436,21 @@ def transfer_llm(tool, exp, conversation, error_iteration, iteration_num, FewSho
 
     sql_statement = test_info["sql"]
     sql_statement_processed = sql_statement
+    
+    # 在这里做sql预处理
     # 如果是mysql_like转postgres，先把sql语句的列名进行替换，和postgres的ddl语句中的列名保持一致，便于后续语句转换
     if target_db == "postgres" and tool.lower() == "pinolo":
         sql_statement_processed = sql_statement_process(sql_statement)
 
-    # Optional Redis-KB snippet (only when targeting Redis and enabled)
-    kb_snippet = ""
-    if use_redis_kb and _REDIS_KB_AVAILABLE and str(target_db).lower() == 'redis':
-        try:
-            semantics = sql_statement_processed
-            candidates = select_redis_candidates(semantics)
-            if candidates:
-                kb = build_prompt_with_kb(candidates[0], semantics)
-                kb_snippet = (
-                    "\n[Redis-KB Hints]\n"
-                    f"Target Command: {kb.get('target_command')}\n"
-                    f"Constraints: {json.dumps(kb.get('constraints'))}\n"
-                    f"Examples: {kb.get('few_shot')}\n"
-                )
-        except Exception:
-            kb_snippet = ""
+    
+    # 说明：transfer_llm_string 是发送给 LLM 的主 prompt 模板。
+    # 占位符说明：
+    #   {origin_db}           - 来源数据库名，用于说明源语法/语义上下文
+    #   {target_db}           - 目标数据库名，用于说明目标语法要求
+    #   {sql_statement}       - 待转换的原始 SQL（已预处理）
+    #   {feature_knowledge}   - 注入的 feature 知识（映射/示例/规则），直接写入 prompt
+    #   {examples}            - few-shot 示例串（可选），帮助模型举例学习
+    #   {format_instructions} - StructuredOutputParser 给出的输出格式说明，要求模型按结构返回
 
     transfer_llm_string = """  
     Let's think step by step.You are an expert in sql statement translation between different database.\
@@ -562,7 +464,6 @@ def transfer_llm(tool, exp, conversation, error_iteration, iteration_num, FewSho
 
     Transfer by carrying out following instructions step by step.\
     {feature_knowledge}\
-    {kb_snippet}\
     
     Check if transfer result satisfies requirements mentioned before.If not,modify the result.
 
@@ -578,6 +479,7 @@ def transfer_llm(tool, exp, conversation, error_iteration, iteration_num, FewSho
     output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
     format_instructions = output_parser.get_format_instructions()
 
+    # FewShot = False 目前没有
     examples_string = get_examples_string(FewShot, origin_db,target_db)
     if with_knowledge:
         feature_knowledge_string = get_feature_knowledge_string(origin_db, target_db, with_knowledge, test_info["SqlPotentialDialectFunctionMapping"])
