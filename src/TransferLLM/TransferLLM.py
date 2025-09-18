@@ -261,6 +261,59 @@ def get_examples_string(FewShot, origin_db, target_db):
                 index) + ' end]\n'
     return examples_string
 
+def build_sql_to_redis_semantic_hints(sql_text):
+        """
+        根据SQL内容匹配sql_to_redis_mapping.json中的pattern，生成结构化语义提示。
+        """
+        import re
+        mapping_path = os.path.join("..", "..", "NoSQLFeatureKnowledgeBase", "Redis", "outputs", "sql_to_redis_mapping.json")
+        if not os.path.exists(mapping_path):
+            return "[SQL→Redis Semantic Mapping] (mapping file not found)\n"
+        try:
+            with open(mapping_path, 'r', encoding='utf-8') as f:
+                mapping_data = json.load(f)
+            mappings = mapping_data.get("mappings", {})
+        except Exception as e:
+            return f"[SQL→Redis Semantic Mapping Load Error]: {e}\n"
+
+        sql = sql_text.lower()
+        # pattern优先级顺序，越前越优先
+        pattern_keys = [
+            ("join", ["join"]),
+            ("group by", ["group by"]),
+            ("order by limit", ["order by", "limit"]),
+            ("order by", ["order by"]),
+            ("distinct", ["distinct"]),
+            ("count(*)", ["count(*)", "count ( * )"]),
+            ("update", ["update"]),
+            ("delete", ["delete"]),
+            ("select+where", ["select", "where"]),
+            ("select by key", ["select"]),
+        ]
+        matched = []
+        for key, keywords in pattern_keys:
+            if all(kw in sql for kw in keywords):
+                if key in mappings:
+                    matched.append((key, mappings[key]))
+        # 只保留最多3条
+        matched = matched[:3]
+        if not matched:
+            return "[SQL→Redis Semantic Mapping] No typical pattern matched.\n"
+        out = "[SQL→Redis Semantic Mapping]\n"
+        for key, val in matched:
+            out += f"Pattern: {key}\n"
+            if 'redis' in val:
+                out += f"Redis Strategy: {val['redis']}\n"
+            if 'example' in val:
+                out += f"Example: {val['example']}\n"
+            if 'notes' in val:
+                out += f"Notes: {val['notes']}\n"
+            if 'tradeoffs' in val:
+                out += f"Tradeoffs: {val['tradeoffs']}\n"
+            if 'pitfalls' in val:
+                out += f"Pitfalls: {val['pitfalls']}\n"
+            out += "\n"
+        return out
 """
 def get_feature_knowledge_string(origin_db, target_db, with_knowledge, mapping_indexes):
     knowledge_string = ""
@@ -352,6 +405,25 @@ def get_feature_knowledge_string(origin_db, target_db, with_knowledge, mapping_i
             except Exception as e:
                 knowledge_string += f"[Redis Feature Knowledge Load Error]: {e}\n"
             # Redis 当前不使用 mapping_indexes（命令之间暂未建立映射对），直接返回
+            return knowledge_string
+        # 新增：如果目标库为redis，注入SQL→Redis语义映射
+        if str(target_db).lower() == "redis":
+            # 需要test_info["sql"]，但本函数参数没有，尝试从mapping_indexes推断或要求外部传入
+            # 这里假设mapping_indexes为None或空时，直接返回空，否则取第一个元素的sql
+            # 更推荐在transfer_llm调用时传入test_info["sql"]作为参数
+            # 这里用全局变量hack（不推荐），或要求后续重构
+            import inspect
+            frame = inspect.currentframe()
+            sql_text = None
+            while frame:
+                if "test_info" in frame.f_locals and "sql" in frame.f_locals["test_info"]:
+                    sql_text = frame.f_locals["test_info"]["sql"]
+                    break
+                frame = frame.f_back
+            if sql_text:
+                knowledge_string += build_sql_to_redis_semantic_hints(sql_text)
+            else:
+                knowledge_string += "[SQL→Redis Semantic Mapping] (sql text not found)\n"
             return knowledge_string
         # 获取对应的详细信息
         names_ = "merge"
