@@ -1,0 +1,19 @@
+{"index": 14, "a_db": "redis", "b_db": "monetdb", "molt": "pinolo", "sql": "sunionstore vedaznzm vedaznzm waeoxbem waeoxbem;"}
+{"index": 14, "a_db": "redis", "b_db": "monetdb", "molt": "pinolo", "sql": "zinterstore phrpwlca 2 phrpwlca phrpwlca aggregate min;"}
+{"index": 14, "a_db": "redis", "b_db": "monetdb", "molt": "pinolo", "sql": "zinterstore teqiuuzn 3 phrpwlca phrpwlca phrpwlca weights 0 0 0;"}
+{"index": 14, "a_db": "redis", "b_db": "monetdb", "molt": "pinolo", "sql": "zinterstore teqiuuzn 3 mfsvncrq mfsvncrq mfsvncrq weights 0 0 1;"}
+{"index": 14, "a_db": "redis", "b_db": "monetdb", "molt": "pinolo", "sql": "zmpop 2 mfsvncrq mfsvncrq max count 1;"}
+{"index": 14, "a_db": "redis", "b_db": "monetdb", "molt": "pinolo", "sql": "zinterstore phrpwlca 2 phrpwlca phrpwlca aggregate min;"}
+{"index": 14, "a_db": "redis", "b_db": "monetdb", "molt": "pinolo", "sql": "zinterstore teqiuuzn 3 mfsvncrq mfsvncrq mfsvncrq weights 0 0 1;"}
+{"index": 14, "a_db": "redis", "b_db": "monetdb", "molt": "pinolo", "sql": "zmpop 2 mfsvncrq mfsvncrq max count 1;"}
+{"index": 14, "a_db": "redis", "b_db": "monetdb", "molt": "pinolo", "sql": "zinterstore phrpwlca 2 phrpwlca phrpwlca aggregate min;"}
+{"index": 14, "a_db": "redis", "b_db": "monetdb", "molt": "pinolo", "sql": "zinterstore teqiuuzn 3 phrpwlca phrpwlca phrpwlca weights 0 0 -331158402995;"}
+{"index": 14, "a_db": "redis", "b_db": "monetdb", "molt": "pinolo", "sql": "zinterstore phrpwlca 2 phrpwlca phrpwlca aggregate min;"}
+{"index": 14, "a_db": "redis", "b_db": "monetdb", "molt": "pinolo", "sql": "zinterstore teqiuuzn 3 phrpwlca phrpwlca phrpwlca weights 0 0 -331158402995;"}
+{"index": 14, "a_db": "redis", "b_db": "monetdb", "molt": "pinolo", "sql": "zinterstore phrpwlca 2 phrpwlca phrpwlca aggregate min;"}
+{"index": 14, "a_db": "redis", "b_db": "monetdb", "molt": "pinolo", "sql": "zunionstore kmmwzipn 2 kmmwzipn mfsvncrq weights 2 3 aggregate min;"}
+{"index": 14, "a_db": "redis", "b_db": "monetdb", "molt": "pinolo", "sql": "zinterstore phrpwlca 2 phrpwlca phrpwlca aggregate min;"}
+{"index": 14, "a_db": "redis", "b_db": "monetdb", "molt": "pinolo", "sql": "zmpop 2 mfsvncrq mfsvncrq max count 1;"}
+{"index": 14, "a_db": "redis", "b_db": "monetdb", "molt": "pinolo", "sql": "zinterstore phrpwlca 2 phrpwlca phrpwlca aggregate min;"}
+{"index": 14, "a_db": "redis", "b_db": "monetdb", "molt": "pinolo", "sql": "zinterstore phrpwlca 2 phrpwlca phrpwlca aggregate min;"}
+{"index": 14, "a_db": "redis", "b_db": "monetdb", "molt": "pinolo", "sql": "zinterstore teqiuuzn 3 phrpwlca phrpwlca phrpwlca weights 0 0 -331158402995;"}
