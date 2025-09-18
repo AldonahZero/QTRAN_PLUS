@@ -382,23 +382,63 @@ def get_feature_knowledge_string(origin_db, target_db, with_knowledge, mapping_i
                     with open(redis_kb_path, 'r', encoding='utf-8') as rf:
                         redis_kb = json.load(rf)
                     commands = redis_kb.get("commands", {})
-                    # 仅取前若干条以控制 prompt 长度，可根据需要调节
-                    max_commands = 20
-                    cnt = 0
-                    knowledge_string += "[Redis Feature Knowledge]\n"
-                    for cmd_name, meta in commands.items():
-                        if cnt >= max_commands:
+                    # 基于调用栈检索当前原始“sql”字段（此处实际为 redis 命令串）
+                    import inspect
+                    frame = inspect.currentframe()
+                    redis_line = None
+                    while frame:
+                        if "test_info" in frame.f_locals and "sql" in frame.f_locals["test_info"]:
+                            redis_line = frame.f_locals["test_info"]["sql"]
                             break
+                        frame = frame.f_back
+                    primary_cmd = None
+                    if redis_line:
+                        primary_cmd = redis_line.strip().split()[0].upper()
+                    # 命令分组（面向从 Redis -> 关系型/其它方言的“语义提示”）
+                    command_groups = {
+                        "STRING": ["GET","SET","MGET","MSET","GETSET","INCR","DECR","STRLEN"],
+                        "HASH": ["HGET","HSET","HDEL","HKEYS","HLEN","HMGET","HINCRBY","HSCAN"],
+                        "LIST": ["LPUSH","RPUSH","LPOP","RPOP","LSET","LRANGE","LREM","LLEN"],
+                        "SET": ["SADD","SREM","SMEMBERS","SCARD","SISMEMBER","SDIFF","SINTER","SUNION"],
+                        "ZSET": ["ZADD","ZREM","ZRANGE","ZREVRANGE","ZCARD","ZCOUNT","ZINCRBY","ZRANGEBYSCORE"],
+                        "KEY": ["DEL","EXISTS","EXPIRE","TTL","PERSIST","RENAME","SCAN"],
+                    }
+                    # 反向索引：命令 -> 分组
+                    cmd_to_group = {}
+                    for g, lst in command_groups.items():
+                        for c in lst:
+                            cmd_to_group[c] = g
+                    selected_cmds = []
+                    if primary_cmd and primary_cmd in cmd_to_group:
+                        group = cmd_to_group[primary_cmd]
+                        # 选出同组命令
+                        selected_cmds = command_groups[group]
+                    else:
+                        # 回退：常用核心命令
+                        selected_cmds = ["GET","SET","HGET","HSET","ZADD","ZRANGE","SADD","SCARD"]
+                    # 过滤只保留知识库中存在的命令
+                    selected_cmds_filtered = []
+                    for c in selected_cmds:
+                        if c in commands:
+                            selected_cmds_filtered.append(c)
+                    # 限制数量
+                    max_commands = 16
+                    selected_cmds_filtered = selected_cmds_filtered[:max_commands]
+                    knowledge_string += "[Redis Feature Knowledge - Origin Commands]\n"
+                    if primary_cmd:
+                        knowledge_string += f"Primary Command Detected: {primary_cmd}\n"
+                    if primary_cmd and primary_cmd in cmd_to_group:
+                        knowledge_string += f"Command Group: {cmd_to_group[primary_cmd]}\n"
+                    for c in selected_cmds_filtered:
+                        meta = commands.get(c, {})
                         examples = meta.get("examples", [])
                         example_snippet = ""
                         if examples:
-                            # 选取最短的一个 raw 作为示例
                             shortest = min(examples, key=lambda x: len(x.get("raw", "")))
                             example_snippet = shortest.get("raw", "")
-                        knowledge_string += f"Command: {cmd_name}\n"
+                        knowledge_string += f"Command: {c}\n"
                         if example_snippet:
                             knowledge_string += f"Example: {example_snippet}\n"
-                        cnt += 1
                     knowledge_string += "\n"
                 else:
                     knowledge_string += "[Redis Feature Knowledge] (file not found)\n"
