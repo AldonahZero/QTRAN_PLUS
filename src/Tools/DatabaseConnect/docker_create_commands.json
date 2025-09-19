@@ -77,6 +77,24 @@
             ["monetdb", "status"]
         ]
     },
+    "redis": {
+        "docker_name": "redis:7.2.6",
+        "pull_docker": ["docker", "pull", "redis:7.2.6"],
+        "container_name": "redis_QTRAN",
+        "run_container": [
+            "docker", "run", "-d", "--name", "redis_QTRAN",
+            "-p", "{port}:{container_port}",
+            "-e", "REDIS_PASSWORD={password}",
+            "redis:7.2.6",
+            "--requirepass", "{password}"
+        ],
+        "enter_container": ["docker", "exec", "redis_QTRAN"],
+        "login_in": ["redis-cli"],
+        "create_databases": [
+            ["redis-cli", "-a", "{password}", "SET", "{dbname}_test_key", "1"],
+            ["redis-cli", "-a", "{password}", "GET", "{dbname}_test_key"]
+        ]
+    },
     "clickhouse": {
         "docker_name": "clickhouse/clickhouse-server:24.9.2.42",
         "pull_docker": ["docker", "pull", "clickhouse/clickhouse-server:24.9.2.42"],

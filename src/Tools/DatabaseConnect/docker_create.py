@@ -109,6 +109,10 @@ def is_container_running(container_name):
 
 def docker_create_databases(tool, exp, dbType):
     """
+    根据 docker_create_commands.json 的配置，
+    拉镜像、启动（或创建）容器，
+    并在容器里执行初始化命令（例如建库、建用户、写入测试 key 等），
+    以便准备测试/实验用的数据库环境。
     按配置自动创建并初始化数据库容器。
 
     输入:
@@ -154,6 +158,22 @@ def docker_create_databases(tool, exp, dbType):
                     run_command(commands_formatted["enter_container"] + commands_formatted["login_in"] + sql)
                 elif isinstance(sql, str):
                     run_command(commands_formatted["enter_container"] + commands_formatted["login_in"] + ["'" + sql + "'"])
+        elif dbType.lower() == "redis":
+            # pull image
+            if not check_image_exists(commands_formatted["docker_name"]):
+                run_command(commands_formatted["pull_docker"])
+            # run container
+            if not is_container_running(commands_formatted["container_name"]):
+                run_command(commands_formatted["run_container"])
+                time.sleep(5)
+            # run create_databases commands (通常为 redis-cli 调用)
+            for cmd in commands_formatted.get("create_databases", []):
+                if isinstance(cmd, list):
+                    run_command(commands_formatted["enter_container"] + cmd)
+                elif isinstance(cmd, str):
+                    # 字符串形式的命令，通过 shell 执行
+                    run_command(commands_formatted["enter_container"] + ["sh", "-c", cmd])
+
         else:
             # pull_docker
             if not check_image_exists(commands_formatted["docker_name"]):
