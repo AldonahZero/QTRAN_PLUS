@@ -174,6 +174,24 @@ def database_clear(tool, exp, dbType):
             print(db_filepath +"已删除")
         else:
             print(db_filepath+"不存在")
+    # 新增：Redis 单独处理
+    elif dbType.lower() == "redis":
+        if redis is None:
+            print("redis 库未安装，无法清理")
+            return
+        try:
+            r = redis.Redis(
+                host=args.get("host", "127.0.0.1"),
+                port=int(args.get("port", 6379)),
+                username=args.get("username") or None,
+                password=args.get("password") or None,
+                decode_responses=False
+            )
+            r.flushdb()
+            print(args["dbname"] + " (redis) 已清空")
+        except Exception as e:
+            print("Redis 清理失败:", e)
+        return
     elif dbType.lower() in ["duckdb"]:
         db_filepath = os.path.join(current_dir, f'{args["dbname"]}.duckdb')
         if os.path.exists(db_filepath):
