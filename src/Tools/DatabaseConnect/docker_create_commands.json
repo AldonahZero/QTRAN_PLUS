@@ -78,14 +78,14 @@
         ]
     },
     "redis": {
-        "docker_name": "redis:7.2.6",
-        "pull_docker": ["docker", "pull", "redis:7.2.6"],
+        "docker_name": "redis:7.2",
+        "pull_docker": ["docker", "pull", "redis:7.2"],
         "container_name": "redis_QTRAN",
         "run_container": [
             "docker", "run", "-d", "--name", "redis_QTRAN",
             "-p", "{port}:{container_port}",
             "-e", "REDIS_PASSWORD={password}",
-            "redis:7.2.6",
+            "redis:7.2",
             "--requirepass", "{password}"
         ],
         "enter_container": ["docker", "exec", "redis_QTRAN"],
