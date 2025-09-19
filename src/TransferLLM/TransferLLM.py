@@ -25,6 +25,7 @@ from langchain.output_parsers import StructuredOutputParser
 from langchain.callbacks import get_openai_callback
 from src.Tools.DatabaseConnect.database_connector import exec_sql_statement
 
+
 # Optional: Redis KB adapter for prompt augmentation (lazy import)
 try:
     from src.NoSQLKnowledgeBaseConstruction.Redis.redis_kb_adapter import (
@@ -366,60 +367,166 @@ def get_feature_knowledge_string(origin_db, target_db, with_knowledge, mapping_i
             cnt += 1
     return knowledge_string, steps_string
 """
-
-def get_feature_knowledge_string(origin_db, target_db, with_knowledge, mapping_indexes):
+def get_NoSQL_knowledge_string(origin_db, target_db, with_knowledge, sql_statement_processed):
+    # 初始化返回字符串，避免在异常或非 Redis 分支时未定义
     knowledge_string = ""
+    # 特殊处理：如果来源或目标是 Redis，则加载 NoSQL Redis 知识库
+    # 目前实现：当 origin_db 为 redis 时，注入 Redis 命令/示例知识；
+    # 后续可扩展 target_db == redis 的映射提示（比如 SQL -> Redis）。
+    if str(origin_db).lower() == "redis":
+        try:
+            repo_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+            redis_kb_path = os.path.join(repo_root, "NoSQLFeatureKnowledgeBase", "Redis", "outputs", "redis_commands_knowledge.json")
+            print("Loading Redis CMD Knowledge from: " + redis_kb_path)
+
+            if os.path.exists(redis_kb_path):
+                with open(redis_kb_path, 'r', encoding='utf-8') as rf:
+                    redis_kb = json.load(rf)
+                commands = redis_kb.get("commands", {})
+                # 根据 sql_statement_processed 中出现的命令关键词动态抽取
+                import re
+                statement_text = (sql_statement_processed or "").lower()
+
+                # 提取所有字母/数字/_/: 组成的 token 作为潜在命令（单词形式）
+                raw_tokens = set(re.findall(r'[a-zA-Z][a-zA-Z0-9:_]*', statement_text))
+
+                matched = []
+                for cmd_name in commands.keys():
+                    cmd_lower = cmd_name.lower()
+                    # 多词命令（如 CLIENT LIST）采用整体正则匹配；单词命令直接在 token 集合里判断
+                    if ' ' in cmd_lower:
+                        if re.search(r'\b' + re.escape(cmd_lower) + r'\b', statement_text):
+                            matched.append(cmd_name)
+                    else:
+                        if cmd_lower in raw_tokens:
+                             matched.append(cmd_name)
+
+                # 去重保持出现顺序：按在文本中首次出现的位置排序
+                def first_pos(name: str):
+                    try:
+                        return statement_text.index(name.lower())
+                    except ValueError:
+                        return 10**9
+                matched = sorted(list(dict.fromkeys(matched)), key=first_pos)
+
+                knowledge_string += "[Redis Feature Knowledge]\n"
+                if not matched:
+                    knowledge_string += "(no command keyword matched in input statement; showing fallback examples)\n"
+                    # 回退挑选常见命令，避免 prompt 为空
+                    fallback_order = ["GET", "SET", "DEL", "HSET", "HGET", "LPUSH", "RPUSH", "SADD", "ZADD", "EVAL"]
+                    matched = [c for c in fallback_order if c in commands][:5]
+
+                for cmd_name in matched:
+                    meta = commands.get(cmd_name, {})
+                    examples = meta.get("examples", [])
+                    example_snippet = ""
+                    if examples:
+                        # 选取最短示例，避免过长
+                        shortest = min(examples, key=lambda x: len(x.get("raw", "")))
+                        example_snippet = shortest.get("raw", "")
+                    knowledge_string += f"Command: {cmd_name}\n"
+                    if meta.get("group"):
+                        knowledge_string += f"Group: {meta.get('group')}\n"
+                    if meta.get("summary"):
+                        knowledge_string += f"Summary: {meta.get('summary')}\n"
+                    if meta.get("since"):
+                        knowledge_string += f"Since: {meta.get('since')}\n"
+                    if meta.get("complexity"):
+                        knowledge_string += f"Complexity: {meta.get('complexity')}\n"
+                    if example_snippet:
+                        knowledge_string += f"Example: {example_snippet}\n"
+                    knowledge_string += "\n"
+            else:
+                knowledge_string += "[Redis Feature Knowledge] (file not found)\n"
+        except Exception as e:
+            knowledge_string = ""
+        # Redis 当前不使用 mapping_indexes（命令之间暂未建立映射对），直接返回
+        print("knowledge_string: " + knowledge_string)
+        return knowledge_string
+    # 非 Redis 情况返回空字符串（调用处会根据 with_knowledge 逻辑决定后续）
+    return knowledge_string
+    
+    
+# 函数定义：获取特征知识字符串，用于构建从源数据库到目标数据库的特征映射知识
+def get_feature_knowledge_string(origin_db, target_db, with_knowledge, mapping_indexes, sql_statement_processed):
+    # 初始化知识字符串为空，用于累积特征知识描述
+    knowledge_string = ""
+    # 初始化步骤字符串为空（当前未使用）
     steps_string = ""
+    # 初始化示例数据为None（当前未使用）
     examples_data = None
+    # 如果需要包含知识，则执行以下逻辑
     if with_knowledge:  # 给出样例
         # 获取对应的详细信息
+        # 初始化文件名基础部分
         names_ = "merge"
+        # 为每个特征类型添加后缀，这里只处理"function"
         for feature_type in ["function"]:
             names_ = names_ + "_" + feature_type
+        # 构建源数据库的合并特征文件名路径
         origin_merge_feature_filename = os.path.join("..", "..", "FeatureKnowledgeBase", origin_db, "RAG_Embedding_Data",names_ + ".jsonl")
+        print("origin_merge_feature_filename: " + origin_merge_feature_filename)
+        # 构建目标数据库的合并特征文件名路径
         target_merge_feature_filename = os.path.join("..", "..", "FeatureKnowledgeBase", target_db,"RAG_Embedding_Data", names_ + ".jsonl")
+        print("target_merge_feature_filename: " + target_merge_feature_filename)
+        # 以只读模式打开源特征文件，并读取所有行
         with open(origin_merge_feature_filename, "r", encoding="utf-8") as r:
             origin_features = r.readlines()
+        # 以只读模式打开目标特征文件，并读取所有行
         with open(target_merge_feature_filename, "r", encoding="utf-8") as r:
             target_features = r.readlines()
+        # 初始化计数器，用于步骤编号
         cnt = 0
-        for mapping_pair in mapping_indexes:
+        # 遍历映射索引对，每个对包含源和目标特征的索引
+        for mapping_pair in mapping_indexes:    
             # 获取a_db以及b_db中的feature knowledge
+            # 从源特征列表中解析对应索引的特征JSON
             origin_feature = json.loads(origin_features[mapping_pair[0]])
+            # 从目标特征列表中解析对应索引的特征JSON
             target_feature = json.loads(target_features[mapping_pair[1]])
+            # 构建步骤描述字符串，说明从源到目标的转换
             knowledge_string = knowledge_string + " Step " + str(cnt) + ": Transfer " + str(origin_feature["Feature"])+" from "+origin_db+" to "+str(target_feature["Feature"])+" from "+target_db+"\n"
-
+            # 添加源特征的介绍文本
             knowledge_string = knowledge_string + "Here is the original feature from "+origin_db +".\n"
+            # 添加源特征的语法描述前缀
             knowledge_string = knowledge_string + "Feature Syntax(Database "+origin_db+"):"
+            # 遍历源特征的语法项并追加到字符串
             for item in origin_feature["Feature"]:
                 knowledge_string += item
-
+            # 注释掉的代码：添加源特征的描述（当前被注释）
             """
             knowledge_string += "\nDescription(Database "+origin_db+"):"
             for item in origin_feature["Description"]:
                 knowledge_string += item
             """
-
+            # 添加源特征的示例前缀
             knowledge_string = knowledge_string + "\nExamples(Database "+origin_db+"):"
+            # 遍历源特征的示例项并追加到字符串
             for item in origin_feature["Examples"]:
                 knowledge_string += item
-
+            # 添加目标特征的介绍文本
             knowledge_string = knowledge_string + "Here is the mapping feature from "+target_db +".\n"
-
+            # 添加目标特征的语法描述前缀
             knowledge_string = knowledge_string + "Feature Syntax(Database "+target_db+"):"
+            # 遍历目标特征的语法项并追加到字符串
             for item in target_feature["Feature"]:
                 knowledge_string += item
+            # 注释掉的代码：添加目标特征的描述（当前被注释）
             """
             knowledge_string = knowledge_string + "\nDescription(Database "+origin_db+"):"
             for item in target_feature["Description"]:
                 knowledge_string += item
             """
+            # 添加目标特征的示例前缀
             knowledge_string = knowledge_string + "\nExamples(Database "+origin_db+"):"
+            # 遍历目标特征的示例项并追加到字符串
             for item in target_feature["Examples"]:
                 knowledge_string += item
+            # 添加两个换行符以分隔不同映射
             knowledge_string += "\n\n"
-
+            # 计数器递增
             cnt += 1
+    # 返回构建的知识字符串
     return knowledge_string
 
 def transfer_llm(tool, exp, conversation, error_iteration, iteration_num, FewShot, with_knowledge, origin_db, target_db, test_info, use_redis_kb: bool = False):
@@ -433,7 +540,7 @@ def transfer_llm(tool, exp, conversation, error_iteration, iteration_num, FewSho
     # * 运行结果与原sql的一致性列表"exec_equalities"
     # * 列表是为返回error进行迭代设计的，能记录多次迭代的过程值
     """
-
+    # test_info: {'index': 162, 'a_db': 'sqlite', 'b_db': 'duckdb', 'molt': 'norec', 'sql': 'CREATE TABLE t0(c0);'}
     sql_statement = test_info["sql"]
     sql_statement_processed = sql_statement
     
@@ -481,11 +588,14 @@ def transfer_llm(tool, exp, conversation, error_iteration, iteration_num, FewSho
 
     # FewShot = False 目前没有
     examples_string = get_examples_string(FewShot, origin_db,target_db)
-    if with_knowledge:
-        feature_knowledge_string = get_feature_knowledge_string(origin_db, target_db, with_knowledge, test_info["SqlPotentialDialectFunctionMapping"])
+    # examples_string = ""
+    if str(origin_db).lower() == "redis":
+        feature_knowledge_string = get_NoSQL_knowledge_string(origin_db, target_db, with_knowledge, sql_statement_processed)
+    elif with_knowledge:
+        feature_knowledge_string = get_feature_knowledge_string(origin_db, target_db, with_knowledge, test_info["SqlPotentialDialectFunctionMapping"], sql_statement_processed)
     else:
         feature_knowledge_string = ""
-
+    
     prompt_template = ChatPromptTemplate.from_template(transfer_llm_string)
 
     iterate_llm_string = """  
@@ -513,7 +623,7 @@ def transfer_llm(tool, exp, conversation, error_iteration, iteration_num, FewSho
     error_messages = []
     exec_equalities = []
     # 执行origin sql得到结果，并和得到的所有transfer sql结果依次进行比对，确定执行结果是否相同，将对比结果存储到exec_same中
-    origin_exec_result, origin_exec_time, origin_error_message = exec_sql_statement(tool, exp, origin_db, sql_statement)
+    # origin_exec_result, origin_exec_time, origin_error_message = exec_sql_statement(tool, exp, origin_db, sql_statement)
 
     conversation_cnt = 0  # conversation_cnt = 0:初始第一条prompt
     # 边界1：达到最大迭代次数
@@ -527,7 +637,6 @@ def transfer_llm(tool, exp, conversation, error_iteration, iteration_num, FewSho
                 sql_statement=sql_statement_processed,
                 examples=examples_string,
                 feature_knowledge=feature_knowledge_string,
-                kb_snippet=kb_snippet,
                 format_instructions=format_instructions
             )
         else:
@@ -558,11 +667,12 @@ def transfer_llm(tool, exp, conversation, error_iteration, iteration_num, FewSho
         """
         cost = {}
         with (get_openai_callback() as cb):
-            print(prompt_messages[0].content)
+            print("Prompt_messages: " + prompt_messages[0].content)
+            print("Prompt_messages: " + prompt_messages[0].content)
             response = conversation.predict(input=prompt_messages[0].content)
             output_dict = output_parser.parse(response)
             # print(response)
-            print(output_dict)
+            print("output_dict: " + str(output_dict))
             cost["Total Tokens"] = cb.total_tokens
             cost["Prompt Tokens"] = cb.prompt_tokens
             cost["Completion Tokens"] = cb.completion_tokens

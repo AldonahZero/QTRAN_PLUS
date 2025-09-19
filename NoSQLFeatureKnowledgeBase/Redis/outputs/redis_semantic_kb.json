@@ -7,7 +7,7 @@
       "tag": "BitopRule0->elem"
     },
     {
-      "args": {
+      "argszrandmember": {
         "after": "{.parent.rsib(1).child(0)@id}"
       },
       "tag": "GeoSearchStoreRule1->elem"
