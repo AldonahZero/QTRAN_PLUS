@@ -15,6 +15,7 @@
 
 import pymysql
 from sqlalchemy import text, exc, PoolProxiedConnection
+import redis  # redis-py client
 import json
 from sqlalchemy.exc import OperationalError
 import time
@@ -208,6 +209,10 @@ def exec_sql_statement(tool, exp, dbType, sql_statement):
     args = get_database_connector_args(dbType.lower())
 
     args["dbname"] = f"{tool}_{exp}_{dbType}".lower() if "tlp" not in exp else f"{tool}_tlp_{dbType}".lower()
+    # Redis 特殊处理：走单独的执行函数（不使用 SQLAlchemy）
+    if dbType.lower() == "redis":
+        return exec_redis_command(args, tool, exp, sql_statement)
+
     # 先检查容器是否打开，即数据库是否能正常链接，如果没有正常链接则打开容器
     pool = DatabaseConnectionPool(args["dbType"], args["host"], args["port"], args["username"], args["password"], args["dbname"])
 
@@ -216,6 +221,119 @@ def exec_sql_statement(tool, exp, dbType, sql_statement):
     result, exec_time, error_message = pool.execSQL(sql_statement)
     pool.close()
     return result, exec_time, error_message
+
+
+def exec_redis_command(conn_args, tool, exp, redis_command):
+    """
+    执行 Redis 命令，返回统一三元组：(标准化结果, 耗时, 错误)。
+
+    约定：
+    - redis_command: 单条命令文本，支持简单多空格，区分大小写不敏感。
+    - 返回的 result 结构：dict: {"type": <str>, "value": <JSON-able>} 或 None。
+    - 错误时 result=None, time=0, error=错误字符串。
+    - 不支持管道/多条以分号分隔的复合命令（可后续扩展）。
+    """
+    if redis is None:
+        return None, 0, "redis library not installed"
+    start = time.time()
+    try:
+        host = conn_args.get("host", "127.0.0.1")
+        port = int(conn_args.get("port", 6379))
+        username = conn_args.get("username") or None
+        password = conn_args.get("password") or None
+        # 建立连接（短连接模式；如需性能可加入连接池/全局缓存）
+        client = redis.Redis(host=host, port=port, username=username, password=password, decode_responses=False)
+
+        # 解析命令：按空白切分，首元素为命令
+        if not redis_command or not redis_command.strip():
+            return {"type": "empty", "value": None}, 0, None
+        # 去掉结尾可能的分号
+        cmd_text = redis_command.strip()
+        if cmd_text.endswith(';'):
+            cmd_text = cmd_text[:-1]
+        parts = cmd_text.split()
+        if not parts:
+            return {"type": "empty", "value": None}, 0, None
+        command = parts[0].upper()
+        args = parts[1:]
+
+        # 定义一个执行并标准化的内部函数
+        def wrap_value(raw):
+            # bytes -> utf-8 str; list/tuple -> 递归; set -> list 排序; int/float 直接
+            def convert(v):
+                if isinstance(v, bytes):
+                    try:
+                        return v.decode('utf-8')
+                    except Exception:
+                        return v.hex()
+                if isinstance(v, (list, tuple)):
+                    return [convert(x) for x in v]
+                if isinstance(v, set):
+                    return sorted([convert(x) for x in v])
+                if isinstance(v, dict):
+                    return {convert(k): convert(val) for k, val in v.items()}
+                return v
+            cv = convert(raw)
+            value_type = (
+                "null" if cv is None else
+                "int" if isinstance(cv, int) else
+                "float" if isinstance(cv, float) else
+                "list" if isinstance(cv, list) else
+                "dict" if isinstance(cv, dict) else
+                "str"
+            )
+            return {"type": value_type, "value": cv}
+
+        # 基于常见命令做分派；其它命令使用 generic execute_command
+        result_raw = None
+        if command in {"GET", "SET", "DEL", "EXISTS", "INCR", "DECR", "LLEN", "PING"}:
+            if command == "GET":
+                result_raw = client.get(*args)
+            elif command == "SET":
+                # SET key value -> True/False
+                result_raw = client.set(*args)
+            elif command == "DEL":
+                result_raw = client.delete(*args)
+            elif command == "EXISTS":
+                result_raw = client.exists(*args)
+            elif command == "INCR":
+                result_raw = client.incr(*args)
+            elif command == "DECR":
+                result_raw = client.decr(*args)
+            elif command == "LLEN":
+                result_raw = client.llen(*args)
+            elif command == "PING":
+                result_raw = client.ping()
+        elif command in {"LRANGE"}:
+            # LRANGE key start stop
+            if len(args) != 3:
+                raise ValueError("LRANGE requires 3 arguments: key start stop")
+            result_raw = client.lrange(args[0], int(args[1]), int(args[2]))
+        elif command in {"SMEMBERS"}:
+            result_raw = client.smembers(*args)
+        elif command in {"SISMEMBER"}:
+            if len(args) != 2:
+                raise ValueError("SISMEMBER requires key member")
+            result_raw = client.sismember(args[0], args[1])
+        elif command in {"HGETALL"}:
+            result_raw = client.hgetall(*args)
+        elif command in {"HGET"}:
+            if len(args) != 2:
+                raise ValueError("HGET requires key field")
+            result_raw = client.hget(args[0], args[1])
+        else:
+            # 回退：尝试直接执行底层命令（可能失败）
+            try:
+                result_raw = client.execute_command(command, *args)
+            except Exception as e:
+                # 未知命令直接返回错误
+                return None, 0, f"Unsupported or failed command '{command}': {e}"
+
+        exec_time = time.time() - start
+        norm = wrap_value(result_raw)
+        return norm, exec_time, None
+    except Exception as e:
+        return None, 0, str(e)
 
 
 def run_with_timeout(func, timeout, *args, **kwargs):
