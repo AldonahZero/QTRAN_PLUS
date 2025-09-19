@@ -435,8 +435,14 @@ def get_NoSQL_knowledge_string(origin_db, target_db, with_knowledge, sql_stateme
                     if example_snippet:
                         knowledge_string += f"Example: {example_snippet}\n"
                     knowledge_string += "\n"
+
+                # 避免 LLM 臆造任意表名
+                # 仅当目标是典型关系型数据库（如 postgres / mysql / mariadb / tidb / sqlite / duckdb / clickhouse / monetdb / postgres 等）时注入
+                relational_targets = {"postgres", "mysql", "mariadb", "tidb", "sqlite", "duckdb", "clickhouse", "monetdb"}
+                if str(target_db).lower() in relational_targets:
+                    knowledge_string += "You MUST NOT invent other table names my_table.\n"
             else:
-                knowledge_string += "[Redis Feature Knowledge] (file not found)\n"
+                knowledge_string += "Knowl file not found\n"
         except Exception as e:
             knowledge_string = ""
         # Redis 当前不使用 mapping_indexes（命令之间暂未建立映射对），直接返回
