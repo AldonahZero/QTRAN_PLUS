@@ -48,8 +48,11 @@ def run_command(command, capture_output=True, shell=True):
         else:
             # shell=False 时传递列表
             result = subprocess.run(command, text=True, capture_output=capture_output, shell=False)
-    print(f"命令输出: {result.stdout}")
-    print(f"命令错误: {result.stderr}")
+    # 仅在有内容（非空白）时才打印输出/错误，避免日志中出现大量空行
+    if result.stdout and result.stdout.strip():
+        print(f"命令输出: {result.stdout}")
+    if result.stderr and result.stderr.strip():
+        print(f"命令错误: {result.stderr}")
     print('---------------------------------------------------')
     return result
 
@@ -172,7 +175,7 @@ def docker_create_databases(tool, exp, dbType):
         print(f"标准输出: {e.output}")
         print(f"标准错误: {e.stderr}")
 
-
+ 
 def run_container(tool, exp, dbType):
     """
     尝试启动或恢复指定类型的容器实例。

@@ -409,7 +409,6 @@ def get_NoSQL_knowledge_string(origin_db, target_db, with_knowledge, sql_stateme
                         return 10**9
                 matched = sorted(list(dict.fromkeys(matched)), key=first_pos)
 
-                knowledge_string += "[Redis Feature Knowledge]\n"
                 if not matched:
                     knowledge_string += "(no command keyword matched in input statement; showing fallback examples)\n"
                     # 回退挑选常见命令，避免 prompt 为空
@@ -668,7 +667,7 @@ def transfer_llm(tool, exp, conversation, error_iteration, iteration_num, FewSho
         cost = {}
         with (get_openai_callback() as cb):
             print("Prompt_messages: " + prompt_messages[0].content)
-            print("Prompt_messages: " + prompt_messages[0].content)
+            # print("Prompt_messages: " + prompt_messages[0].content)
             response = conversation.predict(input=prompt_messages[0].content)
             output_dict = output_parser.parse(response)
             # print(response)

@@ -387,8 +387,11 @@ def evaluate(tool,temperature, model,error_iteration,iteration_num,FewShot,with_
         "error": None
     }
 
-    output_mutate_dic = os.path.join(sqlancer_output_mutate_dic, fuzzer, (a_db + "_to_" + b_db).lower())
-    output_mutate_dic_ = os.path.join(sqlancer_output_mutate_dic_, fuzzer, (a_db + "_to_" + b_db).lower())
+    # output_mutate_dic = os.path.join(sqlancer_output_mutate_dic, fuzzer, (a_db + "_to_" + b_db).lower())
+    # output_mutate_dic_ = os.path.join(sqlancer_output_mutate_dic_, fuzzer, (a_db + "_to_" + b_db).lower())
+    output_mutate_dic = os.path.join("sqlancer_output_mutate_dic", fuzzer, (a_db + "_to_" + b_db).lower())
+    output_mutate_dic_ = os.path.join("sqlancer_output_mutate_dic_", fuzzer, (a_db + "_to_" + b_db).lower())
+
 
     files = os.listdir(output_mutate_dic)
     for file in files:

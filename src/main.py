@@ -46,7 +46,7 @@ def qtran_run(input_filename, tool, temperature=0.3, model="gpt-4o-mini", error_
         print(tool + " hasn't been supported.")
         return
     fuzzers = ["norec", "tlp", "pinolo", "dqe"]
-    dbs = ["clickhouse", "duckdb", "mariadb", "monetdb", "mysql", "postgres", "sqlite", "tidb"]
+    dbs = ["clickhouse", "duckdb", "mariadb", "monetdb", "mysql", "postgres", "sqlite", "tidb", "redis"]
     # 可选：通过环境变量跳过 Docker 初始化（快速校验模式）
     if os.environ.get("QTRAN_SKIP_DOCKER", "0") != "1":
         for db in dbs:
