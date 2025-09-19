@@ -254,9 +254,14 @@ def exec_sql_statement(tool, exp, dbType, sql_statement):
     args = get_database_connector_args(dbType.lower())
 
     args["dbname"] = f"{tool}_{exp}_{dbType}".lower() if "tlp" not in exp else f"{tool}_tlp_{dbType}".lower()
+    
+    nosql_targets = {"redis", "mongodb"}
     # Redis 特殊处理：走单独的执行函数（不使用 SQLAlchemy）
-    if dbType.lower() == "redis":
-        return exec_redis_command(args, tool, exp, sql_statement)
+    if dbType.lower() in nosql_targets:
+        if dbType.lower() == "redis":
+            return exec_redis_command(args, tool, exp, sql_statement)
+        elif dbType.lower() == "mongodb":
+            return exec_mongodb_command(args, tool, exp, sql_statement)
 
     # 先检查容器是否打开，即数据库是否能正常链接，如果没有正常链接则打开容器
     pool = DatabaseConnectionPool(args["dbType"], args["host"], args["port"], args["username"], args["password"], args["dbname"])
@@ -379,6 +384,144 @@ def exec_redis_command(conn_args, tool, exp, redis_command):
         return norm, exec_time, None
     except Exception as e:
         return None, 0, str(e)
+
+
+def exec_mongodb_command(conn_args, tool, exp, mongo_command):
+    """执行 MongoDB Shell 风格命令，返回 (标准化结果, 耗时, 错误)。
+
+    支持基本形式：
+      db.<collection>.insertOne({...});
+      db.<collection>.find({...});
+      db.<collection>.deleteOne({...});
+      db.<collection>.updateOne({filter},{update});
+
+    解析容错：
+      - 允许 { key: 'v'} 形式，自动补引号 / 单引号替换。
+      - 若 collection == collectionName (占位符) 则提示错误。
+      - 不支持聚合 / 复杂链式（可后续扩展）。
+    """
+    try:
+        from pymongo import MongoClient
+    except ImportError:
+        return None, 0, "pymongo not installed"
+
+    if not mongo_command or not mongo_command.strip():
+        return {"type": "empty", "value": None}, 0, None
+
+    cmd = mongo_command.strip().rstrip(';')
+    start = time.time()
+    if not cmd.startswith("db."):
+        return None, 0, f"unsupported mongodb command form: {cmd}"
+
+    # 解析 db.<coll>.<op>(...)
+    body = cmd[3:]
+    if '.' not in body:
+        return None, 0, f"malformed mongodb command: {cmd}"
+    coll, rest = body.split('.', 1)
+    collection = coll.strip()
+    if collection.lower() == "collectionname":
+        return None, 0, "placeholder collectionName not replaced"
+    if '(' not in rest:
+        return None, 0, f"malformed operation segment: {rest}"
+    op_name = rest.split('(', 1)[0].strip()
+    args_part = rest[len(op_name):].strip()
+    if not args_part.startswith('(') or not args_part.endswith(')'):
+        return None, 0, f"malformed arguments: {args_part}"
+    inner = args_part[1:-1].strip()  # 去掉括号
+
+    # 拆分两个 JSON（只针对 updateOne(filter,update)）
+    filter_doc = update_doc = None
+    try:
+        if op_name == 'updateOne':
+            # 简单括号层次拆分，假设不嵌套逗号。可后续改为计数法。
+            depth = 0
+            split_idx = -1
+            for i, ch in enumerate(inner):
+                if ch == '{':
+                    depth += 1
+                elif ch == '}':
+                    depth -= 1
+                elif ch == ',' and depth == 0:
+                    split_idx = i
+                    break
+            if split_idx == -1:
+                return None, 0, "updateOne requires two JSON arguments"
+            filter_raw = inner[:split_idx].strip()
+            update_raw = inner[split_idx+1:].strip()
+            filter_doc = _parse_mongo_json_like(filter_raw)
+            update_doc = _parse_mongo_json_like(update_raw)
+        elif op_name in {'insertOne', 'find', 'deleteOne'}:
+            arg_raw = inner.strip()
+            if arg_raw == '' and op_name == 'find':
+                filter_doc = {}
+            else:
+                filter_doc = _parse_mongo_json_like(arg_raw)
+        else:
+            return None, 0, f"unsupported operation: {op_name}"
+    except ValueError as ve:
+        return None, 0, f"json parse error: {ve}"
+
+    # 连接
+    host = conn_args.get('host', '127.0.0.1')
+    port = int(conn_args.get('port', 27017))
+    username = conn_args.get('username') or None
+    password = conn_args.get('password') or None
+    dbname = conn_args['dbname']
+    if username and password:
+        uri = f"mongodb://{username}:{password}@{host}:{port}/"
+    else:
+        uri = f"mongodb://{host}:{port}/"
+    try:
+        client = MongoClient(uri, serverSelectionTimeoutMS=3000)
+        db = client[dbname]
+        coll_ref = db[collection]
+        if op_name == 'insertOne':
+            res = coll_ref.insert_one(filter_doc)
+            out = {"type": "insertOne", "value": {"inserted_id": str(res.inserted_id)}}
+        elif op_name == 'find':
+            docs = []
+            for d in coll_ref.find(filter_doc):
+                d['_id'] = str(d['_id'])
+                docs.append(d)
+            out = {"type": "find", "value": docs}
+        elif op_name == 'deleteOne':
+            res = coll_ref.delete_one(filter_doc)
+            out = {"type": "deleteOne", "value": {"deleted_count": res.deleted_count}}
+        elif op_name == 'updateOne':
+            res = coll_ref.update_one(filter_doc, update_doc)
+            out = {"type": "updateOne", "value": {"matched": res.matched_count, "modified": res.modified_count}}
+        else:
+            return None, 0, f"unsupported operation: {op_name}"
+        return out, time.time() - start, None
+    except Exception as e:
+        return None, 0, str(e)
+
+
+def _parse_mongo_json_like(src: str):
+    """宽松解析 形如 { a: 'b', c: 1 } 的 JSON-like 字符串 -> Python dict。
+    步骤：
+      1. 去掉首尾空白
+      2. 单引号替换为双引号
+      3. 给未加引号的 key 补双引号（正则）
+      4. json.loads
+    失败抛 ValueError
+    """
+    import json as _json
+    import re as _re
+    s = src.strip()
+    if not s:
+        return {}
+    # 容许直接 {}
+    # 简单保护：如果不是以 { 开头以 } 结尾，则视为语法错误
+    if not (s.startswith('{') and s.endswith('}')):
+        raise ValueError(f"not an object literal: {s}")
+    s = s.replace("'", '"')
+    # 引号补全：在 { 或 , 后跟可能的 key (非引号开头) 到 冒号 前加引号
+    s = _re.sub(r'([,{]\s*)([A-Za-z_][A-Za-z0-9_]*)(\s*:)','\1"\2"\3', s)
+    try:
+        return _json.loads(s)
+    except Exception as e:
+        raise ValueError(str(e))
 
 
 def run_with_timeout(func, timeout, *args, **kwargs):

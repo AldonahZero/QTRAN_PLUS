@@ -146,7 +146,7 @@
         "enter_container": ["docker", "exec", "mongodb_QTRAN"],
         "login_in": ["mongosh", "--username", "{username}", "--password", "{password}", "--authenticationDatabase", "admin", "--eval"],
         "create_databases": [
-            "db = db.getSiblingDB('{dbname}'); db.test_col.insertOne({test:1}); db.getCollectionNames();"
+            "db = db.getSiblingDB('{dbname}'); db.getCollectionNames();"
         ]
     }
 }
