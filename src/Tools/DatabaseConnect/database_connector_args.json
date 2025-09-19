@@ -74,8 +74,9 @@
         "dbType": "mongodb",
         "host": "127.0.0.1",
         "port": 27017,
-        "username": "",
-        "password": ""
+        "container_port": 27017,
+        "username": "root",
+        "password": "123456"
     },
     "redis": {
         "container_name": "redis_QTRAN",

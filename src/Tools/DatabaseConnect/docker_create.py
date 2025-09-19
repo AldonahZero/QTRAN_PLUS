@@ -174,6 +174,23 @@ def docker_create_databases(tool, exp, dbType):
                     # 字符串形式的命令，通过 shell 执行
                     run_command(commands_formatted["enter_container"] + ["sh", "-c", cmd])
 
+        elif dbType.lower() == "mongodb":
+            # pull image
+            if not check_image_exists(commands_formatted["docker_name"]):
+                run_command(commands_formatted["pull_docker"])
+            # run container
+            if not is_container_running(commands_formatted["container_name"]):
+                run_command(commands_formatted["run_container"])
+                time.sleep(8)  # 给 mongod 一点启动时间
+            # 执行初始化 JS 语句（使用 mongosh --eval）
+            for js in commands_formatted.get("create_databases", []):
+                if isinstance(js, list):
+                    # 若以后需要拆分成数组形式，可在配置中放 list
+                    run_command(commands_formatted["enter_container"] + js)
+                elif isinstance(js, str):
+                    # login_in 已包含 --eval，因此拼接 login_in + [js]
+                    run_command(commands_formatted["enter_container"] + commands_formatted["login_in"] + [js])
+
         else:
             # pull_docker
             if not check_image_exists(commands_formatted["docker_name"]):

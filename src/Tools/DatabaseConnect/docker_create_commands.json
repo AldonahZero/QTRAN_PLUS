@@ -131,5 +131,22 @@
             "CREATE DATABASE IF NOT EXISTS {dbname};",
             "SHOW DATABASES;"
         ]
+    },
+    "mongodb": {
+        "docker_name": "mongo:7.0",
+        "pull_docker": ["docker", "pull", "mongo:7.0"],
+        "container_name": "mongodb_QTRAN",
+        "run_container": [
+            "docker", "run", "-d", "--name", "mongodb_QTRAN",
+            "-p", "{port}:{container_port}",
+            "-e", "MONGO_INITDB_ROOT_USERNAME={username}",
+            "-e", "MONGO_INITDB_ROOT_PASSWORD={password}",
+            "mongo:7.0"
+        ],
+        "enter_container": ["docker", "exec", "mongodb_QTRAN"],
+        "login_in": ["mongosh", "--username", "{username}", "--password", "{password}", "--authenticationDatabase", "admin", "--eval"],
+        "create_databases": [
+            "db = db.getSiblingDB('{dbname}'); db.test_col.insertOne({test:1}); db.getCollectionNames();"
+        ]
     }
 }
