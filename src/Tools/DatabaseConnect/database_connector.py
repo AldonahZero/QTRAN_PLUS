@@ -192,6 +192,33 @@ def database_clear(tool, exp, dbType):
         except Exception as e:
             print("Redis 清理失败:", e)
         return
+    elif dbType.lower() == "mongodb":
+        # MongoDB: 删除整个数据库（如果存在）
+        try:
+            try:
+                from pymongo import MongoClient  # 延迟导入，避免未安装时崩溃
+            except ImportError:
+                print("pymongo 未安装，无法清理 mongodb 数据库")
+                return
+            host = args.get("host", "127.0.0.1")
+            port = int(args.get("port", 27017))
+            username = args.get("username") or None
+            password = args.get("password") or None
+            # 构建连接 URI（支持无认证与用户密码）
+            if username and password:
+                uri = f"mongodb://{username}:{password}@{host}:{port}/admin"
+            else:
+                uri = f"mongodb://{host}:{port}/"
+            client = MongoClient(uri, serverSelectionTimeoutMS=3000)
+            dbname = args["dbname"]
+            if dbname in client.list_database_names():
+                client.drop_database(dbname)
+                print(f"{dbname} (mongodb) 已删除")
+            else:
+                print(f"{dbname} (mongodb) 不存在")
+        except Exception as e:
+            print("MongoDB 清理失败:", e)
+        return
     elif dbType.lower() in ["duckdb"]:
         db_filepath = os.path.join(current_dir, f'{args["dbname"]}.duckdb')
         if os.path.exists(db_filepath):

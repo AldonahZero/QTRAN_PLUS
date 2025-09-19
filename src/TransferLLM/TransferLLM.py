@@ -439,8 +439,11 @@ def get_NoSQL_knowledge_string(origin_db, target_db, with_knowledge, sql_stateme
                 # 避免 LLM 臆造任意表名
                 # 仅当目标是典型关系型数据库（如 postgres / mysql / mariadb / tidb / sqlite / duckdb / clickhouse / monetdb / postgres 等）时注入
                 relational_targets = {"postgres", "mysql", "mariadb", "tidb", "sqlite", "duckdb", "clickhouse", "monetdb"}
+                nosql_targets = {"redis", "mongodb"}
                 if str(target_db).lower() in relational_targets:
                     knowledge_string += "You MUST NOT invent other table names. Always reuse tab_0 tab_1.\n"
+                elif str(target_db).lower() in nosql_targets:
+                    knowledge_string = ""
             else:
                 knowledge_string += "Knowl file not found\n"
         except Exception as e:
