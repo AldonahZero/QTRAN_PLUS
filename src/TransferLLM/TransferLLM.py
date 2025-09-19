@@ -623,7 +623,7 @@ def transfer_llm(tool, exp, conversation, error_iteration, iteration_num, FewSho
     error_messages = []
     exec_equalities = []
     # 执行origin sql得到结果，并和得到的所有transfer sql结果依次进行比对，确定执行结果是否相同，将对比结果存储到exec_same中
-    # origin_exec_result, origin_exec_time, origin_error_message = exec_sql_statement(tool, exp, origin_db, sql_statement)
+    origin_exec_result, origin_exec_time, origin_error_message = exec_sql_statement(tool, exp, origin_db, sql_statement)
 
     conversation_cnt = 0  # conversation_cnt = 0:初始第一条prompt
     # 边界1：达到最大迭代次数
