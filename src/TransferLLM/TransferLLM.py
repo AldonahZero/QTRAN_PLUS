@@ -678,6 +678,7 @@ def transfer_llm(tool, exp, conversation, error_iteration, iteration_num, FewSho
             print("Prompt_messages: " + prompt_messages[0].content)
             # print("Prompt_messages: " + prompt_messages[0].content)
             response = conversation.predict(input=prompt_messages[0].content)
+            print("output_dict_response: " + response)
             output_dict = output_parser.parse(response)
             # print(response)
             print("output_dict: " + str(output_dict))

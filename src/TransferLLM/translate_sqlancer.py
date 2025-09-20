@@ -337,6 +337,9 @@ def getSuspicious(input_filepath, tool):
         contents = []
         for line in lines:
             contents.append(json.loads(line))
+        # end False：不满足等价 / 不变量
+        # error None：且不是执行失败（exec fail / transfer fail）
+        # 即逻辑层差异
         if contents[-1]["OracleCheck"]["end"] == False and contents[-1]["OracleCheck"]["error"] == None:
             original_sqls = []
             results_sqls = []
