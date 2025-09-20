@@ -80,11 +80,18 @@ def build_mutations(group: str, cmd: str, args):
             (f"SREM {key} member_mut", 'inverse', 'cardinality_minus_one_or_zero'),
         ])
     elif group == 'zset':
+        # richer zset probes: both forward and reverse ranges, counts and score probes
         muts.extend([
             (f"ZCARD {key}", 'probe', 'cardinality_probe'),
             (f"ZADD {key} 1 member_mut", 'idempotent_extend', 'cardinality_plus_one_or_same'),
             (f"ZRANGE {key} 0 -1 WITHSCORES", 'probe', 'ordering_consistent'),
+            (f"ZREVRANGE {key} 0 -1 WITHSCORES", 'probe', 'ordering_consistent_reverse'),
+            (f"ZCOUNT {key} -inf +inf", 'probe', 'cardinality_probe'),
+            (f"ZRANGE {key} 0 10 WITHSCORES", 'probe', 'ordering_prefix'),
+            (f"ZREVRANGE {key} 0 10 WITHSCORES", 'probe', 'ordering_prefix_reverse'),
             (f"ZREM {key} member_mut", 'inverse', 'cardinality_minus_one_or_zero'),
+            (f"ZSCORE {key} member_mut", 'probe', 'score_probe'),
+            (f"ZRANK {key} member_mut", 'probe', 'rank_probe'),
         ])
     elif group == 'ttl':
         muts.extend([
