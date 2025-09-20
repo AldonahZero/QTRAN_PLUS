@@ -1,1 +1,1 @@
-{"index": 592, "a_db": "duckdb", "b_db": "redis", "molt": "tlp (where)", "sql": "SELECT SIN(1e1000); -- -nan"}
+{"index": 592, "a_db": "duckdb", "b_db": "redis", "molt": "semantic", "sql": "SELECT SIN(1e1000); -- -nan"}
