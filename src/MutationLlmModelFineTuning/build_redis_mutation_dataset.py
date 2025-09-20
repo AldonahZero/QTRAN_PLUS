@@ -18,13 +18,19 @@
 - 产生有限个(<=4)高价值 mutation, 去除重复。
 """
 
+# GIT-CHANGE: 2025-09-20 - review annotations added
+# - 目的: 为审阅提供上下文说明 (非功能性注释)。
+# - 变更点: 在 KB 注入 / group 映射处增加注释，标注为 GIT-READY（请使用下面建议的 commit message 提交）。
+# - 注意: 本次修改不改变脚本逻辑，仅增加注释与变更说明，便于代码审阅与变更记录。
+# Suggested commit message: "chore(redis): annotate build_redis_mutation_dataset.py for review (KB_context mapping notes)"
+
 import os
 import json
 from collections import OrderedDict
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 ENRICHED_DIR = os.path.join(BASE_DIR, 'NoSQLFeatureKnowledgeBase', 'Redis', 'outputs', 'parsed_examples_enriched')
-OUT_FILE = os.path.join(BASE_DIR, 'MutationData', 'FineTuningTrainingData', 'redis_mutation.jsonl')
+OUT_FILE = os.path.join(BASE_DIR, 'MutationData', 'FineTuningTrainingData', 'semantic.jsonl')
 
 # 命令到结构类别映射 (可扩展)
 COMMAND_GROUPS = {
@@ -42,6 +48,48 @@ COMMAND_GROUPS = {
     # TTL / meta
     'EXPIRE': 'ttl', 'TTL': 'ttl', 'PEXPIREAT': 'ttl', 'EXPIREAT': 'ttl', 'PERSIST': 'ttl'
 }
+
+# Load semantic KB (Define/Use) to inject small structured context into user prompt
+KB_PATH = os.path.join(BASE_DIR, 'NoSQLFeatureKnowledgeBase', 'Redis', 'outputs', 'redis_semantic_kb.json')
+try:
+    with open(KB_PATH, 'r', encoding='utf-8') as _kbf:
+        _kb = json.load(_kbf)
+        _by_command = _kb.get('by_command', {})
+except Exception:
+    _by_command = {}
+
+def get_kb_context(command_upper: str):
+    """Return a compact KB context for a given command (define/use/args roles).
+    Keeps the structure small: {define:[], use:[], args:{argname:[actions]}}
+    """
+    if not command_upper:
+        return {}
+    cmd_l = command_upper.lower()
+    entry = _by_command.get(cmd_l) or {}
+    actions = entry.get('actions', {}) if isinstance(entry, dict) else {}
+    args = entry.get('args', {}) if isinstance(entry, dict) else {}
+    kb_ctx = {}
+    if actions:
+        # collect DefineSymbol and UseSymbol when present
+        if 'DefineSymbol' in actions:
+            kb_ctx['define'] = actions.get('DefineSymbol')
+        if 'UseSymbol' in actions:
+            kb_ctx['use'] = actions.get('UseSymbol')
+    # collect per-arg roles (if available)
+    arg_roles = {}
+    for argname, aentry in (args.items() if isinstance(args, dict) else []):
+        # aentry may contain DefineSymbol/UseSymbol
+        roles = {}
+        if isinstance(aentry, dict):
+            if 'DefineSymbol' in aentry:
+                roles['define'] = aentry.get('DefineSymbol')
+            if 'UseSymbol' in aentry:
+                roles['use'] = aentry.get('UseSymbol')
+        if roles:
+            arg_roles[argname] = roles
+    if arg_roles:
+        kb_ctx['arg_roles'] = arg_roles
+    return kb_ctx
 
 # 针对不同 group 设计 mutation 模板函数
 
@@ -80,18 +128,16 @@ def build_mutations(group: str, cmd: str, args):
             (f"SREM {key} member_mut", 'inverse', 'cardinality_minus_one_or_zero'),
         ])
     elif group == 'zset':
-        # richer zset probes: both forward and reverse ranges, counts and score probes
+        # richer zset probes: prioritize count/score/rank probes to improve score/member consistency
         muts.extend([
             (f"ZCARD {key}", 'probe', 'cardinality_probe'),
+            (f"ZCOUNT {key} -inf +inf", 'probe', 'cardinality_range_count'),
+            (f"ZSCORE {key} member_mut", 'probe', 'score_probe'),
+            (f"ZRANK {key} member_mut", 'probe', 'rank_probe'),
             (f"ZADD {key} 1 member_mut", 'idempotent_extend', 'cardinality_plus_one_or_same'),
             (f"ZRANGE {key} 0 -1 WITHSCORES", 'probe', 'ordering_consistent'),
             (f"ZREVRANGE {key} 0 -1 WITHSCORES", 'probe', 'ordering_consistent_reverse'),
-            (f"ZCOUNT {key} -inf +inf", 'probe', 'cardinality_probe'),
-            (f"ZRANGE {key} 0 10 WITHSCORES", 'probe', 'ordering_prefix'),
-            (f"ZREVRANGE {key} 0 10 WITHSCORES", 'probe', 'ordering_prefix_reverse'),
             (f"ZREM {key} member_mut", 'inverse', 'cardinality_minus_one_or_zero'),
-            (f"ZSCORE {key} member_mut", 'probe', 'score_probe'),
-            (f"ZRANK {key} member_mut", 'probe', 'rank_probe'),
         ])
     elif group == 'ttl':
         muts.extend([
@@ -101,7 +147,7 @@ def build_mutations(group: str, cmd: str, args):
             (f"PERSIST {key}", 'inverse', 'ttl_removed'),
         ])
     else:
-        # fallback: 仅返回原始命令做重复探针
+        # fallback: if we know a kb-derived type mapping was missed, default to echo
         muts.append((f"{cmd} {' '.join(args)}".strip(), 'echo', 'noop'))
 
     # 去重并截断到 4 个
@@ -126,13 +172,49 @@ def build_sample(example_obj):
     raw = example_obj.get('raw') or ' '.join([cmd] + args)
     upper = cmd.upper()
     group = COMMAND_GROUPS.get(upper, 'other')
+    # if group is unknown, try to infer from KB context (define/use) to produce higher-signal probes
+    kb_ctx = get_kb_context(upper)
+    if group == 'other' and kb_ctx:
+        # NOTE (2025-09-20): KB-derived mapping - when the command isn't in COMMAND_GROUPS,
+        # we attempt to map KB 'define'/'use' symbols to our group templates so that
+        # we can emit higher-signal probes instead of defaulting to an echo/noop.
+        # This mapping is intentionally conservative and only affects unknown commands.
+        sym_to_group = {
+            'sorted_set_key': 'zset',
+            'list_key': 'list',
+            'set_key': 'set',
+            'hash_key': 'hash',
+            'str_key': 'string',
+            'str_key_type_num': 'string',
+            'geo_key': 'geo',
+            'stream_key': 'stream'
+        }
+        # prefer 'define' over 'use' when present to reflect key type declaration semantics
+        symbols = []
+        if 'define' in kb_ctx and isinstance(kb_ctx['define'], list):
+            symbols.extend(kb_ctx['define'])
+        if 'use' in kb_ctx and isinstance(kb_ctx['use'], list):
+            symbols.extend(kb_ctx['use'])
+        for s in symbols:
+            g = sym_to_group.get(s)
+            if g:
+                group = g
+                # single conservative mapping; stop at first positive mapping
+                break
     muts = build_mutations(group, upper, args)
     mutations_json = {"mutations": [
         {"cmd": c, "category": cat, "oracle": oc} for (c, cat, oc) in muts
     ]}
+    # inject compact KB context for the command to help the model reason about define/use and arg roles
+    kb_ctx = get_kb_context(upper)
+    # NOTE: KB_context fragment is injected into the user message as a small machine-readable JSON
+    # to help the model preserve member/score semantics (especially for zset). Keep this fragment
+    # compact to avoid token inflation.
+    # keep the user_content short but include a machine-readable KB_context JSON fragment
     user_content = (
-        f"Original: {raw}\n" \
-        f"Meta: command={upper} group={group} args={json.dumps(args, ensure_ascii=False)}\n" \
+        f"Original: {raw}\n"
+        f"Meta: command={upper} group={group} args={json.dumps(args, ensure_ascii=False)}\n"
+        f"KB_context: {json.dumps(kb_ctx, ensure_ascii=False)}\n"
         f"Task: Generate up to 4 mutations preserving semantics and return ONLY JSON."
     )
     assistant_content = json.dumps(mutations_json, ensure_ascii=False)

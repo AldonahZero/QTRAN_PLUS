@@ -16,28 +16,34 @@ The explanations for the **fine-tuning commands** are as follows:
 | `--training_data_file` | The fine-tuning training set built for NoREC, TLP, PINOLO, and DQE.                                               |
 | `--suffix`             | A suffix used to add to the fine-tuned model, which identifies a specific version or use of the fine-tuned model. |
 
+Fine-tune for Semantic:
+
+```shell
+python -m src.MutationLlmModelFineTuning.FineTuning_MutationLLM --api_key "$OPENAI_API_KEY" --training_data_filename "MutationData/FineTuningTrainingData/semantic.jsonl" --suffix "semantic"
+```
+
 Fine-tune for NoREC:
 
 ```shell
-python -m src.MutationLlmModelFineTuning.FineTuning_MutationLLM --api_key %OPENAI_API_KEY% --training_data_filename "MutationData/FineTuningTrainingData/norec.jsonl" --suffix "norec"
+python -m src.MutationLlmModelFineTuning.FineTuning_MutationLLM --api_key "$OPENAI_API_KEY" --training_data_filename "MutationData/FineTuningTrainingData/norec.jsonl" --suffix "norec"
 ```
 
 Fine-tune for TLP:
 
 ```shell
-python -m src.MutationLlmModelFineTuning.FineTuning_MutationLLM --api_key %OPENAI_API_KEY% --training_data_filename "MutationData/FineTuningTrainingData/tlp.jsonl" --suffix "tlp"
+python -m src.MutationLlmModelFineTuning.FineTuning_MutationLLM --api_key $OPENAI_API_KEY% --training_data_filename "MutationData/FineTuningTrainingData/tlp.jsonl" --suffix "tlp"
 ```
 
 Fine-tune for PINOLO:
 
 ```shell
-python -m src.MutationLlmModelFineTuning.FineTuning_MutationLLM --api_key %OPENAI_API_KEY% --training_data_filename "MutationData/FineTuningTrainingData/pinolo.jsonl" --suffix "pinolo"
+python -m src.MutationLlmModelFineTuning.FineTuning_MutationLLM --api_key "$OPENAI_API_KEY"  --training_data_filename "MutationData/FineTuningTrainingData/pinolo.jsonl" --suffix "pinolo"
 ```
 
 Fine-tune for DQE:
 
 ```shell
-python -m src.MutationLlmModelFineTuning.FineTuning_MutationLLM --api_key %OPENAI_API_KEY% --training_data_filename "MutationData/FineTuningTrainingData/dqe.jsonl" --suffix "dqe"
+python -m src.MutationLlmModelFineTuning.FineTuning_MutationLLM --api_key "$OPENAI_API_KEY"  --training_data_filename "MutationData/FineTuningTrainingData/dqe.jsonl" --suffix "dqe"
 ```
 
 **Fine-tuning will take some time, so make sure to record the `Fine-tuning Job ID` generated after running the above command. You can use the following command to check the fine-tuning stage.**
@@ -47,7 +53,7 @@ python -m src.MutationLlmModelFineTuning.FineTuning_MutationLLM --api_key %OPENA
 Use the following command and the `Fine-tuning Job ID` obtained to check the completion stage of the fine-tuning tasks.
 
 ```shell
-python -m src.MutationLlmModelFineTuning.FineTuning_MutationLLM --api_key %OPENAI_API_KEY% --job_id ${Fine-tuning Job ID}
+python -m src.MutationLlmModelFineTuning.FineTuning_MutationLLM --api_key "$OPENAI_API_KEY"  --job_id ${Fine-tuning Job ID}
 ```
 
 The explanation for the command is as follows:
@@ -65,5 +71,3 @@ The fine_tuned_model ID is: ${Fine-tuned Model ID}.
 ```
 
 Please record the `fine_tuned_model ID` to run QTRAN Mutation LLM later.
-
-
