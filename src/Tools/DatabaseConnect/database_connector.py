@@ -255,6 +255,78 @@ def database_clear(tool, exp, dbType):
         except Exception as e:
             print("MongoDB 清理失败:", e)
         return
+    elif dbType.lower() == "memcached":
+        # 直接 flush_all
+        try:
+            import socket as _s
+
+            host = args.get("host", "127.0.0.1")
+            port = int(args.get("port", 11211))
+            with _s.create_connection((host, port), timeout=3) as sk:
+                sk.sendall(b"flush_all\r\n")
+                resp = sk.recv(128).decode(errors="replace").strip()
+            if resp.lower().startswith("ok") or resp.lower().startswith("reset"):
+                print(args["dbname"] + " (memcached) 已清空")
+            else:
+                print("memcached flush_all 返回:" + resp)
+        except Exception as e:
+            print("Memcached 清理失败:", e)
+        return
+    elif dbType.lower() == "etcd":
+        # 使用 etcdctl 删除全部 key: etcdctl del "" --from-key
+        try:
+            container = args.get("container_name", "etcd_QTRAN")
+            subprocess.run(
+                [
+                    "docker",
+                    "exec",
+                    container,
+                    "etcdctl",
+                    "--endpoints=localhost:2379",
+                    "del",
+                    "",
+                    "--from-key",
+                ],
+                check=False,
+                capture_output=True,
+                text=True,
+                timeout=10,
+            )
+            print(args["dbname"] + " (etcd) 全部键已删除")
+        except Exception as e:
+            print("etcd 清理失败:", e)
+        return
+    elif dbType.lower() == "consul":
+        # 遍历列出所有键然后逐个删除（避免依赖额外工具）。
+        try:
+            import requests as _req
+
+            host = args.get("host", "127.0.0.1")
+            port = int(args.get("port", 8500))
+            base = f"http://{host}:{port}/v1/kv"
+            # 获取所有 key
+            r = _req.get(f"{base}/?recurse=true")
+            if r.status_code == 200:
+                try:
+                    items = r.json()
+                except Exception:
+                    items = []
+                deleted = 0
+                for entry in items or []:
+                    k = entry.get("Key")
+                    if not k:
+                        continue
+                    dr = _req.delete(f"{base}/{k}")
+                    if dr.status_code == 200 and dr.text.strip() == "true":
+                        deleted += 1
+                print(f"{args['dbname']} (consul) 已删除 {deleted} 个键")
+            elif r.status_code == 404:
+                print(args["dbname"] + " (consul) 无键")
+            else:
+                print("Consul 列取键失败 status=" + str(r.status_code))
+        except Exception as e:
+            print("Consul 清理失败:", e)
+        return
     elif dbType.lower() in ["duckdb"]:
         db_filepath = os.path.join(current_dir, f'{args["dbname"]}.duckdb')
         if os.path.exists(db_filepath):
