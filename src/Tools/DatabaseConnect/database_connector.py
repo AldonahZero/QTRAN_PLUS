@@ -17,6 +17,7 @@ import pymysql
 from sqlalchemy import text, exc, PoolProxiedConnection
 import redis  # redis-py client
 import json
+from src.Tools.json_utils import make_json_safe
 from sqlalchemy.exc import OperationalError
 import time
 from sqlalchemy import create_engine
@@ -631,7 +632,8 @@ def exec_mongodb_json_operation(conn_args, tool, exp, op_obj):
         else:
             return None, 0, f"unsupported op: {op_name}"
 
-        return out, time.time() - start, None
+        # 最终统一清洗 (深度递归)
+        return make_json_safe(out), time.time() - start, None
     except Exception as e:
         return None, 0, str(e)
 
@@ -745,7 +747,7 @@ def exec_mongodb_command(conn_args, tool, exp, mongo_command):
             }
         else:
             return None, 0, f"unsupported operation: {op_name}"
-        return out, time.time() - start, None
+        return make_json_safe(out), time.time() - start, None
     except Exception as e:
         return None, 0, str(e)
 
