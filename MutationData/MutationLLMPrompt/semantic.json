@@ -1,0 +1,21 @@
+{
+  "probe": "Generate read-only probe commands that observe the key's state without introducing side-effects. Typical probes include GET / LLEN / SCARD / ZCARD / HEXISTS / ZSCORE /ZRANK /ZRANGE. Each probe should map to an oracle that succinctly describes the expected assertion (e.g. value_read, length_probe, cardinality_probe, membership_true, score_probe, rank_probe).",
+
+  "idempotent_repeat": "Produce idempotent repeat operations: commands that can be applied multiple times without changing the logical outcome (e.g. HSET same field/value, SADD an already existing member). These are useful to test that a write is stable (oracle: same_field / cardinality_plus_one_or_same).",
+
+  "inverse": "Emit inverse or rollback commands intended to undo or reduce the state (e.g. HDEL / SREM / LPOP / ZREM). Oracles should describe the post-condition to check (e.g. post_condition_empty / cardinality_minus_one_or_zero / length_minus_one).",
+
+  "value_transform": "Controlled value-transform mutations that intentionally change a value (e.g. SET key NEWVAL, ZADD key new_score member). Oracles indicate expected change semantics (e.g. mutable_change / value_full_range). Use sparingly to avoid losing validation anchors.",
+
+  "idempotent_extend": "Append/insert style mutations that extend a structure without invalidating previous invariants (e.g. LPUSH key X_MUT, SADD key member_mut, ZADD key 1 member_mut). Oracle examples: length_plus_one, cardinality_plus_one_or_same.",
+
+  "expire_variant": "TTL-related variants to check time-to-live semantics: TTL key, EXPIRE key seconds, PERSIST key. Oracles: ttl_state / ttl_set / ttl_removed.",
+
+  "echo": "Fallback no-op/echo mutation used only when no higher-signal transformation is possible. Marked with oracle 'noop'. Avoid overuse as it dilutes training signal.",
+
+  "KB_context": "When available, include a compact KB_context fragment with define/use/arg_roles to clarify key types and argument semantics. Example: {\"define\": [\"sorted_set_key\"], \"arg_roles\": {\"elem\": {\"use\": [\"sorted_set_key\"]}}}. Prefer define over use when mapping to data-structure templates.",
+
+  "zset_best_practices": "Prioritize zset probes that expose ordering, score and rank: ZCARD, ZCOUNT -inf +inf, ZSCORE member, ZRANK member, ZRANGE with WITHSCORES, ZREVRANGE with WITHSCORES. Include ZADD/ZREM variants for idempotent_extend/inverse testing.",
+
+  "prompt_template": "SYSTEM: You are a Redis mutation synthesis assistant. Given one seed Redis command (Original + Meta + optional KB_context), return ONLY a compact JSON with key 'mutations' (list). Each mutation: {cmd, category, oracle}. Max 4 high-signal mutations. No extra text.\nUSER: Original: <raw>\nMeta: command=<CMD> group=<group> args=<args json>\nKB_context: <kb_ctx json>\nTask: Generate up to 4 mutations preserving semantics and return ONLY JSON.\nASSISTANT: {\"mutations\":[{\"cmd\":...,\"category\":...,\"oracle\":...}]}"
+}
