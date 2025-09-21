@@ -86,5 +86,33 @@
         "container_port": 6379,
         "username": "",
         "password": ""
+    },
+    "memcached": {
+        "container_name": "memcached_QTRAN",
+        "dbType": "memcached",
+        "host": "127.0.0.1",
+        "port": 11211,
+        "container_port": 11211,
+        "username": "",
+        "password": ""
+    },
+    "etcd": {
+        "container_name": "etcd_QTRAN",
+        "dbType": "etcd",
+        "host": "127.0.0.1",
+        "port": 12379,
+        "container_port": 2379,
+        "username": "",
+        "password": ""
+    },
+    "consul": {
+        "container_name": "consul_QTRAN",
+        "dbType": "consul",
+        "host": "127.0.0.1",
+        "port": 18500,
+        "container_port": 8500,
+        "dns_port": 18600,
+        "username": "",
+        "password": ""
     }
 }

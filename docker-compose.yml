@@ -80,6 +80,33 @@ services:
     networks:
       - db_network
 
+  memcached:
+    image: memcached:1.6-alpine
+    container_name: memcached_QTRAN
+    ports:
+      - "11211:11211"
+    networks:
+      - db_network
+
+  etcd:
+    image: quay.io/coreos/etcd:v3.5.14
+    container_name: etcd_QTRAN
+    command: ["etcd", "--advertise-client-urls", "http://0.0.0.0:2379", "--listen-client-urls", "http://0.0.0.0:2379"]
+    ports:
+      - "12379:2379"  # 外部映射端口与 database_connector_args.json 对应
+    networks:
+      - db_network
+
+  consul:
+    image: hashicorp/consul:1.19
+    container_name: consul_QTRAN
+    command: ["agent", "-dev", "-client=0.0.0.0"]
+    ports:
+      - "18500:8500"   # HTTP API / UI
+      - "18600:8600/udp"  # DNS 端口
+    networks:
+      - db_network
+
 networks:
   db_network:
     driver: bridge
@@ -92,3 +119,6 @@ volumes:
   postgres_data:
   mongodb_data:
   redis_data:
+  memcached_data:
+  etcd_data:
+  consul_data:

@@ -148,5 +148,56 @@
         "create_databases": [
             "db = db.getSiblingDB('{dbname}'); db.getCollectionNames();"
         ]
+    },
+    "memcached": {
+        "docker_name": "memcached:1.6-alpine",
+        "pull_docker": ["docker", "pull", "memcached:1.6-alpine"],
+        "container_name": "memcached_QTRAN",
+        "run_container": [
+            "docker", "run", "-d", "--name", "memcached_QTRAN",
+            "-p", "{port}:{container_port}",
+            "memcached:1.6-alpine"
+        ],
+        "enter_container": ["docker", "exec", "memcached_QTRAN"],
+        "login_in": ["sh", "-c"],
+        "create_databases": [
+            "echo 'set {dbname}_test_key 0 60 1\n1\nget {dbname}_test_key' | nc 127.0.0.1 {container_port}"
+        ]
+    },
+    "etcd": {
+        "docker_name": "quay.io/coreos/etcd:v3.5.14",
+        "pull_docker": ["docker", "pull", "quay.io/coreos/etcd:v3.5.14"],
+        "container_name": "etcd_QTRAN",
+        "run_container": [
+            "docker", "run", "-d", "--name", "etcd_QTRAN",
+            "-p", "{port}:{container_port}",
+            "quay.io/coreos/etcd:v3.5.14",
+            "etcd",
+            "--advertise-client-urls", "http://0.0.0.0:{container_port}",
+            "--listen-client-urls", "http://0.0.0.0:{container_port}"
+        ],
+        "enter_container": ["docker", "exec", "etcd_QTRAN"],
+        "login_in": ["etcdctl", "--endpoints=127.0.0.1:{container_port}"],
+        "create_databases": [
+            ["etcdctl", "--endpoints=127.0.0.1:{container_port}", "put", "{dbname}_test_key", "1"],
+            ["etcdctl", "--endpoints=127.0.0.1:{container_port}", "get", "{dbname}_test_key"]
+        ]
+    },
+    "consul": {
+        "docker_name": "hashicorp/consul:1.19",
+        "pull_docker": ["docker", "pull", "hashicorp/consul:1.19"],
+        "container_name": "consul_QTRAN",
+        "run_container": [
+            "docker", "run", "-d", "--name", "consul_QTRAN",
+            "-p", "{port}:8500", "-p", "{dns_port}:8600/udp",
+            "hashicorp/consul:1.19",
+            "agent", "-dev", "-client=0.0.0.0"
+        ],
+        "enter_container": ["docker", "exec", "consul_QTRAN"],
+        "login_in": ["consul", "kv"],
+        "create_databases": [
+            ["consul", "kv", "put", "{dbname}_test_key", "1"],
+            ["consul", "kv", "get", "{dbname}_test_key"]
+        ]
     }
 }

@@ -191,6 +191,23 @@ def docker_create_databases(tool, exp, dbType):
                     # login_in 已包含 --eval，因此拼接 login_in + [js]
                     run_command(commands_formatted["enter_container"] + commands_formatted["login_in"] + [js])
 
+        elif dbType.lower() in ["memcached", "etcd", "consul"]:
+            # 通用：拉镜像
+            if not check_image_exists(commands_formatted["docker_name"]):
+                run_command(commands_formatted["pull_docker"])
+            # 启动容器
+            if not is_container_running(commands_formatted["container_name"]):
+                run_command(commands_formatted["run_container"])
+                # 适度等待服务启动
+                time.sleep(5)
+            # 执行 create_databases / KV 测试写读
+            for op in commands_formatted.get("create_databases", []):
+                if isinstance(op, list):
+                    run_command(commands_formatted["enter_container"] + op)
+                elif isinstance(op, str):
+                    # memcached 的 echo/nc 形式是一个 shell 字符串
+                    run_command(commands_formatted["enter_container"] + ["sh", "-c", op])
+
         else:
             # pull_docker
             if not check_image_exists(commands_formatted["docker_name"]):

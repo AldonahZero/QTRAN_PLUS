@@ -1,5 +1,5 @@
-{"index": 22, "a_db": "redis", "b_db": "postgres", "molt": "norec", "sql": "set mykey hello;"}
-{"index": 22, "a_db": "redis", "b_db": "postgres", "molt": "norec", "sql": "zadd lukpltvt 5826 vgjrzjoy;"}
-{"index": 22, "a_db": "redis", "b_db": "postgres", "molt": "norec", "sql": "sort lukpltvt;"}
-{"index": 22, "a_db": "redis", "b_db": "postgres", "molt": "norec", "sql": "zrandmember lukpltvt -9223372036854770000 withscores;"}
-{"index": 22, "a_db": "redis", "b_db": "postgres", "molt": "norec", "sql": "get mykey;"}
+{"index": 22, "a_db": "redis", "b_db": "mongodb", "molt": "semantic", "sql": "set mykey hello;"}
+{"index": 22, "a_db": "redis", "b_db": "mongodb", "molt": "semantic", "sql": "zadd lukpltvt 5826 vgjrzjoy;"}
+{"index": 22, "a_db": "redis", "b_db": "mongodb", "molt": "semantic", "sql": "sort lukpltvt;"}
+{"index": 22, "a_db": "redis", "b_db": "mongodb", "molt": "semantic", "sql": "zrandmember lukpltvt -9223372036854770000 withscores;"}
+{"index": 22, "a_db": "redis", "b_db": "mongodb", "molt": "semantic", "sql": "get mykey;"}
