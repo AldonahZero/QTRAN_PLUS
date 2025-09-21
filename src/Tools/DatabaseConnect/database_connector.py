@@ -26,6 +26,13 @@ import os
 from src.Tools.DatabaseConnect.docker_create import run_container
 import threading
 import sys
+import socket
+import base64
+
+try:
+    import requests  # For Consul HTTP API
+except Exception:  # pragma: no cover
+    requests = None  # type: ignore
 
 current_file_path = os.path.abspath(__file__)
 current_dir = os.path.dirname(current_file_path)
@@ -305,6 +312,360 @@ def database_clear(tool, exp, dbType):
         pool.close()
 
 
+# -------------------- Unified Normalization Helper -------------------- #
+def _unify_result(op_type: str, success: bool, value, meta: dict | None = None):
+    """Return a normalized result dict following doc/kb/kv_nosql_return_structures.md.
+
+    Structure:
+    {"type": op_type, "success": bool, "value": <scalar/list/dict/None>, "meta": {...optional...}}
+    Meta keys are pruned if empty.
+    """
+    out = {"type": op_type, "success": success, "value": value}
+    if meta:
+        # Remove None values to keep output compact
+        meta_clean = {k: v for k, v in meta.items() if v is not None}
+        if meta_clean:
+            out["meta"] = meta_clean
+    return out
+
+
+# -------------------- Memcached Execution & Normalization ------------- #
+def exec_memcached_command(conn_args, tool, exp, command_text: str):
+    """Execute a single memcached command via plain TCP socket.
+
+    Supported core commands (simple subset):
+      - set <key> <flags> <exptime> <bytes> [noreply]\n<value>\n
+      - get <key>\n
+      - delete <key>\n
+      - incr/decr <key> <value>\n
+    Normalization mapping:
+      set -> kv_set (success if STORED)
+      get -> kv_get (value=string or None)
+      delete -> kv_delete (success if DELETED)
+      incr/decr -> kv_set (value=new numeric string)
+    Unknown commands fall back to raw textual response.
+    """
+    host = conn_args.get("host", "127.0.0.1")
+    port = int(conn_args.get("port", 11211))
+    if not command_text or not command_text.strip():
+        return {"type": "empty", "value": None}, 0, None
+    start = time.time()
+    try:
+        with socket.create_connection((host, port), timeout=3) as sock:
+            sock.settimeout(3)
+            # Write command. For set we need to include data line already in command_text.
+            send_bytes = command_text.strip() + (
+                "\r\n" if not command_text.endswith("\n") else ""
+            )
+            sock.sendall(send_bytes.encode())
+
+            # For set with data block, ensure caller provided trailing CRLF after value.
+            # We'll read until END or STORED/NOT_STORED/ERROR line encountered.
+            buf = b""
+            while True:
+                chunk = sock.recv(4096)
+                if not chunk:
+                    break
+                buf += chunk
+                # Break heuristics
+                if (
+                    b"\r\nEND\r\n" in buf
+                    or b"STORED\r\n" in buf
+                    or b"NOT_STORED\r\n" in buf
+                    or b"DELETED\r\n" in buf
+                    or b"NOT_FOUND\r\n" in buf
+                    or b"ERROR\r\n" in buf
+                ):
+                    break
+        raw_text = buf.decode(errors="replace")
+        first_line = raw_text.splitlines()[0] if raw_text else ""
+        tokens = command_text.split()
+        primary = tokens[0].lower()
+        norm = None
+        if primary == "get":
+            # Format: VALUE <key> <flags> <bytes> \r\n <data> \r\n END
+            if raw_text.startswith("VALUE"):
+                lines = raw_text.splitlines()
+                if len(lines) >= 3 and lines[-1] == "END":
+                    header = lines[0].split()
+                    val_line = lines[1]
+                    value = val_line  # raw bytes (already decoded)
+                    norm = _unify_result(
+                        "kv_get", True, value, meta={"raw_code": "VALUE"}
+                    )
+                else:
+                    norm = _unify_result(
+                        "kv_get", False, None, meta={"raw_code": first_line}
+                    )
+            elif first_line == "END":  # key miss
+                norm = _unify_result("kv_get", True, None, meta={"raw_code": "END"})
+            else:
+                norm = _unify_result(
+                    "kv_get", False, None, meta={"raw_code": first_line}
+                )
+        elif primary == "set":
+            success = first_line == "STORED"
+            norm = _unify_result("kv_set", success, None, meta={"raw_code": first_line})
+        elif primary == "delete":
+            success = first_line == "DELETED"
+            norm = _unify_result(
+                "kv_delete", success, None, meta={"raw_code": first_line}
+            )
+        elif primary in {"incr", "decr"}:
+            # Response is the new value or NOT_FOUND / ERROR
+            if first_line.isdigit():
+                norm = _unify_result(
+                    "kv_set", True, first_line, meta={"raw_code": first_line}
+                )
+            else:
+                norm = _unify_result(
+                    "kv_set", False, None, meta={"raw_code": first_line}
+                )
+        else:
+            norm = _unify_result(
+                "unsupported", True, raw_text.strip(), meta={"raw_code": first_line}
+            )
+        return norm, time.time() - start, None
+    except Exception as e:
+        return None, 0, str(e)
+
+
+# -------------------- Consul Execution & Normalization ---------------- #
+def exec_consul_command(conn_args, tool, exp, command_text: str):
+    """Execute simplified Consul KV operations via HTTP API.
+
+    Supported textual forms (space separated):
+      PUT <key> <value>
+      GET <key>
+      DELETE <key>
+      RANGE <prefix>
+    """
+    if requests is None:
+        return None, 0, "requests not installed"
+    host = conn_args.get("host", "127.0.0.1")
+    port = int(conn_args.get("port", 8500))
+    base = f"http://{host}:{port}/v1/kv"
+    if not command_text or not command_text.strip():
+        return {"type": "empty", "value": None}, 0, None
+    parts = command_text.strip().split()
+    op = parts[0].upper()
+    start = time.time()
+    try:
+        if op == "PUT" and len(parts) >= 3:
+            key = parts[1]
+            value = " ".join(parts[2:])
+            resp = requests.put(f"{base}/{key}", data=value.encode())
+            success = resp.status_code == 200 and resp.text.strip() == "true"
+            norm = _unify_result(
+                "kv_set", success, None, meta={"raw_code": resp.text.strip()}
+            )
+        elif op == "GET" and len(parts) == 2:
+            key = parts[1]
+            resp = requests.get(f"{base}/{key}")
+            if resp.status_code == 200:
+                try:
+                    arr = resp.json()
+                    if arr:
+                        entry = arr[0]
+                        val_b64 = entry.get("Value")
+                        value = base64.b64decode(val_b64).decode() if val_b64 else None
+                        norm = _unify_result(
+                            "kv_get",
+                            True,
+                            value,
+                            meta={
+                                "indices": {
+                                    "CreateIndex": entry.get("CreateIndex"),
+                                    "ModifyIndex": entry.get("ModifyIndex"),
+                                },
+                                "flags": entry.get("Flags"),
+                                "raw_code": "FOUND",
+                            },
+                        )
+                    else:
+                        norm = _unify_result(
+                            "kv_get", True, None, meta={"raw_code": "EMPTY"}
+                        )
+                except Exception as je:  # pragma: no cover
+                    return None, 0, f"json parse error: {je}"
+            elif resp.status_code == 404:
+                norm = _unify_result(
+                    "kv_get", True, None, meta={"raw_code": "NOT_FOUND"}
+                )
+            else:
+                norm = _unify_result(
+                    "kv_get", False, None, meta={"raw_code": str(resp.status_code)}
+                )
+        elif op == "DELETE" and len(parts) == 2:
+            key = parts[1]
+            resp = requests.delete(f"{base}/{key}")
+            success = resp.status_code == 200 and resp.text.strip() == "true"
+            norm = _unify_result(
+                "kv_delete", success, None, meta={"raw_code": resp.text.strip()}
+            )
+        elif op == "RANGE" and len(parts) == 2:
+            prefix = parts[1]
+            resp = requests.get(f"{base}/{prefix}", params={"recurse": "true"})
+            if resp.status_code == 200:
+                try:
+                    arr = resp.json()
+                except Exception as je:
+                    return None, 0, f"json parse error: {je}"
+                items = []
+                for entry in arr:
+                    val_b64 = entry.get("Value")
+                    value = base64.b64decode(val_b64).decode() if val_b64 else None
+                    items.append({"key": entry.get("Key"), "value": value})
+                norm = _unify_result(
+                    "kv_range", True, items, meta={"count": len(items)}
+                )
+            else:
+                norm = _unify_result(
+                    "kv_range", False, None, meta={"raw_code": str(resp.status_code)}
+                )
+        else:
+            norm = _unify_result(
+                "unsupported", False, None, meta={"raw_code": command_text.split()[0]}
+            )
+        return norm, time.time() - start, None
+    except Exception as e:
+        return None, 0, str(e)
+
+
+# -------------------- etcd Execution & Normalization ------------------ #
+def exec_etcd_command(conn_args, tool, exp, command_text: str):
+    """Execute simplified etcdctl commands via docker exec (etcdctl -w json ...).
+
+    Supported textual forms:
+      PUT <key> <value>
+      GET <key>
+      RANGE <prefix>
+      DELETE <key>
+    Implementation detail: we rely on container name in args[container_name].
+    """
+    container = conn_args.get("container_name") or "etcd_QTRAN"
+    port = int(conn_args.get("port", 2379))  # not directly used (docker exec)
+    if not command_text or not command_text.strip():
+        return {"type": "empty", "value": None}, 0, None
+    parts = command_text.strip().split()
+    op = parts[0].upper()
+    start = time.time()
+    base_cmd = [
+        "docker",
+        "exec",
+        container,
+        "etcdctl",
+        "--endpoints=localhost:2379",
+        "-w",
+        "json",
+    ]
+    try:
+        if op == "PUT" and len(parts) >= 3:
+            key = parts[1]
+            value = " ".join(parts[2:])
+            proc = subprocess.run(
+                base_cmd + ["put", key, value],
+                capture_output=True,
+                text=True,
+                timeout=8,
+            )
+            success = proc.returncode == 0
+            meta = {}
+            try:
+                data = json.loads(proc.stdout or "{}")
+                header = data.get("header", {})
+                meta["revision"] = header.get("revision")
+            except Exception:
+                pass
+            norm = _unify_result("kv_set", success, None, meta=meta)
+        elif op == "GET" and len(parts) == 2:
+            key = parts[1]
+            proc = subprocess.run(
+                base_cmd + ["get", key], capture_output=True, text=True, timeout=8
+            )
+            if proc.returncode == 0:
+                try:
+                    data = json.loads(proc.stdout or "{}")
+                    kvs = data.get("kvs", [])
+                    if kvs:
+                        value_b64 = kvs[0].get("value")
+                        value = (
+                            base64.b64decode(value_b64).decode() if value_b64 else None
+                        )
+                        norm = _unify_result(
+                            "kv_get",
+                            True,
+                            value,
+                            meta={
+                                "version": kvs[0].get("version"),
+                                "revision": data.get("header", {}).get("revision"),
+                            },
+                        )
+                    else:
+                        norm = _unify_result(
+                            "kv_get", True, None, meta={"raw_code": "EMPTY"}
+                        )
+                except Exception as je:
+                    return None, 0, f"json parse error: {je}"
+            else:
+                norm = _unify_result(
+                    "kv_get", False, None, meta={"raw_code": proc.stderr.strip()[:60]}
+                )
+        elif op == "RANGE" and len(parts) == 2:
+            prefix = parts[1]
+            proc = subprocess.run(
+                base_cmd + ["get", prefix, "--prefix"],
+                capture_output=True,
+                text=True,
+                timeout=12,
+            )
+            if proc.returncode == 0:
+                try:
+                    data = json.loads(proc.stdout or "{}")
+                    kvs = data.get("kvs", [])
+                    items = []
+                    for kv in kvs:
+                        key_dec = base64.b64decode(kv.get("key", "").encode()).decode()
+                        val_b64 = kv.get("value")
+                        val_dec = (
+                            base64.b64decode(val_b64).decode() if val_b64 else None
+                        )
+                        items.append({"key": key_dec, "value": val_dec})
+                    norm = _unify_result(
+                        "kv_range",
+                        True,
+                        items,
+                        meta={
+                            "count": len(items),
+                            "revision": data.get("header", {}).get("revision"),
+                        },
+                    )
+                except Exception as je:
+                    return None, 0, f"json parse error: {je}"
+            else:
+                norm = _unify_result(
+                    "kv_range", False, None, meta={"raw_code": proc.stderr.strip()[:60]}
+                )
+        elif op == "DELETE" and len(parts) == 2:
+            key = parts[1]
+            proc = subprocess.run(
+                base_cmd + ["del", key], capture_output=True, text=True, timeout=8
+            )
+            success = proc.returncode == 0
+            deleted = None
+            try:
+                data = json.loads(proc.stdout or "{}")
+                deleted = data.get("deleted")
+            except Exception:
+                pass
+            norm = _unify_result("kv_delete", success, None, meta={"deleted": deleted})
+        else:
+            norm = _unify_result("unsupported", False, None, meta={"raw_code": op})
+        return norm, time.time() - start, None
+    except Exception as e:
+        return None, 0, str(e)
+
+
 def exec_sql_statement(tool, exp, dbType, sql_statement):
     """统一入口：根据 dbType 获取连接参数并执行 SQL，返回 (结果, 耗时, 错误)。"""
     # 创建连接池实例
@@ -318,19 +679,18 @@ def exec_sql_statement(tool, exp, dbType, sql_statement):
         else f"{tool}_tlp_{dbType}".lower()
     )
 
-    nosql_targets = {"redis", "mongodb"}
+    nosql_targets = {"redis", "mongodb", "memcached", "etcd", "consul"}
     # Redis 特殊处理：走单独的执行函数（不使用 SQLAlchemy）
     if dbType.lower() in nosql_targets:
-        if dbType.lower() == "redis":
+        lower = dbType.lower()
+        if lower == "redis":
             return exec_redis_command(args, tool, exp, sql_statement)
-        elif dbType.lower() == "mongodb":
-            # 新增：根据类型自动分派
+        if lower == "mongodb":
             if isinstance(sql_statement, dict):
                 return exec_mongodb_json_operation(args, tool, exp, sql_statement)
             if isinstance(sql_statement, str):
                 stripped = sql_statement.strip()
                 if stripped.startswith("{") and stripped.endswith("}"):
-                    # 尝试解析为 JSON operation
                     try:
                         import json as _json
 
@@ -339,13 +699,28 @@ def exec_sql_statement(tool, exp, dbType, sql_statement):
                             return exec_mongodb_json_operation(args, tool, exp, op_obj)
                     except Exception:
                         pass
-                # 否则回退 shell 风格
                 return exec_mongodb_command(args, tool, exp, sql_statement)
-            # 其它类型直接报错
             return (
                 None,
                 0,
                 f"unsupported mongo statement type: {type(sql_statement).__name__}",
+            )
+        if lower == "memcached":
+            if not isinstance(sql_statement, str):
+                return None, 0, "memcached command must be string"
+            return exec_memcached_command(args, tool, exp, sql_statement)
+        if lower == "consul":
+            if not isinstance(sql_statement, str):
+                return None, 0, "consul command must be string"
+            return exec_consul_command(args, tool, exp, sql_statement)
+        if lower == "etcd":
+            if not isinstance(sql_statement, str):
+                return None, 0, "etcd command must be string"
+            return exec_etcd_command(
+                {**args, "container_name": args.get("container_name", "etcd_QTRAN")},
+                tool,
+                exp,
+                sql_statement,
             )
 
     # 先检查容器是否打开，即数据库是否能正常链接，如果没有正常链接则打开容器

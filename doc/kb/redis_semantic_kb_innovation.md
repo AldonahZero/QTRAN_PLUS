@@ -4,28 +4,28 @@
 
 ## 1. 背景与动机
 - 传统做法：
-  - 仅靠自然语言文档或零散示例，难以系统化地驱动隐式前置条件、类型约束、资源生命周期（Define/Use/Invalidate）。
-  - 仅有语法（无标签/无注解）时，缺少“哪个参数位是 key？何种类型？何时失效？”等强语义。
+	- 仅靠自然语言文档或零散示例，难以系统化地驱动隐式前置条件、类型约束、资源生命周期（Define/Use/Invalidate）。
+	- 仅有语法（无标签/无注解）时，缺少“哪个参数位是 key？何种类型？何时失效？”等强语义。
 - 我们的问题：
-  - LLM fuzz 需要高质量、有结构的知识来约束生成（减少无效/危险命令）与设计变异（保持可判定的等价/不变式）。
+	- LLM fuzz 需要高质量、有结构的知识来约束生成（减少无效/危险命令）与设计变异（保持可判定的等价/不变式）。
 - 核心诉求：
-  - 把“语法结构位置信息”与“语义动作/类型约束”联结起来，形成稳定、可自动消费的 KB，兼容 RAG、规则变异器与 Oracle 推理。
+	- 把“语法结构位置信息”与“语义动作/类型约束”联结起来，形成稳定、可自动消费的 KB，兼容 RAG、规则变异器 与 Oracle 推理。
 
 ## 2. 方法与工程产物
 - 数据来源：
-  - 语法：`Redis.g4`，带 `#AltName` 与 `elem=label` 的标签。
-  - 注解：`Redis.json`，采用 BuzzBee 风格（DefineSymbol/UseSymbol/InvalidateSymbol/Scope/AlterOrder）。
+	- 语法：`Redis.g4`，带 `#AltName` 与 `elem=label` 的标签。
+	- 注解：`Redis.json`，采用 BuzzBee 风格（DefineSymbol/UseSymbol/InvalidateSymbol/Scope/AlterOrder）。
 - 自动化流程：
-  1) 注解抽取脚本：`annotations_to_semantics.py` → 生成 `redis_semantic_kb.json`（by_tag）。
-  2) 语法×语义合并：`merge_semantics_with_grammar.py` → 在 `redis_semantic_kb.json` 内新增：
-     - `by_command`：命令级总览 + 按参数位聚合动作与类型。
-     - `tag_to_command`：标签到命令名映射。
-  3) 查询 CLI：`query_semantic_kb.py` 或通过 `python -m src.main redis-kb ...` 快速检索命令、类型与标签映射。
+	1) 注解抽取脚本：`annotations_to_semantics.py` → 生成 `redis_semantic_kb.json`（by_tag）。
+	2) 语法×语义合并：`merge_semantics_with_grammar.py` → 在 `redis_semantic_kb.json` 内新增：
+		 - `by_command`：命令级总览 + 按参数位聚合动作与类型。
+		 - `tag_to_command`：标签到命令名映射。
+	3) 查询 CLI：`query_semantic_kb.py` 或通过 `python -m src.main redis-kb ...` 快速检索命令、类型与标签映射。
 
 - 关键技术点：
-  - 基于规则前缀（如 `AppendRule`）规范化命令名（`append`），兼容多标签聚合。
-  - 支持 `type/type_block/custom_types` 汇总，保留 `AlterOrder` 等非类型动作，便于后续执行序列校验。
-  - 幂等合并：可多次运行，随语法/注解更新同步刷新视图。
+	- 基于规则前缀（如 `AppendRule`）规范化命令名（`append`），兼容多标签聚合。
+	- 支持 `type/type_block/custom_types` 汇总，保留 `AlterOrder` 等非类型动作，便于后续执行序列校验。
+	- 幂等合并：可多次运行，随语法/注解更新同步刷新视图。
 
 ## 3. 为什么是创新
 - 语法与语义的“位点对齐”：把“参数位（label）”与“语义动作”绑定，得到“命令-参数-动作-类型”的四元组视图，区别于仅语法或仅注解的松散形态。
@@ -35,15 +35,15 @@
 
 ## 4. 对 LLM fuzz 的帮助
 - 生成约束（前置/类型/作用域）：
-  - RAG 前置过滤：在提示中注入 by_command 的类型与作用域，减少无效/破坏性生成（例如对 `bitop` 强制 key 类型为字符串或数值字符串）。
-  - 变异位点定位：通过参数位 label 定位可安全变异的参数（如 `zadd` 的 member/score），并保持不变式。
+	- RAG 前置过滤：在提示中注入 by_command 的类型与作用域，减少无效/破坏性生成（例如对 `bitop` 强制 key 类型为字符串或数值字符串）。
+	- 变异位点定位：通过参数位 label 定位可安全变异的参数（如 `zadd` 的 member/score），并保持不变式。
 - 语义一致性与可判定 Oracle：
-  - 通过 `Define/Use/Invalidate` 推理资源生命周期，避免“用后即焚”的序列错误；
-  - `AlterOrder` 指导执行顺序安排，减少非确定性与依赖竞争；
-  - 针对哈希/集合/流等类型，明确 key 与字段/成员的耦合，支撑等价变换与逆向验证。
+	- 通过 `Define/Use/Invalidate` 推理资源生命周期，避免“用后即焚”的序列错误；
+	- `AlterOrder` 指导执行顺序安排，减少非确定性与依赖竞争；
+	- 针对哈希/集合/流等类型，明确 key 与字段/成员的耦合，支撑等价变换与逆向验证。
 - 覆盖面与可扩展：
-  - by_command 汇聚近全部命令标签，天然覆盖面广；
-  - 可按类型反查命令，面向特定数据结构做定向 fuzz。
+	- by_command 汇聚近全部命令标签，天然覆盖面广；
+	- 可按类型反查命令，面向特定数据结构做定向 fuzz。
 
 ## 5. 与常见方案的对比
 - 仅基于自然语言文档 → 难以自动化消费，缺乏参数位级精度。
@@ -60,10 +60,10 @@
 
 ## 7. 示例片段
 - `bitop`（字符串/数值字符串 key）：
-  - by_command.bitop.actions.UseSymbol ⟶ ["str_key", "str_key_type_num"]
-  - by_command.bitop.args.elem.AlterOrder ⟶ 指定执行顺序约束
+	- by_command.bitop.actions.UseSymbol ⟶ ["str_key", "str_key_type_num"]
+	- by_command.bitop.args.elem.AlterOrder ⟶ 指定执行顺序约束
 - `zset`（有序集合）：
-  - 多数 Z* 命令对 `sorted_set_key` 执行 Use/Define，支持成员/分值等位点变异。
+	- 多数 Z* 命令对 `sorted_set_key` 执行 Use/Define，支持成员/分值等位点变异。
 
 ## 8. 展望与复用
 - Custom Resolver 展开：把 `##hset_field_type_resolver` 等解析为显式类型集合，进一步提升 RAG 可读性。
@@ -72,5 +72,5 @@
 
 ---
 
-文档位置：`doc/Redis_Semantic_KB_Innovation.md`
+文档位置：`doc/kb/redis_semantic_kb_innovation.md`
 数据与脚本：见 `NoSQLFeatureKnowledgeBase/Redis/` 与 `src/NoSQLKnowledgeBaseConstruction/Redis/`。

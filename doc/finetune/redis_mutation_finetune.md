@@ -1,3 +1,4 @@
+````markdown
 # Redis 变异微调数据集设计与使用说明
 
 ## 1. 目标与背景
@@ -238,3 +239,4 @@ group_balance_ratio = max(group_counts.values()) / min(nonzero_group_counts.valu
 5. (Phase4+) 引入 should_reject/negative 样本并评估对主任务影响。
 
 ---
+````

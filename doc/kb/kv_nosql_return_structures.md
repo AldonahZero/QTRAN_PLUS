@@ -1,3 +1,4 @@
+````markdown
 # Redis / Memcached / etcd / Consul / MongoDB 返回结果结构差异速览（Redis=100% 基准）
 
 目标：以 **Redis 作为 100% 参考基准**（基于“命令粒度交互模型 + 返回值简洁度 + 数据结构多样性 + 非 JSON 原生”四个维度），量化其它 KV / 文档系统在“结果结构风格”上的相似度，并给出统一抽象建议。
@@ -198,3 +199,4 @@ MongoDB findOne ({"_id":"mykey","value":"hello"}) →
 ---
 
 （完）
+````

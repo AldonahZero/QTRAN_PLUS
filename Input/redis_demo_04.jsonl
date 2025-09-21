@@ -1,0 +1,1 @@
+{"index": 33, "a_db": "redis", "b_db": "Memcached", "molt": "semantic", "sqls": ["set mykey hello;", "zadd lukpltvt 5826 vgjrzjoy;", "sort lukpltvt;", "zrandmember lukpltvt -9223372036854770000 withscores;", "get mykey;"]}
