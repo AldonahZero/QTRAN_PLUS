@@ -200,6 +200,9 @@ def sqlancer_translate(input_filepath,tool="sqlancer",temperature=0.3, model="gp
                 elif "tlp" in fuzzer.lower():
                     fuzzer_temp = "tlp"
                     mutate_llm_model_ID = os.environ[f"{fuzzer_temp}_MUTATION_LLM_ID".upper()]
+                elif "semantic" in fuzzer.lower():
+                    fuzzer_temp = "semantic"
+                    mutate_llm_model_ID = os.environ[f"{fuzzer_temp}_MUTATION_LLM_ID".upper()]
                 else:
                     mutate_llm_model_ID = ""
                 mutate_content, cost = run_muatate_llm_single_sql(tool, client, mutate_llm_model_ID, fuzzer, bug["molt"],b_db, mutate_sql)

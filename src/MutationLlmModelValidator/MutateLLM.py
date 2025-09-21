@@ -159,6 +159,8 @@ def run_muatate_llm_single_sql(tool, client, model_id, mutate_name, oracle, db_t
             mutate_stratege = "norec"
         elif "tlp" in mutate_name.lower():
             mutate_stratege = "tlp"
+        elif "semantic" in mutate_name.lower():
+            mutate_stratege = "semantic"
         mutate_prompt_path = os.path.join(current_dir, "..","..", "MutationData", "MutationLLMPrompt", mutate_stratege+ ".json")
         with open(mutate_prompt_path, "r", encoding="utf-8") as r:
             system_message = json.load(r)[oracle]
