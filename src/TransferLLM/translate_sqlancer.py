@@ -365,27 +365,67 @@ def sqlancer_translate(
             else:
                 converted_before_result = execSQL_result_convertor(before_result)
                 converted_after_result = execSQL_result_convertor(after_result)
-                # 创建 Result 对象
-                before_result_object = Result(
-                    converted_before_result["column_names"],
-                    converted_before_result["column_types"],
-                    converted_before_result["rows"],
-                )
-                after_result_object = Result(
-                    converted_after_result["column_names"],
-                    converted_after_result["column_types"],
-                    converted_after_result["rows"],
-                )
 
-                oracle_check, error = Check(
-                    before_result_object, after_result_object, True, True
-                )  # check result->another_result是否符合is_upper
-                oracle_check_res = {"end": oracle_check, "error": error}
-                # 判断是否为sqlancer的特殊情况：0==None(表示个数时)
-                if converted_before_result["rows"] == [
-                    ["0"]
-                ] and converted_after_result["rows"] == [["None"]]:
-                    oracle_check_res = {"end": True, "error": None}
+                # -------- KV 专用 oracle -------- #
+                # 识别条件：原始 before_result/after_result 为 dict 且含 'type' 且前缀 kv_
+                is_kv_before = isinstance(before_result, dict) and str(
+                    before_result.get("type", "")
+                ).startswith("kv_")
+                is_kv_after = isinstance(after_result, dict) and str(
+                    after_result.get("type", "")
+                ).startswith("kv_")
+                if is_kv_before and is_kv_after:
+                    # 简化策略：
+                    # 1) 对 kv_get：值相等 (包含均为 None) 则通过
+                    # 2) 对写操作 (kv_set/kv_delete) -> after 不报错即可通过（不可比值）
+                    # 3) kv_range：列表元素集合一致（忽略顺序）
+                    bt = before_result.get("type")
+                    at = after_result.get("type")
+                    bval = before_result.get("value")
+                    aval = after_result.get("value")
+                    passed = False
+                    err = None
+                    if bt == "kv_get" and at == "kv_get":
+                        passed = bval == aval
+                    elif bt in {"kv_set", "kv_delete"} and at in {
+                        "kv_set",
+                        "kv_delete",
+                    }:
+                        # 认为写后再次写或删除语义不应引入直接差异（缺乏更强 oracle，此处放宽）
+                        passed = True
+                    elif bt == "kv_range" and at == "kv_range":
+                        try:
+                            bset = {str(x) for x in (bval or [])}
+                            aset = {str(x) for x in (aval or [])}
+                            passed = bset == aset
+                        except Exception:
+                            passed = False
+                    else:
+                        # 类型不同，保守判定失败
+                        passed = False
+                        err = f"kv oracle type mismatch: {bt} vs {at}"
+                    oracle_check_res = {"end": passed, "error": err}
+                else:
+                    # -------- 关系型/通用 oracle -------- #
+                    before_result_object = Result(
+                        converted_before_result["column_names"],
+                        converted_before_result["column_types"],
+                        converted_before_result["rows"],
+                    )
+                    after_result_object = Result(
+                        converted_after_result["column_names"],
+                        converted_after_result["column_types"],
+                        converted_after_result["rows"],
+                    )
+                    oracle_check, error = Check(
+                        before_result_object, after_result_object, True, True
+                    )  # check result->another_result是否符合is_upper
+                    oracle_check_res = {"end": oracle_check, "error": error}
+                    # 判断是否为sqlancer的特殊情况：0==None(表示个数时)
+                    if converted_before_result["rows"] == [
+                        ["0"]
+                    ] and converted_after_result["rows"] == [["None"]]:
+                        oracle_check_res = {"end": True, "error": None}
 
             # 如果ddls中有transfer失败的情况
             if transfer_fail_flag:

@@ -403,103 +403,286 @@ def _unify_result(op_type: str, success: bool, value, meta: dict | None = None):
 
 # -------------------- Memcached Execution & Normalization ------------- #
 def exec_memcached_command(conn_args, tool, exp, command_text: str):
-    """Execute a single memcached command via plain TCP socket.
+    """Execute a (possibly simplified) Memcached command via plain TCP socket.
 
-    Supported core commands (simple subset):
-      - set <key> <flags> <exptime> <bytes> [noreply]\n<value>\n
-      - get <key>\n
-      - delete <key>\n
-      - incr/decr <key> <value>\n
-    Normalization mapping:
-      set -> kv_set (success if STORED)
-      get -> kv_get (value=string or None)
-      delete -> kv_delete (success if DELETED)
-      incr/decr -> kv_set (value=new numeric string)
-    Unknown commands fall back to raw textual response.
+    We support two layers of syntax:
+      1) Full protocol form (user already supplies full 'set k f e b\r\nvalue\r\n').
+      2) Simplified form (closer to Redis style) which we auto-expand:
+         - set <key> <value> [exptime]
+         - get <key>
+         - delete <key>
+         - incr <key> <delta>
+         - decr <key> <delta>
+
+    Expansion rules for simplified `set`:
+      flags=0, exptime = provided int (if末尾单独一个数字) 否则 0;
+      value = 介于 key 与可选过期之间的其余拼接;
+      bytes = UTF-8 编码长度;
+      发送：set <key> 0 <exptime> <bytes>\r\n<value>\r\n
+
+    Normalization mapping (保持与文档约定):
+      set      -> kv_set  (success if STORED)
+      get      -> kv_get  (value=字符串或 None)
+      delete   -> kv_delete (success if DELETED)
+      incr/decr-> kv_set  (value=新的计数值字符串)
+
+    meta 字段新增：
+      simplified: bool  是否使用了简化翻译
+      raw_code:   第一行/状态码
+      sent_first_line: 原始发送第一行，便于调试
+      error_type: (仅异常时) 协议/网络分类
     """
     host = conn_args.get("host", "127.0.0.1")
     port = int(conn_args.get("port", 11211))
     if not command_text or not command_text.strip():
         return {"type": "empty", "value": None}, 0, None
+
+    original = command_text.strip().rstrip(";")  # 去掉结尾分号的兼容
     start = time.time()
+
+    def _is_full_set(tokens: list[str]) -> bool:
+        # Heuristic: set k flags exptime bytes  (>=5 tokens, 第3/4/5为整数)
+        if len(tokens) < 5:
+            return False
+        if tokens[0].lower() != "set":
+            return False
+        return all(t.isdigit() for t in tokens[2:5])
+
+    # ---------- 构造发送报文 ---------- #
+    simplified = False
+    send_bytes: bytes
+    primary = original.split()[0].lower()
+    tokens = original.split()
+    try:
+        if primary == "set":
+            if _is_full_set(tokens):
+                # 用户已提供协议首行；需要保证后面有 value 行与 CRLF，若缺失无法可靠补全，只做最小假设：用户自己传好了。
+                if not original.endswith("\n"):
+                    original += "\r\n"  # 至少首行换行
+                send_bytes = original.encode()
+            else:
+                # 简化形式 set k v [exptime]
+                if len(tokens) < 3:
+                    return (
+                        _unify_result(
+                            "kv_set",
+                            False,
+                            None,
+                            meta={
+                                "raw_code": "CLIENT_ERROR",
+                                "reason": "set requires key value",
+                            },
+                        ),
+                        0,
+                        None,
+                    )
+                key = tokens[1]
+                # 判断最后一个是否可作为 exptime
+                exptime = 0
+                value_parts = tokens[2:]
+                if len(value_parts) > 1 and value_parts[-1].isdigit():
+                    exptime = int(value_parts[-1])
+                    value_parts = value_parts[:-1]
+                value = " ".join(value_parts)
+                data = value.encode()
+                header = f"set {key} 0 {exptime} {len(data)}\r\n".encode()
+                send_bytes = header + data + b"\r\n"
+                simplified = True
+        elif primary in {"get", "delete", "incr", "decr"}:
+            # 直接一行 + CRLF
+            if not original.endswith("\r\n"):
+                original += "\r\n"
+            send_bytes = original.encode()
+        else:
+            # 其它原样发送（加 CRLF）
+            if not original.endswith("\r\n"):
+                original += "\r\n"
+            send_bytes = original.encode()
+    except Exception as build_ex:  # 构造阶段异常
+        return None, 0, f"memcached build error: {build_ex}"
+
+    # ---------- 发送并接收 ---------- #
     try:
         with socket.create_connection((host, port), timeout=3) as sock:
             sock.settimeout(3)
-            # Write command. For set we need to include data line already in command_text.
-            send_bytes = command_text.strip() + (
-                "\r\n" if not command_text.endswith("\n") else ""
-            )
-            sock.sendall(send_bytes.encode())
-
-            # For set with data block, ensure caller provided trailing CRLF after value.
-            # We'll read until END or STORED/NOT_STORED/ERROR line encountered.
+            sock.sendall(send_bytes)
             buf = b""
+            # 读取：对 get 需要直到 END，对其它需要直到状态词行
             while True:
-                chunk = sock.recv(4096)
+                try:
+                    chunk = sock.recv(4096)
+                except socket.timeout:
+                    break
                 if not chunk:
                     break
                 buf += chunk
-                # Break heuristics
-                if (
-                    b"\r\nEND\r\n" in buf
-                    or b"STORED\r\n" in buf
-                    or b"NOT_STORED\r\n" in buf
-                    or b"DELETED\r\n" in buf
-                    or b"NOT_FOUND\r\n" in buf
-                    or b"ERROR\r\n" in buf
-                ):
-                    break
+                lower_buf = buf.lower()
+                if primary == "get":
+                    if b"\r\nend\r\n" in lower_buf or b"\r\nerror\r\n" in lower_buf:
+                        break
+                else:
+                    if (
+                        b"stored\r\n" in lower_buf
+                        or b"not_stored\r\n" in lower_buf
+                        or b"deleted\r\n" in lower_buf
+                        or b"not_found\r\n" in lower_buf
+                        or b"error\r\n" in lower_buf
+                        or b"client_error" in lower_buf
+                        or b"server_error" in lower_buf
+                    ):
+                        break
         raw_text = buf.decode(errors="replace")
-        first_line = raw_text.splitlines()[0] if raw_text else ""
-        tokens = command_text.split()
-        primary = tokens[0].lower()
+        lines = raw_text.splitlines()
+        first_line = lines[0] if lines else ""
+
+        # ---------- 解析与标准化 ---------- #
         norm = None
         if primary == "get":
-            # Format: VALUE <key> <flags> <bytes> \r\n <data> \r\n END
             if raw_text.startswith("VALUE"):
-                lines = raw_text.splitlines()
+                # 支持单 key 情形
+                # VALUE <key> <flags> <bytes>\r\n<value>\r\nEND
                 if len(lines) >= 3 and lines[-1] == "END":
-                    header = lines[0].split()
-                    val_line = lines[1]
-                    value = val_line  # raw bytes (already decoded)
+                    value_line = lines[1]
                     norm = _unify_result(
-                        "kv_get", True, value, meta={"raw_code": "VALUE"}
+                        "kv_get",
+                        True,
+                        value_line,
+                        meta={
+                            "raw_code": "VALUE",
+                            "simplified": simplified,
+                            "sent_first_line": send_bytes.split(b"\r\n", 1)[0].decode(
+                                errors="ignore"
+                            ),
+                        },
                     )
-                else:
+                else:  # 不完整
                     norm = _unify_result(
-                        "kv_get", False, None, meta={"raw_code": first_line}
+                        "kv_get",
+                        False,
+                        None,
+                        meta={
+                            "raw_code": first_line or "INCOMPLETE",
+                            "simplified": simplified,
+                            "sent_first_line": send_bytes.split(b"\r\n", 1)[0].decode(
+                                errors="ignore"
+                            ),
+                        },
                     )
-            elif first_line == "END":  # key miss
-                norm = _unify_result("kv_get", True, None, meta={"raw_code": "END"})
-            else:
+            elif first_line == "END":  # miss
                 norm = _unify_result(
-                    "kv_get", False, None, meta={"raw_code": first_line}
+                    "kv_get",
+                    True,
+                    None,
+                    meta={
+                        "raw_code": "END",
+                        "simplified": simplified,
+                        "sent_first_line": send_bytes.split(b"\r\n", 1)[0].decode(
+                            errors="ignore"
+                        ),
+                    },
+                )
+            else:  # 错误
+                norm = _unify_result(
+                    "kv_get",
+                    False,
+                    None,
+                    meta={
+                        "raw_code": first_line or "ERROR",
+                        "simplified": simplified,
+                        "sent_first_line": send_bytes.split(b"\r\n", 1)[0].decode(
+                            errors="ignore"
+                        ),
+                    },
                 )
         elif primary == "set":
             success = first_line == "STORED"
-            norm = _unify_result("kv_set", success, None, meta={"raw_code": first_line})
+            norm = _unify_result(
+                "kv_set",
+                success,
+                None,
+                meta={
+                    "raw_code": first_line or "",
+                    "simplified": simplified,
+                    "sent_first_line": send_bytes.split(b"\r\n", 1)[0].decode(
+                        errors="ignore"
+                    ),
+                },
+            )
         elif primary == "delete":
             success = first_line == "DELETED"
             norm = _unify_result(
-                "kv_delete", success, None, meta={"raw_code": first_line}
+                "kv_delete",
+                success,
+                None,
+                meta={
+                    "raw_code": first_line or "",
+                    "simplified": simplified,
+                    "sent_first_line": send_bytes.split(b"\r\n", 1)[0].decode(
+                        errors="ignore"
+                    ),
+                },
             )
         elif primary in {"incr", "decr"}:
-            # Response is the new value or NOT_FOUND / ERROR
             if first_line.isdigit():
                 norm = _unify_result(
-                    "kv_set", True, first_line, meta={"raw_code": first_line}
+                    "kv_set",
+                    True,
+                    first_line,
+                    meta={
+                        "raw_code": first_line,
+                        "simplified": simplified,
+                        "sent_first_line": send_bytes.split(b"\r\n", 1)[0].decode(
+                            errors="ignore"
+                        ),
+                    },
                 )
             else:
                 norm = _unify_result(
-                    "kv_set", False, None, meta={"raw_code": first_line}
+                    "kv_set",
+                    False,
+                    None,
+                    meta={
+                        "raw_code": first_line or "ERROR",
+                        "simplified": simplified,
+                        "sent_first_line": send_bytes.split(b"\r\n", 1)[0].decode(
+                            errors="ignore"
+                        ),
+                    },
                 )
-        else:
+        else:  # 其它命令：直接返回原文
             norm = _unify_result(
-                "unsupported", True, raw_text.strip(), meta={"raw_code": first_line}
+                "unsupported",
+                True,
+                raw_text.strip(),
+                meta={
+                    "raw_code": first_line or "",
+                    "simplified": simplified,
+                    "sent_first_line": send_bytes.split(b"\r\n", 1)[0].decode(
+                        errors="ignore"
+                    ),
+                },
             )
         return norm, time.time() - start, None
     except Exception as e:
-        return None, 0, str(e)
+        # 分类异常类型
+        err_type = "network"
+        msg = str(e)
+        if "timed out" in msg.lower():
+            err_type = "timeout"
+        elif "refused" in msg.lower():
+            err_type = "connection_refused"
+        meta_err = _unify_result(
+            "kv_error",
+            False,
+            None,
+            meta={
+                "error_type": err_type,
+                "message": msg,
+                "simplified": simplified,
+                "sent_first_line": original.split("\n", 1)[0],
+            },
+        )
+        return meta_err, 0, msg
 
 
 # -------------------- Consul Execution & Normalization ---------------- #

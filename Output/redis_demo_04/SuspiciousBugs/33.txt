@@ -1,0 +1,13 @@
+set mykey hello;
+zadd lukpltvt 5826 vgjrzjoy;
+sort lukpltvt;
+zrandmember lukpltvt -9223372036854770000 withscores;
+get mykey;
+
+
+set mykey hello
+set lukpltvt 5826 vgjrzjoy
+get lukpltvt
+get lukpltvt
+get mykey
+{"mutations": [{"cmd": "get mykey", "category": "probe", "oracle": "value_read"}]}
