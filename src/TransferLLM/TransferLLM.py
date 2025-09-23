@@ -899,7 +899,7 @@ def get_feature_knowledge_string(
     return knowledge_string
 
 
-def transfer_llm(
+def transfer_llm_sql_semantic(
     tool,
     exp,
     conversation,
@@ -978,11 +978,8 @@ def transfer_llm(
     # FewShot = False 目前没有
     examples_string = get_examples_string(FewShot, origin_db, target_db)
     # examples_string = ""
-    if str(origin_db).lower() == "redis":
-        feature_knowledge_string = get_NoSQL_knowledge_string(
-            origin_db, target_db, with_knowledge, sql_statement_processed
-        )
-    elif with_knowledge:
+
+    if with_knowledge:
         feature_knowledge_string = get_feature_knowledge_string(
             origin_db,
             target_db,
@@ -1125,6 +1122,172 @@ def transfer_llm(
         str(origin_error_message),
         exec_equalities,
     )
+
+
+# NoSQL Crash/Hang 分支：当任一端涉及 NoSQL 时不做语义等价判断，改用 crash pipeline 检测稳定性。
+def transfer_llm_nosql_crash(
+    tool,
+    exp,
+    conversation,  # 未使用，占位保持接口一致
+    error_iteration,
+    iteration_num,
+    FewShot,
+    with_knowledge,
+    origin_db,
+    target_db,
+    test_info,
+    use_redis_kb: bool = False,
+):
+    from src.NoSQLFuzz.nosql_crash_pipeline import run_nosql_sequence
+
+    SQL_DIALECTS = {
+        "mysql",
+        "mariadb",
+        "tidb",
+        "postgres",
+        "sqlite",
+        "duckdb",
+        "clickhouse",
+        "monetdb",
+    }
+    NOSQL_DBS = {"redis", "memcached", "etcd", "consul", "mongodb"}
+
+    if str(origin_db).lower() == "redis":
+        feature_knowledge_string = get_NoSQL_knowledge_string(
+            origin_db, target_db, with_knowledge, sql_statement_processed
+        )
+    # 选择要执行 crash 检测的具体 NoSQL 数据库 (优先 target)
+    nosql_db = None
+    if str(target_db).lower() in NOSQL_DBS:
+        nosql_db = target_db
+    elif str(origin_db).lower() in NOSQL_DBS:
+        nosql_db = origin_db
+    else:
+        raise ValueError("transfer_llm_nosql_crash called but neither db is NoSQL")
+
+    raw_statement = test_info.get("sql", "") or ""
+    # 将语句按分号或换行粗略拆分成命令序列（NoSQL 基本场景：单条命令也可直接执行）
+    import re, json as _json, time as _time
+
+    # 替换可能的换行
+    candidates = [c.strip() for c in re.split(r"[;\n]+", raw_statement) if c.strip()]
+    if not candidates:
+        candidates = [raw_statement.strip()] if raw_statement.strip() else []
+
+    start_batch = _time.time()
+    pipeline_res = run_nosql_sequence(
+        nosql_db, candidates, sequence_id=str(test_info.get("index", "unknown"))
+    )
+    duration_batch = _time.time() - start_batch
+
+    # 构造与原 SQL 语义函数一致的返回结构
+    costs = []  # No LLM 调用
+    transfer_results = [
+        {
+            "TransferSQL": "\n".join(candidates),
+            "Explanation": "NoSQL crash pipeline executed; semantic equivalence not evaluated.",
+        }
+    ]
+    exec_results = [_json.dumps(pipeline_res, ensure_ascii=False)]
+    exec_times = [str(duration_batch)]
+    # error 定义：若 crash/hang 之一为 true 则标记；否则 None
+    if pipeline_res.get("crash"):
+        error_messages = ["crash"]
+    elif pipeline_res.get("hang"):
+        error_messages = ["hang"]
+    else:
+        error_messages = ["None"]
+    # NoSQL 分支不做语义比对，全部置 False
+    exec_equalities = [False]
+
+    # origin 执行结果占位：可选执行一次（若 origin 为 SQL 且 target 为 NoSQL 则执行 origin 以留存基线）
+    origin_exec_result = ""
+    origin_exec_time = ""
+    origin_error_message = ""
+    try:
+        from src.Tools.DatabaseConnect.database_connector import (
+            exec_sql_statement as _exec,
+        )
+
+        if str(origin_db).lower() in SQL_DIALECTS | NOSQL_DBS:
+            r, t, e = _exec(tool, exp, origin_db, raw_statement)
+            origin_exec_result, origin_exec_time, origin_error_message = r, t, e
+    except Exception:
+        pass
+
+    return (
+        costs,
+        transfer_results,
+        exec_results,
+        exec_times,
+        error_messages,
+        str(origin_exec_result),
+        str(origin_exec_time),
+        str(origin_error_message),
+        exec_equalities,
+    )
+
+
+def transfer_llm(
+    tool,
+    exp,
+    conversation,
+    error_iteration,
+    iteration_num,
+    FewShot,
+    with_knowledge,
+    origin_db,
+    target_db,
+    test_info,
+    use_redis_kb: bool = False,
+):
+    """调度入口:
+    - 若 origin 与 target 均为 SQL 方言: 调用语义转换/迭代逻辑 (transfer_llm_sql_semantic)
+    - 只要涉及任一 NoSQL: 使用 NoSQL crash/hang pipeline (transfer_llm_nosql_crash)
+    返回值格式与旧版保持一致。
+    """
+    SQL_DIALECTS = {
+        "mysql",
+        "mariadb",
+        "tidb",
+        "postgres",
+        "sqlite",
+        "duckdb",
+        "clickhouse",
+        "monetdb",
+    }
+    NOSQL_DBS = {"redis", "memcached", "etcd", "consul", "mongodb"}
+
+    if (str(origin_db).lower() in SQL_DIALECTS) and (
+        str(target_db).lower() in SQL_DIALECTS
+    ):
+        return transfer_llm_sql_semantic(
+            tool,
+            exp,
+            conversation,
+            error_iteration,
+            iteration_num,
+            FewShot,
+            with_knowledge,
+            origin_db,
+            target_db,
+            test_info,
+            use_redis_kb=use_redis_kb,
+        )
+    else:
+        return transfer_llm_nosql_crash(
+            tool,
+            exp,
+            conversation,
+            error_iteration,
+            iteration_num,
+            FewShot,
+            with_knowledge,
+            origin_db,
+            target_db,
+            test_info,
+            use_redis_kb=use_redis_kb,
+        )
 
 
 def pinolo_qtran_run(
