@@ -19,12 +19,14 @@
 import os
 import json
 import random
+import time
+import re
 from langchain.prompts import ChatPromptTemplate
 from langchain.output_parsers import ResponseSchema
 from langchain.output_parsers import StructuredOutputParser
 from langchain.callbacks import get_openai_callback
 from src.Tools.DatabaseConnect.database_connector import exec_sql_statement
-
+from src.NoSQLFuzz.nosql_crash_pipeline import run_nosql_sequence
 
 # Optional: Redis KB adapter for prompt augmentation (lazy import)
 try:
@@ -1138,7 +1140,6 @@ def transfer_llm_nosql_crash(
     test_info,
     use_redis_kb: bool = False,
 ):
-    from src.NoSQLFuzz.nosql_crash_pipeline import run_nosql_sequence
 
     SQL_DIALECTS = {
         "mysql",
@@ -1152,10 +1153,6 @@ def transfer_llm_nosql_crash(
     }
     NOSQL_DBS = {"redis", "memcached", "etcd", "consul", "mongodb"}
 
-    if str(origin_db).lower() == "redis":
-        feature_knowledge_string = get_NoSQL_knowledge_string(
-            origin_db, target_db, with_knowledge, sql_statement_processed
-        )
     # 选择要执行 crash 检测的具体 NoSQL 数据库 (优先 target)
     nosql_db = None
     if str(target_db).lower() in NOSQL_DBS:
@@ -1165,40 +1162,137 @@ def transfer_llm_nosql_crash(
     else:
         raise ValueError("transfer_llm_nosql_crash called but neither db is NoSQL")
 
+    # 构建 prompt
     raw_statement = test_info.get("sql", "") or ""
-    # 将语句按分号或换行粗略拆分成命令序列（NoSQL 基本场景：单条命令也可直接执行）
-    import re, json as _json, time as _time
+    # 注入知识/示例
+    feature_knowledge_string = ""
+    if str(origin_db).lower() == "redis":
+        feature_knowledge_string = get_NoSQL_knowledge_string(
+            origin_db, target_db, with_knowledge, raw_statement
+        )
+    # FewShot 示例（可选，暂不实现）
+    examples_string = ""
 
-    # 替换可能的换行
-    candidates = [c.strip() for c in re.split(r"[;\n]+", raw_statement) if c.strip()]
-    if not candidates:
-        candidates = [raw_statement.strip()] if raw_statement.strip() else []
+    transfer_llm_string = f"""
+    You are an expert in NoSQL command translation and robustness testing.\
+    Given the following SQL or pseudo-SQL, generate an equivalent {nosql_db} command or sequence.\
+    Input statement: {{sql_statement}}\
+    {feature_knowledge_string}\
+    Requirements:\n1. Output only valid {nosql_db} commands (one per line if multiple).\n2. Do not invent keys/fields not present in the input.\n3. If the input is already a {nosql_db} command, output as-is.\n4. If you are unsure, make a best effort and explain.\n\n{examples_string}\nAnswer the following information: {{format_instructions}}\n"""
 
-    start_batch = _time.time()
-    pipeline_res = run_nosql_sequence(
-        nosql_db, candidates, sequence_id=str(test_info.get("index", "unknown"))
-    )
-    duration_batch = _time.time() - start_batch
-
-    # 构造与原 SQL 语义函数一致的返回结构
-    costs = []  # No LLM 调用
-    transfer_results = [
-        {
-            "TransferSQL": "\n".join(candidates),
-            "Explanation": "NoSQL crash pipeline executed; semantic equivalence not evaluated.",
-        }
+    response_schemas = [
+        ResponseSchema(
+            type="string",
+            name="TransferNoSQL",
+            description="The generated NoSQL command(s) (one per line if multiple).",
+        ),
+        ResponseSchema(
+            type="string",
+            name="Explanation",
+            description="Explain the mapping or transformation.",
+        ),
     ]
-    exec_results = [_json.dumps(pipeline_res, ensure_ascii=False)]
-    exec_times = [str(duration_batch)]
-    # error 定义：若 crash/hang 之一为 true 则标记；否则 None
-    if pipeline_res.get("crash"):
-        error_messages = ["crash"]
-    elif pipeline_res.get("hang"):
-        error_messages = ["hang"]
-    else:
-        error_messages = ["None"]
-    # NoSQL 分支不做语义比对，全部置 False
-    exec_equalities = [False]
+    output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
+    format_instructions = output_parser.get_format_instructions()
+    prompt_template = ChatPromptTemplate.from_template(transfer_llm_string)
+
+    iterate_llm_string = f"""
+    The NoSQL command(s) you provided failed to execute robustly (crash/hang/error).\
+    Please revise your previous command(s) based on the following error or event:\n{{error_message}}\n\nRequirements: Output only valid {nosql_db} command(s), one per line.\nAnswer the following information: {{format_instructions}}\n"""
+    iterate_response_schemas = [
+        ResponseSchema(
+            type="string",
+            name="TransferNoSQL",
+            description="The revised NoSQL command(s) after error correction.",
+        ),
+        ResponseSchema(
+            type="string",
+            name="Explanation",
+            description="Explain the correction.",
+        ),
+    ]
+    iterate_output_parser = StructuredOutputParser.from_response_schemas(
+        iterate_response_schemas
+    )
+    iterate_format_instructions = iterate_output_parser.get_format_instructions()
+    iterate_prompt_template = ChatPromptTemplate.from_template(iterate_llm_string)
+
+    costs = []
+    transfer_results = []
+    exec_results = []
+    exec_times = []
+    error_messages = []
+    exec_equalities = []
+
+    # 迭代生成+执行+检测
+    max_iter = iteration_num
+    conversation_cnt = 0
+    last_cmds = None
+    last_explanation = None
+    last_error = None
+    while conversation_cnt <= max_iter:
+        if conversation_cnt == 0:
+            prompt_messages = prompt_template.format_messages(
+                sql_statement=raw_statement,
+                format_instructions=format_instructions,
+            )
+        else:
+            if error_iteration is False:
+                break
+            if len(error_messages) and error_messages[-1] == "None":
+                break
+            prompt_messages = iterate_prompt_template.format_messages(
+                error_message=last_error or "",
+                format_instructions=iterate_format_instructions,
+            )
+        cost = {}
+        with get_openai_callback() as cb:
+            response = conversation.predict(input=prompt_messages[0].content)
+            output_dict = (
+                output_parser.parse(response)
+                if conversation_cnt == 0
+                else iterate_output_parser.parse(response)
+            )
+            cost["Total Tokens"] = cb.total_tokens
+            cost["Prompt Tokens"] = cb.prompt_tokens
+            cost["Completion Tokens"] = cb.completion_tokens
+            cost["Total Cost (USD)"] = cb.total_cost
+        # 拆分命令
+        cmds = [
+            c.strip() for c in output_dict["TransferNoSQL"].split("\n") if c.strip()
+        ]
+        last_cmds = cmds
+        last_explanation = output_dict["Explanation"]
+        # 执行 crash/hang 检测
+        start_batch = time.time()
+        pipeline_res = run_nosql_sequence(
+            nosql_db, cmds, sequence_id=str(test_info.get("index", "unknown"))
+        )
+        duration_batch = time.time() - start_batch
+        exec_results.append(json.dumps(pipeline_res, ensure_ascii=False))
+        exec_times.append(str(duration_batch))
+        transfer_results.append(output_dict)
+        costs.append(cost)
+        # error 定义
+        if pipeline_res.get("crash"):
+            error_messages.append("crash")
+            last_error = "crash: " + str(pipeline_res.get("first_failure"))
+        elif pipeline_res.get("hang"):
+            error_messages.append("hang")
+            last_error = "hang: " + str(pipeline_res.get("first_failure"))
+        elif pipeline_res["summary"]["errors"] > 0:
+            error_messages.append("error")
+            last_error = "error: " + str(pipeline_res.get("first_failure"))
+        else:
+            error_messages.append("None")
+            last_error = None
+        # 只要有 crash/hang/error 就继续迭代，否则终止
+        if last_error is None:
+            exec_equalities.append(True)
+            break
+        else:
+            exec_equalities.append(False)
+        conversation_cnt += 1
 
     # origin 执行结果占位：可选执行一次（若 origin 为 SQL 且 target 为 NoSQL 则执行 origin 以留存基线）
     origin_exec_result = ""

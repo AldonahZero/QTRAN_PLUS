@@ -29,19 +29,24 @@
   - 添加资源占用监控 (RSS/FD) 用于内存泄漏/句柄泄漏迹象。
   - 进程重启策略 / 自动最小化 (delta debug)。
 """
+
 from __future__ import annotations
 
 from dataclasses import dataclass, asdict
 from typing import List, Optional, Dict, Any, Iterable
 import time, json, socket, subprocess, base64, os
 
-from src.Tools.DatabaseConnect.database_connector import exec_sql_statement, get_database_connector_args
+from src.Tools.DatabaseConnect.database_connector import (
+    exec_sql_statement,
+    get_database_connector_args,
+)
 
 DEFAULT_CMD_TIMEOUT = 3.0  # 单条命令执行超时秒
 DEFAULT_HEALTH_CHECK_INTERVAL = 0.5
 DEFAULT_HEALTH_RETRY = 3
 
 SUPPORTED_NOSQL = {"redis", "memcached", "etcd", "consul", "mongodb"}
+
 
 @dataclass
 class Event:
@@ -67,28 +72,42 @@ def _health_check(dbType: str) -> bool:
         args = get_database_connector_args(db)
         if db == "redis":
             import redis  # type: ignore
-            r = redis.Redis(host=args.get("host","127.0.0.1"), port=int(args.get("port",6379)), socket_timeout=1)
+
+            r = redis.Redis(
+                host=args.get("host", "127.0.0.1"),
+                port=int(args.get("port", 6379)),
+                socket_timeout=1,
+            )
             return r.ping() is True
         if db == "memcached":
-            with socket.create_connection((args.get("host","127.0.0.1"), int(args.get("port",11211))), timeout=1) as s:
+            with socket.create_connection(
+                (args.get("host", "127.0.0.1"), int(args.get("port", 11211))), timeout=1
+            ) as s:
                 s.sendall(b"version\r\n")
                 resp = s.recv(64)
                 return b"VERSION" in resp
         if db == "etcd":
             # 简单探活: 查看 docker exec etcdctl endpoint status
-            container = args.get("container_name","etcd_QTRAN")
-            proc = subprocess.run(["docker","exec",container,"etcdctl","endpoint","status"], capture_output=True, text=True, timeout=2)
+            container = args.get("container_name", "etcd_QTRAN")
+            proc = subprocess.run(
+                ["docker", "exec", container, "etcdctl", "endpoint", "status"],
+                capture_output=True,
+                text=True,
+                timeout=2,
+            )
             return proc.returncode == 0
         if db == "consul":
             import requests
-            host = args.get("host","127.0.0.1")
-            port = int(args.get("port",8500))
+
+            host = args.get("host", "127.0.0.1")
+            port = int(args.get("port", 8500))
             r = requests.get(f"http://{host}:{port}/v1/status/leader", timeout=1)
             return r.status_code == 200
         if db == "mongodb":
             from pymongo import MongoClient
-            host = args.get("host","127.0.0.1")
-            port = int(args.get("port",27017))
+
+            host = args.get("host", "127.0.0.1")
+            port = int(args.get("port", 27017))
             client = MongoClient(host, port, serverSelectionTimeoutMS=800)
             client.admin.command("ping")
             return True
@@ -97,7 +116,11 @@ def _health_check(dbType: str) -> bool:
     return False
 
 
-def _wait_healthy(dbType: str, retries: int = DEFAULT_HEALTH_RETRY, interval: float = DEFAULT_HEALTH_CHECK_INTERVAL) -> bool:
+def _wait_healthy(
+    dbType: str,
+    retries: int = DEFAULT_HEALTH_RETRY,
+    interval: float = DEFAULT_HEALTH_CHECK_INTERVAL,
+) -> bool:
     for _ in range(retries):
         if _health_check(dbType):
             return True
@@ -105,7 +128,12 @@ def _wait_healthy(dbType: str, retries: int = DEFAULT_HEALTH_RETRY, interval: fl
     return False
 
 
-def run_nosql_sequence(dbType: str, commands: Iterable[str], sequence_id: Optional[str] = None, cmd_timeout: float = DEFAULT_CMD_TIMEOUT) -> Dict[str, Any]:
+def run_nosql_sequence(
+    dbType: str,
+    commands: Iterable[str],
+    sequence_id: Optional[str] = None,
+    cmd_timeout: float = DEFAULT_CMD_TIMEOUT,
+) -> Dict[str, Any]:
     db = dbType.lower()
     if db not in SUPPORTED_NOSQL:
         raise ValueError(f"Unsupported NoSQL dbType: {dbType}")
@@ -152,7 +180,7 @@ def run_nosql_sequence(dbType: str, commands: Iterable[str], sequence_id: Option
             if classification == "crash":
                 crash = True
         else:
-            duration = duration if 'duration' in locals() else (time.time() - start_ts)
+            duration = duration if "duration" in locals() else (time.time() - start_ts)
         if duration >= cmd_timeout and classification == "ok":
             classification = "timeout"
             error_msg = error_msg or f"command exceeded {cmd_timeout}s"
@@ -211,6 +239,7 @@ def run_nosql_file(dbType: str, path: str) -> Dict[str, Any]:
 
 if __name__ == "__main__":
     import argparse, pprint
+
     p = argparse.ArgumentParser(description="Run NoSQL crash/hang detection pipeline")
     p.add_argument("--db", required=True, help="redis|memcached|etcd|consul|mongodb")
     p.add_argument("--file", required=True, help="command file path")
