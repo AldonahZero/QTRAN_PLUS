@@ -943,7 +943,7 @@ def transfer_llm_sql_semantic(
     #   {format_instructions} - StructuredOutputParser 给出的输出格式说明，要求模型按结构返回
 
     transfer_llm_string = """  
-    Let's think step by step.You are an expert in sql statement translation between different database.\
+    You are an INTJ (MBTI) database engineering expert known for strategic, analytical, precise thinking. Let's think step by step. You are an expert in sql statement translation between different database.\
     With the assistance of feature knowledge,transfer the following {origin_db} statement to executable {target_db} statement with similar semantics.\
     {origin_db} statement: {sql_statement}\
 
@@ -1173,12 +1173,16 @@ def transfer_llm_nosql_crash(
     # FewShot 示例（可选，暂不实现）
     examples_string = ""
 
-    transfer_llm_string = f"""
-    You are an expert in NoSQL command translation and robustness testing.\
+    # 使用占位符避免 feature_knowledge_string / examples_string 中的大括号被二次解析导致 KeyError
+    transfer_llm_string = (
+        """
+    You are an INTJ (MBTI) database engineering expert known for strategic, analytical, precise thinking. You are an expert in NoSQL command translation and robustness testing.\
     Given the following SQL or pseudo-SQL, generate an equivalent {nosql_db} command or sequence.\
-    Input statement: {{sql_statement}}\
-    {feature_knowledge_string}\
-    Requirements:\n1. Output only valid {nosql_db} commands (one per line if multiple).\n2. Do not invent keys/fields not present in the input.\n3. If the input is already a {nosql_db} command, output as-is.\n4. If you are unsure, make a best effort and explain.\n\n{examples_string}\nAnswer the following information: {{format_instructions}}\n"""
+    Input statement: {sql_statement}\
+    {feature_knowledge}\
+    Requirements:\n1. Output only valid {nosql_db} commands (one per line if multiple).\n2. Do not invent keys/fields not present in the input.\n3. If the input is already a {nosql_db} command, output as-is.\n4. If you are unsure, make a best effort and explain.\n\n{examples}\nAnswer the following information: {format_instructions}\n"""
+        .replace("{nosql_db}", nosql_db)
+    )
 
     response_schemas = [
         ResponseSchema(
@@ -1234,6 +1238,8 @@ def transfer_llm_nosql_crash(
         if conversation_cnt == 0:
             prompt_messages = prompt_template.format_messages(
                 sql_statement=raw_statement,
+                feature_knowledge=feature_knowledge_string,
+                examples=examples_string,
                 format_instructions=format_instructions,
             )
         else:

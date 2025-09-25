@@ -41,6 +41,20 @@ from src.Tools.json_utils import make_json_safe
 current_file_path = os.path.abspath(__file__)
 current_dir = os.path.dirname(current_file_path)
 
+
+def _extract_transferred_stmt(transfer_results):
+        """Return the last transferred statement regardless of SQL or NoSQL branch.
+
+        transfer_results: list of dicts produced by transfer_llm.
+        Each dict may contain one of:
+            - "TransferSQL" (SQL semantic path)
+            - "TransferNoSQL" (NoSQL crash path)
+        """
+        if not transfer_results:
+                return None
+        last = transfer_results[-1]
+        return last.get("TransferSQL") or last.get("TransferNoSQL")
+
 """
 sqlancer_norec_mutate_id = os.environ['SQLANCER_MUTATE_MODEL_NOREC']
 sqlancer_dqe_mutate_id = os.environ['SQLANCER_MUTATE_MODEL_DQE']
@@ -241,7 +255,11 @@ def sqlancer_translate(
             for item in transfer_outputs:
                 mutate_results.append(item)
             if len(mutate_results) and len(mutate_results[-1]["TransferResult"]):
-                mutate_sql = mutate_results[-1]["TransferResult"][-1]["TransferSQL"]
+                print("mutate_results: ", mutate_results[-1])
+                mutate_sql = _extract_transferred_stmt(mutate_results[-1]["TransferResult"])
+                if mutate_sql is None:
+                    print("[WARN] No TransferSQL/TransferNoSQL found in last TransferResult; skipping mutate phase for this bug.")
+                    continue
                 # mutate llm client
                 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", ""))
                 mutate_start_time = datetime.now()  # 使用 ISO 8601 格式
@@ -295,7 +313,9 @@ def sqlancer_translate(
             ddls = []
             transfer_fail_flag = False
             for i in range(len(mutate_results) - 1):
-                ddls.append(mutate_results[i]["TransferResult"][-1]["TransferSQL"])
+                stmt_i = _extract_transferred_stmt(mutate_results[i]["TransferResult"])
+                if stmt_i:
+                    ddls.append(stmt_i)
                 if mutate_results[i]["TransferSqlExecError"][-1] != "None":
                     transfer_fail_flag = True
             # 先创造执行环境
@@ -303,7 +323,10 @@ def sqlancer_translate(
             for ddl in ddls:
                 exec_sql_statement(tool, fuzzer, b_db, ddl)
 
-            before_mutate = mutate_results[-1]["TransferResult"][-1]["TransferSQL"]
+            before_mutate = _extract_transferred_stmt(mutate_results[-1]["TransferResult"])
+            if before_mutate is None:
+                print("[ERROR] Cannot extract before_mutate statement; aborting mutate/oracle stage for this bug.")
+                continue
             after_mutate = mutate_results[-1]["MutateResult"]
 
             before_result, before_exec_time, before_error_message = exec_sql_statement(
@@ -498,13 +521,11 @@ def getSuspicious(input_filepath, tool):
             original_sqls = []
             results_sqls = []
             for content in contents:
-                new_content = {
-                    "index": content["index"],
-                    "sql": content["sql"],
-                    "TransferResult": [content["TransferResult"][-1]["TransferSQL"]],
-                }
+                extracted_stmt = _extract_transferred_stmt(content["TransferResult"])
+                new_content = {"index": content["index"], "sql": content["sql"], "TransferResult": [extracted_stmt] if extracted_stmt else []}
                 original_sqls.append(content["sql"] + "\n")
-                results_sqls.append(content["TransferResult"][-1]["TransferSQL"] + "\n")
+                if extracted_stmt:
+                    results_sqls.append(extracted_stmt + "\n")
                 if "MutateResult" in content:
                     new_content["TransferSqlExecResult"] = [
                         content["TransferSqlExecResult"][-1]
