@@ -43,17 +43,18 @@ current_dir = os.path.dirname(current_file_path)
 
 
 def _extract_transferred_stmt(transfer_results):
-        """Return the last transferred statement regardless of SQL or NoSQL branch.
+    """Return the last transferred statement regardless of SQL or NoSQL branch.
 
-        transfer_results: list of dicts produced by transfer_llm.
-        Each dict may contain one of:
-            - "TransferSQL" (SQL semantic path)
-            - "TransferNoSQL" (NoSQL crash path)
-        """
-        if not transfer_results:
-                return None
-        last = transfer_results[-1]
-        return last.get("TransferSQL") or last.get("TransferNoSQL")
+    transfer_results: list of dicts produced by transfer_llm.
+    Each dict may contain one of:
+        - "TransferSQL" (SQL semantic path)
+        - "TransferNoSQL" (NoSQL crash path)
+    """
+    if not transfer_results:
+        return None
+    last = transfer_results[-1]
+    return last.get("TransferSQL") or last.get("TransferNoSQL")
+
 
 """
 sqlancer_norec_mutate_id = os.environ['SQLANCER_MUTATE_MODEL_NOREC']
@@ -256,9 +257,13 @@ def sqlancer_translate(
                 mutate_results.append(item)
             if len(mutate_results) and len(mutate_results[-1]["TransferResult"]):
                 print("mutate_results: ", mutate_results[-1])
-                mutate_sql = _extract_transferred_stmt(mutate_results[-1]["TransferResult"])
+                mutate_sql = _extract_transferred_stmt(
+                    mutate_results[-1]["TransferResult"]
+                )
                 if mutate_sql is None:
-                    print("[WARN] No TransferSQL/TransferNoSQL found in last TransferResult; skipping mutate phase for this bug.")
+                    print(
+                        "[WARN] No TransferSQL/TransferNoSQL found in last TransferResult; skipping mutate phase for this bug."
+                    )
                     continue
                 # mutate llm client
                 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", ""))
@@ -323,18 +328,101 @@ def sqlancer_translate(
             for ddl in ddls:
                 exec_sql_statement(tool, fuzzer, b_db, ddl)
 
-            before_mutate = _extract_transferred_stmt(mutate_results[-1]["TransferResult"])
+            before_mutate = _extract_transferred_stmt(
+                mutate_results[-1]["TransferResult"]
+            )
             if before_mutate is None:
-                print("[ERROR] Cannot extract before_mutate statement; aborting mutate/oracle stage for this bug.")
+                print(
+                    "[ERROR] Cannot extract before_mutate statement; aborting mutate/oracle stage for this bug."
+                )
                 continue
             after_mutate = mutate_results[-1]["MutateResult"]
 
             before_result, before_exec_time, before_error_message = exec_sql_statement(
                 tool, fuzzer, b_db, before_mutate
             )
-            after_result, after_exec_time, after_error_message = exec_sql_statement(
-                tool, fuzzer, b_db, after_mutate
-            )
+
+            # 如果 MutateResult 是 JSON 且包含 mutations 列表，则逐条解析并执行每个 cmd（适用于 NoSQL mutation 回放）
+            after_result = None
+            after_exec_time = None
+            after_error_message = None
+            try:
+                parsed_mutate = None
+                if isinstance(mutate_results[-1].get("MutateResult"), str):
+                    try:
+                        parsed_mutate = json.loads(mutate_results[-1]["MutateResult"])
+                    except Exception:
+                        parsed_mutate = None
+                else:
+                    parsed_mutate = mutate_results[-1].get("MutateResult")
+
+                if isinstance(parsed_mutate, dict) and "mutations" in parsed_mutate:
+                    cmds = [
+                        m.get("cmd")
+                        for m in parsed_mutate.get("mutations", [])
+                        if m.get("cmd")
+                    ]
+                    mutate_exec_list = []
+                    mutate_errors = []
+                    total_time = 0.0
+                    for cmd in cmds:
+                        r, t, e = exec_sql_statement(tool, fuzzer, b_db, cmd)
+                        mutate_exec_list.append(r)
+                        mutate_errors.append(e)
+                        try:
+                            total_time += float(t)
+                        except Exception:
+                            pass
+
+                    # 保存逐条执行的结果（序列化为 JSON 字符串以便持久化）
+                    mutate_results[-1]["MutateSqlExecResult"] = json.dumps(
+                        mutate_exec_list, ensure_ascii=False
+                    )
+                    mutate_results[-1]["MutateSqlExecTime"] = str(total_time)
+                    # 如果所有子命令都没有报错，则标记 None（字符串形式保持兼容）
+                    any_err = [e for e in mutate_errors if e and str(e) != "None"]
+                    mutate_results[-1]["MutateSqlExecError"] = (
+                        str(any_err) if any_err else "None"
+                    )
+
+                    # 选择用于 oracle 比较的 after_result：优先取第一次 kv_get 的返回，其次取最后一个可用 dict 返回
+                    for r in mutate_exec_list:
+                        if isinstance(r, dict) and str(r.get("type", "")).startswith(
+                            "kv_get"
+                        ):
+                            after_result = r
+                            break
+                    if after_result is None:
+                        for r in reversed(mutate_exec_list):
+                            if isinstance(r, dict):
+                                after_result = r
+                                break
+
+                    if after_result is None:
+                        # 若逐条执行没有可用结构化结果，fallback 为尝试把整体 MutateResult 当作单条命令执行
+                        after_result, after_exec_time, after_error_message = (
+                            exec_sql_statement(
+                                tool,
+                                fuzzer,
+                                b_db,
+                                mutate_results[-1].get("MutateResult"),
+                            )
+                        )
+                    else:
+                        after_exec_time = total_time
+                        after_error_message = None
+                else:
+                    # 不是 JSON mutations，按旧逻辑直接执行整个字符串
+                    after_result, after_exec_time, after_error_message = (
+                        exec_sql_statement(
+                            tool, fuzzer, b_db, mutate_results[-1].get("MutateResult")
+                        )
+                    )
+            except Exception as e:
+                # 出现异常时回退到原行为
+                after_result, after_exec_time, after_error_message = exec_sql_statement(
+                    tool, fuzzer, b_db, mutate_results[-1].get("MutateResult")
+                )
 
             # 对于sqlancer的tlp，谓词的随机性比较大，这里将重复几次，以生成可执行的mutate sql
             if fuzzer.lower() == "tlp":
@@ -522,7 +610,11 @@ def getSuspicious(input_filepath, tool):
             results_sqls = []
             for content in contents:
                 extracted_stmt = _extract_transferred_stmt(content["TransferResult"])
-                new_content = {"index": content["index"], "sql": content["sql"], "TransferResult": [extracted_stmt] if extracted_stmt else []}
+                new_content = {
+                    "index": content["index"],
+                    "sql": content["sql"],
+                    "TransferResult": [extracted_stmt] if extracted_stmt else [],
+                }
                 original_sqls.append(content["sql"] + "\n")
                 if extracted_stmt:
                     results_sqls.append(extracted_stmt + "\n")
