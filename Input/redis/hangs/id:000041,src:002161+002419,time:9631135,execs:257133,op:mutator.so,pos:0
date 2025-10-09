@@ -1,0 +1,12 @@
+set mykey 311 
+ incrbyfloat mykey 376 
+ get mykey 
+ select 9 
+ xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm 
+ lcs mykey mykey 
+ setbit mykey 3541384808 1 
+ get mykey 
+ bitop xor gtmzalcd mykey mykey mykey mykey mykey 
+ scan 117 type string 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

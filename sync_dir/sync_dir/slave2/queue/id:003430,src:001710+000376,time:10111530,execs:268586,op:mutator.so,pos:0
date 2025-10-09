@@ -1,0 +1,9 @@
+hsetnx wqydsukt guwchiwu -830067951618 
+ expire wqydsukt 200 xx 
+ slowlog get 0 
+ set mykey 3 
+ hvals wqydsukt 
+ info latencystats 
+ info latencystats 
+ copy mykey v0 
+ get mykey

@@ -1,0 +1,4 @@
+set mykey -91 
+ get mykey 
+ save 
+ ttl imwdrgeh

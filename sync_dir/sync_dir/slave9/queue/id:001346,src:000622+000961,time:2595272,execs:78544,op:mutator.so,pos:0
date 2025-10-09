@@ -1,0 +1,7 @@
+set mykey -874394400 
+ zadd mfsvncrq lt incr 4313 bexnlycc 
+ zdiffstore mvtbwffp 2 mfsvncrq mfsvncrq 
+ zdiff 2 mfsvncrq mfsvncrq 
+ object encoding sotkufci 
+ zmpop 9 mfsvncrq mfsvncrq min 
+ get mykey

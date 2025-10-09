@@ -1,0 +1,5 @@
+set mykey 3 
+ setnx zqikteif -5 
+ zinterstore hszuawdu 2 hszuawdu hszuawdu weights 2 3 
+ copy mykey pyaiiarv 
+ get mykey

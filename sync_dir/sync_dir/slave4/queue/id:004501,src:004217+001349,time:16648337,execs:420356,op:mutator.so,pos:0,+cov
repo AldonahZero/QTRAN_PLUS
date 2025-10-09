@@ -1,0 +1,9 @@
+xadd kvnrwmku 1-0 mzklxdll "Hello," 
+ info default all 
+ xgroup create kvnrwmku v0 82 
+ xlen kvnrwmku 
+ xclaim kvnrwmku v0 oozsdacj 0 1-0 2-0 3-0 
+ set atifyowf 1 
+ save 
+ xpending kvnrwmku v0 
+ get atifyowf

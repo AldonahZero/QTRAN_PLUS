@@ -1,0 +1,4 @@
+set mykey 3101433443114 
+ bgsave schedule 
+ bitfield mykey overflow fail set u10 0 1519 
+ get mykey

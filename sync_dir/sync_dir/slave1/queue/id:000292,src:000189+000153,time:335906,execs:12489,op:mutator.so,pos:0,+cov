@@ -1,0 +1,5 @@
+set mykey -9223372036854770000 
+ getex mykey 
+ lpush sfzjdgqf lbqiofzd 
+ decrby mykey 329530968949 
+ get mykey

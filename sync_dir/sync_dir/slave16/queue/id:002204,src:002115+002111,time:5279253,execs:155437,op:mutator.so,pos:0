@@ -1,0 +1,11 @@
+zadd ojhkbklj 0 avnctvuo 
+ zadd hleuhsey 0 srveglnh 
+ object encoding rwzbgekl 
+ geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
+ set mykey hello 
+ zrangestore gdjwzzhv ojhkbklj 0 1 
+ strlen mykey 
+ zunion 2 hleuhsey ojhkbklj 
+ zunionstore eeacghhu 2 ojhkbklj hleuhsey weights 2 3 
+ zinter 2 gdjwzzhv hleuhsey aggregate min withscores 
+ get mykey

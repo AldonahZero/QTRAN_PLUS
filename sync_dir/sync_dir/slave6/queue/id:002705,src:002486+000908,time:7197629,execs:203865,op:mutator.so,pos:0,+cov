@@ -1,0 +1,14 @@
+set mykey -1947844055 
+ zadd mfsvncrq lt incr 1 uzgkqvdf 
+ bitpos mykey 1 12 12 bit 
+ sort mfsvncrq alpha 
+ get mykey 
+ pfadd dbpkzfom 
+ zremrangebyrank mfsvncrq -706 -393807523601 
+ setbit mykey 474529 1 
+ zlexcount mfsvncrq 156152546 167277571823 
+ get mykey 
+ zrem mfsvncrq uzgkqvdf zxjpkwlc xzxqnlil psjzheha icivitcy 
+ pubsub shardnumsub iubszqwo 
+ zunion 2 mfsvncrq mfsvncrq aggregate min withscores 
+ save

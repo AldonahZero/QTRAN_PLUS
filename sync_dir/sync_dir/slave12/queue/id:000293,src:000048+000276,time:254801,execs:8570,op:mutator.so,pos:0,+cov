@@ -1,0 +1,4 @@
+set mykey -1001 
+ get mykey 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

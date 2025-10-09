@@ -1,0 +1,6 @@
+set mykey 4806867732670 
+ getset mykey -205 
+ sdiffstore lrkqafqr lrkqafqr lrkqafqr lrkqafqr 
+ watch nqjqeqpq v0 frjrxccy 
+ sdiffstore vdxxciyw vdxxciyw vdxxciyw vdxxciyw 
+ get mykey

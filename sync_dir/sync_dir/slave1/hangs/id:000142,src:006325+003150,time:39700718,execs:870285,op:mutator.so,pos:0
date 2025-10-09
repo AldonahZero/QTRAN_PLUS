@@ -1,0 +1,11 @@
+set atifyowf 1 
+ pexpire atifyowf 100 
+ copy atifyowf v0 
+ bitfield atifyowf overflow wrap set i4 1858801073 23450054762 
+ incrbyfloat atifyowf -5 
+ slowlog get 45 
+ bitfield atifyowf overflow wrap set i30 2537333662 -255272035 
+ setex mmjypptl 273 12024430563 
+ save 
+ del atifyowf 
+ get mmjypptl

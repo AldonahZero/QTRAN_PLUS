@@ -1,0 +1,6 @@
+set lkfqujtp 0.6807728198733054 
+ setnx zqikteif -5 
+ lcs zqikteif lkfqujtp 
+ bitop xor oszvevyb zqikteif zqikteif zqikteif lkfqujtp 
+ copy lkfqujtp v0 
+ get v0

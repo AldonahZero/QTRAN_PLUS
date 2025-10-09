@@ -1,0 +1,4 @@
+set mykey 1 
+ copy mykey plezesax 
+ save 
+ get mykey

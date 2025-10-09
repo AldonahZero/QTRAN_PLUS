@@ -1,0 +1,6 @@
+set mykey 1732498873 
+ geoadd ussfykoq 12.758489 38.788135 yqcyaxfl 17.241510 38.788135 nxmjeqgx 17.250000 35.202000 slkadwaf 12.750000 35.202000 esifgdfx 12.748489955781654 37 xxkpmdgk 12.750000 35.202000 esifgdfx 12.748489955781654 37 xxkpmdgk 
+ geosearch ussfykoq frommember yqcyaxfl bybox 1 980792 km 
+ get mykey 
+ rpush dbmuwins jrjuraql 
+ psubscribe bar* 

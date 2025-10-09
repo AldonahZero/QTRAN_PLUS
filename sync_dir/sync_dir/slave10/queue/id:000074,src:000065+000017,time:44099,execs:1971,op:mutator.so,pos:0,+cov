@@ -1,0 +1,4 @@
+set mykey 33224130 
+ get mykey 
+ lcs mykey mykey 
+ object encoding uvryzsxf

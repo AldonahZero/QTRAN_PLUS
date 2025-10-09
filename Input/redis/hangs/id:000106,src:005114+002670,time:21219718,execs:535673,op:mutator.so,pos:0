@@ -1,0 +1,5 @@
+set mykey 1519 
+ hmset zxvatyxz mecdrlck 10241231341031203420214422113031321304032040412101323223440100334334214432421232140111422434321134 vktahdph 2 v10 2 qzsoxtro 3 fjawhzfz 1158 mdhtawrn 3 
+ get mykey 
+ hrandfield zxvatyxz -909494108478 withvalues 
+ del mykey 

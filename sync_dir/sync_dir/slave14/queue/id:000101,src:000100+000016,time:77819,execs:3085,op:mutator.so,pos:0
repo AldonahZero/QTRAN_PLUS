@@ -1,0 +1,5 @@
+object encoding rwzbgekl 
+ zrangestore jzylmnye jzylmnye 5 6 
+ zinterstore phrpwlca 1 phrpwlca phrpwlca aggregate min 
+ set mykey hello 
+ get mykey

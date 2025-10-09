@@ -1,0 +1,6 @@
+set mykey "Hello," 
+ bitfield mykey overflow fail set u38 0 196603812187 
+ bitfield mykey overflow fail incrby i11 0 -461934581148 
+ pexpire mykey 100 
+ getrange mykey -2276873893 821 
+ get mykey

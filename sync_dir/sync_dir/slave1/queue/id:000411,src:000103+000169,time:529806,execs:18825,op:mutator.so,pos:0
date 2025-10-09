@@ -1,0 +1,5 @@
+set mykey -401 
+ getex mykey 
+ pfcount muowgurr 
+ mget mykey 
+ get mykey

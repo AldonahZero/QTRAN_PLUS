@@ -1,0 +1,11 @@
+set nzgkmxpj 1140 
+ save 
+ bitcount nzgkmxpj 15 63 bit 
+ setbit nzgkmxpj 362392 0 
+ msetnx v0 63 triqeesz gftsakln ldvuftez 20 
+ bitcount nzgkmxpj 0 1 byte 
+ bitcount nzgkmxpj 72 308 
+ getset triqeesz -853 
+ bitop xor vnayjyje triqeesz 
+ bitcount nzgkmxpj 72 308 
+ get v0

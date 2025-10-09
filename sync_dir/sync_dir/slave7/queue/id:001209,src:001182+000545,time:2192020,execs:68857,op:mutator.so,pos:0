@@ -1,0 +1,5 @@
+set mykey -10910337 
+ xadd ozsnpvdy 123 rqwzplos "Hello," 
+ get mykey 
+ dump ozsnpvdy 
+ save

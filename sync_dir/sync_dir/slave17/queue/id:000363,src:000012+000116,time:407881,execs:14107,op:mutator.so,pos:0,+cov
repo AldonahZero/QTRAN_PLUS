@@ -1,0 +1,3 @@
+set mykey 13033323022411214443443303234220120324324344401012232221143311233 
+ lcs mykey mykey len idx minmatchlen 4 withmatchlen 
+ get mykey

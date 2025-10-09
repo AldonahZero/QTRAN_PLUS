@@ -1,0 +1,5 @@
+set mykey 13121140 
+ get mykey 
+ getex mykey 
+ info cpu default 
+ save

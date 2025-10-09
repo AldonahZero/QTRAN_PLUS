@@ -1,0 +1,9 @@
+set mykey 1302230201330004203204022312341214 
+ zadd ojhkbklj -653 avnctvuo 
+ sort ojhkbklj store godhjfil 
+ zrangestore lguhmiyq ojhkbklj 5 0 byscore rev limit 837779287 2 
+ zscan ojhkbklj 96 
+ bitop and soigkacb mykey mykey mykey 
+ zrandmember ojhkbklj -10 withscores 
+ scan 68 
+ get mykey

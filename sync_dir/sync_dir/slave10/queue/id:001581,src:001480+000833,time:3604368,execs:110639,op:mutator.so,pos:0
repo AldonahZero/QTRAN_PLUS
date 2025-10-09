@@ -1,0 +1,8 @@
+set mykey 1732498873 
+ xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm aixesdar urasnjsm aixesdar -719392362385 aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar -719392362385 
+ geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
+ geosearch rguvzgcd frommember uqzidutw bybox 1 -2255963835 km 
+ get mykey 
+ rpush dbmuwins jrjuraql 
+ copy dbmuwins v0 replace 
+ psubscribe bar* 

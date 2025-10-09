@@ -1,0 +1,8 @@
+set mykey -219 
+ bgsave 
+ bitfield mykey overflow wrap incrby u58 1887718428 92007103795675120 
+ save 
+ get mykey 
+ bgsave 
+ mget mykey mykey mykey mykey 
+ getrange mykey 615 917

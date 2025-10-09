@@ -1,0 +1,13 @@
+set mykey -1947844055 
+ zadd hleuhsey 401404201341241132211401110422242302223101311244433030143140430241243241130223 srveglnh 
+ bitpos mykey 1 12 12 bit 
+ sort hleuhsey alpha 
+ zincrby hleuhsey -inf ymtynmse 
+ get mykey 
+ pfadd dbpkzfom 
+ zrangestore lguhmiyq hleuhsey 5 0 byscore rev limit 0 2 
+ setbit mykey 474529 1 
+ get mykey 
+ zunion 2 lguhmiyq lguhmiyq weights 1 1 aggregate max withscores 
+ zremrangebyscore lguhmiyq 449 734 
+ save

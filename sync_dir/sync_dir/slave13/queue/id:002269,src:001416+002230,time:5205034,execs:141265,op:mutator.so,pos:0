@@ -1,0 +1,7 @@
+lpush ynofvqag mymzzmsr 
+ set mykey -408729133852 
+ lmove ynofvqag sqcvguxh left left 
+ lmpop 2 ynofvqag ynofvqag left count 10 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ rpoplpush sqcvguxh pnhvbalr 
+ get mykey

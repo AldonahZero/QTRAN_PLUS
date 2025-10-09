@@ -1,0 +1,9 @@
+lpush zdnjslcy sicnwujw 
+ lmpop 7 zdnjslcy left 
+ set mykey 15.087269 
+ bitfield mykey overflow wrap set i30 1887718428 -255272035 
+ mget mykey mykey mykey mykey 
+ lpop zdnjslcy -123 
+ info cpu default 
+ lcs mykey mykey 
+ get mykey

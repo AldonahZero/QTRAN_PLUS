@@ -1,0 +1,11 @@
+setex jiosoaha 1214754039 3715410429 
+ set mykey 41788 
+ info all 
+ xadd kvnrwmku 123-1 mzklxdll "Hello," 
+ setbit mykey 526632498263 1 
+ xrevrange kvnrwmku -553 - count 1 
+ info cpu all 
+ info all 
+ get mykey 
+ info all default 
+ save

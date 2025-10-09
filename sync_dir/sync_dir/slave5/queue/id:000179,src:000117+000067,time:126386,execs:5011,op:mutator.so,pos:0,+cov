@@ -1,0 +1,5 @@
+set atifyowf 1 
+ incrbyfloat atifyowf -5 
+ save 
+ hmset fhrsgqae nhrsuavj 125287 
+ get atifyowf

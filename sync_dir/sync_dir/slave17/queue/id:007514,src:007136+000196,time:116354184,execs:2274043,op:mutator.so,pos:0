@@ -1,0 +1,9 @@
+info errorstats 
+ set mykey 0 
+ get mykey 
+ info cpu 
+ incrbyfloat mykey 1072727848 
+ info cpu cpu 
+ getex mykey 
+ info replication 
+ save

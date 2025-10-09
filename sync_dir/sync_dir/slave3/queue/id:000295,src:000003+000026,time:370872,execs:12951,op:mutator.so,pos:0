@@ -1,0 +1,3 @@
+set mykey hello 
+ zrangestore hvmcjxor hvmcjxor -2363940145 -1 
+ get mykey

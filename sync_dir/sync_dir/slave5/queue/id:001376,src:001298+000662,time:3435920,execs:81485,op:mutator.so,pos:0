@@ -1,0 +1,12 @@
+set atifyowf 1 
+ incrbyfloat atifyowf -5 
+ bitfield atifyowf overflow wrap incrby u58 0 92007103795675120 
+ select 12 
+ setex tncydqgy 273 12024430563 
+ copy tncydqgy v0 
+ zunionstore ozmbxkpt 2 ozmbxkpt ozmbxkpt weights 2 3 aggregate max 
+ bitpos atifyowf 0 9 25 bit 
+ save 
+ pfadd iknmweqf zelgohmr gjbqrlnm 
+ getex v0 
+ get atifyowf

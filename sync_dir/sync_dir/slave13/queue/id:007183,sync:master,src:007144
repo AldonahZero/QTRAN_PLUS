@@ -1,0 +1,12 @@
+set mykey 41788 
+ decr mykey 
+ watch nqjqeqpq zexfuhuk mykey 
+ sinterstore pqczlznr pqczlznr 
+ decrby mykey 512461 
+ srandmember pqczlznr 401404201341241132211401110422242302223101311244433030143140430241243241130223 
+ info default default 
+ mget mykey mykey mykey mykey mykey mykey mykey 
+ get mykey 
+ decr mykey 
+ decr mykey 
+ save

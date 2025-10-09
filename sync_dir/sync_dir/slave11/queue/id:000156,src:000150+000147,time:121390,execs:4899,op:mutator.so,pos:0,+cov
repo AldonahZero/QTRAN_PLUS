@@ -1,0 +1,3 @@
+set mykey 3234386445 
+ get mykey 
+ mget mykey mykey mykey mykey

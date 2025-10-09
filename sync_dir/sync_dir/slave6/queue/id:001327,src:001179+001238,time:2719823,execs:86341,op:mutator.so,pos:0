@@ -1,0 +1,7 @@
+info cpu all 
+ set atifyowf 1 
+ expire atifyowf 9223372036854776 
+ zrangestore ugswuldi ugswuldi 0 -1 
+ save 
+ zunion -783294678099 ugswuldi ugswuldi weights 1 1 aggregate min withscores 
+ get atifyowf

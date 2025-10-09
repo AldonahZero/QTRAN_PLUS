@@ -1,0 +1,7 @@
+sunionstore sugvxxcg sugvxxcg sugvxxcg 
+ geoadd prlpsdxt 12.75 36.995 trqpgcxr 
+ sort sugvxxcg by d* get s* store frxxuubj 
+ set mykey hello 
+ lcs mykey mykey idx minmatchlen 4 withmatchlen 
+ sdiff sugvxxcg sugvxxcg sugvxxcg sugvxxcg 
+ get mykey

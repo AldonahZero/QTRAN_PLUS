@@ -1,0 +1,4 @@
+set mykey 212 
+ get mykey 
+ geoadd apctyxsn 0 5834 ecyrjbwf 
+ save

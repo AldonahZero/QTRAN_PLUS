@@ -1,0 +1,4 @@
+set mykey hello 
+ zinterstore phrpwlca 2 phrpwlca phrpwlca aggregate min 
+ get mykey 
+ save

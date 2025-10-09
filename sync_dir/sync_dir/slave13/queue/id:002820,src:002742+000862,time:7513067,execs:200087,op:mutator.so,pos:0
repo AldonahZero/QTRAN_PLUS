@@ -1,0 +1,10 @@
+sadd waeoxbem wivnjuxe 
+ set mykey -1947844055 
+ sort waeoxbem by weight* get object* get # store otevgjjg 
+ smembers waeoxbem 
+ copy waeoxbem v0 
+ get mykey 
+ scard waeoxbem 
+ sort waeoxbem alpha 
+ get mykey 
+ save

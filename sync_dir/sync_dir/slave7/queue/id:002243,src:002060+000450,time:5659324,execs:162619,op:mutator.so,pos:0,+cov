@@ -1,0 +1,5 @@
+hset tfpyhbbg jhelnvce 3 
+ set mykey 31543984 
+ hincrby tfpyhbbg jhelnvce 3 
+ setbit mykey 615 0 
+ get mykey

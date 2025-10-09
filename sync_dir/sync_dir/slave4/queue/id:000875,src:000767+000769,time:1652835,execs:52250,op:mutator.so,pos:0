@@ -1,0 +1,4 @@
+set mykey -5 
+ bitfield mykey overflow wrap incrby i25 0 6413502 
+ bitop or psmgmghp mykey mykey 
+ get mykey

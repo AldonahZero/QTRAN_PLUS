@@ -1,0 +1,5 @@
+hset eaxejsol bhwulrko 1037 
+ hvals eaxejsol 
+ set mykey 2 
+ decrby mykey 83 
+ get mykey

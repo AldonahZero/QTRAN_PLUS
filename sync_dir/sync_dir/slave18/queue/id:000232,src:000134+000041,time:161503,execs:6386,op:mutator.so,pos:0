@@ -1,0 +1,6 @@
+set mykey -37 
+ hset eaxejsol bhwulrko 94964 
+ incr mykey 
+ zrangestore ugswuldi ugswuldi 0 -1 
+ setnx gbjlvscx -37 
+ get mykey

@@ -1,0 +1,9 @@
+set atifyowf 244 
+ incr atifyowf 
+ incrbyfloat atifyowf -5 
+ decrby atifyowf 86 
+ save 
+ decr atifyowf 
+ incr atifyowf 
+ bitpos atifyowf 1 143110221304012404203333 12 bit 
+ get atifyowf

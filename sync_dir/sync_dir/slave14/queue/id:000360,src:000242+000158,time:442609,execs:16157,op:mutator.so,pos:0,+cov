@@ -1,0 +1,6 @@
+object encoding rwzbgekl 
+ zinterstore zcfialgy 2 zcfialgy zcfialgy 
+ set mykey hello 
+ zdiff 10 zcfialgy zcfialgy zcfialgy zcfialgy zcfialgy zcfialgy zcfialgy zcfialgy zcfialgy zcfialgy 
+ scan 401404201341241132211401110422242302223101311244433030143140430241243241130223 type string 
+ get mykey

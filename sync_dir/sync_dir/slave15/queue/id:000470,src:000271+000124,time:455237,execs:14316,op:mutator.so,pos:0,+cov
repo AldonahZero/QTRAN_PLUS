@@ -1,0 +1,5 @@
+info everything 
+ set mykey 9223372036854775807 
+ get mykey 
+ save 
+ mset dugdiyqm 533 

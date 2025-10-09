@@ -1,0 +1,4 @@
+set mykey 1302230201330004203204022312341214 
+ copy mykey v0 replace 
+ getex mykey 
+ get mykey

@@ -1,0 +1,7 @@
+lpush zdnjslcy sicnwujw 
+ set mykey 1732498873 
+ mget mykey mykey mykey mykey 
+ info cpu default 
+ mget mykey mykey mykey mykey 
+ lcs mykey mykey 
+ get mykey

@@ -1,0 +1,11 @@
+zadd hleuhsey 0 srveglnh 
+ zincrby hleuhsey 175656559 ymtynmse 
+ zincrby hleuhsey 2 ltrxeema 
+ zadd v0 0 v1 
+ object encoding rwzbgekl 
+ geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
+ zdiffstore tqpmmsxn 4 hleuhsey v0 v0 tqpmmsxn 
+ set mykey hello 
+ zrangestore xervubdq xervubdq 1 2 byscore 
+ strlen mykey 
+ get mykey

@@ -1,0 +1,13 @@
+object encoding rwzbgekl 
+ zinterstore cxewdqlm 2 cxewdqlm cxewdqlm weights 2 3 
+ zincrby cxewdqlm -1228497488 ltrxeema 
+ set mykey hello 
+ zincrby cxewdqlm -2479703 ymtynmse 
+ zdiffstore apuzkzbh 2 cxewdqlm apuzkzbh 
+ zinterstore teqiuuzn 3 cxewdqlm apuzkzbh apuzkzbh weights 0 0 1 
+ psetex zvshusdd 3410102305 3090148046 
+ pfmerge fuyxqigi ssouukyu qteecwwk 
+ zunion 2 apuzkzbh cxewdqlm weights 1 1 aggregate min withscores 
+ zrandmember apuzkzbh 1 withscores 
+ zcount cxewdqlm -539 1850704167 
+ get mykey

@@ -1,0 +1,4 @@
+set mykey 4 
+ expire mykey 2 
+ get mykey 
+ psubscribe bar* 

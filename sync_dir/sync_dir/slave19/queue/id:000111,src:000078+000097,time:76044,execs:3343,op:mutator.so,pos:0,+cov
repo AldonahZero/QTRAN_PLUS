@@ -1,0 +1,5 @@
+set mykey 1054571921 
+ get mykey 
+ incrbyfloat mykey -243986607177 
+ copy mykey v0 replace 
+ ttl wrzagplh

@@ -1,0 +1,10 @@
+xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf htuepxnr "Hello," 
+ info keyspace 
+ copy ermrdvzf v2 
+ xgroup create ermrdvzf v0 0 
+ xtrim ermrdvzf minid 1000 
+ copy ermrdvzf v1 
+ xgroup setid ermrdvzf v0 0 
+ set atifyowf 1 
+ save 
+ get atifyowf

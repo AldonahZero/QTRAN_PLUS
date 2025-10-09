@@ -1,0 +1,9 @@
+lpush asjdswpq syrsobfe ndlfegrn 
+ rpop asjdswpq 1 
+ set mykey 15.087269 
+ mget mykey mykey mykey mykey 
+ lpop asjdswpq 
+ rpoplpush asjdswpq xbfaqjuv 
+ info cpu default 
+ lcs mykey mykey 
+ get mykey

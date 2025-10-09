@@ -1,0 +1,7 @@
+info cpu all 
+ set atifyowf 1 
+ expire atifyowf 0 
+ zrangestore ugswuldi ugswuldi 0 0 
+ save 
+ getrange atifyowf 615 917 
+ get atifyowf

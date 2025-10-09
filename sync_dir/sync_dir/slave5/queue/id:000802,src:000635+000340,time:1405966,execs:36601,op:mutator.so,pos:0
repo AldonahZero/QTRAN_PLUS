@@ -1,0 +1,5 @@
+set atifyowf 36.995 
+ copy atifyowf v0 
+ save 
+ bitop not xxuevemv v0 
+ get atifyowf

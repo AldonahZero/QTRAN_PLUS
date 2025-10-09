@@ -1,0 +1,9 @@
+zadd v0 0 v2 
+ keys foo* 
+ keys foo* 
+ hset eaxejsol bhwulrko 94964 
+ psetex elzondzp 123 -3437299314 
+ append guadkaxa 401431120 
+ set mykey 2 
+ hrandfield eaxejsol -20 
+ get mykey

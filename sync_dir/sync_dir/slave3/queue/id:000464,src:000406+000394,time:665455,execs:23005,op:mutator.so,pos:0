@@ -1,0 +1,9 @@
+info default 
+ hset eaxejsol bhwulrko 1037 
+ hmget eaxejsol bhwulrko bhwulrko 
+ set mykey 2 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 v0 20 
+ rpush czowykxw ptecklws 
+ hincrbyfloat eaxejsol bhwulrko 1 
+ pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
+ get mykey

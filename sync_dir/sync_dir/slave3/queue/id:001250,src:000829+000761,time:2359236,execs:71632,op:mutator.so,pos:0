@@ -1,0 +1,14 @@
+info default 
+ hset eaxejsol bhwulrko 1037 
+ hmget eaxejsol bhwulrko bhwulrko 
+ set mykey 2 
+ rpush czowykxw ptecklws 
+ lpushx czowykxw bibpljvn lyqzfnlb ccsnseuf 
+ hincrbyfloat eaxejsol bhwulrko 1 
+ lset czowykxw 3 qxwzifjv 
+ pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
+ sort czowykxw by weight* get object* get # 
+ rpoplpush czowykxw pnhvbalr 
+ lrange pnhvbalr 0 1 
+ lmpop 2 pnhvbalr pnhvbalr right count 3 
+ get mykey

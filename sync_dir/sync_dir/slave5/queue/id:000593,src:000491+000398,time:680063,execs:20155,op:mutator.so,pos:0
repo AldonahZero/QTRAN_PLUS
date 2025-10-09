@@ -1,0 +1,5 @@
+info cpu 
+ set mykey 190425890380385 
+ save 
+ lcs mykey mykey 
+ get mykey

@@ -1,0 +1,4 @@
+set mykey 1732498873 
+ get mykey 
+ decrby mykey 1047952948 
+ psubscribe bar* 

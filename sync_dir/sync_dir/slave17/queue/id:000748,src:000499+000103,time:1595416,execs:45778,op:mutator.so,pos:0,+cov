@@ -1,0 +1,6 @@
+setex clryemar 9223372036854776 311 
+ sunionstore iwshcqfl iwshcqfl iwshcqfl 
+ bitfield clryemar overflow wrap set i15 0 190425890380385 
+ set mykey 1293 
+ get mykey 
+ save

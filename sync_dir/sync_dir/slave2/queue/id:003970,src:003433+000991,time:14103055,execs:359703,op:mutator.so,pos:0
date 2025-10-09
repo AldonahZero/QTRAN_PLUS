@@ -1,0 +1,8 @@
+sadd exfcgprv kkfgrwyx 
+ sunionstore xmawvngf xmawvngf exfcgprv 
+ sdiffstore vdxxciyw xmawvngf vdxxciyw exfcgprv vdxxciyw vdxxciyw 
+ set mykey -1947844055 
+ smembers vdxxciyw 
+ get mykey 
+ get mykey 
+ save

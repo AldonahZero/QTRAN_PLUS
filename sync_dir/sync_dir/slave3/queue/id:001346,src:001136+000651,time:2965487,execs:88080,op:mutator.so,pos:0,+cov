@@ -1,0 +1,6 @@
+set mykey 3022132023044442330033400212104223123203243342000333414101110121 
+ copy mykey v0 
+ bgsave schedule 
+ save 
+ bitop xor soigkacb mykey mykey mykey 
+ get mykey

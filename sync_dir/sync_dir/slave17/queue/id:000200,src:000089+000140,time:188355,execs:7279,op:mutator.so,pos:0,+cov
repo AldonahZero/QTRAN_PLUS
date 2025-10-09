@@ -1,0 +1,4 @@
+set wcitbqrq 8242 
+ setbit wcitbqrq 35194 0 
+ get wcitbqrq 
+ save

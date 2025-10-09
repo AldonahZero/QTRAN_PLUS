@@ -1,0 +1,4 @@
+set mykey -5 
+ sunionstore vafurdjm vafurdjm 
+ bitfield mykey overflow fail set u10 1746579767 1519 
+ get mykey

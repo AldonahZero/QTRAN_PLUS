@@ -1,0 +1,5 @@
+set mykey hello 
+ geoadd defhyxzz -45 65.50900022111811438208 vnjyzinq 90 85.0511 atulldgp 
+ zadd lukpltvt 5826 vgjrzjoy 
+ sort lukpltvt limit 0 10 
+ get mykey

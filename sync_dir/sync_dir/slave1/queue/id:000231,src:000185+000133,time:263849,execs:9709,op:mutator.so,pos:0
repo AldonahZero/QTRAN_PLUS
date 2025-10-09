@@ -1,0 +1,5 @@
+sunionstore vafurdjm vafurdjm 
+ set mykey -1615510574 
+ hmset rlvtchzi tyubwqfl -1 
+ getex mykey 
+ get mykey

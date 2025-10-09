@@ -1,0 +1,4 @@
+set mykey 54 
+ get mykey 
+ del mykey 
+ hset imchqraj qmjpskpl 125287 

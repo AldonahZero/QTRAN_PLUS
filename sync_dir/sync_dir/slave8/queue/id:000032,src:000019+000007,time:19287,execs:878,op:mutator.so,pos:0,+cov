@@ -1,0 +1,3 @@
+set mykey 3 
+ bitop xor oszvevyb mykey mykey mykey mykey 
+ get mykey

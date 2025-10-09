@@ -1,0 +1,8 @@
+psetex btebitmm -34 159 
+ copy btebitmm v0 
+ copy v0 v1 
+ set vkxhdmjo 1 
+ copy btebitmm v2 
+ copy btebitmm v3 
+ save 
+ get btebitmm

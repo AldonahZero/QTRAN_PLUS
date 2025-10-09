@@ -1,0 +1,10 @@
+sadd waeoxbem wivnjuxe 
+ sinter waeoxbem waeoxbem waeoxbem 
+ sunionstore vedaznzm vedaznzm waeoxbem waeoxbem 
+ sinterstore myhnmkqk waeoxbem waeoxbem vedaznzm 
+ sort vedaznzm by weight* get object* get # store otevgjjg 
+ set mykey -1947844055 
+ smembers waeoxbem 
+ get mykey 
+ get mykey 
+ save

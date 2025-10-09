@@ -1,0 +1,11 @@
+zdiffstore dfgxahpo 3 dfgxahpo dfgxahpo dfgxahpo 
+ zrem dfgxahpo nwzlneoa hxxaywfp 
+ set mykey 5009431 
+ getset mykey -205 
+ zrangestore xervubdq xervubdq 1 2 byscore 
+ zrandmember dfgxahpo 3 
+ zintercard 1 xervubdq dfgxahpo 
+ sdiffstore lrkqafqr lrkqafqr lrkqafqr lrkqafqr 
+ sdiffstore vdxxciyw vdxxciyw vdxxciyw vdxxciyw 
+ scan 589 type string 
+ get mykey

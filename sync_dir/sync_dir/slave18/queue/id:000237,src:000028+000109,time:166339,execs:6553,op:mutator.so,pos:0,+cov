@@ -1,0 +1,4 @@
+zunionstore qbbgmoug 1 qbbgmoug qbbgmoug 
+ set mykey hello 
+ get mykey 
+ save

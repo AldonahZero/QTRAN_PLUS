@@ -1,0 +1,6 @@
+set mykey 311 
+ get mykey 
+ get mykey 
+ del mykey 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

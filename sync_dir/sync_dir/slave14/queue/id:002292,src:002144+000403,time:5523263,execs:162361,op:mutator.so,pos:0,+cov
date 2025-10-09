@@ -1,0 +1,12 @@
+set mykey -1947844055 
+ zadd hocqawjw 1 julcozzx 
+ bitpos mykey 1 12 12 bit 
+ zinter 2 hocqawjw hocqawjw aggregate max withscores 
+ sort hocqawjw alpha 
+ get mykey 
+ pfadd dbpkzfom 
+ zremrangebyrank hocqawjw -706 83 
+ setbit mykey 474529 1 
+ get mykey 
+ zunion 2 hocqawjw hocqawjw aggregate min withscores 
+ save

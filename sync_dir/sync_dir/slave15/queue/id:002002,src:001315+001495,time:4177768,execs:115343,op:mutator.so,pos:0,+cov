@@ -1,0 +1,9 @@
+sadd waeoxbem wivnjuxe 
+ srem waeoxbem isjfwqcw 
+ sunionstore iwshcqfl waeoxbem iwshcqfl 
+ set mykey -1947844055 
+ smembers waeoxbem 
+ sintercard 2 waeoxbem iwshcqfl 
+ get mykey 
+ get mykey 
+ save

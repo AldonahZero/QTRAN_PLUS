@@ -1,0 +1,5 @@
+set mykey -853 
+ lpush jqknbzjm xbtoynzn 
+ del jqknbzjm 
+ xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm aixesdar urasnjsm 
+ get mykey

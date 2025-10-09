@@ -1,0 +1,11 @@
+zadd mfsvncrq lt incr 1 bexnlycc 
+ zadd v3 incr 1 v4 
+ object encoding rwzbgekl 
+ zadd v1 lt incr -620 v2 
+ geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
+ copy rguvzgcd v0 
+ set mykey hello 
+ zrangestore gdjwzzhv mfsvncrq 0 1 
+ strlen mykey 
+ zmpop 1 mfsvncrq min 
+ get mykey

@@ -1,0 +1,6 @@
+set mykey 41788 
+ rpush czowykxw ptecklws 
+ lcs mykey mykey len idx minmatchlen 4 withmatchlen 
+ get mykey 
+ lmpop 79 czowykxw czowykxw right count 3 
+ hset rfllxsdf iubquuor 0.41507778056668015 

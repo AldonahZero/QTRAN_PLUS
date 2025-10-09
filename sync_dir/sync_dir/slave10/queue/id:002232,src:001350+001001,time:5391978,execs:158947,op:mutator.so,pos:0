@@ -1,0 +1,6 @@
+set mykey 1732498873 
+ geoadd mdexzjor 15.087269 38.115556 xyookjrw 15.087269 37.502669 agjeygrj 
+ geosearch mdexzjor frommember xyookjrw byradius 156 km 
+ get mykey 
+ rpush dbmuwins jrjuraql 
+ psubscribe bar* 

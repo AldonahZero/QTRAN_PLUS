@@ -1,0 +1,7 @@
+msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 v0 20 v1 20 v2 20 v3 20 v4 20 v5 20 v6 20 v7 20 
+ del nzgkmxpj ldvuftez v3 
+ xadd jbdjxqbm maxlen ~ 1000 123-1 hognxfnw "Hello," 
+ xrevrange jbdjxqbm 20718949856 -261649974743 
+ xinfo stream jbdjxqbm full 
+ set mykey 3090148046 
+ get mykey

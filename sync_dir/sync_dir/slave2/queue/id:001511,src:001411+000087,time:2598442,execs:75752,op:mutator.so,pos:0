@@ -1,0 +1,7 @@
+set dssplpey 41788 
+ get dssplpey 
+ getex dssplpey 
+ info errorstats 
+ info cpu default 
+ bitop or ewxrjkga dssplpey dssplpey dssplpey dssplpey dssplpey dssplpey dssplpey dssplpey 
+ save

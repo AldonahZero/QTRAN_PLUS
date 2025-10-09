@@ -1,0 +1,6 @@
+hsetnx wqydsukt guwchiwu ssnvzsid 
+ set mykey 1732498873 
+ hrandfield wqydsukt 13033323022411214443443303234220120324324344401012232221143311233 withvalues 
+ get mykey 
+ hset etqpfzfm njabbctf 0.28570057465028975 
+ psubscribe bar* 

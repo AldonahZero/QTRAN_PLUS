@@ -1,0 +1,4 @@
+set mykey 33224130 
+ get mykey 
+ zunionstore moztfmde 2 moztfmde moztfmde aggregate min 
+ object encoding uvryzsxf

@@ -1,0 +1,5 @@
+set mykey -1 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ getset mykey -1 
+ info cpu all 
+ get mykey

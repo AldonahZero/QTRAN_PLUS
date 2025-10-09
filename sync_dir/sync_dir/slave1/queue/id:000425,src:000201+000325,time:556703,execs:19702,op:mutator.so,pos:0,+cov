@@ -1,0 +1,6 @@
+hsetnx roftorbl khrrkjgs 0.43734659228350342 
+ hstrlen roftorbl khrrkjgs 
+ save 
+ set mykey 5 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ get mykey

@@ -1,0 +1,4 @@
+set nkacyrfk 96913381 
+ get nkacyrfk 
+ save 
+ lcs nkacyrfk nkacyrfk len idx minmatchlen 4 withmatchlen

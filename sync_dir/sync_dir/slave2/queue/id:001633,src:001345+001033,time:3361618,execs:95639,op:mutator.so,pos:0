@@ -1,0 +1,5 @@
+set mykey -4 
+ copy mykey v0 
+ save 
+ bitop not xxuevemv mykey 
+ get mykey

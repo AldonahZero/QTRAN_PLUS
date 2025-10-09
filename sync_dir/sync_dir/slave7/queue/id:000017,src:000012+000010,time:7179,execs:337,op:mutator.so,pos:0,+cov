@@ -1,0 +1,3 @@
+set mykey 306 
+ incrby mykey 301 
+ get mykey

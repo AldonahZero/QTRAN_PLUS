@@ -1,0 +1,7 @@
+set mykey 0.8284480026124269 
+ rpush ukbzhzcm bkfxggih 
+ save 
+ lmpop 2 ukbzhzcm ukbzhzcm right count 3 
+ lpos ukbzhzcm kprjvznp count 0 maxlen 1 
+ zdiffstore dfgxahpo 3 dfgxahpo dfgxahpo dfgxahpo 
+ get mykey

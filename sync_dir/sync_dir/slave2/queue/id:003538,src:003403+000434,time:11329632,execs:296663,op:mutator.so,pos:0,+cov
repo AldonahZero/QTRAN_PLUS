@@ -1,0 +1,11 @@
+xadd pbtmpeny * qnoruayj "Hello," 
+ info default all 
+ xgroup create pbtmpeny v1 -909494108478 
+ xgroup createconsumer pbtmpeny v1 v0 
+ xlen pbtmpeny 
+ xclaim pbtmpeny v0 oozsdacj 0 1-0 2-0 3-0 
+ xgroup delconsumer pbtmpeny v1 v0 
+ set atifyowf 1 
+ save 
+ xpending pbtmpeny v1 
+ get atifyowf

@@ -1,0 +1,10 @@
+set atifyowf 452588 
+ get atifyowf 
+ pfadd iknmweqf zelgohmr pfntaoeo 
+ setbit atifyowf 0 1 
+ bitop xor vnayjyje atifyowf 
+ get atifyowf 
+ copy atifyowf v1 
+ copy atifyowf v0 
+ save 
+ bitfield v0 overflow wrap incrby i22 0 -2479703 

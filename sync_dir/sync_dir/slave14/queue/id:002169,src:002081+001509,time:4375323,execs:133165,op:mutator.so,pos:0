@@ -1,0 +1,8 @@
+pfadd mykey "hello" smvbejzf nyxzfynr 
+ hset eaxejsol bhwulrko 1037 
+ dump eaxejsol 
+ set mykey 2 
+ hincrbyfloat eaxejsol bhwulrko 1 
+ hincrbyfloat eaxejsol bhwulrko 1 
+ pfadd jalgwgha "hello" "World" "World" 
+ get mykey

@@ -1,0 +1,6 @@
+scan 976 type string 
+ set mykey -1615510574 
+ hmset rlvtchzi tyubwqfl -1 
+ bitpos mykey -443013490849 11 75 bit 
+ getex mykey 
+ get mykey

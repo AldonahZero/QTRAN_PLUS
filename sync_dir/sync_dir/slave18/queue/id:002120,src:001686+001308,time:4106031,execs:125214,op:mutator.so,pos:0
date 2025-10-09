@@ -1,0 +1,9 @@
+set mykey 41788 
+ watch nqjqeqpq zexfuhuk frjrxccy 
+ sinterstore pqczlznr pqczlznr 
+ srandmember pqczlznr -100 
+ info default default 
+ get mykey 
+ msetnx nzgkmxpj fgqixmul ldvuftez 20 
+ decr mykey 
+ save

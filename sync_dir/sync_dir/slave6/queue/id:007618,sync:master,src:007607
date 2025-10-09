@@ -1,0 +1,26 @@
+set mykey -1947844055 
+ zadd lukpltvt 76467 vgjrzjoy 
+ bitpos mykey 1 12 12 bit 
+ sort lukpltvt alpha 
+ zincrby lukpltvt -4224562770 mlujlapi 
+ zincrby lukpltvt -inf ymtynmse 
+ zrevrank lukpltvt vgjrzjoy 
+ zinter 2 lukpltvt lukpltvt weights 1 2 aggregate min withscores 
+ zincrby lukpltvt -5 sjhvpked 
+ zcount lukpltvt -1552051564 304 
+ zinterstore hszuawdu 2 lukpltvt lukpltvt weights 2 3 
+ get mykey 
+ zinter 2 hszuawdu lukpltvt aggregate max withscores 
+ zinterstore v0 2 hszuawdu lukpltvt weights 2 3 
+ pfadd dbpkzfom 
+ zrangestore lguhmiyq lguhmiyq 5 0 byscore rev limit 0 2 
+ setbit mykey 474529 1 
+ zintercard 2 hszuawdu v0 limit 10 
+ zintercard 2 v0 lguhmiyq limit 10 
+ get mykey 
+ zintercard 1 lukpltvt 
+ zunion 2 lguhmiyq lukpltvt weights 1 1 aggregate max withscores 
+ zinter 2 v0 hszuawdu aggregate min withscores 
+ zinter 2 hszuawdu v0 aggregate min withscores 
+ zremrangebyscore lguhmiyq 449 734 
+ save

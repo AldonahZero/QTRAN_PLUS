@@ -1,0 +1,7 @@
+zadd pqfcfqcy 34 qrxzgoil 
+ object encoding rwzbgekl 
+ mset jmvjdgip 533 
+ zrange pqfcfqcy -853 65 
+ set mykey hello 
+ strlen mykey 
+ get mykey

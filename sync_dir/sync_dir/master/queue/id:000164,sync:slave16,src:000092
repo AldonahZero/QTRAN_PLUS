@@ -1,0 +1,4 @@
+set mykey -130831450750 
+ get mykey 
+ psetex vrrqnomv 315 33 
+ psubscribe bar* 

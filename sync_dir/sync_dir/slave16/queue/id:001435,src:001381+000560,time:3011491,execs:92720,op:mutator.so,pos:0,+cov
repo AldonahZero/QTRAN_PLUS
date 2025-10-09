@@ -1,0 +1,6 @@
+hset gxdttyyp wuttehlz 0.019224562691163533 
+ set mykey 2 
+ setbit mykey 526632498263 1 
+ hincrby gxdttyyp wuttehlz 2 
+ hstrlen gxdttyyp wuttehlz 
+ get mykey

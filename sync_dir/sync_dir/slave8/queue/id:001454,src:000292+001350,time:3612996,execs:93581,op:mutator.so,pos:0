@@ -1,0 +1,7 @@
+set mykey -886864826961 
+ bitpos mykey 0 -2255963835 -1 bit 
+ lcs mykey mykey len idx minmatchlen 4 withmatchlen 
+ get mykey 
+ getbit sxzkzlsd 1746579767 
+ mget mykey mykey mykey 
+ psetex vokpjzpp -586 364853510803

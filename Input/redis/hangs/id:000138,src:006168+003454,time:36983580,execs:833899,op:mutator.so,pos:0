@@ -1,0 +1,18 @@
+set mykey 311 
+ incrbyfloat mykey 376 
+ get mykey 
+ select 9 
+ xadd yxqbavlu * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm 
+ lcs mykey mykey 
+ setbit mykey 1152402751 1 
+ get mykey 
+ bitop xor gtmzalcd mykey mykey mykey mykey mykey 
+ bitop or yxqbavlu mykey mykey 
+ scan 117 type string 
+ bitop or gvtzczpz mykey mykey mykey 
+ xreadgroup group hciwgwgc faydiclj streams yxqbavlu 0-1 
+ xlen yxqbavlu 
+ save 
+ bitop and tzlrveqd mykey mykey mykey mykey mykey mykey mykey 
+ xtrim yxqbavlu minid 1000 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

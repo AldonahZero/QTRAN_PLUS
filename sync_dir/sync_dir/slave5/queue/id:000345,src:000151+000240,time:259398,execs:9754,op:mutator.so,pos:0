@@ -1,0 +1,4 @@
+set mykey 4806867732670 
+ save 
+ getset mykey 1997581058 
+ get mykey

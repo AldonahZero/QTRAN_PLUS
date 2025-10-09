@@ -1,0 +1,5 @@
+set mykey -1615510574 
+ hmset rlvtchzi tyubwqfl 41788 
+ pexpiretime uspebmgm 
+ getex mykey 
+ get mykey

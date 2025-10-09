@@ -1,0 +1,3 @@
+set mykey hello 
+ setnx bzbpoqtr -918481240011 
+ get mykey

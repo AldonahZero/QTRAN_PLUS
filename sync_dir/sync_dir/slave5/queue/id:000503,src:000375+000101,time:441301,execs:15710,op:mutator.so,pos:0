@@ -1,0 +1,4 @@
+info cpu latencystats 
+ set atifyowf 1 
+ save 
+ get atifyowf

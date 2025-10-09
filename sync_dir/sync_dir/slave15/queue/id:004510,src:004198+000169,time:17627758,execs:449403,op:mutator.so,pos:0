@@ -1,0 +1,10 @@
+xadd pnyrtlje * qnoruayj "Hello," 
+ info keyspace 
+ xgroup create pnyrtlje v0 0 
+ xgroup create pnyrtlje v1 0 
+ xgroup create pnyrtlje v2 0 
+ set atifyowf 1 
+ xgroup destroy pnyrtlje v2 
+ save 
+ xgroup destroy pnyrtlje v1 
+ get atifyowf

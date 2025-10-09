@@ -1,0 +1,8 @@
+set zhhttzec 1732498873 
+ bitop xor vnayjyje zhhttzec 
+ geoadd rguvzgcd 45 -1 uqzidutw -135 85.05 yxudgmfh 
+ geosearch rguvzgcd frommember uqzidutw bybox 1 1 km 
+ get zhhttzec 
+ pexpire uqzidutw 100 
+ rpush dbmuwins jrjuraql 
+ psubscribe bar* 

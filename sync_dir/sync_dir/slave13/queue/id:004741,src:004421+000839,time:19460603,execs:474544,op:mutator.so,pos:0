@@ -1,0 +1,14 @@
+set mykey -1947844055 
+ zadd qtbcoycu lt incr 1 sjhvpked 
+ bitpos mykey 1 12 12 bit 
+ sort qtbcoycu alpha 
+ zincrby qtbcoycu -772121370 ymtynmse 
+ zincrby qtbcoycu -5 tqvvdzjv 
+ get mykey 
+ pfadd dbpkzfom 
+ zdiffstore bexbxodv 2 qtbcoycu bexbxodv 
+ setbit mykey 474529 1 
+ get mykey 
+ zunion 2 qtbcoycu qtbcoycu weights 1 1 aggregate max withscores 
+ zremrangebyscore bexbxodv -935277743 1334033032202040 
+ save

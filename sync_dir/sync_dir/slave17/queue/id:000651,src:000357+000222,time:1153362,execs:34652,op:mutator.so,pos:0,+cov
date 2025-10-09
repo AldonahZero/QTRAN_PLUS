@@ -1,0 +1,5 @@
+set mykey hello 
+ zadd lukpltvt 76467 vgjrzjoy 
+ sort lukpltvt limit 0 10 
+ bgsave 
+ get mykey

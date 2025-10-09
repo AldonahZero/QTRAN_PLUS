@@ -1,0 +1,6 @@
+set mykey 1158 
+ get mykey 
+ zdiffstore dfgxahpo 3 dfgxahpo dfgxahpo dfgxahpo 
+ save 
+ zunionstore gqqorfgf 2 gqqorfgf gqqorfgf 
+ ttl imwdrgeh

@@ -1,0 +1,3 @@
+set mykey 311 
+ lpush sfzjdgqf lbqiofzd 
+ get mykey

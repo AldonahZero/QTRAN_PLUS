@@ -1,0 +1,8 @@
+set mykey 41788 
+ info cpu memory 
+ xadd kvnrwmku 123-1 mzklxdll "Hello," 
+ info replication cpu 
+ xrevrange kvnrwmku + - count 1 
+ get mykey 
+ info default default 
+ save

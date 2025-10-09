@@ -1,0 +1,7 @@
+msetnx xrgyuudg -141546319304 
+ keys foo* 
+ setbit xrgyuudg 526632498263 1 
+ set mykey "Hello," 
+ geoadd cqubszoy 13.361389 38.115556 acjnpjwy 15.087269 37.502669 fekagtxv 
+ del mykey 
+ get xrgyuudg

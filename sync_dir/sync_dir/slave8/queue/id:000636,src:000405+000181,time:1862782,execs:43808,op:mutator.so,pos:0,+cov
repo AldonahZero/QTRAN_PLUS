@@ -1,0 +1,4 @@
+set mykey 1519 
+ save 
+ get mykey 
+ psetex vokpjzpp -586 364853510803

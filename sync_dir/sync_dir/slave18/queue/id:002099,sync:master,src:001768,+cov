@@ -1,0 +1,4 @@
+set mykey hello 
+ setex ztbcxsbx 92007103795675120 -479 
+ getdel ztbcxsbx 
+ get mykey

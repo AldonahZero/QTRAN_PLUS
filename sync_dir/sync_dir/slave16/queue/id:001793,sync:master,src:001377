@@ -1,0 +1,11 @@
+set ebvgkrck 311 
+ incrbyfloat ebvgkrck 376 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ get ldvuftez 
+ lcs triqeesz nzgkmxpj 
+ setbit triqeesz 109990 1 
+ get ldvuftez 
+ bitop or gvtzczpz triqeesz ebvgkrck ebvgkrck 
+ scan 117 type string 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

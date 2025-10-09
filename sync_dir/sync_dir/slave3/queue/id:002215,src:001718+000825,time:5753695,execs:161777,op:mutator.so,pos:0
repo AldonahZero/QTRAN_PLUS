@@ -1,0 +1,6 @@
+set mykey 311 
+ zrangestore rwcbicsk rwcbicsk 5 6 byscore 
+ get mykey 
+ save 
+ zrangestore xervubdq rwcbicsk 1 6588 byscore 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

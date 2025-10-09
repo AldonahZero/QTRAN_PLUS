@@ -1,0 +1,3 @@
+set mykey 190425890380385 
+ get mykey 
+ save

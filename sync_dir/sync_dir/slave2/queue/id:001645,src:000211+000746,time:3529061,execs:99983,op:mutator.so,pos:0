@@ -1,0 +1,7 @@
+set mykey hello 
+ append ibdfxrwx 13121140 
+ sinterstore ubjuqmxi ubjuqmxi ubjuqmxi 
+ srandmember ubjuqmxi 50 
+ smembers ubjuqmxi 
+ sinterstore cjuxravx cjuxravx cjuxravx cjuxravx 
+ get mykey

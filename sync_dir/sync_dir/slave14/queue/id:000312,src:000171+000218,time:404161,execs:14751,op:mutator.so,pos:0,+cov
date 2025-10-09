@@ -1,0 +1,7 @@
+zadd mfsvncrq lt incr 1 bexnlycc 
+ zunion 1 mfsvncrq 
+ object encoding rwzbgekl 
+ geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
+ set mykey hello 
+ strlen mykey 
+ get mykey

@@ -1,0 +1,3 @@
+set mykey "Hello," 
+ getbit mykey 1 
+ get mykey

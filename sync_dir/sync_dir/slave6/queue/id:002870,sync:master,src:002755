@@ -1,0 +1,8 @@
+set mykey -1615510574 
+ set v0 353926132597 
+ select 1 
+ lpush mfgdbqzi ymrnmwug 
+ sort mfgdbqzi limit 0 10 
+ mget v0 v0 v0 v0 
+ get mykey 
+ object encoding uvryzsxf

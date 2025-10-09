@@ -1,0 +1,6 @@
+set mykey 692 
+ copy mykey ycgvtbur replace 
+ bitfield ycgvtbur overflow fail incrby u42 0 -4224562770 
+ strlen mykey 
+ getrange ycgvtbur 14 433 
+ get mykey

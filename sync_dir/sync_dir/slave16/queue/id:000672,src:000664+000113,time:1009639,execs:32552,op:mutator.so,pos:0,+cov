@@ -1,0 +1,8 @@
+set mykey 1732498873 
+ bitop xor vnayjyje mykey 
+ geoadd rguvzgcd 45 -1 uqzidutw -135 85.05 yxudgmfh 
+ geosearch rguvzgcd fromlonlat 3.9491728245975253 52.012980059726615 bybox 6596 3120 m 
+ get mykey 
+ info cpu all 
+ rpush dbmuwins jrjuraql 
+ psubscribe bar* 

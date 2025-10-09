@@ -1,0 +1,11 @@
+set oeusabck 197 
+ set v0 -9223372036854775808 
+ setbit oeusabck 474529 1 
+ lcs v0 v0 
+ save 
+ decrby v0 -645314023664 
+ decrby v0 1651985310 
+ incrby v0 -765 
+ get oeusabck 
+ decrby v0 1904074908 
+ setbit v0 244931 1

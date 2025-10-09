@@ -1,0 +1,4 @@
+set mykey 1004 
+ get mykey 
+ get mykey 
+ save

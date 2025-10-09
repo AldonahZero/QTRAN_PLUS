@@ -1,0 +1,3 @@
+set mykey hello 
+ setbit mykey 1878 -350 
+ get mykey

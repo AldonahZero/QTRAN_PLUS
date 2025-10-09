@@ -1,0 +1,8 @@
+psetex ajocoala -328120169848 353926132597 
+ copy ajocoala v0 
+ copy ajocoala v1 
+ set vkxhdmjo 1 
+ copy v1 v2 
+ copy ajocoala v3 
+ save 
+ get ajocoala

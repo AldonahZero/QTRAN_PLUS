@@ -1,0 +1,5 @@
+hsetnx wqydsukt guwchiwu 13033323022411214443443303234220120324324344401012232221143311233 
+ set mykey 3 
+ hmget wqydsukt guwchiwu guwchiwu 
+ copy mykey v0 
+ get mykey

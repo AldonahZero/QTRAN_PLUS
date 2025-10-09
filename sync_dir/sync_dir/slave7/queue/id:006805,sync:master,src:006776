@@ -1,0 +1,12 @@
+set xzkgjufz 1732498873 
+ geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
+ geosearchstore xzkgjufz rguvzgcd fromlonlat 0 0 byradius 1886048133 km 
+ bitpos xzkgjufz 0 39 39 bit 
+ geosearch rguvzgcd frommember uqzidutw bybox 1 1 km 
+ get xzkgjufz 
+ rpush dbmuwins jrjuraql 
+ bitpos xzkgjufz 0 12 12 bit 
+ get xzkgjufz 
+ bitpos xzkgjufz 1 11 75 bit 
+ lcs xzkgjufz xzkgjufz idx minmatchlen 4 withmatchlen 
+ psubscribe bar* 

@@ -1,0 +1,4 @@
+ttl mqixnmze 
+ zinterstore cpkmmnvr 2 cpkmmnvr cpkmmnvr 
+ set mykey -853 
+ get mykey

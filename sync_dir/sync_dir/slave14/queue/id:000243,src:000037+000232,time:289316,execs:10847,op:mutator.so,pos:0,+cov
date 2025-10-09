@@ -1,0 +1,6 @@
+object encoding rwzbgekl 
+ zinterstore zcfialgy 2 zcfialgy zcfialgy 
+ set mykey hello 
+ scan 11 type string 
+ bitpos mykey 0 33 -1 bit 
+ get mykey

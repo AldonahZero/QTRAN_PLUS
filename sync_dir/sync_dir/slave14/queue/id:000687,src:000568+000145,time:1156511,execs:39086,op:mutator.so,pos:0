@@ -1,0 +1,9 @@
+zadd mfsvncrq lt incr 1 bexnlycc 
+ zadd hleuhsey 0 srveglnh 
+ object encoding rwzbgekl 
+ geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
+ set mykey hello 
+ zrangestore gdjwzzhv mfsvncrq 0 1 
+ strlen mykey 
+ geosearch rguvzgcd fromlonlat 149.29737817929004 15.95807862745508 bybox 400 400 km asc 
+ get mykey

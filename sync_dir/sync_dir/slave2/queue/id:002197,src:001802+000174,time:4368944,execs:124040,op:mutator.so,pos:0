@@ -1,0 +1,12 @@
+set mykey -1947844055 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ bitpos mykey 1 12 12 bit 
+ zrem mfsvncrq ebhxqosc zwzmncsw 
+ sort mfsvncrq alpha 
+ get mykey 
+ pfadd dbpkzfom 
+ setbit mykey 474529 1 
+ get mykey 
+ zunionstore patbwvok 2 mfsvncrq patbwvok aggregate max 
+ zunion 2 mfsvncrq mfsvncrq aggregate min withscores 
+ save

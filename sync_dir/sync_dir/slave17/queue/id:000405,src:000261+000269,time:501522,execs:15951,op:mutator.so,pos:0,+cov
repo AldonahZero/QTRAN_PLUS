@@ -1,0 +1,9 @@
+set mykey 1293 
+ get mykey 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 v0 20 v1 20 v2 20 v3 20 v4 20 
+ msetnx v6 fgqixmul v7 gftsakln v8 20 v9 20 v10 20 v11 20 v12 20 v13 20 v5 20 
+ zdiffstore oninilnq 0 oninilnq 
+ lpush uawmlfud byinalja 
+ scan 589 type string 
+ bitfield triqeesz overflow wrap set u48 0 190425890380385 
+ save

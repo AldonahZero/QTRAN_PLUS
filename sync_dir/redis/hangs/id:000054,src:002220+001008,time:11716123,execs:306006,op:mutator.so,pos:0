@@ -1,0 +1,6 @@
+set atifyowf 85.0511 
+ set v0 -1001 
+ bitfield v0 overflow fail set u10 3512935256 1519 
+ bitop or gvtzczpz atifyowf atifyowf atifyowf atifyowf atifyowf 
+ save 
+ get atifyowf

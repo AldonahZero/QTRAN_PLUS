@@ -1,0 +1,6 @@
+set ebvgkrck wdtnqhbk 
+ setbit ebvgkrck 9477 1 
+ lcs ebvgkrck ebvgkrck 
+ bitop xor gtmzalcd ebvgkrck ebvgkrck ebvgkrck ebvgkrck ebvgkrck 
+ get ebvgkrck 
+ save

@@ -1,0 +1,8 @@
+shutdown abort 
+ set atifyowf 1 
+ incrbyfloat atifyowf -5 
+ geoadd rguvzgcd -45 -1 uqzidutw -135 85.05 yxudgmfh 
+ setex tncydqgy 273 12024430563 
+ save 
+ expire tncydqgy 100 lt 
+ get atifyowf

@@ -1,0 +1,17 @@
+set mykey -1947844055 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ bitpos mykey 1 12 12 bit 
+ sort mfsvncrq 
+ get mykey 
+ pfadd dbpkzfom 
+ zremrangebyrank mfsvncrq -706 -393807523601 
+ zincrby mfsvncrq -2479703 ymtynmse 
+ zrandmember mfsvncrq -15956 withscores 
+ zrandmember mfsvncrq -20 
+ zrandmember mfsvncrq -100 
+ setbit mykey 474529 1 
+ get mykey 
+ zincrby mfsvncrq 44242002333130244331420322301233313142300124432031424321213304210222040242403041304240414304302233344024201123320323420421303324031224113301010024300343032223243442430201344021223244312332203202023234314200422341104 ymtynmse 
+ zrandmember mfsvncrq -727161270 withscores 
+ zunion 2 mfsvncrq mfsvncrq aggregate min withscores 
+ save

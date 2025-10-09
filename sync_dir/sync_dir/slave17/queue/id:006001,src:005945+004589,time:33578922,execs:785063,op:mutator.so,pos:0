@@ -1,0 +1,9 @@
+hset eaxejsol bhwulrko 5834 
+ geoadd defhyxzz -45 65.50900022111811438208 vnjyzinq 90 85.0511 atulldgp 
+ set mykey 2 
+ geoadd irkxzzim 12.758489 38.788135 jlvrddvb 17.241510 38.788135 yqcyaxfl 
+ geodist defhyxzz jlvrddvb vnjyzinq mi 
+ geodist irkxzzim vnjyzinq jlvrddvb 
+ geodist irkxzzim vnjyzinq jlvrddvb km 
+ geodist irkxzzim vnjyzinq jlvrddvb 
+ get mykey

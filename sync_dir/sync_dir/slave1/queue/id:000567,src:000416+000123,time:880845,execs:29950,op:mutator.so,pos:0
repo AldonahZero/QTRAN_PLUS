@@ -1,0 +1,6 @@
+msetnx nzgkmxpj fgqixmul triqeesz gftsakln v6 20 
+ set mykey "Hello," 
+ msetnx v11 fgqixmul v12 gftsakln ldvuftez 20 v0 20 v1 20 v2 20 v3 20 v4 20 v5 20 v13 20 v7 20 v8 20 v9 20 v10 20 
+ lcs nzgkmxpj nzgkmxpj idx minmatchlen 4 withmatchlen 
+ geoadd vrekwiwa 13.00 36.50 pqkikujz 
+ get mykey

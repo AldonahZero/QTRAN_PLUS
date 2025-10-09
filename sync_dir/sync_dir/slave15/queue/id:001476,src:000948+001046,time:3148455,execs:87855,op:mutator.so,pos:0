@@ -1,0 +1,12 @@
+set mykey -1947844055 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ bitpos mykey 1 12 12 bit 
+ sort mfsvncrq alpha 
+ get mykey 
+ pfadd dbpkzfom 
+ zrange mfsvncrq 250 -735 
+ setbit mykey 474529 1 
+ zrandmember mfsvncrq -123 withscores 
+ get mykey 
+ zunion 2 mfsvncrq mfsvncrq weights 1 1 aggregate max withscores 
+ save

@@ -1,0 +1,4 @@
+set mykey hello 
+ mset mhnoojoh -886864826961 
+ select -450703200162 
+ get mykey

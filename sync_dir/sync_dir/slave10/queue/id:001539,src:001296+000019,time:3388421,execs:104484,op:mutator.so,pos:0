@@ -1,0 +1,5 @@
+hsetnx nbxqjbpm kmvsxosn 0.71402199692745782 
+ set mykey hello 
+ hgetall nbxqjbpm 
+ hincrbyfloat nbxqjbpm kmvsxosn 1 
+ get mykey

@@ -1,0 +1,12 @@
+set mykey -1947844055 
+ zadd wuttehlz lt incr 1 bexnlycc 
+ bitpos mykey 1 12 12 bit 
+ get mykey 
+ pfadd dbpkzfom 
+ setbit mykey 474529 1 
+ zincrby wuttehlz -5 sjhvpked 
+ zrandmember wuttehlz -2479703 withscores 
+ get mykey 
+ zdiffstore wtxnpcue 4 wtxnpcue wtxnpcue wtxnpcue wtxnpcue 
+ zmpop 1 wuttehlz min count 2 
+ save

@@ -1,0 +1,7 @@
+set wcitbqrq 986906 
+ setbit wcitbqrq 3947972549 0 
+ get wcitbqrq 
+ getrange wcitbqrq -3940493144 52 
+ mset jmvjdgip 533 
+ save 
+ type ibxacnjy

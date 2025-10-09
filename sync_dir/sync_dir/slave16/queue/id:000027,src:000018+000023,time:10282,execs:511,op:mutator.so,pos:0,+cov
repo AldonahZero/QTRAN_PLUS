@@ -1,0 +1,3 @@
+set mykey -414235728 
+ get mykey 
+ psubscribe bar* 

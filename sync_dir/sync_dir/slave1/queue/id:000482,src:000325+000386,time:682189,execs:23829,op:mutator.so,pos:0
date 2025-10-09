@@ -1,0 +1,5 @@
+set mykey -9223372036854770000 
+ getex mykey 
+ geoadd cqubszoy 13.361389 38.115556 acjnpjwy 15.087269 149.29737817929004 fekagtxv 
+ zinterstore phrpwlca 906 phrpwlca phrpwlca aggregate min 
+ get mykey

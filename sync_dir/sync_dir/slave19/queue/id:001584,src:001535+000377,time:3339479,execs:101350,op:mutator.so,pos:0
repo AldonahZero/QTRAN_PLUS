@@ -1,0 +1,11 @@
+set mykey -853 
+ lpush jqknbzjm xbtoynzn 
+ psetex ddeayqeh 124957151303 -2792568265 
+ info cpu all 
+ lmpop 2 jqknbzjm jqknbzjm left count 2 
+ lpop jqknbzjm 0 
+ del jqknbzjm 
+ select 8 
+ incrby mykey 443 
+ lcs mykey mykey idx minmatchlen 1694667920 withmatchlen 
+ get mykey

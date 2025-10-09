@@ -1,0 +1,8 @@
+sadd waeoxbem wivnjuxe 
+ set mykey -1947844055 
+ smembers waeoxbem 
+ bitfield mykey overflow wrap set i37 3541384808 190425890380385 
+ get mykey 
+ scard waeoxbem 
+ get mykey 
+ save

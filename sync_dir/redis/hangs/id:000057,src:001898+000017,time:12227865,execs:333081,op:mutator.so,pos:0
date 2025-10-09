@@ -1,0 +1,10 @@
+set mykey 311 
+ bitpos mykey 0 9 25 bit 
+ incrbyfloat mykey -inf 
+ get mykey 
+ expire mykey 100 lt 
+ setbit mykey 1697187845 1 
+ get mykey 
+ save 
+ pttl vrmjztek 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

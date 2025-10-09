@@ -1,0 +1,9 @@
+sadd waeoxbem wivnjuxe 
+ set mykey -1947844055 
+ srandmember waeoxbem -10 
+ smembers waeoxbem 
+ sort waeoxbem by weight* get # get # store otevgjjg 
+ get mykey 
+ get mykey 
+ srandmember waeoxbem -214900342381 
+ save

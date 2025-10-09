@@ -1,0 +1,21 @@
+set mykey -1947844055 
+ zadd rwwxotsj lt incr 1 sjhvpked 
+ zincrby rwwxotsj 2 ltrxeema 
+ bitpos mykey 1 12 12 bit 
+ sort rwwxotsj limit 934673624548 44242002333130244331420322301233313142300124432031424321213304210222040242403041304240414304302233344024201123320323420421303324031224113301010024300343032223243442430201344021223244312332203202023234314200422341104 desc alpha 
+ zincrby rwwxotsj 1 ymtynmse 
+ zincrby rwwxotsj 1 nzdyunpb 
+ zincrby rwwxotsj -5 swyuijfq 
+ get mykey 
+ zdiffstore mvtbwffp 2 rwwxotsj mvtbwffp 
+ pfadd dbpkzfom 
+ zmpop 2 rwwxotsj rwwxotsj max count 1 
+ zdiffstore v0 2 v0 mvtbwffp 
+ zdiff 7 mvtbwffp rwwxotsj rwwxotsj v0 v0 v0 v0 
+ setbit mykey 474529 1 
+ get mykey 
+ zunion 2 mvtbwffp v0 weights 1 1 aggregate max withscores 
+ zinter 2 v0 mvtbwffp aggregate max withscores 
+ bgsave schedule 
+ zremrangebyscore rwwxotsj -935277743 1334033032202040 
+ save

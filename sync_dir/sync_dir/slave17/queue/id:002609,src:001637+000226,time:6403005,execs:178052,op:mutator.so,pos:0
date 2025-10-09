@@ -1,0 +1,8 @@
+set v0 1302230201330004203204022312341214 
+ get v0 
+ bitfield v0 overflow wrap incrby i37 0 895937755655 
+ pfadd dbpkzfom 
+ setbit v0 0 1 
+ get v0 
+ bitfield v0 overflow wrap incrby i37 0 37999704017 
+ save

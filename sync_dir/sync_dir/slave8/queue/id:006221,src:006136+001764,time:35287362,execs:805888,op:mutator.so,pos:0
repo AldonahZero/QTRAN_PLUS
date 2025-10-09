@@ -1,0 +1,11 @@
+xadd pbtmpeny 0-1 qnoruayj "Hello," 
+ info keyspace 
+ xautoclaim pbtmpeny cwxbpfcr xolfcipk -783294678099 0-0 
+ xgroup create pbtmpeny v0 -2052220772 
+ xinfo consumers pbtmpeny v0 
+ xinfo consumers pbtmpeny v0 
+ set atifyowf 1 
+ xinfo consumers pbtmpeny v0 
+ save 
+ georadiusbymember atifyowf vgvjobqx 156544 m 
+ get atifyowf

@@ -1,0 +1,9 @@
+xadd pbtmpeny 342204043101320331101221324320203021303420334043321233224230113334222322421103024432033223144130104114402 qnoruayj "Hello," 
+ info keyspace 
+ xtrim pbtmpeny minid 1000 
+ xrevrange pbtmpeny 534920555322 143 
+ xgroup create pbtmpeny v0 18446744073709561 
+ xinfo groups pbtmpeny 
+ set atifyowf 1 
+ save 
+ get atifyowf

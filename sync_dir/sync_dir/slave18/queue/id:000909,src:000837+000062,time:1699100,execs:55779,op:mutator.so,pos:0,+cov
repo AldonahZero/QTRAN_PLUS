@@ -1,0 +1,7 @@
+set mykey 41788 
+ info all 
+ xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm 
+ xrevrange ermrdvzf + - count 1 
+ get mykey 
+ info default default 
+ save

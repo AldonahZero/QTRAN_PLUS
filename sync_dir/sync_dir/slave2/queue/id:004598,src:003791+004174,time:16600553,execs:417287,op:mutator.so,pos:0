@@ -1,0 +1,9 @@
+set v0 -15956 
+ get v0 
+ pfadd iknmweqf zelgohmr pfntaoeo 
+ setbit v0 0 1 
+ bitop xor vnayjyje v0 
+ get v0 
+ copy v0 v1 
+ save 
+ bitfield v0 overflow wrap incrby i22 0 -2479703 

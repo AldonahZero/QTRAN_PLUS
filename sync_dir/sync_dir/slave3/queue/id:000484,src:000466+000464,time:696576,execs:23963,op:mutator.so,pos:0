@@ -1,0 +1,9 @@
+info default 
+ hset gxdttyyp wuttehlz 0.019224562691163533 
+ hmget gxdttyyp wuttehlz wuttehlz 
+ set mykey 2 
+ rpush czowykxw ptecklws 
+ hincrbyfloat gxdttyyp wuttehlz 1 
+ pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
+ rpoplpush czowykxw pnhvbalr 
+ get mykey

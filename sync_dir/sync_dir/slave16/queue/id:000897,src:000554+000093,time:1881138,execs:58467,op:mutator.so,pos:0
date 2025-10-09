@@ -1,0 +1,5 @@
+set mykey 85.0511 
+ get mykey 
+ incrbyfloat mykey -75299881433 
+ hset etqpfzfm njabbctf 41657 
+ psubscribe bar* 

@@ -1,0 +1,7 @@
+hset eaxejsol bhwulrko 94964 
+ hset tfpyhbbg jhelnvce 512461 
+ xadd ermrdvzf 123-1 jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm 
+ set mykey 2 
+ setbit mykey 1603 1 
+ xrevrange ermrdvzf 535080511837 - 
+ get mykey

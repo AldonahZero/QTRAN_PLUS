@@ -1,0 +1,7 @@
+set wtqtwhmc 0.52120220173206278 
+ get wtqtwhmc 
+ getex wtqtwhmc 
+ info errorstats 
+ info cpu default 
+ bitop or ewxrjkga wtqtwhmc wtqtwhmc wtqtwhmc wtqtwhmc wtqtwhmc wtqtwhmc wtqtwhmc wtqtwhmc 
+ save

@@ -1,0 +1,5 @@
+set mykey -1001 
+ get mykey 
+ scan 122 count 5 
+ get mykey 
+ hset rfllxsdf iubquuor 0.41507778056668015 

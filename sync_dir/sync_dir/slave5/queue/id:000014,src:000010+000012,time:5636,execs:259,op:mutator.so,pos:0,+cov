@@ -1,0 +1,3 @@
+set mykey 1 
+ get mykey 
+ setbit mykey 76467 0

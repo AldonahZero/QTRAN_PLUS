@@ -1,0 +1,10 @@
+psetex ddeayqeh 10 -2792568265 
+ setbit ddeayqeh 14 0 
+ copy ddeayqeh v0 
+ copy ddeayqeh v1 
+ set vkxhdmjo 1 
+ copy ddeayqeh v2 
+ copy v1 v3 
+ info default all 
+ save 
+ get v0

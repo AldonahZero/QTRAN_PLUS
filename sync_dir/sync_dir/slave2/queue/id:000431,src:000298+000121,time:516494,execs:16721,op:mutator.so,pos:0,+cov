@@ -1,0 +1,7 @@
+zdiffstore dfgxahpo 3 dfgxahpo dfgxahpo dfgxahpo 
+ set mykey -15956 
+ getset mykey -205 
+ zrandmember dfgxahpo 102224113404402042322424440012034141410310013422412040322221321131023112403240003231012002414004224233321420312022442131443023442033324 
+ sdiffstore lrkqafqr lrkqafqr lrkqafqr lrkqafqr 
+ sdiffstore vdxxciyw vdxxciyw vdxxciyw vdxxciyw 
+ get mykey

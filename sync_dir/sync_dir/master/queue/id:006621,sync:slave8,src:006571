@@ -1,0 +1,18 @@
+xadd rltzoxuz * qnoruayj "Hello," 
+ info keyspace 
+ xgroup create rltzoxuz v0 0 
+ xgroup create rltzoxuz v1 -909494108478 
+ xgroup create rltzoxuz v2 0 
+ xgroup create rltzoxuz v3 0 
+ xinfo groups rltzoxuz 
+ xgroup create rltzoxuz v4 0 
+ xgroup create rltzoxuz v5 0 
+ xinfo stream rltzoxuz full 
+ xinfo groups rltzoxuz 
+ xgroup create rltzoxuz v6 0 
+ set atifyowf 1 
+ xinfo groups rltzoxuz 
+ save 
+ xgroup destroy rltzoxuz v1 
+ xgroup create rltzoxuz v7 -901 
+ get atifyowf

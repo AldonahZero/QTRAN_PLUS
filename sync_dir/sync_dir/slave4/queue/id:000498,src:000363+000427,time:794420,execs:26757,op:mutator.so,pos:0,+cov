@@ -1,0 +1,5 @@
+set mykey 15.087269 
+ psetex vrrqnomv 315 33 
+ lcs mykey mykey 
+ getrange mykey 1293 9223372036854775808 
+ get mykey

@@ -1,0 +1,7 @@
+set mykey hello 
+ zadd lukpltvt 5826 vgjrzjoy 
+ zunion 2 lukpltvt lukpltvt 
+ lpush asjdswpq syrsobfe ndlfegrn 
+ zdiff 2 lukpltvt lukpltvt withscores 
+ sort lukpltvt by d* get s* store frxxuubj 
+ get mykey

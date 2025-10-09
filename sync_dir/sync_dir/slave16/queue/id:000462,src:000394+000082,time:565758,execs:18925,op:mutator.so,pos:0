@@ -1,0 +1,7 @@
+set v0 1732498873 
+ setbit v0 474529 1 
+ save 
+ get v0 
+ hset etqpfzfm njabbctf 41657 
+ psubscribe bar* 
+ del etqpfzfm 

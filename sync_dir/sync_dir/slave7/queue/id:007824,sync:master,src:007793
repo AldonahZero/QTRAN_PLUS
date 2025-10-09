@@ -1,0 +1,12 @@
+zrangestore cujtnfoc cujtnfoc 1 2 byscore 
+ hset mykey bhwulrko 43324101401331444344220344301412031443010444311133310013223310111242022033410430223304001132204202230320441201002330200333240133113232303313243102110423231040213 
+ set v0 -440110895987 
+ zmpop 2 cujtnfoc cujtnfoc max count 1 
+ dump mykey 
+ dump mykey 
+ lcs v0 v0 
+ dump mykey 
+ xadd kvnrwmku 123-1 mzklxdll "Hello," 
+ xclaim kvnrwmku ptprebxr oyubeety 10 1672351058363-2 
+ zremrangebylex cujtnfoc 199 966336966942 
+ get v0

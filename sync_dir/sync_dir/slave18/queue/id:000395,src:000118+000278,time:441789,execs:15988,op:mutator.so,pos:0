@@ -1,0 +1,5 @@
+set mykey 41788 
+ info everything 
+ incrbyfloat mykey 652296689642 
+ get mykey 
+ save

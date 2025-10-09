@@ -1,0 +1,12 @@
+set mykey 311 
+ incrbyfloat mykey 376 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ bitfield mykey overflow fail incrby i37 0 4134927976325 
+ get mykey 
+ lcs mykey mykey 
+ setbit mykey 109990 1 
+ get mykey 
+ bitop or gvtzczpz mykey mykey mykey 
+ scan 117 type string 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

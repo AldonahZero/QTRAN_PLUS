@@ -1,0 +1,6 @@
+set mykey -853 
+ lpush hpcqdzor xbtoynzn 
+ info cpu all 
+ del hpcqdzor 
+ select 8 
+ get mykey

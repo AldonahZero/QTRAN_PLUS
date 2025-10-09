@@ -1,0 +1,11 @@
+set mykey 197 
+ set v0 -9223372036854775808 
+ setbit mykey 474529 1 
+ lcs mykey mykey 
+ getrange mykey 14 433 
+ copy mykey v2 
+ save 
+ decrby v0 1651985310 
+ get mykey 
+ copy mykey v1 
+ setbit v0 244931 1

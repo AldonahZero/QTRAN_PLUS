@@ -1,0 +1,13 @@
+set mykey 13121140 
+ hset v0 v1 1037 
+ copy v1 v2 
+ hstrlen v0 v2 
+ hstrlen v0 v2 
+ xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm 
+ hincrbyfloat v0 v2 1212044342121342330120333011310343042111112004430110414043434232214144020043403411 
+ get mykey 
+ hget v0 v1 
+ hincrby v0 v1 1 
+ info everything 
+ hmget v0 v1 v1 
+ save

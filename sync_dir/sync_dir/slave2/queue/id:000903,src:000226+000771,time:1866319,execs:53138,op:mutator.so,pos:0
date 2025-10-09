@@ -1,0 +1,6 @@
+hsetnx wqydsukt guwchiwu -214 
+ expire guwchiwu 1 
+ hincrby wqydsukt guwchiwu 1 
+ set mykey 3 
+ copy mykey v0 
+ get mykey

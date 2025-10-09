@@ -1,0 +1,7 @@
+lpush zdnjslcy sicnwujw 
+ copy zdnjslcy v0 
+ set mykey -15956 
+ mget mykey mykey mykey mykey 
+ info memory 
+ lcs mykey mykey 
+ get mykey

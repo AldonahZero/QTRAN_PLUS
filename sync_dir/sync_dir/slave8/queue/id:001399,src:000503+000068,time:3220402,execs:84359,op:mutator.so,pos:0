@@ -1,0 +1,7 @@
+set mykey -886864826961 
+ expireat duzslaye 1672351169 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 v1 -16965705105117 v0 20 
+ bitpos mykey 0 64 74 bit 
+ msetnx v2 fgqixmul v3 gftsakln v4 20 v5 20 v6 20 
+ get mykey 
+ psetex vokpjzpp -586 364853510803

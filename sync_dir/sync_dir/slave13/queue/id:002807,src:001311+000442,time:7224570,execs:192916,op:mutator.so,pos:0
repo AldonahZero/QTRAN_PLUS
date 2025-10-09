@@ -1,0 +1,5 @@
+info errorstats 
+ set atifyowf 1 
+ info errorstats 
+ save 
+ get atifyowf

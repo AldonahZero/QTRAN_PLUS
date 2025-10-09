@@ -1,0 +1,5 @@
+set hfrsktwa 40 
+ copy hfrsktwa v0 db cqcngdpy 
+ save 
+ bitop and hozsqpxd v0 v0 hfrsktwa hfrsktwa 
+ get v0

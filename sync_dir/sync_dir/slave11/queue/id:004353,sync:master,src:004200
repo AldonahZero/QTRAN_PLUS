@@ -1,0 +1,9 @@
+set mykey 197 
+ set v0 -9223372036854775808 
+ setbit mykey 474529 1 
+ lcs mykey mykey 
+ save 
+ decrby v0 1651985310 
+ lcs v0 mykey idx minmatchlen 4 withmatchlen 
+ get mykey 
+ setbit v0 244931 1

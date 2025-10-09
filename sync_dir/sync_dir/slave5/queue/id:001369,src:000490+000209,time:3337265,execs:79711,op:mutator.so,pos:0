@@ -1,0 +1,5 @@
+info all 
+ set atifyowf 1 
+ save 
+ info default commandstats 
+ get atifyowf

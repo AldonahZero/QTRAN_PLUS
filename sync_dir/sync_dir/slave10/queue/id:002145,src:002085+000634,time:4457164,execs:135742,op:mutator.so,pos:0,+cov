@@ -1,0 +1,9 @@
+zadd mfsvncrq lt incr 1 bexnlycc 
+ zinterstore zjxdmzot 2 mfsvncrq mfsvncrq aggregate max 
+ object encoding rwzbgekl 
+ geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
+ zscore mfsvncrq yqzwjbsb 
+ set mykey hello 
+ zrangestore eqahirrh mfsvncrq 0 -1 
+ strlen mykey 
+ get mykey

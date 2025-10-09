@@ -1,0 +1,6 @@
+hset eaxejsol bhwulrko 94964 
+ set mykey -1947844055 
+ geoadd ussfykoq 12.758489 38.788135 fawbaerw 12.750000 35.202000 "world" 
+ mget mykey mykey mykey 
+ geodist ussfykoq fawbaerw fawbaerw 
+ get mykey

@@ -1,0 +1,6 @@
+set mykey 24412330 
+ set v0 13121140 
+ hset vpkbrssi kumzfjat 41657 
+ get mykey 
+ info everything 
+ save

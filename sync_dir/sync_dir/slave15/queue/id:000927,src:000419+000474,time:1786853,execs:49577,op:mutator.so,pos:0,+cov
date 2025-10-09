@@ -1,0 +1,7 @@
+set mykey -1947844055 
+ get mykey 
+ pfadd dbpkzfom 
+ setbit mykey 474529 1 
+ get mykey 
+ bitfield mykey overflow fail incrby u17 0 -266480445054 
+ save

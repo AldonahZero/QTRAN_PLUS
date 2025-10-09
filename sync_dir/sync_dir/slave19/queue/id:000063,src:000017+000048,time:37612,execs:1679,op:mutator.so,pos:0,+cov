@@ -1,0 +1,3 @@
+set mykey -853 
+ lpush jqknbzjm "World" 
+ get mykey

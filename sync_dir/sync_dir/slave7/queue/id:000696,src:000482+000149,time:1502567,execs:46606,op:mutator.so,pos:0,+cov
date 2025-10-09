@@ -1,0 +1,6 @@
+set mykey 1142 
+ hmset hvuspbal puucxmde 9223372036854775808 
+ info cpu default 
+ bitpos mykey 31120121213221301000243100044320231101323444420334241010344213104440003132204 39 39 bit 
+ bitfield mykey overflow wrap set i15 0 -15956 
+ get mykey

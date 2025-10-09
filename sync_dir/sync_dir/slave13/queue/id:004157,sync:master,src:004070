@@ -1,0 +1,8 @@
+xadd ermrdvzf -128711219 jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm 
+ info keyspace 
+ xgroup create ermrdvzf v0 0 
+ xpending ermrdvzf v0 
+ set atifyowf 1 
+ save 
+ xpending ermrdvzf v0 idle 9000 - + 10 yxaavztx 
+ get atifyowf

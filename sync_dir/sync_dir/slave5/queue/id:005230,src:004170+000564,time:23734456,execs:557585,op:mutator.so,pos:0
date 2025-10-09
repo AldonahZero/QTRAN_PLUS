@@ -1,0 +1,13 @@
+set mykey -1947844055 
+ zadd dbpkzfom lt incr 1 bexnlycc 
+ bitpos mykey 1 12 12 bit 
+ sort dbpkzfom alpha 
+ get mykey 
+ zmpop 1 dbpkzfom max 
+ pfadd dbpkzfom 
+ setbit mykey 474529 1 
+ get mykey 
+ zcard dbpkzfom 
+ zunion 2 dbpkzfom dbpkzfom weights 1 1 aggregate max withscores 
+ info everything 
+ save

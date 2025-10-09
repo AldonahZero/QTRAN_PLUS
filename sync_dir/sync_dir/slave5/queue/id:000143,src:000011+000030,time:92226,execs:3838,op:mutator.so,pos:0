@@ -1,0 +1,4 @@
+hsetnx nbxqjbpm kmvsxosn fcjhthwx 
+ geoadd rrimocuc 13.361389 38.115556 vbqhnwvq 15.087269 37.502669 csetpemq 
+ set mykey hello 
+ get mykey

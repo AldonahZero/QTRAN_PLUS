@@ -1,0 +1,7 @@
+set mykey -20 
+ keys foo* 
+ xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm 
+ dump ermrdvzf 
+ xrevrange ermrdvzf + - count 1 
+ incr mykey 
+ get mykey

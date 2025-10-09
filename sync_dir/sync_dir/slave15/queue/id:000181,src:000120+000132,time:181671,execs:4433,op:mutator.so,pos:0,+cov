@@ -1,0 +1,5 @@
+set bpvfxtud 0 
+ get bpvfxtud 
+ getex bpvfxtud 
+ info cpu default 
+ save

@@ -1,0 +1,11 @@
+set mykey 197 
+ set v0 "member2" 
+ setbit mykey 474529 1 
+ lcs mykey mykey 
+ save 
+ decrby mykey -645314023664 
+ decrby mykey 1651985310 
+ incrby mykey -765 
+ get mykey 
+ decrby mykey 1904074908 
+ setbit mykey 244931 1

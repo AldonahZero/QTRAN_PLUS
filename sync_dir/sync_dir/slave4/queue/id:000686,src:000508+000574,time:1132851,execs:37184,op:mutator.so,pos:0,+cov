@@ -1,0 +1,6 @@
+lpush zdnjslcy sicnwujw 
+ del zdnjslcy 
+ set mykey 2100 
+ mget mykey mykey mykey mykey 
+ lcs mykey mykey 
+ get mykey

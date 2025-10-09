@@ -1,0 +1,14 @@
+set vkxhdmjo -1947844055 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ setbit vkxhdmjo 7 0 
+ bitpos vkxhdmjo 1 12 12 bit 
+ zrevrank mfsvncrq bexnlycc 
+ zpopmax mfsvncrq 1 
+ sort mfsvncrq alpha 
+ memory usage mykey 
+ memory usage mykey 
+ get vkxhdmjo 
+ pfadd dbpkzfom 
+ setbit vkxhdmjo 474529 1 
+ get vkxhdmjo 
+ save

@@ -1,0 +1,10 @@
+select 4 
+ set mykey -853 
+ lpush jqknbzjm xbtoynzn 
+ info cpu all 
+ lpop jqknbzjm 
+ rpop jqknbzjm 
+ lmove jqknbzjm fbzpustd right right 
+ del jqknbzjm 
+ select 8 
+ get mykey

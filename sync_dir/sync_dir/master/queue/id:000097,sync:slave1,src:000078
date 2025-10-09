@@ -1,0 +1,4 @@
+set mykey -1615510574 
+ getex mykey 
+ msetnx rtpjmxgn -335208959567 
+ get mykey

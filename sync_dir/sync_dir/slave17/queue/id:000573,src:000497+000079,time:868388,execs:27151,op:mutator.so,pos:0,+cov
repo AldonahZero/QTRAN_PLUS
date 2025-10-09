@@ -1,0 +1,6 @@
+set mykey hello 
+ zadd lukpltvt 5826 vgjrzjoy 
+ sort lukpltvt 
+ zpopmax lukpltvt 1 
+ zrandmember lukpltvt -20 
+ get mykey

@@ -1,0 +1,6 @@
+set mykey 0 
+ get mykey 
+ getex mykey 
+ bitop or jlgjivks mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey 
+ info cpu latencystats 
+ save

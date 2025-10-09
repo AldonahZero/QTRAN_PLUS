@@ -1,0 +1,11 @@
+zadd hedviswm 3 fxtgnmxn 
+ zincrby hedviswm 175656559 ymtynmse 
+ zadd hleuhsey 0 srveglnh 
+ object encoding rwzbgekl 
+ geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
+ zdiffstore mvtbwffp 2 hleuhsey hleuhsey 
+ set mykey hello 
+ zdiff 8 hleuhsey hedviswm hedviswm mvtbwffp mvtbwffp mvtbwffp mvtbwffp mvtbwffp 
+ zrangestore xervubdq mvtbwffp 1 1547376212 byscore 
+ strlen mykey 
+ get mykey

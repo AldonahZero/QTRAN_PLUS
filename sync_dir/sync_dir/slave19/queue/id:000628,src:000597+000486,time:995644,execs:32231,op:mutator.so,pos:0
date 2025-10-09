@@ -1,0 +1,9 @@
+set wkopvyjn 980792 
+ bitfield wkopvyjn overflow wrap set u48 0 190425890380385 
+ object encoding cmfmndrr 
+ lcs wkopvyjn wkopvyjn 
+ geoadd defhyxzz -45 65.50900022111811438208 vnjyzinq 90 85.0511 atulldgp 
+ setbit wkopvyjn 109990 1 
+ georadius defhyxzz 13.361389 38.115556 500 km store xutmxmkt 
+ geosearch defhyxzz frommember vnjyzinq bybox 1 1 km 
+ get wkopvyjn

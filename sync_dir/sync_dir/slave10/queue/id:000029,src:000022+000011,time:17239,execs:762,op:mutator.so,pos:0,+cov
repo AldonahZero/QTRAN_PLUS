@@ -1,0 +1,4 @@
+set mykey -1 
+ geoadd vrekwiwa 13.00 36.50 pqkikujz 
+ get mykey 
+ object encoding uvryzsxf

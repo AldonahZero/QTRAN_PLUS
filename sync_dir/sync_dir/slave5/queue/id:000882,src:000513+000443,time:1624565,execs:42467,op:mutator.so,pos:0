@@ -1,0 +1,5 @@
+set mmdwmsin 197 
+ copy mmdwmsin v0 db cqcngdpy 
+ save 
+ bitop and hozsqpxd v0 mmdwmsin v0 mmdwmsin 
+ get mmdwmsin

@@ -1,0 +1,4 @@
+set mykey 1732498873 
+ geoadd rguvzgcd 45 65 uqzidutw 68.303476990341892 85.05 yxudgmfh 
+ get mykey 
+ psubscribe bar* 

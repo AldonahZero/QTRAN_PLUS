@@ -1,0 +1,6 @@
+set mykey 1732498873 
+ geoadd idnrevck 0 0 rjrmbkwg 
+ geosearch idnrevck frommember rjrmbkwg bybox 1 1 km 
+ get mykey 
+ rpush dbmuwins jrjuraql 
+ psubscribe bar* 

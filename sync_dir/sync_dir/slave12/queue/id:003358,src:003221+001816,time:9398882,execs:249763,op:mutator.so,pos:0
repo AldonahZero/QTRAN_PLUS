@@ -1,0 +1,8 @@
+slowlog get -1 
+ set mykey 0.8284480026124269 
+ rpush ukbzhzcm bkfxggih 
+ zinterstore cpkmmnvr 2 cpkmmnvr cpkmmnvr 
+ save 
+ zdiffstore dfgxahpo 0 dfgxahpo dfgxahpo dfgxahpo 
+ lset ukbzhzcm 0 wzjcxwwp 
+ get mykey

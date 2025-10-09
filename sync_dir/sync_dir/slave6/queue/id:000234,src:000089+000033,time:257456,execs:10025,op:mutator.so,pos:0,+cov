@@ -1,0 +1,4 @@
+set mykey "Hello," 
+ getrange mykey -2276873893 821 
+ bitpos mykey -443013490849 
+ get mykey

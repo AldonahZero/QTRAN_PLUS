@@ -1,0 +1,7 @@
+mset szabdiyb -309496235712 
+ sinterstore pahvaasm pahvaasm pahvaasm 
+ set atifyowf 1 
+ incrbyfloat atifyowf -5 
+ save 
+ hmset fhrsgqae nhrsuavj 9223372036854775808 
+ get atifyowf

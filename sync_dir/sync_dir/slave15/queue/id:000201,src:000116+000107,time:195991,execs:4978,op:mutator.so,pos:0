@@ -1,0 +1,5 @@
+set mykey 0 
+ get mykey 
+ save 
+ sunionstore hczdthan hczdthan hczdthan 
+ mset jmvjdgip 533 

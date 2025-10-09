@@ -1,0 +1,4 @@
+hsetnx wqydsukt guwchiwu 1152402751 
+ set mykey 3 
+ copy mykey v0 
+ get mykey

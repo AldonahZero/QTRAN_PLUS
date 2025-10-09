@@ -1,0 +1,8 @@
+msetnx nzgkmxpj fgqixmul triqeesz 20220044110400301200030414002221202401144302121102214220143414121422201404321434024 ldvuftez 20 
+ keys foo* 
+ lcs triqeesz triqeesz 
+ setbit nzgkmxpj 526632498263 1 
+ set mykey "Hello," 
+ geoadd cqubszoy 13.361389 38.115556 acjnpjwy 15.087269 37.502669 fekagtxv 
+ del triqeesz 
+ get mykey

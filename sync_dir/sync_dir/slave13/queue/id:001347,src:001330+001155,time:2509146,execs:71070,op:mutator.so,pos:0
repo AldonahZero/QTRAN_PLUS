@@ -1,0 +1,11 @@
+set mykey -1947844055 
+ zadd xlsqmhmp lt incr 1 bexnlycc 
+ bitpos mykey 1 12 12 bit 
+ sort xlsqmhmp alpha 
+ get mykey 
+ pfadd dbpkzfom 
+ setbit mykey 474529 1 
+ get mykey 
+ zdiffstore zsxnqiio 2 xlsqmhmp zsxnqiio 
+ zunionstore gqqorfgf 2 zsxnqiio zsxnqiio 
+ save

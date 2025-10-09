@@ -1,0 +1,5 @@
+set mykey -37 
+ zrangestore rpondvdz rpondvdz 0 -1 limit 1 2 
+ incrby mykey 475947762595 
+ setnx gbjlvscx -37 
+ get mykey

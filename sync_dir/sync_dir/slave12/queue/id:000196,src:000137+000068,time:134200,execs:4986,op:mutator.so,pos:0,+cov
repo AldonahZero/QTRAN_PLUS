@@ -1,0 +1,8 @@
+set mykey 311 
+ zinterstore zjxdmzot 2 zjxdmzot zjxdmzot aggregate max 
+ geoadd eczuybnf 179.5 36 htafotkr 
+ incrbyfloat mykey 376 
+ get mykey 
+ get mykey 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

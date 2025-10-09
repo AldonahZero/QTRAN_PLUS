@@ -1,0 +1,6 @@
+sunionstore sugvxxcg sugvxxcg sugvxxcg 
+ info replication 
+ info latencystats 
+ set mykey -393807523601 
+ get mykey 
+ smismember sugvxxcg vlvtmruq 

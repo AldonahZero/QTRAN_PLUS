@@ -1,0 +1,6 @@
+lpush zdnjslcy sicnwujw 
+ set mykey 3101433443114 
+ rpop zdnjslcy 1 
+ mget mykey mykey 
+ lcs mykey mykey 
+ get mykey

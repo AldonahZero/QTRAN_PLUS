@@ -1,0 +1,5 @@
+set mykey 0.8284480026124269 
+ copy mykey v0 
+ copy v0 v1 
+ save 
+ get mykey

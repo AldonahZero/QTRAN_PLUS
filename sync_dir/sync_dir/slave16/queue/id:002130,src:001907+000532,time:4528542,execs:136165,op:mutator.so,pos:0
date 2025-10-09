@@ -1,0 +1,7 @@
+lpush zdnjslcy sicnwujw 
+ set mykey -15956 
+ rpop zdnjslcy 1 
+ mget mykey mykey mykey mykey 
+ lcs mykey mykey 
+ lindex zdnjslcy 426 
+ get mykey

@@ -1,0 +1,4 @@
+set mykey -645611437338 
+ bitfield mykey overflow wrap set i44 0 -16965705105117 
+ get mykey 
+ save

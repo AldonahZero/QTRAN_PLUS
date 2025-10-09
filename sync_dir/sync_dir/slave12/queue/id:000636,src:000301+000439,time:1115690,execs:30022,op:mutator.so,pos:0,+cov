@@ -1,0 +1,5 @@
+set mykey -10910337 
+ zrangestore rwcbicsk rwcbicsk 5 6 byscore 
+ get mykey 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

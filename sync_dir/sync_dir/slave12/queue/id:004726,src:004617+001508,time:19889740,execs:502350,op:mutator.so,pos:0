@@ -1,0 +1,12 @@
+sadd waeoxbem "Hello," 
+ copy waeoxbem v0 replace 
+ srem waeoxbem isjfwqcw 
+ sunionstore iwshcqfl waeoxbem iwshcqfl 
+ set mykey -1947844055 
+ smembers waeoxbem 
+ srandmember waeoxbem 
+ sunionstore sugvxxcg v0 iwshcqfl 
+ get mykey 
+ get mykey 
+ save 
+ bitpos mykey 1 8 19 bit

@@ -1,0 +1,9 @@
+hset eaxejsol bhwulrko 5834 
+ geoadd eapvvold -1 37.00 nkmmorea 
+ set mykey 2 
+ geoadd irkxzzim 12.758489 38.788135 jlvrddvb 17.241510 38.788135 yqcyaxfl 
+ geodist eapvvold jlvrddvb nkmmorea mi 
+ geodist irkxzzim nkmmorea jlvrddvb 
+ geodist irkxzzim nkmmorea jlvrddvb km 
+ geodist irkxzzim nkmmorea jlvrddvb 
+ get mykey

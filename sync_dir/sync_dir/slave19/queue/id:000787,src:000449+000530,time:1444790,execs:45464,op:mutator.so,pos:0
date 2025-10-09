@@ -1,0 +1,6 @@
+set mykey -853 
+ lpush jqknbzjm xbtoynzn 
+ info cpu all 
+ del jqknbzjm 
+ select 342374360348 
+ get mykey

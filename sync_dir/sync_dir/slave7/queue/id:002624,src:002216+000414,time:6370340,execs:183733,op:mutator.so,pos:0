@@ -1,0 +1,9 @@
+lpush fjawhzfz hfgcwmoq swywrupx 
+ set mykey 15.087269 
+ sort fjawhzfz alpha store wiruezdc 
+ sort fjawhzfz alpha store wiruezdc 
+ mget mykey mykey mykey mykey 
+ info cpu all 
+ del fjawhzfz 
+ lcs mykey mykey 
+ get mykey

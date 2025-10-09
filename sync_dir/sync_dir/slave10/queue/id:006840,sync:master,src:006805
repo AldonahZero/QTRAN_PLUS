@@ -1,0 +1,13 @@
+set mykey -75299881433 
+ bitop xor vnayjyje mykey 
+ geoadd vnayjyje 45 -1 uqzidutw -135 85.05 yxudgmfh 
+ geosearchstore xzkgjufz vnayjyje fromlonlat 0 -1947844055 byradius 1 km 
+ lpush fjawhzfz hfgcwmoq swywrupx 
+ geosearch vnayjyje frommember uqzidutw bybox 1 1 km 
+ lpushx fjawhzfz fdrgoskt 
+ geosearch vnayjyje frommember uqzidutw bybox 73 15 km 
+ zinterstore hszuawdu 2 hszuawdu hszuawdu weights 2 3 
+ get mykey 
+ rpush dbmuwins jrjuraql 
+ geopos vnayjyje uqzidutw uqzidutw 
+ psubscribe bar* 

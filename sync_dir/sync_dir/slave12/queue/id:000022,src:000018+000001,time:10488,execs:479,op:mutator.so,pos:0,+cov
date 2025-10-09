@@ -1,0 +1,3 @@
+set mykey 140244133014011140103024420341240422110004223143 
+ rpush drzkkxfj dgwqiyoc 
+ get mykey

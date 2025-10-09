@@ -1,0 +1,9 @@
+set mykey 9223372036854775808 
+ incr mykey 
+ zrangestore ugswuldi ugswuldi 0 -1 
+ scan 945 count 5 
+ bitfield mykey overflow fail set u34 474529 23450054762 
+ setnx gbjlvscx -37 
+ subscribe bsdvmjvg 
+ get mykey 
+ bitfield mykey overflow fail set u38 0 196603812187 

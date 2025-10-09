@@ -1,0 +1,5 @@
+set ebvgkrck -128711219 
+ get ebvgkrck 
+ zunionstore eeacghhu 1 eeacghhu eeacghhu weights 2 3 
+ zunion 4 eeacghhu eeacghhu weights 1 1 aggregate sum withscores 
+ ttl wrzagplh

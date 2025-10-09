@@ -1,0 +1,7 @@
+setex clryemar 9223372036854776 311 
+ lcs clryemar clryemar idx minmatchlen 4 withmatchlen 
+ hmset fhrsgqae nhrsuavj 31543984 
+ sunionstore sugvxxcg sugvxxcg sugvxxcg 
+ set mykey hello 
+ pexpire fhrsgqae 100 
+ get mykey

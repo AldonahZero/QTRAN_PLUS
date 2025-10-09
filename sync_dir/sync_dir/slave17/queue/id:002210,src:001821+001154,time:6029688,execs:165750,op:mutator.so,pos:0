@@ -1,0 +1,11 @@
+expireat isnghrlz 1672350969 
+ set mykey 311 
+ bitpos mykey 0 9 25 bit 
+ incrbyfloat mykey -inf 
+ get mykey 
+ expire mykey 100 lt 
+ setbit mykey 7 0 
+ get mykey 
+ save 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 v0 20 v1 20 v2 20 v3 20 v4 20 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

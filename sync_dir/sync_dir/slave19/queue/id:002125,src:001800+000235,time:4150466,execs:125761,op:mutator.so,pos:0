@@ -1,0 +1,9 @@
+sadd waeoxbem wivnjuxe 
+ srem waeoxbem isjfwqcw 
+ sunionstore iwshcqfl waeoxbem iwshcqfl 
+ set mykey -1947844055 
+ smembers waeoxbem 
+ get mykey 
+ get mykey 
+ save 
+ incrby mykey 170

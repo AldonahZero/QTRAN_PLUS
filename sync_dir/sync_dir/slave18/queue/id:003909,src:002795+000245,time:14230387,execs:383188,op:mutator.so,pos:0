@@ -1,0 +1,12 @@
+zadd mfsvncrq lt incr -15956 bexnlycc 
+ zadd hleuhsey 0 srveglnh 
+ object encoding rwzbgekl 
+ geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
+ zdiffstore dfgxahpo 3 mfsvncrq hleuhsey dfgxahpo 
+ copy rguvzgcd v0 
+ set mykey hello 
+ zrangestore gdjwzzhv mfsvncrq 0 1 
+ strlen mykey 
+ zunionstore moztfmde 2 mfsvncrq moztfmde aggregate min 
+ zmpop 1 mfsvncrq min 
+ get mykey

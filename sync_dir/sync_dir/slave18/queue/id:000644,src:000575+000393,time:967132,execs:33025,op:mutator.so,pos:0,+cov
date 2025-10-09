@@ -1,0 +1,8 @@
+set mykey 9223372036854775808 
+ incr mykey 
+ copy mykey v0 
+ zrangestore ugswuldi ugswuldi 0 -1 
+ scan 945 count 5 
+ setnx gbjlvscx -37 
+ subscribe bsdvmjvg 
+ get mykey

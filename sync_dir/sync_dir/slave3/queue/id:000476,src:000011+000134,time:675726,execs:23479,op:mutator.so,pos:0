@@ -1,0 +1,4 @@
+zinterstore teqiuuzn 3 teqiuuzn teqiuuzn teqiuuzn weights 0 0 1 
+ set mykey hello 
+ get mykey 
+ set v0 hello 

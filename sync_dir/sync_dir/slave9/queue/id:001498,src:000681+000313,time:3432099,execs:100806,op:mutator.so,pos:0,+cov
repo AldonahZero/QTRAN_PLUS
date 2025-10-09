@@ -1,0 +1,10 @@
+sunionstore sugvxxcg sugvxxcg sugvxxcg 
+ lpush crvliqip pnihvhwo 
+ info replication 
+ lmove crvliqip rmtdfxmv right right 
+ llen crvliqip 
+ set mykey 568645835187 
+ get mykey 
+ lpos crvliqip vgukvfpb count 1 
+ lpop crvliqip 
+ smismember sugvxxcg vlvtmruq 

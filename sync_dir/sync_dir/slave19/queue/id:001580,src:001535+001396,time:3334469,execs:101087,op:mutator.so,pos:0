@@ -1,0 +1,11 @@
+set mykey -853 
+ lpush jqknbzjm xbtoynzn 
+ psetex ddeayqeh 124957151303 -2792568265 
+ info cpu all 
+ lmpop 2 jqknbzjm jqknbzjm left count 2 
+ set v0 31120121213221301000243100044320231101323444420334241010344213104440003132204 
+ lpop jqknbzjm 0 
+ del jqknbzjm 
+ select 8 
+ incrby mykey 443 
+ get mykey

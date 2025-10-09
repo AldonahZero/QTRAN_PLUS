@@ -1,0 +1,16 @@
+xadd ermrdvzf 0-1 jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm aixesdar urasnjsm aixesdar -719392362385 aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar -719392362385 aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm 
+ info keyspace 
+ xgroup create ermrdvzf v0 0 
+ xgroup create ermrdvzf v1 0 
+ xgroup create ermrdvzf v2 0 
+ xinfo groups ermrdvzf 
+ xgroup create ermrdvzf v3 0 
+ xgroup create ermrdvzf v4 0 
+ xinfo stream ermrdvzf full 
+ xinfo groups ermrdvzf 
+ set atifyowf 1 
+ xinfo groups ermrdvzf 
+ save 
+ xgroup destroy ermrdvzf v0 
+ xgroup create ermrdvzf v5 -901 
+ get atifyowf

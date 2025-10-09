@@ -1,0 +1,12 @@
+sadd waeoxbem wivnjuxe 
+ copy waeoxbem v0 replace 
+ srandmember waeoxbem -1654890356 
+ srem waeoxbem isjfwqcw 
+ sunionstore iwshcqfl waeoxbem iwshcqfl 
+ set mykey -1947844055 
+ smembers waeoxbem 
+ srandmember waeoxbem 
+ get mykey 
+ srandmember waeoxbem 100 
+ get mykey 
+ save

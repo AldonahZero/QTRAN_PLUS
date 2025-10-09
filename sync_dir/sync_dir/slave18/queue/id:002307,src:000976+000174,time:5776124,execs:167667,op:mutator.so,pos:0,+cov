@@ -1,0 +1,11 @@
+set mykey 212 
+ zadd hzjcgcbk lt incr -1367120419 bexnlycc 
+ hsetnx vautdjej opuxcisi wdtnqhbk 
+ sort hzjcgcbk 
+ zrank hzjcgcbk jgaguhrp 
+ hgetall vautdjej 
+ zunionstore nchjerwp 2 nchjerwp hzjcgcbk weights 2 3 
+ zinterstore cpkmmnvr 2 nchjerwp hzjcgcbk 
+ get mykey 
+ hexists vautdjej uszqhkri 
+ save

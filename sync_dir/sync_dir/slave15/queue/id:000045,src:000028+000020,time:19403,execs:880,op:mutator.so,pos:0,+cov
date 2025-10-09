@@ -1,0 +1,4 @@
+set mykey hello 
+ zinterstore cxewdqlm 2 cxewdqlm cxewdqlm weights 2 3 
+ get mykey 
+ save

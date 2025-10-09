@@ -1,0 +1,6 @@
+hset imchqraj qmjpskpl 125287 
+ hmget imchqraj qmjpskpl qmjpskpl 
+ set mykey 2 
+ hincrbyfloat imchqraj qmjpskpl 1 
+ pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
+ get mykey

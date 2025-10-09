@@ -1,0 +1,6 @@
+set mykey 1293 
+ dump mykey 
+ get mykey 
+ bitpos mykey 1 
+ scan 589 type string 
+ save

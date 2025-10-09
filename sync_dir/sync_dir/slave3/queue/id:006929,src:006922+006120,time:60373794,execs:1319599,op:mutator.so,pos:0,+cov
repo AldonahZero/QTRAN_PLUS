@@ -1,0 +1,4 @@
+set mykey "Hello," 
+ bitfield mykey overflow wrap set i37 3541384808 190425890380385 
+ getbit mykey 7 
+ get mykey

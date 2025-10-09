@@ -1,0 +1,7 @@
+set mykey -12 
+ get mykey 
+ hsetnx roftorbl khrrkjgs 0.32029585089548296 
+ hrandfield roftorbl -1001 withvalues 
+ hgetall roftorbl 
+ hget roftorbl khrrkjgs 
+ setex ssqwgzfa -240958759673 -179847923191

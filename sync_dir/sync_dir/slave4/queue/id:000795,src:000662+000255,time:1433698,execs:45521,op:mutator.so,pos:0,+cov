@@ -1,0 +1,4 @@
+set xnamybte 15.087269 
+ bitpos xnamybte 0 33 -1 bit 
+ copy xnamybte v0 
+ get v0

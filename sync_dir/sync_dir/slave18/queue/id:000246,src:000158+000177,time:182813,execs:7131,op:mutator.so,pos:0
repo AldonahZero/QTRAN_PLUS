@@ -1,0 +1,6 @@
+set mykey -37 
+ setex bvzpjveh 162218937260 -461934581148 
+ zrangestore rpondvdz rpondvdz 0 -1 limit 1 2 
+ setnx gbjlvscx -37 
+ getex gbjlvscx 
+ get mykey

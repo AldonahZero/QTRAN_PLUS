@@ -1,0 +1,6 @@
+set mykey 1732498873 
+ geoadd cqubszoy 13.361389 38.115556 "member2" 17.241510 38.788135 nxmjeqgx 17.250000 35.202000 slkadwaf 12.750000 35.202000 esifgdfx 
+ geosearch cqubszoy frommember "member2" bybox 4483 1 km 
+ get mykey 
+ rpush dbmuwins jrjuraql 
+ psubscribe bar* 

@@ -1,0 +1,6 @@
+set atifyowf -16965705105117 
+ copy atifyowf v0 
+ bgsave schedule 
+ save 
+ bitop and xxuevemv v0 
+ get atifyowf

@@ -1,0 +1,4 @@
+set mykey 13121140 
+ hset vpkbrssi kumzfjat 41657 
+ get mykey 
+ save

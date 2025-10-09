@@ -1,0 +1,4 @@
+set mykey -645611437338 
+ bitfield mykey overflow fail incrby i35 -810955443331 -4224562770 
+ get mykey 
+ save

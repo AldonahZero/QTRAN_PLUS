@@ -1,0 +1,3 @@
+set mykey -5 
+ getex mykey 
+ get mykey

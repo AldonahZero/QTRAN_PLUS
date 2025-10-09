@@ -1,0 +1,9 @@
+set mykey 175656559 
+ incrbyfloat mykey 376 
+ get mykey 
+ lcs mykey mykey 
+ setbit mykey 109990 1 
+ get mykey 
+ scan 117 type string 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

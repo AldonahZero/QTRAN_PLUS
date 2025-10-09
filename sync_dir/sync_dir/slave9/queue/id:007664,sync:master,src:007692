@@ -1,0 +1,12 @@
+xadd pbtmpeny 3022132023044442330033400212104223123203243342000333414101110121 qnoruayj "Hello," 
+ info keyspace 
+ xgroup create pbtmpeny v1 0 
+ xgroup create pbtmpeny v0 0 
+ xack pbtmpeny v1 1672351058167-0 1672351058167-1 
+ xack pbtmpeny v1 1672351058167-0 1672351058167-1 
+ set atifyowf 1 
+ xack pbtmpeny v1 1526569495631-0 
+ save 
+ xgroup destroy pbtmpeny v0 
+ xack pbtmpeny v1 1672351058192-0 
+ get atifyowf

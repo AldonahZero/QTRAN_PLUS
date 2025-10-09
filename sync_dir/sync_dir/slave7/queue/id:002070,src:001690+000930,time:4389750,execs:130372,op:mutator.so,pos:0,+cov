@@ -1,0 +1,11 @@
+set guadkaxa -1947844055 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ bitpos guadkaxa 1 12 12 bit 
+ sort mfsvncrq alpha 
+ get guadkaxa 
+ pfadd dbpkzfom 
+ zremrangebyrank mfsvncrq -629174849777 244222380 
+ setbit guadkaxa 474529 1 
+ get guadkaxa 
+ zunion 2 mfsvncrq mfsvncrq aggregate min withscores 
+ save

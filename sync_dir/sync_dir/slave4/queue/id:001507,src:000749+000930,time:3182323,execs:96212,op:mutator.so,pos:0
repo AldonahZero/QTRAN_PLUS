@@ -1,0 +1,9 @@
+lpush zdnjslcy sicnwujw 
+ set mykey 15.087269 
+ lmove zdnjslcy ekfzqeis right right 
+ lcs mykey mykey idx minmatchlen 4 withmatchlen 
+ mget mykey mykey mykey mykey 
+ sort zdnjslcy alpha store wiruezdc 
+ info cpu default 
+ lcs mykey mykey 
+ get mykey

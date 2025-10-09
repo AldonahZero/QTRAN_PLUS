@@ -1,0 +1,5 @@
+geoadd vrekwiwa 13.00 36.50 pqkikujz 
+ zunionstore laaotcmr 2 laaotcmr laaotcmr weights 2 3 aggregate sum 
+ set mykey 306 
+ geopos vrekwiwa pqkikujz pqkikujz pqkikujz 
+ get mykey

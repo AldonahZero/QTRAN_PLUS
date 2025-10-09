@@ -1,0 +1,8 @@
+set mykey 0.8284480026124269 
+ rpush ukbzhzcm bkfxggih 
+ lmove ukbzhzcm rmtdfxmv right right 
+ save 
+ lpos ukbzhzcm wjzwwavv count 0 maxlen 3 
+ llen ukbzhzcm 
+ zdiffstore dfgxahpo 3 dfgxahpo dfgxahpo dfgxahpo 
+ get mykey

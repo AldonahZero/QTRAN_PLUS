@@ -1,0 +1,7 @@
+hsetnx vautdjej opuxcisi wdtnqhbk 
+ xadd jbdjxqbm maxlen ~ 1000 123-1 hognxfnw "Hello," 
+ set mykey 3 
+ copy mykey v0 
+ xgroup create jbdjxqbm v1 0 
+ del jbdjxqbm 
+ get mykey

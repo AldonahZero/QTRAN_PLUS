@@ -1,0 +1,4 @@
+set mykey hello 
+ get mykey 
+ getset mykey -853 
+ save

@@ -1,0 +1,10 @@
+set mykey -1947844055 
+ bitpos mykey 1 12 12 bit 
+ get mykey 
+ pfadd dbpkzfom 
+ setbit mykey 474529 1 
+ geoadd eczuybnf 179.5 36 htafotkr 
+ zrangestore lguhmiyq lguhmiyq 5 0 byscore rev limit 0 2 
+ get mykey 
+ object refcount gpknrlup 
+ save

@@ -1,0 +1,4 @@
+set mykey -1615510574 
+ getex mykey 
+ get mykey 
+ sunionstore iaxekmft iaxekmft iaxekmft

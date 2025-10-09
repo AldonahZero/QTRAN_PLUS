@@ -1,0 +1,4 @@
+set mykey -1 
+ save 
+ psetex zvshusdd 3410102305 430 
+ get mykey

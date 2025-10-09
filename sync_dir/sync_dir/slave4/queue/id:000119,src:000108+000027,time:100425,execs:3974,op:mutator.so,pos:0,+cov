@@ -1,0 +1,3 @@
+set mykey -5 
+ bitfield mykey overflow wrap incrby u17 0 46321 
+ get mykey

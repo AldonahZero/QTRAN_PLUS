@@ -1,0 +1,7 @@
+set mykey 1732498873 
+ geoadd rguvzgcd 45 65 uqzidutw 926595049 85.05 yxudgmfh 
+ geosearch rguvzgcd fromlonlat 59.235461856813856 66.269555127373678 byradius 143 km 
+ get mykey 
+ geosearch rguvzgcd frommember uqzidutw byradius 156544 km 
+ rpush dbmuwins jrjuraql 
+ psubscribe bar* 

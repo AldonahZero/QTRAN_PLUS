@@ -1,0 +1,8 @@
+sadd waeoxbem wivnjuxe 
+ set mykey -1947844055 
+ srandmember waeoxbem 0 
+ bitfield mykey overflow fail set u10 3512935256 1519 
+ smembers waeoxbem 
+ get mykey 
+ get mykey 
+ save

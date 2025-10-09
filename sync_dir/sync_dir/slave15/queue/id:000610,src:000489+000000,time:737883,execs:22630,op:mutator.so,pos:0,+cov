@@ -1,0 +1,6 @@
+set kcppjyka 0.71402199692745782 
+ getrange kcppjyka 1221 1496 
+ get kcppjyka 
+ getex kcppjyka 
+ incr kcppjyka 
+ save

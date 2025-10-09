@@ -1,0 +1,4 @@
+set mykey -408729133852 
+ zadd cgbkjpip 34 yvoteqwq 
+ expire cgbkjpip 100 lt 
+ get mykey

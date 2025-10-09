@@ -1,0 +1,4 @@
+set mykey hello 
+ info default default 
+ get mykey 
+ save

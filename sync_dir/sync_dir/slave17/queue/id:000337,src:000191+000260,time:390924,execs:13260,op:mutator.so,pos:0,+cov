@@ -1,0 +1,5 @@
+zrangestore rpondvdz rpondvdz 0 -1 limit 1 2 
+ set mykey hello 
+ msetnx nzgkmxpj 9223372036854775808 triqeesz gftsakln ldvuftez 20 
+ bitpos ldvuftez 1 5 6 byte 
+ get mykey

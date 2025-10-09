@@ -1,0 +1,4 @@
+zunionstore uhnbdhtg 3 uhnbdhtg 
+ zpopmin uhnbdhtg -731 
+ set mykey hello 
+ get mykey

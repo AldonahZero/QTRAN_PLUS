@@ -1,0 +1,5 @@
+set mykey 3090148046 
+ object encoding cmfmndrr 
+ lcs mykey mykey 
+ slowlog get -222 
+ get mykey

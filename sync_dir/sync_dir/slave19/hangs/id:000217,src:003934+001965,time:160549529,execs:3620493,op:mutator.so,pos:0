@@ -1,0 +1,8 @@
+set mykey -219 
+ bgsave 
+ save 
+ get mykey 
+ setbit mykey 2537333662 1 
+ bgsave 
+ mget mykey mykey mykey mykey 
+ getrange mykey 615 917

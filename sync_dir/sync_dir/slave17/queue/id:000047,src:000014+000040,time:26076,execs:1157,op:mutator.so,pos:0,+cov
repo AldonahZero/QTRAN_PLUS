@@ -1,0 +1,4 @@
+set mykey hello 
+ zrangestore rwcbicsk rwcbicsk 5 6 byscore 
+ zadd lukpltvt 96 vgjrzjoy 
+ get mykey

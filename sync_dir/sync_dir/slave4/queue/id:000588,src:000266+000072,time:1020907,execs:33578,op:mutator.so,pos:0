@@ -1,0 +1,4 @@
+set mykey -5 
+ bitfield mykey overflow fail incrby i35 7 -688 
+ bitop and hozsqpxd mykey mykey mykey mykey 
+ get mykey

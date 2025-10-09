@@ -1,0 +1,10 @@
+sunionstore hczdthan hczdthan hczdthan 
+ lpush ekhmombx pgasgnev 
+ lmove ekhmombx rmtdfxmv right right 
+ lmove ekhmombx v0 right right 
+ set mykey -1615510574 
+ lpos v0 btsxeomi 
+ hmset rlvtchzi tyubwqfl -1 
+ getex mykey 
+ del hczdthan ekhmombx rmtdfxmv 
+ get mykey

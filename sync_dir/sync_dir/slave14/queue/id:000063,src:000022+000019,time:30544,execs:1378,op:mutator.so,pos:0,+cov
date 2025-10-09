@@ -1,0 +1,3 @@
+set mykey -5 
+ get mykey 
+ setex ssqwgzfa -240958759673 -179847923191

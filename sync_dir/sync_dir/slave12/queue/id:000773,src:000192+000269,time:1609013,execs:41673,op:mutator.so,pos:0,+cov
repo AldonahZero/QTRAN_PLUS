@@ -1,0 +1,4 @@
+set mykey 1158 
+ get mykey 
+ zunionstore laaotcmr 2 laaotcmr laaotcmr weights 2 3 aggregate sum 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

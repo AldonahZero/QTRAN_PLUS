@@ -1,0 +1,6 @@
+set mykey 0.32029585089548296 
+ bitpos mykey 0 -2255963835 -1 bit 
+ incr mykey 
+ sunionstore hczdthan hczdthan hczdthan 
+ get mykey 
+ psetex vokpjzpp -586 364853510803

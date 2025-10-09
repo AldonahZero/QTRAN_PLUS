@@ -1,0 +1,7 @@
+set mykey 3 
+ select 13 
+ strlen mykey 
+ get mykey 
+ get mykey 
+ get mykey 
+ hset rfllxsdf iubquuor 0.41507778056668015 

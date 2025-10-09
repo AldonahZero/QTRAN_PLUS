@@ -1,0 +1,6 @@
+set mykey 1302230201330004203204022312341214 
+ zadd ojhkbklj -653 avnctvuo 
+ zscan ojhkbklj 96 
+ bitop and soigkacb mykey mykey mykey 
+ zrandmember ojhkbklj -20 
+ get mykey

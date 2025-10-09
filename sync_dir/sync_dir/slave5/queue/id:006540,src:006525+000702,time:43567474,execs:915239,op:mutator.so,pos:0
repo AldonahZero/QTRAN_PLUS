@@ -1,0 +1,8 @@
+set mykey 1519 
+ hmset zxvatyxz mecdrlck 1 vktahdph 2 ccsnseuf 3 qzsoxtro 3 mdhtawrn 3 qzsoxtro 3 vktahdph 33224130 
+ hrandfield zxvatyxz 2 withvalues 
+ get mykey 
+ hrandfield zxvatyxz 3 
+ hrandfield zxvatyxz 2 
+ hrandfield zxvatyxz 2 
+ del mykey 

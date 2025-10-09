@@ -1,0 +1,4 @@
+set mykey 692 
+ copy mykey v0 db cqcngdpy 
+ lcs v0 v0 
+ get mykey

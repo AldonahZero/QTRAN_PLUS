@@ -1,0 +1,3 @@
+set mykey 20 
+ get mykey 
+ save

@@ -1,0 +1,6 @@
+set mykey 9223372036854775808 
+ incr mykey 
+ zrangestore ugswuldi ugswuldi 0 -1 
+ zpopmin ugswuldi 1 
+ setnx gbjlvscx -37 
+ get mykey

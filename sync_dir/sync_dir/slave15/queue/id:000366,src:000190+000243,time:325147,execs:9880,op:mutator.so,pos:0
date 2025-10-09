@@ -1,0 +1,7 @@
+set mykey 0 
+ get mykey 
+ hset ucukoxrm auydyooj 0.21973279221902267 
+ getex mykey 
+ info cpu default 
+ bitop or ewxrjkga mykey mykey mykey mykey mykey mykey mykey mykey 
+ save

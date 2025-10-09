@@ -1,0 +1,8 @@
+hset ubjuqmxi wuttehlz 0.019224562691163533 
+ ttl ucglluvp 
+ expireat iziidfxc 1672351166 
+ set mykey hello 
+ pexpire wuttehlz 500 
+ getex mykey 
+ expire wuttehlz 2 
+ get mykey

@@ -1,0 +1,10 @@
+set mykey 311 
+ bitpos mykey 0 9 9 bit 
+ setbit mykey 1887718428 1 
+ incrbyfloat mykey 376 
+ get mykey 
+ setbit mykey 321252 0 
+ get mykey 
+ incrby mykey -3027944733 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

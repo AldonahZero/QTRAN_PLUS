@@ -1,0 +1,8 @@
+set mykey 1140 
+ save 
+ setbit mykey 362392 0 
+ msetnx nzgkmxpj 20220044110400301200030414002221202401144302121102214220143414121422201404321434024 triqeesz gftsakln ldvuftez 20 
+ getset mykey -853 
+ bitop xor vnayjyje triqeesz 
+ bitcount nzgkmxpj 
+ get mykey

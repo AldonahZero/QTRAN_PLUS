@@ -1,0 +1,5 @@
+set ebvgkrck 92007103795675120 
+ get ebvgkrck 
+ scan 589 type string 
+ save 
+ copy ebvgkrck v0 

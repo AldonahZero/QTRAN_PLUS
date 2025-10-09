@@ -1,0 +1,5 @@
+set mykey 190425890380385 
+ sunionstore hczdthan hczdthan hczdthan 
+ rpush ukbzhzcm bkfxggih 
+ save 
+ get mykey

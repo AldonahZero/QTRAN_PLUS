@@ -1,0 +1,6 @@
+set mykey 1732498873 
+ geoadd rxhuwnnj 12.75 36.50 covgpanv 
+ geosearch rxhuwnnj frommember covgpanv byradius 156 km 
+ get mykey 
+ rpush dbmuwins jrjuraql 
+ psubscribe bar* 

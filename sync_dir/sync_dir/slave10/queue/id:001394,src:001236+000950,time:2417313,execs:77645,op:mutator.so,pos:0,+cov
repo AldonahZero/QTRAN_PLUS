@@ -1,0 +1,7 @@
+set mykey 0.8284480026124269 
+ rpush ukbzhzcm bkfxggih 
+ save 
+ zdiffstore dfgxahpo 0 dfgxahpo dfgxahpo dfgxahpo 
+ rpush hzpguhew lwgmfhcy 
+ zintercard 2 dfgxahpo dfgxahpo limit 10 
+ get mykey

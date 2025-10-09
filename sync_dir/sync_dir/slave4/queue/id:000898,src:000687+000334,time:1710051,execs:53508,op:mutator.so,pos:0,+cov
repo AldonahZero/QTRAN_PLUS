@@ -1,0 +1,5 @@
+set mykey 1519 
+ dump mykey 
+ setbit mykey -3891418170 1 
+ get mykey 
+ del mykey 

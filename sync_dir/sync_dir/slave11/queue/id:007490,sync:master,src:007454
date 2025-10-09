@@ -1,0 +1,18 @@
+xadd pbtmpeny * qnoruayj "Hello," 
+ info default all 
+ xgroup create pbtmpeny v2 18446744073709561 
+ xgroup createconsumer pbtmpeny v2 v0 
+ xgroup createconsumer pbtmpeny v2 v1 
+ xlen pbtmpeny 
+ xreadgroup group pnmycwuk alqfgudg streams pbtmpeny 0 
+ copy pbtmpeny v3 
+ xreadgroup group v0 v2 count 3 streams pbtmpeny 0 
+ xclaim pbtmpeny v0 oozsdacj 0 1-0 2-0 3-0 
+ set atifyowf 1 
+ xreadgroup group v0 wvocahto count 3 streams v3 0 
+ save 
+ xinfo consumers pbtmpeny v2 
+ xinfo consumers pbtmpeny v2 
+ xreadgroup group v0 alqfgudg streams pbtmpeny 0 
+ xpending pbtmpeny v2 
+ get atifyowf

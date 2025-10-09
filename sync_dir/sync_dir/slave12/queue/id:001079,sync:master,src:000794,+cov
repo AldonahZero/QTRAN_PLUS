@@ -1,0 +1,6 @@
+set mykey 0.8284480026124269 
+ rpush ukbzhzcm bkfxggih 
+ save 
+ lpos ukbzhzcm fdeoxbgi rank 0 
+ zdiffstore dfgxahpo 3 dfgxahpo dfgxahpo dfgxahpo 
+ get mykey

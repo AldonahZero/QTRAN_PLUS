@@ -1,0 +1,8 @@
+lpush zdnjslcy sicnwujw 
+ set mykey 15.087269 
+ rpop zdnjslcy 1 
+ rpop zdnjslcy 
+ lmpop 2 zdnjslcy zdnjslcy right count 10 
+ mget mykey mykey mykey mykey 
+ lcs mykey mykey 
+ get mykey

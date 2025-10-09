@@ -1,0 +1,6 @@
+set mykey -10910337 
+ xadd ermrdvzf 43 jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm 
+ xgroup create ermrdvzf v0 0 
+ get mykey 
+ dump ermrdvzf 
+ save

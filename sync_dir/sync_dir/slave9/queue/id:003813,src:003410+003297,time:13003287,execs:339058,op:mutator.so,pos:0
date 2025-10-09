@@ -1,0 +1,5 @@
+set mzdtjugl -15956 
+ bitpos mzdtjugl 1 
+ copy mzdtjugl v0 
+ mget v0 v0 v0 v0 v0 mzdtjugl v0 v0 v0 v0 v0 v0 mzdtjugl v0 v0 v0 v0 v0 mzdtjugl v0 mzdtjugl 
+ get v0

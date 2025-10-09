@@ -1,0 +1,5 @@
+set mykey 1140 
+ msetnx nzgkmxpj fgqixmul triqeesz 4303233220312434302313400044210440230231230 ldvuftez 20 
+ getset mykey -853 
+ bitop xor vnayjyje triqeesz 
+ get mykey

@@ -1,0 +1,4 @@
+set mykey hello 
+ get mykey 
+ zunionstore kmmwzipn 2 kmmwzipn kmmwzipn weights 0 aggregate min 
+ mset mempxxdl qsuvfmsr 

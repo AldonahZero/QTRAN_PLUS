@@ -1,0 +1,6 @@
+set mykey 0 
+ geoadd rguvzgcd 45 65 "member3" -135 85.05 yxudgmfh 
+ geosearch rguvzgcd frommember "member3" bybox 1 1 km 
+ get mykey 
+ rpush dbmuwins jrjuraql 
+ psubscribe bar* 

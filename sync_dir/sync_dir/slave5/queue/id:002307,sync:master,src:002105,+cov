@@ -1,0 +1,7 @@
+geoadd mspahcqu 0 0 ecyrjbwf 
+ set mykey 306 
+ type mspahcqu 
+ geopos mspahcqu ecyrjbwf ecyrjbwf ecyrjbwf 
+ decr mykey 
+ save 
+ get mykey

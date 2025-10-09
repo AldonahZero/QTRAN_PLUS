@@ -1,0 +1,9 @@
+pfadd mykey "hello" smvbejzf nyxzfynr 
+ hset mykey bhwulrko 1037 
+ set v0 2 
+ hincrbyfloat mykey bhwulrko 1 
+ hincrbyfloat mykey bhwulrko 1 
+ hincrbyfloat mykey bhwulrko 43324101401331444344220344301412031443010444311133310013223310111242022033410430223304001132204202230320441201002330200333240133113232303313243102110423231040213 
+ pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
+ hlen mykey 
+ get v0

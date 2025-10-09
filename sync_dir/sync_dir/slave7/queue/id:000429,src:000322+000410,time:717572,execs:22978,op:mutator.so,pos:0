@@ -1,0 +1,7 @@
+geoadd vrekwiwa 13.00 36.50 pqkikujz 
+ set dssplpey 41788 
+ type mspahcqu 
+ geopos vrekwiwa pqkikujz pqkikujz pqkikujz 
+ decr dssplpey 
+ save 
+ get dssplpey

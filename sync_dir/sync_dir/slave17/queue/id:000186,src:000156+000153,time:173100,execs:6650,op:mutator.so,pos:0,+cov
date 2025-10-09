@@ -1,0 +1,6 @@
+set mykey 1293 
+ get mykey 
+ zdiffstore oninilnq 0 oninilnq 
+ scan 589 type string 
+ zrank oninilnq rpfaxaqt 
+ save

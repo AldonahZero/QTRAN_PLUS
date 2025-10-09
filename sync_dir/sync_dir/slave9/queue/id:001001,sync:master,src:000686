@@ -1,0 +1,6 @@
+set atifyowf 3 
+ incrbyfloat atifyowf -5 
+ save 
+ bitop or psmgmghp atifyowf atifyowf 
+ incr atifyowf 
+ get atifyowf

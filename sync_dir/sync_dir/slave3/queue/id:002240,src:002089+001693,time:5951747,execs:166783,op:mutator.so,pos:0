@@ -1,0 +1,15 @@
+info default 
+ hset eaxejsol bhwulrko 1037 
+ hmget eaxejsol bhwulrko bhwulrko 
+ set mykey 2 
+ rpush czowykxw ptecklws 
+ hincrbyfloat eaxejsol bhwulrko 1 
+ ltrim czowykxw 29 54 
+ pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
+ sort czowykxw by d* get s* store frxxuubj 
+ rpushx czowykxw gtefhsbg 
+ rpoplpush czowykxw pnhvbalr 
+ lrange pnhvbalr 0 1 
+ lrem czowykxw 1 vjmiawgx 
+ lset pnhvbalr 2 httvycsl 
+ get mykey

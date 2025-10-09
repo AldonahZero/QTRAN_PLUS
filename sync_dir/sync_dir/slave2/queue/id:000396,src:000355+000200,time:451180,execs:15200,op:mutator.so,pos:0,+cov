@@ -1,0 +1,7 @@
+hsetnx wqydsukt guwchiwu ssnvzsid 
+ xadd pbtmpeny * qnoruayj "Hello," 
+ xclaim pbtmpeny lefvxkbo oozsdacj 0 1-0 2-0 3-0 
+ set mykey 3 
+ xinfo stream pbtmpeny full 
+ copy mykey v0 
+ get mykey

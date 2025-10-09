@@ -1,0 +1,13 @@
+xadd pbtmpeny -128711219 qnoruayj -813 
+ info keyspace 
+ xgroup create pbtmpeny rdswhrys 0 
+ xgroup create pbtmpeny nluelakw 0 
+ xgroup create pbtmpeny teqiuuzn 0 
+ xgroup create pbtmpeny sycutgvc 0 
+ xgroup create pbtmpeny v1 0 
+ set atifyowf 1 
+ xinfo groups pbtmpeny 
+ save 
+ xgroup destroy pbtmpeny v1 
+ xgroup create pbtmpeny v0 -901 
+ get atifyowf

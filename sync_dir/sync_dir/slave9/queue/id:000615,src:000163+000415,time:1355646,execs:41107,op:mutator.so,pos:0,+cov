@@ -1,0 +1,6 @@
+setex clryemar 9223372036854776 311 
+ hmset ttkzrgmh zywhgayr 0 
+ zinterstore eghgxknb 2 eghgxknb eghgxknb weights 1 2 aggregate sum 
+ sunionstore sugvxxcg sugvxxcg sugvxxcg 
+ set mykey hello 
+ get mykey

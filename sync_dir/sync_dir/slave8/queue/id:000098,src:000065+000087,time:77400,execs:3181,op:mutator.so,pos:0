@@ -1,0 +1,4 @@
+set mykey zkqbsabs 
+ bitpos mykey 0 33 -1 bit 
+ get mykey 
+ psetex vokpjzpp -586 364853510803

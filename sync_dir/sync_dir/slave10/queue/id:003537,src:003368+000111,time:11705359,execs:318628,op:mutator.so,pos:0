@@ -1,0 +1,10 @@
+lpush zdnjslcy sicnwujw 
+ set mykey 15.087269 
+ lpop zdnjslcy 2 
+ mget mykey mykey mykey mykey 
+ lpop zdnjslcy 0 
+ lpop zdnjslcy 2 
+ info cpu default 
+ lcs mykey mykey 
+ object idletime hwxlnijv 
+ get mykey

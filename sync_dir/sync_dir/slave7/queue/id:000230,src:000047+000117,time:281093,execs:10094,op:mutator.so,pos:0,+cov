@@ -1,0 +1,3 @@
+sinterstore gfyopats gfyopats gfyopats 
+ set mykey 9223372036854775808 
+ get mykey

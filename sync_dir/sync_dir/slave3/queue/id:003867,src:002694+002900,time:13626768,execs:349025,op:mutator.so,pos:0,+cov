@@ -1,0 +1,10 @@
+xadd jbdjxqbm maxlen ~ 1000 123 hognxfnw "Hello," 
+ info keyspace 
+ xtrim jbdjxqbm minid 1000 
+ xgroup create jbdjxqbm v0 0 
+ copy v0 v1 
+ xpending jbdjxqbm v1 idle 9000 - + 10 yxaavztx 
+ set atifyowf 1 
+ save 
+ xinfo stream jbdjxqbm full count 1 
+ get atifyowf

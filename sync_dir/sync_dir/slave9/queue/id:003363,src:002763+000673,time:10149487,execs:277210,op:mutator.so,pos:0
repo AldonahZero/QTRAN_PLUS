@@ -1,0 +1,9 @@
+xadd pbtmpeny * qnoruayj 4230333332232202420410202334244131113300242423441432341324031332432244402110402013234121110332021340431 
+ xrevrange pbtmpeny 119 37999704017 
+ xtrim pbtmpeny minid 1000 
+ info latencystats 
+ xtrim pbtmpeny minid 1000 
+ set atifyowf 1 
+ save 
+ xinfo stream pbtmpeny 
+ get atifyowf

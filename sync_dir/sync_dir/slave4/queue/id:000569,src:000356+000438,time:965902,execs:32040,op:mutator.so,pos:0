@@ -1,0 +1,4 @@
+set dwspoulc 119 
+ psetex vrrqnomv 315 33 
+ lcs vrrqnomv dwspoulc 
+ get vrrqnomv

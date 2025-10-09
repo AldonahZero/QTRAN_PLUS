@@ -1,0 +1,7 @@
+zunionstore uhnbdhtg -564153445215 uhnbdhtg 
+ xadd pbtmpeny * qnoruayj "Hello," 
+ set mykey hello 
+ copy uhnbdhtg v0 
+ zmpop 1 v0 max count 1 
+ xread streams pbtmpeny 868 
+ get mykey

@@ -1,0 +1,4 @@
+set mykey -874394400 
+ get mykey 
+ lcs mykey mykey 
+ save

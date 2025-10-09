@@ -1,0 +1,6 @@
+set mykey -219 
+ save 
+ get mykey 
+ bgsave 
+ save 
+ getrange mykey -908959687645 917

@@ -1,0 +1,5 @@
+hsetnx nbxqjbpm fypuatkn -645611437338 
+ set mykey hello 
+ hscan nbxqjbpm 0 match foo* count 10000 
+ hincrbyfloat nbxqjbpm fypuatkn 1 
+ get mykey

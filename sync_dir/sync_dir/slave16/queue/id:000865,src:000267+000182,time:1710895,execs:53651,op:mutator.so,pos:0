@@ -1,0 +1,4 @@
+set mykey -414235728 
+ xadd pbtmpeny 59043849380 qnoruayj "Hello," 
+ get mykey 
+ psubscribe bar* 

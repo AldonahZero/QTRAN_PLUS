@@ -1,0 +1,4 @@
+zunionstore laaotcmr 2 laaotcmr laaotcmr weights 2 3 aggregate sum 
+ zinter 2 laaotcmr laaotcmr weights 1 2 aggregate sum withscores 
+ set mykey hello 
+ get mykey

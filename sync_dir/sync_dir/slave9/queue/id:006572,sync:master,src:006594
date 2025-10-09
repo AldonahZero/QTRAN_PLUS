@@ -1,0 +1,20 @@
+xadd pbtmpeny 1-0 qnoruayj "Hello," 
+ info keyspace 
+ xgroup create pbtmpeny cghcphip 0 
+ xpending pbtmpeny cghcphip idle 9000 -1654890356 + 114032213300100222003031000430134333012243232104434413321401322143003423212203311403312424414342440212310222232233002231122122434314340013242124301130141330424102012430344044443234211341142301040112420223424204 yxaavztx 
+ xclaim pbtmpeny cghcphip v19 0 1-0 force 
+ xgroup createconsumer pbtmpeny cghcphip v4 
+ xgroup create pbtmpeny v1 0 
+ set atifyowf 1 
+ save 
+ xinfo stream pbtmpeny 
+ copy pbtmpeny v3 
+ xclaim pbtmpeny cghcphip lzytosbe 0 1-0 force 
+ xpending pbtmpeny cghcphip 
+ xinfo stream pbtmpeny full 
+ copy pbtmpeny v0 
+ dump pbtmpeny 
+ copy pbtmpeny v5 
+ copy v0 v2 
+ xclaim pbtmpeny cghcphip qcdrshmz 0 1-0 force 
+ get atifyowf

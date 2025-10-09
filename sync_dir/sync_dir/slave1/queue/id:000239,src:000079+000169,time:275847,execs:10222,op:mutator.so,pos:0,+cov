@@ -1,0 +1,4 @@
+exists tputxols docybvnb 
+ set mykey 1302230201330004203204022312341214 
+ getex mykey 
+ get mykey

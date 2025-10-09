@@ -1,0 +1,12 @@
+info default 
+ hset eaxejsol bhwulrko 1037 
+ hmget eaxejsol bhwulrko bhwulrko 
+ set jalgwgha 2 
+ rpush czowykxw ptecklws 
+ hincrbyfloat eaxejsol bhwulrko 1 
+ pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
+ sort czowykxw limit 0 10 
+ rpoplpush czowykxw pnhvbalr 
+ lrange pnhvbalr 0 1 
+ lmpop 2 pnhvbalr pnhvbalr right count 3 
+ get jalgwgha

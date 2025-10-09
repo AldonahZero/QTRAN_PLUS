@@ -1,0 +1,5 @@
+set mykey 41788 
+ getset mykey -205 
+ sdiffstore lrkqafqr lrkqafqr lrkqafqr lrkqafqr lrkqafqr lrkqafqr lrkqafqr 
+ sdiffstore vdxxciyw vdxxciyw vdxxciyw vdxxciyw 
+ get mykey

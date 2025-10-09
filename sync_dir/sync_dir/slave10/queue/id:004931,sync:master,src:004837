@@ -1,0 +1,10 @@
+sunionstore sugvxxcg sugvxxcg sugvxxcg 
+ geoadd prlpsdxt 12.75 36.995 trqpgcxr 
+ set mykey hello 
+ sdiffstore zakcrnfs zakcrnfs zakcrnfs 
+ spop sugvxxcg 
+ geodist prlpsdxt trqpgcxr trqpgcxr km 
+ sunion sugvxxcg zakcrnfs sugvxxcg 
+ sdiff sugvxxcg zakcrnfs 
+ sdiff sugvxxcg sugvxxcg sugvxxcg sugvxxcg 
+ get mykey

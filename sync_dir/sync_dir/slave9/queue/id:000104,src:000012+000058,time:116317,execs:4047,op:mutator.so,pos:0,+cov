@@ -1,0 +1,3 @@
+set mykey -5 
+ object encoding sotkufci 
+ get mykey

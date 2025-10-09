@@ -1,0 +1,9 @@
+hset ubjuqmxi wuttehlz 0.019224562691163533 
+ ttl ucglluvp 
+ set mykey hello 
+ object refcount uecpkdtw 
+ pexpireat imxpdbqg 1672351169000 
+ pexpire mykey 500 
+ getex mykey 
+ expire mykey -10 xx 
+ get mykey

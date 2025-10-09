@@ -1,0 +1,7 @@
+set mykey 0.8284480026124269 
+ mset szabdiyb -309496235712 
+ rpush ukbzhzcm bkfxggih 
+ save 
+ save 
+ zdiffstore dfgxahpo 3 dfgxahpo dfgxahpo dfgxahpo 
+ get mykey

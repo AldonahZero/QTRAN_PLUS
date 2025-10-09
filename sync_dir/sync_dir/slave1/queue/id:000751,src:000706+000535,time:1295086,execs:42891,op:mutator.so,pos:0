@@ -1,0 +1,7 @@
+scan 976 type string 
+ set mykey -1615510574 
+ hmset rlvtchzi tyubwqfl -1 
+ bitpos mykey 0 -3891418170 39 bit 
+ getex mykey 
+ bitfield mykey overflow wrap incrby i4 0 6413502 
+ get mykey

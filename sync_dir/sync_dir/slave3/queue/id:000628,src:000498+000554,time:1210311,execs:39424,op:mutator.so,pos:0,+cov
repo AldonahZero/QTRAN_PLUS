@@ -1,0 +1,11 @@
+info default 
+ hset eaxejsol bhwulrko 1037 
+ hmget eaxejsol bhwulrko bhwulrko 
+ set mykey 2 
+ select 1 
+ rpush czowykxw ptecklws 
+ hincrbyfloat eaxejsol bhwulrko 1 
+ pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
+ sort czowykxw limit 1603 10 
+ rpoplpush czowykxw pnhvbalr 
+ get mykey

@@ -1,0 +1,4 @@
+set mykey hello 
+ msetnx fflysnkw 306 
+ getex mykey 
+ get mykey

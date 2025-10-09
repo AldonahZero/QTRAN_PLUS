@@ -1,0 +1,10 @@
+lpush zdnjslcy sicnwujw 
+ lmpop 7 zdnjslcy left 
+ set mykey 15.087269 
+ lmpop 7 zdnjslcy left 
+ mget mykey mykey mykey mykey 
+ lpop zdnjslcy -123 
+ bgsave 
+ info all default 
+ lcs mykey mykey 
+ get mykey

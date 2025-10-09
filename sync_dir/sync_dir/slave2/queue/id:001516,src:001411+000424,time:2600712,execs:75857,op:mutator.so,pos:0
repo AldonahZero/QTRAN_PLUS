@@ -1,0 +1,7 @@
+set kfkytxgr 4806867732670 
+ get kfkytxgr 
+ getex kfkytxgr 
+ info errorstats 
+ info cpu default 
+ bitop or ewxrjkga kfkytxgr kfkytxgr kfkytxgr kfkytxgr kfkytxgr kfkytxgr kfkytxgr kfkytxgr 
+ save

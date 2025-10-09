@@ -1,0 +1,4 @@
+set mykey -853 
+ get mykey 
+ ttl wrzagplh 
+ pexpiretime htnfuoac

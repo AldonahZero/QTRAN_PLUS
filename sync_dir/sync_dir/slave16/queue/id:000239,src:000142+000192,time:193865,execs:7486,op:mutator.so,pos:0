@@ -1,0 +1,5 @@
+set wkopvyjn 980792 
+ setbit wkopvyjn 474529 1 
+ get wkopvyjn 
+ hset etqpfzfm njabbctf 41657 
+ psubscribe bar* 

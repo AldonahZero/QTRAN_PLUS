@@ -1,0 +1,6 @@
+set mykey 1732498873 
+ geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
+ geosearch rguvzgcd fromlonlat 15 37 bybox 366402871 400 km asc 
+ get mykey 
+ rpush dbmuwins jrjuraql 
+ psubscribe bar* 

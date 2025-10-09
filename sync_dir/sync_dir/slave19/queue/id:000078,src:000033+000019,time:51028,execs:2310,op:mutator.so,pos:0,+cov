@@ -1,0 +1,4 @@
+set mykey 1054571921 
+ get mykey 
+ copy mykey v0 replace 
+ ttl wrzagplh

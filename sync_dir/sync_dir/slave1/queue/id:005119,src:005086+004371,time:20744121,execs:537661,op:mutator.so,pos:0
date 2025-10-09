@@ -1,0 +1,16 @@
+set mykey -1947844055 
+ zadd hleuhsey 0 ymtynmse 
+ bitpos mykey 1 12 12 bit 
+ zincrby hleuhsey 2 ltrxeema 
+ sort hleuhsey alpha 
+ get mykey 
+ pfadd dbpkzfom 
+ zremrangebyrank hleuhsey -706 -393807523601 
+ setbit mykey 474529 1 
+ get mykey 
+ zincrby hleuhsey -4224562770 ltrxeema 
+ zincrby hleuhsey 9000 ymtynmse 
+ zunion 2 hleuhsey hleuhsey aggregate min withscores 
+ zincrby hleuhsey -inf ymtynmse 
+ zcount hleuhsey -927878178156 -3888756206 
+ save

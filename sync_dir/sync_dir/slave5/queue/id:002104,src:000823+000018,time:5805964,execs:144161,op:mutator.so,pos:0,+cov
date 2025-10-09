@@ -1,0 +1,7 @@
+set mykey 0.8284480026124269 
+ rpush ukbzhzcm bkfxggih 
+ save 
+ lrange ukbzhzcm -241848871224 69 
+ zdiffstore dfgxahpo 3 dfgxahpo dfgxahpo dfgxahpo 
+ zrem dfgxahpo rdbfzafx 
+ get mykey

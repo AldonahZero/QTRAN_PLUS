@@ -1,0 +1,18 @@
+xadd pbtmpeny 1-0 qnoruayj "Hello," 
+ info keyspace 
+ xgroup create pbtmpeny cghcphip 0 
+ xpending pbtmpeny cghcphip 
+ set atifyowf 1 
+ save 
+ xinfo stream pbtmpeny 
+ copy pbtmpeny v3 
+ xclaim pbtmpeny jwxxefcl qcdrshmz 0 1-0 force 
+ xpending pbtmpeny cghcphip 
+ xpending pbtmpeny cghcphip 
+ xinfo stream pbtmpeny full 
+ copy pbtmpeny v0 
+ dump pbtmpeny 
+ copy pbtmpeny v1 
+ copy v0 v2 
+ xclaim pbtmpeny cghcphip qcdrshmz 256 1-0 force 
+ get atifyowf

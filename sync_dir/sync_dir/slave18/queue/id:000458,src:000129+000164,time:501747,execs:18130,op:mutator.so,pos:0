@@ -1,0 +1,4 @@
+set ebvgkrck 353926132597 
+ mget ebvgkrck ebvgkrck ebvgkrck ebvgkrck 
+ get ebvgkrck 
+ save

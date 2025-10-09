@@ -1,0 +1,6 @@
+set mykey -20 
+ xadd jbdjxqbm maxlen ~ 1000 123-1 hognxfnw "Hello," 
+ sdiffstore hbprsrnf hbprsrnf hbprsrnf 
+ del jbdjxqbm 
+ save 
+ get mykey

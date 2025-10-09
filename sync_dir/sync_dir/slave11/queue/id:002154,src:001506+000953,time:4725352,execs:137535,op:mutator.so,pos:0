@@ -1,0 +1,7 @@
+set mykey -693150821 
+ lcs mykey mykey 
+ geoadd ussfykoq 12.758489 38.788135 "world" 17.241510 38.788135 nxmjeqgx 17.250000 35.202000 slkadwaf 
+ get mykey 
+ rpush dbmuwins jrjuraql 
+ geopos ussfykoq "world" "world" "world" 
+ psubscribe bar* 

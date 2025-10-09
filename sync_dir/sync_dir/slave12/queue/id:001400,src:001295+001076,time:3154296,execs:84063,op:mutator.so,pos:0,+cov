@@ -1,0 +1,4 @@
+set mykey 311 
+ lpush asjdswpq syrsobfe ndlfegrn 
+ lmpop 2 asjdswpq asjdswpq right count 1 
+ get mykey

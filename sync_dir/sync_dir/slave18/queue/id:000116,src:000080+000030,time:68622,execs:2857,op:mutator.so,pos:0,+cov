@@ -1,0 +1,5 @@
+set mykey 41788 
+ info keyspace 
+ zunionstore ozmbxkpt 2 ozmbxkpt ozmbxkpt weights 2 3 aggregate max 
+ get mykey 
+ save

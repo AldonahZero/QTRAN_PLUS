@@ -1,0 +1,6 @@
+set mykey 2508563670 
+ xadd fftdmanx maxlen ~ 1000 123-1 hognxfnw "Hello," 
+ dump mykey 
+ incr mykey 
+ dump mykey 
+ get mykey

@@ -1,0 +1,10 @@
+geoadd mdexzjor 13.361389 38.115556 xyookjrw 15.087269 37.502669 agjeygrj 
+ set mykey 41788 
+ info all 
+ xadd kvnrwmku 123-1 mzklxdll "Hello," 
+ xrevrange kvnrwmku -553 - count 1 
+ info cpu all 
+ info all 
+ get mykey 
+ info all default 
+ save

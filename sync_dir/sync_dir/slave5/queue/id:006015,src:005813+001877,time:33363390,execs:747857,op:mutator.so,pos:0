@@ -1,0 +1,11 @@
+set pvqyiaql 1 
+ pexpire pvqyiaql 12 
+ copy pvqyiaql v0 
+ bitfield v0 overflow wrap set i4 366402871 23450054762 
+ incrbyfloat pvqyiaql -5 
+ slowlog get 1 
+ bitfield v0 overflow wrap set i30 0 -255272035 
+ setex mmjypptl 273 12024430563 
+ save 
+ del v0 
+ get mmjypptl

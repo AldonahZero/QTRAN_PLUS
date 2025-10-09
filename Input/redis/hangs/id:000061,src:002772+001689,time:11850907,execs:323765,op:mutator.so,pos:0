@@ -1,0 +1,14 @@
+set mykey -1947844055 
+ zadd mwejyvhx 2 aspvhrta 
+ bitpos mykey 1 12 12 bit 
+ sort mwejyvhx alpha 
+ get mykey 
+ pfadd dbpkzfom 
+ zremrangebyrank mwejyvhx -706 -393807523601 
+ setbit mykey 1887718428 1 
+ get mykey 
+ zincrby mwejyvhx 2 ltrxeema 
+ zunion 2 mwejyvhx mwejyvhx aggregate min withscores 
+ zpopmax mwejyvhx 
+ save 
+ zrangestore ncpxhtjz ncpxhtjz 0 0 

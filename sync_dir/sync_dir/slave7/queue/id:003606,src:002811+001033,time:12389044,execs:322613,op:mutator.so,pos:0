@@ -1,0 +1,4 @@
+set mykey 11 
+ getex mykey 
+ mget mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey 
+ get mykey

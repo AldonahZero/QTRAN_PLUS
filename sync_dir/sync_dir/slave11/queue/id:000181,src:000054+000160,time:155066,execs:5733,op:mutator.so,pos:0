@@ -1,0 +1,5 @@
+set mykey hello 
+ zdiffstore vmgqtrcr 2 vmgqtrcr vmgqtrcr 
+ hset elibnlnj lzytosbe 732291 
+ zdiff 2 vmgqtrcr vmgqtrcr withscores 
+ get mykey

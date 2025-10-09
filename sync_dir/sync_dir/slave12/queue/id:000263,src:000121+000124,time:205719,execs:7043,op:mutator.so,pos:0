@@ -1,0 +1,6 @@
+set mykey -3 
+ geoadd apctyxsn 0 0 ecyrjbwf 
+ get mykey 
+ get mykey 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

@@ -1,0 +1,7 @@
+set mykey -886864826961 
+ copy mykey v0 replace 
+ bitpos mykey 0 64 74 bit 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ get mykey 
+ getrange mykey 307 116 
+ psetex vokpjzpp -586 364853510803

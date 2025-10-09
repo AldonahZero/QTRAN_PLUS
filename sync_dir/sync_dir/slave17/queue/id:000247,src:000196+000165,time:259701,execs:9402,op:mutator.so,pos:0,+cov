@@ -1,0 +1,5 @@
+set wcitbqrq 986906 
+ setbit wcitbqrq 321252 0 
+ get wcitbqrq 
+ geoadd eapvvold -1 37.00 nkmmorea 
+ save

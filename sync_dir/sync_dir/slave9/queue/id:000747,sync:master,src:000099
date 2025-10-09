@@ -1,0 +1,4 @@
+set mykey -1615510574 
+ set v0 -401 
+ getex mykey 
+ get mykey

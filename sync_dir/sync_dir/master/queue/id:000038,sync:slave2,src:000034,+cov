@@ -1,0 +1,4 @@
+set mykey hello 
+ append ibdfxrwx -1186060324 
+ sinterstore ubjuqmxi ubjuqmxi ubjuqmxi 
+ get mykey

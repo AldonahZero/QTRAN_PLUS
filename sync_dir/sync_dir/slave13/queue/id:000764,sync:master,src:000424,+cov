@@ -1,0 +1,4 @@
+hset eaxejsol bhwulrko 94964 
+ set mykey 2 
+ setbit mykey 1004 1 
+ get mykey

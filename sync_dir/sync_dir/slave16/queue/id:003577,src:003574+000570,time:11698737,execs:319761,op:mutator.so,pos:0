@@ -1,0 +1,16 @@
+set mykey -1947844055 
+ zadd pqfcfqcy lt incr 34410 bexnlycc 
+ bitpos mykey 1 12 12 bit 
+ sort pqfcfqcy alpha 
+ get mykey 
+ zrandmember pqfcfqcy -20 withscores 
+ zmscore pqfcfqcy kpiawgbt qblqmnei 
+ pfadd dbpkzfom 
+ zrangestore cfncftfi pqfcfqcy 0 5 byscore limit 0 2 
+ setbit mykey 474529 1 
+ sort cfncftfi by weight* 
+ zcount cfncftfi -70 2508563670 
+ get mykey 
+ zunionstore gqqorfgf 2 cfncftfi gqqorfgf 
+ sort cfncftfi by d* get s* store frxxuubj 
+ save

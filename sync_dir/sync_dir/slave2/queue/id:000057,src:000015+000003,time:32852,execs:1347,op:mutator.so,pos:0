@@ -1,0 +1,4 @@
+set mykey 3 
+ get mykey 
+ incrbyfloat mykey -243986607177 
+ bitcount odjxbqlj 15 63 bit

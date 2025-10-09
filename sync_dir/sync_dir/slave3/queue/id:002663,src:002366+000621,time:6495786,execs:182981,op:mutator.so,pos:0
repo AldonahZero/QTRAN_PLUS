@@ -1,0 +1,8 @@
+object encoding rwzbgekl 
+ xadd ermrdvzf 123-1 jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm aixesdar urasnjsm 
+ xinfo groups ermrdvzf 
+ xdel ermrdvzf 1672351062796-3 
+ zinterstore zcfialgy 2 zcfialgy zcfialgy 
+ set mykey hello 
+ zmpop 2 zcfialgy zcfialgy min 
+ get mykey

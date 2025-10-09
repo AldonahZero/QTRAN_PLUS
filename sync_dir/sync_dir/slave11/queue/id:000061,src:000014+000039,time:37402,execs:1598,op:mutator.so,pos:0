@@ -1,0 +1,3 @@
+set mykey hello 
+ msetnx hfyxrqqv 673 
+ get mykey

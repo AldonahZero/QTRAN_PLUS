@@ -1,0 +1,4 @@
+zunionstore gqqorfgf 2 gqqorfgf gqqorfgf 
+ set mykey hello 
+ mset qdbourmn 1152402751 
+ get mykey

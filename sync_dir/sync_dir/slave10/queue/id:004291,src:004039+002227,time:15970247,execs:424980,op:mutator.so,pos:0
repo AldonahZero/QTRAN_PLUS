@@ -1,0 +1,13 @@
+set mykey -1947844055 
+ zadd cgbkjpip lt incr 1 bexnlycc 
+ bitpos mykey 1 12 12 bit 
+ sort cgbkjpip alpha 
+ zincrby cgbkjpip 1 v52 
+ copy cgbkjpip v0 
+ get mykey 
+ pfadd dbpkzfom 
+ zmpop 1 v0 max count 200 
+ setbit mykey 474529 1 
+ get mykey 
+ zunion 2 cgbkjpip v0 weights 1 1 aggregate max withscores 
+ save

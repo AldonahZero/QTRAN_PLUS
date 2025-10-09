@@ -1,0 +1,8 @@
+sadd vautdjej wivnjuxe 
+ sunionstore xmawvngf vautdjej xmawvngf 
+ sdiffstore vdxxciyw xmawvngf vdxxciyw vdxxciyw vdxxciyw vdxxciyw vdxxciyw vdxxciyw vdxxciyw vdxxciyw vdxxciyw vdxxciyw vdxxciyw vdxxciyw vdxxciyw vdxxciyw vdxxciyw vdxxciyw vdxxciyw vdxxciyw vdxxciyw vdxxciyw vdxxciyw 
+ set mykey -1947844055 
+ smembers vdxxciyw 
+ get mykey 
+ get mykey 
+ save

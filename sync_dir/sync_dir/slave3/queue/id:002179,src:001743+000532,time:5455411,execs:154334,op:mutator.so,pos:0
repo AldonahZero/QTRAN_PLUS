@@ -1,0 +1,11 @@
+set cwxqypok 311 
+ incrbyfloat cwxqypok 376 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ get cwxqypok 
+ lcs triqeesz ldvuftez 
+ setbit cwxqypok 109990 1 
+ get nzgkmxpj 
+ bitop and tzlrveqd ldvuftez triqeesz cwxqypok triqeesz ldvuftez ldvuftez cwxqypok nzgkmxpj nzgkmxpj ldvuftez cwxqypok triqeesz cwxqypok ldvuftez cwxqypok 
+ scan 117 type string 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

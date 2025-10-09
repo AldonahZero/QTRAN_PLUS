@@ -1,0 +1,9 @@
+sadd dwtrtaow wivnjuxe 
+ srem dwtrtaow isjfwqcw 
+ sunionstore iwshcqfl iwshcqfl iwshcqfl 
+ set mykey -1947844055 
+ smembers dwtrtaow 
+ srandmember iwshcqfl 
+ get mykey 
+ get mykey 
+ save

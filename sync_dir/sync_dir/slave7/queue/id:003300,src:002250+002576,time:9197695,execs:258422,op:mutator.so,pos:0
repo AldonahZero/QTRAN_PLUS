@@ -1,0 +1,8 @@
+zadd mfsvncrq lt incr 1 bexnlycc 
+ object encoding rwzbgekl 
+ geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
+ set mykey hello 
+ zrangestore cfncftfi mfsvncrq 0 5 byscore limit 0 2 
+ strlen mykey 
+ zrangestore v0 mfsvncrq 0 5 byscore limit 0 2 
+ get mykey

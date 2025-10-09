@@ -1,0 +1,6 @@
+hset pljeybzb qmvdnozu 0.87838079541846215 
+ hmget pljeybzb qmvdnozu qmvdnozu 
+ set mykey 2 
+ hincrbyfloat pljeybzb qmvdnozu 401404201341241132211401110422242302223101311244433030143140430241243241130223 
+ pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
+ get mykey

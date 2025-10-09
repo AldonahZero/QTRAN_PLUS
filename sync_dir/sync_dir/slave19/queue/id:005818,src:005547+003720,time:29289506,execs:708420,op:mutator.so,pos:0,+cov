@@ -1,0 +1,9 @@
+psetex vrrqnomv 10 33 
+ copy vrrqnomv v0 
+ copy vrrqnomv v1 
+ set vkxhdmjo 1 
+ copy vrrqnomv v2 
+ copy v1 v3 
+ info default all 
+ save 
+ get v1

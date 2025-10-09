@@ -1,0 +1,6 @@
+msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ getset nzgkmxpj -1383597182 
+ hset mmbdyavh woiaydqs 452588 
+ hincrbyfloat mmbdyavh woiaydqs -2479703 
+ set mykey hello 
+ get mykey

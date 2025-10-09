@@ -1,0 +1,6 @@
+xadd pbtmpeny * qnoruayj "Hello," 
+ info latencystats 
+ xtrim pbtmpeny minid 846565399 
+ set atifyowf 1 
+ save 
+ get atifyowf

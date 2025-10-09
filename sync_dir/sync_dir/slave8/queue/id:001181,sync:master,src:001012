@@ -1,0 +1,6 @@
+set mykey 0 
+ sunionstore tthbpxad tthbpxad tthbpxad tthbpxad 
+ get mykey 
+ getex mykey 
+ info cpu all 
+ save

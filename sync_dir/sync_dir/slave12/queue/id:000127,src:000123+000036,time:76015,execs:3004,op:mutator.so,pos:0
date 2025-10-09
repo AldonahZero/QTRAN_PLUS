@@ -1,0 +1,6 @@
+set mykey 311 
+ incrbyfloat mykey 468437678864 
+ get mykey 
+ get mykey 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

@@ -1,0 +1,6 @@
+set mykey hello 
+ info cpu commandstats 
+ zinterstore yygrvfbj 2 yygrvfbj yygrvfbj 
+ zmpop 1 yygrvfbj yygrvfbj min 
+ get mykey 
+ save

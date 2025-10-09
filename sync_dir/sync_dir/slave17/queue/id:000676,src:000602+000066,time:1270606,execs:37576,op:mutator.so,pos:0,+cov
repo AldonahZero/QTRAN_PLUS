@@ -1,0 +1,8 @@
+set wcitbqrq -9223372036854775808 
+ dump wcitbqrq 
+ bitop or mrbqfvrk wcitbqrq 
+ decr wcitbqrq 
+ get wcitbqrq 
+ bitpos wcitbqrq 1 
+ scan 589 type string 
+ save

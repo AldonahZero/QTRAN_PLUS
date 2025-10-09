@@ -1,0 +1,3 @@
+set mykey -5 
+ msetnx xrgyuudg -141546319304 
+ get mykey

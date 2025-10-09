@@ -1,0 +1,21 @@
+set mykey 311 
+ incrbyfloat mykey 376 
+ get mykey 
+ select 9 
+ xadd ozsnpvdy 3410025659 rqwzplos "Hello," 
+ lcs mykey mykey 
+ setbit mykey 923963394 1 
+ get mykey 
+ bitop xor gtmzalcd mykey mykey mykey mykey mykey 
+ sadd rgrypzgn vmprbmaa 
+ bitop or yxqbavlu mykey mykey 
+ scan 117 type string 
+ xrevrange ozsnpvdy 255383364043 1547376212 
+ xrevrange ozsnpvdy 9223372036854775808 35 
+ bitop or gvtzczpz mykey mykey mykey 
+ xrevrange ozsnpvdy 119 37999704017 
+ save 
+ bitop and tzlrveqd mykey mykey mykey mykey mykey mykey mykey 
+ xrevrange ozsnpvdy 255383364043 1547376212 
+ xrange ozsnpvdy 3717584922 191708572763 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

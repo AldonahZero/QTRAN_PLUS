@@ -1,0 +1,12 @@
+xadd ermrdvzf * jzkwvobt "world" aixesdar cgvkbmhf aixesdar urasnjsm 
+ info keyspace 
+ xgroup create ermrdvzf v0 -241848871224 
+ xgroup create ermrdvzf v1 0 
+ set atifyowf 1 
+ xack ermrdvzf v1 1526569495631-0 
+ save 
+ xack ermrdvzf v1 1672351058192-0 
+ xgroup destroy ermrdvzf v0 
+ xack ermrdvzf v1 1672351058192-0 
+ xpending ermrdvzf v1 
+ get atifyowf

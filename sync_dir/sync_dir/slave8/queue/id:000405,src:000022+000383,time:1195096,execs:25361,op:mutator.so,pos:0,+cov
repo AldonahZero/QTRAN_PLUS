@@ -1,0 +1,4 @@
+set mykey 33 
+ save 
+ get mykey 
+ psetex vokpjzpp -586 364853510803

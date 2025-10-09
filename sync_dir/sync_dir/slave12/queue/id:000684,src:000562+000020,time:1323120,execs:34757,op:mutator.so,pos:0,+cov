@@ -1,0 +1,10 @@
+set mykey 311 
+ setex nxlctesp -350 -1552162523 
+ geoadd eczuybnf 179.5 36 v0 
+ incrbyfloat mykey 376 
+ get mykey 
+ geohash eczuybnf bfpnqfse v0 v0 
+ geopos eczuybnf v0 v0 
+ get mykey 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

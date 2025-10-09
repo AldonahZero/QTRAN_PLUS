@@ -1,0 +1,10 @@
+set atifyowf 1 
+ pexpire atifyowf 100 
+ bitfield atifyowf overflow wrap incrby u58 1746579767 92007103795675120 
+ incrbyfloat atifyowf -5 
+ slowlog get 1 
+ bitfield atifyowf overflow wrap set i4 366402871 23450054762 
+ setex tncydqgy 273 12024430563 
+ save 
+ del tncydqgy 
+ get atifyowf

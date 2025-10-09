@@ -1,0 +1,5 @@
+set mykey -1 
+ getset mykey -304 
+ bitop and cujtnfoc mykey mykey 
+ get mykey 
+ object encoding uvryzsxf

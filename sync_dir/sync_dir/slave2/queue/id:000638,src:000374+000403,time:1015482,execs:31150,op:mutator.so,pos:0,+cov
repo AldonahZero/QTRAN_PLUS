@@ -1,0 +1,5 @@
+set mykey hello 
+ mset mhnoojoh -886864826961 
+ select 2 
+ get mykey 
+ setnx elzghndh 165061839

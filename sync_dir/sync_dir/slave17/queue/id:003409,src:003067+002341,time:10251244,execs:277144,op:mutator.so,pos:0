@@ -1,0 +1,9 @@
+xadd ermrdvzf 68 jzkwvobt hhtsakbz htuepxnr cgvkbmhf 
+ xrevrange ermrdvzf 119 37999704017 
+ xrevrange ermrdvzf 20718949856 667 
+ psubscribe bar* 
+ info latencystats 
+ xtrim ermrdvzf minid 1000 
+ set atifyowf 1 
+ save 
+ get atifyowf

@@ -1,0 +1,7 @@
+set mykey 1732498873 
+ geoadd defhyxzz -45 65.50900022111811438208 vnjyzinq 17.241510 38.788135 nxmjeqgx -45 35.202000 slkadwaf 
+ geosearchstore vpwluycf defhyxzz frommember vnjyzinq byradius 255383364043 km 
+ geosearch defhyxzz frommember vnjyzinq byradius 1 km 
+ get mykey 
+ rpush dbmuwins jrjuraql 
+ psubscribe bar* 

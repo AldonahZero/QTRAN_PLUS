@@ -1,0 +1,5 @@
+set aprunafz 0.067275570271199375 
+ bitpos aprunafz 0 39 39 bit 
+ bitpos aprunafz 0 9 25 bit 
+ save 
+ get aprunafz

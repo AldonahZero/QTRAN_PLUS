@@ -1,0 +1,5 @@
+hset etqpfzfm njabbctf 17.200560937451133 
+ set mykey 2 
+ setbit mykey 526632498263 1 
+ hincrby etqpfzfm njabbctf 2 
+ get mykey

@@ -1,0 +1,4 @@
+set mykey -41 
+ get mykey 
+ lcs mykey mykey len idx minmatchlen 4 withmatchlen 
+ exists pznsksue 

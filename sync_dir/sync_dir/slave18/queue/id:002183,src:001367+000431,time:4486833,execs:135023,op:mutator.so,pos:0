@@ -1,0 +1,9 @@
+set mykey 212 
+ zadd mfsvncrq lt incr -1367120419 bexnlycc 
+ hsetnx vautdjej opuxcisi wdtnqhbk 
+ sort mfsvncrq by weight* get object* get # 
+ get mykey 
+ zremrangebyscore mfsvncrq 43324101401331444344220344301412031443010444311133310013223310111242022033410430223304001132204202230320441201002330200333240133113232303313243102110423231040213 906 
+ zmpop 1 mfsvncrq min count 2 
+ hexists vautdjej uszqhkri 
+ save

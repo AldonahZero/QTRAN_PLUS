@@ -1,0 +1,7 @@
+zadd mfsvncrq lt incr 1 bexnlycc 
+ object encoding rwzbgekl 
+ geoadd rguvzgcd 45 65 uqzidutw 17.241510 38.788135 nxmjeqgx 17.250000 35.202000 "Hello" 
+ set mykey hello 
+ zrangestore gdjwzzhv mfsvncrq 0 1 
+ strlen mykey 
+ get mykey

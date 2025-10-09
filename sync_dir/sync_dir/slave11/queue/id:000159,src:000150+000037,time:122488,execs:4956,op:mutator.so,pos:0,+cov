@@ -1,0 +1,4 @@
+set mykey 533 
+ get mykey 
+ sadd vatjiafn upeelqpe 
+ mget mykey mykey mykey mykey

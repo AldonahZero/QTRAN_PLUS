@@ -1,0 +1,6 @@
+set mykey -1 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ getset mykey -853 
+ info cpu all 
+ psetex oavcbqsq -355294768 -316 
+ get mykey

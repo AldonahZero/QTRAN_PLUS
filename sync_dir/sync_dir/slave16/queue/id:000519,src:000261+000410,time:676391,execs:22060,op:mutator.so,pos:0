@@ -1,0 +1,7 @@
+set mykey 1519 
+ bitop xor vnayjyje mykey 
+ geoadd rguvzgcd 45 -1 uqzidutw -135 85.05 yxudgmfh 
+ geosearch rguvzgcd frommember uqzidutw bybox 1 1 km 
+ get mykey 
+ rpush dbmuwins jrjuraql 
+ psubscribe bar* 

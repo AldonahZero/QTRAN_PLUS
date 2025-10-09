@@ -1,0 +1,5 @@
+set mykey 512461 
+ keys foo* 
+ mget mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey 
+ get mykey 
+ setex ssqwgzfa -240958759673 -179847923191

@@ -1,0 +1,8 @@
+set mykey hello 
+ bitfield mykey overflow wrap set i44 362392 -835 
+ bitfield mykey overflow fail set i44 1887718428 -16965705105117 
+ get mykey 
+ geoadd idnrevck 0 0 rjrmbkwg 
+ mget mykey mykey mykey 
+ dump idnrevck 
+ psetex vokpjzpp -586 364853510803

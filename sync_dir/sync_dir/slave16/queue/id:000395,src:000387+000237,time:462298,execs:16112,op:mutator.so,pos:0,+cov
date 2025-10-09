@@ -1,0 +1,7 @@
+set mykey 1732498873 
+ setbit mykey 935 1 
+ save 
+ get mykey 
+ hset etqpfzfm njabbctf 41657 
+ psubscribe bar* 
+ del etqpfzfm 

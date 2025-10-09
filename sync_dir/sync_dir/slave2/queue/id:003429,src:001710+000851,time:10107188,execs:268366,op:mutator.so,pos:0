@@ -1,0 +1,9 @@
+hsetnx wqydsukt guwchiwu -830067951618 
+ expire wqydsukt 200 xx 
+ set mykey 3 
+ hvals wqydsukt 
+ info latencystats 
+ getrange mykey 1221 1496 
+ info latencystats 
+ copy mykey v0 
+ get mykey

@@ -1,0 +1,4 @@
+zrangestore cfncftfi cfncftfi 0 5 byscore limit 0 2 
+ set mykey -408729133852 
+ zadd ojhkbklj 0 avnctvuo 
+ get mykey

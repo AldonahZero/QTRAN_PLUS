@@ -1,0 +1,13 @@
+info default 
+ hset eaxejsol bhwulrko 1037 
+ hmget eaxejsol bhwulrko bhwulrko 
+ set mykey 2 
+ rpush czowykxw ptecklws 
+ lpushx czowykxw bibpljvn lyqzfnlb ccsnseuf ccsnseuf ccsnseuf lyqzfnlb ccsnseuf 
+ hincrbyfloat eaxejsol bhwulrko 1 
+ pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
+ sort czowykxw limit 0 10 
+ rpoplpush czowykxw xdvjocke 
+ lrange czowykxw 0 932 
+ lmpop 2 czowykxw xdvjocke right count 3 
+ get mykey

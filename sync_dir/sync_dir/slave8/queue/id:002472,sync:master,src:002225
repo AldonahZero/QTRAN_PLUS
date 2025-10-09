@@ -1,0 +1,9 @@
+set mykey 306 
+ copy mykey v0 
+ hmset zxvatyxz mecdrlck 1 qzsoxtro 2 qzsoxtro 3 
+ info everything 
+ hkeys zxvatyxz 
+ hscan zxvatyxz -975425340689 
+ bitfield mykey overflow fail set u44 0 4806867732670 
+ hexists zxvatyxz rwuiwxqc 
+ get mykey

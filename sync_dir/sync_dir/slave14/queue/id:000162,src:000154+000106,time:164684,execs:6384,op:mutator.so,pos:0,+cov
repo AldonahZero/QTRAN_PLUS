@@ -1,0 +1,5 @@
+zadd mfsvncrq lt incr 1 bexnlycc 
+ object encoding rwzbgekl 
+ set mykey hello 
+ strlen mykey 
+ get mykey

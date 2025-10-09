@@ -1,0 +1,6 @@
+geoadd vrekwiwa 13.00 36.50 pqkikujz 
+ set mykey 306 
+ geopos vrekwiwa pqkikujz pqkikujz pqkikujz 
+ lcs mykey mykey len idx minmatchlen 4 withmatchlen 
+ decr mykey 
+ get mykey

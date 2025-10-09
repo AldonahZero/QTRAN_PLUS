@@ -1,0 +1,3 @@
+set mykey hello 
+ zrangestore rpondvdz rpondvdz 0 -1 limit 1 2 
+ get mykey

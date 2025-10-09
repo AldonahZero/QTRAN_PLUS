@@ -1,0 +1,13 @@
+set mykey -1947844055 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ bitpos mykey 1 12 12 bit 
+ sort mfsvncrq alpha 
+ get mykey 
+ pfadd dbpkzfom 
+ setbit mykey 474529 1 
+ zrangestore twrfmpbc mfsvncrq 0 -1 
+ zincrby mfsvncrq 102224113404402042322424440012034141410310013422412040322221321131023112403240003231012002414004224233321420312022442131443023442033324 ymtynmse 
+ get mykey 
+ zunion 2 mfsvncrq mfsvncrq weights 1 1 aggregate max withscores 
+ zrangestore v0 mfsvncrq 0 -1 
+ save

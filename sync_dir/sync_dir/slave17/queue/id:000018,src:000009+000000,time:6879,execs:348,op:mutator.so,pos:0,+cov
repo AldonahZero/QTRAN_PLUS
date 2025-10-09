@@ -1,0 +1,3 @@
+set mykey 3 
+ zrangestore twrfmpbc twrfmpbc 0 -1 
+ get mykey

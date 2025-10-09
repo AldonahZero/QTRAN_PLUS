@@ -1,0 +1,9 @@
+set mykey hello 
+ zinterstore yygrvfbj 2 yygrvfbj yygrvfbj 
+ zremrangebyscore yygrvfbj -481631642897 -655824248 
+ zcount yygrvfbj -539 -1154401951 
+ get mykey 
+ sdiffstore zakcrnfs zakcrnfs zakcrnfs 
+ zcard yygrvfbj 
+ srandmember zakcrnfs 50 
+ save

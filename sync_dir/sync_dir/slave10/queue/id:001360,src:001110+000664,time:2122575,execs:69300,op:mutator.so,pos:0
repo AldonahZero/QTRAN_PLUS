@@ -1,0 +1,5 @@
+hset eaxejsol bhwulrko 1037 
+ hvals eaxejsol 
+ hexists eaxejsol rwuiwxqc 
+ set mykey 2 
+ get mykey

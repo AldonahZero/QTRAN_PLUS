@@ -1,0 +1,3 @@
+set mykey 41788 
+ mset vcalrbnj 926595049 
+ get mykey

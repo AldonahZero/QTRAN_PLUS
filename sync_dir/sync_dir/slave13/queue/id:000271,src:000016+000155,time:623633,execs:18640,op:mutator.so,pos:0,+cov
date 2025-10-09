@@ -1,0 +1,3 @@
+set mykey 2100 
+ get mykey 
+ lcs mykey mykey len idx minmatchlen 4 withmatchlen

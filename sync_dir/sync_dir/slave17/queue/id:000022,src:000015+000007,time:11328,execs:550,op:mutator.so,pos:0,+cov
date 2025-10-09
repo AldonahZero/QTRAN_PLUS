@@ -1,0 +1,3 @@
+set mykey 33 
+ decrby mykey 558 
+ get mykey

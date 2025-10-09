@@ -1,0 +1,7 @@
+set mykey 1140 
+ save 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ getset mykey -853 
+ del triqeesz ldvuftez nzgkmxpj 
+ bitop xor vnayjyje mykey 
+ get mykey

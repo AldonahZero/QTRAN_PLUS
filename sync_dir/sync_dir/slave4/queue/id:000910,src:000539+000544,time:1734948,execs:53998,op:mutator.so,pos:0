@@ -1,0 +1,9 @@
+zunionstore qbbgmoug 2 qbbgmoug qbbgmoug 
+ zrange qbbgmoug -623520760621 -739 
+ zintercard 1 qbbgmoug limit 0 
+ xadd pbtmpeny * qnoruayj "Hello," 
+ set mykey hello 
+ copy mykey v0 
+ bitcount zwoauclo 3 56 bit 
+ xread streams pbtmpeny 868 
+ get mykey

@@ -1,0 +1,4 @@
+ttl ucglluvp 
+ set mykey hello 
+ getex mykey 
+ get mykey

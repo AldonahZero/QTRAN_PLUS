@@ -1,0 +1,7 @@
+setex clryemar 9223372036854776 311 
+ hmset fhrsgqae nhrsuavj 31543984 
+ sunionstore sugvxxcg sugvxxcg sugvxxcg 
+ del fhrsgqae sugvxxcg clryemar 
+ set mykey hello 
+ pexpire mykey 100 
+ get mykey

@@ -1,0 +1,6 @@
+set mykey hello 
+ getex mykey 
+ pfcount muowgurr 
+ mget mykey 
+ bitfield mykey overflow fail set i4 0 -12 
+ get mykey

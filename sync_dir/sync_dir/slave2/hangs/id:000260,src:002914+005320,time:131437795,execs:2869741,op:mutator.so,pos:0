@@ -1,0 +1,7 @@
+set mykey -1001 
+ setbit mykey 3717584922 0 
+ get mykey 
+ strlen mykey 
+ getex mykey 
+ info cpu default 
+ save

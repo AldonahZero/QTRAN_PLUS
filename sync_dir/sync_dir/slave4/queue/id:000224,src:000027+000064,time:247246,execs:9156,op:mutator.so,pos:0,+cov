@@ -1,0 +1,4 @@
+zunionstore laaotcmr 2 laaotcmr laaotcmr weights 2 3 aggregate sum 
+ zremrangebylex laaotcmr 73 96913381 
+ set mykey hello 
+ get mykey

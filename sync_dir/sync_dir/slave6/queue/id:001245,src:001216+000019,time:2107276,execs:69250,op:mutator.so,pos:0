@@ -1,0 +1,6 @@
+set mykey 0 
+ get mykey 
+ getex mykey 
+ sdiffstore vdxxciyw vdxxciyw vdxxciyw vdxxciyw 
+ info cpu everything 
+ save

@@ -1,0 +1,5 @@
+set v1 5009431 
+ bitpos v1 1 37 37 bit 
+ copy v1 v0 
+ mget v1 v1 
+ get v1

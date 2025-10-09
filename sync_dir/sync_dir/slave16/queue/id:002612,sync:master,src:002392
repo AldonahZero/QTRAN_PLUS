@@ -1,0 +1,5 @@
+set ubjcxcxl -759079483691 
+ bitpos ubjcxcxl 1 37 37 bit 
+ copy ubjcxcxl v0 
+ mget ubjcxcxl v0 v0 ubjcxcxl ubjcxcxl ubjcxcxl v0 v0 v0 
+ get ubjcxcxl

@@ -1,0 +1,7 @@
+hset eaxejsol bhwulrko 906 
+ set mykey 2 
+ hstrlen eaxejsol bhwulrko 
+ hstrlen eaxejsol bhwulrko 
+ hincrbyfloat eaxejsol bhwulrko 1 
+ pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
+ get mykey

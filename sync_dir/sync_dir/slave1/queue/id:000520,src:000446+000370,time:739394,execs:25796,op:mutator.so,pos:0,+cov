@@ -1,0 +1,5 @@
+set mykey -1615510574 
+ hmset zxvatyxz mecdrlck 1 vktahdph 2 qzsoxtro 3 qzsoxtro 3 
+ decr mykey 
+ getex mykey 
+ get mykey

@@ -1,0 +1,10 @@
+msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ del nzgkmxpj triqeesz ldvuftez 
+ xadd kvnrwmku 0-1 mzklxdll "Hello," 
+ xgroup create kvnrwmku v0 0 
+ xrevrange kvnrwmku + - count 1 
+ xgroup create kvnrwmku v1 0 
+ xinfo stream kvnrwmku full 
+ set mykey 3090148046 
+ copy v0 v2 
+ get mykey

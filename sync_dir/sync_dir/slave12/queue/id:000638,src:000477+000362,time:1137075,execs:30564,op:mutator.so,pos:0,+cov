@@ -1,0 +1,6 @@
+set mykey 311 
+ get mykey 
+ select -2 
+ hsetnx nbxqjbpm kmvsxosn -853 
+ hvals nbxqjbpm 
+ zdiffstore apuzkzbh 2 apuzkzbh apuzkzbh

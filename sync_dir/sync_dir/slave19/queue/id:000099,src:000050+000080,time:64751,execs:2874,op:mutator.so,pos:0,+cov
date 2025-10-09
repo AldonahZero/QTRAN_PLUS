@@ -1,0 +1,4 @@
+set mykey -853 
+ pexpire mykey 9223372036854770000 
+ psetex ddeayqeh 124957151303 -2792568265 
+ get mykey

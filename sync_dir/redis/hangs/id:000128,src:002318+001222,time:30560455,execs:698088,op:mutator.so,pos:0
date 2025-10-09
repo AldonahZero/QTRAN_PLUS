@@ -1,0 +1,8 @@
+set mykey 306 
+ hmset hvuspbal puucxmde -2479703 
+ save 
+ bitfield mykey overflow fail set u10 3090148046 1519 
+ bitop or gvtzczpz mykey mykey 
+ get mykey 
+ incrbyfloat mykey -inf 
+ geoadd apctyxsn 0 0 ecyrjbwf 

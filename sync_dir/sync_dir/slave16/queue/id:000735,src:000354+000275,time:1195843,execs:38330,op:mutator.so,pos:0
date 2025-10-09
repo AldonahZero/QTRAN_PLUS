@@ -1,0 +1,7 @@
+set mykey 1732498873 
+ geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
+ get mykey 
+ rpush dbmuwins jrjuraql 
+ zunionstore hwsksdce 1 hwsksdce weights 0 
+ ltrim dbmuwins 22 28 
+ psubscribe bar* 

@@ -1,0 +1,6 @@
+hset eaxejsol bhwulrko 94964 
+ set mykey 2 
+ psubscribe bar* 
+ setbit mykey 526632498263 1 
+ get mykey 
+ zdiffstore dfgxahpo 1 dfgxahpo dfgxahpo dfgxahpo

@@ -1,0 +1,5 @@
+set atifyowf 85.0511 
+ set v0 -1001 
+ bitfield atifyowf overflow fail set i4 2432435113 -12 
+ save 
+ get atifyowf

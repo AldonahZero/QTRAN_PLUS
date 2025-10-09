@@ -1,0 +1,5 @@
+hset eaxejsol bhwulrko 94964 
+ psetex mykey 123 -3437299314 
+ set v0 2 
+ sinterstore gfyopats gfyopats gfyopats 
+ get mykey

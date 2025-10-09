@@ -1,0 +1,7 @@
+set mykey 197 
+ hmset zxvatyxz mecdrlck 1 qzsoxtro 2 qzsoxtro 3 qzsoxtro 1158 qzsoxtro 3 qzsoxtro 401404201341241132211401110422242302223101311244433030143140430241243241130223 
+ set v0 -909494108478 
+ setbit v0 7 0 
+ save 
+ decrby v0 1651985310 
+ get mykey

@@ -1,0 +1,6 @@
+info cpu default 
+ set mykey -41 
+ lcs mykey mykey len idx minmatchlen -360441310033 withmatchlen 
+ lcs mykey mykey len idx minmatchlen 4 withmatchlen 
+ keys foo* 
+ get mykey

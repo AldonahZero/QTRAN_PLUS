@@ -1,0 +1,10 @@
+sadd ctvcnlob rcxxapdu 
+ geoadd apctyxsn 0 0 "World" 
+ set mykey 306 
+ srandmember ctvcnlob 50 
+ type mspahcqu 
+ srem ctvcnlob uawfhzer 
+ geopos apctyxsn "World" "World" "World" 
+ decr mykey 
+ save 
+ get mykey

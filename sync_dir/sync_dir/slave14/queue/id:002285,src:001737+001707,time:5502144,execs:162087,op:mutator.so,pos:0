@@ -1,0 +1,7 @@
+set mykey 190425890380385 
+ get mykey 
+ getex mykey 
+ psetex uplbvoxp 626435290 -819157934 
+ info cpu default 
+ bitop or ewxrjkga mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey 
+ save

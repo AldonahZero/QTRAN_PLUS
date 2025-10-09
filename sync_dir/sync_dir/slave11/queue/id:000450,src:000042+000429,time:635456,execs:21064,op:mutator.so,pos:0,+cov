@@ -1,0 +1,5 @@
+set mykey hello 
+ zdiffstore oninilnq 8 oninilnq 
+ zremrangebyscore oninilnq -241848871224 -547 
+ hset elibnlnj lzytosbe 732291 
+ get mykey

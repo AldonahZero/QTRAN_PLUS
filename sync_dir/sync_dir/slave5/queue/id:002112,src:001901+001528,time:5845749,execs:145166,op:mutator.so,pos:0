@@ -1,0 +1,6 @@
+zadd mfsvncrq lt incr 1 bexnlycc 
+ object encoding rwzbgekl 
+ zmscore mfsvncrq "member1" "member2" "member3" 
+ set mykey hello 
+ strlen mykey 
+ get mykey

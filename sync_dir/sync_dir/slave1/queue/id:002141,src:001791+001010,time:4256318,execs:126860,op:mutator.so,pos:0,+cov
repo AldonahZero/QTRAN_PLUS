@@ -1,0 +1,6 @@
+set mykey -10910337 
+ xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf htuepxnr -5 
+ get mykey 
+ xdel ermrdvzf -131822750965 
+ save 
+ lpush mfgdbqzi ymrnmwug 

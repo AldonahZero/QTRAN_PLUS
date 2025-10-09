@@ -1,0 +1,9 @@
+set mykey 197 
+ set v0 -909494108478 
+ setbit mykey 474529 1 
+ setbit v0 2637743783 1 
+ save 
+ decrby v0 1651985310 
+ get mykey 
+ setbit v0 244931 1 
+ copy mykey v1 

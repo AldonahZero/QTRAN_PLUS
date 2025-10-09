@@ -1,0 +1,8 @@
+sadd pralzpvy wivnjuxe 
+ sunionstore vedaznzm vedaznzm vedaznzm vedaznzm 
+ srandmember vedaznzm 
+ set mykey -1947844055 
+ smembers vedaznzm 
+ get mykey 
+ get mykey 
+ save

@@ -1,0 +1,7 @@
+set mykey 0 
+ get mykey 
+ incrbyfloat mykey -5 
+ getex mykey 
+ sinterstore gfyopats gfyopats gfyopats 
+ info replication 
+ save

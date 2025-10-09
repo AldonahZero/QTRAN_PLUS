@@ -1,0 +1,7 @@
+sadd waeoxbem wivnjuxe 
+ set mykey -1947844055 
+ smembers waeoxbem 
+ spop waeoxbem 10 
+ get mykey 
+ get mykey 
+ save

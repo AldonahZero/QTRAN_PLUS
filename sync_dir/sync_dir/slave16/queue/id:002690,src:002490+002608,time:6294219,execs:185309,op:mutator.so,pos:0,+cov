@@ -1,0 +1,9 @@
+sadd waeoxbem wivnjuxe 
+ sunionstore xmawvngf waeoxbem waeoxbem 
+ sdiffstore vdxxciyw xmawvngf vdxxciyw vdxxciyw 
+ set mykey -1947844055 
+ smembers waeoxbem 
+ get mykey 
+ copy vdxxciyw v0 replace 
+ get mykey 
+ save

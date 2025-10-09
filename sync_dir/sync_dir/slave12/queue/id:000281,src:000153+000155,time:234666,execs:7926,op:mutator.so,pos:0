@@ -1,0 +1,9 @@
+set mykey 311 
+ zunionstore htfkbhnw 1 htfkbhnw 
+ incrbyfloat mykey 376 
+ get mykey 
+ setbit mykey 109990 1 
+ append cxvmrkml 12111043 
+ get mykey 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

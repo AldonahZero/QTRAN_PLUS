@@ -1,0 +1,7 @@
+hsetnx wqydsukt guwchiwu ssnvzsid 
+ xadd pbtmpeny * qnoruayj "Hello," 
+ set mykey 3 
+ xrange pbtmpeny 989 728 
+ xinfo stream pbtmpeny full 
+ copy mykey v0 
+ get mykey

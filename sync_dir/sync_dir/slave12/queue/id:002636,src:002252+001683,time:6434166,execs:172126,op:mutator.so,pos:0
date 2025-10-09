@@ -1,0 +1,6 @@
+set mykey -12 
+ get mykey 
+ hsetnx nbxqjbpm kmvsxosn 870160 
+ hrandfield nbxqjbpm -1 
+ hrandfield nbxqjbpm -1001 withvalues 
+ setex ssqwgzfa -240958759673 -179847923191

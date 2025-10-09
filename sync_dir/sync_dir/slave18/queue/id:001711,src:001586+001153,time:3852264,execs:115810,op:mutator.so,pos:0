@@ -1,0 +1,10 @@
+set mykey 212 
+ zadd mfsvncrq lt incr -2479703 bexnlycc 
+ hsetnx vautdjej opuxcisi wdtnqhbk 
+ zremrangebyscore mfsvncrq -1914674685 934 
+ sort mfsvncrq 
+ get mykey 
+ zrandmember mfsvncrq 
+ hexists vautdjej uszqhkri 
+ zrange mfsvncrq 0 -1 
+ save

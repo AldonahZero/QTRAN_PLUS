@@ -1,0 +1,6 @@
+set mykey 41788 
+ info default 
+ xadd kvnrwmku 123-1 mzklxdll "Hello," 
+ get mykey 
+ info default default 
+ save

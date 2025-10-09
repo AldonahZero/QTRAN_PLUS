@@ -1,0 +1,13 @@
+zrangestore rwcbicsk rwcbicsk 5 6 byscore 
+ set mykey -20 
+ zmpop 2 rwcbicsk rwcbicsk max count 1 
+ zincrby rwcbicsk -5 mlujlapi 
+ dump mykey 
+ dump mykey 
+ dump mykey 
+ lcs mykey mykey 
+ dump mykey 
+ xadd kvnrwmku 123-1 mzklxdll "Hello," 
+ xclaim kvnrwmku ptprebxr oyubeety 10 1672351058363-2 
+ zremrangebylex rwcbicsk 199 966336966942 
+ get mykey

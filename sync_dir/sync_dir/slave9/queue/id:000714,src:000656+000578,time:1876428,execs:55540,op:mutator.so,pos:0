@@ -1,0 +1,8 @@
+sunionstore sugvxxcg sugvxxcg sugvxxcg 
+ geoadd zvdfcdqc 12.758489 38.788135 llxyuaqj 17.241510 38.788135 nxmjeqgx 17.250000 35.202000 slkadwaf 12.750000 35.202000 esifgdfx 
+ set mykey hello 
+ geosearchstore cnturape zvdfcdqc fromlonlat 13.361389 38.115556 byradius 23301144433223243000204421440041101141201222042014314031404100423220210411213100021010304434010100213033201222213402214400242420444433302443304422230422331213003 km 
+ geodist zvdfcdqc llxyuaqj llxyuaqj km 
+ sdiff sugvxxcg sugvxxcg sugvxxcg sugvxxcg 
+ georadius zvdfcdqc 13.361389 38.115556 500 km storedist aynqlgbb 
+ get mykey

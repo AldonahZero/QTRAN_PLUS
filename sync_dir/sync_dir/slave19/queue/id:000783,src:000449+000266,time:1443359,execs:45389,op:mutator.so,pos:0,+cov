@@ -1,0 +1,6 @@
+set mykey -853 
+ lpush alqfgudg xbtoynzn 
+ info cpu all 
+ del alqfgudg 
+ select 8 
+ get mykey

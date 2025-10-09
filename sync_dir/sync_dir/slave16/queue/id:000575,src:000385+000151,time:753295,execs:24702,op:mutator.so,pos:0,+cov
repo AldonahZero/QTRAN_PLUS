@@ -1,0 +1,8 @@
+set mykey 1732498873 
+ setbit mykey 474529 1 
+ get mykey 
+ zdiffstore apuzkzbh 2 apuzkzbh apuzkzbh 
+ hset etqpfzfm njabbctf 41657 
+ get mykey 
+ psubscribe bar* 
+ del etqpfzfm 

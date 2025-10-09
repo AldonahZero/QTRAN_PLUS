@@ -1,0 +1,7 @@
+lpush zdnjslcy sicnwujw 
+ set dssplpey 41788 
+ mget dssplpey dssplpey dssplpey dssplpey 
+ lpop zdnjslcy -123 
+ info cpu default 
+ lcs dssplpey dssplpey 
+ get dssplpey

@@ -1,0 +1,5 @@
+save 
+ set mykey 9223372036854775808 
+ bitfield mykey overflow fail set u34 0 23450054762 
+ copy mykey pyaiiarv 
+ get mykey

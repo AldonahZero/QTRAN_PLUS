@@ -1,0 +1,5 @@
+set mykey -853 
+ lcs mykey mykey idx minmatchlen 4 withmatchlen 
+ getrange mykey 786 1059 
+ decr mykey 
+ get mykey

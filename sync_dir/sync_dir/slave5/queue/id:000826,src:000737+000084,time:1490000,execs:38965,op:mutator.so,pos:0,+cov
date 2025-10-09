@@ -1,0 +1,8 @@
+info cpu all 
+ set atifyowf 1 
+ expire atifyowf 0 
+ mget atifyowf atifyowf atifyowf atifyowf 
+ get atifyowf 
+ zrangestore ugswuldi ugswuldi 0 0 
+ save 
+ get atifyowf

@@ -1,0 +1,4 @@
+set mykey -5 
+ bitfield mykey overflow fail incrby i44 4313 -688 
+ bitop or psmgmghp mykey mykey 
+ get mykey

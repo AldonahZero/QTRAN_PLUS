@@ -1,0 +1,3 @@
+set mykey 41657 
+ bitfield mykey overflow fail set u58 0 1519 
+ get mykey

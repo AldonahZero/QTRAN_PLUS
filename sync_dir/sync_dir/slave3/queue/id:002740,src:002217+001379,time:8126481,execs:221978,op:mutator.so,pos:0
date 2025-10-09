@@ -1,0 +1,7 @@
+set mykey 311 
+ zrangestore rwcbicsk rwcbicsk 5 6 byscore 
+ get mykey 
+ save 
+ zrangestore phxykmhg phxykmhg 2 -1 byscore rev limit 109990 2 
+ zrangestore v0 phxykmhg 2 -1 byscore rev limit 1 2 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

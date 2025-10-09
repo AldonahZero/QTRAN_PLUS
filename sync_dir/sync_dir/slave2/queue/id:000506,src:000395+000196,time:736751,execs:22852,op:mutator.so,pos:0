@@ -1,0 +1,6 @@
+hsetnx wqydsukt guwchiwu ssnvzsid 
+ xadd pbtmpeny * qnoruayj -15956 
+ set mykey 3 
+ xinfo stream pbtmpeny 
+ copy mykey v0 
+ get mykey

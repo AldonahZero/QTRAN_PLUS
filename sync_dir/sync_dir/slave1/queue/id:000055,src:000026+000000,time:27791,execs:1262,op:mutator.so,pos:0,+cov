@@ -1,0 +1,3 @@
+set mykey 13121140 
+ getex mykey 
+ get mykey

@@ -1,0 +1,7 @@
+hsetnx wqydsukt guwchiwu -830067951618 
+ expire wqydsukt 200 xx 
+ set mykey 3 
+ info cpu default 
+ bitfield mykey overflow wrap incrby u11 0 37999704017 
+ copy mykey v0 
+ get mykey

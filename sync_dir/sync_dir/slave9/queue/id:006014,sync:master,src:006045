@@ -1,0 +1,12 @@
+sunionstore sugvxxcg sugvxxcg sugvxxcg 
+ lpush vjfhdnte tluezpgs 
+ rpoplpush vjfhdnte xbfaqjuv 
+ llen vjfhdnte 
+ info replication 
+ lmove vjfhdnte rmtdfxmv right right 
+ llen rmtdfxmv 
+ set mykey 568645835187 
+ llen rmtdfxmv 
+ get mykey 
+ lpos vjfhdnte vgukvfpb count 1 
+ smismember sugvxxcg vlvtmruq 

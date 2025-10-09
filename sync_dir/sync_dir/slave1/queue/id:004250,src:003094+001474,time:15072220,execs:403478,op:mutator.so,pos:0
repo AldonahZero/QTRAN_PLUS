@@ -1,0 +1,9 @@
+psetex fyxeqwfz -757 876130506804 
+ rpush tgschcpi ffcijwxa 
+ del fyxeqwfz 
+ rpop tgschcpi 
+ set wcitbqrq 986906 
+ get wcitbqrq 
+ lmpop 1 tgschcpi left 
+ lmpop 2 tgschcpi tgschcpi right count 10 
+ save

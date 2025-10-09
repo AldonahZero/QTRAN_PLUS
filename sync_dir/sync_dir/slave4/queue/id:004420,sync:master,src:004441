@@ -1,0 +1,10 @@
+hset jqqlhsms vtsdkeze 814317 
+ ttl ucglluvp 
+ set mykey hello 
+ pexpire mykey 500 
+ expire jqqlhsms 2 
+ psetex hcnoouhb 851130245 809 
+ getex mykey 
+ lcs mykey mykey len minmatchlen 4 withmatchlen 
+ expire jqqlhsms 2 
+ get mykey

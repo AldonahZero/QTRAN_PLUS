@@ -1,0 +1,7 @@
+set mykey 0.8284480026124269 
+ rpush ukbzhzcm "Hello" 
+ rpoplpush ukbzhzcm pnhvbalr 
+ save 
+ lpos ukbzhzcm bkfxggih 
+ zdiffstore dfgxahpo 3 dfgxahpo dfgxahpo dfgxahpo 
+ get mykey

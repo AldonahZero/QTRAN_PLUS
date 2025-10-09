@@ -1,0 +1,6 @@
+set mykey 5 
+ setbit mykey 1151 0 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ zdiff 1 mfsvncrq 
+ zrangestore gdjwzzhv mfsvncrq 0 1 
+ get mykey

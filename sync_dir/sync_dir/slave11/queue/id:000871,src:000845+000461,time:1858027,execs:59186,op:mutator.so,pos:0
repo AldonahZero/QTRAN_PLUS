@@ -1,0 +1,4 @@
+set vkapthym 533 
+ bitfield vkapthym overflow fail set i4 0 -12 
+ lcs vkapthym vkapthym len minmatchlen 4 withmatchlen 
+ get vkapthym

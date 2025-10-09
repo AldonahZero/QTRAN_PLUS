@@ -1,0 +1,8 @@
+set mykey 0 
+ get mykey 
+ incrbyfloat mykey 1072727848 
+ getex mykey 
+ sinterstore gfyopats gfyopats gfyopats 
+ sscan gfyopats 1212044342121342330120333011310343042111112004430110414043434232214144020043403411 
+ info replication 
+ save

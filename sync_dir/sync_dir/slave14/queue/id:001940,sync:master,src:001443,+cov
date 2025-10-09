@@ -1,0 +1,7 @@
+set mykey 311 
+ get mykey 
+ select 9 
+ bitpos mykey 0 7 9 byte 
+ hsetnx nbxqjbpm kmvsxosn -853 
+ incrbyfloat mykey 432763444926 
+ zdiffstore apuzkzbh 2 apuzkzbh apuzkzbh

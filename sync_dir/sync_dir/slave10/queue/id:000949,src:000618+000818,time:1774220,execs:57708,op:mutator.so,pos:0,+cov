@@ -1,0 +1,6 @@
+zrangestore jzylmnye jzylmnye 5 20203044342403203340321422240240421003320034044114013323122104244030111130421242331133131131420241444320444103413334114130000 
+ set mykey -20 
+ zmpop 2 jzylmnye jzylmnye max count 1 
+ xadd kvnrwmku 123-1 mzklxdll "Hello," 
+ xinfo groups kvnrwmku 
+ get mykey

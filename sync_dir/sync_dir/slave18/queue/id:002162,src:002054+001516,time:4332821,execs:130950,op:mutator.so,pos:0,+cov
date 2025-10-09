@@ -1,0 +1,9 @@
+pfadd mykey "hello" smvbejzf nyxzfynr 
+ hset mmbdyavh woiaydqs 3 
+ dump mmbdyavh 
+ set mykey 2 
+ hincrby mmbdyavh woiaydqs 2 
+ hincrbyfloat mmbdyavh woiaydqs 1 
+ hincrbyfloat mmbdyavh woiaydqs 1 
+ pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
+ get mykey

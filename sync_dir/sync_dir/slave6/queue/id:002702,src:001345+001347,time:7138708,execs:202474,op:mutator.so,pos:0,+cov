@@ -1,0 +1,6 @@
+set mykey -10910337 
+ xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm 
+ xinfo stream ermrdvzf full count -816 
+ get mykey 
+ dump ermrdvzf 
+ save

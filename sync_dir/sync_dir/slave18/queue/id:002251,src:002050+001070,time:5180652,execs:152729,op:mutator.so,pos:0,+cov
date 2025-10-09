@@ -1,0 +1,9 @@
+lpush zdnjslcy sicnwujw 
+ set mykey 15.087269 
+ linsert zdnjslcy before "World" "Three" 
+ lpop zdnjslcy -20 
+ mget mykey mykey mykey mykey 
+ lpop zdnjslcy -123 
+ info cpu default 
+ lcs mykey mykey 
+ get mykey

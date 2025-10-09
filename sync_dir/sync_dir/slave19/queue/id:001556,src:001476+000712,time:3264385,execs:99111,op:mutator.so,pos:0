@@ -1,0 +1,10 @@
+set mykey -853 
+ info everything 
+ lpush jqknbzjm xbtoynzn 
+ save 
+ lpush fjawhzfz hfgcwmoq swywrupx 
+ info cpu all 
+ del jqknbzjm 
+ lrem fjawhzfz 1 tlbtkqcm 
+ select 8 
+ get mykey

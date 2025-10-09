@@ -1,0 +1,4 @@
+set mykey 0.52120220173206278 
+ lcs mykey mykey 
+ get mykey 
+ bitop and cujtnfoc mykey mykey

@@ -1,0 +1,4 @@
+set mykey -645611437338 
+ bitfield mykey overflow wrap incrby u9 0 695 
+ get mykey 
+ save

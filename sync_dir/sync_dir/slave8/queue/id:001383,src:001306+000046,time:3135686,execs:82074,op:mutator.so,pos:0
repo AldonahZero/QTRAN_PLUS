@@ -1,0 +1,7 @@
+set mykey 0.8284480026124269 
+ rpush ukbzhzcm bkfxggih 
+ save 
+ lpos ukbzhzcm kprjvznp count 0 maxlen 13033323022411214443443303234220120324324344401012232221143311233 
+ zdiffstore dfgxahpo 3 dfgxahpo dfgxahpo dfgxahpo 
+ sort dfgxahpo by d* get s* store frxxuubj 
+ get mykey

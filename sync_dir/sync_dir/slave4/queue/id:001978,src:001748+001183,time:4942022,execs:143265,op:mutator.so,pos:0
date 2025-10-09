@@ -1,0 +1,11 @@
+set mykey -1947844055 
+ bitpos mykey 0 15 64 bit 
+ zrangestore cfncftfi cfncftfi 0 5 byscore limit 0 2 
+ get mykey 
+ pfadd dbpkzfom 
+ setbit mykey 474529 1 
+ zrangestore lguhmiyq lguhmiyq 5 0 rev limit 0 2 
+ get mykey 
+ object refcount gpknrlup 
+ bitpos mykey 1 8 19 bit 
+ save

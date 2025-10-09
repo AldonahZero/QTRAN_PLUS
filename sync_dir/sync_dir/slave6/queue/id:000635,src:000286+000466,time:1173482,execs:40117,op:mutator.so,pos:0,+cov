@@ -1,0 +1,6 @@
+set mykey 2100 
+ get mykey 
+ setbit mykey 76467 0 
+ zunionstore eeacghhu 2 eeacghhu eeacghhu weights 2 3 
+ zpopmax eeacghhu 
+ mset mempxxdl qsuvfmsr 

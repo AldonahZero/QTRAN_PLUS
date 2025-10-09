@@ -1,0 +1,7 @@
+set wcitbqrq 673 
+ dump wcitbqrq 
+ bitop not xxuevemv wcitbqrq 
+ get wcitbqrq 
+ bitpos wcitbqrq 1 
+ scan 589 type string 
+ save

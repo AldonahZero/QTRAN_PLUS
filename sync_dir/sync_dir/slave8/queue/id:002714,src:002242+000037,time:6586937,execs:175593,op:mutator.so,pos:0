@@ -1,0 +1,11 @@
+object encoding rwzbgekl 
+ zinterstore phrpwlca 2 phrpwlca phrpwlca aggregate min 
+ set mykey hello 
+ zincrby phrpwlca -5 mlujlapi 
+ zunionstore kmmwzipn 2 kmmwzipn phrpwlca weights 2 3 aggregate min 
+ zdiffstore apuzkzbh 2 phrpwlca apuzkzbh 
+ psetex zvshusdd 3410102305 3090148046 
+ zunion 2 phrpwlca phrpwlca weights -393807523601 1 aggregate min withscores 
+ zcount phrpwlca -539 67 
+ zremrangebyscore kmmwzipn -935277743 1334033032202040 
+ get mykey

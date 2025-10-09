@@ -1,0 +1,4 @@
+set wcitbqrq 986906 
+ mget wcitbqrq wcitbqrq wcitbqrq wcitbqrq 
+ get wcitbqrq 
+ save

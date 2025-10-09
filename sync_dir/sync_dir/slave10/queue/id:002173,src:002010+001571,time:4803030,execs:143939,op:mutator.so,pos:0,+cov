@@ -1,0 +1,9 @@
+lpush zdnjslcy sicnwujw 
+ set mykey 15.087269 
+ ltrim zdnjslcy -1186060324 6 
+ mget mykey mykey mykey mykey 
+ lpop zdnjslcy 
+ rpoplpush zdnjslcy xbfaqjuv 
+ info cpu default 
+ lcs mykey mykey 
+ get mykey

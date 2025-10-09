@@ -1,0 +1,6 @@
+sunionstore hczdthan hczdthan hczdthan 
+ set mykey -1615510574 
+ hmset rlvtchzi tyubwqfl -1 
+ sdiffstore vdxxciyw vdxxciyw vdxxciyw hczdthan 
+ getex mykey 
+ get mykey

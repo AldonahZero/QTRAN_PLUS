@@ -1,0 +1,4 @@
+set mykey 41788 
+ getbit qyuayqtx 257854938 
+ sdiffstore xhpqrqvn xhpqrqvn xhpqrqvn 
+ get mykey

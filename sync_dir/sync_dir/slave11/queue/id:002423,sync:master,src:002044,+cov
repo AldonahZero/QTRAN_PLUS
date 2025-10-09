@@ -1,0 +1,5 @@
+set mykey 1732498873 
+ get mykey 
+ hset etqpfzfm njabbctf 0.28570057465028975 
+ hscan etqpfzfm -inf match foo* count -367 
+ psubscribe bar* 

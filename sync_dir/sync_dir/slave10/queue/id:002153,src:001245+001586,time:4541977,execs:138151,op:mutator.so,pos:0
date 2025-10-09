@@ -1,0 +1,5 @@
+set lkfqujtp 0.6807728198733054 
+ bitpos lkfqujtp 0 39 39 bit 
+ bitpos lkfqujtp 0 9 25 bit 
+ save 
+ get lkfqujtp

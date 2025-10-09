@@ -1,0 +1,5 @@
+set mykey 1 
+ get mykey 
+ scan 589 type string 
+ save 
+ copy mykey v0 

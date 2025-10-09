@@ -1,0 +1,6 @@
+set mykey hello 
+ bitfield mykey overflow fail set i44 2537333662 -16965705105117 
+ get mykey 
+ geoadd defhyxzz -45 65.50900022111811438208 vnjyzinq 17.241510 38.788135 nxmjeqgx 17.250000 35.202000 slkadwaf 
+ mget mykey mykey mykey 
+ psetex vokpjzpp -586 364853510803

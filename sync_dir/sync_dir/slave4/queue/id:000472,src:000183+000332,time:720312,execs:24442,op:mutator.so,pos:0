@@ -1,0 +1,4 @@
+set mykey 430 
+ get mykey 
+ lcs mykey mykey 
+ del mykey 

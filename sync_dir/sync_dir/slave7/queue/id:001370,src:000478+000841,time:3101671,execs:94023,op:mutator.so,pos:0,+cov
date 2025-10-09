@@ -1,0 +1,7 @@
+save 
+ geoadd vrekwiwa 13.00 36.50 pqkikujz 
+ zunionstore gqqorfgf 917 gqqorfgf gqqorfgf 
+ set mykey 306 
+ geopos vrekwiwa pqkikujz pqkikujz pqkikujz 
+ zpopmax gqqorfgf -123 
+ get mykey

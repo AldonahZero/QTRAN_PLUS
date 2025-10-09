@@ -1,0 +1,11 @@
+set atifyowf 244 
+ setbit atifyowf 2537333662 0 
+ incr atifyowf 
+ incrbyfloat atifyowf -5 
+ decrby atifyowf 86 
+ bitfield atifyowf overflow fail set u10 0 1519 
+ save 
+ decr atifyowf 
+ incr atifyowf 
+ bitpos atifyowf 1 143110221304012404203333 12 bit 
+ get atifyowf

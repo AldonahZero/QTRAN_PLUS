@@ -1,0 +1,9 @@
+set mykey 311 
+ setex nxlctesp -350 -1552162523 
+ geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
+ incrbyfloat mykey 376 
+ get mykey 
+ geopos rguvzgcd uqzidutw uqzidutw 
+ get mykey 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

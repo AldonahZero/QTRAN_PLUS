@@ -1,0 +1,6 @@
+set atifyowf 1 
+ incrbyfloat atifyowf -5 
+ save 
+ copy atifyowf v0 
+ hmset fhrsgqae nhrsuavj 9223372036854775808 
+ get atifyowf

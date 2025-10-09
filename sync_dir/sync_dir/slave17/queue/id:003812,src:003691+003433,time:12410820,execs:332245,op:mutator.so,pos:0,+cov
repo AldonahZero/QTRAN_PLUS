@@ -1,0 +1,11 @@
+sunionstore sugvxxcg sugvxxcg sugvxxcg 
+ lpush crvliqip pnihvhwo 
+ lrem crvliqip 1 pnihvhwo 
+ rpush vtjqlifw wmfatueh 
+ ltrim crvliqip 8 24 
+ rpop vtjqlifw 123 
+ info replication 
+ llen crvliqip 
+ set mykey 568645835187 
+ get mykey 
+ smismember sugvxxcg vlvtmruq 

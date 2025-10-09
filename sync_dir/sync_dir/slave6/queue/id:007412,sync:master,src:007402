@@ -1,0 +1,19 @@
+info default 
+ hset eaxejsol bhwulrko 1037 
+ pexpire bhwulrko 100 
+ hmget eaxejsol bhwulrko bhwulrko 
+ set mykey 2 
+ rpush kelmiuva ptecklws 
+ hincrbyfloat eaxejsol bhwulrko 1 
+ pfadd pnhvbalr erunuxpp smvbejzf nyxzfynr 
+ sort kelmiuva limit 0 10 
+ bitfield mykey overflow fail incrby i35 0 -4224562770 
+ rpoplpush kelmiuva myhnmkqk 
+ rpoplpush myhnmkqk v0 
+ rpoplpush v0 umlgzius 
+ rpoplpush umlgzius xdvjocke 
+ lrange myhnmkqk 0 1 
+ lmpop 2 v0 v0 right count 3 
+ lpop umlgzius 2 
+ lindex v0 82 
+ get mykey

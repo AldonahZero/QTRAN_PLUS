@@ -1,0 +1,6 @@
+set mykey -408729133852 
+ xadd ermrdvzf -128711219 jzkwvobt hhtsakbz htuepxnr 1140 aixesdar urasnjsm 
+ del ermrdvzf 
+ mget mykey mykey mykey mykey mykey mykey mykey mykey 
+ get mykey 
+ save

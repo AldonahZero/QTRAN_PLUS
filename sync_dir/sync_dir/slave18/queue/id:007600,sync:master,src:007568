@@ -1,0 +1,10 @@
+set mykey 1732498873 
+ geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
+ pexpire mykey 500 
+ get mykey 
+ pexpiretime mykey 
+ geodist rguvzgcd uqzidutw uqzidutw 
+ expire mykey 100 lt 
+ pexpiretime mykey 
+ rpush dbmuwins jrjuraql 
+ psubscribe bar* 

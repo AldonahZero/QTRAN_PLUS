@@ -1,0 +1,4 @@
+set mykey -5 
+ bitfield mykey overflow fail incrby i11 7 -688 
+ getset mykey 317867337874 
+ get mykey

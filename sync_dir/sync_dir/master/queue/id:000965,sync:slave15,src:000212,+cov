@@ -1,0 +1,5 @@
+set mykey 0 
+ dump mykey 
+ get mykey 
+ save 
+ mset jmvjdgip 533 

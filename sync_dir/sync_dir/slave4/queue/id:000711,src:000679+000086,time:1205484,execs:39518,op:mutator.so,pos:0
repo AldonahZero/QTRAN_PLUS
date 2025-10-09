@@ -1,0 +1,5 @@
+set mykey 54 
+ info latencystats 
+ get mykey 
+ del mykey 
+ hset imchqraj qmjpskpl 125287 

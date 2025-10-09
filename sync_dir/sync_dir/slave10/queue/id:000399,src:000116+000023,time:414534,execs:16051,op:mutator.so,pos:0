@@ -1,0 +1,4 @@
+set mykey 3101433443114 
+ get mykey 
+ scan 822 count 5 
+ object encoding uvryzsxf

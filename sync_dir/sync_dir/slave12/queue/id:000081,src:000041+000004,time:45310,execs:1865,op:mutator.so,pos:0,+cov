@@ -1,0 +1,5 @@
+set mykey 311 
+ get mykey 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx 
+ bitop xor soigkacb mykey mykey mykey 
+ zdiffstore apuzkzbh 2 apuzkzbh apuzkzbh

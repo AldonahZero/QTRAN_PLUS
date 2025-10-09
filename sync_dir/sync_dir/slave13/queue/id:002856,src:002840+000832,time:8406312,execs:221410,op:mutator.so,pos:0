@@ -1,0 +1,12 @@
+set mykey -1947844055 
+ zadd v0 lt incr 1519 v1 
+ bitpos mykey 1 12 12 bit 
+ sort v0 alpha 
+ get mykey 
+ pfadd dbpkzfom 
+ setbit mykey 474529 1 
+ get mykey 
+ zdiffstore wtxnpcue 4 v0 wtxnpcue wtxnpcue wtxnpcue 
+ zdiffstore v2 2 wtxnpcue v2 
+ zunionstore gqqorfgf 2 v0 wtxnpcue 
+ save

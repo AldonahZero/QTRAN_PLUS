@@ -1,0 +1,3 @@
+set mykey 306 
+ hmset rlvtchzi tyubwqfl -1 
+ get mykey

@@ -1,0 +1,7 @@
+set mykey -12 
+ get mykey 
+ hsetnx wqydsukt wepjfdme 13033323022411214443443303234220120324324344401012232221143311233 
+ hrandfield wqydsukt -507 
+ hrandfield wqydsukt -1000 
+ hrandfield wqydsukt -1001 withvalues 
+ setex ssqwgzfa -240958759673 -179847923191

@@ -1,0 +1,7 @@
+sadd waeoxbem wivnjuxe 
+ set mykey -1947844055 
+ smembers waeoxbem 
+ sinterstore cjuxravx cjuxravx waeoxbem waeoxbem 
+ get mykey 
+ get mykey 
+ save

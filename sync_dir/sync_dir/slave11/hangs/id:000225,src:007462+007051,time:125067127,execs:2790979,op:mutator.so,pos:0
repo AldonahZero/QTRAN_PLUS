@@ -1,0 +1,15 @@
+hset mykey bhwulrko 13033323022411214443443303234220120324324344401012232221143311233 
+ set v0 -1947844055 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ setbit v0 3128481901 0 
+ bitpos v0 1 12 12 bit 
+ zrevrank mfsvncrq bexnlycc 
+ zpopmax mfsvncrq 1 
+ sort mfsvncrq alpha 
+ memory usage nxmjeqgx 
+ memory usage mykey 
+ get v0 
+ pfadd dbpkzfom 
+ setbit v0 474529 1 
+ get v0 
+ save

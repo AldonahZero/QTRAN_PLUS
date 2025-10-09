@@ -1,0 +1,12 @@
+set mykey -1947844055 
+ zadd qtbcoycu 1 phrxkypb 
+ bitpos mykey 1 12 12 bit 
+ sort qtbcoycu alpha 
+ zincrby qtbcoycu -5 sjhvpked 
+ get mykey 
+ zrandmember qtbcoycu -521 withscores 
+ pfadd dbpkzfom 
+ setbit mykey 474529 1 
+ get mykey 
+ zunion 2 qtbcoycu qtbcoycu weights 1 1 aggregate max withscores 
+ save

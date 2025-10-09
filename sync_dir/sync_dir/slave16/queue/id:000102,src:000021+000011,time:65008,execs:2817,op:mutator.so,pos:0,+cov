@@ -1,0 +1,4 @@
+set mykey 692 
+ bitcount duqjglax 2 -3 
+ copy mykey v0 replace 
+ get mykey

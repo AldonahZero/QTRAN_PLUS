@@ -1,0 +1,4 @@
+set mykey hello 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ copy nzgkmxpj v0 
+ get mykey

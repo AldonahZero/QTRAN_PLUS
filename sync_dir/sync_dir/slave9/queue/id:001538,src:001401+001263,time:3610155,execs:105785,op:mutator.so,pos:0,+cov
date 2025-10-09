@@ -1,0 +1,9 @@
+slowlog get 5 
+ set mykey -874394400 
+ zadd kkxblgsp lt incr 1 bexnlycc 
+ zrangestore phxykmhg kkxblgsp 2 -1 byscore rev limit 1 2 
+ sort phxykmhg by weight* get object* get # store otevgjjg 
+ object encoding sotkufci 
+ zunionstore szndqvoq 2 phxykmhg phxykmhg 
+ zrevrank szndqvoq bexnlycc 
+ get mykey

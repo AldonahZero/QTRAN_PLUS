@@ -1,0 +1,7 @@
+set atifyowf 1 
+ bitfield atifyowf overflow wrap set i44 109990 -16965705105117 
+ incrbyfloat atifyowf -5 
+ bitfield atifyowf overflow wrap incrby u58 96 92007103795675120 
+ setex tncydqgy 273 12024430563 
+ save 
+ get atifyowf

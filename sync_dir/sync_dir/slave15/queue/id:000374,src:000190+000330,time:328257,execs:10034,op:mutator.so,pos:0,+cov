@@ -1,0 +1,7 @@
+set mykey 0 
+ get mykey 
+ getex mykey 
+ info cpu default 
+ bitop or ewxrjkga mykey mykey mykey mykey mykey mykey mykey mykey 
+ bitfield mykey overflow wrap set u48 0 190425890380385 
+ save

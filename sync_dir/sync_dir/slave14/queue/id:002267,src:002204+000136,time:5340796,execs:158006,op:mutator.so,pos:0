@@ -1,0 +1,11 @@
+set ehfsdngx 0.52120220173206278 
+ incrbyfloat ehfsdngx 376 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 0.48435493488067527 
+ get nzgkmxpj 
+ lcs ldvuftez triqeesz 
+ setbit nzgkmxpj 109990 1 
+ get nzgkmxpj 
+ bitop or gvtzczpz ldvuftez triqeesz ehfsdngx 
+ scan 117 type string 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

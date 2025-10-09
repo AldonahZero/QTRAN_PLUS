@@ -1,0 +1,10 @@
+zdiffstore dfgxahpo 3 dfgxahpo dfgxahpo dfgxahpo 
+ set mykey -15956 
+ zrank dfgxahpo rpfaxaqt 
+ slowlog get -222 
+ getset mykey -205 
+ zrandmember dfgxahpo 3 
+ sdiffstore lrkqafqr lrkqafqr lrkqafqr lrkqafqr 
+ zmpop 1 dfgxahpo min count -1 
+ sdiffstore vdxxciyw vdxxciyw vdxxciyw vdxxciyw 
+ get mykey

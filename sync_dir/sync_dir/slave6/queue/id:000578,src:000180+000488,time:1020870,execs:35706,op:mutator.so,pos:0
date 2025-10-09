@@ -1,0 +1,6 @@
+set mykey 10241231341031203420214422113031321304032040412101323223440100334334214432421232140111422434321134 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ get mykey 
+ lcs mykey mykey 
+ mset mempxxdl qsuvfmsr 
+ incrby mykey 301

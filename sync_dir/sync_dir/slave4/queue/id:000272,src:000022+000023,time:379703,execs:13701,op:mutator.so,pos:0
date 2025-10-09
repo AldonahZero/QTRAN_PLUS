@@ -1,0 +1,3 @@
+set mykey 13.361389 
+ lcs mykey mykey 
+ get mykey

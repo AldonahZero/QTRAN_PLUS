@@ -1,0 +1,7 @@
+set mykey 0 
+ getrange mykey 1221 1496 
+ get mykey 
+ getex mykey 
+ set dssplpey 41788 
+ getex mykey 
+ save

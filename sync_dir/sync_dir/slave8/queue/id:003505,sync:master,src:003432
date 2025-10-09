@@ -1,0 +1,10 @@
+sunionstore hczdthan hczdthan hczdthan 
+ lpush uawmlfud byinalja 
+ lmove uawmlfud rmtdfxmv right right 
+ lmove rmtdfxmv v0 right right 
+ ltrim v0 25 27 
+ set mykey -1615510574 
+ lpos v0 btsxeomi 
+ hmset rlvtchzi tyubwqfl -1 
+ getex mykey 
+ get mykey

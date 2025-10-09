@@ -1,0 +1,13 @@
+set mykey -1947844055 
+ zadd mfsvncrq lt incr 34410 bexnlycc 
+ bitpos mykey 1 12 12 bit 
+ sort mfsvncrq alpha 
+ get mykey 
+ zremrangebyscore mfsvncrq 49 -266480445054 
+ zrandmember mfsvncrq -488022160 withscores 
+ pfadd dbpkzfom 
+ setbit mykey 474529 1 
+ zcount mfsvncrq 493471 2508563670 
+ get mykey 
+ zunionstore gqqorfgf 2 mfsvncrq mfsvncrq 
+ save

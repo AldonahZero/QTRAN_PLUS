@@ -1,0 +1,6 @@
+pfadd jalgwgha "hello" v1 v1 
+ hset eaxejsol bhwulrko 1037 
+ set mykey 2 
+ hincrbyfloat eaxejsol bhwulrko 1 
+ pfadd jalgwgha "hello" "World" v1 
+ get mykey

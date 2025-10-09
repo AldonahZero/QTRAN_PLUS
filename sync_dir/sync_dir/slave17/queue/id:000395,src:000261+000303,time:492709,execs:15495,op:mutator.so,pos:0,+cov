@@ -1,0 +1,8 @@
+set mykey 1293 
+ get mykey 
+ msetnx v6 fgqixmul v7 gftsakln v8 20 v9 20 v10 20 v11 20 v12 20 v13 20 v5 20 
+ msetnx v0 fgqixmul v1 gftsakln v2 20 v3 20 v4 20 v14 20 v15 20 v16 20 v17 20 
+ zdiffstore oninilnq 0 oninilnq 
+ scan 589 type string 
+ bitfield v12 overflow wrap set u48 0 190425890380385 
+ save

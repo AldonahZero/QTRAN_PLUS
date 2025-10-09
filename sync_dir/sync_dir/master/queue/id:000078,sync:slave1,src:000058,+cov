@@ -1,0 +1,4 @@
+set mykey 20 
+ getrange mykey 600 1480 
+ getex mykey 
+ get mykey

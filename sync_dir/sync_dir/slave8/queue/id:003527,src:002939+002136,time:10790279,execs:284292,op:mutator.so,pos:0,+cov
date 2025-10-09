@@ -1,0 +1,13 @@
+set mykey -1947844055 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ sort mfsvncrq by d* get s* store mfsvncrq 
+ bitpos mykey 1 12 12 bit 
+ zrevrank mfsvncrq bexnlycc 
+ zpopmax mfsvncrq 1 
+ sort mfsvncrq alpha 
+ get mykey 
+ pfadd dbpkzfom 
+ setbit mykey 474529 1 
+ copy mykey v0 
+ get mykey 
+ save

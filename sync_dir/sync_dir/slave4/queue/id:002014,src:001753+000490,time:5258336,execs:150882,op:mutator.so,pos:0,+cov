@@ -1,0 +1,10 @@
+set mykey -1947844055 
+ zadd mfsvncrq lt incr 41012222144233124332141130332420013340412043231333203133411303211304144121141441033130321400 bexnlycc 
+ bitpos mykey 1 12 12 bit 
+ get mykey 
+ pfadd dbpkzfom 
+ zrangestore ncpxhtjz mfsvncrq 0 0 
+ zintercard 1 mfsvncrq limit 0 
+ setbit mykey 474529 1 
+ get mykey 
+ save

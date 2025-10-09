@@ -1,0 +1,5 @@
+geoadd vrekwiwa 13.00 -179 pqkikujz 
+ set mykey 306 
+ zunionstore moztfmde 2 moztfmde moztfmde aggregate min 
+ get mykey 
+ setex dwrwpbrw -157780893686 -657

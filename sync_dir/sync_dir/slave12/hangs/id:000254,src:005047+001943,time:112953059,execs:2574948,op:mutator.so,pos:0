@@ -1,0 +1,9 @@
+xadd jgaguhrp 1000 qnoruayj "Hello," 
+ xrevrange jgaguhrp 119 37999704017 
+ xtrim jgaguhrp minid 1000 
+ info latencystats 
+ xtrim jgaguhrp minid 1000 
+ xtrim jgaguhrp minid 1000 
+ set atifyowf 1 
+ save 
+ get atifyowf

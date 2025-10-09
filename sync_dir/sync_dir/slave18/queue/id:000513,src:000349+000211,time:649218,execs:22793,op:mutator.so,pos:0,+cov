@@ -1,0 +1,4 @@
+set ebvgkrck 3659958828 
+ bitfield ebvgkrck overflow wrap set i15 0 23450054762 
+ get ebvgkrck 
+ save

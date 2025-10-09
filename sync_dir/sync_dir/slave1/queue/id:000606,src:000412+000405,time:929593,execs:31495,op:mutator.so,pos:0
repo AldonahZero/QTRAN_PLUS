@@ -1,0 +1,6 @@
+set mykey hello 
+ getex mykey 
+ pfcount muowgurr 
+ mget mykey 
+ bitfield mykey overflow fail set u11 0 101 
+ get mykey

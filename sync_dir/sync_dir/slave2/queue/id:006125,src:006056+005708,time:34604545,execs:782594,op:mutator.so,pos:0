@@ -1,0 +1,9 @@
+hset eaxejsol bhwulrko 5834 
+ geoadd yxqbavlu 0 0 ecyrjbwf 
+ set mykey 2 
+ geoadd irkxzzim 12.758489 38.788135 jlvrddvb 17.241510 38.788135 yqcyaxfl 
+ geodist yxqbavlu jlvrddvb jlvrddvb mi 
+ geodist irkxzzim ecyrjbwf jlvrddvb 
+ geodist yxqbavlu jlvrddvb jlvrddvb 
+ geodist yxqbavlu jlvrddvb jlvrddvb 
+ get mykey

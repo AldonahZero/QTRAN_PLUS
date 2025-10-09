@@ -1,0 +1,5 @@
+set qmkqkndf -10910337 
+ bitpos qmkqkndf 1 37 37 bit 
+ copy qmkqkndf v0 
+ mget qmkqkndf qmkqkndf 
+ get v0

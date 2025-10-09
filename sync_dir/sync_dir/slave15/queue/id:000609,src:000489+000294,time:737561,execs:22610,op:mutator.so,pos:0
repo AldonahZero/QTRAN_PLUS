@@ -1,0 +1,6 @@
+set mykey -16965705105117 
+ getrange mykey 1221 1496 
+ get mykey 
+ getex mykey 
+ incr mykey 
+ save

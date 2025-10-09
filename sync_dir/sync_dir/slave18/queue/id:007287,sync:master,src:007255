@@ -1,0 +1,13 @@
+sadd etqpfzfm wwmqswmp 
+ set mykey 3 
+ hsetnx wqydsukt wepjfdme 13033323022411214443443303234220120324324344401012232221143311233 
+ sadd odholsda pukmiumo 
+ sdiffstore vdxxciyw etqpfzfm vdxxciyw vdxxciyw vdxxciyw vdxxciyw vdxxciyw vdxxciyw 
+ sdiff etqpfzfm odholsda 
+ sinterstore khjmraoa odholsda odholsda 
+ sinterstore ubjuqmxi khjmraoa odholsda 
+ copy odholsda v0 
+ sinterstore efabqgdi odholsda ubjuqmxi 
+ smove odholsda gsicoxlo obylrooc 
+ sadd waeoxbem wivnjuxe 
+ get mykey

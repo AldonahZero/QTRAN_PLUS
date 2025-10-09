@@ -1,0 +1,4 @@
+set mykey 533 
+ get mykey 
+ getrange mykey 671 805 
+ mget mykey mykey mykey mykey

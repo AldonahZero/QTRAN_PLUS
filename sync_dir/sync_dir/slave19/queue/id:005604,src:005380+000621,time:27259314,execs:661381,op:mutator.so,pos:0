@@ -1,0 +1,12 @@
+xadd ermrdvzf -131822750965 qnoruayj "Hello," 
+ info keyspace 
+ xgroup create ermrdvzf v0 0 
+ xgroup create ermrdvzf v1 0 
+ xgroup create ermrdvzf v2 0 
+ xgroup create ermrdvzf v3 0 
+ xgroup create ermrdvzf v4 0 
+ set atifyowf 1 
+ save 
+ xgroup destroy ermrdvzf v2 
+ xgroup create ermrdvzf v5 -901 
+ get atifyowf

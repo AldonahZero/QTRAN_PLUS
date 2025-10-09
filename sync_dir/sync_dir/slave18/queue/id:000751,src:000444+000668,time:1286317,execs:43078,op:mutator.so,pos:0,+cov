@@ -1,0 +1,4 @@
+set mykey 212 
+ get mykey 
+ geoadd ussfykoq 12.758489 38.788135 "Hello" 12.758489 38.788135 yqcyaxfl 
+ save

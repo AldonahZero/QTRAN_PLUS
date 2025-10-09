@@ -1,0 +1,4 @@
+set mykey 692 
+ sadd vatjiafn upeelqpe 
+ copy mykey v0 replace 
+ get mykey

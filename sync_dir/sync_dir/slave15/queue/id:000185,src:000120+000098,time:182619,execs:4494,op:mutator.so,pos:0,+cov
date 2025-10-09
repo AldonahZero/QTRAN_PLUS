@@ -1,0 +1,6 @@
+set mykey 0 
+ mset yusmzsql 1265324348 
+ get mykey 
+ getex mykey 
+ info cpu default 
+ save

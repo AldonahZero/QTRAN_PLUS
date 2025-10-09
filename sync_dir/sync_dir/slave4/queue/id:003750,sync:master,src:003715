@@ -1,0 +1,7 @@
+hset eaxejsol bhwulrko -371 
+ hscan eaxejsol -947 
+ psetex elzondzp 123 -3437299314 
+ set mykey 2 
+ hscan eaxejsol -911 
+ hdel eaxejsol leephdom 
+ get mykey

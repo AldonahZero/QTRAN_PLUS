@@ -1,0 +1,3 @@
+set mykey -408729133852 
+ zadd hello 0 avnctvuo 
+ get mykey

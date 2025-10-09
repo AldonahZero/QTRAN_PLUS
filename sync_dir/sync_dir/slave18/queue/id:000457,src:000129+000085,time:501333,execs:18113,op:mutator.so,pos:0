@@ -1,0 +1,4 @@
+set ebvgkrck 0 
+ mget ebvgkrck ebvgkrck ebvgkrck ebvgkrck 
+ get ebvgkrck 
+ save

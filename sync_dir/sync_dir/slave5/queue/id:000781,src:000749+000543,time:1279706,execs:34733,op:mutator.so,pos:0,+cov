@@ -1,0 +1,5 @@
+hsetnx nbxqjbpm kmvsxosn -645611437338 
+ set mykey hello 
+ hscan nbxqjbpm 0 match foo* count 34112201010423243030210424234344320420 
+ hincrbyfloat nbxqjbpm kmvsxosn 1 
+ get mykey

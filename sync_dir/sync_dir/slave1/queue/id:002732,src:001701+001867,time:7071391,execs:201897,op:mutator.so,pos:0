@@ -1,0 +1,10 @@
+set mykey -1947844055 
+ bitfield mykey overflow fail incrby i22 0 37999704017 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ bitpos mykey 1 12 12 bit 
+ mget mykey mykey mykey mykey mykey mykey mykey mykey mykey 
+ get mykey 
+ pfadd dbpkzfom 
+ setbit mykey 474529 1 
+ get mykey 
+ save

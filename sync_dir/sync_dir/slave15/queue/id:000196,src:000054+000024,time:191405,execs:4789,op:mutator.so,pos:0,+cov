@@ -1,0 +1,6 @@
+set mykey hello 
+ strlen mykey 
+ zinterstore yygrvfbj 2 yygrvfbj yygrvfbj 
+ zrem yygrvfbj irkxzzim 
+ get mykey 
+ save

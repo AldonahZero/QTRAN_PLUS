@@ -1,0 +1,6 @@
+set mykey hello 
+ append ibdfxrwx 13121140 
+ pubsub numsub qsckquma 
+ sinterstore ubjuqmxi ubjuqmxi ubjuqmxi 
+ srandmember ubjuqmxi 50 
+ get mykey

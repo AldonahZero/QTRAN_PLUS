@@ -1,0 +1,5 @@
+set mykey hello 
+ get mykey 
+ mget mykey mykey 
+ zadd guzmtqtb 4 zjqyntgx 
+ sinterstore cjuxravx cjuxravx cjuxravx cjuxravx

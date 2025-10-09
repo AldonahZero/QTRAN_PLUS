@@ -1,0 +1,8 @@
+hsetnx wqydsukt guwchiwu ssnvzsid 
+ info all all 
+ set mykey 0 
+ get mykey 
+ incrbyfloat mykey 1072727848 
+ getex mykey 
+ info all all 
+ save

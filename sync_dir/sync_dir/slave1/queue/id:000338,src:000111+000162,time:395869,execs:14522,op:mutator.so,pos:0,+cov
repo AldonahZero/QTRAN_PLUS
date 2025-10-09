@@ -1,0 +1,6 @@
+set mykey hello 
+ bitfield mykey overflow fail set u34 0 23450054762 
+ getex mykey 
+ append ypgikvwu 10243120 
+ mget mykey 
+ get mykey

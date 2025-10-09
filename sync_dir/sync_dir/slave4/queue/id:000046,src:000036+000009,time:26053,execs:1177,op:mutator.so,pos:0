@@ -1,0 +1,4 @@
+zunionstore uhnbdhtg 1 uhnbdhtg 
+ set mykey hello 
+ get mykey 
+ zinter 2 uhnbdhtg uhnbdhtg withscores

@@ -1,0 +1,9 @@
+sadd waeoxbem wivnjuxe 
+ sunionstore xmawvngf waeoxbem waeoxbem 
+ set mykey -1947844055 
+ spop xmawvngf 2 
+ srandmember waeoxbem 
+ smembers waeoxbem 
+ get mykey 
+ get mykey 
+ save

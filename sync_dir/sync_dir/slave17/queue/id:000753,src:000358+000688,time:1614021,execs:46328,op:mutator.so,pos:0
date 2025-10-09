@@ -1,0 +1,5 @@
+set mykey hello 
+ geoadd prlpsdxt 12.75 36.995 trqpgcxr 
+ zadd mfsvncrq incr 1 bexnlycc 
+ sort mfsvncrq limit 0 10 
+ get mykey

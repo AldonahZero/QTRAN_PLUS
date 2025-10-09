@@ -1,0 +1,5 @@
+set mykey hello 
+ mset mhnoojoh -886864826961 
+ bitpos mykey 1 64 74 bit 
+ getrange mykey 227 821 
+ get mykey

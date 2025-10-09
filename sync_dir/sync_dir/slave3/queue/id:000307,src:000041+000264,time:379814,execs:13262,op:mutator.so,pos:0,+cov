@@ -1,0 +1,4 @@
+hset eaxejsol bhwulrko 1413991819 
+ copy eaxejsol v0 replace 
+ set mykey 2 
+ get mykey

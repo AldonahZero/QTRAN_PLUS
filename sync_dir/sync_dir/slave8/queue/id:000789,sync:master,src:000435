@@ -1,0 +1,5 @@
+hset eaxejsol bhwulrko 94964 
+ set mykey 185256 
+ bitop or yxqbavlu mykey mykey 
+ setbit mykey 1603 1 
+ get mykey

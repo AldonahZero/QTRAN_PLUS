@@ -1,0 +1,5 @@
+set mykey 9223372036854775807 
+ get mykey 
+ save 
+ mset jmvjdgip 533 
+ lcs mykey mykey len idx minmatchlen 4 withmatchlen

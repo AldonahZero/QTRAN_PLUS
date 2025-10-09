@@ -1,0 +1,6 @@
+set mykey hello 
+ zrangestore rwcbicsk rwcbicsk 5 6 byscore 
+ zinterstore yygrvfbj 2 yygrvfbj yygrvfbj 
+ get mykey 
+ sdiffstore zakcrnfs zakcrnfs zakcrnfs 
+ save

@@ -1,0 +1,4 @@
+set mykey 386 
+ copy mykey v0 
+ bitop xor vnayjyje mykey 
+ get mykey

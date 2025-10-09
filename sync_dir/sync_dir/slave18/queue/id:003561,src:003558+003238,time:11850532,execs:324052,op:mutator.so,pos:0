@@ -1,0 +1,9 @@
+xadd pbtmpeny * qnoruayj "Hello," 
+ info keyspace 
+ xgroup create pbtmpeny v1 -325 
+ xgroup create pbtmpeny v18 -602 
+ set atifyowf 1 
+ save 
+ xgroup destroy pbtmpeny v1 
+ xack pbtmpeny v18 -131822750965 
+ get atifyowf

@@ -1,0 +1,4 @@
+set mykey 212 
+ get mykey 
+ geoadd ussfykoq 12.758489 38.788135 "Hello" 90 85.0511 atulldgp 12.750000 35.202000 esifgdfx 12.748489955781654 37 xxkpmdgk 
+ save

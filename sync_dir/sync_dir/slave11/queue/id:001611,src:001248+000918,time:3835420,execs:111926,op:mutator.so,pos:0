@@ -1,0 +1,6 @@
+set mykey -12 
+ get mykey 
+ getex mykey 
+ mget mykey mykey mykey 
+ info cpu default 
+ save

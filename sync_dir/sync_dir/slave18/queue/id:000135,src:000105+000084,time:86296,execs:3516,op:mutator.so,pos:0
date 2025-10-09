@@ -1,0 +1,4 @@
+set mykey -37 
+ zrangestore wvcbuegq wvcbuegq 1 2 
+ setnx gbjlvscx -37 
+ get mykey

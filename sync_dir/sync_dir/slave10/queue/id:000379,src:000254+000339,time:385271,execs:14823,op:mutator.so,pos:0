@@ -1,0 +1,6 @@
+zrangestore xervubdq xervubdq 1 2 byscore 
+ set ifjbgdvj 0.93289895166312298 
+ zmpop 2 xervubdq xervubdq max count 1 
+ lcs ifjbgdvj ifjbgdvj 
+ xadd kvnrwmku 123-1 mzklxdll "Hello," 
+ get ifjbgdvj

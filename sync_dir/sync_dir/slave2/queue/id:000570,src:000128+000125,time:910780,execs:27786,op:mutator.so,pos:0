@@ -1,0 +1,5 @@
+set mykey 3 
+ setnx werppomt 493763497 
+ lcs werppomt mykey 
+ copy mykey pyaiiarv 
+ get mykey

@@ -1,0 +1,7 @@
+set mykey 306 
+ copy mykey v0 
+ hmset hvuspbal puucxmde 9223372036854775808 
+ bitfield mykey overflow wrap set u10 0 119 
+ info everything 
+ bitfield mykey overflow fail set u44 0 4806867732670 
+ get mykey

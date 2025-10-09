@@ -1,0 +1,6 @@
+set mykey 0 
+ get mykey 
+ getex mykey 
+ scan -10 type string 
+ info errorstats 
+ save

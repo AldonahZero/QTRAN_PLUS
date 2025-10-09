@@ -1,0 +1,4 @@
+set ebvgkrck 92007103795675120 
+ setbit ebvgkrck 96913381 0 
+ get ebvgkrck 
+ save

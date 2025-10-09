@@ -1,0 +1,11 @@
+xadd psvoywns 0-1 qnoruayj "Hello," 
+ info keyspace 
+ xgroup create psvoywns v0 0 
+ xgroup create psvoywns v1 0 
+ xgroup create psvoywns v2 0 
+ copy psvoywns v3 
+ set atifyowf 1 
+ save 
+ xinfo stream psvoywns full count -173 
+ xgroup destroy psvoywns v0 
+ get atifyowf

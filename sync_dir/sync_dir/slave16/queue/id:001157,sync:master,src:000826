@@ -1,0 +1,5 @@
+set bpvfxtud 0.50853072177084657 
+ copy bpvfxtud v0 
+ save 
+ bitop xor soigkacb bpvfxtud v0 bpvfxtud bpvfxtud v0 v0 v0 bpvfxtud v0 v0 bpvfxtud 
+ get bpvfxtud

@@ -1,0 +1,9 @@
+zadd mfsvncrq lt incr 1 bexnlycc 
+ object encoding rwzbgekl 
+ geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
+ geopos rguvzgcd uqzidutw uqzidutw uqzidutw 
+ set mykey 9223372036854775808 
+ lcs mykey mykey 
+ zlexcount mfsvncrq 386 915 
+ strlen mykey 
+ get mykey

@@ -1,0 +1,6 @@
+set mykey 41788 
+ info keyspace 
+ get mykey 
+ zdiffstore bexbxodv 2 bexbxodv bexbxodv 
+ lpush mfgdbqzi ymrnmwug 
+ save

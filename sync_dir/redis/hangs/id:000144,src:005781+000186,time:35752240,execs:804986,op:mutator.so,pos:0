@@ -1,0 +1,11 @@
+set mykey 5 
+ pexpire mykey 100 
+ copy mykey v0 
+ bitfield v0 overflow wrap set u11 2486455557 101 
+ incrbyfloat mykey -5 
+ slowlog get 1 
+ bitfield mykey overflow wrap set i30 0 -255272035 
+ setex mmjypptl 273 12024430563 
+ save 
+ del mmjypptl 
+ get v0

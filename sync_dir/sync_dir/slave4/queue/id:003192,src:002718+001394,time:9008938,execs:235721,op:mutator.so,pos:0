@@ -1,0 +1,9 @@
+sadd waeoxbem wivnjuxe 
+ sunionstore vedaznzm vedaznzm waeoxbem waeoxbem 
+ sdiffstore grjlntxw waeoxbem vedaznzm 
+ set mykey -1947844055 
+ sdiffstore zakcrnfs vedaznzm zakcrnfs 
+ smembers waeoxbem 
+ get mykey 
+ get mykey 
+ save

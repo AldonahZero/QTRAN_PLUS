@@ -1,0 +1,10 @@
+set mykey 13121140 
+ hset pjvhroqr svlrliku 0.1067637899456377 
+ copy svlrliku v0 
+ hmget pjvhroqr svlrliku svlrliku 
+ xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm 
+ get mykey 
+ hget pjvhroqr svlrliku 
+ info everything 
+ hmget pjvhroqr v0 svlrliku 
+ save

@@ -1,0 +1,9 @@
+set mykey -41 
+ set v0 hello 
+ geoadd rrimocuc 13.361389 38.115556 vbqhnwvq 15.087269 37.502669 csetpemq 
+ geodist rrimocuc vbqhnwvq vbqhnwvq mi 
+ geodist rrimocuc vbqhnwvq vbqhnwvq mi 
+ xadd kvnrwmku 123-1 mzklxdll "Hello," 
+ geosearch rrimocuc frommember vbqhnwvq byradius 151 km 
+ save 
+ get mykey

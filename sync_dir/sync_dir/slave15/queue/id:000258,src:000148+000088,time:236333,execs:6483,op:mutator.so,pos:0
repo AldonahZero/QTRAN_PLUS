@@ -1,0 +1,7 @@
+set mykey -1947844055 
+ get mykey 
+ pfadd iknmweqf zelgohmr wibqsopn nbjrszep klxmnqhn sltjtveu cqvidjzw ckehfpxv rmjzogox erhrygyu ckgvwjnx gjbqrlnm 
+ incrbyfloat mykey -243986607177 
+ setbit mykey 474529 1 
+ get mykey 
+ save

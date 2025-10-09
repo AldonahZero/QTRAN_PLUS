@@ -1,0 +1,4 @@
+set mykey -1615510574 
+ hmset zxvatyxz v1 1 v10 2 qzsoxtro 3 qzsoxtro 3 
+ getex mykey 
+ get mykey

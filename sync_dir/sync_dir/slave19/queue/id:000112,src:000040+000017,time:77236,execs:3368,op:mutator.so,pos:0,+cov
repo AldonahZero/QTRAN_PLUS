@@ -1,0 +1,4 @@
+set mykey -41 
+ zunionstore nmakcyab 0 nmakcyab 
+ get mykey 
+ ttl wrzagplh

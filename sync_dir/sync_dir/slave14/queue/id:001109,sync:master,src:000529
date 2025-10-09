@@ -1,0 +1,5 @@
+hset eaxejsol bhwulrko 0.41507778056668015 
+ set mykey 2 
+ hincrbyfloat eaxejsol bhwulrko 1 
+ pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
+ get mykey

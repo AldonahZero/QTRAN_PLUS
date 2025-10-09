@@ -1,0 +1,14 @@
+set mykey -1947844055 
+ zadd xzybaafc 22 tldvrjxe 
+ zrangestore cfncftfi xzybaafc 0 5 byscore limit -157780893686 2 
+ bitpos mykey 1 12 12 bit 
+ sort cfncftfi alpha 
+ get mykey 
+ pfadd dbpkzfom 
+ zcount cfncftfi -980 1850704167 
+ setbit mykey 474529 1 
+ zrangestore v0 xzybaafc 0 5 byscore limit 0 2 
+ get mykey 
+ zunion 2 cfncftfi xzybaafc weights 1 1 aggregate max withscores 
+ zrangestore lguhmiyq v0 5 0 byscore rev limit 0 2 
+ save

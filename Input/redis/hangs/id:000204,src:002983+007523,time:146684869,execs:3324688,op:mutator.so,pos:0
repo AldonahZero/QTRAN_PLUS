@@ -1,0 +1,9 @@
+set atifyowf 1 
+ incrbyfloat atifyowf -5 
+ bitfield atifyowf overflow wrap incrby u36 948 46789140757 
+ setex tncydqgy 273 12024430563 
+ bitfield tncydqgy overflow fail incrby u36 3947972549 46789140757 
+ zunionstore ozmbxkpt 2 ozmbxkpt ozmbxkpt weights 2 3 aggregate max 
+ save 
+ pfadd tncydqgy zelgohmr gjbqrlnm 
+ get atifyowf

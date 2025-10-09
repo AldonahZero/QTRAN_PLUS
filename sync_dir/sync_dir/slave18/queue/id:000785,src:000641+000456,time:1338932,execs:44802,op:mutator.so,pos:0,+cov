@@ -1,0 +1,7 @@
+set mykey 41788 
+ info all 
+ xadd kvnrwmku 123-1 mzklxdll "Hello," 
+ get mykey 
+ xrevrange kvnrwmku -693149982343 34112201010423243030210424234344320420 
+ copy kvnrwmku v0 
+ save

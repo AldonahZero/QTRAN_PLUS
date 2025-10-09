@@ -1,0 +1,8 @@
+set mykey -853 
+ lpush kfxdvljk rptpxozi xqfdftkh 
+ info cpu all 
+ lpop kfxdvljk 
+ lmove kfxdvljk fbzpustd right right 
+ del fbzpustd 
+ select 8 
+ get mykey

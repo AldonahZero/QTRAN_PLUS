@@ -1,0 +1,5 @@
+set mykey -20 
+ xadd jbdjxqbm maxlen ~ 1000 1054571921 hognxfnw "Hello," 
+ dump jbdjxqbm 
+ incr mykey 
+ get mykey

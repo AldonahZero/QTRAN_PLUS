@@ -1,0 +1,14 @@
+set mykey -1947844055 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ bitpos mykey 1 12 12 bit 
+ zrevrank mfsvncrq bexnlycc 
+ sort mfsvncrq alpha 
+ zincrby mfsvncrq 1 soaoraau 
+ get mykey 
+ zremrangebyscore mfsvncrq 1359312523 132000133030121231010030411111424043043024042044232021123022204202104131441311104324234343421433410 
+ pfadd dbpkzfom 
+ zrevrank mfsvncrq bexnlycc 
+ setbit mykey 1859284241 1 
+ get mykey 
+ save 
+ pexpireat ollhukup -9223372036854770000 

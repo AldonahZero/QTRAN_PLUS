@@ -1,0 +1,4 @@
+zunionstore ozmbxkpt 2 ozmbxkpt ozmbxkpt weights 2 3 aggregate max 
+ zinter 2 ozmbxkpt ozmbxkpt weights 1 2 aggregate sum withscores 
+ set mykey hello 
+ get mykey

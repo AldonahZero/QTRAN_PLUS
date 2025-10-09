@@ -1,0 +1,9 @@
+hset eaxejsol bhwulrko 94964 
+ zunionstore eeacghhu 3242334443304021220302012044243234323440211404023442213201234214031301412344142111014111102132423211323312144213320111141010130022440323221220312024022434344003030420413334334031023322140 eeacghhu eeacghhu weights 2 3 
+ zunionstore htfkbhnw 1 htfkbhnw 
+ zunionstore patbwvok 2 patbwvok patbwvok aggregate max 
+ hset tfpyhbbg jhelnvce 512461 
+ set mykey 2 
+ setbit mykey 1603 1 
+ zunionstore szndqvoq 2 szndqvoq szndqvoq 
+ get mykey

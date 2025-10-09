@@ -1,0 +1,9 @@
+set mykey 311 
+ incrbyfloat mykey 376 
+ get mykey 
+ bitfield mykey overflow wrap set i15 257854938 -15956 
+ setbit mykey 362392 0 
+ dump mykey 
+ get mykey 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

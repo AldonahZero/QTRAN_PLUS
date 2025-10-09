@@ -1,0 +1,6 @@
+setex lwzydcvp 18446744073709561 2207018791 
+ set mykey 15.087269 
+ psetex vrrqnomv 315 33 
+ lcs mykey mykey 
+ getrange mykey 1293 903 
+ get mykey

@@ -1,0 +1,15 @@
+set xnamybte 0.61333727818603501 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ setbit xnamybte 474529 9223372036854775808 
+ bitpos xnamybte 1 12 12 bit 
+ zrevrank mfsvncrq bexnlycc 
+ zpopmax mfsvncrq 1 
+ sort mfsvncrq alpha 
+ memory usage mykey 
+ memory usage mykey 
+ get xnamybte 
+ pfadd dbpkzfom 
+ setbit xnamybte 474529 1 
+ get xnamybte 
+ memory usage dmbcapbf 
+ save

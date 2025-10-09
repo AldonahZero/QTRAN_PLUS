@@ -1,0 +1,8 @@
+set mykey 1732498873 
+ setbit mykey 474529 1 
+ select 6 
+ get mykey 
+ getrange mykey -371 -483 
+ hset etqpfzfm njabbctf 41657 
+ getrange mykey -371 -483 
+ psubscribe bar* 

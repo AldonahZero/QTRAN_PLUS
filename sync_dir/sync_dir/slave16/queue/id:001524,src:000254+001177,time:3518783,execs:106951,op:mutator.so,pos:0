@@ -1,0 +1,4 @@
+set mykey -5 
+ copy mykey v0 replace 
+ setnx zqikteif -5 
+ get mykey

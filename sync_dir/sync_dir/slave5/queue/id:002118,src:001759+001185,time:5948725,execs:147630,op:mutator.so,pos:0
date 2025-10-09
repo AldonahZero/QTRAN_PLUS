@@ -1,0 +1,7 @@
+lpush fjawhzfz hfgcwmoq swywrupx 
+ set mykey 15.087269 
+ rpop fjawhzfz 1 
+ lmpop 2 fjawhzfz fjawhzfz right count 10 
+ mget mykey mykey mykey mykey 
+ lcs mykey mykey 
+ get mykey

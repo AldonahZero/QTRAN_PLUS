@@ -1,0 +1,3 @@
+set mykey hello 
+ zrangestore cfncftfi cfncftfi 0 5 byscore limit 0 2 
+ get mykey

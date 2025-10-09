@@ -1,0 +1,5 @@
+set mykey 311 
+ lpush sfzjdgqf lbqiofzd 
+ lmpop 2 sfzjdgqf sfzjdgqf right count 1 
+ rpush drzkkxfj dgwqiyoc 
+ get mykey

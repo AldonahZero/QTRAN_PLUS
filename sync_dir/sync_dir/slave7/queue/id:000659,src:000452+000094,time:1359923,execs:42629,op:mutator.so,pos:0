@@ -1,0 +1,8 @@
+geoadd vrekwiwa 13.00 36.50 pqkikujz 
+ set rxvgbsvg 306 
+ type mspahcqu 
+ select 15 
+ geopos vrekwiwa pqkikujz pqkikujz pqkikujz 
+ decr rxvgbsvg 
+ save 
+ get rxvgbsvg

@@ -1,0 +1,5 @@
+set mykey -541896984699 
+ get mykey 
+ lcs mykey mykey 
+ mset mempxxdl qsuvfmsr 
+ incrby mykey 301

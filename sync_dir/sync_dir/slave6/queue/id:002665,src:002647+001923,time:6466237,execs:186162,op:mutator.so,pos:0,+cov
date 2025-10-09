@@ -1,0 +1,9 @@
+geoadd vrekwiwa 13.00 36.50 pqkikujz 
+ set mykey 306 
+ georadius vrekwiwa 13.361389 38.115556 500 km store mykey 
+ type mspahcqu 
+ geopos vrekwiwa pqkikujz pqkikujz pqkikujz 
+ decr mykey 
+ getex mykey 
+ save 
+ get mykey

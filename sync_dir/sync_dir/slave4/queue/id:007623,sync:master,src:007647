@@ -1,0 +1,12 @@
+sadd nyhlwdwl wwmqswmp 
+ set mykey 3 
+ sadd mavpzujm pukmiumo 
+ sdiff nyhlwdwl nyhlwdwl 
+ sinterstore gfyopats nyhlwdwl nyhlwdwl 
+ sinterstore ubjuqmxi nyhlwdwl gfyopats 
+ copy mykey v0 
+ sinterstore efabqgdi nyhlwdwl ubjuqmxi 
+ sinterstore ujxujfpd efabqgdi nyhlwdwl 
+ smove nyhlwdwl gsicoxlo obylrooc 
+ sadd waeoxbem wivnjuxe 
+ get mykey

@@ -1,0 +1,13 @@
+zrangestore v0 v0 1 2 byscore 
+ set mykey -1947844055 
+ zadd pbqqggcx 143 krcsxyks 
+ bitpos mykey 1 12 12 bit 
+ sort pbqqggcx alpha 
+ get mykey 
+ pfadd dbpkzfom 
+ setbit mykey 474529 1 
+ zrangestore xervubdq xervubdq 1 2 byscore 
+ get mykey 
+ zunion 2 pbqqggcx xervubdq weights 1 1 aggregate max withscores 
+ zrangestore twrfmpbc xervubdq 0 -1 
+ save

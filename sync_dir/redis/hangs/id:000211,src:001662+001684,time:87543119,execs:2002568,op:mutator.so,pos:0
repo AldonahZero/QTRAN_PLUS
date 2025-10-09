@@ -1,0 +1,7 @@
+set mykey "Hello," 
+ bitpos mykey 0 16 64 bit 
+ get mykey 
+ pfadd mykey 
+ setbit mykey 3717584922 1 
+ get mykey 
+ save

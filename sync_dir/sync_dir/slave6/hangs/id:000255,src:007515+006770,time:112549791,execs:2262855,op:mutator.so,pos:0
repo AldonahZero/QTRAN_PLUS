@@ -1,0 +1,19 @@
+set mykey 311 
+ incrbyfloat mykey 376 
+ get mykey 
+ select 9 
+ xadd yxqbavlu * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm 
+ lcs mykey mykey 
+ setbit mykey 1374321698 1 
+ get mykey 
+ bitop xor gtmzalcd mykey mykey mykey mykey mykey 
+ bitop or yxqbavlu mykey mykey 
+ xgroup create yxqbavlu v0 123-1 
+ xpending yxqbavlu v0 
+ xpending yxqbavlu v0 idle 9000 - + 10 yxaavztx 
+ scan 117 type string 
+ xpending yxqbavlu v0 idle 9000 - + 10 yxaavztx 
+ bitop or gvtzczpz mykey mykey mykey 
+ save 
+ bitop and tzlrveqd mykey mykey mykey mykey mykey mykey mykey 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

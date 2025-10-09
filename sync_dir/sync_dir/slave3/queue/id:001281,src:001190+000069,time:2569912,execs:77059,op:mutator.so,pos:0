@@ -1,0 +1,6 @@
+set mykey 0 
+ incrbyfloat mykey 286 
+ dump mykey 
+ get mykey 
+ save 
+ mset jmvjdgip 533 

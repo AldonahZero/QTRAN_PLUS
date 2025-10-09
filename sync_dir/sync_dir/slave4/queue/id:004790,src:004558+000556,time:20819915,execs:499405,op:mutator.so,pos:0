@@ -1,0 +1,9 @@
+zunionstore uhnbdhtg -564153445215 uhnbdhtg 
+ xadd v1 * qnoruayj 41788 
+ xinfo stream v1 full count -1 
+ xrange v1 363 1496 
+ set mykey hello 
+ copy uhnbdhtg v0 
+ xread streams v1 868 
+ xread streams v1 868 
+ get mykey

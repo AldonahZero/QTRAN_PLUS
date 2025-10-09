@@ -1,0 +1,3 @@
+scan 906 count 5 
+ set mykey hello 
+ get mykey

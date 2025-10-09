@@ -1,0 +1,10 @@
+set mykey -2516972218 
+ incrbyfloat mykey 376 
+ get mykey 
+ copy mykey v0 
+ setbit mykey 1265324348 1 
+ dump mykey 
+ save 
+ get mykey 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

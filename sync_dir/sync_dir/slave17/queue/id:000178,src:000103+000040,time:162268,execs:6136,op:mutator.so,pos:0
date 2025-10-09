@@ -1,0 +1,6 @@
+set mykey hello 
+ zinterstore xmawvngf 2 xmawvngf xmawvngf 
+ zremrangebyscore xmawvngf 916054754013 346072200846 
+ geoadd apctyxsn 0 0 ecyrjbwf 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ get mykey

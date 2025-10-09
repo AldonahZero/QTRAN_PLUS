@@ -1,0 +1,6 @@
+set mykey 1293 
+ getex mykey 
+ get mykey 
+ scan 589 type string 
+ save 
+ copy mykey v0 

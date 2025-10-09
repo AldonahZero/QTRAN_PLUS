@@ -1,0 +1,16 @@
+xadd pbtmpeny 0-1 qnoruayj 10212040044111302302121334443141314232340221040024303201020331300324400442420011140323211444422144420102430042144021021423104200113022242401104430304000340034042114014111123142033014121120440244 
+ info keyspace 
+ xgroup create pbtmpeny v103 0 
+ xgroup create pbtmpeny nluelakw 0 
+ xgroup create pbtmpeny teqiuuzn 0 
+ xinfo groups pbtmpeny 
+ xgroup create pbtmpeny sycutgvc 0 
+ xgroup create pbtmpeny v1 0 
+ xinfo stream pbtmpeny full 
+ xinfo groups pbtmpeny 
+ set atifyowf 1 
+ xinfo groups pbtmpeny 
+ save 
+ xgroup destroy pbtmpeny v103 
+ xgroup create pbtmpeny v0 -901 
+ get atifyowf

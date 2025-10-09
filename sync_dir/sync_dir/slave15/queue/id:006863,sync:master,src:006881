@@ -1,0 +1,20 @@
+xadd v36 1-0 qnoruayj "Hello," 
+ info keyspace 
+ xgroup create v36 v0 0 
+ xpending v36 v0 
+ set atifyowf 1 
+ save 
+ xinfo stream v36 
+ copy v0 v1 
+ xclaim v36 cghcphip pctalcqn 0 1-0 force 
+ xpending v36 v1 
+ xpending v36 v1 
+ xpending v36 v1 
+ xpending v36 v1 
+ xinfo stream v36 full 
+ copy atifyowf v2 
+ dump v36 
+ copy v2 v3 
+ copy v0 v4 
+ xclaim v36 cghcphip qcdrshmz 256 1-0 force 
+ get atifyowf

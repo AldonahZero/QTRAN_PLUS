@@ -1,0 +1,7 @@
+hset eaxejsol bhwulrko 94964 
+ sadd dwtrtaow vyhxdaxe 
+ smembers dwtrtaow 
+ set mykey 2 
+ sinter dwtrtaow dwtrtaow 
+ setbit mykey 1603 "Hello," 
+ get mykey

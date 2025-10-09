@@ -1,0 +1,9 @@
+set mykey 1732498873 
+ bitop xor vnayjyje mykey 
+ bitpos mykey 0 -316 -1 bit 
+ geoadd rguvzgcd 45 -1 uqzidutw -135 85.05 yxudgmfh 
+ geosearch rguvzgcd frommember uqzidutw bybox 1 1 km 
+ get mykey 
+ info latencystats 
+ rpush dbmuwins jrjuraql 
+ psubscribe bar* 

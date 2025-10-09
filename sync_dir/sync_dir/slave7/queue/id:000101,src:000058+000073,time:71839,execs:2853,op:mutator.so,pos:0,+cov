@@ -1,0 +1,4 @@
+set mykey 306 
+ hmset hvuspbal puucxmde 9223372036854775808 
+ bitfield mykey overflow fail set u10 -180628908882 1519 
+ get mykey

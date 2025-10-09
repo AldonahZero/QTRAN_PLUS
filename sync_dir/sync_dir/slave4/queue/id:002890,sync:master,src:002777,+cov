@@ -1,0 +1,6 @@
+set mykey -20 
+ xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm 
+ dump ermrdvzf 
+ xrevrange ermrdvzf + - count -3 
+ incr mykey 
+ get mykey

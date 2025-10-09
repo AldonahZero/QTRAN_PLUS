@@ -1,0 +1,7 @@
+psetex vrrqnomv 315 12.75 
+ copy vrrqnomv v0 
+ set vkxhdmjo 1 
+ copy vkxhdmjo v1 
+ copy vrrqnomv v2 
+ save 
+ get vrrqnomv

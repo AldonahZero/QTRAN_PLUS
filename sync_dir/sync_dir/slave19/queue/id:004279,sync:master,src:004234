@@ -1,0 +1,13 @@
+zadd xqhrksqg 2 krcsxyks 
+ zadd hleuhsey 0 srveglnh 
+ object encoding rwzbgekl 
+ geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
+ zincrby xqhrksqg 2 ltrxeema 
+ set mykey hello 
+ zunion 2 xqhrksqg hleuhsey 
+ zrangestore v0 xqhrksqg 0 1 
+ strlen mykey 
+ zrangestore lguhmiyq xqhrksqg 20203044342403203340321422240240421003320034044114013323122104244030111130421242331133131131420241444320444103413334114130000 0 byscore rev limit 0 2 
+ zinter 2 v0 xqhrksqg aggregate min withscores 
+ geosearch rguvzgcd fromlonlat -179 37 byradius 156544 km asc 
+ get mykey

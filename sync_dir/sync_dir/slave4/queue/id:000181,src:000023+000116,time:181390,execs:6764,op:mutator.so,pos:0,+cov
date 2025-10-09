@@ -1,0 +1,3 @@
+set mykey 986906 
+ get mykey 
+ del mykey 

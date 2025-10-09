@@ -1,0 +1,10 @@
+set mykey 41788 
+ info all 
+ xadd kvnrwmku 123-1 mzklxdll "Hello," 
+ xrevrange kvnrwmku -553 - count 1 
+ info cpu all 
+ info all 
+ get mykey 
+ sdiffstore zakcrnfs zakcrnfs zakcrnfs 
+ info all default 
+ save

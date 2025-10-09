@@ -1,0 +1,8 @@
+set mykey hello 
+ zdiffstore oninilnq 0 oninilnq 
+ zcount oninilnq -486 3512935256 
+ hset elibnlnj lzytosbe 732291 
+ hgetall elibnlnj 
+ zdiff 2 oninilnq oninilnq withscores 
+ get mykey 
+ geoadd ussfykoq 12.758489 85.0511 "world" 17.241510 38.788135 yqcyaxfl

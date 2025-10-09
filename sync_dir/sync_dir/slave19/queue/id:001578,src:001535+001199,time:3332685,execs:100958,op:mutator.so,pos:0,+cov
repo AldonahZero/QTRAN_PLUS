@@ -1,0 +1,10 @@
+set mykey -853 
+ lpush kfxdvljk rptpxozi xqfdftkh 
+ psetex ddeayqeh 124957151303 -2792568265 
+ info cpu all 
+ lmpop 2 kfxdvljk kfxdvljk left count 2 
+ lpop kfxdvljk 0 
+ del ddeayqeh 
+ select 8 
+ incrby mykey 443 
+ get mykey

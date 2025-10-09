@@ -1,0 +1,6 @@
+lpush zdnjslcy sicnwujw 
+ set mykey 2100 
+ mget mykey mykey mykey mykey 
+ lcs mykey mykey 
+ lrange zdnjslcy 0 -1 
+ get mykey

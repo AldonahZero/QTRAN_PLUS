@@ -1,0 +1,5 @@
+info cpu commandstats 
+ set atifyowf 1 
+ info cpu 
+ save 
+ get atifyowf

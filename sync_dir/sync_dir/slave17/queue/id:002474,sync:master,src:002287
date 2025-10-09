@@ -1,0 +1,9 @@
+geoadd ussfykoq 12.758489 38.788135 "world" 17.241510 38.788135 yqcyaxfl 
+ geosearch ussfykoq fromlonlat 59.235461856813856 66.269555127373678 byradius 143 km 
+ save 
+ geosearchstore vpwluycf ussfykoq frommember "world" bybox 1 1 m 
+ set ubjcxcxl hello 
+ geosearch ussfykoq frommember "world" bybox 6596 3128 m 
+ copy ussfykoq v0 
+ exists fzemrnjb 
+ get ubjcxcxl

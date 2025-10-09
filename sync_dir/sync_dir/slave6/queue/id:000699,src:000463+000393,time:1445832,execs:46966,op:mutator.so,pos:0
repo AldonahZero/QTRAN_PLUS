@@ -1,0 +1,9 @@
+set mykey 41788 
+ rpush czowykxw ptecklws 
+ get mykey 
+ lmpop -1 czowykxw czowykxw right count 3 
+ set v1 -638773327990 
+ set v0 -16965705105117 
+ lrange czowykxw 0 -1 
+ type bcqswfel 
+ hset rfllxsdf iubquuor 0.41507778056668015 

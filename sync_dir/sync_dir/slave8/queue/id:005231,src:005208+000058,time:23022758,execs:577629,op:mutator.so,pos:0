@@ -1,0 +1,10 @@
+set mykey 3 
+ setbit mykey 474529 0.067275570271199375 
+ bitpos mykey 0 16 64 bit 
+ bitpos mykey 1 39 1158 bit 
+ mget mykey mykey 
+ get mykey 
+ hset etqpfzfm njabbctf 41657 
+ bitpos mykey 1 8 19 bit 
+ psubscribe bar* 
+ del etqpfzfm 

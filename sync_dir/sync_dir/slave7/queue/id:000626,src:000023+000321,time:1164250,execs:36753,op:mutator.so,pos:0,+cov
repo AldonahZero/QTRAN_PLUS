@@ -1,0 +1,5 @@
+geoadd vrekwiwa 13.00 36.50 pqkikujz 
+ pfadd lodeetot ghlqivns dqwtvzke gpnjmyyz 
+ geohash vrekwiwa bfpnqfse pqkikujz pqkikujz 
+ set mykey 306 
+ get mykey

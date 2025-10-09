@@ -1,0 +1,4 @@
+set mykey 15.087269 
+ psetex vrrqnomv 315 0.067275570271199375 
+ lcs vrrqnomv mykey idx minmatchlen -331158402995 withmatchlen 
+ get mykey

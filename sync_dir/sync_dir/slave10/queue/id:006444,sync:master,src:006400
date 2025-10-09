@@ -1,0 +1,9 @@
+xadd ozsnpvdy 123 rqwzplos 1519 
+ xrevrange ozsnpvdy 119 37999704017 
+ xtrim ozsnpvdy minid 1000 
+ xadd v0 maxlen ~ 1000 123-1 hognxfnw 0 
+ info latencystats 
+ xtrim v0 minid 1000 
+ set atifyowf 1 
+ save 
+ get atifyowf

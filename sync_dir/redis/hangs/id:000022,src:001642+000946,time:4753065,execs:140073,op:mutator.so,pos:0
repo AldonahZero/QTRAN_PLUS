@@ -1,0 +1,7 @@
+info cpu latencystats 
+ set mykey 0 
+ get mykey 
+ incrbyfloat mykey -490385381267 
+ getex mykey 
+ info replication 
+ save

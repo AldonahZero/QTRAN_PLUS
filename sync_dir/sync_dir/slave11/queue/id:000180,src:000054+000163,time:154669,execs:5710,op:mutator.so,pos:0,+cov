@@ -1,0 +1,5 @@
+set mykey hello 
+ zdiffstore oninilnq 0 oninilnq 
+ hset elibnlnj lzytosbe 732291 
+ zdiff 1 oninilnq oninilnq withscores 
+ get mykey

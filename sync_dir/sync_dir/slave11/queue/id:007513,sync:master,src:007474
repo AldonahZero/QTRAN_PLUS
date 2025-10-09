@@ -1,0 +1,13 @@
+pfadd jalgwgha erunuxpp wibqsopn nbjrszep klxmnqhn nyxzfynr 
+ hset mykey bhwulrko 1037 
+ dump mykey 
+ set v0 2 
+ hmget mykey bhwulrko bhwulrko 
+ hincrbyfloat mykey bhwulrko 1 
+ hmget mykey bhwulrko bhwulrko 
+ hincrbyfloat mykey bhwulrko 1 
+ hkeys mykey 
+ hmget mykey bhwulrko bhwulrko 
+ hmget mykey bhwulrko bhwulrko 
+ pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
+ get v0

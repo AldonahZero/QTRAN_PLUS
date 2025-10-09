@@ -1,0 +1,3 @@
+set wawrwmta hello 
+ sinterstore ubjuqmxi ubjuqmxi ubjuqmxi 
+ get wawrwmta

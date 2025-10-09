@@ -1,0 +1,4 @@
+set mykey -874394400 
+ get mykey 
+ mget mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey 
+ object encoding uvryzsxf

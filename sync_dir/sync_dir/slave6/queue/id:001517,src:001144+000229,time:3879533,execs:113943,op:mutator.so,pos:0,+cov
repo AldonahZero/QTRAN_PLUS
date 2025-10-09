@@ -1,0 +1,6 @@
+xadd pbtmpeny * qnoruayj "Hello," 
+ info memory 
+ xread streams pbtmpeny 1054571921 
+ set atifyowf 1 
+ save 
+ get atifyowf

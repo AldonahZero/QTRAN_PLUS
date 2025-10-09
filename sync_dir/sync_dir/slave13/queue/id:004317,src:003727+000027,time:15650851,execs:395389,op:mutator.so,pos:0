@@ -1,0 +1,9 @@
+set mykey 13121140 
+ hset wtqtwhmc kumzfjat 41657 
+ copy kumzfjat v0 
+ xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm 
+ get mykey 
+ hget wtqtwhmc v0 
+ info everything 
+ hmget wtqtwhmc v0 v0 
+ save

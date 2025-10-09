@@ -1,0 +1,6 @@
+set mykey 0 
+ psetex bkdmmwgm 752015920240 -1423418636 
+ get mykey 
+ getex mykey 
+ info everything everything 
+ save

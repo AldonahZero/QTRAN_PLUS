@@ -1,0 +1,10 @@
+set mykey 13121140 
+ hset pljeybzb qmvdnozu 0.87838079541846215 
+ copy mykey v0 
+ hmget pljeybzb qmvdnozu qmvdnozu 
+ xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm 
+ get mykey 
+ hget pljeybzb qmvdnozu 
+ info everything 
+ hmget pljeybzb qmvdnozu qmvdnozu 
+ save

@@ -1,0 +1,7 @@
+set mykey -853 
+ setnx oxcovxbi 1877797231 
+ lpush jqknbzjm xbtoynzn 
+ info commandstats 
+ del jqknbzjm 
+ select 8 
+ get mykey

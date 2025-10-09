@@ -1,0 +1,4 @@
+set mykey hello 
+ zadd lukpltvt 96 vgjrzjoy 
+ save 
+ get mykey

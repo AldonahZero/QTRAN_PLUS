@@ -1,0 +1,5 @@
+info cpu 
+ set atifyowf 60 
+ save 
+ lcs atifyowf atifyowf 
+ get atifyowf

@@ -1,0 +1,4 @@
+set mykey hello 
+ zadd lukpltvt 5826 vgjrzjoy 
+ sort lukpltvt limit 0 5 desc alpha 
+ get mykey

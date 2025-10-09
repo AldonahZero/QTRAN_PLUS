@@ -1,0 +1,5 @@
+setex ssqwgzfa -240958759673 -179847923191 
+ hset eaxejsol bhwulrko 94964 
+ set mykey 2 
+ setbit mykey 615 0 
+ get mykey

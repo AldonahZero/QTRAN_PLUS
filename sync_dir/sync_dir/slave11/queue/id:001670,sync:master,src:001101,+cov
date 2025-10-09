@@ -1,0 +1,6 @@
+set mykey 9223372036854775807 
+ dump mykey 
+ get mykey 
+ incrby mykey 301 
+ save 
+ mset jmvjdgip 533 

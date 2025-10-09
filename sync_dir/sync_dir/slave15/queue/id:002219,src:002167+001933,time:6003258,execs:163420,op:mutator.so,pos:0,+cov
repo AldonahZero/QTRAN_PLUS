@@ -1,0 +1,7 @@
+xadd pbtmpeny 384 qnoruayj "Hello," 
+ info latencystats 
+ xtrim pbtmpeny minid 1000 
+ set atifyowf 1 
+ xreadgroup group bjismgxa silloygf streams pbtmpeny 0 
+ save 
+ get atifyowf

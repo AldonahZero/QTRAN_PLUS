@@ -1,0 +1,4 @@
+set mykey 692 
+ sinterstore efabqgdi efabqgdi efabqgdi 
+ copy mykey ycgvtbur replace 
+ get mykey

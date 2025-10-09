@@ -1,0 +1,14 @@
+set yusmzsql -1947844055 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ setbit yusmzsql 7 0 
+ bitpos yusmzsql 1 12 12 bit 
+ zrevrank mfsvncrq bexnlycc 
+ zpopmax mfsvncrq 1 
+ sort mfsvncrq alpha 
+ memory usage mykey 
+ memory usage mykey 
+ get yusmzsql 
+ pfadd dbpkzfom 
+ setbit yusmzsql 474529 1 
+ get yusmzsql 
+ save

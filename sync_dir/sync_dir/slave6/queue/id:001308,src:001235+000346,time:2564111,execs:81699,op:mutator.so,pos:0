@@ -1,0 +1,6 @@
+set nnseeina 185256 
+ get nnseeina 
+ getex nnseeina 
+ info cpu default 
+ bitop or ewxrjkga nnseeina nnseeina nnseeina nnseeina nnseeina nnseeina nnseeina nnseeina 
+ save

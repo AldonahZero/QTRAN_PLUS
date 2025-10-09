@@ -1,0 +1,5 @@
+hset eaxejsol bhwulrko 94964 
+ geoadd cqubszoy 13.361389 38.115556 acjnpjwy 15.087269 37.502669 fekagtxv 
+ psetex mykey 123 -3437299314 
+ set v0 2 
+ get mykey

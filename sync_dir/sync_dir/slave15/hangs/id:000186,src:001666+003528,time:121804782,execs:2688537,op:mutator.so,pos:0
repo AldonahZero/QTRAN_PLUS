@@ -1,0 +1,11 @@
+set mykey 311 
+ bitfield mykey overflow fail incrby i11 0 -688 
+ bitpos mykey 0 9 25 bit 
+ incrbyfloat mykey 376 
+ get mykey 
+ expire mykey 100 lt 
+ bitpos mykey 0 8 19 bit 
+ setbit mykey 1672351166 0 
+ get mykey 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

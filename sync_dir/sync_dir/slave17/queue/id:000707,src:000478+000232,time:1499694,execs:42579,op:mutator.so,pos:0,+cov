@@ -1,0 +1,6 @@
+set mykey 0.93289895166312298 
+ hset vpkbrssi kumzfjat 41657 
+ get mykey 
+ setbit mykey -173 0 
+ info everything 
+ save

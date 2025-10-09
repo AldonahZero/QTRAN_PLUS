@@ -1,0 +1,6 @@
+set mykey hello 
+ zadd mfsvncrq lt incr 1421721372 bexnlycc 
+ zrandmember mfsvncrq -15956 withscores 
+ sort mfsvncrq 
+ zrandmember mfsvncrq -20 withscores 
+ get mykey

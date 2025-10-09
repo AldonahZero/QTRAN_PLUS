@@ -1,0 +1,11 @@
+set slkadwaf 311 
+ incrbyfloat slkadwaf 376 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ get slkadwaf 
+ lcs ldvuftez ldvuftez 
+ setbit ldvuftez 109990 1 
+ get slkadwaf 
+ bitop or gvtzczpz slkadwaf slkadwaf triqeesz 
+ scan 117 type string 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

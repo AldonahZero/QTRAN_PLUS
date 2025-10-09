@@ -1,0 +1,5 @@
+set rjkisvgv 311 
+ getrange rjkisvgv -135 821 
+ zrangestore rpondvdz rpondvdz 0 -1 limit 1 2 
+ getrange rjkisvgv 671 805 
+ get rjkisvgv

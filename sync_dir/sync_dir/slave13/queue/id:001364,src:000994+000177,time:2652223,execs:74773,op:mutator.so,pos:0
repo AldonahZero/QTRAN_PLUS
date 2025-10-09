@@ -1,0 +1,6 @@
+set mykey 197 
+ set v0 533 
+ save 
+ decrby v0 1651985310 
+ decr mykey 
+ get mykey

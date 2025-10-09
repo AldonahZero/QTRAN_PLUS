@@ -1,0 +1,5 @@
+set mykey -5 
+ get mykey 
+ incr mykey 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

@@ -1,0 +1,6 @@
+set mykey -12 
+ get mykey 
+ hsetnx roftorbl khrrkjgs 926595049 
+ hrandfield roftorbl -783398222 
+ hrandfield roftorbl 100 
+ setex ssqwgzfa -240958759673 -179847923191

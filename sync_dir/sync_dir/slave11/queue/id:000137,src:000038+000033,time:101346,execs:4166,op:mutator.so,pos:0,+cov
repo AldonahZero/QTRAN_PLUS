@@ -1,0 +1,5 @@
+set mykey hello 
+ hset elibnlnj lzytosbe -316 
+ hstrlen elibnlnj lzytosbe 
+ del elibnlnj 
+ get mykey

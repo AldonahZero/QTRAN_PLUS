@@ -1,0 +1,7 @@
+setex clryemar 9223372036854776 311 
+ hmset pctalcqn tnvszhuf -9223372036854775808 
+ save 
+ sunionstore sugvxxcg sugvxxcg sugvxxcg 
+ set mykey 10243120 
+ mget clryemar clryemar mykey clryemar clryemar mykey clryemar 
+ get mykey

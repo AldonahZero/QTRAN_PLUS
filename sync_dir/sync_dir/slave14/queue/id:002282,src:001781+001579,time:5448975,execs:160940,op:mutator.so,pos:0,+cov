@@ -1,0 +1,9 @@
+sadd waeoxbem wivnjuxe 
+ sunionstore iwshcqfl waeoxbem iwshcqfl 
+ set mykey -1947844055 
+ sdiff iwshcqfl iwshcqfl iwshcqfl 
+ smembers waeoxbem 
+ get mykey 
+ getex mykey 
+ get mykey 
+ save

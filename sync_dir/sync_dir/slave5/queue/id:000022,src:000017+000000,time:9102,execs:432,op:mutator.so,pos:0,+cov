@@ -1,0 +1,3 @@
+set mykey 197 
+ save 
+ get mykey

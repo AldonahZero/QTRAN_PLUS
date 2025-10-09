@@ -1,0 +1,4 @@
+object encoding rwzbgekl 
+ zinterstore hszuawdu 2 hszuawdu hszuawdu weights 2 3 
+ set mykey hello 
+ get mykey

@@ -1,0 +1,8 @@
+set mykey -9223372036854775808 
+ get mykey 
+ psetex bkdmmwgm 752015920240 -1423418636 
+ get mykey 
+ getdel bkdmmwgm 
+ save 
+ del mykey 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

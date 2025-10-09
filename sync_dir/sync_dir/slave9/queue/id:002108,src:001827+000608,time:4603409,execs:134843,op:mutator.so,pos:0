@@ -1,0 +1,12 @@
+set dppydkqn 311 
+ incrbyfloat dppydkqn 376 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ del ldvuftez dppydkqn triqeesz 
+ get nzgkmxpj 
+ lcs nzgkmxpj nzgkmxpj 
+ setbit nzgkmxpj 109990 1 
+ get nzgkmxpj 
+ bitop or gvtzczpz nzgkmxpj nzgkmxpj nzgkmxpj 
+ scan 117 type string 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

@@ -1,0 +1,11 @@
+sadd nyhlwdwl wwmqswmp 
+ set mykey 3 
+ sadd odholsda pukmiumo 
+ sdiff nyhlwdwl odholsda 
+ sinterstore khjmraoa nyhlwdwl odholsda 
+ sinterstore ubjuqmxi nyhlwdwl odholsda 
+ copy odholsda v0 
+ sinterstore efabqgdi odholsda ubjuqmxi 
+ smove odholsda gsicoxlo obylrooc 
+ sadd waeoxbem wivnjuxe 
+ get mykey

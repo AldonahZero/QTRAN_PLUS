@@ -1,0 +1,4 @@
+set mykey 197 
+ save 
+ geoadd rguvzgcd 45 65 uqzidutw 17.241510 38.788135 nxmjeqgx 17.250000 35.202000 slkadwaf 
+ get mykey

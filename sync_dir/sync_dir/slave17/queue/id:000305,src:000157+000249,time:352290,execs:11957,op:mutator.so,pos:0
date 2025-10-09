@@ -1,0 +1,6 @@
+set mykey 1293 
+ mget mykey mykey mykey mykey 
+ dump mykey 
+ get mykey 
+ scan 589 type string 
+ save

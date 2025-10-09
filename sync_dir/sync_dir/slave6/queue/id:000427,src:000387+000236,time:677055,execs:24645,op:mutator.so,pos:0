@@ -1,0 +1,7 @@
+set mykey 367747 
+ setbit mykey 384 0 
+ save 
+ xadd ozsnpvdy * rqwzplos "Hello," 
+ del ozsnpvdy 
+ get mykey 
+ hset rfllxsdf iubquuor 0.41507778056668015 

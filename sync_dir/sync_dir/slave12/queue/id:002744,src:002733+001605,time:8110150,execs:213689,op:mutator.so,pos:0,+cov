@@ -1,0 +1,12 @@
+object encoding rwzbgekl 
+ zinterstore phrpwlca 2 phrpwlca phrpwlca aggregate min 
+ set mykey hello 
+ zincrby phrpwlca 1 ltrxeema 
+ getdel mykey 
+ zdiffstore apuzkzbh 2 phrpwlca apuzkzbh 
+ zinter 2 phrpwlca apuzkzbh weights 1 2 aggregate max withscores 
+ psetex zvshusdd 3410102305 3090148046 
+ copy zvshusdd v0 
+ zcount phrpwlca -539 -1154401951 
+ hsetnx roftorbl khrrkjgs -638298926240 
+ get zvshusdd

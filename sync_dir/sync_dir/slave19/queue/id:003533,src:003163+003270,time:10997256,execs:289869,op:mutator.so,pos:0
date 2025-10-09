@@ -1,0 +1,15 @@
+set mykey -1947844055 
+ zadd guzmtqtb 4 zjqyntgx 
+ bitpos mykey 1 12 12 bit 
+ sort guzmtqtb alpha 
+ get mykey 
+ zrandmember guzmtqtb -20 withscores 
+ pfadd dbpkzfom 
+ zrangestore cfncftfi guzmtqtb 0 5 byscore limit 0 2 
+ setbit mykey 474529 1 
+ sort cfncftfi by weight* 
+ zcount guzmtqtb -70 2508563670 
+ get mykey 
+ sort guzmtqtb alpha 
+ zunionstore gqqorfgf 2 cfncftfi cfncftfi 
+ save

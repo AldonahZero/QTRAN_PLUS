@@ -1,0 +1,8 @@
+set mykey 1519 
+ hmset fhrsgqae nhrsuavj -8 
+ hrandfield fhrsgqae 2 withvalues 
+ get mykey 
+ hrandfield fhrsgqae 3 
+ hrandfield fhrsgqae 2 
+ hrandfield fhrsgqae 2 
+ del mykey 

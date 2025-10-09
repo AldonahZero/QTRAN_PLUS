@@ -1,0 +1,19 @@
+set mykey 212 
+ zadd mfsvncrq lt incr -33 bexnlycc 
+ hsetnx vautdjej opuxcisi 10212040044111302302121334443141314232340221040024303201020331300324400442420011140323211444422144420102430042144021021423104200113022242401104430304000340034042114014111123142033014121120440244 
+ hlen vautdjej 
+ zremrangebyscore mfsvncrq -1914674685 934 
+ sort mfsvncrq 
+ select 1 
+ zscan mfsvncrq -1454583918 
+ get mykey 
+ hlen vautdjej 
+ hget vautdjej opuxcisi 
+ zrandmember mfsvncrq 
+ hexists vautdjej byxehzca 
+ hexists vautdjej uszqhkri 
+ hexists vautdjej uszqhkri 
+ hexists vautdjej rwuiwxqc 
+ hlen vautdjej 
+ zrange mfsvncrq 0 -1 
+ save

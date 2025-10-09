@@ -1,0 +1,3 @@
+set mykey -41 
+ geoadd prlpsdxt 12.75 36.995 trqpgcxr 
+ get mykey

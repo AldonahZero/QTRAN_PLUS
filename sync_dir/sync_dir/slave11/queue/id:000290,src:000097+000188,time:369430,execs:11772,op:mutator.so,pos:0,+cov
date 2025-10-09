@@ -1,0 +1,4 @@
+set mykey 568645835187 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ incrby mykey -1228497488 
+ get mykey

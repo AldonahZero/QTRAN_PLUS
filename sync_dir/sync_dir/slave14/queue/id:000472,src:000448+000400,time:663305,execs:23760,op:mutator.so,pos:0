@@ -1,0 +1,6 @@
+object encoding rwzbgekl 
+ set mykey hello 
+ pfcount fjnrzcrn 
+ copy mykey v1 
+ copy mykey v0 replace 
+ get mykey

@@ -1,0 +1,5 @@
+set mykey -9223372036854770000 
+ getex mykey 
+ zinterstore phrpwlca 906 phrpwlca phrpwlca aggregate min 
+ zremrangebylex phrpwlca 59043849380 -507 
+ get mykey

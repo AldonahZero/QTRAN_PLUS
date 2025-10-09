@@ -1,0 +1,7 @@
+object encoding rwzbgekl 
+ zinterstore phrpwlca 2 phrpwlca phrpwlca aggregate min 
+ set mykey hello 
+ hset rfllxsdf iubquuor 0.41507778056668015 
+ zincrby phrpwlca -inf ymtynmse 
+ zremrangebyrank phrpwlca -629174849777 244222380 
+ get mykey

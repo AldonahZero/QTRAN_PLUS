@@ -1,0 +1,13 @@
+set mykey -1947844055 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ bitpos mykey 1 12 12 bit 
+ sort mfsvncrq alpha 
+ zrem mfsvncrq ebhxqosc zwzmncsw 
+ get mykey 
+ zmpop 1 mfsvncrq max 
+ pfadd mfsvncrq 
+ setbit mykey 3715410429 1 
+ get mykey 
+ sort mfsvncrq by weight* 
+ zunion 2 mfsvncrq mfsvncrq weights 1 1 aggregate max withscores 
+ save

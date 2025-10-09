@@ -1,0 +1,12 @@
+sadd waeoxbem wivnjuxe 
+ set mykey -1947844055 
+ sscan waeoxbem 1212044342121342330120333011310343042111112004430110414043434232214144020043403411 
+ smembers waeoxbem 
+ sintercard 2 waeoxbem waeoxbem 
+ get mykey 
+ lcs mykey mykey idx minmatchlen 4 withmatchlen 
+ scard waeoxbem 
+ sunion waeoxbem waeoxbem waeoxbem 
+ lcs mykey mykey idx minmatchlen 4 withmatchlen 
+ get mykey 
+ save

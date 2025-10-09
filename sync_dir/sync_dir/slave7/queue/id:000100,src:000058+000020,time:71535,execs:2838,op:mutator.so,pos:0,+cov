@@ -1,0 +1,4 @@
+set mykey 306 
+ hmset hvuspbal puucxmde 9223372036854775808 
+ bitfield mykey overflow wrap incrby i25 0 6413502 
+ get mykey

@@ -1,0 +1,4 @@
+set mykey -75299881433 
+ get mykey 
+ save 
+ zinterstore teqiuuzn 3 teqiuuzn teqiuuzn teqiuuzn weights 0 0 1 

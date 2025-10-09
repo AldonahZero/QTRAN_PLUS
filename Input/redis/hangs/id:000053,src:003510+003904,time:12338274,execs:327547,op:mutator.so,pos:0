@@ -1,0 +1,8 @@
+set mykey 306 
+ hmset hvuspbal puucxmde -2479703 
+ save 
+ bitfield mykey overflow wrap set u34 837779287 23450054762 
+ bitop or jlgjivks mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey 
+ get mykey 
+ incrbyfloat mykey -inf 
+ geoadd apctyxsn 0 0 ecyrjbwf 

@@ -1,0 +1,5 @@
+set mykey 0 
+ lcs mykey mykey 
+ get mykey 
+ getex mykey 
+ save

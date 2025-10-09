@@ -1,0 +1,5 @@
+set mykey hello 
+ get mykey 
+ setbit mykey 7 0 
+ zunionstore eeacghhu 2 eeacghhu eeacghhu weights 2 3 
+ mset mempxxdl qsuvfmsr 

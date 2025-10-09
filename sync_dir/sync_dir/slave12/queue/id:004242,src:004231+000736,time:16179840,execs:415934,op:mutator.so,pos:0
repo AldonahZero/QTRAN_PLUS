@@ -1,0 +1,12 @@
+hset jqqlhsms vtsdkeze 814317 
+ ttl ucglluvp 
+ set mykey hello 
+ bitfield mykey overflow fail incrby u42 175656559 4134927976325 
+ getset mykey -695711414188 
+ pexpire mykey 500 
+ expire jqqlhsms 2 
+ psetex vrrqnomv 315 33 
+ getex mykey 
+ lcs mykey mykey len minmatchlen 4 withmatchlen 
+ expire jqqlhsms 2 
+ get mykey

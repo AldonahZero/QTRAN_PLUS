@@ -1,0 +1,8 @@
+xadd ozsnpvdy 342204043101320331101221324320203021303420334043321233224230113334222322421103024432033223144130104114402 rqwzplos "Hello," 
+ info keyspace 
+ xtrim ozsnpvdy minid 1000 
+ xgroup create ozsnpvdy v0 0 
+ xinfo groups ozsnpvdy 
+ set atifyowf 1 
+ save 
+ get atifyowf

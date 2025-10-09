@@ -1,0 +1,12 @@
+set mykey 311 
+ incrbyfloat mykey 376 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ get mykey 
+ lcs mykey mykey 
+ setbit mykey 109990 1 
+ bitop or ewxrjkga triqeesz triqeesz triqeesz nzgkmxpj ldvuftez mykey triqeesz mykey 
+ get mykey 
+ bitop or gvtzczpz mykey triqeesz 
+ scan 117 type string 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

@@ -1,0 +1,11 @@
+sunionstore hczdthan hczdthan hczdthan 
+ lpush kfxdvljk rptpxozi xqfdftkh 
+ lmove kfxdvljk rmtdfxmv right right 
+ set mykey -1615510574 
+ lpos kfxdvljk btsxeomi 
+ sort rmtdfxmv by weight* get object* get # 
+ hmset rlvtchzi tyubwqfl -1 
+ smismember hczdthan hfezkjww jpfjldgg 
+ getex mykey 
+ lpushx rmtdfxmv "hello" 
+ get mykey

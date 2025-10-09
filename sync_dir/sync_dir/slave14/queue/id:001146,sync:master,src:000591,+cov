@@ -1,0 +1,5 @@
+hset eaxejsol bhwulrko 11 
+ set mykey 2 
+ hincrbyfloat eaxejsol bhwulrko -inf 
+ pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
+ get mykey

@@ -1,0 +1,4 @@
+set mykey 306 
+ sinterstore gfyopats gfyopats gfyopats 
+ hmset qhllafuc uhrpkavd -9223372036854775808 
+ get mykey

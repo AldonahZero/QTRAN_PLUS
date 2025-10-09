@@ -1,0 +1,7 @@
+set mykey -37 
+ zrangestore rpondvdz rpondvdz 0 -1 limit 1 2 
+ setnx gbjlvscx -37 
+ zremrangebyrank rpondvdz 440243323433341321034433113130221031341302031132233004020043030024400244140042104140014 -393807523601 
+ geoadd v0 12.758489 38.788135 fawbaerw 17.241510 5834 yqcyaxfl 
+ getex gbjlvscx 
+ get mykey

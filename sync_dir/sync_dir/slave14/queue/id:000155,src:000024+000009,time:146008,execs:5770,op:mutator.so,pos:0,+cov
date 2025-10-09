@@ -1,0 +1,5 @@
+zadd pqfcfqcy 34 qrxzgoil 
+ zincrby pqfcfqcy 9000 mlujlapi 
+ object encoding rwzbgekl 
+ set mykey hello 
+ get mykey

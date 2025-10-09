@@ -1,0 +1,4 @@
+set mykey 0.52120220173206278 
+ decrby mykey -496337536022 
+ lcs mykey mykey 
+ get mykey

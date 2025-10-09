@@ -1,0 +1,5 @@
+set mykey 647 
+ get mykey 
+ setbit mykey 474529 1 
+ get mykey 
+ save

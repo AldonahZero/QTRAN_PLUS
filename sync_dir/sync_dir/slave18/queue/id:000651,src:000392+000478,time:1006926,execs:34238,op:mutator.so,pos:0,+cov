@@ -1,0 +1,7 @@
+set mykey -37 
+ zrangestore ugswuldi ugswuldi 0 -1 
+ hset mmbdyavh woiaydqs 452588 
+ setnx gbjlvscx -37 
+ hkeys mmbdyavh 
+ zmpop 3 ugswuldi min count 2 
+ get mykey

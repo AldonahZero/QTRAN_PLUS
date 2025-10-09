@@ -1,0 +1,5 @@
+set mykey 0.19306496586327673 
+ sdiffstore lrkqafqr lrkqafqr lrkqafqr lrkqafqr 
+ sdiffstore vdxxciyw vdxxciyw vdxxciyw vdxxciyw 
+ lcs mykey mykey len idx minmatchlen 4 withmatchlen 
+ get mykey

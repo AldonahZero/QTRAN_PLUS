@@ -1,0 +1,6 @@
+psetex zvshusdd 3410102305 430 
+ psetex hcnoouhb 851130245 809 
+ set mykey 1 
+ copy mykey v0 
+ save 
+ get mykey

@@ -1,0 +1,8 @@
+shutdown abort 
+ geoadd ussfykoq 12.758489 38.788135 "world" 12.758489 38.788135 yqcyaxfl 
+ set atifyowf 1 
+ incrbyfloat atifyowf -5 
+ setex tncydqgy 273 12024430563 
+ save 
+ expire tncydqgy 724775841 gt 
+ get atifyowf

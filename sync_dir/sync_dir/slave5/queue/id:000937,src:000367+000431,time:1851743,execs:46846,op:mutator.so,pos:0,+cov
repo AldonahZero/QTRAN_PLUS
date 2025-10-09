@@ -1,0 +1,6 @@
+set mykey 1 
+ copy mykey v0 db cqcngdpy 
+ save 
+ bitop and hozsqpxd mykey mykey v0 v0 
+ lcs v0 v0 
+ get mykey

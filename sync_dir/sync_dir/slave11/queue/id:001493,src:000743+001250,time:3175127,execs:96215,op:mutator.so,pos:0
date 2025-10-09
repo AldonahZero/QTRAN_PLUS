@@ -1,0 +1,8 @@
+set v21 1140 
+ bitfield v21 overflow fail set u11 0 -12 
+ save 
+ setbit v21 -518673690 0 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ getset v21 -853 
+ bitop xor vnayjyje triqeesz 
+ get nzgkmxpj

@@ -1,0 +1,6 @@
+zunionstore uhnbdhtg -564153445215 uhnbdhtg 
+ set mykey hello 
+ zdiff 8 uhnbdhtg uhnbdhtg uhnbdhtg uhnbdhtg uhnbdhtg uhnbdhtg uhnbdhtg uhnbdhtg 
+ zinter 2 uhnbdhtg uhnbdhtg 
+ mset qdbourmn 1152402751 
+ get mykey

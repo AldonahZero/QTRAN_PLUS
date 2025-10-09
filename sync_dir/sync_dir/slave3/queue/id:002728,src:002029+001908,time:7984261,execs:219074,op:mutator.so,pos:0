@@ -1,0 +1,5 @@
+set v0 2 
+ bitpos v0 0 39 39 bit 
+ bitpos v0 0 9 25 bit 
+ save 
+ get v0

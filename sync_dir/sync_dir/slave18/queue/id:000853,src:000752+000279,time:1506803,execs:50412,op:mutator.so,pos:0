@@ -1,0 +1,5 @@
+set ebvgkrck -10 
+ info latencystats 
+ get ebvgkrck 
+ dump ebvgkrck 
+ save

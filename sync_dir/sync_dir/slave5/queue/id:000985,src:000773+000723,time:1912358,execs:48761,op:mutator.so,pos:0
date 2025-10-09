@@ -1,0 +1,6 @@
+set v0 -9223372036854775808 
+ save 
+ get v0 
+ bgsave 
+ mget v0 v0 v0 v0 
+ getrange v0 615 917

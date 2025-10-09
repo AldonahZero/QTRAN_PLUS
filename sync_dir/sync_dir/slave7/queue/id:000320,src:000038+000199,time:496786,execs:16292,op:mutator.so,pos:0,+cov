@@ -1,0 +1,4 @@
+select 13 
+ set mykey -1 
+ hmset qhllafuc uhrpkavd -9223372036854775808 
+ get mykey

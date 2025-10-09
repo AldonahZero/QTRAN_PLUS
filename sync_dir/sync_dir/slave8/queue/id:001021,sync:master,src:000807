@@ -1,0 +1,6 @@
+set mykey 10 
+ set v0 -909494108478 
+ setbit mykey 474529 1 
+ save 
+ decrby v0 1651985310 
+ get mykey

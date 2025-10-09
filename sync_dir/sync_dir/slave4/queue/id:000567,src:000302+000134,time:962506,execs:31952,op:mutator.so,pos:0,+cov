@@ -1,0 +1,4 @@
+set mykey 1519 
+ hmset fhrsgqae nhrsuavj 9223372036854775808 
+ get mykey 
+ del mykey 

@@ -1,0 +1,10 @@
+pfadd mykey "hello" smvbejzf nyxzfynr 
+ hset eaxejsol bhwulrko 1037 
+ dump eaxejsol 
+ set mykey 2 
+ hincrby eaxejsol bhwulrko 2 
+ hincrbyfloat eaxejsol bhwulrko 1 
+ setbit mykey 2432435113 0 
+ hincrbyfloat eaxejsol bhwulrko 1 
+ pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
+ get mykey

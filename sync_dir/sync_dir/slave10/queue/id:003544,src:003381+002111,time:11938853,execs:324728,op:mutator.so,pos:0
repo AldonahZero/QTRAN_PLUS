@@ -1,0 +1,13 @@
+set mykey -1947844055 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ bitpos mykey 1 12 12 bit 
+ sort mfsvncrq limit 3022132023044442330033400212104223123203243342000333414101110121 10 
+ zremrangebyscore mfsvncrq 302881908 3541384808 
+ get mykey 
+ zremrangebyscore mfsvncrq -241848871224 -547 
+ pfadd dbpkzfom 
+ setbit mykey 474529 1 
+ get mykey 
+ zunionstore gqqorfgf 2 mfsvncrq mfsvncrq 
+ zintercard 2 gqqorfgf mfsvncrq limit 0 
+ save

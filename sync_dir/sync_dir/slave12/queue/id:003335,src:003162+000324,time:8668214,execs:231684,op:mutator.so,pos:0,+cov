@@ -1,0 +1,8 @@
+xadd pbtmpeny * qnoruayj "Hello," 
+ info keyspace 
+ xgroup create pbtmpeny v0 0 
+ xpending pbtmpeny v0 
+ set atifyowf 1 
+ save 
+ xpending pbtmpeny v0 idle 9000 -2879633489 + 10 yxaavztx 
+ get atifyowf

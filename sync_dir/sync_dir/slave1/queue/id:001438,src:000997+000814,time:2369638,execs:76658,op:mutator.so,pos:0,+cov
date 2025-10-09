@@ -1,0 +1,6 @@
+set mykey 692 
+ object freq xdbmdxse 
+ copy mykey ycgvtbur replace 
+ bitfield ycgvtbur overflow fail incrby i25 0 -4224562770 
+ strlen mykey 
+ get mykey

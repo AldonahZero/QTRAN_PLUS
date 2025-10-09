@@ -1,0 +1,4 @@
+set mykey 3090148046 
+ geoadd vrekwiwa 13.00 36.50 pqkikujz 
+ object encoding cmfmndrr 
+ get mykey

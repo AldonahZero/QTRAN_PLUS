@@ -1,0 +1,8 @@
+shutdown abort 
+ set atifyowf 1 
+ incrbyfloat atifyowf -5 
+ setex tncydqgy 2 12024430563 
+ save 
+ expire tncydqgy 100 lt 
+ expire tncydqgy 100 lt 
+ get atifyowf

@@ -1,0 +1,7 @@
+set mykey 3 
+ dump mykey 
+ bitop not xxuevemv mykey 
+ get mykey 
+ bitpos mykey 1 
+ scan 589 type string 
+ save

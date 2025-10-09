@@ -1,0 +1,12 @@
+sadd waeoxbem wivnjuxe 
+ srem waeoxbem wivnjuxe 
+ sunionstore iwshcqfl waeoxbem iwshcqfl 
+ sinter waeoxbem iwshcqfl 
+ set mykey -1947844055 
+ smembers waeoxbem 
+ get mykey 
+ sunion waeoxbem waeoxbem waeoxbem waeoxbem 
+ sunion iwshcqfl 
+ get mykey 
+ sunion waeoxbem waeoxbem iwshcqfl iwshcqfl 
+ save

@@ -1,0 +1,6 @@
+set mykey -1947844055 
+ get mykey 
+ setbit mykey 474529 1 
+ get mykey 
+ save 
+ geoadd rxhuwnnj 12.75 36.50 covgpanv 

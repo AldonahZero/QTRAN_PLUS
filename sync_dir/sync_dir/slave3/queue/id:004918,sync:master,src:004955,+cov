@@ -1,0 +1,10 @@
+set mykey 13121140 
+ hset vpkbrssi kumzfjat 41657 
+ copy kumzfjat v0 
+ hstrlen vpkbrssi v0 
+ xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm 
+ get mykey 
+ hget vpkbrssi v0 
+ info everything 
+ hmget vpkbrssi v0 kumzfjat 
+ save

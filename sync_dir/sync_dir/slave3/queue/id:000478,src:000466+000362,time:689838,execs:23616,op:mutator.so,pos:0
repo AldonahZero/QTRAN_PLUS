@@ -1,0 +1,10 @@
+info default 
+ zrangestore cfncftfi cfncftfi 0 5 byscore limit 0 2 
+ hset eaxejsol bhwulrko 1037 
+ hmget eaxejsol bhwulrko bhwulrko 
+ set mykey 2 
+ rpush czowykxw ptecklws 
+ hincrbyfloat eaxejsol bhwulrko 1 
+ pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
+ rpoplpush czowykxw pnhvbalr 
+ get mykey

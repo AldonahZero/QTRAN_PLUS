@@ -1,0 +1,7 @@
+set mykey 311 
+ zrangestore lguhmiyq lguhmiyq 5 0 byscore rev limit 0 2 
+ geoadd apctyxsn 0 0 ecyrjbwf 
+ get mykey 
+ get mykey 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

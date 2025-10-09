@@ -1,0 +1,6 @@
+set ebvgkrck 2 
+ psetex vrrqnomv 315 33 
+ lcs ebvgkrck vrrqnomv idx minmatchlen 4 withmatchlen 
+ getrange vrrqnomv 1293 903 
+ incrbyfloat ebvgkrck -987656692968 
+ get ebvgkrck

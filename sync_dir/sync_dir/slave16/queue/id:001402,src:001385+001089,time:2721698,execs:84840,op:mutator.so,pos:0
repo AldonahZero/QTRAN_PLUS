@@ -1,0 +1,6 @@
+set atifyowf -15956 
+ copy atifyowf v0 
+ bgsave schedule 
+ save 
+ bitop xor soigkacb v0 atifyowf atifyowf atifyowf v0 v0 v0 atifyowf 
+ get atifyowf

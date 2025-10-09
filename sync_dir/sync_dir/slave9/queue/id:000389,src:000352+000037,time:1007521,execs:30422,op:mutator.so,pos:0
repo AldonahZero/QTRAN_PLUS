@@ -1,0 +1,7 @@
+sunionstore sugvxxcg sugvxxcg sugvxxcg 
+ geoadd prlpsdxt 12.75 154.22324715844508 trqpgcxr 
+ set mykey hello 
+ bitop or xqgburdu mykey mykey mykey mykey mykey mykey 
+ geodist prlpsdxt trqpgcxr trqpgcxr km 
+ sdiff sugvxxcg sugvxxcg sugvxxcg sugvxxcg 
+ get mykey

@@ -1,0 +1,7 @@
+set mykey -1947844055 
+ get mykey 
+ pfadd iknmweqf zelgohmr pfntaoeo 
+ setbit mykey 7 0 
+ bitop xor zyrfkqiq mykey mykey mykey mykey 
+ get mykey 
+ save

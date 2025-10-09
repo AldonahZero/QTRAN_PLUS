@@ -1,0 +1,4 @@
+set ebvgkrck 3101433443114 
+ copy ebvgkrck v0 
+ get ebvgkrck 
+ save

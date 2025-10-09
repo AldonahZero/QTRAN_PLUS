@@ -1,0 +1,4 @@
+zunionstore moztfmde 2 moztfmde moztfmde aggregate min 
+ set mykey hello 
+ get mykey 
+ save

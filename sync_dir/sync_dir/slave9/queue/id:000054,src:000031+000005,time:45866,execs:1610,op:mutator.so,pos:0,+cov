@@ -1,0 +1,5 @@
+sunionstore sugvxxcg sugvxxcg sugvxxcg 
+ geoadd prlpsdxt 12.75 36.995 trqpgcxr 
+ set mykey 3 
+ sdiff sugvxxcg sugvxxcg sugvxxcg sugvxxcg 
+ get mykey

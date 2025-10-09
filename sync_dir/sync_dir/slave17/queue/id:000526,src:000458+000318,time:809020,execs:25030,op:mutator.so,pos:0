@@ -1,0 +1,7 @@
+set byvkovuh 0.410840142243933 
+ dump byvkovuh 
+ bitop or yxqbavlu byvkovuh byvkovuh 
+ get byvkovuh 
+ bitpos byvkovuh 1 
+ scan 589 type string 
+ save

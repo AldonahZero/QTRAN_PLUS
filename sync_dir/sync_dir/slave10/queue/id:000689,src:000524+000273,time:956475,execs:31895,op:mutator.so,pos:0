@@ -1,0 +1,8 @@
+set mykey -16965705105117 
+ xadd jbdjxqbm maxlen ~ 1000 123-1 hognxfnw "Hello," 
+ keys foo* 
+ del jbdjxqbm 
+ save 
+ get mykey 
+ get mykey 
+ incr mykey

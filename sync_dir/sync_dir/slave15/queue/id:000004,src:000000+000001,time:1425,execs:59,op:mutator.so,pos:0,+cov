@@ -1,0 +1,3 @@
+set mykey hello 
+ setex ztbcxsbx 871662918 -479 
+ get mykey

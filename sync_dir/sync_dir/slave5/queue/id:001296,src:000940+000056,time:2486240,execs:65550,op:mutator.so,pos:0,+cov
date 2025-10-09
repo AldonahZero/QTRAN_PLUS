@@ -1,0 +1,6 @@
+hsetnx nbxqjbpm kmvsxosn 41004121123313221144002334141403224324040202303431033304033202100140022313240022303203234003 
+ copy nbxqjbpm v0 
+ set mykey hello 
+ hgetall nbxqjbpm 
+ hincrbyfloat nbxqjbpm kmvsxosn 1 
+ get mykey

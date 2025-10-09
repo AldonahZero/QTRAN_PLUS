@@ -1,0 +1,6 @@
+set mykey 0 
+ get mykey 
+ ttl dlvohzqx 
+ getex mykey 
+ info cpu all 
+ save

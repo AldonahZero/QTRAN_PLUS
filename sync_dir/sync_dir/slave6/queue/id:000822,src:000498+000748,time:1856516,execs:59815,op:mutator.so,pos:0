@@ -1,0 +1,9 @@
+set mykey 41788 
+ rpush czowykxw ptecklws 
+ hsetnx nbxqjbpm kmvsxosn 20 
+ hsetnx v0 v1 43030013030114141211402022303242032111403231044431442104132210012021214203124033344313033344043224224034012041312043100203044404022312144010141112213403223103331 
+ get mykey 
+ hstrlen nbxqjbpm kmvsxosn 
+ rpoplpush czowykxw xbfaqjuv 
+ lmpop 2 czowykxw czowykxw right count 2 
+ hset rfllxsdf iubquuor 0.41507778056668015 

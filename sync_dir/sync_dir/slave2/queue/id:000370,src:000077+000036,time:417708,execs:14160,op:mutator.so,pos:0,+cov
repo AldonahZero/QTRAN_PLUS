@@ -1,0 +1,5 @@
+exists osmalgof 
+ set mykey 3 
+ copy mykey v0 
+ setbit mykey 474529 1 
+ get mykey

@@ -1,0 +1,5 @@
+set mykey 59043849380 
+ set v0 -909494108478 
+ save 
+ decrby v0 1651985310 
+ get mykey

@@ -1,0 +1,5 @@
+hset eaxejsol bhwulrko 1037 
+ hmget eaxejsol bhwulrko bhwulrko 
+ set mykey 2 
+ pfadd jalgwgha "hello" "World" nyxzfynr 
+ get mykey

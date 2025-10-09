@@ -1,0 +1,4 @@
+set mykey 15.087269 
+ psetex elzondzp 123 -3437299314 
+ lcs elzondzp mykey idx minmatchlen 1 withmatchlen 
+ get mykey

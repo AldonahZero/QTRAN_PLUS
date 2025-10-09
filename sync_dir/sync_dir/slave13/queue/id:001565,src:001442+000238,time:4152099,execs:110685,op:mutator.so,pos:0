@@ -1,0 +1,9 @@
+sadd waeoxbem wivnjuxe 
+ set mykey 400 
+ smembers waeoxbem 
+ get mykey 
+ sinterstore pqczlznr waeoxbem 
+ scard waeoxbem 
+ lcs mykey mykey idx minmatchlen 4 withmatchlen 
+ get mykey 
+ save

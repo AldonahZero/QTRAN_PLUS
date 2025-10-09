@@ -1,0 +1,5 @@
+set mykey 3101433443114 
+ get mykey 
+ bitop xor gtmzalcd mykey mykey mykey mykey mykey 
+ scan 976 count 5 
+ object encoding uvryzsxf

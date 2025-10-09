@@ -1,0 +1,6 @@
+set mykey 311 
+ get mykey 
+ select 249 
+ copy mykey v0 db cqcngdpy 
+ hsetnx nbxqjbpm kmvsxosn -853 
+ zdiffstore apuzkzbh 2 apuzkzbh apuzkzbh

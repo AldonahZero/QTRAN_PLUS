@@ -1,0 +1,4 @@
+set mykey 0.32029585089548296 
+ bitfield mykey overflow fail set i4 0 -12 
+ lcs mykey mykey len minmatchlen 4 withmatchlen 
+ get mykey

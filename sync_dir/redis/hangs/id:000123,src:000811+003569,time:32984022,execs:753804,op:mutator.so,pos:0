@@ -1,0 +1,8 @@
+geoadd apctyxsn 0 0 ecyrjbwf 
+ set mykey 4303233220312434302313400044210440230231230 
+ type mspahcqu 
+ geopos apctyxsn ecyrjbwf ecyrjbwf ecyrjbwf 
+ decr mykey 
+ bitfield mykey overflow fail set u10 3512935256 1519 
+ save 
+ get mykey

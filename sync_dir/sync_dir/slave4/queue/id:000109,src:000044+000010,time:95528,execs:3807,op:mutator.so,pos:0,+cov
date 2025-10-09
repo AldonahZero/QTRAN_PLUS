@@ -1,0 +1,3 @@
+set mykey -5 
+ zdiffstore eomkegij 2 eomkegij eomkegij 
+ get mykey

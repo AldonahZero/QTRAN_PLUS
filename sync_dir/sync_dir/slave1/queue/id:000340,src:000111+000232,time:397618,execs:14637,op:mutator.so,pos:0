@@ -1,0 +1,6 @@
+set mykey hello 
+ getex mykey 
+ append ypgikvwu 10243120 
+ mget mykey 
+ mget ypgikvwu mykey 
+ get mykey

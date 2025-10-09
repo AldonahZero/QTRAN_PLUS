@@ -1,0 +1,3 @@
+set mykey hello 
+ getex mykey 
+ get mykey

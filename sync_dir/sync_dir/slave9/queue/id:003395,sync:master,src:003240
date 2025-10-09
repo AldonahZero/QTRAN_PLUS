@@ -1,0 +1,11 @@
+sadd waeoxbem wivnjuxe 
+ srem waeoxbem njauapzb ayyfdhez iwvsthqc rtyaegfk 
+ sdiffstore vdxxciyw waeoxbem vdxxciyw vdxxciyw 
+ sunionstore iwshcqfl waeoxbem iwshcqfl 
+ set mykey -1947844055 
+ smembers waeoxbem 
+ get mykey 
+ get mykey 
+ save 
+ sdiffstore v1 waeoxbem vdxxciyw vdxxciyw vdxxciyw 
+ zrangestore v0 v0 0 -1 limit 1 2

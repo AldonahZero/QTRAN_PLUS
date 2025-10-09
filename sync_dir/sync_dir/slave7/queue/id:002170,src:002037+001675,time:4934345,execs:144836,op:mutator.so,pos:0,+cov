@@ -1,0 +1,8 @@
+zadd mfsvncrq lt incr 33004443334424324132300141132443321231124130204124203324123 bexnlycc 
+ object encoding rwzbgekl 
+ geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
+ zscore mfsvncrq yqzwjbsb 
+ set mykey hello 
+ zrangestore eqahirrh mfsvncrq 0 -1 
+ strlen mykey 
+ get mykey

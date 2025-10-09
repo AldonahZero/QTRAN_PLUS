@@ -1,0 +1,5 @@
+set yqxgzwuh 692 
+ copy yqxgzwuh v0 replace 
+ bitfield yqxgzwuh overflow fail incrby i35 0 -4224562770 
+ strlen yqxgzwuh 
+ get yqxgzwuh

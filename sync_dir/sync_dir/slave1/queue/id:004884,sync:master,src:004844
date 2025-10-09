@@ -1,0 +1,8 @@
+set mykey -219 
+ bgsave schedule 
+ save 
+ get mykey 
+ bgsave schedule 
+ bgsave schedule 
+ mget mykey mykey mykey mykey 
+ getrange mykey 615 917

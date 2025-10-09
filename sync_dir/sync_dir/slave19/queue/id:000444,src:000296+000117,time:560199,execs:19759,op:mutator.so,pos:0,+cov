@@ -1,0 +1,5 @@
+set mykey -853 
+ lpush jqknbzjm xbtoynzn 
+ del jqknbzjm 
+ select -2213824273 
+ get mykey

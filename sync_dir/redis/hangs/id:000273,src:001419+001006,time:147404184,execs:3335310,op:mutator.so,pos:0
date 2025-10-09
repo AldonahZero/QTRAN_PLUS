@@ -1,0 +1,10 @@
+set mykey -1947844055 
+ bitpos mykey 1 12 12 bit 
+ get mykey 
+ pfadd dbpkzfom 
+ slowlog get 0 
+ setbit mykey 1873134995 1 
+ bitop or ewxrjkga mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey 
+ get mykey 
+ object refcount gpknrlup 
+ save

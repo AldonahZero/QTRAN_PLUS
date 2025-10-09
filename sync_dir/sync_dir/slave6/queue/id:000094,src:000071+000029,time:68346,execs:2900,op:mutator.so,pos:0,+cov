@@ -1,0 +1,4 @@
+set mykey "Hello," 
+ getrange mykey 227 821 
+ lcs mykey mykey len idx minmatchlen 4 withmatchlen 
+ get mykey

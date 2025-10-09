@@ -1,0 +1,16 @@
+info default 
+ hset eaxejsol bhwulrko 1037 
+ expireat isnghrlz 1672350969 
+ pexpire bhwulrko 100 
+ hmget eaxejsol bhwulrko bhwulrko 
+ set mykey 2 
+ rpush czowykxw ptecklws 
+ hincrbyfloat eaxejsol bhwulrko 1 
+ pfadd pnhvbalr erunuxpp smvbejzf nyxzfynr 
+ sort czowykxw limit 0 10 
+ bitfield mykey overflow fail incrby i35 0 -4224562770 
+ rpoplpush czowykxw pnhvbalr 
+ lrange pnhvbalr 0 1 
+ lmpop 2 pnhvbalr pnhvbalr right count 3 
+ lindex pnhvbalr 82 
+ get mykey

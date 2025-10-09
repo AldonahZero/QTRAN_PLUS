@@ -1,0 +1,8 @@
+set mykey 311 
+ incrbyfloat mykey 376 
+ get mykey 
+ setbit mykey 1954664205 1 
+ getrange mykey 887 -541896984699 
+ get mykey 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

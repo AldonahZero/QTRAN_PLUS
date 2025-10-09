@@ -1,0 +1,5 @@
+set mykey -130831450750 
+ get mykey 
+ getex mykey 
+ incrby mykey -980 
+ psubscribe bar* 

@@ -1,0 +1,4 @@
+set nnseeina 185256 
+ copy nnseeina v0 
+ bitop xor vnayjyje nnseeina 
+ get nnseeina

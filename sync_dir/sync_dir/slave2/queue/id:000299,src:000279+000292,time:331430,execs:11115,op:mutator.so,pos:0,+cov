@@ -1,0 +1,8 @@
+zdiffstore dfgxahpo 3 dfgxahpo dfgxahpo dfgxahpo 
+ set mykey 5009431 
+ getset mykey -205 
+ zrandmember dfgxahpo 3 
+ sdiffstore lrkqafqr lrkqafqr lrkqafqr lrkqafqr 
+ sdiffstore vdxxciyw vdxxciyw vdxxciyw vdxxciyw 
+ zdiff 0 dfgxahpo 
+ get mykey

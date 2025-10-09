@@ -1,0 +1,8 @@
+set mykey 0.8284480026124269 
+ rpush ukbzhzcm bkfxggih 
+ linsert ukbzhzcm after kbdshcel dbjcavlt 
+ save 
+ lpos ukbzhzcm pcebpjol 
+ rpop ukbzhzcm 
+ zdiffstore dfgxahpo 3 dfgxahpo dfgxahpo dfgxahpo 
+ get mykey

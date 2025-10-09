@@ -1,0 +1,7 @@
+lpush kfxdvljk rptpxozi xqfdftkh 
+ set mykey 15.087269 
+ rpop kfxdvljk 3128 
+ mget mykey mykey mykey mykey 
+ rpop kfxdvljk 
+ lcs mykey mykey 
+ get mykey

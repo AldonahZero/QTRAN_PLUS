@@ -1,0 +1,4 @@
+set mykey 41788 
+ get mykey 
+ expire mykey 9223370399119966 
+ save

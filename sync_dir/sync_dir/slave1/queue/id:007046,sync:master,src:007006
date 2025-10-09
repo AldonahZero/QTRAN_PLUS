@@ -1,0 +1,9 @@
+xadd kvnrwmku 1672351063138-4 mzklxdll "Hello," 
+ info latencystats 
+ xadd jbdjxqbm maxlen ~ 0 123-1 hognxfnw "Hello," 
+ xtrim kvnrwmku minid 1000 
+ set atifyowf 1 
+ xdel kvnrwmku 1672351063138-4 
+ xdel jbdjxqbm 1672351063138-4 
+ save 
+ get atifyowf

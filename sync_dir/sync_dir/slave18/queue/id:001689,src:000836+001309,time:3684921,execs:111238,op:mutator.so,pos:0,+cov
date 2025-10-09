@@ -1,0 +1,7 @@
+set mykey 41788 
+ info all 
+ xadd kvnrwmku 123-1 mzklxdll "Hello," 
+ get mykey 
+ xautoclaim kvnrwmku xvphynbr odlgomhl 123123123 0-0 count 0 
+ info default default 
+ save

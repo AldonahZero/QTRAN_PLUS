@@ -1,0 +1,8 @@
+zadd pqfcfqcy 34 qrxzgoil 
+ object encoding rwzbgekl 
+ zintercard 2 pqfcfqcy pqfcfqcy limit 123 
+ zinterstore ygwlbjwg 3 pqfcfqcy pqfcfqcy pqfcfqcy weights 0 -371 1 
+ mset jmvjdgip 533 
+ set mykey hello 
+ strlen mykey 
+ get mykey

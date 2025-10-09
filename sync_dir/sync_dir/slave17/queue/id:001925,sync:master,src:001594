@@ -1,0 +1,8 @@
+zunionstore uhnbdhtg -564153445215 uhnbdhtg 
+ xadd pbtmpeny 83 qnoruayj -70 
+ xinfo stream pbtmpeny 
+ xrange pbtmpeny 363 1496 
+ set mykey hello 
+ copy uhnbdhtg v0 
+ xread streams pbtmpeny 868 
+ get mykey

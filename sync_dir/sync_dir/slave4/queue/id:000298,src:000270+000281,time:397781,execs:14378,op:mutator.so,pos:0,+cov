@@ -1,0 +1,4 @@
+set mykey 15.087269 
+ incr mykey 
+ lcs mykey mykey 
+ get mykey

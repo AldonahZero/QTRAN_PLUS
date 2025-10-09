@@ -1,0 +1,4 @@
+set mykey 9477 
+ getex mykey 
+ copy mykey v0 db cqcngdpy 
+ get mykey

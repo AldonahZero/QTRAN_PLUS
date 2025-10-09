@@ -1,0 +1,4 @@
+set lkfqujtp 0.6807728198733054 
+ incrbyfloat lkfqujtp -816 
+ save 
+ get lkfqujtp

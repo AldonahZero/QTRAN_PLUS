@@ -1,0 +1,5 @@
+set mykey 692 
+ copy mykey ycgvtbur replace 
+ bitfield ycgvtbur overflow wrap incrby u9 0 695 
+ strlen mykey 
+ get mykey

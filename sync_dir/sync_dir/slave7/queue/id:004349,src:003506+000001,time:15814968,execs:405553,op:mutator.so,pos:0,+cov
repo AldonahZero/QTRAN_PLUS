@@ -1,0 +1,12 @@
+set wtqtwhmc 0.52120220173206278 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ zincrby mfsvncrq -inf ymtynmse 
+ bitpos wtqtwhmc 1 12 12 bit 
+ sort mfsvncrq alpha 
+ get wtqtwhmc 
+ pfadd dbpkzfom 
+ zremrangebyrank mfsvncrq 1 244222380 
+ setbit wtqtwhmc 474529 1 
+ get wtqtwhmc 
+ zunion 2 mfsvncrq mfsvncrq aggregate min withscores 
+ save

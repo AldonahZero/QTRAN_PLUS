@@ -1,0 +1,7 @@
+xadd kvnrwmku 0-0 mzklxdll "Hello," 
+ info keyspace 
+ xgroup create kvnrwmku v0 0 
+ xpending kvnrwmku v0 
+ set atifyowf 1 
+ save 
+ get atifyowf

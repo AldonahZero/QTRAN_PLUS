@@ -1,0 +1,10 @@
+xadd v1 maxlen ~ 0 123-1 hognxfnw "Hello," 
+ xrevrange v1 119 37999704017 
+ xtrim v1 minid 1000 
+ xtrim v1 minid 1000 
+ info latencystats 
+ xtrim v1 minid 1000 
+ xtrim v1 minid 1000 
+ set atifyowf 1 
+ save 
+ get atifyowf

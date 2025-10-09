@@ -1,0 +1,4 @@
+set mykey 190425890380385 
+ rpush ukbzhzcm bkfxggih 
+ save 
+ get mykey

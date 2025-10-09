@@ -1,0 +1,5 @@
+set mykey 24 
+ copy mykey v0 db cqcngdpy 
+ save 
+ bitop and hozsqpxd v0 mykey v0 v0 
+ get mykey

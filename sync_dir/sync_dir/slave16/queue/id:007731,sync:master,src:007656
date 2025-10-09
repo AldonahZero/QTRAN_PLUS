@@ -1,0 +1,12 @@
+geoadd ussfykoq 12.758489 38.788135 "world" 17.241510 38.788135 yqcyaxfl 
+ save 
+ geosearchstore vpwluycf ussfykoq frommember "world" bybox 1 1 m 
+ georadius ussfykoq 2331021443013044143010113231221224132322410321031331122412401342403313302331303221430414433004402033421202321342223244213101123204141004224402414401102040221132143304232311040331004144033001203240033133221300203104303030041412144 38.115556 500 km store xutmxmkt 
+ exists umuloaaf 
+ geopos ussfykoq "world" "world" "world" "world" "world" "world" "world" "world" "world" "world" "world" "world" "world" "world" "world" "world" "world" 
+ set ubjcxcxl hello 
+ geosearch ussfykoq frommember "world" bybox 6596 3128 m 
+ exists kxjftxld 
+ copy ussfykoq vpwluycf 
+ exists fzemrnjb 
+ get ubjcxcxl

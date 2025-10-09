@@ -1,0 +1,4 @@
+set mykey hello 
+ setbit mykey 109990 0 
+ bitop and xqgburdu mykey mykey mykey mykey mykey mykey 
+ get mykey

@@ -1,0 +1,5 @@
+sinterstore khjmraoa khjmraoa khjmraoa 
+ set mykey 311 
+ zrangestore lguhmiyq lguhmiyq 5 0 byscore rev limit 0 2 
+ get mykey 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

@@ -1,0 +1,6 @@
+zdiffstore wtxnpcue 4 wtxnpcue wtxnpcue wtxnpcue wtxnpcue 
+ set mykey 41788 
+ getset mykey -205 
+ sdiffstore lrkqafqr lrkqafqr lrkqafqr lrkqafqr 
+ sdiffstore vdxxciyw vdxxciyw vdxxciyw vdxxciyw 
+ get mykey

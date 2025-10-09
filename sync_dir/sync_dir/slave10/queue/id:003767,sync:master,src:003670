@@ -1,0 +1,10 @@
+xadd pbtmpeny -128711219 qnoruayj "Hello," 
+ info keyspace 
+ xtrim pbtmpeny minid 1000 
+ xgroup create pbtmpeny v0 0 
+ xgroup createconsumer pbtmpeny v0 v1 
+ xinfo groups pbtmpeny 
+ xinfo consumers pbtmpeny v0 
+ set atifyowf 1 
+ save 
+ get atifyowf

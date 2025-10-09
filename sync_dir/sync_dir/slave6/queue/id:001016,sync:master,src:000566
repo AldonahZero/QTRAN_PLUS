@@ -1,0 +1,7 @@
+hset eaxejsol bhwulrko 94964 
+ hset tfpyhbbg jhelnvce 512461 
+ set mykey 2 
+ hsetnx wqydsukt guwchiwu ssnvzsid 
+ setbit mykey 1603 1 
+ mget mykey mykey mykey 
+ get mykey

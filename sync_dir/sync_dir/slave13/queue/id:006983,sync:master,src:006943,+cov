@@ -1,0 +1,3 @@
+set mykey "Hello," 
+ getbit mykey 257854938 
+ get mykey

@@ -1,0 +1,5 @@
+set ebvgkrck 4806867732670 
+ bitpos ebvgkrck 1 37 37 bit 
+ copy ebvgkrck v0 db cqcngdpy 
+ mget v0 v0 
+ get v0

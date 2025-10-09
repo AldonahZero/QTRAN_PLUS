@@ -1,0 +1,7 @@
+set mykey -1 
+ msetnx nzgkmxpj fgqixmul jlgjivks gftsakln ldvuftez 20 
+ getset mykey -853 
+ setnx tamgwlip 366402871 
+ info everything errorstats 
+ info cpu all 
+ get mykey

@@ -1,0 +1,7 @@
+set mykey -1947844055 
+ bitpos mykey -360441310033 12 12 bit 
+ get mykey 
+ pfadd dbpkzfom 
+ setbit mykey 474529 1 
+ get mykey 
+ save

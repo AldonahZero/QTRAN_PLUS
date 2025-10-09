@@ -1,0 +1,9 @@
+object encoding rwzbgekl 
+ zinterstore zcfialgy 2 zcfialgy zcfialgy 
+ zremrangebyscore zcfialgy -750 734 
+ zremrangebyrank zcfialgy 923963394 -792008660 
+ set mykey hello 
+ zremrangebyscore zcfialgy -750 734 
+ zmpop 2 zcfialgy zcfialgy min 
+ zremrangebyscore zcfialgy -750 734 
+ get mykey

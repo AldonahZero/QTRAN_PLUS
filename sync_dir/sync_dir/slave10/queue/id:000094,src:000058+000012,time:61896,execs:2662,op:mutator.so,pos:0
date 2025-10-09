@@ -1,0 +1,4 @@
+set mykey 851130245 
+ get mykey 
+ mget mykey mykey 
+ zadd guzmtqtb 4 zjqyntgx 

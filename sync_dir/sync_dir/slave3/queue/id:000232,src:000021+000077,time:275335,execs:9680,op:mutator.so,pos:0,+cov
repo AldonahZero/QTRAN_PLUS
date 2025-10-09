@@ -1,0 +1,3 @@
+set mykey 41788 
+ getbit qyuayqtx -564153445215 
+ get mykey

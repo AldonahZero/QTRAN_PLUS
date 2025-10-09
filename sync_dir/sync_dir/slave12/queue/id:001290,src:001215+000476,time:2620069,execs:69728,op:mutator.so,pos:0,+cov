@@ -1,0 +1,10 @@
+set mykey -1947844055 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ zinterstore hszuawdu 2 mfsvncrq hszuawdu weights 2 3 
+ bitpos mykey 1 12 12 bit 
+ get mykey 
+ pfadd dbpkzfom 
+ setbit mykey 474529 1 
+ zscan mfsvncrq 96 
+ get mykey 
+ save

@@ -1,0 +1,6 @@
+set mykey hello 
+ zadd lukpltvt 5826 vgjrzjoy 
+ sort lukpltvt 
+ zrandmember lukpltvt -20 withscores 
+ sinterstore jiwtkybc jiwtkybc jiwtkybc jiwtkybc 
+ get mykey

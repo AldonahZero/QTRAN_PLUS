@@ -1,0 +1,8 @@
+set mykey 5214 
+ get mykey 
+ lcs mykey mykey len idx minmatchlen 4 withmatchlen 
+ pfadd dbpkzfom 
+ setbit mykey 474529 1 
+ get mykey 
+ bitfield mykey overflow wrap incrby i37 0 37999704017 
+ save

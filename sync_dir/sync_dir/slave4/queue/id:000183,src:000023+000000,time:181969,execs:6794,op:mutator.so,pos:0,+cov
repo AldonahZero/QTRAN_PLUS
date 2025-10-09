@@ -1,0 +1,3 @@
+set mykey 430 
+ get mykey 
+ del mykey 

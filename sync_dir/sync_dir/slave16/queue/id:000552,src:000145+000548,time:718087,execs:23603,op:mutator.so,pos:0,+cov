@@ -1,0 +1,5 @@
+set mykey 4303233220312434302313400044210440230231230 
+ get mykey 
+ incrbyfloat mykey -75299881433 
+ hset etqpfzfm njabbctf 41657 
+ psubscribe bar* 

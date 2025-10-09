@@ -1,0 +1,5 @@
+set mykey hello 
+ setex ztbcxsbx 9223372036854776 -479 
+ geoadd cqubszoy 13.361389 179.5 acjnpjwy 15.087269 37.502669 fekagtxv 
+ geohash cqubszoy bfpnqfse acjnpjwy 
+ get mykey

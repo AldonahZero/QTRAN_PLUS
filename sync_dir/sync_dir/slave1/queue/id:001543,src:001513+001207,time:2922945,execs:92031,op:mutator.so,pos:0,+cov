@@ -1,0 +1,8 @@
+set mykey 1302230201330004203204022312341214 
+ zadd ojhkbklj -653 avnctvuo 
+ sort ojhkbklj store godhjfil 
+ zscan ojhkbklj 4303233220312434302313400044210440230231230 
+ zunionstore szndqvoq 2 ojhkbklj szndqvoq 
+ bitop and soigkacb mykey mykey mykey 
+ zrandmember ojhkbklj -20 
+ get mykey

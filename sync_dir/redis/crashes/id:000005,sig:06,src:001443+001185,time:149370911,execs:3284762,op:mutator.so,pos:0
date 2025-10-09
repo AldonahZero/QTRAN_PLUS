@@ -1,0 +1,10 @@
+hsetnx wqydsukt guwchiwu 742477 
+ hscan wqydsukt -911 
+ hrandfield wqydsukt -3 
+ xadd pbtmpeny * qnoruayj "Hello," 
+ set mykey 3 
+ xrange pbtmpeny -907475635831 728 
+ xinfo stream pbtmpeny full 
+ hrandfield wqydsukt -9223372036854770000 withvalues 
+ copy mykey v0 
+ get mykey

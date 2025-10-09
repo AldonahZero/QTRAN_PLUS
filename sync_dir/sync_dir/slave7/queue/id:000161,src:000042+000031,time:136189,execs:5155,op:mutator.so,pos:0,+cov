@@ -1,0 +1,4 @@
+set mykey 306 
+ hmset rwwxotsj pvcpgagg 0 
+ getex mykey 
+ get mykey

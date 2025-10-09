@@ -1,0 +1,9 @@
+set atifyowf 1 
+ incrbyfloat atifyowf -5 
+ bitfield atifyowf overflow fail set u44 2537333662 4806867732670 
+ setex tncydqgy 273 12024430563 
+ bitfield tncydqgy overflow fail set i4 0 -12 
+ zunionstore ozmbxkpt 2 ozmbxkpt ozmbxkpt weights 2 3 aggregate max 
+ save 
+ pfadd tncydqgy zelgohmr gjbqrlnm 
+ get atifyowf

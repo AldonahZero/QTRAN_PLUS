@@ -1,0 +1,8 @@
+hset eaxejsol bhwulrko 94964 
+ zrangestore twrfmpbc twrfmpbc 0 -1 
+ hset tfpyhbbg jhelnvce 512461 
+ xadd jbdjxqbm maxlen ~ 1000 123-1 hognxfnw "Hello," 
+ set mykey 2 
+ del eaxejsol jbdjxqbm tfpyhbbg 
+ setbit mykey 1603 1 
+ get mykey

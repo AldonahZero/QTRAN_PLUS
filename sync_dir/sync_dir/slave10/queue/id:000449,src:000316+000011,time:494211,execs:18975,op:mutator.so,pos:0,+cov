@@ -1,0 +1,7 @@
+set mykey -1615510574 
+ set v0 353926132597 
+ lpush mfgdbqzi ymrnmwug 
+ setbit mykey 1887718428 0 
+ get mykey 
+ lmove mfgdbqzi mjlnxcti left right 
+ object encoding uvryzsxf

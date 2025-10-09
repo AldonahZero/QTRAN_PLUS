@@ -1,0 +1,4 @@
+set mykey hello 
+ get mykey 
+ save 
+ geoadd apctyxsn 0 0 ecyrjbwf 

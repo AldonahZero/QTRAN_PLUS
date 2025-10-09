@@ -1,0 +1,7 @@
+hsetnx nbxqjbpm kmvsxosn -665 
+ set mykey hello 
+ hgetall nbxqjbpm 
+ dump kmvsxosn 
+ hvals nbxqjbpm 
+ hincrbyfloat nbxqjbpm kmvsxosn 1 
+ get mykey

@@ -1,0 +1,21 @@
+set v0 353926132597 
+ zadd rwwxotsj lt incr 1 sjhvpked 
+ zincrby rwwxotsj 2 ltrxeema 
+ bitpos v0 1 12 12 bit 
+ sort rwwxotsj alpha 
+ zincrby rwwxotsj 1 ymtynmse 
+ zincrby rwwxotsj 1 nzdyunpb 
+ zincrby rwwxotsj -5 swyuijfq 
+ get v0 
+ zdiffstore mvtbwffp 2 rwwxotsj mvtbwffp 
+ pfadd dbpkzfom 
+ zdiffstore v1 2 v1 mvtbwffp 
+ zdiff 7 mvtbwffp rwwxotsj rwwxotsj v1 rwwxotsj rwwxotsj rwwxotsj 
+ setbit v0 474529 1 
+ get v0 
+ zunion 2 mvtbwffp rwwxotsj weights 1 1 aggregate max withscores 
+ zinter 2 rwwxotsj mvtbwffp aggregate max withscores 
+ bgsave schedule 
+ zremrangebyscore rwwxotsj -935277743 1334033032202040 
+ shutdown nosave 
+ save

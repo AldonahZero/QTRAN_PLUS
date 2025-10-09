@@ -1,0 +1,11 @@
+hset ybfrqahd kbhgtyjv 10241231341031203420214422113031321304032040412101323223440100334334214432421232140111422434321134 
+ hkeys ybfrqahd 
+ hvals ybfrqahd 
+ hrandfield ybfrqahd 
+ set mykey 13033323022411214443443303234220120324324344401012232221143311233 
+ object encoding cmfmndrr 
+ hkeys ybfrqahd 
+ lcs mykey mykey 
+ geoadd defhyxzz -45 65.50900022111811438208 vnjyzinq 90 85.0511 atulldgp 
+ hgetall ybfrqahd 
+ get mykey

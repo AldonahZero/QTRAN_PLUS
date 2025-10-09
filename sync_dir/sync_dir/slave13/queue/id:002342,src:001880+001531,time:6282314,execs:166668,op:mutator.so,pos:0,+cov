@@ -1,0 +1,7 @@
+lpush zdnjslcy sicnwujw 
+ set mykey 15.087269 
+ mget mykey mykey mykey mykey 
+ info errorstats 
+ lcs mykey mykey 
+ lrange zdnjslcy 20220044110400301200030414002221202401144302121102214220143414121422201404321434024 -331158402995 
+ get mykey

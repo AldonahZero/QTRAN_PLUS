@@ -1,0 +1,5 @@
+set v0 2 
+ save 
+ get v0 
+ bgsave 
+ getrange v0 615 917

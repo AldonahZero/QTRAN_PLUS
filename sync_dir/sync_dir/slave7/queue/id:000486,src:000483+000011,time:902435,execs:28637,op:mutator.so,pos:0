@@ -1,0 +1,7 @@
+geoadd vrekwiwa 13.00 36.50 pqkikujz 
+ zunionstore gqqorfgf -465 gqqorfgf gqqorfgf 
+ set mykey 306 
+ zscore gqqorfgf rsfslaiw 
+ bitop or gvtzczpz mykey mykey mykey 
+ geopos vrekwiwa pqkikujz pqkikujz pqkikujz 
+ get mykey

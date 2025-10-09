@@ -1,0 +1,4 @@
+set mykey -1000 
+ info everything 
+ get mykey 
+ save

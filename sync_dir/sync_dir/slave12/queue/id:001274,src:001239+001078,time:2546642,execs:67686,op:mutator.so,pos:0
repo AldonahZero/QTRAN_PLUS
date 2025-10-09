@@ -1,0 +1,9 @@
+set kcppjyka 0.71402199692745782 
+ bitpos kcppjyka 1 15 67 bit 
+ bitpos kcppjyka 0 7 25 bit 
+ incrbyfloat kcppjyka 376 
+ get kcppjyka 
+ setbit kcppjyka 7 0 
+ get kcppjyka 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

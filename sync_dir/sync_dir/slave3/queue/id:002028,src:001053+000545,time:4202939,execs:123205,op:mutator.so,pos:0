@@ -1,0 +1,5 @@
+set kcppjyka 0.71402199692745782 
+ bitpos kcppjyka 0 39 39 bit 
+ bitpos kcppjyka 0 9 25 bit 
+ save 
+ get kcppjyka

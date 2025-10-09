@@ -1,0 +1,6 @@
+set mykey hello 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ getset mykey -853 
+ mget ldvuftez mykey ldvuftez triqeesz 
+ bitop not soigkacb mykey ldvuftez ldvuftez 
+ get mykey

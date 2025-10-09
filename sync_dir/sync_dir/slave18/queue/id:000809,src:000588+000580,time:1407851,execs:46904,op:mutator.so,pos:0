@@ -1,0 +1,8 @@
+set mykey -37 
+ zrangestore rpondvdz rpondvdz 0 -1 limit 1 2 
+ setnx gbjlvscx -37 
+ zremrangebyrank rpondvdz 440243323433341321034433113130221031341302031132233004020043030024400244140042104140014 -393807523601 
+ getex gbjlvscx 
+ setex mxwzywtg 10000 jqgqohsw 
+ set v0 986906 
+ get mykey

@@ -1,0 +1,4 @@
+xadd ozsnpvdy 123 rqwzplos "Hello," 
+ scan 11 type string 
+ set mykey hello 
+ get mykey

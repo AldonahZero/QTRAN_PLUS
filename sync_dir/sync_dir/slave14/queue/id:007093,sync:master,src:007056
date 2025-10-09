@@ -1,0 +1,13 @@
+set mykey 41788 
+ info all 
+ xadd kvnrwmku 123-1 mzklxdll "Hello," 
+ bgsave 
+ expire mykey 2 
+ xrevrange kvnrwmku -553 - count 1 
+ info cpu all 
+ info all 
+ get mykey 
+ info cpu default 
+ info all default 
+ info all default 
+ save

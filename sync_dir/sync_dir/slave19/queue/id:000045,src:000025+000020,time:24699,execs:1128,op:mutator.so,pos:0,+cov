@@ -1,0 +1,3 @@
+set mykey 28 
+ get mykey 
+ ttl wrzagplh

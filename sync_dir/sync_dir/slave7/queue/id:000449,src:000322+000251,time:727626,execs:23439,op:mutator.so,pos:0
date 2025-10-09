@@ -1,0 +1,7 @@
+geoadd apctyxsn 0 0 ecyrjbwf 
+ set mykey 306 
+ type mspahcqu 
+ geopos apctyxsn ecyrjbwf ecyrjbwf ecyrjbwf 
+ decr mykey 
+ save 
+ get mykey

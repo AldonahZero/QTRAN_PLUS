@@ -1,0 +1,7 @@
+set v0 -9223372036854775808 
+ incrbyfloat v0 -5 
+ save 
+ incr v0 
+ bitfield v0 overflow wrap set i30 1152402751 -255272035 
+ bitpos v0 1 12 -261649974743 bit 
+ get v0

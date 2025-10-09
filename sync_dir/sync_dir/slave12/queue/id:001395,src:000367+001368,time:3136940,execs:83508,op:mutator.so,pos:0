@@ -1,0 +1,7 @@
+set mykey -9223372036854775808 
+ set v0 -3437299314 
+ get mykey 
+ getset mykey -1766619827 
+ get mykey 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

@@ -1,0 +1,6 @@
+set mykey hello 
+ zinterstore zjxdmzot 2 zjxdmzot zjxdmzot aggregate max 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ zunionstore ozmbxkpt 2 ozmbxkpt ozmbxkpt weights 2 3 aggregate max 
+ zunionstore patbwvok 2 patbwvok zjxdmzot aggregate max 
+ get mykey

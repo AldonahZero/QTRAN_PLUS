@@ -1,0 +1,3 @@
+set mykey 493763497 
+ get mykey 
+ getset mykey 1997581058

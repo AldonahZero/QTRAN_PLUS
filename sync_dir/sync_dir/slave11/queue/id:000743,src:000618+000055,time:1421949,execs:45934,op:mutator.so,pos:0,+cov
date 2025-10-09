@@ -1,0 +1,8 @@
+set mykey 1140 
+ bitfield mykey overflow fail set u11 0 -12 
+ save 
+ setbit mykey -518673690 0 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ getset mykey -853 
+ bitop xor vnayjyje triqeesz 
+ get mykey

@@ -1,0 +1,6 @@
+set mykey 37.00 
+ rpush ukbzhzcm bkfxggih 
+ save 
+ save 
+ zdiffstore dfgxahpo 3 dfgxahpo dfgxahpo dfgxahpo 
+ get mykey

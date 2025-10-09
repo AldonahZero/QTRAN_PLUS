@@ -1,0 +1,10 @@
+pfadd mykey "hello" wibqsopn v104 klxmnqhn sltjtveu cqvidjzw ckehfpxv rmjzogox erhrygyu ckgvwjnx gjbqrlnm ezixiaeg klxmnqhn sltjtveu cqvidjzw ltrxeema nbjrszep klxmnqhn edozyjjz cqvidjzw ckehfpxv rmjzogox erhrygyu nyhvzugh gjbqrlnm nyxzfynr 
+ hset mmbdyavh woiaydqs -15956 
+ pfcount mykey 
+ dump woiaydqs 
+ set mykey 2 
+ hincrby mmbdyavh woiaydqs -562 
+ hincrbyfloat mmbdyavh woiaydqs 1 
+ hincrbyfloat mmbdyavh woiaydqs 1 
+ pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
+ get mykey

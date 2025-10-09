@@ -1,0 +1,5 @@
+set wkopvyjn 980792 
+ lcs wkopvyjn wkopvyjn 
+ bitop xor gtmzalcd wkopvyjn wkopvyjn wkopvyjn wkopvyjn wkopvyjn 
+ get wkopvyjn 
+ save

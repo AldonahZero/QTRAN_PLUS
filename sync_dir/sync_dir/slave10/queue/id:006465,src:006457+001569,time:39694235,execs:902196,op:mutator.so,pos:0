@@ -1,0 +1,18 @@
+xadd pbtmpeny 10431401331334134313341433222002413042242132223031324212303034340304013411203021103240312432222322201104423232144123312312410101311331142424222014302323314433023140122113124240032212240341231430004201414124132431343203223443010212 qnoruayj 41788 
+ info keyspace 
+ xgroup create pbtmpeny cghcphip 0 
+ xpending pbtmpeny cghcphip 
+ set atifyowf 1 
+ save 
+ xinfo stream pbtmpeny 
+ copy pbtmpeny v3 
+ xclaim pbtmpeny cghcphip qcdrshmz 0 1-0 force 
+ xpending pbtmpeny cghcphip 
+ xpending pbtmpeny cghcphip 
+ xinfo stream pbtmpeny full 
+ copy pbtmpeny v0 
+ dump pbtmpeny 
+ copy pbtmpeny v1 
+ copy v0 v2 
+ xclaim pbtmpeny cghcphip qcdrshmz 256 1-0 force 
+ get atifyowf

@@ -1,0 +1,4 @@
+object encoding rwzbgekl 
+ set mykey hello 
+ copy mykey ubjuqmxi replace 
+ get mykey

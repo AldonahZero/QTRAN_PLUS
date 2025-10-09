@@ -1,0 +1,9 @@
+set mykey 140244133014011140103024420341240422110004223143 
+ get mykey 
+ pfadd iknmweqf zelgohmr pfntaoeo 
+ setbit mykey 1421721372 1 
+ bitop xor vnayjyje mykey 
+ get mykey 
+ copy mykey v0 
+ save 
+ bitfield v0 overflow wrap incrby i22 0 -2479703 

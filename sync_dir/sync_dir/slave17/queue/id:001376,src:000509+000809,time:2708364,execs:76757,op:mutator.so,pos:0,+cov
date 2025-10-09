@@ -1,0 +1,6 @@
+set mykey hello 
+ zadd lukpltvt 630 vgjrzjoy 
+ sort lukpltvt limit 0 10 
+ zremrangebyrank lukpltvt 1960042991 747 
+ zpopmin lukpltvt 
+ get mykey

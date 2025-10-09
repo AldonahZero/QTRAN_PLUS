@@ -1,0 +1,7 @@
+zadd pqfcfqcy 34 qrxzgoil 
+ object encoding rwzbgekl 
+ zinterstore lrgtpepg 3 pqfcfqcy pqfcfqcy lrgtpepg weights 0 0 1 
+ mset jmvjdgip 533 
+ set mykey hello 
+ strlen mykey 
+ get mykey

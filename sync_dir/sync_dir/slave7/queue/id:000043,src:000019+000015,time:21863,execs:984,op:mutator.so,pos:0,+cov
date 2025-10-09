@@ -1,0 +1,3 @@
+set mykey 306 
+ hmset hvuspbal puucxmde 9223372036854775808 
+ get mykey

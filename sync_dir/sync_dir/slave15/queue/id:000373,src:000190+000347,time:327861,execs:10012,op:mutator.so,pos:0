@@ -1,0 +1,6 @@
+set mykey 0 
+ get mykey 
+ getex mykey 
+ info cpu default 
+ bitop or gvtzczpz mykey mykey mykey 
+ save

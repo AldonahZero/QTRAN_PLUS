@@ -1,0 +1,5 @@
+hset qdbfnnxy nobplsit 0.43734659228350342 
+ set mykey 31543984 
+ hincrby qdbfnnxy nobplsit 3 
+ setbit mykey 615 0 
+ get mykey

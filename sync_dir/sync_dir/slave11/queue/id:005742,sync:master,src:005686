@@ -1,0 +1,9 @@
+set mykey 12024430563 
+ get mykey 
+ copy mykey v0 db cqcngdpy 
+ getset mykey -304 
+ object encoding uvryzsxf 
+ getset mykey 317867337874 
+ bitop and cujtnfoc v0 mykey 
+ getset mykey 1997581058 
+ rpush dyifavob ogvbznqt 

@@ -1,0 +1,5 @@
+set mykey uidvskmd 
+ info latencystats 
+ get mykey 
+ dump mykey 
+ save

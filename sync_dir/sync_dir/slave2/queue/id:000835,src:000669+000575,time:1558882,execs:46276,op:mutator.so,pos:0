@@ -1,0 +1,5 @@
+set lkfqujtp 0.6807728198733054 
+ setnx zqikteif -401 
+ lcs zqikteif lkfqujtp minmatchlen 4 withmatchlen 
+ copy lkfqujtp v0 
+ get v0

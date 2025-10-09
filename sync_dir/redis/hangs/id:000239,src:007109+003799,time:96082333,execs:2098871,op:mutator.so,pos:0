@@ -1,0 +1,13 @@
+set mykey -1947844055 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ bitpos mykey 1 12 12 bit 
+ get mykey 
+ pfadd dbpkzfom 
+ setbit mykey 3717584922 0 
+ get mykey 
+ zdiffstore wtxnpcue 4 mfsvncrq wtxnpcue wtxnpcue wtxnpcue 
+ zdiffstore zcfialgy 4 mfsvncrq zcfialgy zcfialgy zcfialgy 
+ scan 976 type string 
+ zdiffstore v0 4 mfsvncrq v0 v0 v0 
+ zmpop 1 mfsvncrq min count 2 
+ save

@@ -1,0 +1,5 @@
+geoadd vrekwiwa 13.00 36.50 pqkikujz 
+ geopos vrekwiwa pqkikujz pqkikujz 
+ set mykey 306 
+ geopos vrekwiwa pqkikujz pqkikujz pqkikujz pqkikujz pqkikujz pqkikujz 
+ get mykey

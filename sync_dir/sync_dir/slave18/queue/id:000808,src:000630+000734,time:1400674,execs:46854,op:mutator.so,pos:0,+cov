@@ -1,0 +1,6 @@
+set mykey 212 
+ bitop or yxqbavlu mykey mykey 
+ get mykey 
+ geoadd apctyxsn 0 0 ecyrjbwf 
+ geodist apctyxsn ecyrjbwf ecyrjbwf mi 
+ save

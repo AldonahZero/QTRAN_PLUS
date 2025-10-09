@@ -1,0 +1,9 @@
+hset eaxejsol bhwulrko 94964 
+ zunionstore patbwvok 2 patbwvok patbwvok aggregate max 
+ hset tfpyhbbg jhelnvce 512461 
+ set mykey 2 
+ zremrangebyscore patbwvok 916054754013 346072200846 
+ setbit mykey 1603 1 
+ zinter 2 patbwvok patbwvok 
+ zcount patbwvok -539 -1154401951 
+ get mykey

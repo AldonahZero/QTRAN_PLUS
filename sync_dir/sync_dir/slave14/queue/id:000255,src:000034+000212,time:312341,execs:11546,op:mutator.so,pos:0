@@ -1,0 +1,6 @@
+zinterstore teqiuuzn 3 teqiuuzn teqiuuzn teqiuuzn weights 0 0 1 
+ object encoding rwzbgekl 
+ zinterstore zcfialgy 2 zcfialgy zcfialgy 
+ set mykey hello 
+ zmpop 2 zcfialgy zcfialgy min 
+ get mykey

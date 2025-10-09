@@ -1,0 +1,8 @@
+set mykey 0.8284480026124269 
+ rpush ukbzhzcm bkfxggih 
+ save 
+ zdiffstore dfgxahpo 0 dfgxahpo dfgxahpo dfgxahpo 
+ zdiffstore eomkegij 2 eomkegij eomkegij 
+ zlexcount eomkegij 917007777335 -835 
+ lset ukbzhzcm 0 wzjcxwwp 
+ get mykey

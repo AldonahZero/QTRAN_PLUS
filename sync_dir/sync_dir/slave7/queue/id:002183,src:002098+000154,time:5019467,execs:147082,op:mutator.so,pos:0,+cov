@@ -1,0 +1,7 @@
+lpush mwaezvld vunxlubq 
+ set mykey 15.087269 
+ rpop mwaezvld 1 
+ mget mykey mykey mykey mykey 
+ lrange mwaezvld -156830329055 -3940493144 
+ lcs mykey mykey 
+ get mykey

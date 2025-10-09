@@ -1,0 +1,7 @@
+hmset rwwxotsj pvcpgagg 0.32029585089548296 
+ set mykey gftsakln 
+ save 
+ object encoding cmfmndrr 
+ lcs mykey mykey 
+ hscan rwwxotsj 548672661 
+ get mykey

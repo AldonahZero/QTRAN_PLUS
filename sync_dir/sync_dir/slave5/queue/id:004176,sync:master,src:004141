@@ -1,0 +1,8 @@
+xadd jbdjxqbm maxlen ~ -520072461348 123-1 hognxfnw "Hello," 
+ info keyspace 
+ xgroup create jbdjxqbm v0 0 
+ xgroup create jbdjxqbm v1 0 
+ xadd v2 maxlen ~ -520072461348 123-1 hognxfnw "Hello," 
+ set atifyowf 1 
+ save 
+ get atifyowf

@@ -1,0 +1,11 @@
+pfadd jvkfmqof "hello" smvbejzf nyxzfynr 
+ hset mykey bhwulrko 1037 
+ hincrby mykey bhwulrko 3 
+ set v0 2 
+ hincrbyfloat mykey bhwulrko 1 
+ hincrby mykey bhwulrko 2 
+ hincrby mykey bhwulrko 3 
+ hincrby mykey bhwulrko 2 
+ hincrbyfloat mykey bhwulrko 1 
+ pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
+ get v0

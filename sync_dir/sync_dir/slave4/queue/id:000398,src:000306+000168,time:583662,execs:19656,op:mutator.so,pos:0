@@ -1,0 +1,6 @@
+zunionstore qbbgmoug -564153445215 qbbgmoug 
+ xadd v1 * qnoruayj "Hello," 
+ set mykey hello 
+ copy qbbgmoug v0 
+ xread streams v1 868 
+ get mykey

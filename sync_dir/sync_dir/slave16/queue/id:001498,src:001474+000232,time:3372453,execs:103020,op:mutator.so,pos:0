@@ -1,0 +1,8 @@
+set mykey 1732498873 
+ setbit mykey 5826 1 
+ select -653 
+ bitop or xxuevemv mykey 
+ get mykey 
+ getex mykey 
+ hset etqpfzfm njabbctf 41657 
+ psubscribe bar* 

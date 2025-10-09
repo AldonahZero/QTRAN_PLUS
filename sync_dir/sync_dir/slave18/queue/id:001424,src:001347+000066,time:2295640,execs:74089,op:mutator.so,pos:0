@@ -1,0 +1,8 @@
+set mykey 197 
+ set ebvgkrck 9223372036854775807 
+ setbit mykey 474529 1 
+ lcs mykey ebvgkrck 
+ save 
+ decrby mykey 1651985310 
+ get mykey 
+ setbit ebvgkrck 244931 1

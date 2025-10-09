@@ -1,0 +1,9 @@
+hset gxpsvfmr vtsdkeze 814317 
+ ttl ucglluvp 
+ set mykey hello 
+ pexpire mykey 500 
+ expire mykey 2 
+ getex mykey 
+ lcs mykey mykey len minmatchlen 4 withmatchlen 
+ expire mykey 2 
+ get mykey

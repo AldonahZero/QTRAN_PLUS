@@ -1,0 +1,6 @@
+set mykey hello 
+ bitfield mykey overflow wrap set i44 0 -16965705105117 
+ get mykey 
+ geoadd defhyxzz -45 65.50900022111811438208 vnjyzinq 17.241510 38.788135 nxmjeqgx 12.799439062548865 35.201864127459075 hsbnbydy 17.241510 38.788135 slkadwaf 
+ getdel mykey 
+ psetex vokpjzpp -586 364853510803

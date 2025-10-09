@@ -1,0 +1,7 @@
+set mykey 140244133014011140103024420341240422110004223143 
+ bitop or yxqbavlu mykey mykey mykey mykey mykey 
+ get mykey 
+ geoadd yxqbavlu 0 0 ecyrjbwf 
+ geohash yxqbavlu bfpnqfse ecyrjbwf ecyrjbwf ecyrjbwf 
+ geodist yxqbavlu ecyrjbwf ecyrjbwf 
+ save

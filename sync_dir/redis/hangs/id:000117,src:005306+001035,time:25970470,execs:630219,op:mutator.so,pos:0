@@ -1,0 +1,10 @@
+set ilhufjrq 197 
+ set v0 -909494108478 
+ setbit ilhufjrq 2486455557 1 
+ setbit v0 1603 1 
+ save 
+ decrby v0 1651985310 
+ get v0 
+ setbit v0 109990 1 
+ setbit v0 244931 1 
+ copy v0 v1 

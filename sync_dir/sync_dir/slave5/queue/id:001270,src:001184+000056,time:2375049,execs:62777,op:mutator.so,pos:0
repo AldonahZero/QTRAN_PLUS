@@ -1,0 +1,6 @@
+set mykey 0 
+ decr mykey 
+ get mykey 
+ getex mykey 
+ info cpu latencystats 
+ save

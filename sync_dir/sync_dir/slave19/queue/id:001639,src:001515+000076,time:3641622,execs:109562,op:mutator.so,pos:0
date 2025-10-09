@@ -1,0 +1,9 @@
+set mykey -853 
+ lpush asjdswpq syrsobfe ndlfegrn 
+ info cpu all 
+ lpop asjdswpq 
+ rpop asjdswpq 
+ lmove asjdswpq fbzpustd right right 
+ del asjdswpq 
+ select 8 
+ get mykey

@@ -1,0 +1,18 @@
+xadd iwshcqfl 1-0 qnoruayj "Hello," 
+ info keyspace 
+ xgroup create iwshcqfl v0 0 
+ xpending iwshcqfl v0 
+ set atifyowf 1 
+ save 
+ xinfo stream iwshcqfl 
+ copy atifyowf v1 
+ xclaim iwshcqfl cghcphip qcdrshmz 0 1-0 force 
+ xpending iwshcqfl v0 
+ xpending iwshcqfl v0 
+ xinfo stream iwshcqfl full 
+ copy iwshcqfl v2 
+ dump iwshcqfl 
+ copy v0 v3 
+ copy v1 v4 
+ xclaim iwshcqfl cghcphip qcdrshmz 256 1-0 force 
+ get atifyowf

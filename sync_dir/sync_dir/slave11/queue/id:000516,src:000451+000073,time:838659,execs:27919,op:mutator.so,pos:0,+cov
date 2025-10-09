@@ -1,0 +1,6 @@
+set mykey hello 
+ zdiffstore oninilnq 8 oninilnq 
+ hset elibnlnj lzytosbe 732291 
+ hmget elibnlnj lzytosbe lzytosbe 
+ zinter 2 oninilnq oninilnq aggregate max withscores 
+ get mykey

@@ -1,0 +1,4 @@
+mset dugdiyqm 1859284241 
+ hset mmbdyavh woiaydqs 452588 
+ set mykey hello 
+ get mykey

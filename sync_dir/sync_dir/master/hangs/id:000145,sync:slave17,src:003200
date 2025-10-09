@@ -1,0 +1,9 @@
+set mykey -1947844055 
+ get mykey 
+ bitfield mykey overflow wrap incrby i37 0 895937755655 
+ pfadd dbpkzfom 
+ bitfield mykey overflow wrap set i4 257854938 23450054762 
+ setbit mykey 0 1 
+ get mykey 
+ bitfield mykey overflow wrap incrby i37 0 -466997190130 
+ save

@@ -1,0 +1,9 @@
+msetnx zvzvckgg -408729133852 
+ setbit zvzvckgg 526632498263 1 
+ set mykey "Hello," 
+ geoadd cqubszoy 13.361389 38.115556 acjnpjwy 15.087269 37.502669 fekagtxv 
+ pfmerge qiefoyaw kequfocb 
+ del mykey 
+ xadd ozsnpvdy 3410025659 rqwzplos "Hello," 
+ bitop and tzlrveqd zvzvckgg zvzvckgg zvzvckgg zvzvckgg zvzvckgg zvzvckgg zvzvckgg 
+ get zvzvckgg

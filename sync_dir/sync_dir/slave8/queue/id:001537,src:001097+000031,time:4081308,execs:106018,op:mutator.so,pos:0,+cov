@@ -1,0 +1,8 @@
+info cpu all 
+ set atifyowf 1 
+ expire atifyowf 0 
+ decrby atifyowf 616122797418 
+ zrangestore ugswuldi ugswuldi 0 -1 
+ save 
+ bitfield atifyowf overflow fail incrby u42 0 4134927976325 
+ get atifyowf

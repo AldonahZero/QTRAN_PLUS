@@ -1,0 +1,5 @@
+set mykey hello 
+ zdiffstore oninilnq 1 oninilnq 
+ zunionstore szndqvoq 2 szndqvoq szndqvoq 
+ hset elibnlnj lzytosbe 732291 
+ get mykey

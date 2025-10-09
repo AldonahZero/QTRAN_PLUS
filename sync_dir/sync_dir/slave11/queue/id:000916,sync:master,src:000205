@@ -1,0 +1,5 @@
+set mykey 692 
+ lcs mykey mykey 
+ copy mykey ycgvtbur replace 
+ strlen mykey 
+ get mykey

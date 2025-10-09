@@ -1,0 +1,7 @@
+set mykey hello 
+ zdiffstore oninilnq 0 oninilnq 
+ zcount oninilnq -486 3512935256 
+ hset elibnlnj lzytosbe 732291 
+ zinterstore eghgxknb 2 eghgxknb eghgxknb weights 1 2 aggregate sum 
+ zdiff 2 oninilnq oninilnq withscores 
+ get mykey

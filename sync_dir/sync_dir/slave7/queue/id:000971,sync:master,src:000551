@@ -1,0 +1,6 @@
+hset eaxejsol bhwulrko 1037 
+ hmget eaxejsol bhwulrko bhwulrko 
+ set mykey 2 
+ hincrbyfloat eaxejsol bhwulrko 1 
+ pfadd jalgwgha erunuxpp wibqsopn nbjrszep klxmnqhn sltjtveu cqvidjzw ckehfpxv rmjzogox erhrygyu ckgvwjnx gjbqrlnm nyxzfynr nyxzfynr 
+ get mykey

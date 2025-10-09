@@ -1,0 +1,7 @@
+lpush kfxdvljk rptpxozi xqfdftkh 
+ set mykey 15.087269 
+ rpop kfxdvljk 1 
+ mget mykey mykey mykey mykey 
+ lrange kfxdvljk 1374321698 -3940493144 
+ lcs mykey mykey 
+ get mykey

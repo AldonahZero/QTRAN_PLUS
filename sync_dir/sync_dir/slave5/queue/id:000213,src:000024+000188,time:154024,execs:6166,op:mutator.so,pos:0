@@ -1,0 +1,4 @@
+set mykey -2792568265 
+ copy mykey v0 
+ save 
+ get mykey

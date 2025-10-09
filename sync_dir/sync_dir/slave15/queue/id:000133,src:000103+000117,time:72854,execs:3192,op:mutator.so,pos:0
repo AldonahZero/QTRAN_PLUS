@@ -1,0 +1,5 @@
+set viwkkqsv 0.54804732676038859 
+ get viwkkqsv 
+ setbit viwkkqsv 474529 1 
+ get viwkkqsv 
+ save

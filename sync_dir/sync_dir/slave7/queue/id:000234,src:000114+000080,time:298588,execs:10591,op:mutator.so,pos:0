@@ -1,0 +1,5 @@
+geoadd vrekwiwa 13.00 -179 pqkikujz 
+ set mykey 306 
+ get mykey 
+ incrbyfloat mykey -816 
+ setex dwrwpbrw -157780893686 -657

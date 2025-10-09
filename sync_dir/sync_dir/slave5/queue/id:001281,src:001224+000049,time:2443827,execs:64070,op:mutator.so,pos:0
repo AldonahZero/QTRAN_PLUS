@@ -1,0 +1,10 @@
+set atifyowf 1 
+ incrbyfloat atifyowf -5 
+ bitfield atifyowf overflow wrap incrby u58 0 92007103795675120 
+ setex tncydqgy 273 12024430563 
+ zunionstore dfgxahpo 2 dfgxahpo dfgxahpo weights 2 3 aggregate max 
+ save 
+ zincrby dfgxahpo 3600000 ymtynmse 
+ pfadd iknmweqf zelgohmr gjbqrlnm 
+ zunionstore v0 2 v0 dfgxahpo weights 2 3 aggregate max 
+ get atifyowf

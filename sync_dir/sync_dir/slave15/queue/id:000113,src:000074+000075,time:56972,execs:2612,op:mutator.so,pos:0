@@ -1,0 +1,4 @@
+set mykey 1 
+ lpush syivdted shduicsd 
+ get mykey 
+ save

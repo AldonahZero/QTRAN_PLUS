@@ -1,0 +1,4 @@
+set atifyowf 0.87838079541846215 
+ incrbyfloat atifyowf 1072727848 
+ save 
+ get atifyowf

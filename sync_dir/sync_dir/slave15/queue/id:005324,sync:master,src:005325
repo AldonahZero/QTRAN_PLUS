@@ -1,0 +1,12 @@
+xadd cumaaowa * qnoruayj "Hello," 
+ info keyspace 
+ xgroup create cumaaowa v0 0 
+ xgroup create cumaaowa v1 0 
+ xgroup create cumaaowa v2 0 
+ set atifyowf 1 
+ xgroup createconsumer cumaaowa v1 v3 
+ xgroup createconsumer cumaaowa v1 v4 
+ copy cumaaowa v5 
+ save 
+ xgroup destroy cumaaowa v0 
+ get atifyowf

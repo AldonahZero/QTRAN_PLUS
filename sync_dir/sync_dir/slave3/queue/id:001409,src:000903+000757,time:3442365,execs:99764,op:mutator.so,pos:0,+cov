@@ -1,0 +1,6 @@
+set mykey 1732498873 
+ setbit mykey 474529 1 
+ select 2637743783 
+ get mykey 
+ hset etqpfzfm njabbctf 41657 
+ psubscribe bar* 

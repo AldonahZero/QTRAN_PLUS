@@ -1,0 +1,5 @@
+set v0 159 
+ copy v0 v1 db cqcngdpy 
+ save 
+ bitop and hozsqpxd v0 v0 v1 v0 
+ get v1

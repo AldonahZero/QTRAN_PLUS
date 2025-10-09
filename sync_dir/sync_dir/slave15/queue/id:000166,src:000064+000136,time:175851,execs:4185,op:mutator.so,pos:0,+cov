@@ -1,0 +1,4 @@
+bgsave 
+ set mykey -75299881433 
+ get mykey 
+ save

@@ -1,0 +1,9 @@
+msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ set mykey "Hello," 
+ geoadd defhyxzz -45 65.50900022111811438208 vnjyzinq 90 85.0511 "Three" 
+ del triqeesz 
+ georadius defhyxzz 1 65 1 km 
+ georadius defhyxzz 1 65 1 km 
+ georadius defhyxzz 13.361389 38.115556 500 km storedist aynqlgbb 
+ georadius defhyxzz 1 65 1 km 
+ get mykey

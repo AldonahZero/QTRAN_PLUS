@@ -1,0 +1,6 @@
+set mykey hello 
+ zadd lukpltvt 5826 vgjrzjoy 
+ zrandmember lukpltvt -3 
+ sort lukpltvt limit 934673624548 13033323022411214443443303234220120324324344401012232221143311233 desc alpha 
+ zrandmember lukpltvt -2479703 withscores 
+ get mykey

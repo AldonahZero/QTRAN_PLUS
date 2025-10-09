@@ -1,0 +1,5 @@
+set aprunafz 0.067275570271199375 
+ psetex bkdmmwgm 752015920240 -1423418636 
+ lcs aprunafz bkdmmwgm 
+ getrange bkdmmwgm 1293 -483 
+ get bkdmmwgm

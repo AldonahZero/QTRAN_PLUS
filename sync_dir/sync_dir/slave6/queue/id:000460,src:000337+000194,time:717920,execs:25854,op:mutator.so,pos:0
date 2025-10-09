@@ -1,0 +1,9 @@
+set mykey 41788 
+ rpush czowykxw ptecklws 
+ hset ucukoxrm auydyooj 0.21973279221902267 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx 
+ zunionstore kmmwzipn 5 kmmwzipn kmmwzipn weights 2 3 aggregate min 
+ sort czowykxw by weight* get object* get # store otevgjjg 
+ get mykey 
+ rpoplpush czowykxw xbfaqjuv 
+ hset rfllxsdf iubquuor 0.41507778056668015 

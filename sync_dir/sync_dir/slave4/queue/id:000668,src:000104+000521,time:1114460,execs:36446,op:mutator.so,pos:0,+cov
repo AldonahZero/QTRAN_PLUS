@@ -1,0 +1,4 @@
+set mykey -521 
+ bitpos mykey 1 21 27 bit 
+ copy mykey v0 
+ get mykey

@@ -1,0 +1,10 @@
+object encoding rwzbgekl 
+ zinterstore uiamticm 0 uiamticm 
+ set mykey hello 
+ zincrby uiamticm -5 mlujlapi 
+ zdiffstore apuzkzbh 2 uiamticm apuzkzbh 
+ psetex zvshusdd 3410102305 3090148046 
+ zincrby apuzkzbh -inf ymtynmse 
+ zunion 2 apuzkzbh apuzkzbh weights 1 1 aggregate min withscores 
+ zcount uiamticm -539 -1154401951 
+ get mykey

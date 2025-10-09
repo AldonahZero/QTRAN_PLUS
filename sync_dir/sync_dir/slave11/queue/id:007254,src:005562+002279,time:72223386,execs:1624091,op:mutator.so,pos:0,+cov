@@ -1,0 +1,5 @@
+set mykey 1519 
+ hmset zxvatyxz mecdrlck 1 vktahdph 2 qzsoxtro 3 qzsoxtro 3 qzsoxtro 3 qzsoxtro 3 qzsoxtro 3 qzsoxtro 3 qzsoxtro 3 qzsoxtro 3 qzsoxtro 3 qzsoxtro 3 qzsoxtro 3 qzsoxtro 3 qzsoxtro 3 vktahdph 3 qzsoxtro 3 qzsoxtro 3 qzsoxtro 3 qzsoxtro 3 qzsoxtro 3 qzsoxtro 3 qzsoxtro 3 qzsoxtro 3 qzsoxtro 3 qzsoxtro 3 qzsoxtro 3 qzsoxtro 3 qzsoxtro 20120132432322404123233210004121141132101324243034221431220241321402403142341331443040130201424324144243132013142313104414141412231111114441411110103423242124312112223022031212040431044030242 qzsoxtro 3 qzsoxtro 3 qzsoxtro 868 ccsnseuf 3 qzsoxtro 3 vktahdph 3 vczhbogj 3 vktahdph 3 
+ get mykey 
+ hrandfield zxvatyxz 2 
+ del mykey 

@@ -1,0 +1,10 @@
+zadd mfsvncrq lt incr 1 bexnlycc 
+ zcount mfsvncrq -61 1375142478 
+ object encoding rwzbgekl 
+ geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
+ zpopmax mfsvncrq 2 
+ zpopmax mfsvncrq 1 
+ set mykey hello 
+ zpopmax mfsvncrq 1 
+ strlen mykey 
+ get mykey

@@ -1,0 +1,13 @@
+set mykey -1947844055 
+ zadd mfsvncrq lt incr -914856672 bexnlycc 
+ zincrby mfsvncrq -5 sjhvpked 
+ bitpos mykey 1 12 12 bit 
+ zintercard 2 mfsvncrq mfsvncrq limit 123 
+ zunionstore nchjerwp 2 mfsvncrq nchjerwp weights 2 3 
+ get mykey 
+ zinter 2 nchjerwp mfsvncrq weights 1 2 aggregate max 
+ pfadd dbpkzfom 
+ setbit mykey 474529 1 
+ get mykey 
+ zmpop 1 mfsvncrq min count 2 
+ save

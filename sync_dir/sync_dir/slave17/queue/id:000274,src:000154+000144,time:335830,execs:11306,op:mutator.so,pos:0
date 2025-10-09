@@ -1,0 +1,6 @@
+set mykey 1293 
+ get mykey 
+ scan 589 type string 
+ set ebvgkrck 106 
+ save 
+ copy mykey v0 

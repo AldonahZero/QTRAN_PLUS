@@ -1,0 +1,10 @@
+set mykey 38.115556 
+ xadd jbdjxqbm maxlen ~ 1000 123-1 hognxfnw "Hello," 
+ keys foo* 
+ xgroup create jbdjxqbm kvfwioos 0 
+ xgroup create jbdjxqbm v1 0 
+ del jbdjxqbm 
+ expire mykey -10 lt 
+ incr mykey 
+ save 
+ get mykey

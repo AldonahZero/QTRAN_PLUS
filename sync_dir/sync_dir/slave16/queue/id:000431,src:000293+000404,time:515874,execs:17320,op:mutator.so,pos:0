@@ -1,0 +1,8 @@
+set mykey 0 
+ geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
+ bitpos mykey 0 33 -1 bit 
+ geosearch rguvzgcd frommember uqzidutw bybox 1 1 km 
+ get mykey 
+ rpush dbmuwins jrjuraql 
+ bitpos mykey 1 37 37 bit 
+ psubscribe bar* 

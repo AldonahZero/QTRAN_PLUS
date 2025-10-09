@@ -1,0 +1,6 @@
+set mykey 15.087269 
+ psetex vrrqnomv 315 33 
+ lcs mykey mykey 
+ set xnamybte 15.087269 
+ getrange mykey 1293 903 
+ get mykey

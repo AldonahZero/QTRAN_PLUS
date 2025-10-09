@@ -1,0 +1,11 @@
+psetex hcnoouhb 851130245 809 
+ setbit hcnoouhb 7 0 
+ copy hcnoouhb v2 
+ copy hcnoouhb v3 
+ set vkxhdmjo 1 
+ copy hcnoouhb v1 
+ copy v1 v0 
+ bitfield v2 overflow fail set u44 2537333662 4806867732670 
+ info default all 
+ save 
+ get v0

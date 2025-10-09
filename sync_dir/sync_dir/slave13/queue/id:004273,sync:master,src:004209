@@ -1,0 +1,12 @@
+zadd hedviswm 3 fxtgnmxn 
+ zadd hleuhsey 0 srveglnh 
+ object encoding rwzbgekl 
+ geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
+ zincrby hleuhsey 2 ltrxeema 
+ set mykey hello 
+ zunion 2 hleuhsey hleuhsey 
+ zrangestore gdjwzzhv hleuhsey 0 1 
+ zunion 2 gdjwzzhv gdjwzzhv weights 1 1 aggregate sum withscores 
+ strlen mykey 
+ geosearch rguvzgcd fromlonlat -179 37 byradius 156544 km asc 
+ get mykey

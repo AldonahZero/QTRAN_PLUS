@@ -1,0 +1,6 @@
+set mykey 9223372036854775808 
+ incr mykey 
+ zrangestore ugswuldi ugswuldi 0 -1 
+ scan 13033323022411214443443303234220120324324344401012232221143311233 count 5 
+ setnx gbjlvscx -37 
+ get mykey

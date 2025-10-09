@@ -1,0 +1,6 @@
+hsetnx wqydsukt guwchiwu -830067951618 
+ expire wqydsukt 200 xx 
+ set mykey 3 
+ info everything everything 
+ copy mykey v0 
+ get mykey

@@ -1,0 +1,4 @@
+type ksokjhsy 
+ set mykey -521 
+ copy mykey v0 
+ get mykey

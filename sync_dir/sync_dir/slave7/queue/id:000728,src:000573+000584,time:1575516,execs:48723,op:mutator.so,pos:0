@@ -1,0 +1,8 @@
+geoadd apctyxsn 0 0 ecyrjbwf 
+ set mykey 306 
+ get mykey 
+ incrbyfloat mykey 468437678864 
+ geosearch apctyxsn frommember ecyrjbwf bybox 1 1 km 
+ geosearchstore vpwluycf apctyxsn frommember ecyrjbwf bybox 1 1 m 
+ setex dwrwpbrw -157780893686 -657 
+ set v0 -1423418636 

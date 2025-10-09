@@ -1,0 +1,5 @@
+set mykey hello 
+ zinterstore phrpwlca 2 phrpwlca phrpwlca aggregate min 
+ get mykey 
+ hmset zunknsqf hlwlrmwf 9223372036854775807 
+ save

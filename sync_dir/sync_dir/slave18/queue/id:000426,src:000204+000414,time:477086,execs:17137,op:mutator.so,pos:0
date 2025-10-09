@@ -1,0 +1,7 @@
+psetex oavcbqsq -355294768 -316 
+ set mykey 41788 
+ info everything 
+ getrange mykey 615 917 
+ ttl qumwzudn 
+ get mykey 
+ save

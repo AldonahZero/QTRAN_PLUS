@@ -1,0 +1,11 @@
+zrangestore lguhmiyq lguhmiyq 1 2 byscore 
+ set mykey -20 
+ zmpop 2 lguhmiyq lguhmiyq max count 1 
+ dump mykey 
+ dump mykey 
+ lcs mykey mykey 
+ dump mykey 
+ xadd kvnrwmku 123-1 mzklxdll "Hello," 
+ xclaim kvnrwmku ptprebxr oyubeety 10 1672351058363-2 
+ zremrangebylex lguhmiyq 199 966336966942 
+ get mykey

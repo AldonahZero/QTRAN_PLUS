@@ -1,0 +1,5 @@
+set mykey -37 
+ zrangestore ugswuldi ugswuldi 0 -1 
+ zinter 7 ugswuldi ugswuldi weights 1 2 aggregate sum withscores 
+ setnx gbjlvscx -37 
+ get mykey

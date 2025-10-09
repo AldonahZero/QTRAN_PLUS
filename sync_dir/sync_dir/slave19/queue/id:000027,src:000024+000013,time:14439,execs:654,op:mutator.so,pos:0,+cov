@@ -1,0 +1,3 @@
+set mykey 9223372036854775807 
+ get mykey 
+ bitfield mykey overflow fail set u34 0 23450054762 

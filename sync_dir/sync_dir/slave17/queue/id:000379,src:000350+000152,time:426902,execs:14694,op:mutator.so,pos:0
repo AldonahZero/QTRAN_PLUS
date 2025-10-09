@@ -1,0 +1,6 @@
+set mykey hello 
+ zadd lukpltvt 5826 vgjrzjoy 
+ bitpos mykey 1 12 12 bit 
+ sort lukpltvt limit 0 10 
+ zrem lukpltvt cuyoxmkw vemxiqtq 
+ get mykey

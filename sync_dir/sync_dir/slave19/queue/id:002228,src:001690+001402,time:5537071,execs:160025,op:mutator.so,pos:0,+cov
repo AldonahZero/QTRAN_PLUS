@@ -1,0 +1,10 @@
+set mykey -853 
+ lpush kfxdvljk rptpxozi xqfdftkh 
+ sort kfxdvljk alpha store wiruezdc 
+ info cpu all 
+ lpop kfxdvljk 
+ lmove kfxdvljk fbzpustd right right 
+ linsert kfxdvljk before wowvmrys ezixiaeg 
+ del fbzpustd 
+ select 8 
+ get mykey

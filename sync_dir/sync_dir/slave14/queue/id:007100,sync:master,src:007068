@@ -1,0 +1,9 @@
+sadd mspahcqu rcxxapdu 
+ geoadd apctyxsn 0 0 "World" 
+ set mykey 306 
+ type mspahcqu 
+ srem mspahcqu rbgsuvff eropogrc sisjdccw 
+ geopos apctyxsn "World" "World" "World" "World" "World" "World" "World" "World" "World" "World" "World" "World" "World" "World" "World" "World" "World" "World" "World" "World" "World" "World" "World" "World" "World" "World" "World" "World" 
+ decr mykey 
+ save 
+ get mykey

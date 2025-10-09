@@ -1,0 +1,8 @@
+hsetnx roftorbl khrrkjgs 143102223 
+ save 
+ hget roftorbl khrrkjgs 
+ set mykey 5 
+ hmget roftorbl khrrkjgs khrrkjgs 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ zdiff 6 mfsvncrq mfsvncrq mfsvncrq mfsvncrq mfsvncrq mfsvncrq 
+ get mykey

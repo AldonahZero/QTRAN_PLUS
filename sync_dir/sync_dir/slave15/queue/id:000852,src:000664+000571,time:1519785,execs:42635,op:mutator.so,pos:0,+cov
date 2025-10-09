@@ -1,0 +1,4 @@
+set mykey hello 
+ expire mykey 100 lt 
+ setnx bzbpoqtr -918481240011 
+ get mykey

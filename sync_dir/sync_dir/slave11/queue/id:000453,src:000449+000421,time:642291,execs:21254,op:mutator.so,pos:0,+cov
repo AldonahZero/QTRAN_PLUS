@@ -1,0 +1,6 @@
+set mykey hello 
+ zdiffstore oninilnq 8 oninilnq 
+ hset elibnlnj lzytosbe 732291 
+ scan 201 type string 
+ zscan oninilnq -679700165837 
+ get mykey

@@ -1,0 +1,10 @@
+set mykey -1947844055 
+ get mykey 
+ slowlog get -1 
+ pfadd dbpkzfom 
+ setbit mykey 474529 1 
+ pfadd dbpkzfom 
+ get mykey 
+ bitfield mykey overflow fail set u34 0 23450054762 
+ bitfield mykey overflow fail set i4 0 -12 
+ save

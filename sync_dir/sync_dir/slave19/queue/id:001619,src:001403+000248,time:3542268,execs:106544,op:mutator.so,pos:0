@@ -1,0 +1,6 @@
+info cpu default 
+ set mykey -41 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln 
+ lcs mykey mykey idx minmatchlen 4 withmatchlen 
+ keys foo* 
+ get mykey

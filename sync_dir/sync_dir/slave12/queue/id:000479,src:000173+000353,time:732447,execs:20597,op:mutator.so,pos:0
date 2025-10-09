@@ -1,0 +1,6 @@
+set mykey 311 
+ bitop xor vnayjyje mykey 
+ get mykey 
+ select 9 
+ hsetnx nbxqjbpm kmvsxosn -853 
+ zdiffstore apuzkzbh 2 apuzkzbh apuzkzbh

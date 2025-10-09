@@ -1,0 +1,5 @@
+set mykey -20 
+ xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm aixesdar urasnjsm aixesdar -719392362385 aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar -719392362385 
+ dump ermrdvzf 
+ incr mykey 
+ get mykey

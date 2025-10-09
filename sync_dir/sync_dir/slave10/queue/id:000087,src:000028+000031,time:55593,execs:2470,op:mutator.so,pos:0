@@ -1,0 +1,4 @@
+set iyetwnrz 367747 
+ get iyetwnrz 
+ decrby iyetwnrz 558 
+ object encoding uvryzsxf

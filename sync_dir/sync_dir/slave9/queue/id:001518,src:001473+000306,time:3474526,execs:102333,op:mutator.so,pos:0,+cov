@@ -1,0 +1,6 @@
+set mykey -10910337 
+ xadd ermrdvzf 0-1 jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm 
+ get mykey 
+ xdel ermrdvzf 1671116695143-0 
+ dump mykey 
+ save

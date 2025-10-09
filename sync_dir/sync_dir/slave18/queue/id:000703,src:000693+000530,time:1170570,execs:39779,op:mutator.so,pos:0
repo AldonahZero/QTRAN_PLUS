@@ -1,0 +1,6 @@
+set mykey 41788 
+ watch nqjqeqpq zexfuhuk frjrxccy 
+ sinterstore pqczlznr pqczlznr 
+ info cpu latencystats 
+ get mykey 
+ save

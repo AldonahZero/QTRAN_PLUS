@@ -1,0 +1,4 @@
+set mykey 4806867732670 
+ get mykey 
+ bitop or yxqbavlu mykey mykey 
+ setex ssqwgzfa -240958759673 -179847923191

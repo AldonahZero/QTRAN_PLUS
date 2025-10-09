@@ -1,0 +1,5 @@
+set mykey hello 
+ get mykey 
+ setex dcqsuxki -204913948292 806278504341 
+ save 
+ lcs mykey mykey len idx minmatchlen 4 withmatchlen

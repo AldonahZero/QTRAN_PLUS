@@ -1,0 +1,5 @@
+hset sxuiqhaw ogyzvjgd 742477 
+ set mykey 31543984 
+ hincrby sxuiqhaw ogyzvjgd 3 
+ setbit mykey 615 0 
+ get mykey

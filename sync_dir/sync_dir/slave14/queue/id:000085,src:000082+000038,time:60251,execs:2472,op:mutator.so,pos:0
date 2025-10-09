@@ -1,0 +1,5 @@
+object encoding rwzbgekl 
+ zinterstore eghgxknb 2 eghgxknb eghgxknb weights 1 2 aggregate sum 
+ set mykey hello 
+ zincrby eghgxknb -5 mlujlapi 
+ get mykey

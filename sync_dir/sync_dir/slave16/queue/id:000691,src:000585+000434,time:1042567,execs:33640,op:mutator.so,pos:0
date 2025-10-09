@@ -1,0 +1,8 @@
+set mykey 140244133014011140103024420341240422110004223143 
+ setbit mykey 474529 9223372036854775808 
+ save 
+ get mykey 
+ hset etqpfzfm njabbctf 41657 
+ hlen etqpfzfm 
+ psubscribe bar* 
+ del etqpfzfm 

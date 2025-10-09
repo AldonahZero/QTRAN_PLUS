@@ -1,0 +1,5 @@
+set mykey -15956 
+ zinterstore yygrvfbj 2 yygrvfbj yygrvfbj 
+ zmpop 1 yygrvfbj yygrvfbj min 
+ get mykey 
+ save

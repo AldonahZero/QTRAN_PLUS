@@ -1,0 +1,9 @@
+set mykey 1732498873 
+ geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
+ mset dwspoulc 568645835187 
+ expireat duzslaye 18446744073709561 
+ geosearch rguvzgcd frommember uqzidutw bybox 1 1 km 
+ get mykey 
+ rpush dbmuwins jrjuraql 
+ lcs mykey mykey len idx minmatchlen 4 withmatchlen 
+ psubscribe bar* 

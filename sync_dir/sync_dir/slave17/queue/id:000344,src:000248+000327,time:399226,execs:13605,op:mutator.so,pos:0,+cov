@@ -1,0 +1,4 @@
+set mykey hello 
+ zadd lukpltvt -91681715143 vgjrzjoy 
+ sort lukpltvt limit 0 10 
+ get mykey

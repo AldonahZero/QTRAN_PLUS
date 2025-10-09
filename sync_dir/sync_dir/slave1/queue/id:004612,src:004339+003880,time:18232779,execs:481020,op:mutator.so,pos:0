@@ -1,0 +1,15 @@
+hmset zxvatyxz mecdrlck 1 vktahdph 2 v10 2 qzsoxtro 3 fjawhzfz 1158 mdhtawrn 20120132432322404123233210004121141132101324243034221431220241321402403142341331443040130201424324144243132013142313104414141412231111114441411110103423242124312112223022031212040431044030242 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ zunion 2 mfsvncrq mfsvncrq 
+ zadd hleuhsey 0 srveglnh 
+ object encoding rwzbgekl 
+ geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
+ zincrby mfsvncrq 2 ltrxeema 
+ set mykey hello 
+ zunion 2 mfsvncrq hleuhsey 
+ zrangestore gdjwzzhv mfsvncrq 0 1 
+ zunion 2 gdjwzzhv gdjwzzhv weights 1 1 aggregate sum withscores 
+ strlen mykey 
+ zrandmember mfsvncrq -1001 
+ geosearch rguvzgcd fromlonlat -179 37 byradius 156544 km asc 
+ get mykey

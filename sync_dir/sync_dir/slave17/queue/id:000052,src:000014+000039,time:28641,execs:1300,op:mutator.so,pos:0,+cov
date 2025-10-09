@@ -1,0 +1,3 @@
+set mykey hello 
+ zadd lukpltvt 1359312523 vgjrzjoy 
+ get mykey

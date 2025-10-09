@@ -1,0 +1,6 @@
+sadd waeoxbem wivnjuxe 
+ set mykey -1947844055 
+ sintercard 3 waeoxbem waeoxbem 
+ get mykey 
+ get mykey 
+ save

@@ -1,0 +1,9 @@
+set mykey 311 
+ geoadd eczuybnf 179.5 36 htafotkr 
+ incrbyfloat mykey 376 
+ bitfield mykey overflow wrap set i4 1421721372 23450054762 
+ get mykey 
+ bitpos mykey 1 64 431 bit 
+ get mykey 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

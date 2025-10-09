@@ -1,0 +1,8 @@
+set mykey 1732498873 
+ setex xkdssvaz -677476395 2933400064 
+ setbit mykey 474529 1 
+ save 
+ get mykey 
+ hset etqpfzfm njabbctf 41657 
+ psubscribe bar* 
+ del etqpfzfm 

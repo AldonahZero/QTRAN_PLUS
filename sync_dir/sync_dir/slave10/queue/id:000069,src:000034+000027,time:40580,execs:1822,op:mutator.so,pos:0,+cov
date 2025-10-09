@@ -1,0 +1,4 @@
+set mykey -1615510574 
+ incrby mykey -980 
+ get mykey 
+ object encoding uvryzsxf

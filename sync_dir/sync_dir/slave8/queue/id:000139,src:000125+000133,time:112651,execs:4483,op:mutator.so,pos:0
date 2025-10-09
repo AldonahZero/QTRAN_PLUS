@@ -1,0 +1,6 @@
+set mykey -886864826961 
+ bitpos mykey 0 64 74 bit 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ get mykey 
+ psetex vokpjzpp -586 364853510803 
+ bitfield mykey overflow wrap set i44 0 -16965705105117 

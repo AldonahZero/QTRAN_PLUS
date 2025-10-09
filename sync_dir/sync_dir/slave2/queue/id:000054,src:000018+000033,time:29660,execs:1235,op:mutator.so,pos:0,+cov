@@ -1,0 +1,4 @@
+set mykey 41788 
+ incrbyfloat mykey -987656692968 
+ sdiffstore vdxxciyw vdxxciyw vdxxciyw vdxxciyw 
+ get mykey

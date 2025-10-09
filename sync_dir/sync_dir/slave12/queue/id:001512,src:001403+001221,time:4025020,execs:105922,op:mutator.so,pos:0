@@ -1,0 +1,11 @@
+set mykey -1947844055 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ lcs mykey mykey 
+ bitpos mykey 1 12 12 bit 
+ get mykey 
+ pfadd dbpkzfom 
+ setbit mykey 474529 1 
+ get mykey 
+ zremrangebylex mfsvncrq -20 -124 
+ get mykey 
+ save

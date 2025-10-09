@@ -1,0 +1,5 @@
+psetex zvshusdd 3410102305 3090148046 
+ object encoding rwzbgekl 
+ set mykey hello 
+ copy mykey v0 replace 
+ get mykey

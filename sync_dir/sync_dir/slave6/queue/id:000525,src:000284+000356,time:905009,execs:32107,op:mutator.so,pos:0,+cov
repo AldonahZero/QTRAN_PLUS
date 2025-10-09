@@ -1,0 +1,6 @@
+set mykey hello 
+ copy mykey v0 
+ get mykey 
+ setbit mykey -693150821 0 
+ zunionstore eeacghhu 2 eeacghhu eeacghhu weights 2 3 
+ mset mempxxdl qsuvfmsr 

@@ -1,0 +1,7 @@
+set mykey 311 
+ incrbyfloat mykey -218 
+ get mykey 
+ get mykey 
+ save 
+ incr mykey 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

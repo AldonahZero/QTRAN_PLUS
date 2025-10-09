@@ -1,0 +1,10 @@
+xadd pbtmpeny 0-1 qnoruayj "Hello," 
+ info keyspace 
+ xautoclaim pbtmpeny cwxbpfcr xolfcipk -783294678099 0-0 
+ xgroup create pbtmpeny v0 46 
+ xinfo consumers pbtmpeny v0 
+ xinfo consumers pbtmpeny v0 
+ set atifyowf 1 
+ xinfo consumers pbtmpeny v0 
+ save 
+ get atifyowf

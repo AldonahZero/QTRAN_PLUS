@@ -1,0 +1,10 @@
+set mykey 0.8284480026124269 
+ rpush ukbzhzcm bkfxggih 
+ save 
+ lrem ukbzhzcm 1 fltoemyc 
+ lrange ukbzhzcm -1268180117 8350634485 
+ zdiffstore dfgxahpo 0 dfgxahpo dfgxahpo dfgxahpo 
+ lset ukbzhzcm 0 wzjcxwwp 
+ sort ukbzhzcm by weight* get # get # 
+ sort ukbzhzcm 
+ get mykey

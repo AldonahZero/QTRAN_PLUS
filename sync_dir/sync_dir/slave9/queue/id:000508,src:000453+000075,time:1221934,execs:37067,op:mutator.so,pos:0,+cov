@@ -1,0 +1,9 @@
+sunionstore sugvxxcg sugvxxcg sugvxxcg 
+ lpush kfxdvljk rptpxozi xqfdftkh 
+ info replication 
+ llen kfxdvljk 
+ set mykey 568645835187 
+ copy kfxdvljk v0 
+ get mykey 
+ lpos kfxdvljk vgukvfpb count 1 
+ smismember sugvxxcg vlvtmruq 

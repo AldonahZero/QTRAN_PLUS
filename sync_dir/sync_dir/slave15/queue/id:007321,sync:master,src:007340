@@ -1,0 +1,8 @@
+pfadd eaxejsol "hello" smvbejzf nyxzfynr 
+ hset eaxejsol bhwulrko 1037 
+ set mykey 13033323022411214443443303234220120324324344401012232221143311233 
+ pfadd mykey "hello" smvbejzf nyxzfynr 
+ hincrbyfloat eaxejsol bhwulrko 1 
+ pfadd mykey "hello" smvbejzf nyxzfynr 
+ pfadd mykey 
+ get mykey

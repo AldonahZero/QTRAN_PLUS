@@ -1,0 +1,4 @@
+rpush vazihojf ckssplvd 
+ set mykey 41788 
+ get mykey 
+ save

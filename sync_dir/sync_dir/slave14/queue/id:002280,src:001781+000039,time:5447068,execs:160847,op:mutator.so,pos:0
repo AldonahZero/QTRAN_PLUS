@@ -1,0 +1,8 @@
+sadd waeoxbem wivnjuxe 
+ sunionstore iwshcqfl waeoxbem iwshcqfl 
+ set mykey 24412330 
+ smembers waeoxbem 
+ get mykey 
+ getex mykey 
+ get mykey 
+ save

@@ -1,0 +1,10 @@
+sadd jqmngksz wivnjuxe 
+ copy jqmngksz v0 
+ sunionstore xmawvngf xmawvngf v0 
+ sdiffstore vdxxciyw xmawvngf vdxxciyw vdxxciyw 
+ sunion jqmngksz vdxxciyw xmawvngf v0 
+ set mykey -1947844055 
+ smembers v0 
+ get mykey 
+ get mykey 
+ save

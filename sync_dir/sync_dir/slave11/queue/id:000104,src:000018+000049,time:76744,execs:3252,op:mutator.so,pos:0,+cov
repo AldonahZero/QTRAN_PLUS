@@ -1,0 +1,3 @@
+set ubjcxcxl hello 
+ bitfield ubjcxcxl overflow fail set i35 0 -12 
+ get ubjcxcxl

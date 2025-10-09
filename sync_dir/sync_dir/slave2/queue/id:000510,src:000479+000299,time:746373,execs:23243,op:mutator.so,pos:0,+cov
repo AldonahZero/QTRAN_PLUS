@@ -1,0 +1,4 @@
+set mykey -9223372036854775808 
+ copy mykey pyaiiarv 
+ incrby mykey -765 
+ get mykey

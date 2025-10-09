@@ -1,0 +1,9 @@
+lpush zdnjslcy sicnwujw 
+ set mykey 15.087269 
+ lmove zdnjslcy ekfzqeis left right 
+ mget mykey mykey mykey mykey 
+ rpush dbmuwins jrjuraql 
+ info cpu default 
+ lpushx zdnjslcy fdrgoskt 
+ lcs mykey mykey 
+ get mykey

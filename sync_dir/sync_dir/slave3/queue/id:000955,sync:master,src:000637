@@ -1,0 +1,5 @@
+set bpvfxtud 0.50853072177084657 
+ incrbyfloat bpvfxtud -816 
+ geoadd prlpsdxt 12.75 36.995 trqpgcxr 
+ save 
+ get bpvfxtud

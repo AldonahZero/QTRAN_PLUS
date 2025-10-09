@@ -1,0 +1,5 @@
+zdiffstore oninilnq 0 oninilnq 
+ set mykey hello 
+ zinterstore yygrvfbj 2 yygrvfbj yygrvfbj 
+ get mykey 
+ save

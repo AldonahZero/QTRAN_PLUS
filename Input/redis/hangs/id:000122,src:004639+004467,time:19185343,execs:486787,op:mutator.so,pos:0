@@ -1,0 +1,11 @@
+lpush jqknbzjm "World" 
+ set mykey 15.087269 
+ setbit mykey 1954664205 1 
+ lpushx jqknbzjm bibpljvn lyqzfnlb ccsnseuf ccsnseuf ccsnseuf lyqzfnlb ccsnseuf ccsnseuf 
+ linsert jqknbzjm before "World" "Three" 
+ sort jqknbzjm by weight* 
+ lpos jqknbzjm hiyitdrx rank -1 
+ mget mykey mykey mykey mykey 
+ info cpu all 
+ lcs mykey mykey 
+ get mykey

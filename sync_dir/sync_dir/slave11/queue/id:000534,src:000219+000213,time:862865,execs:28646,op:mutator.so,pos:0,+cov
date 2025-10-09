@@ -1,0 +1,5 @@
+set ubjcxcxl hello 
+ bitfield ubjcxcxl overflow wrap incrby i22 0 -2479703 
+ zinterstore phrpwlca 2 phrpwlca phrpwlca aggregate min 
+ bitpos ubjcxcxl 0 35 35 bit 
+ get ubjcxcxl

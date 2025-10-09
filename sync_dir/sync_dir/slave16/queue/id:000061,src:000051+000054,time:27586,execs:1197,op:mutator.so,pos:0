@@ -1,0 +1,4 @@
+set mykey 1732498873 
+ geoadd eczuybnf 179.5 36 htafotkr 
+ get mykey 
+ psubscribe bar* 

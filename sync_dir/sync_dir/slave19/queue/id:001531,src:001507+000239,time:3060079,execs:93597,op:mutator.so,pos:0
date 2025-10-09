@@ -1,0 +1,10 @@
+set mykey -853 
+ lpush jqknbzjm xbtoynzn 
+ zdiffstore bexbxodv 2 bexbxodv bexbxodv 
+ psetex ddeayqeh 124957151303 -2792568265 
+ info cpu all 
+ lpop jqknbzjm 0 
+ del jqknbzjm 
+ select 8 
+ incrby mykey 443 
+ get mykey

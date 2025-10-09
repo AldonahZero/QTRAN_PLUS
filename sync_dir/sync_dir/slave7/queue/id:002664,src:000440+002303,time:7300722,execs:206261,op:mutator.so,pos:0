@@ -1,0 +1,8 @@
+geoadd zvdfcdqc 12.758489 38.788135 llxyuaqj 17.241510 38.788135 nxmjeqgx 17.250000 35.202000 slkadwaf 12.750000 35.202000 esifgdfx 12.799439062548865 35.201864127459075 hsbnbydy 
+ set mykey 306 
+ georadius zvdfcdqc 13.361389 38.115556 500 km store xutmxmkt 
+ type mspahcqu 
+ geopos zvdfcdqc llxyuaqj llxyuaqj llxyuaqj 
+ decr mykey 
+ save 
+ get mykey

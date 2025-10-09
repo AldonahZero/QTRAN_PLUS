@@ -1,0 +1,4 @@
+set mykey 1293 
+ get mykey 
+ scan 1672354063000 type string 
+ save

@@ -1,0 +1,8 @@
+set nnseeina 185256 
+ bitpos nnseeina 1 
+ get nnseeina 
+ pfadd dbpkzfom 
+ setbit nnseeina 474529 1 
+ bitpos nnseeina 0 56 104 bit 
+ get nnseeina 
+ save

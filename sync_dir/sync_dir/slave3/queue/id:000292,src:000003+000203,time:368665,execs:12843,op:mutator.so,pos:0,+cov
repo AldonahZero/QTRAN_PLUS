@@ -1,0 +1,3 @@
+set mykey hello 
+ zrangestore hvmcjxor hvmcjxor 2 -inf 
+ get mykey

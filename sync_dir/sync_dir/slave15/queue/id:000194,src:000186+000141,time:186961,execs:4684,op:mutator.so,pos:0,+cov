@@ -1,0 +1,6 @@
+set mykey 0 
+ get mykey 
+ getex mykey 
+ hsetnx roftorbl khrrkjgs upthqfxe 
+ info replication 
+ save

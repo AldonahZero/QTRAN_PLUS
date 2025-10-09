@@ -1,0 +1,4 @@
+set ebvgkrck 20 
+ lcs ebvgkrck ebvgkrck 
+ get ebvgkrck 
+ save

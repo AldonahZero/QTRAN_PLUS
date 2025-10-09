@@ -1,0 +1,20 @@
+set mykey -1947844055 
+ zadd tsihxpwk lt incr 1 bexnlycc 
+ bitpos mykey 1 12 12 bit 
+ sort tsihxpwk alpha 
+ zincrby tsihxpwk -4224562770 mlujlapi 
+ zincrby tsihxpwk -inf ymtynmse 
+ zrevrank tsihxpwk bexnlycc 
+ zincrby tsihxpwk -5 sjhvpked 
+ zcount tsihxpwk -1552051564 304 
+ zinterstore hszuawdu 2 tsihxpwk tsihxpwk weights 2 3 
+ get mykey 
+ zinterstore v0 2 hszuawdu tsihxpwk weights 2 3 
+ pfadd dbpkzfom 
+ zrangestore lguhmiyq v0 5 0 byscore rev limit 0 2 
+ setbit mykey 474529 1 
+ get mykey 
+ zunion 2 tsihxpwk tsihxpwk weights 1 1 aggregate max withscores 
+ zinter 2 hszuawdu v0 aggregate min withscores 
+ zremrangebyscore tsihxpwk 449 734 
+ save

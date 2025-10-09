@@ -1,0 +1,5 @@
+set mykey -37 
+ setex tncydqgy 273 12024430563 
+ setnx gbjlvscx -37 
+ bitpos gbjlvscx 1 64 74 bit 
+ get mykey

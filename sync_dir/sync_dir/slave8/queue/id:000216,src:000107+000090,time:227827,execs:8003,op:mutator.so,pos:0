@@ -1,0 +1,6 @@
+set mykey -886864826961 
+ bitpos mykey 0 33 -1 bit 
+ zdiffstore vmgqtrcr 2 vmgqtrcr vmgqtrcr 
+ get mykey 
+ bitpos mykey 0 7 9 byte 
+ psetex vokpjzpp -586 364853510803

@@ -1,0 +1,6 @@
+set mykey -1947844055 
+ watch ppkargvp tbwlipyh dbsprqpw hmbwqpev fyadlxhi dbsprqpw fyadlxhi hmbwqpev fyadlxhi 
+ get mykey 
+ setbit mykey 474529 1 
+ get mykey 
+ save

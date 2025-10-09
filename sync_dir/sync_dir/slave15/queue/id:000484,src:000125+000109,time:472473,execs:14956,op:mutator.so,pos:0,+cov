@@ -1,0 +1,5 @@
+set mykey 0 
+ getrange mykey -488022160 1496 
+ get mykey 
+ getex mykey 
+ save

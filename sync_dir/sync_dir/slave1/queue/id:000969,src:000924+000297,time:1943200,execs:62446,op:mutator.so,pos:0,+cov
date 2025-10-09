@@ -1,0 +1,6 @@
+msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ set mykey "Hello," 
+ geoadd cqubszoy 13.361389 38.115556 acjnpjwy 59.149620271823181 37.502669 fekagtxv 
+ del triqeesz 
+ georadius cqubszoy 13.361389 38.115556 500 km storedist aynqlgbb 
+ get mykey

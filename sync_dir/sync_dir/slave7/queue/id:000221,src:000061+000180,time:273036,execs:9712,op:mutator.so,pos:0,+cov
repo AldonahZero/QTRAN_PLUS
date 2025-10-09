@@ -1,0 +1,5 @@
+geoadd vrekwiwa 13.00 36.50 pqkikujz 
+ set mykey 0.19306496586327673 
+ geopos vrekwiwa pqkikujz pqkikujz pqkikujz 
+ decr mykey 
+ get mykey

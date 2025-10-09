@@ -1,0 +1,11 @@
+set mykey 41788 
+ rpush czowykxw ptecklws 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx 
+ get mykey 
+ hstrlen nbxqjbpm kmvsxosn 
+ lpushx czowykxw bibpljvn lyqzfnlb ccsnseuf 
+ rpoplpush czowykxw xbfaqjuv 
+ ttl jotyibqg 
+ lmpop 2 czowykxw czowykxw right count 2 
+ ltrim czowykxw 28 40 
+ hset rfllxsdf iubquuor 0.41507778056668015 

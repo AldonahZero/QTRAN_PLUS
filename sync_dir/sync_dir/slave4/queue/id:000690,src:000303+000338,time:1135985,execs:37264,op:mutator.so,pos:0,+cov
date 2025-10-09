@@ -1,0 +1,4 @@
+set mykey 1519 
+ setbit mykey 26 1 
+ get mykey 
+ del mykey 

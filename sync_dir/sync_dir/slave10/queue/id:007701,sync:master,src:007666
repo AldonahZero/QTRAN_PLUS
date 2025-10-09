@@ -1,0 +1,11 @@
+set mykey 0 
+ incrbyfloat mykey -inf 
+ get mykey 
+ incrbyfloat mykey -inf 
+ getex mykey 
+ sinterstore gfyopats gfyopats gfyopats 
+ incrbyfloat mykey -inf 
+ incrbyfloat mykey -866 
+ sscan gfyopats 380 
+ info replication 
+ save

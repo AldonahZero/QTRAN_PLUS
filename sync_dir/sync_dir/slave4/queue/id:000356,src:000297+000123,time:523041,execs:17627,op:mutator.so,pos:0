@@ -1,0 +1,4 @@
+set mykey 119 
+ psetex vrrqnomv 315 33 
+ lcs mykey mykey 
+ get mykey

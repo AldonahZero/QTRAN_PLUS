@@ -1,0 +1,16 @@
+object encoding rwzbgekl 
+ zinterstore hszuawdu 2 hszuawdu hszuawdu weights 0 3 
+ set mykey hello 
+ zincrby hszuawdu -inf ymtynmse 
+ zdiffstore qbbgmoug 2 hszuawdu hszuawdu 
+ zinterstore teqiuuzn 3 teqiuuzn hszuawdu teqiuuzn weights 0 0 -331158402995 
+ zinterstore v1 3 v1 teqiuuzn teqiuuzn weights 0 0 1 
+ psetex zvshusdd 3410102305 3090148046 
+ zinterstore cxewdqlm 2 teqiuuzn v1 weights 2 3 
+ zincrby teqiuuzn -inf ymtynmse 
+ pfmerge fuyxqigi ssouukyu qteecwwk 
+ zinterstore v0 2 teqiuuzn teqiuuzn weights 2 3 
+ zunion 2 teqiuuzn teqiuuzn weights 1 1 aggregate sum withscores 
+ zrandmember teqiuuzn 1 withscores 
+ zcount v0 -539 1850704167 
+ get mykey

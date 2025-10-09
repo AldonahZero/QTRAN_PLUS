@@ -1,0 +1,8 @@
+set mykey hello 
+ zinterstore yygrvfbj 2 yygrvfbj yygrvfbj 
+ zunion 2 yygrvfbj yygrvfbj aggregate min withscores 
+ zmpop 2 yygrvfbj yygrvfbj min 
+ zdiff 2 yygrvfbj yygrvfbj withscores 
+ copy mykey v0 
+ get mykey 
+ save

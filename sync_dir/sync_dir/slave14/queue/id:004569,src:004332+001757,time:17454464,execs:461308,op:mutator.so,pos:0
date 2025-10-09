@@ -1,0 +1,10 @@
+xadd v1 maxlen ~ 0 123-1 hognxfnw "Hello," 
+ info keyspace 
+ xgroup create v1 v0 0 
+ xgroup create v1 v2 0 
+ xgroup create v1 v3 0 
+ set atifyowf 1 
+ xgroup destroy v1 v3 
+ save 
+ xgroup destroy v1 v0 
+ get atifyowf

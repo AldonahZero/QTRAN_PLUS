@@ -1,0 +1,7 @@
+hset eaxejsol bhwulrko 94964 
+ sadd dwtrtaow vyhxdaxe 
+ set mykey 2 
+ sintercard 2 dwtrtaow dwtrtaow limit 10 
+ setbit mykey 1603 "Hello," 
+ sdiffstore xhpqrqvn dwtrtaow dwtrtaow dwtrtaow 
+ get mykey

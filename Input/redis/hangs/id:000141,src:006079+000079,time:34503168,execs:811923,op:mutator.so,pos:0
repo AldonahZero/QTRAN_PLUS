@@ -1,0 +1,8 @@
+set mykey "Hello," 
+ bitfield mykey overflow wrap set i4 3128481901 -12 
+ bitpos mykey 0 16 64 bit 
+ get mykey 
+ pfadd mykey 
+ setbit mykey 474529 1 
+ get mykey 
+ save

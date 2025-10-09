@@ -1,0 +1,4 @@
+set mykey -5 
+ bitfield mykey overflow fail incrby u42 535172217 4134927976325 
+ bitop or mrbqfvrk mykey 
+ get mykey

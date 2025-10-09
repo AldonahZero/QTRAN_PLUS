@@ -1,0 +1,6 @@
+hsetnx wqydsukt guwchiwu -830067951618 
+ expire wqydsukt 200 lt 
+ set mykey 3 
+ info cpu default 
+ copy mykey v0 
+ get mykey

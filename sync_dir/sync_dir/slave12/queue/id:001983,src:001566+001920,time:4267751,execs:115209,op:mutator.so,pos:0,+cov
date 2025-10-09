@@ -1,0 +1,8 @@
+sadd waeoxbem wivnjuxe 
+ set mykey -1947844055 
+ smembers waeoxbem 
+ get mykey 
+ scard waeoxbem 
+ sort waeoxbem alpha store wiruezdc 
+ get mykey 
+ save

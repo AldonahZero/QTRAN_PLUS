@@ -1,0 +1,4 @@
+set mykey hello 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ zinterstore yygrvfbj 2 yygrvfbj yygrvfbj 
+ get mykey

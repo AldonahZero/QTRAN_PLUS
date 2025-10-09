@@ -1,0 +1,6 @@
+set mykey 1293 
+ zadd snnyggvu 5 tczuvski 
+ dump mykey 
+ get mykey 
+ scan 589 type string 
+ save

@@ -1,0 +1,4 @@
+set mykey 692 
+ copy mykey fnokzzao db cqcngdpy 
+ lcs fnokzzao mykey 
+ get mykey

@@ -1,0 +1,4 @@
+set mykey 197 
+ set v0 0.19306496586327673 
+ save 
+ get mykey

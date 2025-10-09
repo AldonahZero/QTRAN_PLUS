@@ -1,0 +1,4 @@
+set ubjcxcxl hello 
+ save 
+ bitfield ubjcxcxl overflow fail set i4 461829634 -12 
+ get ubjcxcxl

@@ -1,0 +1,5 @@
+set mykey -16965705105117 
+ hset eaxejsol bhwulrko 1 
+ get mykey 
+ save 
+ ttl imwdrgeh

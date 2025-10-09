@@ -1,0 +1,10 @@
+sadd waeoxbem wivnjuxe 
+ sunion waeoxbem 
+ set mykey -1947844055 
+ copy waeoxbem v0 
+ smembers waeoxbem 
+ get mykey 
+ scard waeoxbem 
+ sort waeoxbem alpha 
+ get mykey 
+ save

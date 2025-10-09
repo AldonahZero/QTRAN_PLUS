@@ -1,0 +1,6 @@
+set mykey 692 
+ copy mykey ycgvtbur replace 
+ strlen mykey 
+ getbit eeoiflzb -244 
+ decr ycgvtbur 
+ get mykey

@@ -1,0 +1,11 @@
+set mykey -1947844055 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ zunion 8 mfsvncrq mfsvncrq weights 1 1 aggregate min withscores 
+ bitpos mykey 1 12 12 bit 
+ get mykey 
+ pfadd dbpkzfom 
+ setbit mykey 474529 1 
+ get mykey 
+ zdiffstore wtxnpcue 4 mfsvncrq wtxnpcue wtxnpcue wtxnpcue 
+ zmpop 1 mfsvncrq min count 2 
+ save

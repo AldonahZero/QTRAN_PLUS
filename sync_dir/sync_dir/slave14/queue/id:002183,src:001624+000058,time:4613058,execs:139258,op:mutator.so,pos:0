@@ -1,0 +1,9 @@
+hset eaxejsol bhwulrko 20220044110400301200030414002221202401144302121102214220143414121422201404321434024 
+ hmget eaxejsol bhwulrko bhwulrko 
+ set mykey 2 
+ rpush czowykxw ptecklws 
+ lmpop 2 czowykxw czowykxw right count 10 
+ hincrbyfloat eaxejsol bhwulrko 1 
+ pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
+ hstrlen eaxejsol bhwulrko 
+ get mykey

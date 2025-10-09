@@ -1,0 +1,12 @@
+msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ del nzgkmxpj triqeesz ldvuftez 
+ xadd jbdjxqbm maxlen ~ 1000 123-1 hognxfnw "Hello," 
+ xgroup create jbdjxqbm v0 0 
+ xrevrange jbdjxqbm + - count 1 
+ copy jbdjxqbm v3 replace 
+ copy jbdjxqbm v4 replace 
+ xgroup createconsumer jbdjxqbm v0 v2 
+ xinfo stream jbdjxqbm 
+ set mykey 3090148046 
+ copy v4 v1 replace 
+ get mykey

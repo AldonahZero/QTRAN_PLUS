@@ -1,0 +1,7 @@
+set mykey 311 
+ pfadd xemddtys 
+ get mykey 
+ sdiffstore vdxxciyw vdxxciyw vdxxciyw vdxxciyw 
+ get mykey 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

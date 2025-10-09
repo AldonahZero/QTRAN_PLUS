@@ -1,0 +1,4 @@
+set mykey 9223372036854775808 
+ bitpos mykey 0 16 64 bit 
+ bitpos mykey 1 15 67 bit 
+ get mykey

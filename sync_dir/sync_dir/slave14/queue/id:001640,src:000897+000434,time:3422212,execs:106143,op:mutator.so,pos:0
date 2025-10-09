@@ -1,0 +1,8 @@
+set v0 13.361389 
+ incrby v0 -980 
+ get v0 
+ incr v0 
+ lpush asjdswpq syrsobfe ndlfegrn 
+ lmove asjdswpq bthygztq right left 
+ ltrim bthygztq 5 6 
+ setex ssqwgzfa -240958759673 -179847923191

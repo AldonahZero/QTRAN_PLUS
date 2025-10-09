@@ -1,0 +1,5 @@
+set mykey -886864826961 
+ mget mykey mykey mykey mykey mykey mykey mykey 
+ bitpos mykey 0 -2255963835 -1 bit 
+ get mykey 
+ psetex vokpjzpp -586 364853510803

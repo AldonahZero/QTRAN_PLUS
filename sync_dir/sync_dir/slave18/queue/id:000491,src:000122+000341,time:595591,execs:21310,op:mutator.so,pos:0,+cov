@@ -1,0 +1,6 @@
+set mykey 41788 
+ info keyspace 
+ get mykey 
+ lpush fjawhzfz hfgcwmoq swywrupx 
+ save 
+ decr mykey

@@ -1,0 +1,7 @@
+hset mmbdyavh woiaydqs 0.410840142243933 
+ hincrbyfloat mmbdyavh woiaydqs 1 
+ hincrbyfloat mmbdyavh woiaydqs 1 
+ hget mmbdyavh woiaydqs 
+ set mykey hello 
+ hget mmbdyavh woiaydqs 
+ get mykey

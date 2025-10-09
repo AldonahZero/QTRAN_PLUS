@@ -1,0 +1,5 @@
+set atifyowf 33004443334424324132300141132443321231124130204124203324123 
+ copy atifyowf v0 
+ save 
+ bitop xor soigkacb v0 atifyowf atifyowf 
+ get atifyowf

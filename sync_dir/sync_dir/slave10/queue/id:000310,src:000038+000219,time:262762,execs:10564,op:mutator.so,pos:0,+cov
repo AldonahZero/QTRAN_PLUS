@@ -1,0 +1,4 @@
+set mykey -1 
+ setex xkdssvaz 9223372036854776 2933400064 
+ get mykey 
+ object encoding uvryzsxf

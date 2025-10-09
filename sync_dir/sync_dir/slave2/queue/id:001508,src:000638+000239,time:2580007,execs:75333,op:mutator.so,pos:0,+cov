@@ -1,0 +1,6 @@
+set mykey hello 
+ mset mhnoojoh -886864826961 
+ expireat duzslaye 1672351169 
+ select 2 
+ get mykey 
+ setnx elzghndh 165061839

@@ -1,0 +1,5 @@
+set v0 46321 
+ get v0 
+ bitop and dhgncrmg v0 v0 v0 v0 v0 v0 
+ bitfield v0 overflow fail set u34 0 23450054762 
+ setex ssqwgzfa -240958759673 -179847923191

@@ -1,0 +1,9 @@
+sdiffstore xhpqrqvn xhpqrqvn xhpqrqvn 
+ set mykey hello 
+ sintercard 2 xhpqrqvn xhpqrqvn 
+ sintercard 1 xhpqrqvn limit -1 
+ setex ztbcxsbx 871662918 -479 
+ sintercard 1 xhpqrqvn limit 364853510803 
+ psetex uplbvoxp 626435290 -819157934 
+ sintercard 3 xhpqrqvn xhpqrqvn xhpqrqvn 
+ get mykey

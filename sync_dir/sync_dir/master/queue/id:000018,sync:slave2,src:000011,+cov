@@ -1,0 +1,3 @@
+set mykey hello 
+ mset mhnoojoh -886864826961 
+ get mykey

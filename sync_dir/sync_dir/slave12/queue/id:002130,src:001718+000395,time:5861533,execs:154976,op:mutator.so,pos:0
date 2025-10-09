@@ -1,0 +1,7 @@
+lpush fjawhzfz hfgcwmoq "world" 
+ set mykey 15.087269 
+ lrange fjawhzfz 0 -1 
+ rpop fjawhzfz 1 
+ mget mykey mykey mykey mykey 
+ lcs mykey mykey 
+ get mykey

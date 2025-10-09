@@ -1,0 +1,4 @@
+set mykey 898523537 
+ object encoding cmfmndrr 
+ lcs mykey mykey 
+ get mykey

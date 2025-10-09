@@ -1,0 +1,7 @@
+set mykey hello 
+ zinterstore yygrvfbj 2 yygrvfbj yygrvfbj 
+ zmpop 2 yygrvfbj yygrvfbj min 
+ zinterstore phrpwlca 2 phrpwlca yygrvfbj aggregate min 
+ get mykey 
+ zrangestore gdjwzzhv gdjwzzhv 0 1 
+ save

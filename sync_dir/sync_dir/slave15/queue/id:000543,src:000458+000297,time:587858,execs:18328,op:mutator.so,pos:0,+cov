@@ -1,0 +1,6 @@
+set mykey 0 
+ get mykey 
+ setbit mykey 0 1 
+ save 
+ sunionstore hczdthan hczdthan 
+ mset jmvjdgip 533 

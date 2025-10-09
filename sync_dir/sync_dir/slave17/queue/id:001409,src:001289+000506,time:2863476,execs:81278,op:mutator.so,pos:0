@@ -1,0 +1,6 @@
+set mykey hello 
+ zinterstore zjxdmzot 1 zjxdmzot zjxdmzot aggregate max 
+ zunion 1 zjxdmzot zjxdmzot aggregate min withscores 
+ zmpop 2 zjxdmzot zjxdmzot min 
+ get mykey 
+ save

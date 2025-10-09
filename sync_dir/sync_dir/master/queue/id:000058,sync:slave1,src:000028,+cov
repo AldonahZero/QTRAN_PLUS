@@ -1,0 +1,4 @@
+set mykey hello 
+ getex mykey 
+ hset ucukoxrm auydyooj 0.21973279221902267 
+ get mykey

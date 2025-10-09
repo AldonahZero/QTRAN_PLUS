@@ -1,0 +1,6 @@
+msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ set mykey 197 
+ set v0 -1001 
+ save 
+ getdel ldvuftez 
+ get mykey

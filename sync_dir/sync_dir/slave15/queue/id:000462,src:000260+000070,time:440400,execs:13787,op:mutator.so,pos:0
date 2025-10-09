@@ -1,0 +1,6 @@
+set mykey -1947844055 
+ get mykey 
+ pfadd iknmweqf fbmnmqlw pfntaoeo 
+ setbit mykey 474529 1 
+ get mykey 
+ save

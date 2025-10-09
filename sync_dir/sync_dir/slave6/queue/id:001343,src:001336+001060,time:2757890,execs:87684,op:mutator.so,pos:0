@@ -1,0 +1,7 @@
+set mykey -10910337 
+ xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm 
+ xinfo stream ermrdvzf full 
+ copy ermrdvzf v0 
+ get mykey 
+ dump ermrdvzf 
+ save

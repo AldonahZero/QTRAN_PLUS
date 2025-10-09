@@ -1,0 +1,5 @@
+set ebvgkrck 92007103795675120 
+ decrby ebvgkrck -591038726079 
+ setbit ebvgkrck 321252 0 
+ get ebvgkrck 
+ save

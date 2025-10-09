@@ -1,0 +1,9 @@
+set mykey 0.8284480026124269 
+ rpush ukbzhzcm kprjvznp 
+ save 
+ sort ukbzhzcm by weight* 
+ lpos ukbzhzcm kprjvznp count 0 maxlen 1 
+ lpos ukbzhzcm kprjvznp count 0 maxlen 1 
+ lrem ukbzhzcm 1 vwedluoo 
+ zdiffstore dfgxahpo 3 dfgxahpo dfgxahpo dfgxahpo 
+ get mykey

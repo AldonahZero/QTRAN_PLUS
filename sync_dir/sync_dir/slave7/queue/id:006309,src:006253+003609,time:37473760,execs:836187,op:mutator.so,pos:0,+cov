@@ -1,0 +1,19 @@
+set mykey 311 
+ incrbyfloat mykey 376 
+ get mykey 
+ select 9 
+ xadd yxqbavlu * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm 
+ lcs mykey mykey 
+ setbit mykey 109990 1 
+ get mykey 
+ bitop xor gtmzalcd mykey mykey mykey mykey mykey 
+ bitop or yxqbavlu mykey mykey 
+ xgroup create yxqbavlu v0 123-1 
+ scan 117 type string 
+ bitop or gvtzczpz mykey mykey mykey 
+ xack yxqbavlu v0 1672351058167-0 1672351058167-1 
+ save 
+ xgroup create yxqbavlu v1 0 
+ xautoclaim yxqbavlu xvphynbr odlgomhl -710715129371 0-0 count 23 
+ bitop and tzlrveqd mykey mykey mykey mykey mykey mykey mykey 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

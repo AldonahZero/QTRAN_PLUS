@@ -1,0 +1,6 @@
+hset eaxejsol bhwulrko 980792 
+ hmget eaxejsol bhwulrko bhwulrko 
+ set mykey 2 
+ hincrbyfloat eaxejsol bhwulrko 401404201341241132211401110422242302223101311244433030143140430241243241130223 
+ pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
+ get mykey

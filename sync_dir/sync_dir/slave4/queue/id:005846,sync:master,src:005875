@@ -1,0 +1,10 @@
+xadd kvahggdi * qnoruayj "Hello," 
+ xrevrange kvahggdi 119 37999704017 
+ xtrim kvahggdi minid 1000 
+ xtrim kvahggdi minid 1000 
+ info latencystats 
+ xtrim kvahggdi minid 1000 
+ xtrim kvahggdi minid 1000 
+ set atifyowf 1 
+ save 
+ get atifyowf

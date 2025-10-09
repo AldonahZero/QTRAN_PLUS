@@ -1,0 +1,7 @@
+info cpu all 
+ set atifyowf 1 
+ setex tncydqgy 273 33004443334424324132300141132443321231124130204124203324123 
+ expire atifyowf 0 
+ zrangestore ugswuldi ugswuldi 0 0 
+ save 
+ get atifyowf

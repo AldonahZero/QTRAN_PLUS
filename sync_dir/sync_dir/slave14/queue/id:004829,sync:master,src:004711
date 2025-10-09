@@ -1,0 +1,10 @@
+sinterstore gfyopats gfyopats gfyopats 
+ zrangestore xervubdq xervubdq 1 2 
+ object refcount metnmzgq 
+ info all all 
+ set mykey 0 
+ get mykey 
+ incrbyfloat mykey 1072727848 
+ getex mykey 
+ info all 
+ save

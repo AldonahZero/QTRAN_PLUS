@@ -1,0 +1,7 @@
+set mykey hello 
+ zinterstore xmawvngf 2 xmawvngf xmawvngf 
+ zcard xmawvngf 
+ zremrangebyscore xmawvngf 916054754013 346072200846 
+ zlexcount xmawvngf 2119604741 1694667920 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ get mykey

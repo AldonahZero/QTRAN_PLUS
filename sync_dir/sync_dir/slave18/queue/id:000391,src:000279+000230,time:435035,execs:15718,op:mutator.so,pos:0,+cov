@@ -1,0 +1,7 @@
+set mykey -37 
+ zrangestore ugswuldi ugswuldi 0 -1 
+ hset mmbdyavh woiaydqs 452588 
+ setnx gbjlvscx -37 
+ zmpop 1 ugswuldi min count 2 
+ incrbyfloat mykey 652296689642 
+ get mykey

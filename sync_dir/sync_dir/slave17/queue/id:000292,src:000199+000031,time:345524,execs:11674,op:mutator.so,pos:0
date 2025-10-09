@@ -1,0 +1,6 @@
+set wcitbqrq 986906 
+ mget wcitbqrq wcitbqrq wcitbqrq wcitbqrq 
+ setbit wcitbqrq 35194 0 
+ get wcitbqrq 
+ save 
+ type ibxacnjy

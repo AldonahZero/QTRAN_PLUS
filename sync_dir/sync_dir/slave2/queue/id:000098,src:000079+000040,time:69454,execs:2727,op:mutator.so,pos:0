@@ -1,0 +1,5 @@
+hsetnx wqydsukt guwchiwu ssnvzsid 
+ set mykey 3 
+ copy mykey v0 
+ setnx gbjlvscx -37 
+ get mykey

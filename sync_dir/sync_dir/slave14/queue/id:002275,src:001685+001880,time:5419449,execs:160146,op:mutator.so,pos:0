@@ -1,0 +1,7 @@
+object encoding rwzbgekl 
+ zinterstore zcfialgy 2 zcfialgy zcfialgy 
+ info latencystats 
+ set mykey hello 
+ zscore zcfialgy yuueumjs 
+ scan 11 type string 
+ get mykey

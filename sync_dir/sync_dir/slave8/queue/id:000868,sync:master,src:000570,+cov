@@ -1,0 +1,5 @@
+set mykey 822705243631 
+ geoadd eapvvold -1 37.00 nkmmorea 
+ get mykey 
+ save 
+ ttl imwdrgeh

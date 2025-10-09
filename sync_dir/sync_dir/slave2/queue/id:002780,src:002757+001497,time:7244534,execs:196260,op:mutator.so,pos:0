@@ -1,0 +1,10 @@
+sadd waeoxbem wivnjuxe 
+ sunionstore xmawvngf waeoxbem waeoxbem 
+ sintercard 3 waeoxbem waeoxbem waeoxbem limit 2 
+ set mykey -1947844055 
+ spop xmawvngf 2 
+ srandmember waeoxbem 
+ smembers waeoxbem 
+ get mykey 
+ get mykey 
+ save

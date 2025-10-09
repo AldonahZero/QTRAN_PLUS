@@ -1,0 +1,4 @@
+set mykey 4806867732670 
+ get mykey 
+ getex mykey 
+ save

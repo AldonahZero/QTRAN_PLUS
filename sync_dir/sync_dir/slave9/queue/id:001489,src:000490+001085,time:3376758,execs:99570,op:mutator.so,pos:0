@@ -1,0 +1,6 @@
+set mykey -874394400 
+ zadd mfsvncrq lt incr 367 bexnlycc 
+ zrangestore xervubdq mfsvncrq 1 2 byscore 
+ zrangestore v0 mfsvncrq 2 -1 byscore rev limit 1 2 
+ object encoding sotkufci 
+ get mykey

@@ -1,0 +1,6 @@
+set mykey 0.8284480026124269 
+ rpush ukbzhzcm kprjvznp 
+ save 
+ lpos ukbzhzcm kprjvznp count 1212044342121342330120333011310343042111112004430110414043434232214144020043403411 maxlen 1 
+ zdiffstore dfgxahpo 3 dfgxahpo dfgxahpo dfgxahpo 
+ get mykey

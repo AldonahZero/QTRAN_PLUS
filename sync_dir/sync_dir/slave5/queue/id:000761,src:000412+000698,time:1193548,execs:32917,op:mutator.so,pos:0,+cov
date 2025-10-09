@@ -1,0 +1,5 @@
+sunionstore vedaznzm vedaznzm vedaznzm vedaznzm 
+ hsetnx nbxqjbpm kmvsxosn -645611437338 
+ sismember vedaznzm dvxwnlsg 
+ set mykey hello 
+ get mykey

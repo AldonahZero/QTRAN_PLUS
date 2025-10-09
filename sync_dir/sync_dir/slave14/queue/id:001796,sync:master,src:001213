@@ -1,0 +1,8 @@
+set mykey 0 
+ sinterstore ubjuqmxi ubjuqmxi ubjuqmxi 
+ get mykey 
+ incrbyfloat mykey 1072727848 
+ getex mykey 
+ sinterstore gfyopats gfyopats gfyopats 
+ info replication 
+ save

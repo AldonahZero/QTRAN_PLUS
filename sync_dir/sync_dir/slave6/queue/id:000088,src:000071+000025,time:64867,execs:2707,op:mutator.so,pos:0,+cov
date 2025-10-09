@@ -1,0 +1,3 @@
+set mykey 452588 
+ getrange mykey 227 821 
+ get mykey

@@ -1,0 +1,5 @@
+msetnx nzgkmxpj fgqixmul triqeesz gftsakln v6 20 
+ set mykey "Hello," 
+ lcs nzgkmxpj nzgkmxpj idx minmatchlen 4 withmatchlen 
+ geoadd cqubszoy 13.361389 38.115556 acjnpjwy 0.32029585089548296 37.502669 fekagtxv 
+ get mykey

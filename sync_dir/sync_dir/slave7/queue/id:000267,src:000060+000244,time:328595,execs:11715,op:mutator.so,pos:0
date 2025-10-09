@@ -1,0 +1,6 @@
+geoadd vrekwiwa 13.00 36.50 pqkikujz 
+ zunionstore gqqorfgf 2 gqqorfgf gqqorfgf 
+ set mykey 306 
+ zrangestore ugswuldi ugswuldi 0 -1 
+ geopos vrekwiwa pqkikujz pqkikujz pqkikujz 
+ get mykey

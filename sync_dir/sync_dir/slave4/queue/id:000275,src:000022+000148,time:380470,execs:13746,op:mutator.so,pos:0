@@ -1,0 +1,3 @@
+set mykey gkwunbmg 
+ lcs mykey mykey 
+ get mykey

@@ -1,0 +1,3 @@
+set mykey 10243120 
+ get mykey 
+ ttl wrzagplh

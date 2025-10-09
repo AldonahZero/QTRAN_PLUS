@@ -1,0 +1,5 @@
+set v21 1140 
+ bitop or ewxrjkga v21 v21 v21 v21 v21 v21 v21 v21 
+ incrbyfloat v21 -816 
+ save 
+ get v21

@@ -1,0 +1,8 @@
+sadd waeoxbem wivnjuxe 
+ set mykey -1947844055 
+ smembers waeoxbem 
+ get mykey 
+ scard waeoxbem 
+ sort waeoxbem limit 0 10 
+ get mykey 
+ save

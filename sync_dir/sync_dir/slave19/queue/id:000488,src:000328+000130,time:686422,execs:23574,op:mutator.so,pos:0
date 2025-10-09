@@ -1,0 +1,7 @@
+set mykey 13033323022411214443443303234220120324324344401012232221143311233 
+ object encoding cmfmndrr 
+ lcs mykey mykey 
+ geoadd defhyxzz -45 65.50900022111811438208 vnjyzinq 17.241510 38.788135 nxmjeqgx 17.250000 35.202000 slkadwaf 
+ setbit mykey 109990 1 
+ georadius defhyxzz 15 37 200 km asc 
+ get mykey

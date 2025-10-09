@@ -1,0 +1,9 @@
+set mykey 212 
+ zadd mfsvncrq lt incr -1367120419 bexnlycc 
+ zunionstore nchjerwp 5 mfsvncrq mfsvncrq weights 2 3 
+ hsetnx vautdjej opuxcisi -10910337 
+ sort mfsvncrq 
+ hgetall vautdjej 
+ get mykey 
+ hexists vautdjej uszqhkri 
+ save

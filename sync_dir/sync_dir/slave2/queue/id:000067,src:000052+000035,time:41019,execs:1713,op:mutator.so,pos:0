@@ -1,0 +1,4 @@
+set mykey 41788 
+ set rkfvndig 0.50729305926118651 
+ sdiffstore evrzhssa evrzhssa evrzhssa 
+ get mykey

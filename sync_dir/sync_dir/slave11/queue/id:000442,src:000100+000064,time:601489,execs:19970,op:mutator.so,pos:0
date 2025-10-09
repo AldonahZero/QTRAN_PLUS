@@ -1,0 +1,3 @@
+set mykey 1430 
+ bitfield mykey overflow fail set i15 0 -12 
+ get mykey

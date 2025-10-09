@@ -1,0 +1,7 @@
+hset ubjuqmxi vczhbogj 0.019224562691163533 
+ ttl ucglluvp 
+ set mykey hello 
+ pexpire mykey 500 
+ getex mykey 
+ expire ubjuqmxi 2 
+ get mykey

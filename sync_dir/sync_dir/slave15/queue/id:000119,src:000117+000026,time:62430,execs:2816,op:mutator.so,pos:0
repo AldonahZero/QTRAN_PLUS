@@ -1,0 +1,5 @@
+zrangestore wvcbuegq wvcbuegq 1 2 
+ set mykey 0 
+ get mykey 
+ getex mykey 
+ save

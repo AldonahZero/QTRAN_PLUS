@@ -1,0 +1,4 @@
+set qmkqkndf 33.387637791869992 
+ get qmkqkndf 
+ save 
+ lcs qmkqkndf qmkqkndf len idx minmatchlen 4 withmatchlen

@@ -1,0 +1,5 @@
+hsetnx wqydsukt guwchiwu -830067951618 
+ set mykey 3 
+ zrangestore eqahirrh eqahirrh 0 -1 
+ copy mykey v0 
+ get mykey

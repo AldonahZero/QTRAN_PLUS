@@ -1,0 +1,7 @@
+set mykey hello 
+ set v0 159 
+ append ibdfxrwx 13121140 
+ sinterstore ubjuqmxi ubjuqmxi ubjuqmxi 
+ setbit ibdfxrwx 615 0 
+ srandmember ubjuqmxi 50 
+ get mykey

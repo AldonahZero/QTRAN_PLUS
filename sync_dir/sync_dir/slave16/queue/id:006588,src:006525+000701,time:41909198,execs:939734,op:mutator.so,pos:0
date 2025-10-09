@@ -1,0 +1,19 @@
+xadd jbdjxqbm maxlen ~ -562 123-1 hognxfnw "Hello," 
+ info keyspace 
+ xgroup create jbdjxqbm v0 0 
+ xpending jbdjxqbm v0 idle 9000 -1654890356 + 114032213300100222003031000430134333012243232104434413321401322143003423212203311403312424414342440212310222232233002231122122434314340013242124301130141330424102012430344044443234211341142301040112420223424204 yxaavztx 
+ xclaim jbdjxqbm cghcphip qcdrshmz 0 1-0 force 
+ xgroup createconsumer jbdjxqbm v0 v1 
+ set atifyowf 1 
+ save 
+ xinfo stream jbdjxqbm 
+ copy jbdjxqbm v2 
+ xclaim v2 cghcphip lzytosbe 0 1-0 force 
+ xpending jbdjxqbm v0 
+ xinfo stream v2 full 
+ copy jbdjxqbm v3 
+ dump v2 
+ copy v0 v4 
+ copy v4 v5 
+ xclaim jbdjxqbm cghcphip qcdrshmz 0 1-0 force 
+ get atifyowf

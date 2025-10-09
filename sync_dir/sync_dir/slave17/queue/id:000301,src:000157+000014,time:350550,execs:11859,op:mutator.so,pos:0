@@ -1,0 +1,5 @@
+set wcitbqrq -41 
+ dump wcitbqrq 
+ get wcitbqrq 
+ scan 589 type string 
+ save

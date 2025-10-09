@@ -1,0 +1,9 @@
+hset jqqlhsms vtsdkeze 814317 
+ hrandfield jqqlhsms -586 
+ ttl ucglluvp 
+ dump vtsdkeze 
+ set mykey hello 
+ pexpire mykey 500 
+ getex mykey 
+ expire jqqlhsms 2 
+ get mykey

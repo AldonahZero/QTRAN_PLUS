@@ -1,0 +1,9 @@
+psetex hcnoouhb 851130245 12.75 
+ copy hcnoouhb v2 
+ copy hcnoouhb v3 
+ set vkxhdmjo 1 
+ copy hcnoouhb v1 
+ copy v1 v0 
+ info default all 
+ save 
+ get v0

@@ -1,0 +1,8 @@
+set mykey 1140 
+ save 
+ setbit mykey 837779287 0 
+ mget mykey mykey mykey 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ getset mykey -853 
+ bitop xor vnayjyje triqeesz 
+ get mykey

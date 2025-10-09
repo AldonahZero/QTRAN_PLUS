@@ -1,0 +1,4 @@
+set mykey 28 
+ get mykey 
+ getrange mykey 671 805 
+ ttl wrzagplh

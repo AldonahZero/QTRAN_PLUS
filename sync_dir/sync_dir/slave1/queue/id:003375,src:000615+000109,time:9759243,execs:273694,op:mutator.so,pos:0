@@ -1,0 +1,6 @@
+set mykey -15956 
+ getex mykey 
+ pfcount muowgurr 
+ mget mykey mykey mykey mykey mykey mykey mykey 
+ bitfield mykey overflow wrap incrby i25 0 6413502 
+ get mykey

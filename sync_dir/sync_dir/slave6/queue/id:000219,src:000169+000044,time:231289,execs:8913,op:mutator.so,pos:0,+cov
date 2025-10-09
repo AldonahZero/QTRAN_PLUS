@@ -1,0 +1,4 @@
+set mykey "Hello," 
+ getrange mykey 34034221221402441010400 821 
+ zrangestore rpondvdz rpondvdz 0 -1 limit 1 2 
+ get mykey

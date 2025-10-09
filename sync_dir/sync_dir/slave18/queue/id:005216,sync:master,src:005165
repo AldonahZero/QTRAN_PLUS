@@ -1,0 +1,11 @@
+sadd odaizcpu wivnjuxe 
+ srem odaizcpu njauapzb ayyfdhez iwvsthqc rtyaegfk 
+ sdiffstore vdxxciyw vdxxciyw vdxxciyw vdxxciyw 
+ sunionstore iwshcqfl vdxxciyw iwshcqfl 
+ set mykey -1947844055 
+ srandmember iwshcqfl 0 
+ smembers iwshcqfl 
+ srandmember iwshcqfl 0 
+ get mykey 
+ get mykey 
+ save

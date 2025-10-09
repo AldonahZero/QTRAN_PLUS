@@ -1,0 +1,5 @@
+set mykey 512461 
+ setex clryemar 5 311 
+ keys foo* 
+ get mykey 
+ setex ssqwgzfa -240958759673 -179847923191

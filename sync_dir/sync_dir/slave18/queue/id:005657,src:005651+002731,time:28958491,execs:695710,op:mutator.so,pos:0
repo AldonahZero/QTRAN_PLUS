@@ -1,0 +1,14 @@
+sadd waeoxbem wivnjuxe 
+ sinter waeoxbem waeoxbem 
+ sunionstore vedaznzm vedaznzm waeoxbem waeoxbem 
+ smembers vedaznzm 
+ sinterstore myhnmkqk waeoxbem waeoxbem vedaznzm 
+ sort vedaznzm limit 1243332103301112120243101123112331234430233311220323134240044300242442432144141314012312414430444223431201444102130012200124400313001401014401404402433031002011204301140121432141002314324113 10 
+ set mykey -1947844055 
+ smembers waeoxbem 
+ setex tncydqgy 273 12024430563 
+ sinter waeoxbem waeoxbem 
+ get mykey 
+ sismember vedaznzm ikjrxbvw 
+ get mykey 
+ save

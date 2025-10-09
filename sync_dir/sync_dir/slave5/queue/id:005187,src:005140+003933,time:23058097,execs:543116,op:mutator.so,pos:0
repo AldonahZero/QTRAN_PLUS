@@ -1,0 +1,12 @@
+xadd xaqhhead * qnoruayj "Hello," 
+ info keyspace 
+ xgroup create xaqhhead v0 0 
+ xgroup create xaqhhead v1 0 
+ xgroup create xaqhhead v2 0 
+ set atifyowf 1 
+ xgroup createconsumer xaqhhead v2 v3 
+ xgroup createconsumer xaqhhead v2 v4 
+ copy xaqhhead v5 
+ save 
+ xgroup destroy xaqhhead v2 
+ get atifyowf

@@ -1,0 +1,6 @@
+shutdown abort 
+ set v19 1293 
+ incrbyfloat v19 -5 
+ setex tncydqgy 273 12024430563 
+ save 
+ get v19

@@ -1,0 +1,4 @@
+set mykey hello 
+ pexpiretime whrqxyiq 
+ setex ztbcxsbx 92007103795675120 -479 
+ get mykey

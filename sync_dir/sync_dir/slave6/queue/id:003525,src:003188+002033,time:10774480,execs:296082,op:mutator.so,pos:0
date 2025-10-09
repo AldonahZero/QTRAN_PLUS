@@ -1,0 +1,9 @@
+set v0 20220044110400301200030414002221202401144302121102214220143414121422201404321434024 
+ get v0 
+ pfadd dbpkzfom 
+ setbit v0 474529 1 
+ bitfield v0 overflow wrap set i4 0 23450054762 
+ get v0 
+ setbit v0 1603 1 
+ bitfield v0 overflow wrap set u10 0 1519 
+ save

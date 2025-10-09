@@ -1,0 +1,9 @@
+set mykey -1947844055 
+ get mykey 
+ pfadd dbpkzfom 
+ setbit mykey 474529 1 
+ bitcount dxvdlqeh 
+ select 15 
+ get mykey 
+ bitcount duqjglax 2 -3 
+ save

@@ -1,0 +1,6 @@
+set mykey 311 
+ zrangestore rwcbicsk rwcbicsk 5 6 byscore 
+ get mykey 
+ zmpop 0 rwcbicsk min 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

@@ -1,0 +1,9 @@
+object encoding rwzbgekl 
+ zinterstore phrpwlca 2 phrpwlca phrpwlca aggregate min 
+ set mykey hello 
+ zremrangebyrank phrpwlca 654 244222380 
+ zrandmember phrpwlca -3 
+ expire mykey 200 xx 
+ zunion 2 phrpwlca phrpwlca 
+ zincrby phrpwlca -inf ymtynmse 
+ get mykey

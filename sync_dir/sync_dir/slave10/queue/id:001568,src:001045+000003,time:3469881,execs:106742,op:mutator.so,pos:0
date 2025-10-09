@@ -1,0 +1,6 @@
+set mykey 1732498873 
+ geoadd mdexzjor 13.361389 38.115556 xyookjrw 17.241510 38.788135 nxmjeqgx 17.250000 35.202000 slkadwaf 
+ geosearch mdexzjor fromlonlat 15 37 bybox 400 400 km asc 
+ get mykey 
+ rpush dbmuwins jrjuraql 
+ psubscribe bar* 

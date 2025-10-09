@@ -1,0 +1,10 @@
+set mykey 311 
+ incrbyfloat mykey 376 
+ get mykey 
+ lcs mykey mykey 
+ setbit mykey 1732498873 1 
+ get mykey 
+ bitop or gvtzczpz mykey mykey mykey 
+ scan -inf type string 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

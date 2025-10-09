@@ -1,0 +1,8 @@
+sunionstore sugvxxcg sugvxxcg sugvxxcg 
+ lpush hpcqdzor "world" 
+ info replication 
+ llen hpcqdzor 
+ set mykey 568645835187 
+ get mykey 
+ lpos hpcqdzor vgukvfpb count 1 
+ smismember sugvxxcg vlvtmruq 

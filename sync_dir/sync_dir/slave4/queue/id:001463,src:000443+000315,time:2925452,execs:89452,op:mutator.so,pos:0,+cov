@@ -1,0 +1,4 @@
+set mykey 31543984 
+ shutdown 
+ get mykey 
+ del mykey 

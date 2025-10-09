@@ -1,0 +1,6 @@
+set mykey 1480 
+ sdiffstore lrkqafqr lrkqafqr lrkqafqr lrkqafqr 
+ sdiffstore vdxxciyw vdxxciyw vdxxciyw vdxxciyw 
+ smove lrkqafqr ixkagsos wclrnnso 
+ lcs mykey mykey idx minmatchlen 4 withmatchlen 
+ get mykey

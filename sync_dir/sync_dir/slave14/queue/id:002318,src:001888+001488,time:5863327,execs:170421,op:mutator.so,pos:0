@@ -1,0 +1,11 @@
+set mykey 311 
+ incrbyfloat mykey 376 
+ get mykey 
+ lcs mykey mykey 
+ setbit mykey 109990 1 
+ bitop xor gtmzalcd mykey mykey mykey mykey mykey 
+ get mykey 
+ bitop xor ciuaomph mykey mykey mykey mykey mykey mykey 
+ scan 117 type string 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

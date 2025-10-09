@@ -1,0 +1,10 @@
+sadd waeoxbem wivnjuxe 
+ sunionstore xmawvngf waeoxbem waeoxbem 
+ sdiff xmawvngf 
+ set mykey -1947844055 
+ smembers waeoxbem 
+ get mykey 
+ sinterstore pahvaasm xmawvngf xmawvngf 
+ get mykey 
+ save 
+ psetex vrrqnomv 315 33

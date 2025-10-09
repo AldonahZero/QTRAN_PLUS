@@ -1,0 +1,5 @@
+hsetnx wqydsukt guwchiwu ssnvzsid 
+ set mykey 3 
+ hmget wqydsukt guwchiwu guwchiwu 
+ copy mykey v0 
+ get mykey

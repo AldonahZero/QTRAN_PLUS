@@ -1,0 +1,13 @@
+set mykey 13121140 
+ hset vpkbrssi kumzfjat 41657 
+ copy kumzfjat fhrsgqae 
+ hstrlen vpkbrssi kumzfjat 
+ hstrlen vpkbrssi fhrsgqae 
+ xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm 
+ hincrbyfloat vpkbrssi fhrsgqae 1212044342121342330120333011310343042111112004430110414043434232214144020043403411 
+ get mykey 
+ hget vpkbrssi kumzfjat 
+ hincrby vpkbrssi kumzfjat 1 
+ info everything 
+ hmget vpkbrssi kumzfjat kumzfjat 
+ save

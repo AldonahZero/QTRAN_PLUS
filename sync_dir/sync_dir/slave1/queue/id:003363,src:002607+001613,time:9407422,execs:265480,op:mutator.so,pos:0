@@ -1,0 +1,6 @@
+set v0 200 
+ bitop or ewxrjkga v0 v0 v0 v0 v0 v0 v0 v0 
+ bitop or xqgburdu v0 v0 v0 v0 v0 v0 
+ incrbyfloat v0 -816 
+ save 
+ get v0

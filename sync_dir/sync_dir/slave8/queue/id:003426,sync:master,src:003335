@@ -1,0 +1,10 @@
+set mykey 311 
+ geoadd eczuybnf 179.5 36 htafotkr 
+ incrbyfloat mykey 376 
+ bitfield mykey overflow fail set u11 54 101 
+ bitpos mykey 1 15 67 bit 
+ get mykey 
+ bitpos mykey 1 39 50 bit 
+ get mykey 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

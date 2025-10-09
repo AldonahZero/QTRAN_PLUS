@@ -1,0 +1,4 @@
+set mykey -1 
+ getset mykey -304 
+ get mykey 
+ object encoding uvryzsxf

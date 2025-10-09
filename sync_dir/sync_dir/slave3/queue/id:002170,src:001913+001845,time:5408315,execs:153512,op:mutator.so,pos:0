@@ -1,0 +1,5 @@
+set v0 -9223372036854775808 
+ bitpos v0 1 
+ copy v0 v1 
+ mget v0 v1 v0 v0 v0 v1 v0 v1 v0 
+ get v0

@@ -1,0 +1,7 @@
+set mykey -886864826961 
+ bitpos mykey 0 -2255963835 -1 bit 
+ zrangestore phxykmhg phxykmhg 2 -1 byscore rev limit 1 2 
+ sort phxykmhg get s* store frxxuubj 
+ sunionstore hczdthan hczdthan hczdthan 
+ get mykey 
+ psetex vokpjzpp -586 364853510803

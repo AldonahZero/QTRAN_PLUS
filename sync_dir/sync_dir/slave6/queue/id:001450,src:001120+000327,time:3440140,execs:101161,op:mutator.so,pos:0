@@ -1,0 +1,8 @@
+set mykey 197 
+ set v0 -909494108478 
+ setbit mykey 615 0 
+ save 
+ decrby v0 1651985310 
+ bitop xor soigkacb mykey mykey mykey mykey mykey v0 v0 mykey v0 v0 mykey 
+ get mykey 
+ setbit v0 244931 1

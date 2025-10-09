@@ -1,0 +1,4 @@
+set mykey 533 
+ psetex oavcbqsq -355294768 -316 
+ get mykey 
+ mget mykey mykey mykey mykey

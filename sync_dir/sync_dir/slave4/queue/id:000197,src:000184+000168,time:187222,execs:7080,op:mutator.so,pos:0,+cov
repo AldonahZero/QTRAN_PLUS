@@ -1,0 +1,4 @@
+set mykey 165061839 
+ pfcount ewwinjbe 
+ get mykey 
+ del mykey 

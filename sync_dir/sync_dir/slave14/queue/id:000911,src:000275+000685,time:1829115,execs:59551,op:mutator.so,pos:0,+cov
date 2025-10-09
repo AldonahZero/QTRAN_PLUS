@@ -1,0 +1,7 @@
+object encoding rwzbgekl 
+ xadd pbtmpeny * qnoruayj "Hello," 
+ xclaim pbtmpeny ptprebxr oyubeety 10 1672351058363-2 
+ zinterstore zcfialgy 2 zcfialgy zcfialgy 
+ set mykey hello 
+ zmpop 2 zcfialgy zcfialgy min 
+ get mykey

@@ -1,0 +1,12 @@
+object encoding rwzbgekl 
+ zinterstore rmtdfxmv 2 rmtdfxmv rmtdfxmv aggregate min 
+ set mykey hello 
+ zincrby rmtdfxmv -5 mlujlapi 
+ getdel mykey 
+ zdiffstore apuzkzbh 2 rmtdfxmv apuzkzbh 
+ zinter 2 apuzkzbh apuzkzbh weights 1 2 aggregate min withscores 
+ psetex zvshusdd 3410102305 3090148046 
+ copy zvshusdd v0 
+ zcount apuzkzbh -539 -1154401951 
+ hsetnx roftorbl khrrkjgs -638298926240 
+ get zvshusdd

@@ -1,0 +1,4 @@
+set mykey 41657 
+ bitpos mykey 1 
+ copy mykey v0 
+ get mykey

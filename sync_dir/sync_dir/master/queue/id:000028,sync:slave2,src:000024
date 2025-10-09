@@ -1,0 +1,3 @@
+set mykey hello 
+ sinterstore ubjuqmxi ubjuqmxi ubjuqmxi ubjuqmxi 
+ get mykey

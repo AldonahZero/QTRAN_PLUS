@@ -1,0 +1,7 @@
+set mykey 1732498873 
+ geoadd zxbxcfqc 10 20 rgymuqbf 30 40 aushbgun 
+ geosearch zxbxcfqc frommember rgymuqbf bybox 1 1 km 
+ get mykey 
+ georadius zxbxcfqc 1 1 1 km store vkbzxeof 
+ rpush dbmuwins jrjuraql 
+ psubscribe bar* 

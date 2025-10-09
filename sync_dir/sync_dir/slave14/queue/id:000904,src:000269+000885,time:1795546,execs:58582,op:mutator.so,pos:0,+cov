@@ -1,0 +1,7 @@
+object encoding rwzbgekl 
+ xadd jbdjxqbm maxlen ~ 1000 -153 hognxfnw "Hello," 
+ xrange jbdjxqbm -2879633489 -705575575914 
+ zinterstore zcfialgy 2 zcfialgy zcfialgy 
+ set mykey hello 
+ zmpop 2 zcfialgy zcfialgy min 
+ get mykey

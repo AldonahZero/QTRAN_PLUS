@@ -1,0 +1,5 @@
+object encoding rwzbgekl 
+ set mykey hello 
+ copy mykey v0 replace 
+ lcs v0 mykey 
+ get mykey

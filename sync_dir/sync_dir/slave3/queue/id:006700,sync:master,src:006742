@@ -1,0 +1,11 @@
+pfadd mykey "hello" smvbejzf nyxzfynr 
+ hset poksmruc sjszuneh 0.8284480026124269 
+ dump poksmruc 
+ hrandfield poksmruc 
+ set v0 2 
+ hrandfield poksmruc 
+ hrandfield poksmruc 
+ hincrbyfloat poksmruc sjszuneh 1 
+ hincrbyfloat poksmruc sjszuneh 1 
+ pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
+ get v0

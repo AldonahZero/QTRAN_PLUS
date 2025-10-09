@@ -1,0 +1,15 @@
+info default 
+ hset eaxejsol bhwulrko 1037 
+ hmget eaxejsol bhwulrko bhwulrko 
+ set mykey 2 
+ rpush tgschcpi ptecklws 
+ lpushx tgschcpi bibpljvn lyqzfnlb lyqzfnlb 
+ hincrbyfloat eaxejsol bhwulrko 1 
+ pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
+ sort tgschcpi alpha store wiruezdc 
+ lrange tgschcpi 0 364853510803 
+ rpoplpush tgschcpi pnhvbalr 
+ lrange pnhvbalr 0 1 
+ lrange pnhvbalr 0 1 
+ lmpop 2 pnhvbalr pnhvbalr right count 3 
+ get mykey

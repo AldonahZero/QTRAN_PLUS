@@ -1,0 +1,12 @@
+set mykey -1947844055 
+ zadd mfsvncrq lt incr -inf bexnlycc 
+ bitpos mykey 1 12 12 bit 
+ get mykey 
+ zincrby mfsvncrq -inf ymtynmse 
+ pfadd dbpkzfom 
+ setbit mykey 3947972549 1 
+ get mykey 
+ zdiffstore wtxnpcue 4 mfsvncrq wtxnpcue wtxnpcue wtxnpcue 
+ zunionstore eeacghhu 2 mfsvncrq wtxnpcue weights 2 -656901812952 
+ zmpop 1 mfsvncrq min count 2 
+ save

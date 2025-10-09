@@ -1,0 +1,6 @@
+scan 976 type string 
+ set mykey -1615510574 
+ hmset rlvtchzi tyubwqfl -1 
+ expire rlvtchzi 2 
+ getex mykey 
+ get mykey

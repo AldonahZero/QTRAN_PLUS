@@ -1,0 +1,4 @@
+set mykey -874394400 
+ get mykey 
+ zrangestore eqahirrh eqahirrh 0 -1 
+ save

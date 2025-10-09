@@ -1,0 +1,7 @@
+msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ setbit nzgkmxpj 3022132023044442330033400212104223123203243342000333414101110121 1 
+ set mykey "Hello," 
+ geoadd cqubszoy 13.361389 38.115556 acjnpjwy 15.087269 37.502669 fekagtxv 
+ bitfield mykey overflow wrap incrby i4 0 6413502 
+ del triqeesz 
+ get mykey

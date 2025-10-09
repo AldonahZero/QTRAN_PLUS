@@ -1,0 +1,12 @@
+lpush zdnjslcy sicnwujw 
+ rpop zdnjslcy 
+ rpoplpush zdnjslcy umlgzius 
+ set mykey 15.087269 
+ mget mykey mykey mykey mykey 
+ lmove umlgzius tqpmmsxn right left 
+ lpop zdnjslcy 
+ rpoplpush zdnjslcy xbfaqjuv 
+ lmove zdnjslcy sqcvguxh left left 
+ info cpu default 
+ lcs mykey mykey 
+ get mykey

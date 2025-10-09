@@ -1,0 +1,6 @@
+zunionstore ozmbxkpt 2 ozmbxkpt ozmbxkpt weights 2 3 aggregate max 
+ set mykey 0.8284480026124269 
+ rpush ukbzhzcm bkfxggih 
+ save 
+ zdiffstore dfgxahpo 3 dfgxahpo dfgxahpo dfgxahpo 
+ get mykey

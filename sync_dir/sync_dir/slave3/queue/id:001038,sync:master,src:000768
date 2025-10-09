@@ -1,0 +1,5 @@
+set mykey 1 
+ copy mykey v0 
+ save 
+ bitop xor soigkacb mykey mykey mykey mykey mykey v0 v0 mykey v0 v0 mykey 
+ get mykey

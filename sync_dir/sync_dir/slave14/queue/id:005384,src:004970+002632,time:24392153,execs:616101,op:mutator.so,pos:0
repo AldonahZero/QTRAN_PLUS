@@ -1,0 +1,10 @@
+set nohqcjft 197 
+ set v0 -909494108478 
+ setbit v0 474529 1 
+ setbit v0 1603 1 
+ save 
+ decrby v0 1651985310 
+ get nohqcjft 
+ setbit v0 109990 1 
+ setbit v0 244931 1 
+ copy nohqcjft v1 

@@ -1,0 +1,9 @@
+set mykey -1947844055 
+ bitpos mykey 0 16 64 bit 
+ get mykey 
+ pfcount xvvikrvg cjwjwixe sngoraro 
+ pfadd dbpkzfom 
+ setbit mykey 3717584922 0 
+ get mykey 
+ mget mykey mykey 
+ save

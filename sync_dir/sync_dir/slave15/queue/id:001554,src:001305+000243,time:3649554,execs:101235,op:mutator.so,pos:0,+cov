@@ -1,0 +1,10 @@
+sadd waeoxbem wivnjuxe 
+ sunionstore vedaznzm vedaznzm waeoxbem waeoxbem 
+ srandmember vedaznzm 
+ copy vedaznzm v0 
+ sinterstore pahvaasm waeoxbem v0 
+ set mykey -1947844055 
+ smembers waeoxbem 
+ get mykey 
+ get mykey 
+ save

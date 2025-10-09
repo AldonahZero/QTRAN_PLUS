@@ -1,0 +1,13 @@
+set mykey -1947844055 
+ zadd pbtmpeny lt incr 1 bexnlycc 
+ bitpos mykey 1 12 12 bit 
+ sort pbtmpeny alpha 
+ zincrby pbtmpeny 1 v52 
+ copy pbtmpeny v0 
+ get mykey 
+ pfadd dbpkzfom 
+ zmpop 1 pbtmpeny max count 200 
+ setbit mykey 474529 1 
+ get mykey 
+ zunion 2 pbtmpeny v0 weights 1 1 aggregate max withscores 
+ save

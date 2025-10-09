@@ -1,0 +1,9 @@
+set mykey 0 
+ set v0 -9223372036854775808 
+ setbit mykey 2432435113 0 
+ lcs v0 v0 
+ save 
+ decrby v0 1651985310 
+ lcs v0 v0 
+ get mykey 
+ setbit v0 244931 1

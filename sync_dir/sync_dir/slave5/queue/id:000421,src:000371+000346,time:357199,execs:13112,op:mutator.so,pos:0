@@ -1,0 +1,5 @@
+set wcitbqrq 986906 
+ copy wcitbqrq v0 
+ save 
+ bitop xor soigkacb wcitbqrq v0 wcitbqrq 
+ get v0

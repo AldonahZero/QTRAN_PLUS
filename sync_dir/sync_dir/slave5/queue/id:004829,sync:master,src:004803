@@ -1,0 +1,8 @@
+set mykey 41788 
+ info default 
+ xadd kvnrwmku 123-1 mzklxdll "Hello," 
+ xrevrange kvnrwmku -553 - count 1 
+ info keyspace 
+ get mykey 
+ info default default 
+ save

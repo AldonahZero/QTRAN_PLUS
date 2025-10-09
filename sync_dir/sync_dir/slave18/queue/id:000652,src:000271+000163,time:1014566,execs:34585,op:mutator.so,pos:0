@@ -1,0 +1,5 @@
+hsetnx vautdjej opuxcisi -521 
+ set mykey 212 
+ hsetnx v0 v1 1140 
+ get mykey 
+ save

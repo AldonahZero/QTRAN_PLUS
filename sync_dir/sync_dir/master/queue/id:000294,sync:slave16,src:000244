@@ -1,0 +1,6 @@
+set mykey 1732498873 
+ incrby mykey -980 
+ setbit mykey 474529 1 
+ get mykey 
+ hset etqpfzfm njabbctf 41657 
+ psubscribe bar* 

@@ -1,0 +1,3 @@
+set mykey -12 
+ set v0 -174 
+ get mykey

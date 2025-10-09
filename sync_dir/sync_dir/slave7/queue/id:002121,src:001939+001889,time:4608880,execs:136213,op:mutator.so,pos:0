@@ -1,0 +1,5 @@
+set ifjbgdvj 12111043 
+ bitpos ifjbgdvj 1 37 37 bit 
+ copy ifjbgdvj v0 
+ mget v0 v0 v0 v0 v0 v0 v0 ifjbgdvj v0 
+ get v0

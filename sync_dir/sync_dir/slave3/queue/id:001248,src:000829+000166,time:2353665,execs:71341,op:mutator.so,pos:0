@@ -1,0 +1,14 @@
+info default 
+ hset rfllxsdf iubquuor 0.41507778056668015 
+ hmget rfllxsdf iubquuor iubquuor 
+ set mykey 2 
+ rpush czowykxw ptecklws 
+ lpushx czowykxw bibpljvn lyqzfnlb ccsnseuf 
+ hincrbyfloat rfllxsdf iubquuor 1 
+ lset czowykxw 3 qxwzifjv 
+ pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
+ sort czowykxw limit 0 10 
+ rpoplpush czowykxw pnhvbalr 
+ lrange pnhvbalr 0 1 
+ lmpop 2 pnhvbalr pnhvbalr right count 3 
+ get mykey

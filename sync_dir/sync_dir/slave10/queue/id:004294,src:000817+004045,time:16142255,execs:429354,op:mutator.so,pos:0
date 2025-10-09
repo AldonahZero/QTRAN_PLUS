@@ -1,0 +1,5 @@
+set mykey -645314023664 
+ geoadd mdexzjor 83.261542908503429 38.115556 xyookjrw 15.087269 174.53475789843816 agjeygrj 
+ get mykey 
+ geopos mdexzjor xyookjrw xyookjrw xyookjrw xyookjrw xyookjrw xyookjrw xyookjrw xyookjrw 
+ object encoding uvryzsxf

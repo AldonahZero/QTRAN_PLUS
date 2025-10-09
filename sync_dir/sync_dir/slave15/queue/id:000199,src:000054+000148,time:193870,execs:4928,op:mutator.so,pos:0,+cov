@@ -1,0 +1,6 @@
+set mykey hello 
+ strlen mykey 
+ zinterstore yygrvfbj 2 yygrvfbj yygrvfbj 
+ get mykey 
+ getset mykey -638298926240 
+ save

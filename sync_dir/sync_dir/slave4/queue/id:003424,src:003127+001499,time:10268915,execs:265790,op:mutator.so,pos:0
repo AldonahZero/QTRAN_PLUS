@@ -1,0 +1,11 @@
+set mykey -1947844055 
+ zadd dbpkzfom lt incr 1 v0 
+ bitpos mykey 1 12 12 bit 
+ get mykey 
+ pfadd dbpkzfom 
+ setbit mykey 474529 1 
+ zincrby dbpkzfom -5 sjhvpked 
+ get mykey 
+ zdiffstore wtxnpcue 4 dbpkzfom wtxnpcue wtxnpcue wtxnpcue 
+ zmpop 1 dbpkzfom min count 2 
+ save

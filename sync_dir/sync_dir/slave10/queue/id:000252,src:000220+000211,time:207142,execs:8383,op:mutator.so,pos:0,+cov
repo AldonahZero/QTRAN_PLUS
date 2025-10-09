@@ -1,0 +1,6 @@
+zrangestore xervubdq xervubdq 1 2 byscore 
+ set mykey -20 
+ setex jiosoaha 1214754039 3715410429 
+ zmpop 2 xervubdq xervubdq max count 1 
+ xadd kvnrwmku 123-1 mzklxdll "Hello," 
+ get mykey

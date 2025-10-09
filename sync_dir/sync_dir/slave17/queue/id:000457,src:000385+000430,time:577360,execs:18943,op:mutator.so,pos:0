@@ -1,0 +1,6 @@
+set wcitbqrq 3022132023044442330033400212104223123203243342000333414101110121 
+ dump wcitbqrq 
+ get wcitbqrq 
+ bitpos wcitbqrq 1 
+ scan 589 type string 
+ save

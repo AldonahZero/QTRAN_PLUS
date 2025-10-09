@@ -1,0 +1,4 @@
+set mykey -5 
+ bgsave 
+ bitfield mykey overflow fail set u10 0 1519 
+ get mykey

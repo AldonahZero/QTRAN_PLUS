@@ -1,0 +1,3 @@
+set mykey -1552162523 
+ get mykey 
+ copy mykey v0 

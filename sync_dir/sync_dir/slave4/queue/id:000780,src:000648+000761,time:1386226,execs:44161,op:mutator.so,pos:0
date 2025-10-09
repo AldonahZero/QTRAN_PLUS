@@ -1,0 +1,6 @@
+lpush zdnjslcy sicnwujw 
+ set mykey 76.04614835979703 
+ mget mykey mykey mykey mykey 
+ info errorstats 
+ lcs mykey mykey 
+ get mykey

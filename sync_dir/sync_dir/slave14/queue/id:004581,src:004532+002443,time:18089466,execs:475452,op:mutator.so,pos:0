@@ -1,0 +1,12 @@
+xadd ukbzhzcm * qnoruayj "Hello," 
+ info cpu default 
+ xtrim ukbzhzcm minid 1000 
+ xgroup create ukbzhzcm v0 0 
+ copy v0 v1 
+ xgroup createconsumer ukbzhzcm v1 v2 
+ xinfo groups ukbzhzcm 
+ xinfo consumers ukbzhzcm v1 
+ set atifyowf 1 
+ xgroup createconsumer ukbzhzcm v1 v3 
+ save 
+ get atifyowf

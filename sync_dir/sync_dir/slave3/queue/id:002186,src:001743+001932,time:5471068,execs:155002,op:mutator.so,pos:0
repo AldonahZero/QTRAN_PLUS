@@ -1,0 +1,12 @@
+set cwxqypok 311 
+ incrbyfloat cwxqypok 376 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ get cwxqypok 
+ lcs triqeesz ldvuftez 
+ psubscribe bar* 
+ setbit cwxqypok 109990 1 
+ get nzgkmxpj 
+ bitop or gvtzczpz nzgkmxpj triqeesz triqeesz 
+ scan 117 type string 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

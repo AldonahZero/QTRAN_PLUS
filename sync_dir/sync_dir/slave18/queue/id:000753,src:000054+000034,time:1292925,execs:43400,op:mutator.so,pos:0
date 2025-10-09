@@ -1,0 +1,5 @@
+set mykey 212 
+ info latencystats 
+ info default default 
+ get mykey 
+ save

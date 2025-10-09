@@ -1,0 +1,8 @@
+set mykey 311 
+ incrbyfloat mykey 376 
+ get mykey 
+ setbit mykey 109990 1 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx 
+ get mykey 
+ save 
+ hsetnx v0 v1 fcjhthwx

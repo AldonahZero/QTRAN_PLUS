@@ -1,0 +1,7 @@
+exists osmalgof 
+ set mykey 3 
+ setbit mykey 7 0 
+ copy mykey v0 
+ incrby v0 -927232501528 
+ getrange mykey 227 -4224562770 
+ get mykey

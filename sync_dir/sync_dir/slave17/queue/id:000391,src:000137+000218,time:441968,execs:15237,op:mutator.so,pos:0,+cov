@@ -1,0 +1,5 @@
+setex clryemar 200 311 
+ sunionstore iwshcqfl iwshcqfl iwshcqfl 
+ set mykey 1293 
+ get mykey 
+ save

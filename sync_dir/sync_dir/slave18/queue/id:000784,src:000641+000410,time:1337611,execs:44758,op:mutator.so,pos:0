@@ -1,0 +1,7 @@
+set mykey 41788 
+ bitpos mykey 889569901809 64 74 bit 
+ info all 
+ xadd kvnrwmku 123-1 mzklxdll "Hello," 
+ get mykey 
+ copy kvnrwmku v0 
+ save

@@ -1,0 +1,9 @@
+set jbdjxqbm 197 
+ set v0 -9223372036854775808 
+ setbit v0 7 0 
+ lcs v0 jbdjxqbm 
+ save 
+ decrby v0 1651985310 
+ lcs v0 v0 
+ get jbdjxqbm 
+ setbit v0 244931 1

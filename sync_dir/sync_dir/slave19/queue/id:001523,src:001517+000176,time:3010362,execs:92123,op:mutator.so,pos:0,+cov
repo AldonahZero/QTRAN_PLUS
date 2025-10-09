@@ -1,0 +1,9 @@
+set mykey -853 
+ lpush jqknbzjm xbtoynzn 
+ sort jqknbzjm by weight* 
+ info cpu all 
+ lpop jqknbzjm 
+ lmove jqknbzjm fbzpustd right right 
+ del jqknbzjm 
+ select 8 
+ get mykey

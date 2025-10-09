@@ -1,0 +1,5 @@
+hset mmbdyavh woiaydqs 2 
+ hincrbyfloat mmbdyavh woiaydqs 1 
+ hsetnx wqydsukt guwchiwu ssnvzsid 
+ set mykey hello 
+ get mykey

@@ -1,0 +1,4 @@
+set mykey 14 
+ mget mykey mykey mykey mykey 
+ get mykey 
+ save

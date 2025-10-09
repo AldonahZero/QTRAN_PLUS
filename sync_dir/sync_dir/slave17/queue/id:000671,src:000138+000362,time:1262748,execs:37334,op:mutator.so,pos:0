@@ -1,0 +1,6 @@
+zinterstore xmawvngf 2 xmawvngf xmawvngf 
+ set mykey hello 
+ zinterstore zjxdmzot 2 zjxdmzot zjxdmzot aggregate max 
+ zcount zjxdmzot 33224130 229 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ get mykey

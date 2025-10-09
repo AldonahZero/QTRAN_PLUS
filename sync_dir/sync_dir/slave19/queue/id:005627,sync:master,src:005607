@@ -1,0 +1,7 @@
+set mykey 306 
+ copy mykey v0 
+ hmset zxvatyxz mecdrlck 1 vktahdph 2 v10 328878442909 qzsoxtro 3 fjawhzfz 1158 mdhtawrn 3 pxggkrpo 3 vktahdph 3 ccsnseuf 3 qzsoxtro 3 v51 3 
+ info everything 
+ hscan zxvatyxz 0 match foo* count 10000 
+ bitfield mykey overflow fail set u44 0 4806867732670 
+ get mykey

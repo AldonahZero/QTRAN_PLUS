@@ -1,0 +1,4 @@
+set mykey -5 
+ bitfield mykey overflow fail set u58 6596 1519 
+ bitop and hozsqpxd mykey mykey mykey mykey 
+ get mykey

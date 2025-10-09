@@ -1,0 +1,6 @@
+append wbisxcbb qcuzdcey 
+ set mykey -219 
+ save 
+ get mykey 
+ bgsave 
+ getrange mykey 615 917

@@ -1,0 +1,3 @@
+set mykey 33 
+ get mykey 
+ save

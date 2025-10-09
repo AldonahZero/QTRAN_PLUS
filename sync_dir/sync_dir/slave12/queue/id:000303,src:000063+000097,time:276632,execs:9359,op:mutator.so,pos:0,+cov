@@ -1,0 +1,6 @@
+set mykey 311 
+ zrangestore phxykmhg phxykmhg 2 -1 byscore rev limit 1 2 
+ get mykey 
+ save 
+ zunion 2 phxykmhg phxykmhg weights 2 3 withscores 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

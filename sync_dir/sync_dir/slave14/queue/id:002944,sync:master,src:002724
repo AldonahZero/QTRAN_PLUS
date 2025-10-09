@@ -1,0 +1,10 @@
+object encoding rwzbgekl 
+ zinterstore hszuawdu 2 hszuawdu hszuawdu weights 2 3 
+ set mykey hello 
+ zincrby hszuawdu -5 mlujlapi 
+ zunionstore kmmwzipn 2 kmmwzipn hszuawdu weights 2 3 aggregate min 
+ zdiffstore apuzkzbh 2 apuzkzbh apuzkzbh 
+ psetex zvshusdd 3410102305 3090148046 
+ zunion 2 hszuawdu hszuawdu weights -393807523601 1 aggregate min withscores 
+ zcount hszuawdu -539 -1154401951 
+ get mykey

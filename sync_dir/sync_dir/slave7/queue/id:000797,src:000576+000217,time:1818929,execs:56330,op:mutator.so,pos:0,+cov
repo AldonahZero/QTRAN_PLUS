@@ -1,0 +1,8 @@
+geoadd vrekwiwa 13.00 76.04614835979703 pqkikujz 
+ set mykey 306 
+ get mykey 
+ incrbyfloat mykey 468437678864 
+ georadiusbymember ryfiikeh qgorjqxo 1 km 
+ geosearch vrekwiwa fromlonlat 15 37 bybox 400 400 km asc 
+ setex dwrwpbrw -157780893686 -657 
+ set v0 -1423418636 

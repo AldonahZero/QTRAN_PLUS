@@ -1,0 +1,5 @@
+set mykey 311 
+ get mykey 
+ setbit mykey -419 -830067951618 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx 
+ zdiffstore apuzkzbh 2 apuzkzbh apuzkzbh

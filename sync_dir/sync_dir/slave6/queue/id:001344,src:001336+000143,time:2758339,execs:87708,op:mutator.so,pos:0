@@ -1,0 +1,6 @@
+set mykey -10910337 
+ xadd ozsnpvdy 0-1 rqwzplos 1519 
+ xinfo stream ozsnpvdy full 
+ get mykey 
+ dump ozsnpvdy 
+ save

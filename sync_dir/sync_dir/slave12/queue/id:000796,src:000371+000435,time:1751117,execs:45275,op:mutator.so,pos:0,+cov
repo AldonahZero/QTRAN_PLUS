@@ -1,0 +1,5 @@
+sinterstore pqczlznr pqczlznr 
+ set mykey 311 
+ get mykey 
+ sintercard 2 pqczlznr pqczlznr limit 10 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

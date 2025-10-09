@@ -1,0 +1,6 @@
+hsetnx wqydsukt guwchiwu ssnvzsid 
+ xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr 3022132023044442330033400212104223123203243342000333414101110121 aixesdar 3022132023044442330033400212104223123203243342000333414101110121 
+ set mykey 3 
+ xinfo stream ermrdvzf 
+ copy mykey v0 
+ get mykey

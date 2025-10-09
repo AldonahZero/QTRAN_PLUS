@@ -1,0 +1,4 @@
+set mykey -638298926240 
+ save 
+ get mykey 
+ getrange mykey 615 917

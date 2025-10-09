@@ -1,0 +1,5 @@
+set mykey -1367120419 
+ getex mykey 
+ bitfield mykey overflow wrap set i4 1746579767 23450054762 
+ mget mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey 
+ get mykey

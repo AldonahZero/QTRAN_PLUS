@@ -1,0 +1,7 @@
+hsetnx wqydsukt guwchiwu ssnvzsid 
+ xadd v1 maxlen ~ 1000 0-0 hognxfnw "Hello," 
+ xautoclaim v1 cwxbpfcr xolfcipk 0 0-0 
+ set mykey 3 
+ xinfo stream v1 
+ copy mykey v0 
+ get mykey

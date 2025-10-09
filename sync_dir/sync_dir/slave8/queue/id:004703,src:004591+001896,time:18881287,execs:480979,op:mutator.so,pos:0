@@ -1,0 +1,11 @@
+xadd kvnrwmku 123-1 mzklxdll "Hello," 
+ info keyspace 
+ xtrim kvnrwmku minid 1000 
+ xgroup create kvnrwmku v0 18446744073709561 
+ xinfo groups kvnrwmku 
+ xpending kvnrwmku v0 
+ dump kvnrwmku 
+ dump kvnrwmku 
+ set atifyowf 1 
+ save 
+ get atifyowf

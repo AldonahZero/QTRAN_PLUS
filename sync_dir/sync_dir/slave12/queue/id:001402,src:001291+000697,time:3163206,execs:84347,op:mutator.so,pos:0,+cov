@@ -1,0 +1,4 @@
+set mykey 311 
+ lpush kfxdvljk rptpxozi xqfdftkh 
+ lmpop 2 kfxdvljk kfxdvljk left 
+ get mykey

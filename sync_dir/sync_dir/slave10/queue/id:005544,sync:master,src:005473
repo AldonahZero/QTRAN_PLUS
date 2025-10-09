@@ -1,0 +1,14 @@
+set mykey 212 
+ zadd mfsvncrq lt incr -1367120419 jgaguhrp 
+ lpush asjdswpq syrsobfe ndlfegrn 
+ hsetnx vautdjej opuxcisi wdtnqhbk 
+ zincrby mfsvncrq -5 sjhvpked 
+ sort asjdswpq alpha store wiruezdc 
+ zincrby mfsvncrq -inf ymtynmse 
+ zrank mfsvncrq jgaguhrp 
+ hgetall vautdjej 
+ get mykey 
+ zintercard 1 mfsvncrq limit 0 
+ zrank mfsvncrq jgaguhrp 
+ hexists vautdjej uszqhkri 
+ save

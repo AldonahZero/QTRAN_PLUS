@@ -1,0 +1,4 @@
+set mykey -2792568265 
+ get mykey 
+ decrby mykey 329530968949 
+ del mykey 

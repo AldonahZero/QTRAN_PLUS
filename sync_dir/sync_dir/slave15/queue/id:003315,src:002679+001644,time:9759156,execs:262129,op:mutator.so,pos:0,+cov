@@ -1,0 +1,15 @@
+set mykey -1947844055 
+ zadd xdbmdxse lt incr 1 sjhvpked 
+ bitpos mykey 1 12 12 bit 
+ sort xdbmdxse alpha 
+ zincrby xdbmdxse -inf ymtynmse 
+ zincrby xdbmdxse -5 sjhvpked 
+ zcount xdbmdxse -1552051564 304 
+ get mykey 
+ pfadd dbpkzfom 
+ zrangestore lguhmiyq lguhmiyq 5 0 byscore rev limit 0 2 
+ setbit mykey 474529 1 
+ get mykey 
+ zunion 2 lguhmiyq xdbmdxse weights 1 1 aggregate max withscores 
+ zremrangebyscore lguhmiyq 449 734 
+ save

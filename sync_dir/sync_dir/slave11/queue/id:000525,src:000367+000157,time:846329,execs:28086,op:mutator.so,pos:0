@@ -1,0 +1,4 @@
+set ubjcxcxl hello 
+ bitfield ubjcxcxl overflow fail set u34 0 23450054762 
+ bitfield ubjcxcxl overflow fail set u10 0 1519 
+ get ubjcxcxl

@@ -1,0 +1,4 @@
+set iyetwnrz 367747 
+ get iyetwnrz 
+ bitfield iyetwnrz overflow wrap set u10 0 1519 
+ object encoding uvryzsxf

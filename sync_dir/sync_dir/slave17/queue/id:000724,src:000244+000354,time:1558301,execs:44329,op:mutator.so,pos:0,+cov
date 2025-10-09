@@ -1,0 +1,8 @@
+set mykey 1293 
+ get mykey 
+ msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 v0 20 v1 20 v2 20 v3 20 v4 20 
+ zdiffstore oninilnq 0 oninilnq 
+ pexpire mykey 100 
+ exists jwjqroej 
+ scan 589 type string 
+ save

@@ -1,0 +1,7 @@
+pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
+ hset eaxejsol bhwulrko 1037 
+ set mykey 2 
+ hincrbyfloat eaxejsol bhwulrko 1 
+ pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
+ hscan eaxejsol 0 match foo* count 10000 
+ get mykey

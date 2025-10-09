@@ -1,0 +1,4 @@
+set mykey 692 
+ bitpos mykey 1 15 67 bit 
+ copy mykey ycgvtbur replace 
+ get mykey

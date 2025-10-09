@@ -1,0 +1,6 @@
+set mykey -9223372036854775808 
+ get mykey 
+ lcs mykey mykey 
+ get mykey 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

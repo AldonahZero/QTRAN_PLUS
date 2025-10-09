@@ -1,0 +1,5 @@
+set mykey -9223372036854770000 
+ getex mykey 
+ slowlog get -1 
+ zinterstore phrpwlca 2 phrpwlca phrpwlca aggregate min 
+ get mykey

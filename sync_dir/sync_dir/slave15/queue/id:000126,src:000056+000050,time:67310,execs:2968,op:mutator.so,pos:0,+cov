@@ -1,0 +1,5 @@
+set mykey hello 
+ bitop xor soigkacb mykey mykey mykey 
+ zinterstore phrpwlca 2 phrpwlca phrpwlca aggregate min 
+ get mykey 
+ save

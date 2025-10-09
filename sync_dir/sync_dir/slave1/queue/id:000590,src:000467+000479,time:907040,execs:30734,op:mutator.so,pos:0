@@ -1,0 +1,7 @@
+hsetnx v1 khrrkjgs 0.43734659228350342 
+ save 
+ set mykey 5 
+ hgetall v1 
+ hmget v1 khrrkjgs khrrkjgs 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ get mykey

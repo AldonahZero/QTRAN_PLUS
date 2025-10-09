@@ -1,0 +1,4 @@
+set mykey 143110221304012404203333 
+ get mykey 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

@@ -1,0 +1,4 @@
+set mykey hello 
+ hset elibnlnj lzytosbe -15956 
+ expire lzytosbe 100 
+ get mykey

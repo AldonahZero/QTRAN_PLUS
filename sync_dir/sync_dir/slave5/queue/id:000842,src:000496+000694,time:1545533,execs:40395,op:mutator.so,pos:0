@@ -1,0 +1,8 @@
+set mykey 197 
+ set jbdjxqbm -909494108478 
+ setbit mykey 474529 1 
+ save 
+ decrby jbdjxqbm 1651985310 
+ get mykey 
+ get mykey 
+ setbit jbdjxqbm 244931 1

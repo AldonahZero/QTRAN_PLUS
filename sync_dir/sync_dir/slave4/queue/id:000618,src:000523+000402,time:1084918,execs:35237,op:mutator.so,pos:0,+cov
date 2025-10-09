@@ -1,0 +1,6 @@
+lpush vvpgjgva swekmrcc 
+ set mykey 15.087269 
+ mget mykey mykey mykey mykey 
+ info cpu all 
+ lcs mykey mykey 
+ get mykey

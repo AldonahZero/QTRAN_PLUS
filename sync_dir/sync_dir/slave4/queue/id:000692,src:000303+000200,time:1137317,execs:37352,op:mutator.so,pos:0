@@ -1,0 +1,5 @@
+set mykey 1519 
+ setbit mykey 474529 1 
+ get mykey 
+ zadd hocqawjw 1 julcozzx 
+ del mykey 

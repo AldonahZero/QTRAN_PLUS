@@ -1,0 +1,7 @@
+psetex tkpddeko 851130245 809 
+ set mykey -2516972218 
+ bitfield mykey overflow wrap incrby u58 1746579767 -688 
+ copy mykey v1 
+ copy mykey v0 
+ save 
+ get mykey

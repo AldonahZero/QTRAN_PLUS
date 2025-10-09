@@ -1,0 +1,10 @@
+zdiffstore dfgxahpo 3 dfgxahpo dfgxahpo dfgxahpo 
+ zcount dfgxahpo -3911895552 -825176523451 
+ set mykey 5009431 
+ zmscore dfgxahpo mzqjfhjv 
+ getset mykey -205 
+ zlexcount dfgxahpo 80 901 
+ zrandmember dfgxahpo 3 
+ sdiffstore lrkqafqr lrkqafqr lrkqafqr lrkqafqr 
+ sdiffstore vdxxciyw vdxxciyw vdxxciyw vdxxciyw 
+ get mykey

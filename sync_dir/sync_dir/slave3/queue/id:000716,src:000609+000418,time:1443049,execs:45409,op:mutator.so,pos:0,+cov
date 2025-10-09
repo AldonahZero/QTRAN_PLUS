@@ -1,0 +1,6 @@
+hset eaxejsol bhwulrko -1447580607 
+ set mykey 31543984 
+ lcs mykey mykey 
+ hincrby eaxejsol bhwulrko 3 
+ setbit mykey 615 0 
+ get mykey

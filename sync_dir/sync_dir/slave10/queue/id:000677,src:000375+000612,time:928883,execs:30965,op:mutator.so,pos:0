@@ -1,0 +1,6 @@
+set mykey -20 
+ hmset zunknsqf hlwlrmwf 9223372036854775807 
+ xadd kvnrwmku 123-1 mzklxdll -9223372036854775808 
+ del zunknsqf 
+ save 
+ get mykey

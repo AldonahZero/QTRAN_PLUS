@@ -1,0 +1,6 @@
+set mykey 20220044110400301200030414002221202401144302121102214220143414121422201404321434024 
+ get mykey 
+ sadd nyhlwdwl wwmqswmp 
+ bitpos mykey 1 39 -371 bit 
+ bitfield mykey overflow fail incrby u36 0 46789140757 
+ object encoding uvryzsxf

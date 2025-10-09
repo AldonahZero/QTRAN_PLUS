@@ -1,0 +1,7 @@
+set mykey -1947844055 
+ get mykey 
+ setbit mykey 474529 1 
+ get mykey 
+ get mykey 
+ mget mykey mykey 
+ save

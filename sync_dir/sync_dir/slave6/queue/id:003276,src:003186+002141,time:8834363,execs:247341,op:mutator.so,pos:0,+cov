@@ -1,0 +1,8 @@
+msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
+ del nzgkmxpj triqeesz ldvuftez 
+ xadd ozsnpvdy 123 rqwzplos 3 
+ xgroup create ozsnpvdy v0 123-1 
+ xrevrange ozsnpvdy + - count 1 
+ xinfo stream ozsnpvdy full 
+ set mykey 3090148046 
+ get mykey

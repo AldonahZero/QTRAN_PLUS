@@ -1,0 +1,8 @@
+xadd ozsnpvdy 0-0 rqwzplos 366402871 
+ info default all 
+ xlen ozsnpvdy 
+ xgroup create ozsnpvdy v0 0 
+ xlen ozsnpvdy 
+ set atifyowf 1 
+ save 
+ get atifyowf

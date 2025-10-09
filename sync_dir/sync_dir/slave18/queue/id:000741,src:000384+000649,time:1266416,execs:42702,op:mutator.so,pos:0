@@ -1,0 +1,5 @@
+set ebvgkrck 3659958828 
+ bitfield ebvgkrck overflow fail set u38 5009431 196603812187 
+ get ebvgkrck 
+ save 
+ copy ebvgkrck v0 

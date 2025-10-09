@@ -1,0 +1,9 @@
+xadd jbdjxqbm maxlen ~ -129 123-1 hognxfnw "Hello," 
+ xrevrange jbdjxqbm 119 37999704017 
+ xtrim jbdjxqbm minid 1000 
+ info latencystats 
+ xtrim jbdjxqbm minid 1000 
+ xtrim jbdjxqbm minid 1000 
+ set atifyowf 1 
+ save 
+ get atifyowf

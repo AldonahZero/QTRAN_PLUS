@@ -1,0 +1,3 @@
+set mykey -37 
+ setnx gbjlvscx -37 
+ get mykey

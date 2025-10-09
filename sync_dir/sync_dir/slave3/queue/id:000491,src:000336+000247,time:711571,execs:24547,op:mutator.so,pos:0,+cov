@@ -1,0 +1,4 @@
+set mykey 0 
+ get mykey 
+ save 
+ ttl imwdrgeh

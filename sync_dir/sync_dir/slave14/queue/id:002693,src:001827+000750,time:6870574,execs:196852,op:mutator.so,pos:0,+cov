@@ -1,0 +1,8 @@
+sadd waeoxbem wivnjuxe 
+ spop waeoxbem 0 
+ set mykey -1947844055 
+ get mykey 
+ sinter waeoxbem waeoxbem 
+ get mykey 
+ smismember waeoxbem mjfyyibq 
+ save

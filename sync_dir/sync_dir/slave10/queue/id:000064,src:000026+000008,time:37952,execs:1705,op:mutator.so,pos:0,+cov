@@ -1,0 +1,4 @@
+set mykey -645314023664 
+ get mykey 
+ sdiffstore zakcrnfs zakcrnfs zakcrnfs 
+ object encoding uvryzsxf

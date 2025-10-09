@@ -1,0 +1,9 @@
+set mykey 212 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ zdiffstore mvtbwffp 2 mfsvncrq mvtbwffp 
+ zrandmember mfsvncrq -1001 
+ hsetnx vautdjej opuxcisi wdtnqhbk 
+ get mykey 
+ zscore mfsvncrq yuueumjs 
+ zdiff 2 mfsvncrq mfsvncrq 
+ save

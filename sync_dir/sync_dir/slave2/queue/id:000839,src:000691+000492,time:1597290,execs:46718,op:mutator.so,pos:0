@@ -1,0 +1,10 @@
+zdiffstore dfgxahpo 9 dfgxahpo dfgxahpo dfgxahpo 
+ set mykey -15956 
+ getset mykey -205 
+ zrandmember dfgxahpo 3 
+ sdiffstore lrkqafqr lrkqafqr lrkqafqr lrkqafqr 
+ zmpop 1 dfgxahpo max 
+ setbit mykey 615 0 
+ sdiffstore vdxxciyw vdxxciyw vdxxciyw vdxxciyw 
+ zdiff 5 dfgxahpo dfgxahpo dfgxahpo dfgxahpo dfgxahpo dfgxahpo dfgxahpo dfgxahpo dfgxahpo dfgxahpo dfgxahpo 
+ get mykey

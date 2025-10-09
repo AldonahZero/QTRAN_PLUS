@@ -1,0 +1,7 @@
+geoadd v0 12.758489 85.0511 v1 17.241510 38.788135 yqcyaxfl 
+ save 
+ geosearchstore vpwluycf v0 frommember v1 bybox 1 1 m 
+ set ubjcxcxl hello 
+ geosearch v0 frommember v1 bybox 6596 3128 m 
+ exists fzemrnjb 
+ get ubjcxcxl

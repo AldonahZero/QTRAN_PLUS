@@ -1,0 +1,4 @@
+set mykey -1615510574 
+ hmset zxvatyxz mecdrlck 3022132023044442330033400212104223123203243342000333414101110121 vktahdph 2 qzsoxtro 3 qzsoxtro 3 
+ getex mykey 
+ get mykey

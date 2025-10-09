@@ -1,0 +1,8 @@
+sadd waeoxbem wivnjuxe 
+ set mykey -1947844055 
+ get mykey 
+ get mykey 
+ sdiffstore zakcrnfs waeoxbem zakcrnfs 
+ smismember waeoxbem mjfyyibq 
+ sscan waeoxbem 1691683369 
+ save

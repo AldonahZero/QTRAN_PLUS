@@ -1,0 +1,4 @@
+set v0 -1001 
+ save 
+ get v0 
+ sinterstore pahvaasm pahvaasm pahvaasm

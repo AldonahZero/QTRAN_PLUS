@@ -1,0 +1,4 @@
+hmset ttkzrgmh zywhgayr 0 
+ set mykey 197 
+ save 
+ get mykey

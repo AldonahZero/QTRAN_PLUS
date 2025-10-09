@@ -1,0 +1,5 @@
+set atifyowf 36.995 
+ incrbyfloat atifyowf -490385381267 
+ save 
+ lcs atifyowf atifyowf 
+ get atifyowf

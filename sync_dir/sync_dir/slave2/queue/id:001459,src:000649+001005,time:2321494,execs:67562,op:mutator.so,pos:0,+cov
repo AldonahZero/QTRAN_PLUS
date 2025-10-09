@@ -1,0 +1,7 @@
+geoadd eczuybnf 179.5 36 htafotkr 
+ set mykey hello 
+ geopos eczuybnf htafotkr htafotkr 
+ append ibdfxrwx 13121140 
+ sinterstore ubjuqmxi ubjuqmxi ubjuqmxi 
+ sscan ubjuqmxi 1212044342121342330120333011310343042111112004430110414043434232214144020043403411 
+ get mykey

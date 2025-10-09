@@ -1,0 +1,4 @@
+set mykey -37 
+ zrangestore ugswuldi ugswuldi -214 -1 
+ setnx gbjlvscx -37 
+ get mykey

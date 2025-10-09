@@ -1,0 +1,8 @@
+lpush zdnjslcy sicnwujw 
+ set mykey 15.087269 
+ lpushx zdnjslcy bibpljvn lyqzfnlb ccsnseuf 
+ llen zdnjslcy 
+ mget mykey mykey mykey mykey 
+ info cpu all 
+ lcs mykey mykey 
+ get mykey

@@ -1,0 +1,6 @@
+set mykey 1732498873 
+ setbit mykey 293 1 
+ get mykey 
+ bitop xor vnayjyje mykey 
+ hset etqpfzfm njabbctf 41657 
+ psubscribe bar* 

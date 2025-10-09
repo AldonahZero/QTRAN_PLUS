@@ -1,0 +1,8 @@
+set mykey 311 
+ geoadd apctyxsn 0 0 ecyrjbwf 
+ get mykey 
+ get mykey 
+ save 
+ geohash apctyxsn bfpnqfse ecyrjbwf ecyrjbwf 
+ sunionstore tthbpxad tthbpxad tthbpxad tthbpxad 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

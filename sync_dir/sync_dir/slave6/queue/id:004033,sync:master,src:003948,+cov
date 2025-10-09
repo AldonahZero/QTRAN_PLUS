@@ -1,0 +1,12 @@
+set mykey -1947844055 
+ zadd xdbmdxse lt incr 1 sjhvpked 
+ object freq xdbmdxse 
+ bitpos mykey 1 12 12 bit 
+ sort xdbmdxse alpha 
+ zincrby xdbmdxse -5 sjhvpked 
+ get mykey 
+ pfadd dbpkzfom 
+ setbit mykey 474529 1 
+ get mykey 
+ zunion 2 xdbmdxse xdbmdxse weights 1 1 aggregate max withscores 
+ save

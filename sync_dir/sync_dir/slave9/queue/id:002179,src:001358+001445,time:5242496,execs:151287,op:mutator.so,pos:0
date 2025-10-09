@@ -1,0 +1,7 @@
+set mykey -10910337 
+ xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm 
+ get mykey 
+ xadd v0 * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm aixesdar urasnjsm 
+ xreadgroup group lgkcoucb wvocahto count 3 streams ermrdvzf 0 
+ dump ermrdvzf 
+ save

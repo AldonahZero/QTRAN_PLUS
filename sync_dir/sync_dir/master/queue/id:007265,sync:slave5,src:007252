@@ -1,0 +1,16 @@
+set mykey 0.6807728198733054 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ setbit mykey 474529 9223372036854775808 
+ bitpos mykey 1 12 12 bit 
+ zrevrank mfsvncrq bexnlycc 
+ zpopmax mfsvncrq 1 
+ memory usage mykey 
+ sort mfsvncrq alpha 
+ memory usage mykey 
+ memory usage mykey 
+ get mykey 
+ pfadd dbpkzfom 
+ setbit mykey 472445304725 1 
+ get mykey 
+ memory usage mykey 
+ save

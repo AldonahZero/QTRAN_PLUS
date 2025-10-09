@@ -1,0 +1,7 @@
+hset eaxejsol bhwulrko 94964 
+ set mykey 31543984 
+ hincrby eaxejsol bhwulrko 3 
+ setbit mykey 615 0 
+ rename uswangla vejbwkvd 
+ renamenx wwifwfji qmnxpkis 
+ get mykey

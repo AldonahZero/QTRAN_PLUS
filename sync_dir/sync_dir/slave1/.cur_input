@@ -1,0 +1,6 @@
+set mykey hello 
+ zinterstore teqiuuzn 5 teqiuuzn teqiuuzn teqiuuzn weights 0 0 1 
+ zunion 2 teqiuuzn teqiuuzn aggregate min withscores 
+ zmpop 2 teqiuuzn teqiuuzn min 
+ get mykey 
+ save

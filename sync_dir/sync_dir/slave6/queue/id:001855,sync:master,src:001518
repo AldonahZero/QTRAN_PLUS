@@ -1,0 +1,6 @@
+zunionstore eeacghhu 2 eeacghhu eeacghhu weights 2 3 
+ sort eeacghhu 
+ zcount eeacghhu -980 1850704167 
+ zinterstore teqiuuzn 3 teqiuuzn teqiuuzn eeacghhu weights 0 0 1 
+ set mykey hello 
+ get mykey

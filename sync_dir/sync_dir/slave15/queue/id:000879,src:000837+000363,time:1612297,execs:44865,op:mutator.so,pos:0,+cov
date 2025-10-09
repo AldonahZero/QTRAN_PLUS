@@ -1,0 +1,7 @@
+info all all 
+ set mykey 0 
+ get mykey 
+ incrbyfloat mykey 10 
+ getex mykey 
+ info all all 
+ save

@@ -1,0 +1,10 @@
+xadd ozsnpvdy 0-1 rqwzplos 1519 
+ info keyspace 
+ xgroup create ozsnpvdy v0 0 
+ copy v0 v1 
+ xgroup create ozsnpvdy v2 0 
+ set atifyowf 1 
+ xinfo groups ozsnpvdy 
+ save 
+ xgroup destroy ozsnpvdy v0 
+ get atifyowf

@@ -1,0 +1,4 @@
+set mykey -521 
+ hmset zunknsqf hlwlrmwf 9223372036854775807 
+ copy mykey v0 
+ get mykey

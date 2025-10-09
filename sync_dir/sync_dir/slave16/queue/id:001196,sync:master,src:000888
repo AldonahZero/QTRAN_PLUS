@@ -1,0 +1,6 @@
+set mykey -1001 
+ copy mykey v0 
+ getex v0 
+ save 
+ bitop and hozsqpxd mykey v0 mykey v0 
+ get v0

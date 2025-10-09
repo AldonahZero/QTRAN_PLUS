@@ -1,0 +1,7 @@
+xadd pbtmpeny -452128890181 qnoruayj "Hello," 
+ xread streams pbtmpeny 868 
+ info latencystats 
+ xtrim pbtmpeny minid 175656559 
+ set atifyowf 1 
+ save 
+ get atifyowf

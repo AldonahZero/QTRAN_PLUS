@@ -1,0 +1,9 @@
+psetex vrrqnomv 10 33 
+ set mykey 1 
+ copy vrrqnomv v1 
+ rpush dbmuwins ckssplvd 
+ copy mykey v0 
+ save 
+ save 
+ expire mykey 2 
+ get mykey

@@ -1,0 +1,6 @@
+set mykey 4806867732670 
+ save 
+ get mykey 
+ bgsave 
+ mget mykey mykey mykey mykey 
+ getrange mykey 615 917

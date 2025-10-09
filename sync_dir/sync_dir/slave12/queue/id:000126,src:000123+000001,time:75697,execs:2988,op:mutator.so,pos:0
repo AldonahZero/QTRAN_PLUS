@@ -1,0 +1,7 @@
+set mykey 311 
+ incrbyfloat mykey 376 
+ get mykey 
+ get mykey 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx 
+ zunionstore laaotcmr 2 laaotcmr laaotcmr weights 2 3 aggregate sum

@@ -1,0 +1,12 @@
+lpush kfxdvljk rptpxozi xqfdftkh 
+ set mykey 15.087269 
+ rpoplpush kfxdvljk xbfaqjuv 
+ lpop kfxdvljk 2 
+ mget mykey mykey mykey mykey 
+ lpop kfxdvljk 814317 
+ lpop xbfaqjuv 2 
+ info cpu default 
+ lcs mykey mykey 
+ lpop kfxdvljk 1 
+ object idletime hwxlnijv 
+ get mykey

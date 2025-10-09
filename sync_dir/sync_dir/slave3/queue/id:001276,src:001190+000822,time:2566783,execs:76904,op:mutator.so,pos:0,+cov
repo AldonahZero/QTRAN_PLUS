@@ -1,0 +1,6 @@
+set mykey 0 
+ dump mykey 
+ unlink zeorjooy 
+ get mykey 
+ save 
+ mset jmvjdgip 533 

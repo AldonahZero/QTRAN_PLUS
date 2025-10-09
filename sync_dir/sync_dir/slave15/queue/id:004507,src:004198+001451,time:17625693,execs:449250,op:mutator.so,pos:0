@@ -1,0 +1,10 @@
+xadd kvnrwmku 123-1 mzklxdll "Hello," 
+ info keyspace 
+ xgroup create kvnrwmku v0 0 
+ xgroup create kvnrwmku v1 0 
+ xgroup create kvnrwmku v2 0 
+ set atifyowf 1 
+ xgroup destroy kvnrwmku v1 
+ save 
+ xgroup destroy kvnrwmku v0 
+ get atifyowf

@@ -1,0 +1,8 @@
+hset eaxejsol bhwulrko 94964 
+ hset tfpyhbbg jhelnvce 512461 
+ xadd jbdjxqbm maxlen ~ 20203044342403203340321422240240421003320034044114013323122104244030111130421242331133131131420241444320444103413334114130000 123-1 hognxfnw "Hello," 
+ pexpiretime esokfbxc 
+ set mykey 2 
+ xread streams jbdjxqbm 342374360348 
+ setbit mykey 1603 1 
+ get mykey

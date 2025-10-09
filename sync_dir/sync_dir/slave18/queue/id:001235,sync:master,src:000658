@@ -1,0 +1,6 @@
+set atifyowf 1 
+ incrbyfloat atifyowf -5 
+ save 
+ incr atifyowf 
+ decrby atifyowf -887 
+ get atifyowf

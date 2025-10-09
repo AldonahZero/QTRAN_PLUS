@@ -1,0 +1,9 @@
+xadd jbdjxqbm maxlen ~ 0 0-1 hognxfnw "Hello," 
+ info keyspace 
+ xgroup create jbdjxqbm v0 0 
+ xgroup create jbdjxqbm v1 0 
+ set atifyowf 1 
+ xgroup create jbdjxqbm v2 -909494108478 
+ save 
+ xgroup destroy jbdjxqbm v0 
+ get atifyowf

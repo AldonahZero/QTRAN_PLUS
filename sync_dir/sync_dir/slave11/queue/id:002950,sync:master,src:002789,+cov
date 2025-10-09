@@ -1,0 +1,6 @@
+set mykey -20 
+ xadd jbdjxqbm maxlen ~ 1000 -131822750965 hognxfnw "Hello," 
+ dump jbdjxqbm 
+ xreadgroup group lgkcoucb wvocahto count 3022132023044442330033400212104223123203243342000333414101110121 streams jbdjxqbm 0 
+ incr mykey 
+ get mykey

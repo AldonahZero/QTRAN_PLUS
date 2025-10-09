@@ -1,0 +1,7 @@
+set mykey hello 
+ zinterstore phrpwlca 1 phrpwlca phrpwlca aggregate min 
+ zdiffstore zsxnqiio 2 phrpwlca phrpwlca 
+ zunion 2 phrpwlca phrpwlca aggregate min withscores 
+ zmpop 2 phrpwlca phrpwlca min 
+ get mykey 
+ save

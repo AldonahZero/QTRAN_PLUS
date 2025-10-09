@@ -1,0 +1,10 @@
+set mykey 311 
+ bitfield mykey overflow fail set i4 1746579767 -255272035 
+ incrbyfloat mykey 376 
+ get mykey 
+ copy mykey v0 
+ setbit mykey 1000 cnokdscr 
+ dump mykey 
+ get mykey 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

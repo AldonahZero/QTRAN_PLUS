@@ -1,0 +1,11 @@
+object encoding rwzbgekl 
+ zinterstore zcfialgy 2 zcfialgy zcfialgy 
+ set mykey hello 
+ zincrby zcfialgy 9477 mlujlapi 
+ zdiffstore apuzkzbh 2 zcfialgy apuzkzbh 
+ psetex zvshusdd 3410102305 3090148046 
+ zincrby apuzkzbh 9477 ymtynmse 
+ sort apuzkzbh by weight* 
+ zunion 2 apuzkzbh apuzkzbh 
+ zcount apuzkzbh -539 -1154401951 
+ get mykey

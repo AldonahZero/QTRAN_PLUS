@@ -1,0 +1,7 @@
+set mykey 38.115556 
+ xadd jbdjxqbm maxlen ~ 1000 * hognxfnw "Hello," 
+ keys foo* 
+ del jbdjxqbm 
+ expire mykey 5 
+ save 
+ get mykey

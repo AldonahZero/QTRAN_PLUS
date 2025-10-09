@@ -1,0 +1,7 @@
+info cpu all 
+ set atifyowf 1 
+ zrangestore ugswuldi ugswuldi 0 -1 
+ zrangestore lguhmiyq lguhmiyq 5 0 byscore rev limit 0 2 
+ save 
+ zpopmin ugswuldi 
+ get atifyowf

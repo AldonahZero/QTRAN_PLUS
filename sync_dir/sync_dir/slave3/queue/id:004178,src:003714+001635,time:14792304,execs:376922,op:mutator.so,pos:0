@@ -1,0 +1,8 @@
+psetex vrrqnomv 315 33 
+ set mykey 1 
+ copy vrrqnomv v1 
+ rpush dbmuwins ckssplvd 
+ copy dbmuwins v0 replace 
+ save 
+ save 
+ get mykey

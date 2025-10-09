@@ -1,0 +1,4 @@
+sinterstore gfyopats gfyopats gfyopats 
+ zunionstore qsltfdln 2 qsltfdln qsltfdln 
+ set mykey 9223372036854775808 
+ get mykey

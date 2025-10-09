@@ -1,0 +1,6 @@
+set mykey 0 
+ get mykey 
+ getex mykey 
+ pfadd spgrznkt fbmnmqlw 
+ info latencystats 
+ save

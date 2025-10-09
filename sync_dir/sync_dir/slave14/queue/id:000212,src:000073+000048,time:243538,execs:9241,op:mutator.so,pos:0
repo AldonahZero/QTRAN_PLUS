@@ -1,0 +1,4 @@
+set mykey 9223372036854775807 
+ save 
+ get mykey 
+ setex ssqwgzfa -240958759673 -179847923191

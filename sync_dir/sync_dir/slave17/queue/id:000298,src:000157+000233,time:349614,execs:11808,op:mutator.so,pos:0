@@ -1,0 +1,5 @@
+set syivdted hello 
+ dump syivdted 
+ get syivdted 
+ scan 589 type string 
+ save

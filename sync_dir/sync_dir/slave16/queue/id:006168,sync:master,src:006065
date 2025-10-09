@@ -1,0 +1,9 @@
+xadd ermrdvzf 0-1 jzkwvobt hhtsakbz htuepxnr 3022132023044442330033400212104223123203243342000333414101110121 aixesdar 3022132023044442330033400212104223123203243342000333414101110121 aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm 
+ info default all 
+ xgroup create ermrdvzf v0 0 
+ xlen ermrdvzf 
+ xclaim ermrdvzf v0 oozsdacj -247385426539 1-0 2-0 3-0 3-0 3-0 3-0 3-0 3-0 3-0 3-0 3-0 3-0 3-0 3-0 3-0 3-0 3-0 3-0 3-0 3-0 3-0 3-0 3-0 3-0 3-0 3-0 3-0 3-0 3-0 3-0 
+ set atifyowf 1 
+ save 
+ xpending ermrdvzf v0 
+ get atifyowf

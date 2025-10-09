@@ -1,0 +1,5 @@
+zinterstore cxewdqlm 5 cxewdqlm cxewdqlm weights 2 3 
+ set mykey 2 
+ get mykey 
+ zscan cxewdqlm 580 
+ object encoding uvryzsxf

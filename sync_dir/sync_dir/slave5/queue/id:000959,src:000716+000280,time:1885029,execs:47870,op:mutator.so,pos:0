@@ -1,0 +1,8 @@
+set wdhlaven hello 
+ set v0 -9223372036854775808 
+ setbit v0 474529 1 
+ lcs v0 wdhlaven 
+ save 
+ decrby v0 1651985310 
+ get wdhlaven 
+ setbit v0 244931 1

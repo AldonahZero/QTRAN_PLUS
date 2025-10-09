@@ -1,0 +1,5 @@
+sinterstore efabqgdi efabqgdi efabqgdi 
+ set mykey hello 
+ get mykey 
+ zunionstore eeacghhu 2 eeacghhu eeacghhu weights 2 3 
+ mset mempxxdl qsuvfmsr 

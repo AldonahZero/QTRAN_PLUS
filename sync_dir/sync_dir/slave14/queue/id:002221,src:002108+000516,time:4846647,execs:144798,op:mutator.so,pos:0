@@ -1,0 +1,6 @@
+sunionstore sugvxxcg sugvxxcg sugvxxcg 
+ geoadd zvdfcdqc 12.758489 38.788135 llxyuaqj 17.241510 38.788135 nxmjeqgx 17.250000 35.202000 slkadwaf 12.799439062548865 35.201864127459075 hsbnbydy 
+ georadius zvdfcdqc 13.361389 38.115556 500 km storedist aynqlgbb 
+ sintercard 2 sugvxxcg sugvxxcg 
+ set mykey hello 
+ get mykey

@@ -1,0 +1,5 @@
+set mykey 9223372036854775808 
+ bitfield mykey overflow fail set u58 6596 1519 
+ bitop not xxuevemv mykey 
+ bitop xor soigkacb mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey 
+ get mykey

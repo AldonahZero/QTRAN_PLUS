@@ -1,0 +1,11 @@
+sadd oxqeuijg wivnjuxe 
+ sunionstore xmawvngf xmawvngf xmawvngf 
+ set mykey -1947844055 
+ spop xmawvngf 
+ smembers xmawvngf 
+ get mykey 
+ srem xmawvngf isjfwqcw 
+ spop xmawvngf 
+ get mykey 
+ srem xmawvngf wivnjuxe 
+ save

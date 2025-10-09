@@ -1,0 +1,5 @@
+set dssplpey 41788 
+ bitpos dssplpey 1 37 37 bit 
+ copy dssplpey v0 
+ mget v0 v0 v0 v0 dssplpey dssplpey v0 dssplpey v0 
+ get dssplpey

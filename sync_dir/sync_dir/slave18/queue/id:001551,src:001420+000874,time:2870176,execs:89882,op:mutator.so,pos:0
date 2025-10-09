@@ -1,0 +1,4 @@
+set ljchnmwe 692 
+ copy ljchnmwe v0 db cqcngdpy 
+ lcs ljchnmwe v0 
+ get v0

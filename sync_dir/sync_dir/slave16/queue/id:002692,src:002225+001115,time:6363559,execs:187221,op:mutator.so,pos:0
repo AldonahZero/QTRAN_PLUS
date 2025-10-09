@@ -1,0 +1,10 @@
+sadd waeoxbem wivnjuxe 
+ dump waeoxbem 
+ srem waeoxbem isjfwqcw 
+ sunionstore iwshcqfl waeoxbem iwshcqfl 
+ smove iwshcqfl lrgtpepg famqrcze 
+ set mykey -1947844055 
+ smembers waeoxbem 
+ get mykey 
+ get mykey 
+ save

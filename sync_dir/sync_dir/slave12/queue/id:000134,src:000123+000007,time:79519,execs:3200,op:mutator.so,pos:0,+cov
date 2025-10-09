@@ -1,0 +1,6 @@
+set mykey 140244133014011140103024420341240422110004223143 
+ incrbyfloat mykey 376 
+ get mykey 
+ get mykey 
+ save 
+ hsetnx nbxqjbpm kmvsxosn fcjhthwx

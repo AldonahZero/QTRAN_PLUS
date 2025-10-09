@@ -1,0 +1,7 @@
+set mykey -1615510574 
+ set v0 353926132597 
+ lpush mfgdbqzi ymrnmwug 
+ sort mfgdbqzi limit 0 10 
+ get mykey 
+ bitop and glxceygz mykey v0 mykey v0 v0 v0 v0 v0 
+ object encoding uvryzsxf

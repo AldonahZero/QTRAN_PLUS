@@ -1,0 +1,7 @@
+set mykey hello 
+ zinterstore yygrvfbj 2 yygrvfbj yygrvfbj 
+ zmpop -3 yygrvfbj yygrvfbj min 
+ zrange yygrvfbj 0 -1 
+ zrange yygrvfbj 490812232946 -109398895925 
+ get mykey 
+ save

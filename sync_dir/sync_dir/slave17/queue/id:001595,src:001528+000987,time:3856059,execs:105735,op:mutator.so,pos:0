@@ -1,0 +1,7 @@
+set mykey hello 
+ xadd pbtmpeny 342204043101320331101221324320203021303420334043321233224230113334222322421103024432033223144130104114402 qnoruayj "Hello," 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ zintercard 2 mfsvncrq mfsvncrq limit 1 
+ xdel pbtmpeny 1671116695590-0 
+ zinterstore zjxdmzot 2 mfsvncrq mfsvncrq aggregate max 
+ get mykey

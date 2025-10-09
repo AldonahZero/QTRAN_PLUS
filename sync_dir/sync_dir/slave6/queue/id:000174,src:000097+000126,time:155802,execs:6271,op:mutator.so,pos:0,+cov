@@ -1,0 +1,5 @@
+set mykey "Hello," 
+ getrange mykey 34034221221402441010400 821 
+ zrangestore ncpxhtjz ncpxhtjz 0 0 
+ psetex btebitmm -34 159 
+ get mykey

@@ -1,0 +1,7 @@
+zrangestore xervubdq xervubdq 1 2 byscore 
+ set mykey -20 
+ zmpop 2 xervubdq xervubdq max count 1 
+ xadd kvnrwmku 123-1 mzklxdll "Hello," 
+ zunion 2 xervubdq xervubdq 
+ zdiff 5 xervubdq xervubdq xervubdq xervubdq xervubdq 
+ get mykey

@@ -1,0 +1,7 @@
+sadd prxsktod qmziehnr 
+ set mykey 9477 
+ scan 976 type string 
+ set v0 -1615510574 
+ hmset rlvtchzi tyubwqfl -1 
+ getex mykey 
+ get mykey

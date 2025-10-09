@@ -1,0 +1,7 @@
+sunionstore sugvxxcg sugvxxcg sugvxxcg 
+ geoadd prlpsdxt 12.75 36.995 trqpgcxr 
+ set mykey hello 
+ geodist prlpsdxt trqpgcxr trqpgcxr km 
+ sdiff sugvxxcg sugvxxcg sugvxxcg sugvxxcg 
+ georadius prlpsdxt 80.112611083366289 38.115556 500 km storedist aynqlgbb 
+ get mykey

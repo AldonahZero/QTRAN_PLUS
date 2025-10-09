@@ -1,0 +1,9 @@
+zunionstore uhnbdhtg -564153445215 uhnbdhtg 
+ xadd jbdjxqbm maxlen ~ 0 123-1 hognxfnw "Hello," 
+ xinfo stream jbdjxqbm full 
+ xrange jbdjxqbm 363 1496 
+ set mykey hello 
+ copy uhnbdhtg v0 
+ xread streams jbdjxqbm 868 
+ xautoclaim jbdjxqbm rqqvuwlo wnbwejch 0 0-0 count 1 
+ get mykey

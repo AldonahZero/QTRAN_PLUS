@@ -1,0 +1,6 @@
+set mykey -37 
+ zrangestore cfncftfi cfncftfi 0 5 byscore limit 0 2 
+ setnx gbjlvscx -37 
+ zremrangebyrank cfncftfi -706 -393807523601 
+ getex gbjlvscx 
+ get mykey

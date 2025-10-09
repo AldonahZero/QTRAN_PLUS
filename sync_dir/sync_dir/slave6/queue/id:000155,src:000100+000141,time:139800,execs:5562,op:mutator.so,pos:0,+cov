@@ -1,0 +1,5 @@
+set mykey 41788 
+ rpush czowykxw ptecklws 
+ get mykey 
+ lmpop 1 czowykxw right count 1 
+ hset rfllxsdf iubquuor 0.41507778056668015 

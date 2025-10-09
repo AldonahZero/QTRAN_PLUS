@@ -1,0 +1,8 @@
+geoadd vrekwiwa 13.00 36.50 pqkikujz 
+ lpush mwaezvld vunxlubq 
+ set mykey 306 
+ type mspahcqu 
+ geopos vrekwiwa pqkikujz pqkikujz pqkikujz 
+ decr mykey 
+ save 
+ get mykey

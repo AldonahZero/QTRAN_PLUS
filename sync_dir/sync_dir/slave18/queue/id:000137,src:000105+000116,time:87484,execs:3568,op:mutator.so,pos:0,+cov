@@ -1,0 +1,5 @@
+set mykey -37 
+ zrangestore ugswuldi ugswuldi 0 -1 
+ zinter 2 ugswuldi ugswuldi aggregate max withscores 
+ setnx gbjlvscx -37 
+ get mykey

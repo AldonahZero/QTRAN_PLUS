@@ -1,0 +1,6 @@
+set mykey hello 
+ get mykey 
+ setbit mykey -693150821 0 
+ zunionstore eeacghhu 2 eeacghhu eeacghhu weights 2 3 
+ zrandmember eeacghhu -1001 withscores 
+ mset mempxxdl qsuvfmsr 

@@ -1,0 +1,4 @@
+set rkfvndig 0.50729305926118651 
+ bitpos rkfvndig 1 37 37 bit 
+ copy rkfvndig v0 
+ get rkfvndig

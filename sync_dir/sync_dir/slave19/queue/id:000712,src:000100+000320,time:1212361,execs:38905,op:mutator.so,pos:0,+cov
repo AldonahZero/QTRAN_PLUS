@@ -1,0 +1,4 @@
+set mykey -853 
+ pexpire mykey -2792568265 
+ getrange mykey 671 805 
+ get mykey

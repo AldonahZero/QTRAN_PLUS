@@ -1,0 +1,5 @@
+set v7 1293 
+ get v7 
+ scan 589 type string 
+ save 
+ copy v7 v0 

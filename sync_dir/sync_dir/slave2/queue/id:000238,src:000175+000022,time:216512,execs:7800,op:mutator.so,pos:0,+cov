@@ -1,0 +1,7 @@
+zdiffstore dfgxahpo 3 dfgxahpo dfgxahpo dfgxahpo 
+ set mykey 41788 
+ getset mykey -205 
+ sdiffstore lrkqafqr lrkqafqr lrkqafqr lrkqafqr 
+ sdiffstore vdxxciyw vdxxciyw vdxxciyw vdxxciyw 
+ getbit dgtyekuj 4230333332232202420410202334244131113300242423441432341324031332432244402110402013234121110332021340431 
+ get mykey

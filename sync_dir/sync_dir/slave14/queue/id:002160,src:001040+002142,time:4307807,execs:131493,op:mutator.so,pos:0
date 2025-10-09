@@ -1,0 +1,5 @@
+hset eaxejsol bhwulrko 1037 
+ hvals eaxejsol 
+ hrandfield eaxejsol -367 withvalues 
+ set mykey 2 
+ get mykey

@@ -1,0 +1,5 @@
+set mykey hello 
+ zadd lukpltvt 5826 vgjrzjoy 
+ sort lukpltvt 
+ zrandmember lukpltvt -9223372036854770000 withscores 
+ get mykey

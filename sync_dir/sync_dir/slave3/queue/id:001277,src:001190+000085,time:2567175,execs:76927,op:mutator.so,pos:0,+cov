@@ -1,0 +1,5 @@
+set mykey -645611437338 
+ dump mykey 
+ get mykey 
+ save 
+ mset jmvjdgip 533 

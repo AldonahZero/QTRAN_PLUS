@@ -1,0 +1,22 @@
+xadd kvnrwmku 123-1 mzklxdll 1265324348 
+ info keyspace 
+ xgroup create kvnrwmku v0 0 
+ xclaim kvnrwmku cghcphip v4 0 1-0 force 
+ xpending kvnrwmku v0 idle 9000 -1654890356 + 114032213300100222003031000430134333012243232104434413321401322143003423212203311403312424414342440212310222232233002231122122434314340013242124301130141330424102012430344044443234211341142301040112420223424204 yxaavztx 
+ xclaim kvnrwmku cghcphip v2 0 1-0 force 
+ xgroup createconsumer kvnrwmku v0 v1 
+ xgroup createconsumer kvnrwmku v0 v2 
+ set atifyowf 1 
+ save 
+ xinfo stream kvnrwmku 
+ copy v1 v3 
+ xclaim kvnrwmku cghcphip lzytosbe 10 1-0 force 
+ xpending kvnrwmku v0 
+ xinfo stream kvnrwmku full 
+ copy v0 v4 
+ dump v3 
+ copy atifyowf v5 
+ xgroup delconsumer kvnrwmku v0 v3 
+ copy v2 v6 
+ xclaim kvnrwmku cghcphip qcdrshmz 0 1-0 force 
+ get atifyowf

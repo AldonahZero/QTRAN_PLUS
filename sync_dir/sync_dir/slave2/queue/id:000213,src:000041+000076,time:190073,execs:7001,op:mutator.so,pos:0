@@ -1,0 +1,5 @@
+set mykey hello 
+ append ibdfxrwx 20220044110400301200030414002221202401144302121102214220143414121422201404321434024 
+ sinterstore ubjuqmxi ubjuqmxi ubjuqmxi 
+ srandmember ubjuqmxi 50 
+ get mykey

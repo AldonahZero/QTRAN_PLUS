@@ -1,0 +1,5 @@
+set mykey 1293 
+ dump mykey 
+ get mykey 
+ scan 589 type string 
+ save

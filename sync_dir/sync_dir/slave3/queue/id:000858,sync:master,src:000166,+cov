@@ -1,0 +1,3 @@
+set mykey 692 
+ copy mykey ycgvtbur replace 
+ get mykey

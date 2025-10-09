@@ -1,0 +1,4 @@
+hset eaxejsol bhwulrko -15956 
+ set mykey 2 
+ setbit mykey 1421721372 1 
+ get mykey

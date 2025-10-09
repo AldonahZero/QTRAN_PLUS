@@ -1,0 +1,10 @@
+sadd waeoxbem wivnjuxe 
+ scard waeoxbem 
+ set mykey -1947844055 
+ smembers waeoxbem 
+ scard waeoxbem 
+ get mykey 
+ scard waeoxbem 
+ sort waeoxbem desc 
+ get mykey 
+ save

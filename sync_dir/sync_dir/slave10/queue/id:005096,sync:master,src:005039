@@ -1,0 +1,15 @@
+set mykey -1947844055 
+ zadd xhhdbzfm lt incr 1 bexnlycc 
+ bitpos mykey 1 12 12 bit 
+ zincrby xhhdbzfm 183 v0 
+ zinter 2 xhhdbzfm xhhdbzfm aggregate max withscores 
+ sort xhhdbzfm alpha 
+ get mykey 
+ zrangestore lguhmiyq xhhdbzfm 5 0 byscore rev limit 0 2 
+ pfadd dbpkzfom 
+ zremrangebyrank xhhdbzfm -706 -393807523601 
+ setbit mykey 474529 1 
+ get mykey 
+ zinterstore cpkmmnvr 2 lguhmiyq xhhdbzfm 
+ zunion 2 lguhmiyq cpkmmnvr aggregate min withscores 
+ save

@@ -1,0 +1,5 @@
+set v0 gftsakln 
+ save 
+ object encoding cmfmndrr 
+ lcs v0 v0 
+ get v0

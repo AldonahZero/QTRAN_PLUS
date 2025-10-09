@@ -1,0 +1,8 @@
+set v0 -16965705105117 
+ incr v0 
+ incrbyfloat v0 -5 
+ decrby v0 -491515494180 
+ save 
+ incr v0 
+ bitpos v0 1 143110221304012404203333 12 bit 
+ get v0

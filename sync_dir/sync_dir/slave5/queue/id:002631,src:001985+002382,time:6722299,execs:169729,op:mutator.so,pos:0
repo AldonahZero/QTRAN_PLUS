@@ -1,0 +1,13 @@
+set mykey -1947844055 
+ zrangestore lguhmiyq lguhmiyq 5 0 byscore rev limit 0 2 
+ zadd mfsvncrq lt incr 1 bexnlycc 
+ bitpos mykey 1 12 12 bit 
+ sort mfsvncrq alpha 
+ get mykey 
+ zdiff 2 mfsvncrq mfsvncrq withscores 
+ zdiffstore vmgqtrcr 2 mfsvncrq vmgqtrcr 
+ pfadd dbpkzfom 
+ setbit mykey 474529 1 
+ zrangestore v0 mfsvncrq 5 0 byscore rev limit 0 2 
+ get mykey 
+ save
