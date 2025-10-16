@@ -4,6 +4,8 @@ venv/
 env/
 ENV/
 
+run_mongodb_mutation_test.sh
+
 *.zip
 # 可选：添加其他常见 Python 忽略项
 __pycache__/
