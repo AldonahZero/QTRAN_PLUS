@@ -1,0 +1,1 @@
+{"index": 0, "a_db": "redis", "b_db": "mongodb", "molt": "semantic", "sqls": ["set mykey hello;", "get mykey;", "set counter 1;", "incr counter;", "get counter;"]}

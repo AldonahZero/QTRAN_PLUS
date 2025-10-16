@@ -63,3 +63,13 @@ QTRAN项目的核心目标是实现一个自动化的数据库逻辑错误检测
    * 在所有测试用例运行后，此函数会分析预言机检查的结果。  
    * 如果 CheckOracle 字段显示检查失败 (end 为 False)，则认为发现了一个逻辑Bug，并记录其索引。  
    * 最终输出一份包含变异成功率和可疑Bug列表的评估报告。
+
+### 可选：仅在变异阶段启用 Agent（方案 2）
+
+从现在起，变异阶段支持通过轻量的 LangChain Agent 生成 3-5 个候选变异并进行基本语法自检。默认仍使用微调 LLM；若要启用 Agent，请设置环境变量：
+
+```
+export QTRAN_MUTATION_ENGINE=agent
+```
+
+启用后，`src/MutationLlmModelValidator/MutateLLM.py` 中的 `run_muatate_llm_single_sql` 将优先走 Agent 路径；若 Agent 失败，会自动回退到微调 LLM 路径，保持兼容性。

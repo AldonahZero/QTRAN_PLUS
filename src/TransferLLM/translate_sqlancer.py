@@ -294,22 +294,24 @@ def sqlancer_translate(
                 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", ""))
                 mutate_start_time = datetime.now()  # 使用 ISO 8601 格式
                 if fuzzer.lower() == "norec":
-                    # mutate_llm_model_ID = sqlancer_norec_mutate_id
-                    mutate_llm_model_ID = os.environ[
-                        f"{fuzzer}_MUTATION_LLM_ID".upper()
-                    ]
+                    # 优先环境变量，其次回退到通用模型（用于 agent 失败时的兜底）
+                    mutate_llm_model_ID = os.environ.get(
+                        f"{fuzzer}_MUTATION_LLM_ID".upper(), "gpt-4o-mini"
+                    )
                 elif "tlp" in fuzzer.lower():
                     fuzzer_temp = "tlp"
-                    mutate_llm_model_ID = os.environ[
-                        f"{fuzzer_temp}_MUTATION_LLM_ID".upper()
-                    ]
+                    mutate_llm_model_ID = os.environ.get(
+                        f"{fuzzer_temp}_MUTATION_LLM_ID".upper(), "gpt-4o-mini"
+                    )
                 elif "semantic" in fuzzer.lower():
                     fuzzer_temp = "semantic"
-                    mutate_llm_model_ID = os.environ[
-                        f"{fuzzer_temp}_MUTATION_LLM_ID".upper()
-                    ]
+                    mutate_llm_model_ID = os.environ.get(
+                        f"{fuzzer_temp}_MUTATION_LLM_ID".upper(), "gpt-4o-mini"
+                    )
                 else:
-                    mutate_llm_model_ID = ""
+                    mutate_llm_model_ID = os.environ.get(
+                        "SEMANTIC_MUTATION_LLM_ID", "gpt-4o-mini"
+                    )
                 mutate_content, cost = run_muatate_llm_single_sql(
                     tool,
                     client,
