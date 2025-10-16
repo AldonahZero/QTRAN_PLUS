@@ -29,8 +29,9 @@ def test_mongodb_mutation():
     try:
         # 需要创建 OpenAI client
         from openai import OpenAI
+
         client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-        
+
         # 调用变异函数（注意：实际函数签名）
         result = run_muatate_llm_single_sql(
             tool="sqlancer",
@@ -39,7 +40,7 @@ def test_mongodb_mutation():
             mutate_name="semantic",  # 用于确定策略
             oracle="semantic",  # oracle 类型
             db_type="mongodb",  # 明确指定 mongodb
-            sql=test_seed_cmd
+            sql=test_seed_cmd,
         )
 
         print("\n" + "=" * 70)
@@ -54,7 +55,7 @@ def test_mongodb_mutation():
             result_str = result
         else:
             result_str = str(result)
-        
+
         try:
             result_data = json.loads(result_str)
         except Exception as e:
