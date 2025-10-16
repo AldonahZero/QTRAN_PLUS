@@ -265,6 +265,31 @@ def sqlancer_translate(
                         "[WARN] No TransferSQL/TransferNoSQL found in last TransferResult; skipping mutate phase for this bug."
                     )
                     continue
+
+                # 智能检测实际执行的目标数据库类型
+                # 检查 TransferSqlExecResult 来确定真实的目标数据库
+                actual_target_db = b_db  # 默认使用 b_db
+                if (
+                    "TransferSqlExecResult" in mutate_results[-1]
+                    and mutate_results[-1]["TransferSqlExecResult"]
+                ):
+                    try:
+                        exec_result_str = mutate_results[-1]["TransferSqlExecResult"][0]
+                        if isinstance(exec_result_str, str):
+                            exec_result_json = json.loads(exec_result_str)
+                            detected_db_type = exec_result_json.get(
+                                "dbType", ""
+                            ).lower()
+                            if detected_db_type in ["mongodb", "mongo"]:
+                                actual_target_db = "mongodb"
+                                print(
+                                    f"[INFO] Detected actual target database: MongoDB (b_db was {b_db})"
+                                )
+                    except (json.JSONDecodeError, KeyError, IndexError) as e:
+                        print(
+                            f"[WARN] Failed to detect actual target database: {e}, using b_db={b_db}"
+                        )
+
                 # mutate llm client
                 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", ""))
                 mutate_start_time = datetime.now()  # 使用 ISO 8601 格式
@@ -291,7 +316,7 @@ def sqlancer_translate(
                     mutate_llm_model_ID,
                     fuzzer,
                     bug["molt"],
-                    b_db,
+                    actual_target_db,  # 使用检测到的实际目标数据库,而非 b_db
                     mutate_sql,
                 )
                 mutate_end_time = datetime.now()  # 使用 ISO 8601 格式

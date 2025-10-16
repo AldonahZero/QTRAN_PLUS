@@ -30,28 +30,27 @@ current_file_path = os.path.abspath(__file__)
 current_dir = os.path.dirname(current_file_path)
 
 
-
-
 filenames = {
-    "FixMCmpOpU":"../../Dataset/MutationLlmModelFineTuning/PostgresSQL/TestingDataset/postgres_testing_dataset_raw2.0(FixMCmpOpU).jsonl",
-    "FixMDistinctL":"../../Dataset/MutationLlmModelFineTuning/PostgresSQL/TestingDataset/postgres_testing_dataset_raw2.0(FixMDistinctL).jsonl",
-    "FixMHaving1U":"../../Dataset/MutationLlmModelFineTuning/PostgresSQL/TestingDataset/postgres_testing_dataset_raw2.0(FixMHaving1U).jsonl",
-    "FixMOn1U":"../../Dataset/MutationLlmModelFineTuning/PostgresSQL/TestingDataset/postgres_testing_dataset_raw2.0(FixMOn1U).jsonl"
+    "FixMCmpOpU": "../../Dataset/MutationLlmModelFineTuning/PostgresSQL/TestingDataset/postgres_testing_dataset_raw2.0(FixMCmpOpU).jsonl",
+    "FixMDistinctL": "../../Dataset/MutationLlmModelFineTuning/PostgresSQL/TestingDataset/postgres_testing_dataset_raw2.0(FixMDistinctL).jsonl",
+    "FixMHaving1U": "../../Dataset/MutationLlmModelFineTuning/PostgresSQL/TestingDataset/postgres_testing_dataset_raw2.0(FixMHaving1U).jsonl",
+    "FixMOn1U": "../../Dataset/MutationLlmModelFineTuning/PostgresSQL/TestingDataset/postgres_testing_dataset_raw2.0(FixMOn1U).jsonl",
 }
 
 results_filenames = {
-    "FixMCmpOpU":"../../Dataset/MutationLlmModelFineTuning/PostgresSQL/TestingResult/postgres_testing_dataset_raw2.0(FixMCmpOpU).jsonl",
-    "FixMDistinctL":"../../Dataset/MutationLlmModelFineTuning/PostgresSQL/TestingResult/postgres_testing_dataset_raw2.0(FixMDistinctL).jsonl",
-    "FixMHaving1U":"../../Dataset/MutationLlmModelFineTuning/PostgresSQL/TestingResult/postgres_testing_dataset_raw2.0(FixMHaving1U).jsonl",
-    "FixMOn1U":"../../Dataset/MutationLlmModelFineTuning/PostgresSQL/TestingResult/postgres_testing_dataset_raw2.0(FixMOn1U).jsonl"
+    "FixMCmpOpU": "../../Dataset/MutationLlmModelFineTuning/PostgresSQL/TestingResult/postgres_testing_dataset_raw2.0(FixMCmpOpU).jsonl",
+    "FixMDistinctL": "../../Dataset/MutationLlmModelFineTuning/PostgresSQL/TestingResult/postgres_testing_dataset_raw2.0(FixMDistinctL).jsonl",
+    "FixMHaving1U": "../../Dataset/MutationLlmModelFineTuning/PostgresSQL/TestingResult/postgres_testing_dataset_raw2.0(FixMHaving1U).jsonl",
+    "FixMOn1U": "../../Dataset/MutationLlmModelFineTuning/PostgresSQL/TestingResult/postgres_testing_dataset_raw2.0(FixMOn1U).jsonl",
 }
 
 eval_filenames = {
-    "FixMCmpOpU":"../../Dataset/MutationLlmModelFineTuning/PostgresSQL/TestingResult/postgres_testing_dataset_raw2.0(FixMCmpOpU)_eval.jsonl",
-    "FixMDistinctL":"../../Dataset/MutationLlmModelFineTuning/PostgresSQL/TestingResult/postgres_testing_dataset_raw2.0(FixMDistinctL)_eval.jsonl",
-    "FixMHaving1U":"../../Dataset/MutationLlmModelFineTuning/PostgresSQL/TestingResult/postgres_testing_dataset_raw2.0(FixMHaving1U)_eval.jsonl",
-    "FixMOn1U":"../../Dataset/MutationLlmModelFineTuning/PostgresSQL/TestingResult/postgres_testing_dataset_raw2.0(FixMOn1U)_eval.jsonl"
+    "FixMCmpOpU": "../../Dataset/MutationLlmModelFineTuning/PostgresSQL/TestingResult/postgres_testing_dataset_raw2.0(FixMCmpOpU)_eval.jsonl",
+    "FixMDistinctL": "../../Dataset/MutationLlmModelFineTuning/PostgresSQL/TestingResult/postgres_testing_dataset_raw2.0(FixMDistinctL)_eval.jsonl",
+    "FixMHaving1U": "../../Dataset/MutationLlmModelFineTuning/PostgresSQL/TestingResult/postgres_testing_dataset_raw2.0(FixMHaving1U)_eval.jsonl",
+    "FixMOn1U": "../../Dataset/MutationLlmModelFineTuning/PostgresSQL/TestingResult/postgres_testing_dataset_raw2.0(FixMOn1U)_eval.jsonl",
 }
+
 
 # 处理mutate llm生成的结果，依次处理所有可能的变异：计算oracle，运行并记录结果，oracle check以检测bug
 def process_mutate_llm_result(muatate_name, muatate_result, exec_result_before):
@@ -81,16 +80,26 @@ def process_mutate_llm_result(muatate_name, muatate_result, exec_result_before):
     procrssed_result = []
     for result in muatate_result:
         # 计算oracle,IsUpper: ((candidate.U^candidate.Flag)^1) == 1
-        U = muatate_name.endswith('U')
+        U = muatate_name.endswith("U")
         isUpper = bool((U ^ result["flag"]) ^ 1)
         # 运行该"MutateLLM_Result"并保存运行结果
-        exec_result, exec_time, error_message = exec_sql_statement("pinolo", "postgres", result["mutated sql"])
+        exec_result, exec_time, error_message = exec_sql_statement(
+            "pinolo", "postgres", result["mutated sql"]
+        )
 
         # 比较该"MutateLLM_Result"的运行结果是否满足oracle
         exec_result_before_formatted = execSQL_result_convertor(exec_result_before)
         exec_result_formatted = execSQL_result_convertor(exec_result)
-        exec_result_before_object = Result(exec_result_before_formatted["column_names"], exec_result_formatted["column_types"],exec_result_before_formatted["rows"])
-        exec_result_object = Result(exec_result_formatted["column_names"], exec_result_formatted["column_types"],exec_result_before_formatted["rows"])
+        exec_result_before_object = Result(
+            exec_result_before_formatted["column_names"],
+            exec_result_formatted["column_types"],
+            exec_result_before_formatted["rows"],
+        )
+        exec_result_object = Result(
+            exec_result_formatted["column_names"],
+            exec_result_formatted["column_types"],
+            exec_result_before_formatted["rows"],
+        )
         end, error = Check(exec_result_before_object, exec_result_object, isUpper)
 
         processed_item = {
@@ -98,16 +107,14 @@ def process_mutate_llm_result(muatate_name, muatate_result, exec_result_before):
             "mutate_exec": {
                 "exec_result": str(exec_result),
                 "exec_time": str(exec_time),
-                "error_message": str(error_message)
+                "error_message": str(error_message),
             },
-            "CheckOracle": {
-                "end": end,
-                "error": str(error)
-            } 
+            "CheckOracle": {"end": end, "error": str(error)},
         }
         procrssed_result.append(processed_item)
 
     return procrssed_result
+
 
 """
 def run_muatate_llm(tool, mutate_name):
@@ -149,7 +156,10 @@ def run_muatate_llm(tool, mutate_name):
                 w.write("\n")
 """
 
-def run_muatate_llm_single_sql(tool, client, model_id, mutate_name, oracle, db_type, sql):
+
+def run_muatate_llm_single_sql(
+    tool, client, model_id, mutate_name, oracle, db_type, sql
+):
     """针对单条 SQL 调用 Mutate LLM 生成候选变体，并返回原始响应文本与开销统计。"""
     # 为Mutate LLM构造满足特定格式的testing data数据项
     if tool.lower() == "sqlancer":
@@ -161,18 +171,41 @@ def run_muatate_llm_single_sql(tool, client, model_id, mutate_name, oracle, db_t
             mutate_stratege = "tlp"
         elif "semantic" in mutate_name.lower():
             mutate_stratege = "semantic"
-        mutate_prompt_path = os.path.join(current_dir, "..","..", "MutationData", "MutationLLMPrompt", mutate_stratege+ ".json")
+
+        # MongoDB 专用 prompt（当目标是 MongoDB 时）
+        is_mongodb_target = db_type.lower() in ["mongodb", "mongo"]
+        if is_mongodb_target and mutate_stratege == "semantic":
+            mutate_prompt_path = os.path.join(
+                current_dir,
+                "..",
+                "..",
+                "MutationData",
+                "MutationLLMPrompt",
+                "semantic_mongodb.json",
+            )
+        else:
+            mutate_prompt_path = os.path.join(
+                current_dir,
+                "..",
+                "..",
+                "MutationData",
+                "MutationLLMPrompt",
+                mutate_stratege + ".json",
+            )
+
         with open(mutate_prompt_path, "r", encoding="utf-8") as r:
-            system_message = json.load(r)[oracle]
+            prompt_data = json.load(r)
+            system_message = prompt_data.get(oracle, prompt_data.get("semantic", ""))
+
+        # 针对 MongoDB，用户消息应包含转换后的 MongoDB 操作
+        if is_mongodb_target:
+            user_content = f"Seed MongoDB operation (converted from Redis):\n{sql}"
+        else:
+            user_content = f"A seed SQL from {db_type.lower()}:\n{sql}"
+
         formatted_input = [
-            {
-                "role": "system",
-                "content": system_message
-            },
-            {
-                "role": "user",
-                "content": "A seed SQL from " + db_type.lower() + ":\n" + sql
-            }
+            {"role": "system", "content": system_message},
+            {"role": "user", "content": user_content},
         ]
         # mutate the sql
         cost = {}
@@ -180,15 +213,16 @@ def run_muatate_llm_single_sql(tool, client, model_id, mutate_name, oracle, db_t
         # print(model_id)
         # print(formatted_input)
         completion = client.chat.completions.create(
-            model=model_id,
-            messages=formatted_input
+            model=model_id, messages=formatted_input
         )
         response_content = completion.choices[0].message.content
         print(response_content)
         cost["Total Tokens"] = completion.usage.total_tokens
         cost["Prompt Tokens"] = completion.usage.prompt_tokens
         cost["Completion Tokens"] = completion.usage.completion_tokens
-        cost["Total Cost (USD)"] = 0  # 用了4o-mini以后变成0.0了，还没修改，也可以用户token乘单价计算
+        cost["Total Cost (USD)"] = (
+            0  # 用了4o-mini以后变成0.0了，还没修改，也可以用户token乘单价计算
+        )
         return response_content, cost
 
 
@@ -202,7 +236,7 @@ def detect_bug(mutate_name):
         lines = r.readlines()
     total_num = len(lines)
     total_mutate_sql_num = 0  # 所有可能的mutate语句总数
-    exec_success_mutate_sql_num = 0  #所有可能的mutate语句中成功执行的数量
+    exec_success_mutate_sql_num = 0  # 所有可能的mutate语句中成功执行的数量
 
     for line in lines:
         data = json.loads(line)
@@ -221,7 +255,14 @@ def detect_bug(mutate_name):
             else:
                 exec_fail_mutate_sql_indexes.append(data["index"])
 
-    success_rate = str(exec_success_mutate_sql_num/total_mutate_sql_num)+"("+str(exec_success_mutate_sql_num)+"/"+str(total_mutate_sql_num)+")"
+    success_rate = (
+        str(exec_success_mutate_sql_num / total_mutate_sql_num)
+        + "("
+        + str(exec_success_mutate_sql_num)
+        + "/"
+        + str(total_mutate_sql_num)
+        + ")"
+    )
     detect_results["ExecSuccessRate"] = success_rate
     detect_results["ExecFailIndexes"] = exec_fail_mutate_sql_indexes
     detect_results["OracleFalseIndexes"] = oracle_false_indexes
@@ -239,7 +280,9 @@ def generate_sqlancer_eval_report(input_name: str):
 
     输出：Output/<input_name>/eval_report.json
     """
-    base_dir = os.path.abspath(os.path.join(current_dir, "..", "..", "Output", input_name))
+    base_dir = os.path.abspath(
+        os.path.join(current_dir, "..", "..", "Output", input_name)
+    )
     suspicious_dir = os.path.join(base_dir, "SuspiciousBugs")
     mutate_dir = os.path.join(base_dir, "MutationLLM")
 
@@ -308,4 +351,3 @@ def generate_sqlancer_eval_report(input_name: str):
     with open(out_file, "w", encoding="utf-8") as w:
         json.dump(report, w, ensure_ascii=False, indent=2)
     return out_file
-

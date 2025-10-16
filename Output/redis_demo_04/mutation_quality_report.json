@@ -1,0 +1,74 @@
+{
+  "summary": {
+    "directory": "/Users/aldno/paper/QTRAN_PLUS/Output/redis_demo_04/MutationLLM",
+    "total_files": 1,
+    "total_records": 5,
+    "total_mutations": 4,
+    "valid_mutations": 0,
+    "invalid_mutations": 4,
+    "quality_rate": 0.0,
+    "error_breakdown": {
+      "simple_command": 4,
+      "json_parse": 0,
+      "missing_fields": 0,
+      "invalid_ops": 0
+    },
+    "files": [
+      {
+        "name": "33.jsonl",
+        "total_mutations": 4,
+        "valid_mutations": 0,
+        "invalid_mutations": 4,
+        "quality_rate": 0.0
+      }
+    ]
+  },
+  "detailed_reports": [
+    {
+      "file": "33.jsonl",
+      "total_records": 5,
+      "records_with_mutations": 1,
+      "total_mutations": 4,
+      "valid_mutations": 0,
+      "invalid_mutations": 4,
+      "simple_command_count": 4,
+      "json_parse_errors": 0,
+      "missing_fields_count": 0,
+      "invalid_ops_count": 0,
+      "issues": [
+        {
+          "line": 5,
+          "index": 44,
+          "mutation_idx": 0,
+          "type": "simple_command",
+          "cmd": "find kv",
+          "detail": "Uses simplified pseudo-command instead of MongoDB JSON"
+        },
+        {
+          "line": 5,
+          "index": 44,
+          "mutation_idx": 1,
+          "type": "simple_command",
+          "cmd": "count kv",
+          "detail": "Uses simplified pseudo-command instead of MongoDB JSON"
+        },
+        {
+          "line": 5,
+          "index": 44,
+          "mutation_idx": 2,
+          "type": "simple_command",
+          "cmd": "insert kv {'_id': 'mykey', 'value': 'mutable_change'}",
+          "detail": "Uses simplified pseudo-command instead of MongoDB JSON"
+        },
+        {
+          "line": 5,
+          "index": 44,
+          "mutation_idx": 3,
+          "type": "simple_command",
+          "cmd": "delete kv",
+          "detail": "Uses simplified pseudo-command instead of MongoDB JSON"
+        }
+      ]
+    }
+  ]
+}

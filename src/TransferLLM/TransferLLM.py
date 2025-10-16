@@ -1174,14 +1174,13 @@ def transfer_llm_nosql_crash(
     examples_string = ""
 
     # 使用占位符避免 feature_knowledge_string / examples_string 中的大括号被二次解析导致 KeyError
-    transfer_llm_string = (
-        """
+    transfer_llm_string = """
     You are an INTJ (MBTI) database engineering expert known for strategic, analytical, precise thinking. You are an expert in NoSQL command translation and robustness testing.\
     Given the following SQL or pseudo-SQL, generate an equivalent {nosql_db} command or sequence.\
     Input statement: {sql_statement}\
     {feature_knowledge}\
-    Requirements:\n1. Output only valid {nosql_db} commands (one per line if multiple).\n2. Do not invent keys/fields not present in the input.\n3. If the input is already a {nosql_db} command, output as-is.\n4. If you are unsure, make a best effort and explain.\n\n{examples}\nAnswer the following information: {format_instructions}\n"""
-        .replace("{nosql_db}", nosql_db)
+    Requirements:\n1. Output only valid {nosql_db} commands (one per line if multiple).\n2. Do not invent keys/fields not present in the input.\n3. If the input is already a {nosql_db} command, output as-is.\n4. If you are unsure, make a best effort and explain.\n\n{examples}\nAnswer the following information: {format_instructions}\n""".replace(
+        "{nosql_db}", nosql_db
     )
 
     response_schemas = [
@@ -1342,25 +1341,37 @@ def transfer_llm(
     use_redis_kb: bool = False,
 ):
     """调度入口:
-    - 若 origin 与 target 均为 SQL 方言: 调用语义转换/迭代逻辑 (transfer_llm_sql_semantic)
-    - 只要涉及任一 NoSQL: 使用 NoSQL crash/hang pipeline (transfer_llm_nosql_crash)
+    根据测试策略(molt)决定使用哪种测试方法:
+    - semantic/norec/tlp/dqe/pinolo 等语义策略: 使用语义等价测试 (transfer_llm_sql_semantic)
+    - crash/hang/fuzz 等稳定性策略: 使用崩溃/挂起检测 (transfer_llm_nosql_crash)
+    
+    判断依据: test_info 中的 'molt' 字段(测试工具/策略),而非数据库类型
     返回值格式与旧版保持一致。
     """
-    SQL_DIALECTS = {
-        "mysql",
-        "mariadb",
-        "tidb",
-        "postgres",
-        "sqlite",
-        "duckdb",
-        "clickhouse",
-        "monetdb",
+    # 从 test_info 中获取测试策略
+    molt = test_info.get("molt", "").lower()
+    
+    # 语义等价测试策略(SQLancer/Pinolo 的各种 oracle)
+    SEMANTIC_STRATEGIES = {
+        "semantic",    # 语义等价
+        "norec",       # NoREC oracle
+        "tlp",         # TLP (Ternary Logic Partitioning)
+        "dqe",         # Differential Query Execution
+        "pinolo",      # Pinolo
+        "pqs",         # Pivoted Query Synthesis
     }
-    NOSQL_DBS = {"redis", "memcached", "etcd", "consul", "mongodb"}
-
-    if (str(origin_db).lower() in SQL_DIALECTS) and (
-        str(target_db).lower() in SQL_DIALECTS
-    ):
+    
+    # 崩溃/稳定性测试策略
+    CRASH_STRATEGIES = {
+        "crash",       # 崩溃检测
+        "hang",        # 挂起检测
+        "fuzz",        # 模糊测试
+        "stress",      # 压力测试
+    }
+    
+    # 根据 molt 决定测试策略
+    if molt in SEMANTIC_STRATEGIES:
+        # 使用语义等价测试(适用于 SQL 或 NoSQL,只要策略是语义相关的)
         return transfer_llm_sql_semantic(
             tool,
             exp,
@@ -1374,7 +1385,8 @@ def transfer_llm(
             test_info,
             use_redis_kb=use_redis_kb,
         )
-    else:
+    elif molt in CRASH_STRATEGIES:
+        # 使用崩溃/挂起检测(适用于稳定性测试)
         return transfer_llm_nosql_crash(
             tool,
             exp,
@@ -1388,6 +1400,31 @@ def transfer_llm(
             test_info,
             use_redis_kb=use_redis_kb,
         )
+    else:
+        # 默认策略: 如果 molt 未识别,根据数据库类型回退
+        # 这是为了向后兼容没有 molt 字段的旧数据
+        SQL_DIALECTS = {
+            "mysql", "mariadb", "tidb", "postgres", 
+            "sqlite", "duckdb", "clickhouse", "monetdb",
+        }
+        NOSQL_DBS = {"redis", "memcached", "etcd", "consul", "mongodb"}
+        
+        if (str(origin_db).lower() in SQL_DIALECTS) and (
+            str(target_db).lower() in SQL_DIALECTS
+        ):
+            # SQL → SQL: 默认使用语义测试
+            return transfer_llm_sql_semantic(
+                tool, exp, conversation, error_iteration, iteration_num,
+                FewShot, with_knowledge, origin_db, target_db, test_info,
+                use_redis_kb=use_redis_kb,
+            )
+        else:
+            # 涉及 NoSQL: 默认使用崩溃测试
+            return transfer_llm_nosql_crash(
+                tool, exp, conversation, error_iteration, iteration_num,
+                FewShot, with_knowledge, origin_db, target_db, test_info,
+                use_redis_kb=use_redis_kb,
+            )
 
 
 def pinolo_qtran_run(
