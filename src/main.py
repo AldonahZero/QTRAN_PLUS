@@ -21,7 +21,7 @@ from src.Tools.DatabaseConnect.docker_create import docker_create_databases
 environment_variables = os.environ
 os.environ["http_proxy"] = environment_variables.get("HTTP_PROXY", "")
 os.environ["https_proxy"] = environment_variables.get("HTTPS_PROXY", "")
-openai.api_key = os.environ.get('OPENAI_API_KEY', '')
+openai.api_key = os.environ.get("OPENAI_API_KEY", "")
 
 current_file_path = os.path.abspath(__file__)
 current_dir = os.path.dirname(current_file_path)
@@ -39,27 +39,35 @@ def scan_databases_from_input(input_filepath):
     """
     databases = set()
     try:
-        with open(input_filepath, 'r', encoding='utf-8') as f:
+        with open(input_filepath, "r", encoding="utf-8") as f:
             for line in f:
                 line = line.strip()
                 if not line:
                     continue
                 try:
                     data = json.loads(line)
-                    if 'a_db' in data:
-                        databases.add(data['a_db'].lower())
-                    if 'b_db' in data:
-                        databases.add(data['b_db'].lower())
+                    if "a_db" in data:
+                        databases.add(data["a_db"].lower())
+                    if "b_db" in data:
+                        databases.add(data["b_db"].lower())
                 except json.JSONDecodeError:
                     continue
     except FileNotFoundError:
         print(f"Warning: Input file not found: {input_filepath}")
-    
+
     return databases
 
 
-def qtran_run(input_filename, tool, temperature=0.3, model="gpt-4o-mini", error_iteration=True, iteration_num=4,
-              FewShot=False, with_knowledge=True):
+def qtran_run(
+    input_filename,
+    tool,
+    temperature=0.3,
+    model="gpt-4o-mini",
+    error_iteration=True,
+    iteration_num=4,
+    FewShot=False,
+    with_knowledge=True,
+):
     """
     启动 QTRAN 主流程（转换阶段入口）。
 
@@ -77,7 +85,7 @@ def qtran_run(input_filename, tool, temperature=0.3, model="gpt-4o-mini", error_
     if tool.lower() not in ["pinolo", "sqlancer"]:
         print(tool + " hasn't been supported.")
         return
-    
+
     # 解析输入文件路径：支持绝对路径、工作目录相对路径，以及项目根目录相对路径
     def _resolve_input_path(path_like: str) -> str:
         # 1) 绝对路径
@@ -97,20 +105,31 @@ def qtran_run(input_filename, tool, temperature=0.3, model="gpt-4o-mini", error_
         )
 
     resolved_input = _resolve_input_path(input_filename)
-    
+
     # 扫描输入文件，获取实际需要的数据库
     required_dbs = scan_databases_from_input(resolved_input)
-    
+
     # 如果扫描到了数据库，只初始化这些数据库；否则使用默认列表
     if required_dbs:
         print(f"检测到输入文件中使用的数据库: {sorted(required_dbs)}")
         dbs = list(required_dbs)
     else:
         print("未检测到特定数据库，使用默认数据库列表")
-        dbs = ["clickhouse", "duckdb", "mariadb", "monetdb", "mysql", "postgres", "sqlite", "tidb", "redis", "mongodb"]
-    
+        dbs = [
+            "clickhouse",
+            "duckdb",
+            "mariadb",
+            "monetdb",
+            "mysql",
+            "postgres",
+            "sqlite",
+            "tidb",
+            "redis",
+            "mongodb",
+        ]
+
     fuzzers = ["norec", "tlp", "pinolo", "dqe"]
-    
+
     # 可选：通过环境变量跳过 Docker 初始化（快速校验模式）
     if os.environ.get("QTRAN_SKIP_DOCKER", "0") != "1":
         print(f"开始初始化 {len(dbs)} 个数据库...")
@@ -123,13 +142,27 @@ def qtran_run(input_filename, tool, temperature=0.3, model="gpt-4o-mini", error_
         print("跳过 Docker 初始化（QTRAN_SKIP_DOCKER=1）")
 
     if tool.lower() == "sqlancer":
-        sqlancer_qtran_run(input_filepath=resolved_input, tool=tool,
-                           temperature=temperature, model=model, error_iteration=error_iteration,
-                           iteration_num=iteration_num, FewShot=FewShot, with_knowledge=with_knowledge)
+        sqlancer_qtran_run(
+            input_filepath=resolved_input,
+            tool=tool,
+            temperature=temperature,
+            model=model,
+            error_iteration=error_iteration,
+            iteration_num=iteration_num,
+            FewShot=FewShot,
+            with_knowledge=with_knowledge,
+        )
     elif tool.lower() == "pinolo":
-        pinolo_qtran_run(input_filename=resolved_input, tool=tool,
-                         temperature=temperature, model=model, error_iteration=error_iteration,
-                         iteration_num=iteration_num, FewShot=FewShot, with_knowledge=with_knowledge)
+        pinolo_qtran_run(
+            input_filename=resolved_input,
+            tool=tool,
+            temperature=temperature,
+            model=model,
+            error_iteration=error_iteration,
+            iteration_num=iteration_num,
+            FewShot=FewShot,
+            with_knowledge=with_knowledge,
+        )
 
 
 def main():
@@ -138,15 +171,40 @@ def main():
     示例：python -m src.main --input_filename Input/demo.jsonl --tool sqlancer
     """
     parser = argparse.ArgumentParser(description="Run QTRAN for SQL translation.")
-    parser.add_argument("--input_filename", type=str, required=True, help="Path to the input file (JSONL format).")
-    parser.add_argument("--tool", type=str, required=True, choices=["sqlancer", "pinolo"],
-                        help="Tool to use (sqlancer or pinolo).")
-    parser.add_argument("--temperature", type=float, default=0.3, help="Temperature for LLM.")
-    parser.add_argument("--model", type=str, default="gpt-4o-mini", help="Model to use for LLM.")
-    parser.add_argument("--error_iteration", type=bool, default=True, help="Enable error iteration.")
-    parser.add_argument("--iteration_num", type=int, default=4, help="Number of iterations.")
-    parser.add_argument("--FewShot", type=bool, default=False, help="Enable Few-Shot learning.")
-    parser.add_argument("--with_knowledge", type=bool, default=True, help="Use knowledge-based processing.")
+    parser.add_argument(
+        "--input_filename",
+        type=str,
+        required=True,
+        help="Path to the input file (JSONL format).",
+    )
+    parser.add_argument(
+        "--tool",
+        type=str,
+        required=True,
+        choices=["sqlancer", "pinolo"],
+        help="Tool to use (sqlancer or pinolo).",
+    )
+    parser.add_argument(
+        "--temperature", type=float, default=0.3, help="Temperature for LLM."
+    )
+    parser.add_argument(
+        "--model", type=str, default="gpt-4o-mini", help="Model to use for LLM."
+    )
+    parser.add_argument(
+        "--error_iteration", type=bool, default=True, help="Enable error iteration."
+    )
+    parser.add_argument(
+        "--iteration_num", type=int, default=4, help="Number of iterations."
+    )
+    parser.add_argument(
+        "--FewShot", type=bool, default=False, help="Enable Few-Shot learning."
+    )
+    parser.add_argument(
+        "--with_knowledge",
+        type=bool,
+        default=True,
+        help="Use knowledge-based processing.",
+    )
 
     args = parser.parse_args()
 
@@ -158,7 +216,7 @@ def main():
         error_iteration=args.error_iteration,
         iteration_num=args.iteration_num,
         FewShot=args.FewShot,
-        with_knowledge=args.with_knowledge
+        with_knowledge=args.with_knowledge,
     )
 
 
