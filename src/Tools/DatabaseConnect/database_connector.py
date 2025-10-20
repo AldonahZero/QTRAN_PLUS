@@ -963,10 +963,14 @@ def exec_sql_statement(tool, exp, dbType, sql_statement):
         if lower == "redis":
             return exec_redis_command(args, tool, exp, sql_statement)
         if lower == "mongodb":
+            # MongoDB 执行策略:
+            # 1. 如果是 dict 或 JSON 对象格式(带 "op" 字段),使用 JSON 操作模式
+            # 2. 否则默认使用容器 shell 执行模式(支持所有操作)
             if isinstance(sql_statement, dict):
                 return exec_mongodb_json_operation(args, tool, exp, sql_statement)
             if isinstance(sql_statement, str):
                 stripped = sql_statement.strip()
+                # 尝试解析为 JSON 操作对象
                 if stripped.startswith("{") and stripped.endswith("}"):
                     try:
                         import json as _json
@@ -976,7 +980,8 @@ def exec_sql_statement(tool, exp, dbType, sql_statement):
                             return exec_mongodb_json_operation(args, tool, exp, op_obj)
                     except Exception:
                         pass
-                return exec_mongodb_command(args, tool, exp, sql_statement)
+                # 默认使用容器 shell 执行模式(支持 findOne/aggregate/链式等所有操作)
+                return exec_mongodb_shell_in_container(args, tool, exp, sql_statement)
             return (
                 None,
                 0,
@@ -1290,8 +1295,108 @@ def exec_mongodb_json_operation(conn_args, tool, exp, op_obj):
         return None, 0, str(e)
 
 
+def exec_mongodb_shell_in_container(conn_args, tool, exp, shell_command):
+    """通过 docker exec 在容器里执行原生 MongoDB shell 命令(默认模式)。
+    
+    优势:
+      - 支持所有 MongoDB 操作: findOne, aggregate, 链式调用等
+      - 无需解析复杂语法
+      - 与 MongoDB shell 完全兼容
+    
+    参数:
+      conn_args: 连接参数字典(包含 container_name, dbname)
+      tool: 工具名称
+      exp: 实验名称
+      shell_command: MongoDB shell 命令文本
+    
+    返回: (标准化结果dict, 耗时, 错误)
+    """
+    container = conn_args.get("container_name", "mongodb_QTRAN")
+    dbname = conn_args["dbname"]
+    
+    if not shell_command or not shell_command.strip():
+        return {"type": "empty", "value": None}, 0, None
+    
+    # 清理命令:去掉结尾分号
+    cmd = shell_command.strip().rstrip(";")
+    
+    # 构造 mongosh 命令(MongoDB 5.0+ 使用 mongosh,旧版使用 mongo)
+    # 尝试 mongosh 优先,失败则回退到 mongo
+    start = time.time()
+    
+    for shell_binary in ["mongosh", "mongo"]:
+        try:
+            docker_cmd = [
+                "docker", "exec", container,
+                shell_binary, dbname, 
+                "--quiet",  # 减少输出噪音
+                "--eval", cmd
+            ]
+            
+            proc = subprocess.run(
+                docker_cmd,
+                capture_output=True,
+                text=True,
+                timeout=30
+            )
+            
+            if proc.returncode == 0:
+                output = proc.stdout.strip()
+                exec_time = time.time() - start
+                
+                # 尝试解析为 JSON(如果是 find/aggregate 等返回)
+                try:
+                    if output:
+                        # MongoDB shell 可能返回 JSON 数组或对象
+                        parsed = json.loads(output)
+                        return {
+                            "type": "shell_result",
+                            "success": True,
+                            "value": parsed,
+                            "meta": {"shell": shell_binary, "raw_output": output[:200]}
+                        }, exec_time, None
+                    else:
+                        # 空输出(可能是写操作)
+                        return {
+                            "type": "shell_result", 
+                            "success": True,
+                            "value": None,
+                            "meta": {"shell": shell_binary, "message": "command executed"}
+                        }, exec_time, None
+                except json.JSONDecodeError:
+                    # 非 JSON 输出,直接返回原文
+                    return {
+                        "type": "shell_result",
+                        "success": True, 
+                        "value": output,
+                        "meta": {"shell": shell_binary, "format": "text"}
+                    }, exec_time, None
+            else:
+                # 命令执行失败
+                stderr = proc.stderr.strip()
+                # 如果是因为 shell 不存在,尝试下一个
+                if "not found" in stderr or "No such file" in stderr:
+                    continue
+                # 其他错误直接返回
+                return None, 0, f"{shell_binary} error: {stderr}"
+        
+        except subprocess.TimeoutExpired:
+            return None, 0, f"{shell_binary} execution timeout (30s)"
+        except Exception as e:
+            # 如果是 shell 不存在的异常,尝试下一个
+            if "not found" in str(e).lower():
+                continue
+            return None, 0, f"{shell_binary} exception: {str(e)}"
+    
+    # 两个 shell 都不可用
+    return None, 0, "Neither mongosh nor mongo shell available in container"
+
+
 def exec_mongodb_command(conn_args, tool, exp, mongo_command):
     """执行 MongoDB Shell 风格命令，返回 (标准化结果, 耗时, 错误)。
+    
+    ⚠️ 已废弃: 此函数保留用于向后兼容,但限制较多。
+    推荐使用 exec_mongodb_shell_in_container 直接在容器执行。
 
     支持基本形式：
       db.<collection>.insertOne({...});

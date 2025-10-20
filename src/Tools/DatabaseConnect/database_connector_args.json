@@ -29,7 +29,7 @@
         "container_name": "tdsql_QTRAN",
         "dbType": "tdsql",
         "host": "127.0.0.1",
-        "port": 4000,
+        "port": 53300,
         "username": "root",
         "password": ""
     },
