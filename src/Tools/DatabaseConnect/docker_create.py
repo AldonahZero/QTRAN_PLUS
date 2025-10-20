@@ -15,14 +15,20 @@ current_file_path = os.path.abspath(__file__)
 # 获取当前文件所在目录
 current_dir = os.path.dirname(current_file_path)
 
-with open(os.path.join(current_dir, "docker_create_commands.json"), "r", encoding="utf-8") as r:
+with open(
+    os.path.join(current_dir, "docker_create_commands.json"), "r", encoding="utf-8"
+) as r:
     docker_commands = json.load(r)
 
+
 def get_database_connector_args(dbType):
-    with open(os.path.join(current_dir, "database_connector_args.json"), "r", encoding="utf-8") as r:
+    with open(
+        os.path.join(current_dir, "database_connector_args.json"), "r", encoding="utf-8"
+    ) as r:
         database_connection_args = json.load(r)
     if dbType.lower() in database_connection_args:
         return database_connection_args[dbType.lower()]
+
 
 def run_command(command, capture_output=True, shell=True):
     """
@@ -32,28 +38,37 @@ def run_command(command, capture_output=True, shell=True):
     :param shell: 是否通过 shell 执行。
     """
     import platform
-    command_str = ' '.join(command)
+
+    command_str = " ".join(command)
     print(f"执行命令: {command_str}")
     # 判断当前系统
     system_type = platform.system().lower()
     if system_type == "windows":
         # Windows 下可选用 wsl
-        result = subprocess.run(["wsl", "-e", "bash", "-c", command_str],
-                                text=True, capture_output=capture_output, shell=shell)
+        result = subprocess.run(
+            ["wsl", "-e", "bash", "-c", command_str],
+            text=True,
+            capture_output=capture_output,
+            shell=shell,
+        )
     else:
         # Linux/macOS 直接运行
         if shell:
             # shell=True 时传递字符串
-            result = subprocess.run(command_str, text=True, capture_output=capture_output, shell=True)
+            result = subprocess.run(
+                command_str, text=True, capture_output=capture_output, shell=True
+            )
         else:
             # shell=False 时传递列表
-            result = subprocess.run(command, text=True, capture_output=capture_output, shell=False)
+            result = subprocess.run(
+                command, text=True, capture_output=capture_output, shell=False
+            )
     # 仅在有内容（非空白）时才打印输出/错误，避免日志中出现大量空行
     if result.stdout and result.stdout.strip():
         print(f"命令输出: {result.stdout}")
     if result.stderr and result.stderr.strip():
         print(f"命令错误: {result.stderr}")
-    print('---------------------------------------------------')
+    print("---------------------------------------------------")
     return result
 
 
@@ -68,7 +83,6 @@ def check_container_running(container_name):
     return bool(result.stdout.strip())  # 如果 stdout 非空，表示容器存在
 
 
-
 def check_image_exists(image_name):
     """
     检查镜像是否存在。
@@ -77,7 +91,6 @@ def check_image_exists(image_name):
     """
     result = run_command(["docker", "images", "-q", image_name])
     return bool(result.stdout.strip())  # 如果 stdout 非空，表示镜像存在
-
 
 
 def format_dict_strings(data, **args):
@@ -96,6 +109,7 @@ def format_dict_strings(data, **args):
     else:
         return data  # 如果既不是字典、列表，也不是字符串，原样返回
 
+
 def is_container_running(container_name):
     """
     判断指定容器当前是否处于运行状态。
@@ -103,8 +117,10 @@ def is_container_running(container_name):
     输入：container_name (str)
     输出：布尔值，True 表示正在运行，False 表示未运行。
     """
-    result = run_command(["docker", "ps", "--filter", f"name={container_name}", "--format", "{{.Names}}"])
-    return container_name in result.stdout   # 如果 stdout 非空，表示镜像存在
+    result = run_command(
+        ["docker", "ps", "--filter", f"name={container_name}", "--format", "{{.Names}}"]
+    )
+    return container_name in result.stdout  # 如果 stdout 非空，表示镜像存在
 
 
 def docker_create_databases(tool, exp, dbType):
@@ -136,7 +152,11 @@ def docker_create_databases(tool, exp, dbType):
             run_command(commands_formatted["run_container"])
             # exec_into_container, login_mysql, create_databases
             for sql in commands_formatted["create_databases"]:
-                run_command(commands_formatted["enter_container"] + commands_formatted["login_in"] + ["'" + sql + "'"])
+                run_command(
+                    commands_formatted["enter_container"]
+                    + commands_formatted["login_in"]
+                    + ["'" + sql + "'"]
+                )
         elif dbType.lower() == "clickhouse":
             # pull_docker
             if not check_image_exists(commands_formatted["docker_name"]):
@@ -146,7 +166,13 @@ def docker_create_databases(tool, exp, dbType):
                 run_command(commands_formatted["run_container"])
                 time.sleep(15)
             # enable access
-            if "vim" not in run_command(commands_formatted["enter_container"] + ["dpkg", "-l", "|", "grep", "vim"]).stdout:
+            if (
+                "vim"
+                not in run_command(
+                    commands_formatted["enter_container"]
+                    + ["dpkg", "-l", "|", "grep", "vim"]
+                ).stdout
+            ):
                 for cmd in commands_formatted["access_enable"]:
                     run_command(commands_formatted["enter_container"] + cmd)
             # create admin user
@@ -155,9 +181,17 @@ def docker_create_databases(tool, exp, dbType):
             # exec_into_container, login_mysql, create_databases
             for sql in commands_formatted["create_databases"]:
                 if isinstance(sql, list):
-                    run_command(commands_formatted["enter_container"] + commands_formatted["login_in"] + sql)
+                    run_command(
+                        commands_formatted["enter_container"]
+                        + commands_formatted["login_in"]
+                        + sql
+                    )
                 elif isinstance(sql, str):
-                    run_command(commands_formatted["enter_container"] + commands_formatted["login_in"] + ["'" + sql + "'"])
+                    run_command(
+                        commands_formatted["enter_container"]
+                        + commands_formatted["login_in"]
+                        + ["'" + sql + "'"]
+                    )
         elif dbType.lower() == "redis":
             # pull image
             if not check_image_exists(commands_formatted["docker_name"]):
@@ -172,7 +206,9 @@ def docker_create_databases(tool, exp, dbType):
                     run_command(commands_formatted["enter_container"] + cmd)
                 elif isinstance(cmd, str):
                     # 字符串形式的命令，通过 shell 执行
-                    run_command(commands_formatted["enter_container"] + ["sh", "-c", cmd])
+                    run_command(
+                        commands_formatted["enter_container"] + ["sh", "-c", cmd]
+                    )
 
         elif dbType.lower() == "mongodb":
             # pull image
@@ -189,7 +225,11 @@ def docker_create_databases(tool, exp, dbType):
                     run_command(commands_formatted["enter_container"] + js)
                 elif isinstance(js, str):
                     # login_in 已包含 --eval，因此拼接 login_in + [js]
-                    run_command(commands_formatted["enter_container"] + commands_formatted["login_in"] + [js])
+                    run_command(
+                        commands_formatted["enter_container"]
+                        + commands_formatted["login_in"]
+                        + [js]
+                    )
 
         elif dbType.lower() in ["memcached", "etcd", "consul"]:
             # 通用：拉镜像
@@ -206,7 +246,9 @@ def docker_create_databases(tool, exp, dbType):
                     run_command(commands_formatted["enter_container"] + op)
                 elif isinstance(op, str):
                     # memcached 的 echo/nc 形式是一个 shell 字符串
-                    run_command(commands_formatted["enter_container"] + ["sh", "-c", op])
+                    run_command(
+                        commands_formatted["enter_container"] + ["sh", "-c", op]
+                    )
 
         else:
             # pull_docker
@@ -219,17 +261,24 @@ def docker_create_databases(tool, exp, dbType):
             # exec_into_container, login_mysql, create_databases
             for sql in commands_formatted["create_databases"]:
                 if isinstance(sql, list):
-                    run_command(commands_formatted["enter_container"] + commands_formatted["login_in"] + sql)
+                    run_command(
+                        commands_formatted["enter_container"]
+                        + commands_formatted["login_in"]
+                        + sql
+                    )
                 elif isinstance(sql, str):
                     run_command(
-                        commands_formatted["enter_container"] + commands_formatted["login_in"] + ["'" + sql + "'"])
+                        commands_formatted["enter_container"]
+                        + commands_formatted["login_in"]
+                        + ["'" + sql + "'"]
+                    )
 
     except subprocess.CalledProcessError as e:
         print(f"命令执行失败：{e}")
         print(f"标准输出: {e.output}")
         print(f"标准错误: {e.stderr}")
 
- 
+
 def run_container(tool, exp, dbType):
     """
     尝试启动或恢复指定类型的容器实例。
@@ -260,4 +309,3 @@ def run_container(tool, exp, dbType):
         print(f"命令执行失败：{e}")
         print(f"标准输出: {e.output}")
         print(f"标准错误: {e.stderr}")
-
