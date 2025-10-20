@@ -25,7 +25,7 @@ Ensure you have the latest version of Docker installed.
 Start container instancs with the following command:
 
 ```shell
-docker-compose up -d
+t
 ```
 
 ## Step 3: Database 
