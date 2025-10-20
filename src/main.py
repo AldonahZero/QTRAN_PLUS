@@ -13,6 +13,7 @@ import sys
 import os
 import openai
 import argparse
+import json
 from src.TransferLLM.translate_sqlancer import sqlancer_qtran_run
 from src.TransferLLM.TransferLLM import pinolo_qtran_run
 from src.Tools.DatabaseConnect.docker_create import docker_create_databases
@@ -24,6 +25,37 @@ openai.api_key = os.environ.get('OPENAI_API_KEY', '')
 
 current_file_path = os.path.abspath(__file__)
 current_dir = os.path.dirname(current_file_path)
+
+
+def scan_databases_from_input(input_filepath):
+    """
+    扫描输入文件，提取所有涉及的 a_db 和 b_db 数据库。
+
+    参数：
+    - input_filepath: JSONL 输入文件路径
+
+    返回：
+    - set: 包含所有需要初始化的数据库名称集合
+    """
+    databases = set()
+    try:
+        with open(input_filepath, 'r', encoding='utf-8') as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    data = json.loads(line)
+                    if 'a_db' in data:
+                        databases.add(data['a_db'].lower())
+                    if 'b_db' in data:
+                        databases.add(data['b_db'].lower())
+                except json.JSONDecodeError:
+                    continue
+    except FileNotFoundError:
+        print(f"Warning: Input file not found: {input_filepath}")
+    
+    return databases
 
 
 def qtran_run(input_filename, tool, temperature=0.3, model="gpt-4o-mini", error_iteration=True, iteration_num=4,
@@ -45,15 +77,7 @@ def qtran_run(input_filename, tool, temperature=0.3, model="gpt-4o-mini", error_
     if tool.lower() not in ["pinolo", "sqlancer"]:
         print(tool + " hasn't been supported.")
         return
-    fuzzers = ["norec", "tlp", "pinolo", "dqe"]
-    dbs = ["clickhouse", "duckdb", "mariadb", "monetdb", "mysql", "postgres", "sqlite", "tidb", "redis", "mongodb"]
-    # 可选：通过环境变量跳过 Docker 初始化（快速校验模式）
-    if os.environ.get("QTRAN_SKIP_DOCKER", "0") != "1":
-        for db in dbs:
-            docker_create_databases(tool, "temp", db)
-            for fuzzer in fuzzers:
-                docker_create_databases(tool, fuzzer, db)
-
+    
     # 解析输入文件路径：支持绝对路径、工作目录相对路径，以及项目根目录相对路径
     def _resolve_input_path(path_like: str) -> str:
         # 1) 绝对路径
@@ -73,6 +97,30 @@ def qtran_run(input_filename, tool, temperature=0.3, model="gpt-4o-mini", error_
         )
 
     resolved_input = _resolve_input_path(input_filename)
+    
+    # 扫描输入文件，获取实际需要的数据库
+    required_dbs = scan_databases_from_input(resolved_input)
+    
+    # 如果扫描到了数据库，只初始化这些数据库；否则使用默认列表
+    if required_dbs:
+        print(f"检测到输入文件中使用的数据库: {sorted(required_dbs)}")
+        dbs = list(required_dbs)
+    else:
+        print("未检测到特定数据库，使用默认数据库列表")
+        dbs = ["clickhouse", "duckdb", "mariadb", "monetdb", "mysql", "postgres", "sqlite", "tidb", "redis", "mongodb"]
+    
+    fuzzers = ["norec", "tlp", "pinolo", "dqe"]
+    
+    # 可选：通过环境变量跳过 Docker 初始化（快速校验模式）
+    if os.environ.get("QTRAN_SKIP_DOCKER", "0") != "1":
+        print(f"开始初始化 {len(dbs)} 个数据库...")
+        for db in dbs:
+            docker_create_databases(tool, "temp", db)
+            for fuzzer in fuzzers:
+                docker_create_databases(tool, fuzzer, db)
+        print("数据库初始化完成")
+    else:
+        print("跳过 Docker 初始化（QTRAN_SKIP_DOCKER=1）")
 
     if tool.lower() == "sqlancer":
         sqlancer_qtran_run(input_filepath=resolved_input, tool=tool,
