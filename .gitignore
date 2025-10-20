@@ -46,3 +46,5 @@ test_agent_debug.py
 test_agent_direct.py
 test_agent_mutation_final.py
 test_agent_verbose.py
+run_output_fixed.log
+run_output.log
