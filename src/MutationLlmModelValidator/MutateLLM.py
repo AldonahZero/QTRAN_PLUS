@@ -19,6 +19,22 @@ import os
 from src.Tools.DatabaseConnect.database_connector import exec_sql_statement
 from src.Tools.OracleChecker.oracle_check import execSQL_result_convertor, Check
 from src.Tools.OracleChecker.oracle_check import Result
+from typing import Any, Dict, List, Optional
+
+# 可选引入（仅当使用 Agent 方案时才需要）
+try:
+    # LangChain OpenAI 驱动（与 translate_sqlancer.py 中的旧接口并行存在）
+    from langchain_openai import ChatOpenAI
+    from langchain.agents import AgentExecutor, create_openai_functions_agent
+    from langchain.tools import tool
+    from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
+except Exception:
+    ChatOpenAI = None
+    AgentExecutor = None
+    create_openai_functions_agent = None
+    tool = None
+    ChatPromptTemplate = None
+    MessagesPlaceholder = None
 
 os.environ["http_proxy"] = "http://localhost:7890"
 os.environ["https_proxy"] = "http://localhost:7890"
@@ -50,6 +66,160 @@ eval_filenames = {
     "FixMHaving1U": "../../Dataset/MutationLlmModelFineTuning/PostgresSQL/TestingResult/postgres_testing_dataset_raw2.0(FixMHaving1U)_eval.jsonl",
     "FixMOn1U": "../../Dataset/MutationLlmModelFineTuning/PostgresSQL/TestingResult/postgres_testing_dataset_raw2.0(FixMOn1U)_eval.jsonl",
 }
+
+
+# ---------------- Agent 方案（仅变异阶段） ---------------- #
+
+
+def _build_agent() -> Optional[AgentExecutor]:
+    """创建一个轻量的 SQL 变异 Agent，用于替代引擎=agent 时的变异生成。
+
+    返回：AgentExecutor 或 None（当依赖缺失时）。
+    """
+    if ChatOpenAI is None:
+        return None
+
+    # 定义工具：预言机规则、语法校验、结构分析（与独立 demo 保持一致但缩减版）
+    @tool
+    def get_oracle_rules(oracle_type: str) -> str:
+        """返回指定预言机类型(norec/tlp/semantic)的简要规则说明。"""
+        rules = {
+            "norec": (
+                "NoREC: 生成逻辑等价的 SQL 变异; 期望结果集完全相同。"
+                " 典型策略: 冗余条件、逻辑等价改写(IN/EXISTS/BETWEEN)、谓词重组。"
+            ),
+            "tlp": (
+                "TLP: 三值逻辑分区，原查询结果 = TRUE 分区 ∪ FALSE 分区 ∪ NULL 分区。"
+            ),
+            "semantic": ("Semantic: 基于语义的轻微改写，保持意图不变或受控变化。"),
+        }
+        return rules.get(oracle_type.lower(), "unknown oracle")
+
+    @tool
+    def validate_sql_syntax(sql: str, db_type: str) -> str:
+        """对给定 SQL 进行极简语法检查，返回 valid/warn/invalid 字符串。"""
+        # 极简校验，主要用于引导模型自检
+        s = sql.strip()
+        if db_type.lower() in {
+            "mysql",
+            "postgres",
+            "sqlite",
+            "mariadb",
+            "tidb",
+            "duckdb",
+            "clickhouse",
+        }:
+            if not any(
+                k in s.upper() for k in ("SELECT", "INSERT", "UPDATE", "DELETE")
+            ):
+                return "invalid: missing DML keyword"
+            if s.count("(") != s.count(")"):
+                return "invalid: parenthesis mismatch"
+            if not s.endswith(";"):
+                return "warn: missing semicolon"
+            return "valid"
+        return "unknown db"
+
+    @tool
+    def analyze_sql_structure(sql: str) -> str:
+        """分析 SQL 的结构要点，标注 WHERE/JOIN 以及可变异点。以 JSON 字符串返回。"""
+        u = sql.upper()
+        has_where = "WHERE" in u
+        has_join = "JOIN" in u
+        points = []
+        if has_where:
+            points.append("WHERE 可重写/冗余")
+        if has_join:
+            points.append("JOIN 可改 EXISTS/子查询")
+        return json.dumps(
+            {"has_where": has_where, "has_join": has_join, "points": points},
+            ensure_ascii=False,
+        )
+
+    tools = [get_oracle_rules, validate_sql_syntax, analyze_sql_structure]
+
+    prompt = ChatPromptTemplate.from_messages(
+        [
+            (
+                "system",
+                (
+                    "You are an expert SQL/NoSQL mutation specialist. Based on the SQL/NoSQL query and oracle type provided by the user, "
+                    "generate 3-5 mutated queries that conform to the oracle rules."
+                    "\n\n**Key Instructions:**"
+                    "\n1. If you need to understand oracle rules, call the get_oracle_rules tool"
+                    "\n2. You can call analyze_sql_structure to analyze SQL structure"
+                    "\n3. After generating mutations, **immediately output the result in JSON format and stop**"
+                    '\n4. JSON format: {{"mutations": [{{"mutated_sql": "...", "explanation": "...", "expected_relation": "...", "syntax_valid": "..."}}]}}'
+                    "\n5. Do not repeatedly call tools. Once mutations are generated, immediately return JSON"
+                ),
+            ),
+            ("user", "{input}"),
+            MessagesPlaceholder(variable_name="agent_scratchpad"),
+        ]
+    )
+
+    llm = ChatOpenAI(
+        model=os.environ.get("OPENAI_AGENT_MODEL", "gpt-4o-mini"), temperature=0.4
+    )
+    agent = create_openai_functions_agent(llm, tools, prompt)
+    return AgentExecutor(
+        agent=agent,
+        tools=tools,
+        verbose=False,  # 生产环境关闭 verbose
+        max_iterations=15,  # 增加迭代次数以允许工具调用
+        return_intermediate_steps=False,
+        early_stopping_method="generate",  # 允许 Agent 主动停止
+    )
+
+
+def _agent_generate_mutations(
+    sql: str, oracle: str, db_type: str
+) -> Optional[Dict[str, Any]]:
+    """使用 Agent 生成变异结果（JSON）。失败返回 None。"""
+    agent = _build_agent()
+    if agent is None:
+        return None
+    input_text = (
+        f"Generate {oracle} oracle mutations for the following SQL (database: {db_type}), strictly return JSON:\n{sql}"
+        "\nRequirements: 3-5 mutations, each mutation should end with a semicolon if possible."
+    )
+    try:
+        res = agent.invoke({"input": input_text})
+        output = res.get("output") if isinstance(res, dict) else None
+        if not output:
+            return None
+
+        # 提取 JSON: 支持 ```json...``` 代码块或纯 JSON
+        txt = str(output).strip()
+
+        # 方案1: 尝试提取 ```json 代码块
+        if "```json" in txt:
+            start = txt.find("```json") + 7  # len("```json") = 7
+            end = txt.find("```", start)
+            if end > start:
+                txt = txt[start:end].strip()
+        elif "```" in txt:
+            # 方案2: 通用代码块 (可能没有 json 标记)
+            start = txt.find("```") + 3
+            end = txt.find("```", start)
+            if end > start:
+                txt = txt[start:end].strip()
+
+        # 方案3: 查找第一个 { 和最后一个 } (适用于前后有说明文本的情况)
+        if not (txt.startswith("{") or txt.startswith("[")):
+            first_brace = txt.find("{")
+            last_brace = txt.rfind("}")
+            if first_brace >= 0 and last_brace > first_brace:
+                txt = txt[first_brace : last_brace + 1]
+
+        # 修复 LLM 可能输出的无效转义 (如 \$eq 应为 \\$eq)
+        txt = txt.replace("\\$", "\\\\$")
+
+        data = json.loads(txt)
+        return data
+    except Exception:
+        # Agent 调用失败，静默回退到 finetune LLM
+        return None
 
 
 # 处理mutate llm生成的结果，依次处理所有可能的变异：计算oracle，运行并记录结果，oracle check以检测bug
@@ -160,7 +330,12 @@ def run_muatate_llm(tool, mutate_name):
 def run_muatate_llm_single_sql(
     tool, client, model_id, mutate_name, oracle, db_type, sql
 ):
-    """针对单条 SQL 调用 Mutate LLM 生成候选变体，并返回原始响应文本与开销统计。"""
+    """针对单条 SQL 生成候选变体，并返回响应文本与开销统计。
+
+    选择引擎：
+    - 若环境变量 QTRAN_MUTATION_ENGINE=agent，则优先采用 Agent 方案（LangChain）。
+    - 否则使用微调 LLM 路径（现有实现）。
+    """
     # 为Mutate LLM构造满足特定格式的testing data数据项
     if tool.lower() == "sqlancer":
         # 构造格式化输入词
@@ -203,26 +378,38 @@ def run_muatate_llm_single_sql(
         else:
             user_content = f"A seed SQL from {db_type.lower()}:\n{sql}"
 
+        # 根据引擎选择执行
+        engine = os.environ.get("QTRAN_MUTATION_ENGINE", "finetune").lower()
+
+        # 1) Agent 路径（仅在关系型/语义变异下启用，对 MongoDB 也可返回 JSON）
+        if engine == "agent":
+            agent_payload = _agent_generate_mutations(
+                sql=user_content if is_mongodb_target else sql,
+                oracle=mutate_stratege or oracle,
+                db_type=db_type,
+            )
+            if agent_payload is not None:
+                # 统一为字符串形式返回
+                return json.dumps(agent_payload, ensure_ascii=False), {
+                    "Engine": "agent"
+                }
+            # Agent 失败则回退到微调
+
+        # 2) 微调 LLM 路径（默认）
         formatted_input = [
             {"role": "system", "content": system_message},
             {"role": "user", "content": user_content},
         ]
-        # mutate the sql
-        cost = {}
-        # print(oracle)
-        # print(model_id)
-        # print(formatted_input)
+        cost: Dict[str, Any] = {}
         completion = client.chat.completions.create(
             model=model_id, messages=formatted_input
         )
         response_content = completion.choices[0].message.content
-        print(response_content)
-        cost["Total Tokens"] = completion.usage.total_tokens
-        cost["Prompt Tokens"] = completion.usage.prompt_tokens
-        cost["Completion Tokens"] = completion.usage.completion_tokens
-        cost["Total Cost (USD)"] = (
-            0  # 用了4o-mini以后变成0.0了，还没修改，也可以用户token乘单价计算
-        )
+        # print(response_content)
+        cost["Total Tokens"] = getattr(completion.usage, "total_tokens", None)
+        cost["Prompt Tokens"] = getattr(completion.usage, "prompt_tokens", None)
+        cost["Completion Tokens"] = getattr(completion.usage, "completion_tokens", None)
+        cost["Total Cost (USD)"] = 0
         return response_content, cost
 
 
