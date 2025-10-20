@@ -25,6 +25,14 @@
         "username": "root",
         "password": ""
     },
+    "tdsql": {
+        "container_name": "tdsql_QTRAN",
+        "dbType": "tdsql",
+        "host": "127.0.0.1",
+        "port": 4000,
+        "username": "root",
+        "password": ""
+    },
     "postgres": {
         "container_name": "postgres_QTRAN",
         "dbType": "postgres",

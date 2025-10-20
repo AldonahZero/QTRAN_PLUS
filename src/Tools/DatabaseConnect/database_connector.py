@@ -73,7 +73,7 @@ class DatabaseConnectionPool:
 
     def create_engine(self):
         try:
-            if self.dbType in ["MYSQL", "MARIADB", "TIDB"]:
+            if self.dbType in ["MYSQL", "MARIADB", "TIDB", "TDSQL"]:
                 self.engine = create_engine(
                     f"mysql+pymysql://{self.username}:{self.password}@{self.host}:{self.port}/{self.dbname}",
                     pool_size=self.pool_size,
@@ -335,6 +335,28 @@ def database_clear(tool, exp, dbType):
             print(db_filepath + "已删除")
         else:
             print(db_filepath + "不存在")
+    elif dbType.lower() in ["tdsql"]:
+        # TDSQL treated like MySQL/TiDB: use docker/container based reset via SQL scripts
+        # fallthrough to generic handler below by constructing a pool and applying SQL clear JSON
+        pool = DatabaseConnectionPool(
+            args["dbType"],
+            args["host"],
+            args["port"],
+            args["username"],
+            args["password"],
+            f"{tool.lower()}_temp_{dbType.lower()}",
+        )
+        with open(
+            os.path.join(current_dir, "database_clear", dbType.lower() + ".json"),
+            "r",
+            encoding="utf-8",
+        ) as rf:
+            ddls = json.load(rf)
+        for ddl in ddls:
+            ddl = ddl.replace("db_name", args["dbname"])
+            pool.execSQL(ddl)
+        print(args["dbname"] + "重置成功 (tdsql)")
+        pool.close()
     elif dbType.lower() in ["monetdb"]:
         container_name = args["container_name"]
         # 停止数据库

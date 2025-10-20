@@ -45,6 +45,20 @@
             "SHOW DATABASES;"
         ]
     },
+    "tdsql": {
+        "docker_name": "",
+        "pull_docker": [],
+        "container_name": "tdsql_QTRAN",
+        "run_container": [
+            "export PATH=/root/.tiup/bin && tiup cluster start tdsql_QTRAN"
+        ],
+        "enter_container": [],
+        "login_in": ["mysql", "-h", "{host}", "-P", "{port}", "-u", "{username}", "-e"],
+        "create_databases": [
+            "CREATE DATABASE IF NOT EXISTS {dbname};",
+            "SHOW DATABASES;"
+        ]
+    },
     "postgres": {
         "docker_name": "postgres:16.3",
         "pull_docker": ["docker", "pull", "postgres:16.3"],

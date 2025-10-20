@@ -106,6 +106,20 @@ services:
       - "18600:8600/udp"  # DNS 端口
     networks:
       - db_network
+  
+  tdsql:
+    image: pingcap/tidb:7.5.0
+    container_name: tdsql_QTRAN
+    # Placeholder: using TiDB image as a MySQL-protocol-compatible example for TDSQL.
+    # Replace image and environment with the official TDSQL image/credentials if available.
+    environment:
+      - TZ=UTC
+    ports:
+      - "4000:4000"  # TiDB server port (MySQL protocol)
+    volumes:
+      - tdsql_data:/var/lib/tdsql
+    networks:
+      - db_network
 
 networks:
   db_network:
@@ -122,3 +136,4 @@ volumes:
   memcached_data:
   etcd_data:
   consul_data:
+  tdsql_data:

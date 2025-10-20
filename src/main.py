@@ -126,6 +126,7 @@ def qtran_run(
             "tidb",
             "redis",
             "mongodb",
+            "tdsql",
         ]
 
     fuzzers = ["norec", "tlp", "pinolo", "dqe"]

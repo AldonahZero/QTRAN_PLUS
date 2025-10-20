@@ -131,8 +131,8 @@ def docker_create_databases(tool, exp, dbType):
     commands_formatted = format_dict_strings(commands, **args)
 
     try:
-        if dbType.lower() == "tidb":
-            # run_tidb
+        if dbType.lower() in ("tidb", "tdsql"):
+            # run_tidb / tdsql (tdsql treated as MySQL-protocol-compatible service)
             run_command(commands_formatted["run_container"])
             # exec_into_container, login_mysql, create_databases
             for sql in commands_formatted["create_databases"]:
@@ -244,8 +244,8 @@ def run_container(tool, exp, dbType):
     args["dbname"] = f"{tool}_{exp}_{dbType}"
     commands_formatted = format_dict_strings(commands, **args)
     try:
-        if dbType.lower() == "tidb":
-            # run_tidb
+        if dbType.lower() in ("tidb", "tdsql"):
+            # run_tidb / tdsql
             run_command(commands_formatted["run_container"])
         else:
             # run_docker_container

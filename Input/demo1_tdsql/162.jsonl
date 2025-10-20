@@ -1,0 +1,1 @@
+{"index": 162, "a_db": "sqlite", "b_db": "tdsql", "molt": "norec", "sqls": ["CREATE TABLE t0(c0);", "CREATE TABLE t1(c0);", "CREATE VIEW v0(c0) AS SELECT t0.c0 FROM t1 LEFT JOIN t0;", "INSERT INTO t1(c0) VALUES (0);", "SELECT COUNT(*) FROM v0 WHERE (v0.c0, x'') != (NULL, 0); -- unexpected: row is not fetched"]}
