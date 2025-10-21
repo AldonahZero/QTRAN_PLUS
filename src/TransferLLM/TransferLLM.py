@@ -931,16 +931,20 @@ def _build_transfer_agent(origin_db: str, target_db: str) -> Optional[Any]:
         """Returns MongoDB shell command examples for common Redis operations."""
         return """MongoDB Shell Command Examples (can be executed in mongosh):
 
-Redis → MongoDB Conversion Patterns:
-- SET key value → db.myCollection.insertOne({ _id: "key", value: "value" })
-- GET key → db.myCollection.findOne({ _id: "key" })
+**CRITICAL: Use actual values from the Redis command, NOT placeholders!**
+
+Redis → MongoDB Conversion Patterns (with REAL values):
+- SET mykey hello → db.myCollection.insertOne({ _id: "mykey", value: "hello" })
+- GET mykey → db.myCollection.findOne({ _id: "mykey" })
+- SET counter 42 → db.myCollection.insertOne({ _id: "counter", value: 42 }, { upsert: true })
 - INCR counter → db.myCollection.updateOne({ _id: "counter" }, { $inc: { value: 1 } }, { upsert: true })
-- DEL key → db.myCollection.deleteOne({ _id: "key" })
-- EXISTS key → db.myCollection.findOne({ _id: "key" })
-- ZADD key score member → db.zset.insertOne({ key: "key", member: "member", score: score })
-- ZRANGE key start stop → db.zset.find({ key: "key" }).sort({ score: 1 }).skip(start).limit(stop-start+1)
+- DEL mykey → db.myCollection.deleteOne({ _id: "mykey" })
+- EXISTS mykey → db.myCollection.findOne({ _id: "mykey" })
+- ZADD myset 100 member1 → db.zset.insertOne({ key: "myset", member: "member1", score: 100 })
+- ZRANGE myset 0 10 → db.zset.find({ key: "myset" }).sort({ score: 1 }).skip(0).limit(11)
 
 Key Points:
+- **MUST use actual key/value names from the Redis command**
 - Use db.<collection>.<method>(...) format
 - Common methods: insertOne, findOne, find, updateOne, deleteOne
 - Operators: $set, $inc, $exists, $gt, $lt, etc.
@@ -1267,12 +1271,14 @@ def transfer_llm_sql_semantic(
                 )
             else:
                 # 执行失败，记录等价性为 False，继续传统迭代
+                print("Agent 转换成功，但执行失败，进入传统 LLM 迭代修正")
                 exec_equalities.append(False)
                 conversation_cnt = 1  # 进入迭代修正
         else:
             # Agent 失败，回退到传统 LLM
+            print("Agent 失败，回退到传统 LLM")
             use_transfer_agent = False
-    print("agent 失败，回退到传统 LLM ")
+
     # ========== 传统 LLM 转换路径 ==========
     # 边界1：达到最大迭代次数
     while conversation_cnt <= iteration_num:
