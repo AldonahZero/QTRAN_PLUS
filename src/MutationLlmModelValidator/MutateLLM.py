@@ -16,6 +16,7 @@
 # @File    : MutationLlmModelFineTuning.py
 import json
 import os
+from json_repair import repair_json
 from src.Tools.DatabaseConnect.database_connector import exec_sql_statement
 from src.Tools.OracleChecker.oracle_check import execSQL_result_convertor, Check
 from src.Tools.OracleChecker.oracle_check import Result
@@ -423,6 +424,24 @@ def run_muatate_llm_single_sql(
             model=model_id, messages=formatted_input
         )
         response_content = completion.choices[0].message.content
+        
+        # 尝试使用 json-repair 修复 LLM 生成的 JSON 格式错误
+        # 对于 MongoDB TLP/NoREC mutations，经常出现字段名缺少引号的问题
+        if is_mongodb_target and response_content:
+            try:
+                # 先尝试直接解析
+                json.loads(response_content)
+            except json.JSONDecodeError:
+                # 解析失败，尝试修复
+                try:
+                    repaired = repair_json(response_content)
+                    # 验证修复后的 JSON 是否有效
+                    json.loads(repaired)
+                    response_content = repaired
+                except Exception:
+                    # 修复失败，保持原样（后续会处理错误）
+                    pass
+        
         # print(response_content)
         cost["Total Tokens"] = getattr(completion.usage, "total_tokens", None)
         cost["Prompt Tokens"] = getattr(completion.usage, "prompt_tokens", None)

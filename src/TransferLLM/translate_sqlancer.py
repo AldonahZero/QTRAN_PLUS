@@ -31,6 +31,7 @@ from src.Tools.OracleChecker.oracle_check import execSQL_result_convertor, Resul
 from src.Tools.OracleChecker.tlp_checker import check_tlp_oracle, is_tlp_mutation
 import os
 import json
+from json_repair import repair_json
 from openai import OpenAI
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import ConversationChain
@@ -378,18 +379,35 @@ def sqlancer_translate(
                 parsed_mutate = None
                 if isinstance(mutate_results[-1].get("MutateResult"), str):
                     try:
-                        parsed_mutate = json.loads(mutate_results[-1]["MutateResult"])
+                        # 先尝试使用 json-repair 修复可能的 JSON 格式错误
+                        repaired_json = repair_json(mutate_results[-1]["MutateResult"])
+                        parsed_mutate = json.loads(repaired_json)
                     except Exception:
-                        parsed_mutate = None
+                        # 如果修复失败，尝试直接解析
+                        try:
+                            parsed_mutate = json.loads(
+                                mutate_results[-1]["MutateResult"]
+                            )
+                        except Exception:
+                            parsed_mutate = None
                 else:
                     parsed_mutate = mutate_results[-1].get("MutateResult")
 
                 if isinstance(parsed_mutate, dict) and "mutations" in parsed_mutate:
-                    cmds = [
-                        m.get("cmd")
-                        for m in parsed_mutate.get("mutations", [])
-                        if m.get("cmd")
-                    ]
+                    cmds = []
+                    for m in parsed_mutate.get("mutations", []):
+                        cmd = m.get("cmd")
+                        if cmd:
+                            # 如果 cmd 本身是字符串且包含 JSON，也尝试修复
+                            if isinstance(cmd, str) and cmd.strip().startswith("{"):
+                                try:
+                                    repaired_cmd = repair_json(cmd)
+                                    cmds.append(repaired_cmd)
+                                except Exception:
+                                    cmds.append(cmd)
+                            else:
+                                cmds.append(cmd)
+
                     mutate_exec_list = []
                     mutate_errors = []
                     total_time = 0.0
