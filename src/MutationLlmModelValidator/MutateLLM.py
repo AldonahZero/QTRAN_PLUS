@@ -98,7 +98,7 @@ def _build_agent() -> Optional[AgentExecutor]:
 
     @tool
     def validate_sql_syntax(sql: str, db_type: str) -> str:
-        """对给定 SQL 进行极简语法检查，返回 valid/warn/invalid 字符串。"""
+        """对给定 SQL/NoSQL 命令进行极简语法检查，返回 valid/warn/invalid 字符串。"""
         # 极简校验，主要用于引导模型自检
         s = sql.strip()
         if db_type.lower() in {
@@ -119,23 +119,64 @@ def _build_agent() -> Optional[AgentExecutor]:
             if not s.endswith(";"):
                 return "warn: missing semicolon"
             return "valid"
+        elif db_type.lower() in {"mongodb", "mongo"}:
+            # MongoDB shell 命令校验
+            if not s.startswith("db."):
+                return "invalid: MongoDB shell command must start with 'db.'"
+            if not any(
+                op in s
+                for op in [
+                    "insertOne",
+                    "findOne",
+                    "find",
+                    "updateOne",
+                    "deleteOne",
+                    "aggregate",
+                ]
+            ):
+                return "warn: missing common MongoDB operation"
+            if s.count("(") != s.count(")"):
+                return "invalid: parenthesis mismatch"
+            return "valid"
         return "unknown db"
 
     @tool
     def analyze_sql_structure(sql: str) -> str:
-        """分析 SQL 的结构要点，标注 WHERE/JOIN 以及可变异点。以 JSON 字符串返回。"""
+        """分析 SQL/NoSQL 的结构要点，标注 WHERE/filter 以及可变异点。以 JSON 字符串返回。"""
         u = sql.upper()
-        has_where = "WHERE" in u
-        has_join = "JOIN" in u
-        points = []
-        if has_where:
-            points.append("WHERE 可重写/冗余")
-        if has_join:
-            points.append("JOIN 可改 EXISTS/子查询")
-        return json.dumps(
-            {"has_where": has_where, "has_join": has_join, "points": points},
-            ensure_ascii=False,
-        )
+        # 支持 SQL 和 MongoDB shell 分析
+        if "DB." in u:  # MongoDB
+            has_filter = any(
+                op in sql for op in ["findOne(", "find(", "updateOne(", "deleteOne("]
+            )
+            has_operators = any(
+                op in sql for op in ["$exists", "$gt", "$lt", "$eq", "$type"]
+            )
+            points = []
+            if has_filter:
+                points.append("filter 可修改条件")
+            if has_operators:
+                points.append("操作符可变异($exists/$type等)")
+            return json.dumps(
+                {
+                    "has_filter": has_filter,
+                    "has_operators": has_operators,
+                    "points": points,
+                },
+                ensure_ascii=False,
+            )
+        else:  # SQL
+            has_where = "WHERE" in u
+            has_join = "JOIN" in u
+            points = []
+            if has_where:
+                points.append("WHERE 可重写/冗余")
+            if has_join:
+                points.append("JOIN 可改 EXISTS/子查询")
+            return json.dumps(
+                {"has_where": has_where, "has_join": has_join, "points": points},
+                ensure_ascii=False,
+            )
 
     tools = [get_oracle_rules, validate_sql_syntax, analyze_sql_structure]
 
@@ -148,10 +189,16 @@ def _build_agent() -> Optional[AgentExecutor]:
                     "generate 3-5 mutated queries that conform to the oracle rules."
                     "\n\n**Key Instructions:**"
                     "\n1. If you need to understand oracle rules, call the get_oracle_rules tool"
-                    "\n2. You can call analyze_sql_structure to analyze SQL structure"
+                    "\n2. You can call analyze_sql_structure to analyze query structure"
                     "\n3. After generating mutations, **immediately output the result in JSON format and stop**"
                     '\n4. JSON format: {{"mutations": [{{"mutated_sql": "...", "explanation": "...", "expected_relation": "...", "syntax_valid": "..."}}]}}'
                     "\n5. Do not repeatedly call tools. Once mutations are generated, immediately return JSON"
+                    "\n\n**For MongoDB mutations:**"
+                    "\n- Use MongoDB shell format: db.collection.method(...)"
+                    "\n- Each mutated_sql should be a complete shell command ending with semicolon"
+                    "\n- Example: db.myCollection.findOne({{ counter: {{ $exists: true }} }});"
+                    "\n- Use MongoDB operators: $exists, $gt, $lt, $eq, $type, $inc, etc."
+                    "\n- Mutations can modify: filter conditions, operators, projections, sort/limit"
                 ),
             ),
             ("user", "{input}"),
@@ -424,7 +471,7 @@ def run_muatate_llm_single_sql(
             model=model_id, messages=formatted_input
         )
         response_content = completion.choices[0].message.content
-        
+
         # 尝试使用 json-repair 修复 LLM 生成的 JSON 格式错误
         # 对于 MongoDB TLP/NoREC mutations，经常出现字段名缺少引号的问题
         if is_mongodb_target and response_content:
@@ -441,7 +488,7 @@ def run_muatate_llm_single_sql(
                 except Exception:
                     # 修复失败，保持原样（后续会处理错误）
                     pass
-        
+
         # print(response_content)
         cost["Total Tokens"] = getattr(completion.usage, "total_tokens", None)
         cost["Prompt Tokens"] = getattr(completion.usage, "prompt_tokens", None)

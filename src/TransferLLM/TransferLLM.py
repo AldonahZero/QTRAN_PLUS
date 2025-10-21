@@ -927,40 +927,46 @@ def _build_transfer_agent(origin_db: str, target_db: str) -> Optional[Any]:
 
     # 定义工具
     @tool
-    def get_mongodb_json_schema() -> str:
-        """Returns the MongoDB JSON command schema required by the executor."""
-        return """MongoDB JSON Command Schema (REQUIRED):
-{
-  "op": "find|findOne|insertOne|updateOne|deleteOne|createCollection",
-  "collection": "<string>",
-  "filter": { ... },           // for find/update/delete
-  "document": { ... },         // for insertOne
-  "update": { ... },           // for updateOne, e.g. {"$set": {...}}
-  "projection": { ... },       // optional
-  "sort": { "field": 1|-1 },   // optional
-  "limit": <int>,              // optional
-  "skip": <int>,               // optional
-  "upsert": true|false         // optional (updateOne only)
-}
+    def get_mongodb_shell_examples() -> str:
+        """Returns MongoDB shell command examples for common Redis operations."""
+        return """MongoDB Shell Command Examples (can be executed in mongosh):
 
-Examples:
-- Redis SET key value → {"op":"insertOne","collection":"kv","document":{"_id":"key","value":"value"}}
-- Redis GET key → {"op":"findOne","collection":"kv","filter":{"_id":"key"}}
-- Redis INCR counter → {"op":"updateOne","collection":"kv","filter":{"_id":"counter"},"update":{"$inc":{"value":1}},"upsert":true}
-- Redis ZADD key score member → {"op":"insertOne","collection":"zset","document":{"key":"key","member":"member","score":score}}
-- Redis ZRANGE key → {"op":"find","collection":"zset","filter":{"key":"key"},"sort":{"score":1}}
+Redis → MongoDB Conversion Patterns:
+- SET key value → db.myCollection.insertOne({ _id: "key", value: "value" })
+- GET key → db.myCollection.findOne({ _id: "key" })
+- INCR counter → db.myCollection.updateOne({ _id: "counter" }, { $inc: { value: 1 } }, { upsert: true })
+- DEL key → db.myCollection.deleteOne({ _id: "key" })
+- EXISTS key → db.myCollection.findOne({ _id: "key" })
+- ZADD key score member → db.zset.insertOne({ key: "key", member: "member", score: score })
+- ZRANGE key start stop → db.zset.find({ key: "key" }).sort({ score: 1 }).skip(start).limit(stop-start+1)
+
+Key Points:
+- Use db.<collection>.<method>(...) format
+- Common methods: insertOne, findOne, find, updateOne, deleteOne
+- Operators: $set, $inc, $exists, $gt, $lt, etc.
+- Options: { upsert: true }, .sort(), .limit(), .skip()
 """
 
     @tool
-    def validate_json_format(json_str: str) -> str:
-        """Validates if the string is valid JSON."""
-        try:
-            json.loads(json_str)
-            return "valid"
-        except Exception as e:
-            return f"invalid: {str(e)}"
+    def validate_mongodb_syntax(cmd: str) -> str:
+        """Basic validation for MongoDB shell command syntax."""
+        if not cmd.strip().startswith("db."):
+            return "invalid: must start with 'db.'"
+        if not any(
+            op in cmd
+            for op in [
+                "insertOne",
+                "findOne",
+                "find",
+                "updateOne",
+                "deleteOne",
+                "aggregate",
+            ]
+        ):
+            return "warn: missing common MongoDB operation"
+        return "valid"
 
-    tools = [get_mongodb_json_schema, validate_json_format]
+    tools = [get_mongodb_shell_examples, validate_mongodb_syntax]
 
     prompt = ChatPromptTemplate.from_messages(
         [
@@ -968,14 +974,19 @@ Examples:
                 "system",
                 f"You are a database translation expert specializing in {origin_db} to {target_db} conversion. "
                 "Your task is to convert database commands while maintaining semantic equivalence.\n\n"
-                "**CRITICAL REQUIREMENTS for MongoDB target:**\n"
-                "1. Output ONLY a single JSON object (no shell syntax like db.collection.find())\n"
-                "2. Use the JSON schema from get_mongodb_json_schema tool\n"
-                "3. Do NOT use JavaScript methods (.find(), .updateOne(), etc.)\n"
-                "4. Do NOT wrap in code blocks or backticks\n"
-                "5. Use double quotes for all JSON keys and string values\n"
-                "6. Return pure JSON that can be parsed by json.loads()\n\n"
-                "If you need the schema, call get_mongodb_json_schema tool first.",
+                "**OUTPUT FORMAT for MongoDB target:**\n"
+                "- Return MongoDB shell commands that can be executed directly in mongosh\n"
+                "- Use db.<collection>.<method>(...) format (e.g., db.myCollection.findOne(...))\n"
+                "- Support all MongoDB operations: insertOne, findOne, find, updateOne, deleteOne, aggregate\n"
+                "- Use MongoDB operators: $set, $inc, $exists, $gt, $type, etc.\n"
+                "- Include options like {{ upsert: true }}, .sort(), .limit() when needed\n"
+                "- Maintain original field names from the source command\n"
+                "- End each command with a semicolon\n\n"
+                "**RESPONSE FORMAT:**\n"
+                '- Return JSON: {{"TransferSQL": "<shell_command>", "Explanation": "<text>"}}\n'
+                "- TransferSQL should be a valid MongoDB shell command\n"
+                "- Example: db.myCollection.findOne({{ counter: {{ $exists: true }} }});\n\n"
+                "If you need examples, call get_mongodb_shell_examples tool first.",
             ),
             ("user", "{{input}}"),
             MessagesPlaceholder(variable_name="agent_scratchpad"),
