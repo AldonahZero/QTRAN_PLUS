@@ -4,10 +4,9 @@ set counter 1;
 incr counter;
 get counter;
 
-
 db.myCollection.insertOne({ mykey: 'hello' })
 db.myCollection.findOne({ mykey: { $exists: true } })
-db.myCollection.updateOne({ counter: { $exists: true } }, { $set: { counter: 1 } }, { upsert: true })
-db.myCollection.updateOne({ counter: { $exists: true } }, { $inc: { counter: 1 } }, { upsert: true })
-db.myCollection.findOne({ counter: { $exists: true } }, { counter: 1 })
-{"mutations": [{"cmd": "{\"op\": \"findOne\", \"collection\": \"myCollection\", \"filter\": {\"counter\": {\"$exists\": true}}, \"projection\": {\"counter\": 1}}", "category": "probe", "oracle": "value_read_projection"}, {"cmd": "{\"op\": \"find\", \"collection\": \"myCollection\", \"filter\": {\"counter\": {\"$exists\": true}}}", "category": "equivalence_test", "oracle": "find_aggregate_equivalent"}, {"cmd": "{\"op\": \"countDocuments\", \"collection\": \"myCollection\", \"filter\": {\"counter\": {\"$exists\": true}}}", "category": "cardinality_probe", "oracle": "cardinality_probe"}, {"cmd": "{\"op\": \"updateOne\", \"collection\": \"myCollection\", \"filter\": {\"counter\": {\"$exists\": true}}, \"update\": {\"$set\": {\"counter_mut\": \"test\"}}, \"upsert\": false}", "category": "idempotent_extend", "oracle": "cardinality_plus_one_or_same"}, {"cmd": "{\"op\": \"findOne\", \"collection\": \"myCollection\", \"filter\": {\"counter_mut\": \"test\"}}", "category": "probe", "oracle": "membership_true"}, {"cmd": "{\"op\": \"deleteOne\", \"collection\": \"myCollection\", \"filter\": {\"counter_mut\": \"test\"}}", "category": "inverse", "oracle": "cardinality_minus_one"}]}
+db.myCollection.updateOne({ mykey: 'counter' }, { $set: { value: 1 } }, { upsert: true })
+db.myCollection.updateOne({ mykey: 'counter' }, { $inc: { value: 1 } }, { upsert: true })
+db.myCollection.findOne({ mykey: 'counter' })
+{"mutations":[{"cmd":"{\"op\":\"findOne\",\"collection\":\"myCollection\",\"filter\":{\"mykey\":\"counter\"}}","category":"original","oracle":"tlp_base"},{"cmd":"{\"op\":\"findOne\",\"collection\":\"myCollection\",\"filter\":{\"mykey\":\"counter\",\"myField\":{\"$type\":\"string\"}}}","category":"tlp_true","oracle":"tlp_partition"},{"cmd":"{\"op\":\"findOne\",\"collection\":\"myCollection\",\"filter\":{\"mykey\":\"counter\",\"myField\":{\"$not\":{\"$type\":\"string\"}},\"myField\":{\"$exists\":true}}}","category":"tlp_false","oracle":"tlp_partition"},{"cmd":"{\"op\":\"findOne\",\"collection\":\"myCollection\",\"filter\":{\"mykey\":\"counter\",\"myField\":{\"$exists\":false}}}","category":"tlp_null","oracle":"tlp_partition"}]}
