@@ -48,3 +48,5 @@ test_agent_mutation_final.py
 test_agent_verbose.py
 run_output_fixed.log
 run_output.log
+
+sync_dir/
