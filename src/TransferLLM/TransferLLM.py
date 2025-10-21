@@ -1018,9 +1018,14 @@ def _agent_transfer_statement(
     print("Agent Input: " + input_text)
     try:
         res = agent.invoke({"input": input_text})
+        print(f"✅ Agent 调用成功，返回类型: {type(res)}")
+
         output = res.get("output") if isinstance(res, dict) else None
         if not output:
+            print(f"❌ Agent 返回结果中没有 'output' 字段: {res}")
             return None
+
+        print(f"📤 Agent 原始输出: {output}")
 
         # 提取 JSON
         txt = str(output).strip()
@@ -1044,12 +1049,19 @@ def _agent_transfer_statement(
             if first_brace >= 0 and last_brace > first_brace:
                 txt = txt[first_brace : last_brace + 1]
 
+        print(f"🔧 提取的 JSON 文本: {txt}")
+
         # 修复转义
         txt = txt.replace("\\$", "\\\\$")
 
         data = json.loads(txt)
+        print(f"✅ JSON 解析成功: {data}")
         return data
-    except Exception:
+    except Exception as e:
+        print(f"❌ Agent Transfer 失败: {type(e).__name__}: {e}")
+        import traceback
+
+        traceback.print_exc()
         return None
 
 

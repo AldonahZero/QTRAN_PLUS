@@ -396,7 +396,8 @@ def sqlancer_translate(
                 if isinstance(parsed_mutate, dict) and "mutations" in parsed_mutate:
                     cmds = []
                     for m in parsed_mutate.get("mutations", []):
-                        cmd = m.get("cmd")
+                        # 支持两种字段名: "cmd" 和 "mutated_sql"
+                        cmd = m.get("cmd") or m.get("mutated_sql")
                         if cmd:
                             # 如果 cmd 本身是字符串且包含 JSON，也尝试修复
                             if isinstance(cmd, str) and cmd.strip().startswith("{"):
