@@ -907,7 +907,7 @@ def get_feature_knowledge_string(
 
 def _build_transfer_agent(origin_db: str, target_db: str) -> Optional[Any]:
     """创建 Transfer Agent 用于跨数据库语句转换。
-    
+
     优势:
     - 可调用工具查询 NoSQL 规则和示例
     - 严格控制 JSON 格式输出
@@ -920,7 +920,7 @@ def _build_transfer_agent(origin_db: str, target_db: str) -> Optional[Any]:
         from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
     except Exception:
         return None
-    
+
     # 定义工具
     @tool
     def get_mongodb_json_schema() -> str:
@@ -946,7 +946,7 @@ Examples:
 - Redis ZADD key score member → {"op":"insertOne","collection":"zset","document":{"key":"key","member":"member","score":score}}
 - Redis ZRANGE key → {"op":"find","collection":"zset","filter":{"key":"key"},"sort":{"score":1}}
 """
-    
+
     @tool
     def validate_json_format(json_str: str) -> str:
         """Validates if the string is valid JSON."""
@@ -955,29 +955,32 @@ Examples:
             return "valid"
         except Exception as e:
             return f"invalid: {str(e)}"
-    
+
     tools = [get_mongodb_json_schema, validate_json_format]
-    
-    prompt = ChatPromptTemplate.from_messages([
-        ("system", 
-         f"You are a database translation expert specializing in {origin_db} to {target_db} conversion. "
-         "Your task is to convert database commands while maintaining semantic equivalence.\n\n"
-         "**CRITICAL REQUIREMENTS for MongoDB target:**\n"
-         "1. Output ONLY a single JSON object (no shell syntax like db.collection.find())\n"
-         "2. Use the JSON schema from get_mongodb_json_schema tool\n"
-         "3. Do NOT use JavaScript methods (.find(), .updateOne(), etc.)\n"
-         "4. Do NOT wrap in code blocks or backticks\n"
-         "5. Use double quotes for all JSON keys and string values\n"
-         "6. Return pure JSON that can be parsed by json.loads()\n\n"
-         "If you need the schema, call get_mongodb_json_schema tool first."
-        ),
-        ("user", "{{input}}"),
-        MessagesPlaceholder(variable_name="agent_scratchpad"),
-    ])
-    
+
+    prompt = ChatPromptTemplate.from_messages(
+        [
+            (
+                "system",
+                f"You are a database translation expert specializing in {origin_db} to {target_db} conversion. "
+                "Your task is to convert database commands while maintaining semantic equivalence.\n\n"
+                "**CRITICAL REQUIREMENTS for MongoDB target:**\n"
+                "1. Output ONLY a single JSON object (no shell syntax like db.collection.find())\n"
+                "2. Use the JSON schema from get_mongodb_json_schema tool\n"
+                "3. Do NOT use JavaScript methods (.find(), .updateOne(), etc.)\n"
+                "4. Do NOT wrap in code blocks or backticks\n"
+                "5. Use double quotes for all JSON keys and string values\n"
+                "6. Return pure JSON that can be parsed by json.loads()\n\n"
+                "If you need the schema, call get_mongodb_json_schema tool first.",
+            ),
+            ("user", "{{input}}"),
+            MessagesPlaceholder(variable_name="agent_scratchpad"),
+        ]
+    )
+
     llm = ChatOpenAI(
         model=os.environ.get("OPENAI_TRANSFER_AGENT_MODEL", "gpt-4o-mini"),
-        temperature=0.3
+        temperature=0.3,
     )
     agent = create_openai_functions_agent(llm, tools, prompt)
     return AgentExecutor(
@@ -991,15 +994,13 @@ Examples:
 
 
 def _agent_transfer_statement(
-    origin_db: str,
-    target_db: str, 
-    sql_statement: str
+    origin_db: str, target_db: str, sql_statement: str
 ) -> Optional[Dict[str, str]]:
     """使用 Agent 进行语句转换，返回 {"TransferSQL": ..., "Explanation": ...} 或 None。"""
     agent = _build_transfer_agent(origin_db, target_db)
     if agent is None:
         return None
-    
+
     input_text = (
         f"Convert the following {origin_db} command to {target_db} JSON format:\n"
         f"{sql_statement}\n\n"
@@ -1007,18 +1008,18 @@ def _agent_transfer_statement(
         f"1. Maintain column/key names unchanged\n"
         f"2. Preserve semantic equivalence\n"
         f"3. For MongoDB: output pure JSON (no shell syntax)\n"
-        f"4. Return format: {{\"TransferSQL\": \"<json>\", \"Explanation\": \"<text>\"}}"
+        f'4. Return format: {{"TransferSQL": "<json>", "Explanation": "<text>"}}'
     )
-    
+
     try:
         res = agent.invoke({"input": input_text})
         output = res.get("output") if isinstance(res, dict) else None
         if not output:
             return None
-        
+
         # 提取 JSON
         txt = str(output).strip()
-        
+
         # 移除代码块标记
         if "```json" in txt:
             start = txt.find("```json") + 7
@@ -1030,17 +1031,17 @@ def _agent_transfer_statement(
             end = txt.find("```", start)
             if end > start:
                 txt = txt[start:end].strip()
-        
+
         # 提取 JSON 对象
         if not txt.startswith("{"):
             first_brace = txt.find("{")
             last_brace = txt.rfind("}")
             if first_brace >= 0 and last_brace > first_brace:
                 txt = txt[first_brace : last_brace + 1]
-        
+
         # 修复转义
         txt = txt.replace("\\$", "\\\\$")
-        
+
         data = json.loads(txt)
         return data
     except Exception:
@@ -1070,8 +1071,8 @@ def transfer_llm_sql_semantic(
     # * 运行结果与原sql的一致性列表"exec_equalities"
     # * 列表是为返回error进行迭代设计的，能记录多次迭代的过程值
     """
-    # test_info: {'index': 162, 'a_db': 'sqlite', 'b_db': 'duckdb', 'molt': 'norec', 'sql': 'CREATE TABLE t0(c0);'}
-    sql_statement = test_info["sql"]
+    # test_info: {'index': 162, 'a_db': 'sqlite', 'b_db': 'duckdb', 'molt': 'norec', 'sqls': 'CREATE TABLE t0(c0);'}
+    sql_statement = test_info["sqls"]
     sql_statement_processed = sql_statement
 
     # 在这里做sql预处理
@@ -1188,33 +1189,36 @@ def transfer_llm_sql_semantic(
     )
 
     conversation_cnt = 0  # conversation_cnt = 0:初始第一条prompt
-    
+
     # ========== 优先尝试 Transfer Agent (针对 NoSQL 场景) ==========
     NOSQL_DBS = {"redis", "memcached", "etcd", "consul", "mongodb"}
-    use_transfer_agent = (
-        os.environ.get("QTRAN_TRANSFER_ENGINE", "").lower() == "agent"
-        and (str(origin_db).lower() in NOSQL_DBS or str(target_db).lower() in NOSQL_DBS)
+    use_transfer_agent = os.environ.get(
+        "QTRAN_TRANSFER_ENGINE", ""
+    ).lower() == "agent" and (
+        str(origin_db).lower() in NOSQL_DBS or str(target_db).lower() in NOSQL_DBS
     )
-    
+
     if use_transfer_agent and conversation_cnt == 0:
-        agent_result = _agent_transfer_statement(origin_db, target_db, sql_statement_processed)
+        agent_result = _agent_transfer_statement(
+            origin_db, target_db, sql_statement_processed
+        )
         if agent_result and "TransferSQL" in agent_result:
             # Agent 成功生成转换
             transfer_sql = agent_result["TransferSQL"]
             explanation = agent_result.get("Explanation", "Generated by Transfer Agent")
-            
+
             # 执行转换后的 SQL
             exec_result, exec_time, error_message = exec_sql_statement(
                 tool, exp, target_db, transfer_sql
             )
-            
+
             # 记录结果
             transfer_results.append(agent_result)
             exec_results.append(str(exec_result))
             exec_times.append(str(exec_time))
             error_messages.append(str(error_message))
             costs.append({"Engine": "transfer_agent"})
-            
+
             # 判断是否成功
             if error_message == "None" or not error_message:
                 # 执行成功，计算等价性
@@ -1222,9 +1226,15 @@ def transfer_llm_sql_semantic(
                 exec_equalities.append(exec_equality)
                 # 成功则直接返回
                 return (
-                    costs, transfer_results, exec_results, exec_times,
-                    error_messages, str(origin_exec_result), str(origin_exec_time),
-                    str(origin_error_message), exec_equalities
+                    costs,
+                    transfer_results,
+                    exec_results,
+                    exec_times,
+                    error_messages,
+                    str(origin_exec_result),
+                    str(origin_exec_time),
+                    str(origin_error_message),
+                    exec_equalities,
                 )
             else:
                 # 执行失败，记录等价性为 False，继续传统迭代
@@ -1233,7 +1243,7 @@ def transfer_llm_sql_semantic(
         else:
             # Agent 失败，回退到传统 LLM
             use_transfer_agent = False
-    
+
     # ========== 传统 LLM 转换路径 ==========
     # 边界1：达到最大迭代次数
     while conversation_cnt <= iteration_num:
