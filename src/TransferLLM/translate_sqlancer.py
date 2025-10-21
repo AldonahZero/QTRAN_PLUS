@@ -469,7 +469,10 @@ def sqlancer_translate(
                             client,
                             mutate_llm_model_ID,
                             fuzzer,
-                            bug["oracle"],
+                            # Some bug reports may not include an 'oracle' field.
+                            # Fall back to 'molt' (fuzzer type) or None to preserve behavior
+                            # and avoid KeyError.
+                            bug.get("oracle", bug.get("molt", None)),
                             b_db,
                             before_mutate,
                         )
