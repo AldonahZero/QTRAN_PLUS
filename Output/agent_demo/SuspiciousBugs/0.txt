@@ -4,9 +4,10 @@ set counter 1;
 incr counter;
 get counter;
 
-db.myCollection.insertOne({ mykey: 'hello' })
-db.myCollection.findOne({ mykey: { $exists: true } })
-db.myCollection.updateOne({ mykey: 'counter' }, { $set: { value: 1 } }, { upsert: true })
-db.myCollection.updateOne({ mykey: 'counter' }, { $inc: { value: 1 } }, { upsert: true })
-db.myCollection.findOne({ mykey: 'counter' })
-{"mutations":[{"cmd":"{\"op\":\"findOne\",\"collection\":\"myCollection\",\"filter\":{\"mykey\":\"counter\"}}","category":"original","oracle":"tlp_base"},{"cmd":"{\"op\":\"findOne\",\"collection\":\"myCollection\",\"filter\":{\"mykey\":\"counter\",\"myField\":{\"$type\":\"string\"}}}","category":"tlp_true","oracle":"tlp_partition"},{"cmd":"{\"op\":\"findOne\",\"collection\":\"myCollection\",\"filter\":{\"mykey\":\"counter\",\"myField\":{\"$not\":{\"$type\":\"string\"}},\"myField\":{\"$exists\":true}}}","category":"tlp_false","oracle":"tlp_partition"},{"cmd":"{\"op\":\"findOne\",\"collection\":\"myCollection\",\"filter\":{\"mykey\":\"counter\",\"myField\":{\"$exists\":false}}}","category":"tlp_null","oracle":"tlp_partition"}]}
+
+db.collectionName.insertOne({ mykey: 'hello' })
+db.collectionName.findOne({ mykey: { $exists: true } })
+db.collectionName.updateOne({ _id: 'counter' }, { $set: { value: 1 } }, { upsert: true })
+db.collectionName.updateOne({ _id: 'counter' }, { $inc: { value: 1 } }, { upsert: true })
+db.collectionName.findOne({ _id: 'counter' }, { value: 1 })
+{"mutations":[{"cmd":"{\"op\":\"findOne\",\"collection\":\"collectionName\",\"filter\":{\"_id\":\"counter\"},\"projection\":{\"value\":1}}","category":"original","oracle":"tlp_base"},{"cmd":"{\"op\":\"findOne\",\"collection\":\"collectionName\",\"filter\":{\"_id\":\"counter\",\"value\":{\"$type\":\"number\"}},\"projection\":{\"value\":1}}","category":"tlp_true","oracle":"tlp_partition"},{"cmd":"{\"op\":\"findOne\",\"collection\":\"collectionName\",\"filter\":{\"_id\":\"counter\",\"value\":{\"$not\":{\"$type\":\"number\"}},\"value\":{\"$exists\":true}},\"projection\":{\"value\":1}}","category":"tlp_false","oracle":"tlp_partition"},{"cmd":"{\"op\":\"findOne\",\"collection\":\"collectionName\",\"filter\":{\"_id\":\"counter\",\"value\":{\"$exists\":false}},\"projection\":{\"value\":1}}","category":"tlp_null","oracle":"tlp_partition"}]}
