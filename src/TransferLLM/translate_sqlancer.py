@@ -509,38 +509,46 @@ def sqlancer_translate(
                         # 为 TLP 准备变异结果列表
                         # mutate_results[-1] 包含了所有分区的执行结果
                         tlp_results = []
-                        
+
                         # 解析 mutations 数组
                         mutate_result_str = mutate_results[-1].get("MutateResult", "{}")
                         if isinstance(mutate_result_str, str):
                             parsed_mutate = json.loads(mutate_result_str)
                         else:
                             parsed_mutate = mutate_result_str
-                        
+
                         mutations = parsed_mutate.get("mutations", [])
-                        
+
                         # 解析执行结果列表
-                        exec_result_str = mutate_results[-1].get("MutateSqlExecResult", "[]")
+                        exec_result_str = mutate_results[-1].get(
+                            "MutateSqlExecResult", "[]"
+                        )
                         if isinstance(exec_result_str, str):
                             exec_results = json.loads(exec_result_str)
                         else:
                             exec_results = exec_result_str
-                        
+
                         # 组装每个分区的结果
-                        for i, (mutation, exec_result) in enumerate(zip(mutations, exec_results)):
-                            tlp_results.append({
-                                "MutateResult": json.dumps({"mutations": [mutation]}),
-                                "MutateSqlExecResult": exec_result
-                            })
-                        
+                        for i, (mutation, exec_result) in enumerate(
+                            zip(mutations, exec_results)
+                        ):
+                            tlp_results.append(
+                                {
+                                    "MutateResult": json.dumps(
+                                        {"mutations": [mutation]}
+                                    ),
+                                    "MutateSqlExecResult": exec_result,
+                                }
+                            )
+
                         # 调用 TLP 检查器
                         oracle_check_res = check_tlp_oracle(tlp_results)
-                        
+
                     except Exception as e:
                         oracle_check_res = {
                             "end": False,
                             "error": f"TLP oracle check failed: {str(e)}",
-                            "bug_type": "tlp_check_error"
+                            "bug_type": "tlp_check_error",
                         }
                 else:
                     # -------- 非 TLP: 使用原有的 Oracle 检查逻辑 -------- #
