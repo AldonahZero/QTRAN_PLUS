@@ -356,7 +356,7 @@ def run_muatate_llm_single_sql(
                 "..",
                 "MutationData",
                 "MutationLLMPrompt",
-                "semantic_mongodb.json",
+                "semantic_mongodb_extended.json",
             )
         else:
             mutate_prompt_path = os.path.join(
