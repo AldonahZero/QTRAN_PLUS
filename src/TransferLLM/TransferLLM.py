@@ -918,7 +918,11 @@ def _build_transfer_agent(origin_db: str, target_db: str) -> Optional[Any]:
         from langchain.agents import AgentExecutor, create_openai_functions_agent
         from langchain.tools import tool
         from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
-    except Exception:
+    except Exception as e:
+        print(f"❌ Failed to import LangChain dependencies for Transfer Agent: {e}")
+        print(f"   Error type: {type(e).__name__}")
+        print(f"   This is likely due to LangChain version incompatibility.")
+        print(f"   Falling back to traditional LLM mode...")
         return None
 
     # 定义工具

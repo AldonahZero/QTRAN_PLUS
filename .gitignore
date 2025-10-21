@@ -6,6 +6,7 @@ ENV/
 
 run_mongodb_mutation_test.sh
 run.sh
+run_agent_tests.sh
 
 *.zip
 # 可选：添加其他常见 Python 忽略项
@@ -46,7 +47,11 @@ test_agent_debug.py
 test_agent_direct.py
 test_agent_mutation_final.py
 test_agent_verbose.py
+test_agent_transfer.py
+test_agent_mutation.py
+test_agent_full_pipeline.py
 run_output_fixed.log
 run_output.log
 
 sync_dir/
+check_agent_setup.py
