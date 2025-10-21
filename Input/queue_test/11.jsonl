@@ -1,0 +1,1 @@
+{"index": 11, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sqls": ["set mykey hello;", "get mykey;", "set mykey 431103432304423324232111121433412320002201403040441112042400012111414303233333424422230312420441303442302130143040423114331043401212332232001024400020204;", "get mykey;", "set wtqtwhmc 0.52120220173206278;", "get wtqtwhmc;", "set mykey kmmwzipn;", "get mykey;"]}

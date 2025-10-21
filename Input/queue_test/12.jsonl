@@ -1,0 +1,1 @@
+{"index": 12, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sqls": ["set mykey hello;", "get mykey;", "set xnamybte 0.61333727818603501;", "get xnamybte;", "set vlccozrs hello;", "get vlccozrs;", "set mykey 24412330;", "get mykey;"]}
