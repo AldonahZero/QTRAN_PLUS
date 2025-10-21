@@ -1018,13 +1018,14 @@ def _agent_transfer_statement(
         return None
 
     input_text = (
-        f"Convert the following {origin_db} command to {target_db} JSON format:\n"
+        f"Convert the following {origin_db} command to {target_db} shell format:\n"
         f"{sql_statement}\n\n"
         f"Requirements:\n"
-        f"1. Maintain column/key names unchanged\n"
-        f"2. Preserve semantic equivalence\n"
-        f"3. For MongoDB: output pure JSON (no shell syntax)\n"
-        f'4. Return format: {{"TransferSQL": "<json>", "Explanation": "<text>"}}'
+        f"1. Use actual values from the command (e.g., 'set mykey hello' → _id: 'mykey', value: 'hello')\n"
+        f"2. For MongoDB: return shell command like db.collection.method(...) ending with semicolon\n"
+        f"3. Maintain semantic equivalence\n"
+        f'4. Return JSON: {{"TransferSQL": "<shell_command>;", "Explanation": "<text>"}}\n'
+        f"5. Example: Redis 'set foo bar' → MongoDB 'db.myCollection.insertOne({{ _id: \"foo\", value: \"bar\" }});'"
     )
     print("Agent Input: " + input_text)
     try:
