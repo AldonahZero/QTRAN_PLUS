@@ -356,7 +356,25 @@ def run_muatate_llm_single_sql(
                 "..",
                 "MutationData",
                 "MutationLLMPrompt",
-                "semantic_mongodb_extended.json",
+                "semantic_mongodb.json",
+            )
+        elif is_mongodb_target and mutate_stratege == "tlp":
+            mutate_prompt_path = os.path.join(
+                current_dir,
+                "..",
+                "..",
+                "MutationData",
+                "MutationLLMPrompt",
+                "tlp_mongodb.json",
+            )
+        elif is_mongodb_target and mutate_stratege == "norec":
+            mutate_prompt_path = os.path.join(
+                current_dir,
+                "..",
+                "..",
+                "MutationData",
+                "MutationLLMPrompt",
+                "norec_mongodb.json",
             )
         else:
             mutate_prompt_path = os.path.join(
