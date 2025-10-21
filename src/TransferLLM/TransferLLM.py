@@ -999,6 +999,7 @@ def _agent_transfer_statement(
     """使用 Agent 进行语句转换，返回 {"TransferSQL": ..., "Explanation": ...} 或 None。"""
     agent = _build_transfer_agent(origin_db, target_db)
     if agent is None:
+        print("Failed to build transfer agent.")
         return None
 
     input_text = (
@@ -1010,7 +1011,7 @@ def _agent_transfer_statement(
         f"3. For MongoDB: output pure JSON (no shell syntax)\n"
         f'4. Return format: {{"TransferSQL": "<json>", "Explanation": "<text>"}}'
     )
-
+    print("Agent Input: " + input_text)
     try:
         res = agent.invoke({"input": input_text})
         output = res.get("output") if isinstance(res, dict) else None
@@ -1197,7 +1198,7 @@ def transfer_llm_sql_semantic(
     ).lower() == "agent" and (
         str(origin_db).lower() in NOSQL_DBS or str(target_db).lower() in NOSQL_DBS
     )
-
+    print("use_transfer_agent: " + str(use_transfer_agent))
     if use_transfer_agent and conversation_cnt == 0:
         agent_result = _agent_transfer_statement(
             origin_db, target_db, sql_statement_processed
@@ -1243,7 +1244,7 @@ def transfer_llm_sql_semantic(
         else:
             # Agent 失败，回退到传统 LLM
             use_transfer_agent = False
-
+    print("agent 失败，回退到传统 LLM ")
     # ========== 传统 LLM 转换路径 ==========
     # 边界1：达到最大迭代次数
     while conversation_cnt <= iteration_num:
