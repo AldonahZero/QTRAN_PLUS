@@ -72,8 +72,11 @@ eval_filenames = {
 # ---------------- Agent 方案（仅变异阶段） ---------------- #
 
 
-def _build_agent() -> Optional[AgentExecutor]:
+def _build_agent(system_message: str) -> Optional[AgentExecutor]:
     """创建一个轻量的 SQL 变异 Agent，用于替代引擎=agent 时的变异生成。
+
+    参数:
+        system_message: 从 JSON 配置文件加载的系统消息（与微调 LLM 保持一致）
 
     返回：AgentExecutor 或 None（当依赖缺失时）。
     """
@@ -180,27 +183,10 @@ def _build_agent() -> Optional[AgentExecutor]:
 
     tools = [get_oracle_rules, validate_sql_syntax, analyze_sql_structure]
 
+    # 使用传入的 system_message（与微调 LLM 保持一致）
     prompt = ChatPromptTemplate.from_messages(
         [
-            (
-                "system",
-                (
-                    "You are an expert SQL/NoSQL mutation specialist. Based on the SQL/NoSQL query and oracle type provided by the user, "
-                    "generate 3-5 mutated queries that conform to the oracle rules."
-                    "\n\n**Key Instructions:**"
-                    "\n1. If you need to understand oracle rules, call the get_oracle_rules tool"
-                    "\n2. You can call analyze_sql_structure to analyze query structure"
-                    "\n3. After generating mutations, **immediately output the result in JSON format and stop**"
-                    '\n4. JSON format: {{"mutations": [{{"mutated_sql": "...", "explanation": "...", "expected_relation": "...", "syntax_valid": "..."}}]}}'
-                    "\n5. Do not repeatedly call tools. Once mutations are generated, immediately return JSON"
-                    "\n\n**For MongoDB mutations:**"
-                    "\n- Use MongoDB shell format: db.collection.method(...)"
-                    "\n- Each mutated_sql should be a complete shell command ending with semicolon"
-                    "\n- Example: db.myCollection.findOne({{ counter: {{ $exists: true }} }});"
-                    "\n- Use MongoDB operators: $exists, $gt, $lt, $eq, $type, $inc, etc."
-                    "\n- Mutations can modify: filter conditions, operators, projections, sort/limit"
-                ),
-            ),
+            ("system", system_message),
             ("user", "{input}"),
             MessagesPlaceholder(variable_name="agent_scratchpad"),
         ]
@@ -221,23 +207,28 @@ def _build_agent() -> Optional[AgentExecutor]:
 
 
 def _agent_generate_mutations(
-    sql: str, oracle: str, db_type: str
+    sql: str, oracle: str, db_type: str, system_message: str
 ) -> Optional[Dict[str, Any]]:
-    """使用 Agent 生成变异结果（JSON）。失败返回 None。"""
-    agent = _build_agent()
+    """使用 Agent 生成变异结果（JSON）。失败返回 None。
+
+    参数:
+        sql: 待变异的 SQL/NoSQL 语句
+        oracle: 预言机类型
+        db_type: 数据库类型
+        system_message: 从 JSON 配置文件加载的系统消息
+    """
+    agent = _build_agent(system_message)
     if agent is None:
         return None
-    input_text = (
-        f"Generate {oracle} oracle mutations for the following SQL (database: {db_type}), strictly return JSON:\n{sql}"
-        "\nRequirements: 3-5 mutations, each mutation should end with a semicolon if possible."
-    )
+    # system_message 已包含完整指令，这里只需提供待变异的 SQL
+    input_text = f"Seed SQL/NoSQL statement:\n{sql}"
     try:
         res = agent.invoke({"input": input_text})
         output = res.get("output") if isinstance(res, dict) else None
         if not output:
             return None
 
-        # 提取 JSON: 支持 ```json...``` 代码块或纯 JSON
+        # 提取并修复 JSON：支持 ```json...``` 代码块或纯 JSON
         txt = str(output).strip()
 
         # 方案1: 尝试提取 ```json 代码块
@@ -260,10 +251,18 @@ def _agent_generate_mutations(
             if first_brace >= 0 and last_brace > first_brace:
                 txt = txt[first_brace : last_brace + 1]
 
-        # 修复 LLM 可能输出的无效转义 (如 \$eq 应为 \\$eq)
-        txt = txt.replace("\\$", "\\\\$")
+        # 使用 repair_json 修复可能的 JSON 格式问题（如缺少引号、多余逗号等）
+        try:
+            data = json.loads(txt)
+        except json.JSONDecodeError:
+            # JSON 解析失败，尝试使用 repair_json 修复
+            try:
+                repaired = repair_json(txt)
+                data = json.loads(repaired)
+            except Exception:
+                # 修复仍失败，返回 None 触发回退
+                return None
 
-        data = json.loads(txt)
         return data
     except Exception:
         # Agent 调用失败，静默回退到 finetune LLM
@@ -453,6 +452,7 @@ def run_muatate_llm_single_sql(
                 sql=user_content if is_mongodb_target else sql,
                 oracle=mutate_stratege or oracle,
                 db_type=db_type,
+                system_message=system_message,  # 传递 system_message 给 Agent
             )
             if agent_payload is not None:
                 # 统一为字符串形式返回
