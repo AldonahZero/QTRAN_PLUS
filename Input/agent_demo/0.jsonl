@@ -1,5 +1,5 @@
-{"index": 0, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sqls": "set mykey hello;"}
-{"index": 0, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sqls": "get mykey;"}
-{"index": 0, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sqls": "set counter 1;"}
-{"index": 0, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sqls": "incr counter;"}
-{"index": 0, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sqls": "get counter;"}
+{"index": 0, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "set mykey hello;"}
+{"index": 0, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "get mykey;"}
+{"index": 0, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "set counter 1;"}
+{"index": 0, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "incr counter;"}
+{"index": 0, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "get counter;"}

@@ -1,1 +1,0 @@
-{"index": 345, "a_db": "sqlite", "b_db": "mongodb", "molt": "tlp", "sqls": ["SELECT HEX(MIN(a)) FROM (SELECT CHAR(0, 0) COLLATE NOCASE as a UNION SELECT CHAR(0, 1) as a); -- 0001"]}

@@ -1,1 +1,0 @@
-{"index": 592, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sqls": ["SELECT SIN(1e1000); -- -nan"]}

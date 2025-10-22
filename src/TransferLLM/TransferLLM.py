@@ -1104,7 +1104,7 @@ def transfer_llm_sql_semantic(
     # * 列表是为返回error进行迭代设计的，能记录多次迭代的过程值
     """
     # test_info: {'index': 162, 'a_db': 'sqlite', 'b_db': 'duckdb', 'molt': 'norec', 'sqls': 'CREATE TABLE t0(c0);'}
-    sql_statement = test_info["sqls"]
+    sql_statement = test_info["sql"]
     sql_statement_processed = sql_statement
 
     # 在这里做sql预处理

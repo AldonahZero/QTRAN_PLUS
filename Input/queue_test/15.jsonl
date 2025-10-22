@@ -1,1 +1,8 @@
-{"index": 15, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sqls": ["set mykey hello;", "get mykey;", "set wdhlaven hello;", "get wdhlaven;", "set mykey 306;", "get mykey;", "set wtqtwhmc 0.52120220173206278;", "get wtqtwhmc;"]}
+{"index": 15, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "set mykey hello;"}
+{"index": 15, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "get mykey;"}
+{"index": 15, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "set wdhlaven hello;"}
+{"index": 15, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "get wdhlaven;"}
+{"index": 15, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "set mykey 306;"}
+{"index": 15, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "get mykey;"}
+{"index": 15, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "set wtqtwhmc 0.52120220173206278;"}
+{"index": 15, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "get wtqtwhmc;"}

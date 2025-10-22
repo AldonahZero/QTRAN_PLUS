@@ -1,1 +1,0 @@
-{"index": 318, "a_db": "sqlite", "b_db": "monetdb", "molt": "norec", "sqls": ["PRAGMA encoding = 'UTF16be';", "CREATE TABLE t0(c0, c1);", "INSERT INTO t0(c0) VALUES (x'00');", "CREATE INDEX i0 ON t0(c0 COLLATE BINARY);", "INSERT INTO t0(c0) VALUES (1);", "SELECT COUNT(*) FROM t0 WHERE SUBSTR(t0.c0, ','); -- expected: 1, actual: 2"]}

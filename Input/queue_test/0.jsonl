@@ -1,1 +1,8 @@
-{"index": 0, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sqls": ["set mykey hello;", "get mykey;", "set nynnubkc hello;", "get nynnubkc;", "set mykey hello;", "get mykey;", "set dssplpey 41788;", "get dssplpey;"]}
+{"index": 0, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "set mykey hello;"}
+{"index": 0, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "get mykey;"}
+{"index": 0, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "set nynnubkc hello;"}
+{"index": 0, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "get nynnubkc;"}
+{"index": 0, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "set mykey hello;"}
+{"index": 0, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "get mykey;"}
+{"index": 0, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "set dssplpey 41788;"}
+{"index": 0, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "get dssplpey;"}

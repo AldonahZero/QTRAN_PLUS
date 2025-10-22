@@ -736,10 +736,10 @@ def getSuspicious(input_filepath, tool):
                 extracted_stmt = _extract_transferred_stmt(content["TransferResult"])
                 new_content = {
                     "index": content["index"],
-                    "sqls": content["sqls"],
+                    "sql": content["sql"],
                     "TransferResult": [extracted_stmt] if extracted_stmt else [],
                 }
-                original_sqls.append(content["sqls"] + "\n")
+                original_sqls.append(content["sql"] + "\n")
                 if extracted_stmt:
                     results_sqls.append(extracted_stmt + "\n")
                 if "MutateResult" in content:

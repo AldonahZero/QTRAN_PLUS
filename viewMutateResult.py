@@ -1,6 +1,6 @@
 import json
 
-with open("Output/agent_demo/MutationLLM/0.jsonl", "r") as f:
+with open("/root/QTRAN/Output/demo1_copy_transferred/MutationLLM/76.jsonl", "r") as f:
     for line in f:
         data = json.loads(line.strip())
         if "MutateResult" in data:
@@ -18,7 +18,7 @@ with open("Output/agent_demo/MutationLLM/0.jsonl", "r") as f:
         data = json.loads(line.strip())
         if "MutateResult" in data:
             print("=" * 80)
-            print(f'Original Redis: {data["sqls"]}')
+            print(f'Original Redis: {data["sql"]}')
             print(f'Transferred MongoDB: {data["TransferResult"][0]["TransferSQL"]}')
             print()
 
