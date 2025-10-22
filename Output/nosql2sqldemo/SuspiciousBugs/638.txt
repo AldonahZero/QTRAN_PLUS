@@ -1,0 +1,9 @@
+CREATE TABLE t0(c0 VARCHAR);
+INSERT INTO t0 VALUES ('aaaaaaaaaaaa');
+SELECT MAX(agg0) FROM (SELECT MAX(t0.c0) AS agg0 FROM t0) as s0; -- nondeterministic result or crash
+
+
+db.createCollection('t0'); db.t0.createIndex({ c0: 1 });
+db.t0.insertOne({ c0: 'aaaaaaaaaaaa' });
+db.t0.aggregate([{ $group: { _id: null, agg0: { $max: '$c0' } } }, { $project: { _id: 0, agg0: 1 } }]);
+{"mutations":[{"cmd":"[{ \"$group\": { _id: null, agg0: { \"$max\": \"$c0\" } } }, { \"$project\": { _id: 0, agg0: 1 } }]","category":"original","oracle":"tlp_base"},{"cmd":"[{ \"$group\": { _id: null, agg0: { \"$max\": \"$c0\" } } }, { \"$project\": { _id: 0, agg0: 1 } }]","category":"tlp_true","oracle":"tlp_partition"},{"cmd":"[{ \"$group\": { _id: null, agg0: { \"$max\": \"$c0\" } } }, { \"$project\": { _id: 0, agg0: 1 } }]","category":"tlp_false","oracle":"tlp_partition"},{"cmd":"[{ \"$group\": { _id: null, agg0: { \"$max\": \"$c0\" } } }, { \"$project\": { _id: 0, agg0: 1 } }]","category":"tlp_null","oracle":"tlp_partition"}]}

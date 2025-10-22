@@ -1,0 +1,24 @@
+{
+  "index": 359,
+  "input": "nosql2sqldemo",
+  "suspicious_view": {
+    "sql": "SELECT 0 FROM t0 WHERE false UNION SELECT 0 FROM t0 WHERE NOT t0.c1; -- expected: {0}, actual: {}",
+    "transfer_sql": "db.t0.aggregate([{ $match: { $expr: { $eq: [false, false] } } }, { $project: { result: 1 } }, { $unionWith: { coll: 't0', pipeline: [{ $match: { c1: { $exists: false } } }, { $project: { result: 1 } }] } }])",
+    "mutate_sql": "{\"mutations\":[{\"cmd\":\"[{ \\\"$match\\\": { \\\"$expr\\\": { \\\"$eq\\\": [false, false] } } }, { \\\"$project\\\": { \\\"result\\\": 1 } }, { \\\"$unionWith\\\": { \\\"coll\\\": \\\"t0\\\", \\\"pipeline\\\": [{ \\\"$match\\\": { \\\"c1\\\": { \\\"$exists\\\": false } } }, { \\\"$project\\\": { \\\"result\\\": 1 } }] } } ]\",\"category\":\"original\",\"oracle\":\"tlp_base\"},{\"cmd\":\"[{ \\\"$match\\\": { \\\"$expr\\\": { \\\"$eq\\\": [false, false] } }, { \\\"$project\\\": { \\\"result\\\": 1 } }, { \\\"$unionWith\\\": { \\\"coll\\\": \\\"t0\\\", \\\"pipeline\\\": [{ \\\"$match\\\": { \\\"c1\\\": { \\\"$exists\\\": false } } }, { \\\"$project\\\": { \\\"result\\\": 1 } }] } } ]\",\"category\":\"tlp_true\",\"oracle\":\"tlp_partition\"},{\"cmd\":\"[{ \\\"$match\\\": { \\\"$expr\\\": { \\\"$eq\\\": [false, false] } }, { \\\"$project\\\": { \\\"result\\\": 1 } }, { \\\"$unionWith\\\": { \\\"coll\\\": \\\"t0\\\", \\\"pipeline\\\": [{ \\\"$match\\\": { \\\"c1\\\": { \\\"$exists\\\": false } } }, { \\\"$project\\\": { \\\"result\\\": 1 } }] } } ]\",\"category\":\"tlp_false\",\"oracle\":\"tlp_partition\"},{\"cmd\":\"[{ \\\"$match\\\": { \\\"$expr\\\": { \\\"$eq\\\": [false, false] } }, { \\\"$project\\\": { \\\"result\\\": 1 } }, { \\\"$unionWith\\\": { \\\"coll\\\": \\\"t0\\\", \\\"pipeline\\\": [{ \\\"$match\\\": { \\\"c1\\\": { \\\"$exists\\\": false } } }, { \\\"$project\\\": { \\\"result\\\": 1 } }] } } ]\",\"category\":\"tlp_null\",\"oracle\":\"tlp_partition\"}]}"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null,
+    "bug_type": "TLP_violation",
+    "details": {
+      "original_count": 1,
+      "tlp_true_count": 1,
+      "tlp_false_count": 1,
+      "tlp_null_count": 1,
+      "partition_sum": 3,
+      "difference": -2,
+      "explanation": "TLP invariant violated: 1 ≠ 1 + 1 + 1"
+    }
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

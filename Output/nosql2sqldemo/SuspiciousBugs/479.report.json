@@ -1,0 +1,24 @@
+{
+  "index": 479,
+  "input": "nosql2sqldemo",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0 WHERE t0.c0 NOT BETWEEN '֣a' AND NULL; -- expected: {0}, actual: {}",
+    "transfer_sql": "db.t0.find({ c0: { $not: { $gte: '֣a', $lte: 'value' } } })",
+    "mutate_sql": "{\"mutations\":[{\"cmd\":\"{\\\\\\\"op\\\\\\\":\\\\\\\"find\\\\\\\",\\\\\\\"collection\\\\\\\":\\\\\\\"t0\\\\\\\",\\\\\\\"filter\\\\\\\":{\\\\\\\"c0\\\\\\\":{\\\\\\\"$not\\\\\\\":{\\\\\\\"$gte\\\\\\\":\\\\\\\"֣a\\\\\\\" ,\\\\\\\"$lte\\\\\\\":\\\\\\\"value\\\\\\\"}}}}\",\"category\":\"original\",\"oracle\":\"tlp_base\"},{\"cmd\":\"{\\\\\\\"op\\\\\\\":\\\\\\\"find\\\\\\\",\\\\\\\"collection\\\\\\\":\\\\\\\"t0\\\\\\\",\\\\\\\"filter\\\\\\\":{\\\\\\\"c0\\\\\\\":{\\\\\\\"$not\\\\\\\":{\\\\\\\"$gte\\\\\\\":\\\\\\\"֣a\\\\\\\",\\\\\\\"$lte\\\\\\\":\\\\\\\"value\\\\\\\"}},c0:{$type:\\\"number\\\"}}}\",\"category\":\"tlp_true\",\"oracle\":\"tlp_partition\"},{\"cmd\":\"{\\\\\\\"op\\\\\\\":\\\\\\\"find\\\\\\\",\\\\\\\"collection\\\\\\\":\\\\\\\"t0\\\\\\\",\\\\\\\"filter\\\\\\\":{\\\\\\\"c0\\\\\\\":{\\\\\\\"$not\\\\\\\":{\\\\\\\"$gte\\\\\\\":\\\\\\\"֣a\\\\\\\",\\\\\\\"$lte\\\\\\\":\\\\\\\"value\\\\\\\"}},c0:{$not:{\\\\\\\"$type\\\\\\\":\\\\\\\"number\\\\\\\"}},c0:{$exists:true}}}\",\"category\":\"tlp_false\",\"oracle\":\"tlp_partition\"},{\"cmd\":\"{\\\\\\\"op\\\\\\\":\\\\\\\"find\\\\\\\",\\\\\\\"collection\\\\\\\":\\\\\\\"t0\\\\\\\",\\\\\\\"filter\\\\\\\":{\\\\\\\"c0\\\\\\\":{\\\\\\\"$not\\\\\\\":{\\\\\\\"$gte\\\\\\\":\\\\\\\"֣a\\\\\\\",\\\\\\\"$lte\\\\\\\":\\\\\\\"value\\\\\\\"}},c0:{$exists:false}}}\",\"category\":\"tlp_null\",\"oracle\":\"tlp_partition\"}]}"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null,
+    "bug_type": "TLP_violation",
+    "details": {
+      "original_count": 1,
+      "tlp_true_count": 1,
+      "tlp_false_count": 1,
+      "tlp_null_count": 1,
+      "partition_sum": 3,
+      "difference": -2,
+      "explanation": "TLP invariant violated: 1 ≠ 1 + 1 + 1"
+    }
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

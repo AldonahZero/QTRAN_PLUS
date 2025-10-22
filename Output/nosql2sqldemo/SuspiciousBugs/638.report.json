@@ -1,0 +1,24 @@
+{
+  "index": 638,
+  "input": "nosql2sqldemo",
+  "suspicious_view": {
+    "sql": "SELECT MAX(agg0) FROM (SELECT MAX(t0.c0) AS agg0 FROM t0) as s0; -- nondeterministic result or crash",
+    "transfer_sql": "db.t0.aggregate([{ $group: { _id: null, agg0: { $max: '$c0' } } }, { $project: { _id: 0, agg0: 1 } }]);",
+    "mutate_sql": "{\"mutations\":[{\"cmd\":\"[{ \\\"$group\\\": { _id: null, agg0: { \\\"$max\\\": \\\"$c0\\\" } } }, { \\\"$project\\\": { _id: 0, agg0: 1 } }]\",\"category\":\"original\",\"oracle\":\"tlp_base\"},{\"cmd\":\"[{ \\\"$group\\\": { _id: null, agg0: { \\\"$max\\\": \\\"$c0\\\" } } }, { \\\"$project\\\": { _id: 0, agg0: 1 } }]\",\"category\":\"tlp_true\",\"oracle\":\"tlp_partition\"},{\"cmd\":\"[{ \\\"$group\\\": { _id: null, agg0: { \\\"$max\\\": \\\"$c0\\\" } } }, { \\\"$project\\\": { _id: 0, agg0: 1 } }]\",\"category\":\"tlp_false\",\"oracle\":\"tlp_partition\"},{\"cmd\":\"[{ \\\"$group\\\": { _id: null, agg0: { \\\"$max\\\": \\\"$c0\\\" } } }, { \\\"$project\\\": { _id: 0, agg0: 1 } }]\",\"category\":\"tlp_null\",\"oracle\":\"tlp_partition\"}]}"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null,
+    "bug_type": "TLP_violation",
+    "details": {
+      "original_count": 1,
+      "tlp_true_count": 1,
+      "tlp_false_count": 1,
+      "tlp_null_count": 1,
+      "partition_sum": 3,
+      "difference": -2,
+      "explanation": "TLP invariant violated: 1 ≠ 1 + 1 + 1"
+    }
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

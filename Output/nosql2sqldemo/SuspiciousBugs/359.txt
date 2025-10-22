@@ -1,0 +1,9 @@
+CREATE TABLE t0(c0 INT, c1 TEXT AS (0.9));
+INSERT INTO t0(c0) VALUES (0);
+SELECT 0 FROM t0 WHERE false UNION SELECT 0 FROM t0 WHERE NOT t0.c1; -- expected: {0}, actual: {}
+
+
+db.createCollection('t0'); db.t0.createIndex({ c0: 1 });
+db.t0.insertOne({ c0: 1 });
+db.t0.aggregate([{ $match: { $expr: { $eq: [false, false] } } }, { $project: { result: 1 } }, { $unionWith: { coll: 't0', pipeline: [{ $match: { c1: { $exists: false } } }, { $project: { result: 1 } }] } }])
+{"mutations":[{"cmd":"[{ \"$match\": { \"$expr\": { \"$eq\": [false, false] } } }, { \"$project\": { \"result\": 1 } }, { \"$unionWith\": { \"coll\": \"t0\", \"pipeline\": [{ \"$match\": { \"c1\": { \"$exists\": false } } }, { \"$project\": { \"result\": 1 } }] } } ]","category":"original","oracle":"tlp_base"},{"cmd":"[{ \"$match\": { \"$expr\": { \"$eq\": [false, false] } }, { \"$project\": { \"result\": 1 } }, { \"$unionWith\": { \"coll\": \"t0\", \"pipeline\": [{ \"$match\": { \"c1\": { \"$exists\": false } } }, { \"$project\": { \"result\": 1 } }] } } ]","category":"tlp_true","oracle":"tlp_partition"},{"cmd":"[{ \"$match\": { \"$expr\": { \"$eq\": [false, false] } }, { \"$project\": { \"result\": 1 } }, { \"$unionWith\": { \"coll\": \"t0\", \"pipeline\": [{ \"$match\": { \"c1\": { \"$exists\": false } } }, { \"$project\": { \"result\": 1 } }] } } ]","category":"tlp_false","oracle":"tlp_partition"},{"cmd":"[{ \"$match\": { \"$expr\": { \"$eq\": [false, false] } }, { \"$project\": { \"result\": 1 } }, { \"$unionWith\": { \"coll\": \"t0\", \"pipeline\": [{ \"$match\": { \"c1\": { \"$exists\": false } } }, { \"$project\": { \"result\": 1 } }] } } ]","category":"tlp_null","oracle":"tlp_partition"}]}

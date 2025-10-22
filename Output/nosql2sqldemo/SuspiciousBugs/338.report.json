@@ -1,0 +1,24 @@
+{
+  "index": 338,
+  "input": "nosql2sqldemo",
+  "suspicious_view": {
+    "sql": "SELECT HEX(MIN(a)) FROM (SELECT CHAR(0, 1) COLLATE NOCASE as a UNION SELECT CHAR(0, 0) as a); -- 0000",
+    "transfer_sql": "db.collection.aggregate([ { $group: { _id: null, minValue: { $min: { $arrayElemAt: [ { $setUnion: [ { $literal: [ { $char: [0, 1] }, { $char: [0, 0] } ] } ] }, 0 ] } } } }, { $project: { _id: 0, minHex: { $toString: '$minValue' } } } ])",
+    "mutate_sql": "{\"mutations\":[{\"cmd\":\"[{ \\\"$group\\\": { \\\"_id\\\": null, \\\"minValue\\\": { \\\"$min\\\": { \\\"$arrayElemAt\\\": [ { \\\"$setUnion\\\": [ { \\\"$literal\\\": [ { \\\"$char\\\": [0, 1] }, { \\\"$char\\\": [0, 0] } ] } ] }, 0 ] } } } }, { \\\"$project\\\": { \\\"_id\\\": 0, \\\"minHex\\\": { \\\"$toString\\\": \\\"$minValue\\\" } } }]\",\"category\":\"original\",\"oracle\":\"tlp_base\"},{\"cmd\":\"[{ \\\"$group\\\": { \\\"_id\\\": null, \\\"minValue\\\": { \\\"$min\\\": { \\\"$arrayElemAt\\\": [ { \\\"$setUnion\\\": [ { \\\"$literal\\\": [ { \\\"$char\\\": [0, 1] }, { \\\"$char\\\": [0, 0] } ] } ] }, 0 ] } } } }, { \\\"$project\\\": { \\\"_id\\\": 0, \\\"minHex\\\": { \\\"$toString\\\": \\\"$minValue\\\" } } }], $expr: {$and: [{$eq: [0, 0]}], {\\\"minValue\\\": {\\\"$type\\\": \\\"number\\\"}}]},{ \\\"$project\\\": { \\\"_id\\\": 0, \\\"minHex\\\": { \\\"$toString\\\": \\\"minValue\\\" } } }]\",\"category\":\"tlp_true\",\"oracle\":\"tlp_partition\"},{\"cmd\":\"[{ \\\"$group\\\": { \\\"_id\\\": null, \\\"minValue\\\": { \\\"$min\\\": { \\\"$arrayElemAt\\\": [ { \\\"$setUnion\\\": [ { \\\"$literal\\\": [ { \\\"$char\\\": [0, 1] }, { \\\"$char\\\": [0, 0] } ] } ] }, 0 ] } } } }, { \\\"$project\\\": { \\\"_id\\\": 0, \\\"minHex\\\": { \\\"$toString\\\": \\\"$minValue\\\" } } }, { \\\"$match\\\": { \\\"minValue\\\": { \\\"$not\\\": { \\\"$type\\\": \\\"number\\\" } }, \\\"minValue\\\": { \\\"$exists\\\": true } } }], { \\\"$project\\\": { \\\"_id\\\": 0, \\\"minHex\\\": { \\\"$toString\\\": \\\"$minValue\\\" } } }]\",\"category\":\"tlp_false\",\"oracle\":\"tlp_partition\"},{\"cmd\":\"[{ \\\"$group\\\": { \\\"_id\\\": null, \\\"minValue\\\": { \\\"$min\\\": { \\\"$arrayElemAt\\\": [ { \\\"$setUnion\\\": [ { \\\"$literal\\\": [ { \\\"$char\\\": [0, 1] }, { \\\"$char\\\": [0, 0] } ] } ] }, 0 ] } } } }, { \\\"$project\\\": { \\\"_id\\\": 0, \\\"minHex\\\": { \\\"$toString\\\": \\\"$minValue\\\" } } }]\",\"category\":\"tlp_null\",\"oracle\":\"tlp_partition\"}]}"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null,
+    "bug_type": "TLP_violation",
+    "details": {
+      "original_count": 1,
+      "tlp_true_count": 1,
+      "tlp_false_count": 1,
+      "tlp_null_count": 1,
+      "partition_sum": 3,
+      "difference": -2,
+      "explanation": "TLP invariant violated: 1 ≠ 1 + 1 + 1"
+    }
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}
