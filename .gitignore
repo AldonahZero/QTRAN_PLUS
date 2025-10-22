@@ -43,6 +43,9 @@ MANIFEST
 logs/
 tmp/
 *.log# ignore local test files containing secrets
+
+# 忽略脚本
+scripts/
 test_agent_debug.py
 test_agent_direct.py
 test_agent_mutation_final.py

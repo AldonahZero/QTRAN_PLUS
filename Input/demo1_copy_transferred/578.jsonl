@@ -1,0 +1,1 @@
+{"index": 578, "a_db": "mongodb", "b_db": "postgres", "molt": "tlp (where)", "sqls": ["db.collection.aggregate([{ $project: { roundedValue: { $round: [0.1, 3] } } }])"]}

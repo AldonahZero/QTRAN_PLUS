@@ -1,0 +1,1 @@
+{"index": 479, "a_db": "mysql", "b_db": "mongodb", "molt": "tlp", "sqls": ["CREATE TABLE t0(c0 TEXT);", "INSERT INTO t0(c0) VALUES(0);", "CREATE INDEX i0 ON t0(c0(1));", "SELECT * FROM t0 WHERE t0.c0 NOT BETWEEN '֣a' AND NULL; -- expected: {0}, actual: {}"]}

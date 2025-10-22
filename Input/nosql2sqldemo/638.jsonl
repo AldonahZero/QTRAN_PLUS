@@ -1,0 +1,1 @@
+{"index": 638, "a_db": "duckdb", "b_db": "mongodb", "molt": "tlp", "sqls": ["CREATE TABLE t0(c0 VARCHAR);", "INSERT INTO t0 VALUES ('aaaaaaaaaaaa');", "SELECT MAX(agg0) FROM (SELECT MAX(t0.c0) AS agg0 FROM t0) as s0; -- nondeterministic result or crash"]}

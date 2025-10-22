@@ -1408,7 +1408,7 @@ def transfer_llm_nosql_crash(
         raise ValueError("transfer_llm_nosql_crash called but neither db is NoSQL")
 
     # 构建 prompt
-    raw_statement = test_info.get("sql", "") or ""
+    raw_statement = test_info.get("sqls", "") or ""
     # 注入知识/示例
     feature_knowledge_string = ""
     if str(origin_db).lower() == "redis":
@@ -1678,7 +1678,7 @@ def transfer_llm(
                 use_redis_kb=use_redis_kb,
             )
         else:
-            # 涉及 NoSQL: 默认使用崩溃测试
+            # 涉及 NoSQL
             return transfer_llm_nosql_crash(
                 tool,
                 exp,
