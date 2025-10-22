@@ -1,7 +1,7 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Time    : 2024/9/28 10:16
-# @Author  : shaocanfan
+# @Author  : huanghe
 # @File    : Info_Crawler.py
 # @Intro   :
 """
@@ -23,6 +23,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from bs4 import BeautifulSoup, Tag
 from src.Tools.Crawler.crawler_options import set_options
 
+
 def get_table_column_names(soup_thead):
     soup_thead_names = []
     if not soup_thead:
@@ -31,6 +32,7 @@ def get_table_column_names(soup_thead):
     for th in ths:
         soup_thead_names.append(th.text.strip())
     return soup_thead_names
+
 
 def get_table_column_contents(soup_tbody):
     soup_tbody_contents = []
@@ -61,9 +63,13 @@ def function_crawler(origin_category, title, html, dic_filename):
     result = {}
     timeout = 5  # 等待时间
     options = set_options()
-    driver = webdriver.Chrome(options=options)  # 创建一个Chrome浏览器的WebDriver对象，用于控制浏览器的操作
+    driver = webdriver.Chrome(
+        options=options
+    )  # 创建一个Chrome浏览器的WebDriver对象，用于控制浏览器的操作
     driver.get(html)  # 打开指定的URL:使用WebDriver打开指定的URL，加载页面内容
-    WebDriverWait(driver, timeout)  # 创建一个WebDriverWait对象，设置最大等待时间为50秒，用于等待页面加载完成
+    WebDriverWait(
+        driver, timeout
+    )  # 创建一个WebDriverWait对象，设置最大等待时间为50秒，用于等待页面加载完成
     soup = BeautifulSoup(driver.page_source, "html.parser")
     soup_div = soup.find("div", id="main_content_wrap")
     soup_tables = soup_div.find_all("table")  # 获取所有的table
@@ -75,14 +81,28 @@ def function_crawler(origin_category, title, html, dic_filename):
         # 列名：只包含下面几个，Function（Name），Description，Example
         column_names = get_table_column_names(table.find("thead"))
         # 判断列名内是否含有：Function或Name，如果有则是function相关的列表
-        if ("Function" in column_names or "Name" in column_names) and "Description" in column_names:
+        if (
+            "Function" in column_names or "Name" in column_names
+        ) and "Description" in column_names:
             # 处理关于functions的列表：先获取table的所有数据条
             table_contents = get_table_column_contents(table.find("tbody"))
             # 处理读取到的所有table数据条
             for content in table_contents:
-                feature_temp = [content[column_names.index("Function")]] if "Function" in column_names else [content[column_names.index("Name")]]
-                description_temp = [content[column_names.index("Description")]] if "Description" in column_names else []
-                example_temp = [content[column_names.index("Example")]] if "Example" in column_names else []
+                feature_temp = (
+                    [content[column_names.index("Function")]]
+                    if "Function" in column_names
+                    else [content[column_names.index("Name")]]
+                )
+                description_temp = (
+                    [content[column_names.index("Description")]]
+                    if "Description" in column_names
+                    else []
+                )
+                example_temp = (
+                    [content[column_names.index("Example")]]
+                    if "Example" in column_names
+                    else []
+                )
 
                 function_res = {
                     "HTML": [html],
@@ -90,7 +110,7 @@ def function_crawler(origin_category, title, html, dic_filename):
                     "Feature": feature_temp,
                     "Description": description_temp,
                     "Examples": example_temp,
-                    "Category": [origin_category]
+                    "Category": [origin_category],
                 }
 
                 functions_dic[feature_temp[0]] = function_res
@@ -123,7 +143,7 @@ def function_crawler(origin_category, title, html, dic_filename):
                     "Feature": [function_name],
                     "Description": [],
                     "Examples": [],
-                    "Category": [origin_category]
+                    "Category": [origin_category],
                 }
             # 按照行处理详细信息
             description_add = []
@@ -157,7 +177,10 @@ def function_crawler(origin_category, title, html, dic_filename):
                     continue
                 else:
                     functions_dic[alias] = function_result_temp
-                    functions_dic[alias]["Description"] = functions_dic[alias]["Feature"] + functions_dic[alias]["Description"]
+                    functions_dic[alias]["Description"] = (
+                        functions_dic[alias]["Feature"]
+                        + functions_dic[alias]["Description"]
+                    )
                     functions_dic[alias]["Title"] = [alias]
                     functions_dic[alias]["Feature"] = [alias]
                     print(alias)
@@ -168,17 +191,22 @@ def function_crawler(origin_category, title, html, dic_filename):
         file_cnt = len(os.listdir(dic_filename))
         filename = str(file_cnt) + ".json"
         if os.path.exists(os.path.join(dic_filename, filename)):
-            print(filename+":已经存在")
+            print(filename + ":已经存在")
         with open(os.path.join(dic_filename, filename), "w", encoding="utf-8") as w:
             json.dump(value, w, indent=4)
+
 
 def op_crawler(origin_category, title, html, dic_filename):
     result = {}
     timeout = 5  # 等待时间
     options = set_options()
-    driver = webdriver.Chrome(options=options)  # 创建一个Chrome浏览器的WebDriver对象，用于控制浏览器的操作
+    driver = webdriver.Chrome(
+        options=options
+    )  # 创建一个Chrome浏览器的WebDriver对象，用于控制浏览器的操作
     driver.get(html)  # 打开指定的URL:使用WebDriver打开指定的URL，加载页面内容
-    WebDriverWait(driver, timeout)  # 创建一个WebDriverWait对象，设置最大等待时间为50秒，用于等待页面加载完成
+    WebDriverWait(
+        driver, timeout
+    )  # 创建一个WebDriverWait对象，设置最大等待时间为50秒，用于等待页面加载完成
     soup = BeautifulSoup(driver.page_source, "html.parser")
     soup_div = soup.find("div", id="main_content_wrap")
     soup_tables = soup_div.find_all("table")  # 获取所有的table
@@ -194,9 +222,21 @@ def op_crawler(origin_category, title, html, dic_filename):
             table_contents = get_table_column_contents(table.find("tbody"))
             # 处理读取到的所有table数据条
             for content in table_contents:
-                feature_temp = [content[column_names.index("Operator")]] if "Operator" in column_names else []
-                description_temp = [content[column_names.index("Description")]] if "Description" in column_names else []
-                example_temp = [content[column_names.index("Example")]] if "Example" in column_names else []
+                feature_temp = (
+                    [content[column_names.index("Operator")]]
+                    if "Operator" in column_names
+                    else []
+                )
+                description_temp = (
+                    [content[column_names.index("Description")]]
+                    if "Description" in column_names
+                    else []
+                )
+                example_temp = (
+                    [content[column_names.index("Example")]]
+                    if "Example" in column_names
+                    else []
+                )
 
                 function_res = {
                     "HTML": [html],
@@ -204,7 +244,7 @@ def op_crawler(origin_category, title, html, dic_filename):
                     "Feature": feature_temp,
                     "Description": description_temp,
                     "Examples": example_temp,
-                    "Category": [origin_category]
+                    "Category": [origin_category],
                 }
                 functions_dic[function_res["Description"][0]] = function_res
 
@@ -213,9 +253,10 @@ def op_crawler(origin_category, title, html, dic_filename):
         file_cnt = len(os.listdir(dic_filename))
         filename = str(file_cnt) + ".json"
         if os.path.exists(os.path.join(dic_filename, filename)):
-            print(filename+":已经存在")
+            print(filename + ":已经存在")
         with open(os.path.join(dic_filename, filename), "w", encoding="utf-8") as w:
             json.dump(value, w, indent=4)
+
 
 def data_types_crawler(category_key, statement_key, statement_value, dic_filename):
     detailed = {
@@ -224,13 +265,19 @@ def data_types_crawler(category_key, statement_key, statement_value, dic_filenam
         "Feature": [statement_key],
         "Description": [],
         "Examples": [],
-        "Category": [statement_key]
+        "Category": [statement_key],
     }
     timeout = 5  # 等待时间
     options = set_options()
-    driver = webdriver.Chrome(options=options)  # 创建一个Chrome浏览器的WebDriver对象，用于控制浏览器的操作
-    driver.get(statement_value)  # 打开指定的URL:使用WebDriver打开指定的URL，加载页面内容
-    WebDriverWait(driver, timeout)  # 创建一个WebDriverWait对象，设置最大等待时间为50秒，用于等待页面加载完成
+    driver = webdriver.Chrome(
+        options=options
+    )  # 创建一个Chrome浏览器的WebDriver对象，用于控制浏览器的操作
+    driver.get(
+        statement_value
+    )  # 打开指定的URL:使用WebDriver打开指定的URL，加载页面内容
+    WebDriverWait(
+        driver, timeout
+    )  # 创建一个WebDriverWait对象，设置最大等待时间为50秒，用于等待页面加载完成
     soup = BeautifulSoup(driver.page_source, "html.parser")
     soup_div = soup.find("div", id="main_content_wrap")
     for item in soup_div:
@@ -243,8 +290,11 @@ def data_types_crawler(category_key, statement_key, statement_value, dic_filenam
             if len(code.text.strip()):
                 detailed["Examples"].append(code.text)
     file_cnt = len(os.listdir(dic_filename))
-    with open(os.path.join(dic_filename, str(file_cnt) + ".json"), "w", encoding="utf-8") as w:
+    with open(
+        os.path.join(dic_filename, str(file_cnt) + ".json"), "w", encoding="utf-8"
+    ) as w:
         json.dump(detailed, w, indent=4)
+
 
 def crawler_results(feature_type, htmls_filename, dic_filename):
     if len(os.listdir(dic_filename)):
@@ -254,13 +304,20 @@ def crawler_results(feature_type, htmls_filename, dic_filename):
         html_contents = json.load(rf)
         for category_key, value in html_contents.items():
             for statement_key, statement_value in value.items():
-                print(statement_key+":"+str(statement_value))
+                print(statement_key + ":" + str(statement_value))
                 if feature_type == "function":
-                    function_crawler(statement_key, statement_key, statement_value, dic_filename)
+                    function_crawler(
+                        statement_key, statement_key, statement_value, dic_filename
+                    )
                 elif feature_type == "operator":
-                    op_crawler(statement_key.replace("function", "operator"), statement_key, statement_value, dic_filename)
+                    op_crawler(
+                        statement_key.replace("function", "operator"),
+                        statement_key,
+                        statement_value,
+                        dic_filename,
+                    )
                 elif feature_type == "datatype":
-                    data_types_crawler(category_key, statement_key, statement_value, dic_filename)
-                print('----------------------')
-
-
+                    data_types_crawler(
+                        category_key, statement_key, statement_value, dic_filename
+                    )
+                print("----------------------")

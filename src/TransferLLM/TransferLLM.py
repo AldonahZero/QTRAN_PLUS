@@ -12,7 +12,7 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Time    : 2024/7/26 17:09
-# @Author  : zql
+# @Author  : huanghe
 # @File    : TransferLLM.py
 # @Intro   :
 
@@ -1031,17 +1031,17 @@ def _agent_transfer_statement(
         f'4. Return JSON: {{"TransferSQL": "<shell_command>;", "Explanation": "<text>"}}\n'
         f"5. Example: Redis 'set foo bar' → MongoDB 'db.myCollection.insertOne({{ _id: \"foo\", value: \"bar\" }});'"
     )
-    print("Agent Input: " + input_text)
+    print("📥 Agent Input: " + input_text)
     try:
         res = agent.invoke({"input": input_text})
-        print(f"✅ Agent 调用成功，返回类型: {type(res)}")
+    print(f"📥 ✅ Agent 调用成功，返回类型: {type(res)}")
 
         output = res.get("output") if isinstance(res, dict) else None
         if not output:
-            print(f"❌ Agent 返回结果中没有 'output' 字段: {res}")
+            print(f"📥 ❌ Agent 返回结果中没有 'output' 字段: {res}")
             return None
 
-        print(f"📤 Agent 原始输出: {output}")
+        print(f"📥 📤 Agent 原始输出: {output}")
 
         # 提取 JSON
         txt = str(output).strip()
@@ -1065,16 +1065,16 @@ def _agent_transfer_statement(
             if first_brace >= 0 and last_brace > first_brace:
                 txt = txt[first_brace : last_brace + 1]
 
-        print(f"🔧 提取的 JSON 文本: {txt}")
+    print(f"� �🔧 提取的 JSON 文本: {txt}")
 
         # 修复转义
         txt = txt.replace("\\$", "\\\\$")
 
         data = json.loads(txt)
-        print(f"✅ JSON 解析成功: {data}")
+    print(f"📥 ✅ JSON 解析成功: {data}")
         return data
     except Exception as e:
-        print(f"❌ Agent Transfer 失败: {type(e).__name__}: {e}")
+    print(f"📥 ❌ Agent Transfer 失败: {type(e).__name__}: {e}")
         import traceback
 
         traceback.print_exc()

@@ -13,7 +13,7 @@ SQLancer 路径：Bug 报告解析 -> 方言特征识别 -> LLM 转换 -> 变异
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Time    : 2024/10/20 19:21
-# @Author  : shaocanfan
+# @Author  : huanghe
 # @File    : sqlancer_exp.py
 # @Intro   :
 
@@ -258,13 +258,13 @@ def sqlancer_translate(
             for item in transfer_outputs:
                 mutate_results.append(item)
             if len(mutate_results) and len(mutate_results[-1]["TransferResult"]):
-                print("mutate_results: ", mutate_results[-1])
+                print("🔧 mutate_results: ", mutate_results[-1])
                 mutate_sql = _extract_transferred_stmt(
                     mutate_results[-1]["TransferResult"]
                 )
                 if mutate_sql is None:
                     print(
-                        "[WARN] No TransferSQL/TransferNoSQL found in last TransferResult; skipping mutate phase for this bug."
+                        "🔧 [WARN] No TransferSQL/TransferNoSQL found in last TransferResult; skipping mutate phase for this bug."
                     )
                     continue
 
@@ -285,7 +285,8 @@ def sqlancer_translate(
                             if detected_db_type in ["mongodb", "mongo"]:
                                 actual_target_db = "mongodb"
                                 print(
-                                    f"[INFO] Detected actual target database: MongoDB (b_db was {b_db})"
+                                    "📥 "
+                                    + f"[INFO] Detected actual target database: MongoDB (b_db was {b_db})"
                                 )
                     except (json.JSONDecodeError, KeyError, IndexError) as e:
                         print(
@@ -336,7 +337,7 @@ def sqlancer_translate(
                         json.dump(make_json_safe(item), a, ensure_ascii=False)
                         a.write("\n")
         else:
-            print(bug_output_mutate_filename + "已存在")
+            print("🔧 " + bug_output_mutate_filename + " 已存在")
             # load出来
             with open(bug_output_mutate_filename, "r", encoding="utf-8") as r:
                 lines = r.readlines()
@@ -517,9 +518,31 @@ def sqlancer_translate(
                         break
             # 全部执行完再次进行clear
             database_clear(tool, fuzzer, b_db)
-            mutate_results[-1]["MutateSqlExecResult"] = str(after_result)
-            mutate_results[-1]["MutateSqlExecTime"] = str(after_exec_time)
-            mutate_results[-1]["MutateSqlExecError"] = str(after_error_message)
+            # 对不同类型的目标数据库采用不同的持久化格式：
+            # - 对于关系型/SQL 数据库，保留原注释里的行为（字符串化），以保持与现有 downstream 兼容性
+            # - 对于 NoSQL（如 MongoDB/Redis 等），使用 json.dumps() 来确保字段为合法 JSON（双引号），并保留结构化信息
+            nosql_dbs = {"mongodb", "mongo", "redis", "etcd", "memcached", "cassandra"}
+            try:
+                if isinstance(b_db, str) and b_db.lower() in nosql_dbs:
+                    # NoSQL: 保留结构化结果并使用合法 JSON 序列化
+                    mutate_results[-1]["MutateSqlExecResult"] = json.dumps(
+                        after_result, ensure_ascii=False
+                    )
+                    mutate_results[-1]["MutateSqlExecTime"] = str(after_exec_time)
+                    # 对 Error 也使用 json.dumps()，将 None 转为 null
+                    mutate_results[-1]["MutateSqlExecError"] = json.dumps(
+                        after_error_message, ensure_ascii=False
+                    )
+                else:
+                    # SQL: 使用字符串化以兼容旧逻辑（注释中的实现）
+                    mutate_results[-1]["MutateSqlExecResult"] = str(after_result)
+                    mutate_results[-1]["MutateSqlExecTime"] = str(after_exec_time)
+                    mutate_results[-1]["MutateSqlExecError"] = str(after_error_message)
+            except Exception:
+                # 在极端情况下回退到通用字符串化，避免破坏文件写入流程
+                mutate_results[-1]["MutateSqlExecResult"] = str(after_result)
+                mutate_results[-1]["MutateSqlExecTime"] = str(after_exec_time)
+                mutate_results[-1]["MutateSqlExecError"] = str(after_error_message)
 
             if before_error_message or after_error_message:
                 # 如果是mutate前和后的语句有执行fail的情况

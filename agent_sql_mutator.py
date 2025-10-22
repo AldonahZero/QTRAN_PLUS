@@ -444,7 +444,7 @@ def main():
     print("=" * 80)
 
     # 初始化 Agent
-    print("\n🤖 初始化 Agent...")
+    print("\n📥 初始化 Agent...")
     agent = SQLMutationAgent(model_name="gpt-4o-mini", temperature=0.7)
 
     # 测试用例 1: Redis 命令

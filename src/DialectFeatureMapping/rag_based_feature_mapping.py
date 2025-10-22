@@ -10,7 +10,7 @@ RAG 特征映射：跨数据库方言特征的相似项检索与 LLM 映射解�
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Time    : 2024/9/30 10:58
-# @Author  : shaocanfan
+# @Author  : huanghe
 # @File    : rag_based_feature_mapping.py
 
 import json
@@ -24,6 +24,7 @@ from langchain_community.embeddings.sentence_transformer import (
 from langchain.output_parsers import ResponseSchema
 from langchain.output_parsers import StructuredOutputParser
 from langchain.callbacks import get_openai_callback
+
 # from langchain_openai import OpenAIEmbeddings
 # import chromadb
 # import chromadb
@@ -38,17 +39,34 @@ llm = ChatOpenAI(temperature=0.0, model="gpt-4o-mini")
 
 feature_knowledge_base = "FeatureKnowledgeBase"
 
+
 # 合并每个feature type中所有的feature数据，并将它们以jsonl格式存储起来
 def feature_knowledge_merge(db, feature_type):
     """合并某数据库某类特征到单一 jsonl，便于后续向量化处理。"""
-    merge_data_filename = os.path.join("..", "..", feature_knowledge_base, db, "RAG_Embedding_Data", feature_type + ".jsonl")
+    merge_data_filename = os.path.join(
+        "..",
+        "..",
+        feature_knowledge_base,
+        db,
+        "RAG_Embedding_Data",
+        feature_type + ".jsonl",
+    )
     if not os.path.exists(merge_data_filename):
         # 创建embedding_data_filename
-        feature_filepath = os.path.join("..", "..", feature_knowledge_base, db, feature_type, feature_type + "_Results")
+        feature_filepath = os.path.join(
+            "..",
+            "..",
+            feature_knowledge_base,
+            db,
+            feature_type,
+            feature_type + "_Results",
+        )
         filenames = os.listdir(feature_filepath)
         feature_names = []
         for filename in filenames:
-            with open(os.path.join(feature_filepath, filename), "r", encoding="utf-8") as r:
+            with open(
+                os.path.join(feature_filepath, filename), "r", encoding="utf-8"
+            ) as r:
                 value = json.load(r)
             with open(merge_data_filename, "a", encoding="utf-8") as a:
                 json.dump(value, a)
@@ -63,11 +81,20 @@ def feature_type_merge(db, feature_types):
     names = "merge"
     for feature_type in feature_types:
         names = names + "_" + feature_type
-    merge_feature_filename = os.path.join("..", "..", feature_knowledge_base, db, "RAG_Embedding_Data", names + ".jsonl")
+    merge_feature_filename = os.path.join(
+        "..", "..", feature_knowledge_base, db, "RAG_Embedding_Data", names + ".jsonl"
+    )
     if not os.path.exists(merge_feature_filename):
         index_all = 0
         for feature_type in feature_types:
-            embedding_data_filename = os.path.join("..", "..", feature_knowledge_base, db, "RAG_Embedding_Data", feature_type + ".jsonl")
+            embedding_data_filename = os.path.join(
+                "..",
+                "..",
+                feature_knowledge_base,
+                db,
+                "RAG_Embedding_Data",
+                feature_type + ".jsonl",
+            )
             with open(embedding_data_filename, "r", encoding="utf-8") as r:
                 lines = r.readlines()
             for line in lines:
@@ -76,7 +103,7 @@ def feature_type_merge(db, feature_types):
                 index_all += 1
                 with open(merge_feature_filename, "a", encoding="utf-8") as a:
                     json.dump(value, a)
-                    a.write('\n')
+                    a.write("\n")
     return merge_feature_filename
 
 
@@ -87,14 +114,21 @@ def load_feature_knowledge_embedding(db, feature_types, content_keys):
         names = names + "_" + feature_type
     for content_key in content_keys:
         names = names + "_" + content_key
-    embedding_data_filename = os.path.join("..", "..", feature_knowledge_base, db, "RAG_Embedding_Data",
-                                           names + ".jsonl")
+    embedding_data_filename = os.path.join(
+        "..", "..", feature_knowledge_base, db, "RAG_Embedding_Data", names + ".jsonl"
+    )
     if not os.path.exists(embedding_data_filename):
         names_ = "merge"
         for feature_type in feature_types:
             names_ = names_ + "_" + feature_type
-        merge_feature_filename = os.path.join("..", "..", feature_knowledge_base, db, "RAG_Embedding_Data",
-                                              names_ + ".jsonl")
+        merge_feature_filename = os.path.join(
+            "..",
+            "..",
+            feature_knowledge_base,
+            db,
+            "RAG_Embedding_Data",
+            names_ + ".jsonl",
+        )
 
         with open(merge_feature_filename, "r", encoding="utf-8") as r:
             lines = r.readlines()
@@ -115,13 +149,18 @@ def load_feature_knowledge_embedding(db, feature_types, content_keys):
                 json.dump(value, a)
                 a.write("\n")
     else:
-        print(embedding_data_filename+":已存在！")
+        print(embedding_data_filename + ":已存在！")
 
-    loader = JSONLoader(file_path=embedding_data_filename, content_key="vector_txt", json_lines=True)
+    loader = JSONLoader(
+        file_path=embedding_data_filename, content_key="vector_txt", json_lines=True
+    )
     data = loader.load()
     return data
 
-def rag_feature_mapping_llm_v1(version_id, search_k, a_db, b_db, feature_types, content_keys):
+
+def rag_feature_mapping_llm_v1(
+    version_id, search_k, a_db, b_db, feature_types, content_keys
+):
     """以向量检索召回 b_db 相似特征，调用 LLM 生成映射与说明，并写入结果。"""
     # 先为a_db,b_db的所有feature_types分别进行数据合并
     for feature_type in feature_types:
@@ -132,8 +171,21 @@ def rag_feature_mapping_llm_v1(version_id, search_k, a_db, b_db, feature_types, 
     a_merge_feature_filename = feature_type_merge(a_db, feature_types)
     feature_type_merge(b_db, feature_types)
 
-    dir_filename = os.path.join("..", "..", "RAG_Feature_Mapping", a_db, feature_types[0],
-                                a_db + "_mapping_" + b_db + "_k" + str(search_k) + "_" + str(version_id) + ".jsonl")
+    dir_filename = os.path.join(
+        "..",
+        "..",
+        "RAG_Feature_Mapping",
+        a_db,
+        feature_types[0],
+        a_db
+        + "_mapping_"
+        + b_db
+        + "_k"
+        + str(search_k)
+        + "_"
+        + str(version_id)
+        + ".jsonl",
+    )
     # 读取被检索b_db的feature_type的embedding data
     data_b = load_feature_knowledge_embedding(b_db, feature_types, content_keys)
 
@@ -156,8 +208,12 @@ def rag_feature_mapping_llm_v1(version_id, search_k, a_db, b_db, feature_types, 
             processed_lines_cnt = sum(1 for line in direct_file_r)
 
     response_schemas = [
-        ResponseSchema(type="string", name="Feature", description='The mapping feature name'),
-        ResponseSchema(type="string", name="Explanation", description='Explain the mapping reason.')
+        ResponseSchema(
+            type="string", name="Feature", description="The mapping feature name"
+        ),
+        ResponseSchema(
+            type="string", name="Explanation", description="Explain the mapping reason."
+        ),
     ]
 
     output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
@@ -165,7 +221,7 @@ def rag_feature_mapping_llm_v1(version_id, search_k, a_db, b_db, feature_types, 
     for query in query_data:
         query_json = json.loads(query)
         print(query_json["index"])
-        print("proce_line_cnt"+str(processed_lines_cnt))
+        print("proce_line_cnt" + str(processed_lines_cnt))
         if query_json["index"] < processed_lines_cnt:
             continue
 
@@ -182,34 +238,40 @@ def rag_feature_mapping_llm_v1(version_id, search_k, a_db, b_db, feature_types, 
 
         prompt = ChatPromptTemplate.from_template(query_merged)
         chain = (
-                {"context": retriever, "question": RunnablePassthrough()}
-                | prompt
-                | llm
-                | StrOutputParser())
+            {"context": retriever, "question": RunnablePassthrough()}
+            | prompt
+            | llm
+            | StrOutputParser()
+        )
         cost = {}
 
         with get_openai_callback() as cb:
             resp = chain.invoke(
-                "About the feature " + feature_name + " in " + a_db + ", what is the similar feature in " + b_db + "?"
+                "About the feature "
+                + feature_name
+                + " in "
+                + a_db
+                + ", what is the similar feature in "
+                + b_db
+                + "?"
             )
             try:
                 resp_json = output_parser.parse(resp)
             except Exception as e:
-                resp_json = {"Feature":"","Explanation":""}
+                resp_json = {"Feature": "", "Explanation": ""}
             resp_json["index"] = -1
             resp_json["Feature"] = [resp_json["Feature"]]
             cost["Total Tokens"] = cb.total_tokens
             cost["Prompt Tokens"] = cb.prompt_tokens
             cost["Completion Tokens"] = cb.completion_tokens
-            cost["Total Cost (USD)"] = cb.total_cost  # 用了4o-mini以后变成0.0了，还没修改，也可以用户token乘单价计算
-        
+            cost["Total Cost (USD)"] = (
+                cb.total_cost
+            )  # 用了4o-mini以后变成0.0了，还没修改，也可以用户token乘单价计算
+
         mapping_result = {
-            "a_db": {
-                "index": query_json["index"],
-                "Feature": query_json["Feature"]
-            },
+            "a_db": {"index": query_json["index"], "Feature": query_json["Feature"]},
             "b_db": resp_json,
-            "cost": cost
+            "cost": cost,
         }
 
         print(mapping_result)
@@ -218,7 +280,9 @@ def rag_feature_mapping_llm_v1(version_id, search_k, a_db, b_db, feature_types, 
             a.write("\n")
 
 
-def rag_feature_mapping_llm_v2(version_id, search_k, a_db, b_db, feature_types, content_keys):
+def rag_feature_mapping_llm_v2(
+    version_id, search_k, a_db, b_db, feature_types, content_keys
+):
     # 先为a_db,b_db的所有feature_types分别进行数据合并
     for feature_type in feature_types:
         feature_knowledge_merge(a_db, feature_type)
@@ -228,7 +292,21 @@ def rag_feature_mapping_llm_v2(version_id, search_k, a_db, b_db, feature_types, 
     a_merge_feature_filename = feature_type_merge(a_db, feature_types)
     feature_type_merge(b_db, feature_types)
 
-    dir_filename = os.path.join("..", "..", "RAG_Feature_Mapping", a_db, feature_types[0], a_db + "_mapping_" + b_db + "_k" + str(search_k) + "_" + str(version_id) + ".jsonl")
+    dir_filename = os.path.join(
+        "..",
+        "..",
+        "RAG_Feature_Mapping",
+        a_db,
+        feature_types[0],
+        a_db
+        + "_mapping_"
+        + b_db
+        + "_k"
+        + str(search_k)
+        + "_"
+        + str(version_id)
+        + ".jsonl",
+    )
     # 读取被检索b_db的feature_type的embedding data
     data_b = load_feature_knowledge_embedding(b_db, feature_types, content_keys)
 
@@ -251,8 +329,12 @@ def rag_feature_mapping_llm_v2(version_id, search_k, a_db, b_db, feature_types, 
             processed_lines_cnt = sum(1 for line in direct_file_r)
 
     response_schemas = [
-        ResponseSchema(type="string", name="Feature", description='The mapping feature name'),
-        ResponseSchema(type="string", name="Explanation", description='Explain the mapping reason.')
+        ResponseSchema(
+            type="string", name="Feature", description="The mapping feature name"
+        ),
+        ResponseSchema(
+            type="string", name="Explanation", description="Explain the mapping reason."
+        ),
     ]
 
     output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
@@ -275,15 +357,23 @@ def rag_feature_mapping_llm_v2(version_id, search_k, a_db, b_db, feature_types, 
             feature_name += item
         prompt = ChatPromptTemplate.from_template(query_merged)
         chain = (
-                {"context": retriever, "question": RunnablePassthrough()}
-                | prompt
-                | llm
-                | StrOutputParser())
+            {"context": retriever, "question": RunnablePassthrough()}
+            | prompt
+            | llm
+            | StrOutputParser()
+        )
 
         cost = {}
         with get_openai_callback() as cb:
             resp = chain.invoke(
-                "About the feature " + feature_name + " in " + a_db + ", what is the similar feature in " + b_db + "?" + data_a[query_json["index"]].page_content
+                "About the feature "
+                + feature_name
+                + " in "
+                + a_db
+                + ", what is the similar feature in "
+                + b_db
+                + "?"
+                + data_a[query_json["index"]].page_content
             )
 
             resp_json = output_parser.parse(resp)
@@ -292,15 +382,14 @@ def rag_feature_mapping_llm_v2(version_id, search_k, a_db, b_db, feature_types, 
             cost["Total Tokens"] = cb.total_tokens
             cost["Prompt Tokens"] = cb.prompt_tokens
             cost["Completion Tokens"] = cb.completion_tokens
-            cost["Total Cost (USD)"] = cb.total_cost  # 用了4o-mini以后变成0.0了，还没修改，也可以用户token乘单价计算
+            cost["Total Cost (USD)"] = (
+                cb.total_cost
+            )  # 用了4o-mini以后变成0.0了，还没修改，也可以用户token乘单价计算
 
         mapping_result = {
-            "a_db": {
-                "index": query_json["index"],
-                "Feature": query_json["Feature"]
-            },
+            "a_db": {"index": query_json["index"], "Feature": query_json["Feature"]},
             "b_db": resp_json,
-            "cost": cost
+            "cost": cost,
         }
 
         print(mapping_result)
@@ -309,7 +398,10 @@ def rag_feature_mapping_llm_v2(version_id, search_k, a_db, b_db, feature_types, 
             json.dump(mapping_result, a, ensure_ascii=False)
             a.write("\n")
 
-def rag_feature_mapping_llm_v3(version_id, search_k, a_db, b_db, feature_types, content_keys):
+
+def rag_feature_mapping_llm_v3(
+    version_id, search_k, a_db, b_db, feature_types, content_keys
+):
     for feature_type in feature_types:
         feature_knowledge_merge(a_db, feature_type)
         feature_knowledge_merge(b_db, feature_type)
@@ -318,7 +410,21 @@ def rag_feature_mapping_llm_v3(version_id, search_k, a_db, b_db, feature_types, 
     a_merge_feature_filename = feature_type_merge(a_db, feature_types)
     feature_type_merge(b_db, feature_types)
 
-    dir_filename = os.path.join("..", "..", "RAG_Feature_Mapping", a_db, feature_types[0], a_db + "_mapping_" + b_db + "_k" + str(search_k) + "_" + str(version_id) + ".jsonl")
+    dir_filename = os.path.join(
+        "..",
+        "..",
+        "RAG_Feature_Mapping",
+        a_db,
+        feature_types[0],
+        a_db
+        + "_mapping_"
+        + b_db
+        + "_k"
+        + str(search_k)
+        + "_"
+        + str(version_id)
+        + ".jsonl",
+    )
     # 读取被检索b_db的feature_type的embedding data
     data_b = load_feature_knowledge_embedding(b_db, feature_types, content_keys)
 
@@ -338,8 +444,12 @@ def rag_feature_mapping_llm_v3(version_id, search_k, a_db, b_db, feature_types, 
             processed_lines_cnt = sum(1 for line in direct_file_r)
 
     response_schemas = [
-        ResponseSchema(type="string", name="Feature", description='The mapping feature name'),
-        ResponseSchema(type="string", name="Explanation", description='Explain the mapping reason.')
+        ResponseSchema(
+            type="string", name="Feature", description="The mapping feature name"
+        ),
+        ResponseSchema(
+            type="string", name="Explanation", description="Explain the mapping reason."
+        ),
     ]
 
     output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
@@ -360,16 +470,18 @@ def rag_feature_mapping_llm_v3(version_id, search_k, a_db, b_db, feature_types, 
         for item in query_json["Feature"]:
             feature_name += item
         prompt = ChatPromptTemplate.from_template(query_merged)
-        chain = (
-                {"question": RunnablePassthrough()}
-                | prompt
-                | llm
-                | StrOutputParser())
+        chain = {"question": RunnablePassthrough()} | prompt | llm | StrOutputParser()
 
         cost = {}
         with get_openai_callback() as cb:
             resp = chain.invoke(
-                "About the feature " + feature_name + " in " + a_db + ", what is the similar feature in " + b_db + "?"
+                "About the feature "
+                + feature_name
+                + " in "
+                + a_db
+                + ", what is the similar feature in "
+                + b_db
+                + "?"
             )
             resp_json = output_parser.parse(resp)
             resp_json["index"] = -1
@@ -377,15 +489,14 @@ def rag_feature_mapping_llm_v3(version_id, search_k, a_db, b_db, feature_types, 
             cost["Total Tokens"] = cb.total_tokens
             cost["Prompt Tokens"] = cb.prompt_tokens
             cost["Completion Tokens"] = cb.completion_tokens
-            cost["Total Cost (USD)"] = cb.total_cost  # 用了4o-mini以后变成0.0了，还没修改，也可以用户token乘单价计算
+            cost["Total Cost (USD)"] = (
+                cb.total_cost
+            )  # 用了4o-mini以后变成0.0了，还没修改，也可以用户token乘单价计算
 
         mapping_result = {
-            "a_db": {
-                "index": query_json["index"],
-                "Feature": query_json["Feature"]
-            },
+            "a_db": {"index": query_json["index"], "Feature": query_json["Feature"]},
             "b_db": resp_json,
-            "cost": cost
+            "cost": cost,
         }
 
         print(mapping_result)
@@ -395,7 +506,9 @@ def rag_feature_mapping_llm_v3(version_id, search_k, a_db, b_db, feature_types, 
             a.write("\n")
 
 
-def rag_feature_mapping_llm_v4(version_id, search_k, a_db, b_db, feature_types, content_keys):
+def rag_feature_mapping_llm_v4(
+    version_id, search_k, a_db, b_db, feature_types, content_keys
+):
     # 先为a_db,b_db的所有feature_types分别进行数据合并
     for feature_type in feature_types:
         feature_knowledge_merge(a_db, feature_type)
@@ -405,8 +518,21 @@ def rag_feature_mapping_llm_v4(version_id, search_k, a_db, b_db, feature_types, 
     a_merge_feature_filename = feature_type_merge(a_db, feature_types)
     feature_type_merge(b_db, feature_types)
 
-    dir_filename = os.path.join("..", "..", "RAG_Feature_Mapping", a_db, feature_types[0],
-                                a_db + "_mapping_" + b_db + "_k" + str(search_k) + "_" + str(version_id) + ".jsonl")
+    dir_filename = os.path.join(
+        "..",
+        "..",
+        "RAG_Feature_Mapping",
+        a_db,
+        feature_types[0],
+        a_db
+        + "_mapping_"
+        + b_db
+        + "_k"
+        + str(search_k)
+        + "_"
+        + str(version_id)
+        + ".jsonl",
+    )
     # 读取被检索b_db的feature_type的embedding data
     data_b = load_feature_knowledge_embedding(b_db, feature_types, content_keys)
 
@@ -420,20 +546,26 @@ def rag_feature_mapping_llm_v4(version_id, search_k, a_db, b_db, feature_types, 
     # 获取a_db的feature_type所有feature
     data_a = load_feature_knowledge_embedding(a_db, feature_types, content_keys)
 
-
     names = "merge"
     for feature_type in feature_types:
         names = names + "_" + feature_type
-    merge_feature_filename = os.path.join("..", "..", "FeatureKnowledgeBase", a_db, "RAG_Embedding_Data",
-                                          names + ".jsonl")
+    merge_feature_filename = os.path.join(
+        "..", "..", "FeatureKnowledgeBase", a_db, "RAG_Embedding_Data", names + ".jsonl"
+    )
     with open(merge_feature_filename, "r", encoding="utf-8") as read_lines:
         query_data = read_lines.readlines()
 
     b_names = "merge"
     for feature_type in feature_types:
         b_names = b_names + "_" + feature_type
-    b_merge_feature_filename = os.path.join("..", "..", "FeatureKnowledgeBase", b_db, "RAG_Embedding_Data",
-                                            b_names + ".jsonl")
+    b_merge_feature_filename = os.path.join(
+        "..",
+        "..",
+        "FeatureKnowledgeBase",
+        b_db,
+        "RAG_Embedding_Data",
+        b_names + ".jsonl",
+    )
     with open(b_merge_feature_filename, "r", encoding="utf-8") as read_lines:
         b_query_data = read_lines.readlines()
 
@@ -455,7 +587,15 @@ def rag_feature_mapping_llm_v4(version_id, search_k, a_db, b_db, feature_types, 
 
         cost = {}
         with get_openai_callback() as cb:
-            query_temp = "About the feature " + feature_name + " in " + a_db + ", which feature has most similar function in " + b_db + "?"
+            query_temp = (
+                "About the feature "
+                + feature_name
+                + " in "
+                + a_db
+                + ", which feature has most similar function in "
+                + b_db
+                + "?"
+            )
             docs = retriever.get_relevant_documents(query_temp)
             # 提取文档内容字符串
             if docs:  # 检查是否有返回结果
@@ -468,18 +608,20 @@ def rag_feature_mapping_llm_v4(version_id, search_k, a_db, b_db, feature_types, 
             cost["Total Tokens"] = cb.total_tokens
             cost["Prompt Tokens"] = cb.prompt_tokens
             cost["Completion Tokens"] = cb.completion_tokens
-            cost["Total Cost (USD)"] = cb.total_cost  # 用了4o-mini以后变成0.0了，还没修改，也可以用户token乘单价计算
+            cost["Total Cost (USD)"] = (
+                cb.total_cost
+            )  # 用了4o-mini以后变成0.0了，还没修改，也可以用户token乘单价计算
             mapping_result = {
                 "a_db": {
                     "index": query_json["index"],
-                    "Feature": query_json["Feature"]
+                    "Feature": query_json["Feature"],
                 },
                 "b_db": {
                     "index": index_temp,
                     "Feature": feature_temp,
-                    "Explanation": ""
+                    "Explanation": "",
                 },
-                "cost": cost
+                "cost": cost,
             }
 
         print(mapping_result)
@@ -488,16 +630,26 @@ def rag_feature_mapping_llm_v4(version_id, search_k, a_db, b_db, feature_types, 
             a.write("\n")
 
 
-def rag_feature_mapping_llm(version_id, search_k, a_db, b_db, feature_types, content_keys):
+def rag_feature_mapping_llm(
+    version_id, search_k, a_db, b_db, feature_types, content_keys
+):
     # feature_type:mapping的feature 种类，content_key:mapping的vector中包含的keys
     if version_id == 1:
-        rag_feature_mapping_llm_v1(version_id, search_k, a_db, b_db, feature_types, content_keys)
+        rag_feature_mapping_llm_v1(
+            version_id, search_k, a_db, b_db, feature_types, content_keys
+        )
     elif version_id == 2:
-        rag_feature_mapping_llm_v2(version_id, search_k, a_db, b_db, feature_types, content_keys)
+        rag_feature_mapping_llm_v2(
+            version_id, search_k, a_db, b_db, feature_types, content_keys
+        )
     elif version_id == 3:
-        rag_feature_mapping_llm_v3(version_id, search_k, a_db, b_db, feature_types, content_keys)
+        rag_feature_mapping_llm_v3(
+            version_id, search_k, a_db, b_db, feature_types, content_keys
+        )
     elif version_id == 4:
-        rag_feature_mapping_llm_v4(version_id, search_k, a_db, b_db, feature_types, content_keys)
+        rag_feature_mapping_llm_v4(
+            version_id, search_k, a_db, b_db, feature_types, content_keys
+        )
 
 
 def rag_feature_mapping_llm_temp(version_id, a_db, b_db, feature_types, content_keys):
@@ -510,7 +662,13 @@ def rag_feature_mapping_llm_temp(version_id, a_db, b_db, feature_types, content_
     a_merge_feature_filename = feature_type_merge(a_db, feature_types)
     feature_type_merge(b_db, feature_types)
 
-    dir_filename = os.path.join("..", "..", "RAG_Feature_Mapping", a_db, a_db + "_mapping_" + b_db + "_" + str(version_id) + ".jsonl")
+    dir_filename = os.path.join(
+        "..",
+        "..",
+        "RAG_Feature_Mapping",
+        a_db,
+        a_db + "_mapping_" + b_db + "_" + str(version_id) + ".jsonl",
+    )
     # 读取被检索b_db的feature_type的embedding data
     data_b = load_feature_knowledge_embedding(b_db, feature_types, content_keys)
 
@@ -530,8 +688,12 @@ def rag_feature_mapping_llm_temp(version_id, a_db, b_db, feature_types, content_
             processed_lines_cnt = sum(1 for line in direct_file_r)
 
     response_schemas = [
-        ResponseSchema(type="string", name="Feature", description='The mapping feature name'),
-        ResponseSchema(type="string", name="Explanation", description='Explain the mapping reason.')
+        ResponseSchema(
+            type="string", name="Feature", description="The mapping feature name"
+        ),
+        ResponseSchema(
+            type="string", name="Explanation", description="Explain the mapping reason."
+        ),
     ]
 
     output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
@@ -554,15 +716,23 @@ def rag_feature_mapping_llm_temp(version_id, a_db, b_db, feature_types, content_
             feature_name += item
         prompt = ChatPromptTemplate.from_template(query_merged)
         chain = (
-                {"context": retriever, "question": RunnablePassthrough()}
-                | prompt
-                | llm
-                | StrOutputParser())
+            {"context": retriever, "question": RunnablePassthrough()}
+            | prompt
+            | llm
+            | StrOutputParser()
+        )
 
         cost = {}
         with get_openai_callback() as cb:
             resp = chain.invoke(
-                "关于" + a_db + "中的feature " + feature_name + "，" + b_db + "中与之功能相似的feature名称是什么？" + data_a[query_json["index"]].page_content
+                "关于"
+                + a_db
+                + "中的feature "
+                + feature_name
+                + "，"
+                + b_db
+                + "中与之功能相似的feature名称是什么？"
+                + data_a[query_json["index"]].page_content
             )
 
             """
@@ -576,15 +746,14 @@ def rag_feature_mapping_llm_temp(version_id, a_db, b_db, feature_types, content_
             cost["Total Tokens"] = cb.total_tokens
             cost["Prompt Tokens"] = cb.prompt_tokens
             cost["Completion Tokens"] = cb.completion_tokens
-            cost["Total Cost (USD)"] = cb.total_cost  # 用了4o-mini以后变成0.0了，还没修改，也可以用户token乘单价计算
+            cost["Total Cost (USD)"] = (
+                cb.total_cost
+            )  # 用了4o-mini以后变成0.0了，还没修改，也可以用户token乘单价计算
 
         mapping_result = {
-            "a_db": {
-                "index": query_json["index"],
-                "Feature": query_json["Feature"]
-            },
+            "a_db": {"index": query_json["index"], "Feature": query_json["Feature"]},
             "b_db": resp_json,
-            "cost": cost
+            "cost": cost,
         }
 
         print(mapping_result)
@@ -594,12 +763,43 @@ def rag_feature_mapping_llm_temp(version_id, a_db, b_db, feature_types, content_
             a.write("\n")
 
 
-def rag_feature_mapping_process(version_id, search_k, a_db, b_db, feature_types, content_keys):
-    dir_filename = os.path.join("..", "..", "RAG_Feature_Mapping", a_db, feature_types[0], a_db + "_mapping_" + b_db + "_k" + str(search_k) + "_" + str(version_id) + ".jsonl")
+def rag_feature_mapping_process(
+    version_id, search_k, a_db, b_db, feature_types, content_keys
+):
+    dir_filename = os.path.join(
+        "..",
+        "..",
+        "RAG_Feature_Mapping",
+        a_db,
+        feature_types[0],
+        a_db
+        + "_mapping_"
+        + b_db
+        + "_k"
+        + str(search_k)
+        + "_"
+        + str(version_id)
+        + ".jsonl",
+    )
     with open(dir_filename, "r", encoding="utf-8") as r:
         lines = r.readlines()
 
-    processed_dir_filename = os.path.join("..", "..", "RAG_Feature_Mapping", a_db, feature_types[0], a_db + "_mapping_" + b_db + "_k" + str(search_k) + "_" + str(version_id) + "_processed" + ".jsonl")
+    processed_dir_filename = os.path.join(
+        "..",
+        "..",
+        "RAG_Feature_Mapping",
+        a_db,
+        feature_types[0],
+        a_db
+        + "_mapping_"
+        + b_db
+        + "_k"
+        + str(search_k)
+        + "_"
+        + str(version_id)
+        + "_processed"
+        + ".jsonl",
+    )
     processed_lines_cnt = 0
     if os.path.exists(processed_dir_filename):
         with open(processed_dir_filename, "r", encoding="utf-8") as direct_file_r:
@@ -608,16 +808,23 @@ def rag_feature_mapping_process(version_id, search_k, a_db, b_db, feature_types,
     a_names = "merge"
     for feature_type in feature_types:
         a_names = a_names + "_" + feature_type
-    a_merge_feature_filename = os.path.join("..", "..", "FeatureKnowledgeBase", a_db, "RAG_Embedding_Data",
-                                            a_names + ".jsonl")
+    a_merge_feature_filename = os.path.join(
+        "..",
+        "..",
+        "FeatureKnowledgeBase",
+        a_db,
+        "RAG_Embedding_Data",
+        a_names + ".jsonl",
+    )
     with open(a_merge_feature_filename, "r", encoding="utf-8") as read_lines:
         a_merge_data = read_lines.readlines()
 
     names = "merge"
     for feature_type in feature_types:
         names = names + "_" + feature_type
-    merge_feature_filename = os.path.join("..", "..", "FeatureKnowledgeBase", b_db, "RAG_Embedding_Data",
-                                          names + ".jsonl")
+    merge_feature_filename = os.path.join(
+        "..", "..", "FeatureKnowledgeBase", b_db, "RAG_Embedding_Data", names + ".jsonl"
+    )
     with open(merge_feature_filename, "r", encoding="utf-8") as read_lines:
         query_data = read_lines.readlines()
 
@@ -648,14 +855,14 @@ def rag_feature_mapping_process(version_id, search_k, a_db, b_db, feature_types,
             query_json = json.loads(query)
             query_json_feature = query_json["Feature"][0].split("(")[0].strip()
             if query_json_feature.lower() == b_db_feature.lower():
-            # if len(query_json_feature) and query_json_feature.lower() in b_db_feature.lower() or b_db_feature.lower() in query_json_feature.lower():
+                # if len(query_json_feature) and query_json_feature.lower() in b_db_feature.lower() or b_db_feature.lower() in query_json_feature.lower():
                 b_db_json["index"] = query_json["index"]
                 b_db_json["Feature"] = query_json["Feature"]
                 print("直接匹配：")
                 print(value_origin)
                 value["b_db"] = b_db_json
                 print(value)
-                print('--------------')
+                print("--------------")
                 flag = True
                 break
         if not flag:
@@ -673,18 +880,25 @@ def rag_feature_mapping_process(version_id, search_k, a_db, b_db, feature_types,
             vectorstore = Chroma.from_documents(data_b, embeddings)
             retriever = vectorstore.as_retriever()
             # 查询检索器并获取最相似的文档
-            query = "Which feature in " + b_db + " is most similar to the feature " + b_db_feature  # 替换为你的查询语句
+            query = (
+                "Which feature in "
+                + b_db
+                + " is most similar to the feature "
+                + b_db_feature
+            )  # 替换为你的查询语句
             docs = retriever.get_relevant_documents(query)
             # 提取文档内容字符串
             if docs:  # 检查是否有返回结果
                 top_doc_content = docs[0].page_content  # 获取第一个文档的内容
                 b_db_json["index"] = int(top_doc_content.split(":")[1].strip())
-                b_db_json["Feature"] = json.loads(query_data[b_db_json["index"]])["Feature"]
+                b_db_json["Feature"] = json.loads(query_data[b_db_json["index"]])[
+                    "Feature"
+                ]
                 print("RAG检索：")
                 print(value_origin)
                 value["b_db"] = b_db_json
                 print(value)
-                print('--------------')
+                print("--------------")
             else:
                 print("未找到相似的文档")
         else:
@@ -693,31 +907,54 @@ def rag_feature_mapping_process(version_id, search_k, a_db, b_db, feature_types,
 
         with open(processed_dir_filename, "a", encoding="utf-8") as a:
             json.dump(value, a)
-            a.write('\n')
+            a.write("\n")
     print("mapping 字符串匹配直接成功的个数：" + str(mapping_success_cnt))
     print("mapping 字符串匹配失败的各个类别占比：")
     for key_, value_ in mapping_fail_cnt.items():
-        print(key_+":"+str(value_/mapping_category_cnt[key_]))
+        print(key_ + ":" + str(value_ / mapping_category_cnt[key_]))
 
 
-def rag_feature_mapping_count(version_id, search_k, a_db, b_db, feature_types, content_keys):
-    dir_filename = os.path.join("..", "..", "RAG_Feature_Mapping", a_db, feature_types[0], a_db + "_mapping_" + b_db + "_k" + str(search_k) + "_" + str(version_id) + ".jsonl")
+def rag_feature_mapping_count(
+    version_id, search_k, a_db, b_db, feature_types, content_keys
+):
+    dir_filename = os.path.join(
+        "..",
+        "..",
+        "RAG_Feature_Mapping",
+        a_db,
+        feature_types[0],
+        a_db
+        + "_mapping_"
+        + b_db
+        + "_k"
+        + str(search_k)
+        + "_"
+        + str(version_id)
+        + ".jsonl",
+    )
     with open(dir_filename, "r", encoding="utf-8") as r:
         lines = r.readlines()
 
     a_names = "merge"
     for feature_type in feature_types:
         a_names = a_names + "_" + feature_type
-    a_merge_feature_filename = os.path.join("..", "..", "FeatureKnowledgeBase", a_db, "RAG_Embedding_Data",
-                                            a_names + ".jsonl")
+    a_merge_feature_filename = os.path.join(
+        "..",
+        "..",
+        "FeatureKnowledgeBase",
+        a_db,
+        "RAG_Embedding_Data",
+        a_names + ".jsonl",
+    )
     with open(a_merge_feature_filename, "r", encoding="utf-8") as read_lines:
         a_merge_data = read_lines.readlines()
 
     names = "merge"
     for feature_type in feature_types:
         names = names + "_" + feature_type
-    merge_feature_filename = os.path.join("..", "..", "FeatureKnowledgeBase", b_db, "RAG_Embedding_Data",
-                                          names + ".jsonl")
+    merge_feature_filename = os.path.join(
+        "..", "..", "FeatureKnowledgeBase", b_db, "RAG_Embedding_Data", names + ".jsonl"
+    )
     with open(merge_feature_filename, "r", encoding="utf-8") as read_lines:
         query_data = read_lines.readlines()
 
@@ -747,7 +984,7 @@ def rag_feature_mapping_count(version_id, search_k, a_db, b_db, feature_types, c
             query_json = json.loads(query)
             query_json_feature = query_json["Feature"][0].split("(")[0].strip()
             if query_json_feature.lower() == b_db_feature.lower():
-            # if len(query_json_feature) and query_json_feature.lower() in b_db_feature.lower() or b_db_feature.lower() in query_json_feature.lower():
+                # if len(query_json_feature) and query_json_feature.lower() in b_db_feature.lower() or b_db_feature.lower() in query_json_feature.lower():
                 flag = True
                 break
         if not flag:
@@ -761,9 +998,18 @@ def rag_feature_mapping_count(version_id, search_k, a_db, b_db, feature_types, c
         # 将process后的信息进行存储
 
     print("mapping 字符串匹配直接成功的个数：" + str(mapping_success_cnt))
-    print("mapping 字符串匹配失败的个数：" + str(len(lines)-mapping_success_cnt))
-    print('\n')
+    print("mapping 字符串匹配失败的个数：" + str(len(lines) - mapping_success_cnt))
+    print("\n")
     print("mapping 字符串匹配失败的各个类别占比：")
     for key_, value_ in mapping_category_cnt.items():
         fail_cnt = mapping_fail_cnt[key_] if key_ in mapping_fail_cnt else 0
-        print(key_+":"+str(fail_cnt/value_) + "(" + str(fail_cnt)+"/"+str(value_)+")")
+        print(
+            key_
+            + ":"
+            + str(fail_cnt / value_)
+            + "("
+            + str(fail_cnt)
+            + "/"
+            + str(value_)
+            + ")"
+        )

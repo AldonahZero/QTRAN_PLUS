@@ -260,7 +260,7 @@ class SimpleAgent:
         for iteration in range(max_iterations):
             if verbose:
                 print(f"\n{'='*70}")
-                print(f"🤖 Agent 迭代 {iteration + 1}/{max_iterations}")
+                print(f"📥 Agent 迭代 {iteration + 1}/{max_iterations}")
                 print(f"{'='*70}")
 
             # 调用 LLM
@@ -369,7 +369,7 @@ def compare_agent_vs_finetune():
 
         # 运行 Agent
         print("\n" + "=" * 80)
-        print("🤖 方法 1: Agent (带工具调用)")
+        print("📥 方法 1: Agent (带工具调用)")
         print("=" * 80)
 
         agent = SimpleAgent(model="gpt-4o-mini")

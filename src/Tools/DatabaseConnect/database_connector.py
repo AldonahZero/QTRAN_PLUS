@@ -10,7 +10,7 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Time    : 2024/8/24 9:57
-# @Author  : shaocanfan
+# @Author  : huanghe
 # @File    : database_connector.py
 
 import pymysql

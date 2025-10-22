@@ -5,6 +5,8 @@ TLP (Ternary Logic Partitioning) Oracle 检查器
 """
 
 from typing import Dict, List, Any, Optional
+import json
+from src.Tools.json_utils import safe_parse_result
 
 
 def convert_result_to_count(result: Any) -> int:
@@ -12,16 +14,6 @@ def convert_result_to_count(result: Any) -> int:
     将查询结果转换为计数值
 
     对于 TLP Oracle,我们只关心文档数量,不关心具体内容
-
-    Args:
-        result: 查询结果,可能是:
-            - None (findOne 未找到)
-            - dict (findOne 找到单个文档)
-            - list (find 找到多个文档)
-            - dict with type field (NoSQL 统一格式)
-
-    Returns:
-        文档计数 (0 或正整数)
     """
     # Case 1: None → 0 (未找到文档)
     if result is None:
@@ -70,55 +62,46 @@ def check_tlp_oracle(mutations_results: List[Dict[str, Any]]) -> Dict[str, Any]:
             - mutations_results[3]: P=null 分区 (category: "tlp_null")
 
     Returns:
-        Oracle 检查结果:
-        {
-            "end": True/False,  # True 表示通过,False 表示发现 Bug
-            "error": str/None,  # 错误信息
-            "bug_type": str,    # 如果有 Bug,说明 Bug 类型
-            "details": {...}    # 详细信息
-        }
+        Oracle 检查结果字典
     """
-    # 提取各分区的执行结果
     try:
         # 原始查询结果
-        original_result = mutations_results[0].get("MutateSqlExecResult")
-        if isinstance(original_result, str):
-            # 如果是字符串,尝试 eval
-            import ast
-
-            original_result = ast.literal_eval(original_result)
+        original_result = None
+        if len(mutations_results) > 0:
+            original_raw = mutations_results[0].get("MutateSqlExecResult")
+            original_result = safe_parse_result(original_raw)
 
         # 三个分区的结果
-        tlp_true_result = (
-            mutations_results[1].get("MutateSqlExecResult")
-            if len(mutations_results) > 1
-            else None
-        )
-        if isinstance(tlp_true_result, str):
-            tlp_true_result = ast.literal_eval(tlp_true_result)
+        tlp_true_result = None
+        if len(mutations_results) > 1:
+            tlp_true_raw = mutations_results[1].get("MutateSqlExecResult")
+            tlp_true_result = safe_parse_result(tlp_true_raw)
 
-        tlp_false_result = (
-            mutations_results[2].get("MutateSqlExecResult")
-            if len(mutations_results) > 2
-            else None
-        )
-        if isinstance(tlp_false_result, str):
-            tlp_false_result = ast.literal_eval(tlp_false_result)
+        tlp_false_result = None
+        if len(mutations_results) > 2:
+            tlp_false_raw = mutations_results[2].get("MutateSqlExecResult")
+            tlp_false_result = safe_parse_result(tlp_false_raw)
 
-        tlp_null_result = (
-            mutations_results[3].get("MutateSqlExecResult")
-            if len(mutations_results) > 3
-            else None
-        )
-        if isinstance(tlp_null_result, str):
-            tlp_null_result = ast.literal_eval(tlp_null_result)
+        tlp_null_result = None
+        if len(mutations_results) > 3:
+            tlp_null_raw = mutations_results[3].get("MutateSqlExecResult")
+            tlp_null_result = safe_parse_result(tlp_null_raw)
 
     except Exception as e:
+        # 尽可能将出错时的原始 payload 和异常信息返还到 details 中，便于调查
+        try:
+            payload_sample = {
+                "mutations_results_len": len(mutations_results),
+                "mutations_results": mutations_results,
+            }
+        except Exception:
+            payload_sample = {"mutations_results_repr": repr(mutations_results)}
+
         return {
             "end": False,
             "error": f"Failed to parse mutation results: {str(e)}",
             "bug_type": "parse_error",
-            "details": {},
+            "details": {"payload": payload_sample, "exception": repr(e)},
         }
 
     # 转换为计数
@@ -146,9 +129,6 @@ def check_tlp_oracle(mutations_results: List[Dict[str, Any]]) -> Dict[str, Any]:
             },
         }
 
-    # 检查分区是否互斥 (可选,需要实际文档 ID)
-    # 由于我们只有计数,暂时跳过互斥检查
-
     # 通过检查
     return {
         "end": True,
@@ -172,8 +152,6 @@ def is_tlp_mutation(mutation_result: Dict[str, Any]) -> bool:
     检查 MutateResult 中的 oracle 字段是否包含 tlp_partition 或 tlp_base
     """
     try:
-        import json
-
         mutate_result_str = mutation_result.get("MutateResult", "{}")
         if isinstance(mutate_result_str, str):
             mutate_result = json.loads(mutate_result_str)

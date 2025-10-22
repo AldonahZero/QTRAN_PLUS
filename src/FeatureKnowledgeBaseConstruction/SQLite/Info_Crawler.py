@@ -1,12 +1,13 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Time    : 2024/7/23 11:27
-# @Author  : zql
+# @Author  : huanghe
 # @File    : Info_Crawler.py
 # @Intro   : 获取MySQL的关于sql statements的所有信息
 
 import json
 import os
+
 # from exceptiongroup import catch
 # from prompt_toolkit.layout.processors import PasswordProcessor
 from selenium import webdriver
@@ -21,12 +22,17 @@ def is_illustration(tag_name, tag_class, tag_text):
         return False
     return True
 
+
 def functions_crawler_results_json(category, html, results_dicname):
     timeout = 5  # 等待时间
     options = set_options()
-    driver = webdriver.Chrome(options=options)  # 创建一个Chrome浏览器的WebDriver对象，用于控制浏览器的操作
+    driver = webdriver.Chrome(
+        options=options
+    )  # 创建一个Chrome浏览器的WebDriver对象，用于控制浏览器的操作
     driver.get(html)  # 打开指定的URL:使用WebDriver打开指定的URL，加载页面内容
-    WebDriverWait(driver, timeout)  # 创建一个WebDriverWait对象，设置最大等待时间为50秒，用于等待页面加载完成
+    WebDriverWait(
+        driver, timeout
+    )  # 创建一个WebDriverWait对象，设置最大等待时间为50秒，用于等待页面加载完成
     soup = BeautifulSoup(driver.page_source, "html.parser")
     soup_div = soup.find("div", class_="fancy")
 
@@ -43,12 +49,14 @@ def functions_crawler_results_json(category, html, results_dicname):
         item_text = item.text
         if "Function Details" in item_text and item_name == "h1":
             functions_flag = True
-        if not functions_flag: continue
+        if not functions_flag:
+            continue
         #  跳过非有效文本内容的Tag
-        if not is_illustration(item_name, item_class, item_text):continue
+        if not is_illustration(item_name, item_class, item_text):
+            continue
 
         #  如果是SubTitle，则记录下标
-        if item_name == 'h2':
+        if item_name == "h2":
             subtitle_indexes.append(len(doc_items))
             doc_items.append(item_text)
         elif item_name == "ul":
@@ -61,10 +69,12 @@ def functions_crawler_results_json(category, html, results_dicname):
     for subtitle_index in subtitle_indexes:
         result_temp = {}
         docs_start_index = subtitle_index
-        if subtitle_indexes.index(subtitle_index) == len(subtitle_indexes)-1:
+        if subtitle_indexes.index(subtitle_index) == len(subtitle_indexes) - 1:
             docs_end_index = len(doc_items)
         else:
-            docs_end_index = subtitle_indexes[subtitle_indexes.index(subtitle_index) + 1]
+            docs_end_index = subtitle_indexes[
+                subtitle_indexes.index(subtitle_index) + 1
+            ]
         # result_temp["HTML"] = [subtitle_hrefs[subtitle_indexes.index(subtitle_index)]]
         result_temp["HTML"] = [html]
         result_temp["Title"] = [doc_items[subtitle_index]]
@@ -80,12 +90,17 @@ def functions_crawler_results_json(category, html, results_dicname):
         with open(result_filename, "w", encoding="utf-8") as w:
             json.dump(result_temp, w, indent=4, ensure_ascii=False)
 
-def functions_crawler_results(origin_category,html, results_dic, mysql_results_dic):
+
+def functions_crawler_results(origin_category, html, results_dic, mysql_results_dic):
     timeout = 5  # 等待时间
     options = set_options()
-    driver = webdriver.Chrome(options=options)  # 创建一个Chrome浏览器的WebDriver对象，用于控制浏览器的操作
+    driver = webdriver.Chrome(
+        options=options
+    )  # 创建一个Chrome浏览器的WebDriver对象，用于控制浏览器的操作
     driver.get(html)  # 打开指定的URL:使用WebDriver打开指定的URL，加载页面内容
-    WebDriverWait(driver, timeout)  # 创建一个WebDriverWait对象，设置最大等待时间为50秒，用于等待页面加载完成
+    WebDriverWait(
+        driver, timeout
+    )  # 创建一个WebDriverWait对象，设置最大等待时间为50秒，用于等待页面加载完成
     soup = BeautifulSoup(driver.page_source, "html.parser")
     soup_dl = soup.find_all("dl")
     for item in soup_dl:
@@ -98,7 +113,7 @@ def functions_crawler_results(origin_category,html, results_dic, mysql_results_d
                 "Feature": [soup_dts[index].text],
                 "Description": [soup_dds[index].text],
                 "Examples": [],
-                "Category": [origin_category]
+                "Category": [origin_category],
             }
             file_cnt = len(os.listdir(results_dic))
             result_filename = os.path.join(results_dic, str(file_cnt) + ".json")
@@ -118,5 +133,10 @@ def crawler_results(feature_type, htmls_filename, dic_filename):
         for statement_key, statement_value in value.items():
             print(statement_key + ":" + str(statement_value))
             if feature_type == "function":
-                functions_crawler_results(statement_key,statement_value, dic_filename, dic_filename.replace("tidb", "mysql"))
-            print('----------------------')
+                functions_crawler_results(
+                    statement_key,
+                    statement_value,
+                    dic_filename,
+                    dic_filename.replace("tidb", "mysql"),
+                )
+            print("----------------------")

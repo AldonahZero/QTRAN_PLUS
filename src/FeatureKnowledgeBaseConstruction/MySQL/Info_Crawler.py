@@ -1,7 +1,7 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Time    : 2024/7/24 10:23
-# @Author  : zql
+# @Author  : huanghe
 # @File    : Info_Crawler.py
 # @Intro   : 获取MySQL的关于functions和operators的所有信息
 """
@@ -22,15 +22,17 @@ from bs4 import BeautifulSoup, Tag
 from src.Tools.Crawler.crawler_options import set_options
 from src.Tools.Crawler.crawler_options import sanitize_title
 
+
 # 判断Tag是否为illustration：是则返回True，否则返回False
 def is_illustration(tag_name, tag_class, tag_text):
-    if tag_name == 'div' and 'titlepage' in tag_class:
+    if tag_name == "div" and "titlepage" in tag_class:
         # 跳过标题
         return False
     elif tag_text == "":
         # 跳过空文本
         return False
     return True
+
 
 # 获取illustration
 def illustration_processor(soup_li_body):
@@ -48,6 +50,7 @@ def illustration_processor(soup_li_body):
         illustrations.append(item_text)
     return illustrations
 
+
 def functions_and_operators_item_crawler(table_content, feature_type):
     table_content_detailed = table_content
     table_content_detailed["HTML"] = [table_content["HTML"]]
@@ -64,9 +67,15 @@ def functions_and_operators_item_crawler(table_content, feature_type):
 
     timeout = 5  # 等待时间
     options = set_options()
-    driver = webdriver.Chrome(options=options)  # 创建一个Chrome浏览器的WebDriver对象，用于控制浏览器的操作
-    driver.get(table_content_detailed["Reference HTML"])  # 打开指定的URL:使用WebDriver打开指定的URL，加载页面内容
-    WebDriverWait(driver, timeout)  # 创建一个WebDriverWait对象，设置最大等待时间为50秒，用于等待页面加载完成
+    driver = webdriver.Chrome(
+        options=options
+    )  # 创建一个Chrome浏览器的WebDriver对象，用于控制浏览器的操作
+    driver.get(
+        table_content_detailed["Reference HTML"]
+    )  # 打开指定的URL:使用WebDriver打开指定的URL，加载页面内容
+    WebDriverWait(
+        driver, timeout
+    )  # 创建一个WebDriverWait对象，设置最大等待时间为50秒，用于等待页面加载完成
     soup = BeautifulSoup(driver.page_source, "html.parser")
     # 查找出所有的class="listitem"的li标签
     soup_lis = soup.find_all("li", class_="listitem")
@@ -99,6 +108,7 @@ def functions_and_operators_item_crawler(table_content, feature_type):
             break
     return table_content_detailed
 
+
 # 爬取单个Reference Table Results文件中所有Functions/Operators的相关信息并返回
 def functions_and_operators_table_crawler(reference_table_filename, dic_path):
     with open(reference_table_filename, "r", encoding="utf-8") as rf:
@@ -107,41 +117,56 @@ def functions_and_operators_table_crawler(reference_table_filename, dic_path):
     for index in range(len(table_contents)):
         table_content = table_contents[index]
         try:
-            table_content_type = "function" if "(" in table_content["Name"] and ")" in table_content["Name"] else "operator"
+            table_content_type = (
+                "function"
+                if "(" in table_content["Name"] and ")" in table_content["Name"]
+                else "operator"
+            )
             direct_filename = os.path.join(dic_path, str(index) + ".json")
             if os.path.exists(direct_filename):
                 print(direct_filename + ":已存在")
                 continue
-            table_content_detailed = functions_and_operators_item_crawler(table_content, table_content_type)
+            table_content_detailed = functions_and_operators_item_crawler(
+                table_content, table_content_type
+            )
             with open(direct_filename, "w", encoding="utf-8") as w:
                 json.dump(table_content_detailed, w, indent=4)
         except Exception as e:
             print("发生了异常：", e)
+
 
 def data_types_crawler(htmls_filename, dic_path):
     with open(htmls_filename, "r", encoding="utf-8") as rf:
         contents = json.load(rf)
     index = 0
     for key, value in contents.items():
-        result_file = os.path.join(dic_path, str(index)+".json")
+        result_file = os.path.join(dic_path, str(index) + ".json")
         if os.path.exists(result_file):
             continue
-        key_index = key.split(' ')[0]
-        if key_index.count('.') == 1 or "syntax" in key.lower() or "type" not in key.lower():
+        key_index = key.split(" ")[0]
+        if (
+            key_index.count(".") == 1
+            or "syntax" in key.lower()
+            or "type" not in key.lower()
+        ):
             continue
-        detailed ={
+        detailed = {
             "HTML": [value],
             "Title": [key],
             "Feature": [key],
             "Description": [],
             "Examples": [],
-            "Category": [sanitize_title(key.split(' ',1)[-1])]
+            "Category": [sanitize_title(key.split(" ", 1)[-1])],
         }
         timeout = 5  # 等待时间
         options = set_options()
-        driver = webdriver.Chrome(options=options)  # 创建一个Chrome浏览器的WebDriver对象，用于控制浏览器的操作
+        driver = webdriver.Chrome(
+            options=options
+        )  # 创建一个Chrome浏览器的WebDriver对象，用于控制浏览器的操作
         driver.get(value)  # 打开指定的URL:使用WebDriver打开指定的URL，加载页面内容
-        WebDriverWait(driver, timeout)  # 创建一个WebDriverWait对象，设置最大等待时间为50秒，用于等待页面加载完成
+        WebDriverWait(
+            driver, timeout
+        )  # 创建一个WebDriverWait对象，设置最大等待时间为50秒，用于等待页面加载完成
         soup = BeautifulSoup(driver.page_source, "html.parser")
         soup_docs = soup.find("div", id="docs-body")
         for item in soup_docs:
@@ -151,6 +176,6 @@ def data_types_crawler(htmls_filename, dic_path):
         for item in code_blocks:
             if len(item.text.strip()):
                 detailed["Examples"].append(item.text)
-        with open(result_file, "w", encoding='utf-8') as w:
+        with open(result_file, "w", encoding="utf-8") as w:
             json.dump(detailed, w, indent=4)
         index = index + 1

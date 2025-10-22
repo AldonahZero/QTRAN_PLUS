@@ -138,3 +138,63 @@ def make_json_safe(obj: Any) -> Any:
 
 
 __all__ = ["make_json_safe"]
+
+
+def safe_parse_result(s: Any) -> Any:
+    """
+    尝试安全地将可能来自不同来源的结果解析为 Python 对象（优先 JSON）。
+
+    解析策略：
+    1) 若已是非字符串对象则直接返回
+    2) 尝试 json.loads
+    3) 尝试 repair_json 后 json.loads
+    4) 简单清洗（ObjectId(...) -> 字符串; 为无引号键加引号）后 json.loads
+    5) ast.literal_eval 作为最后回退
+
+    解析失败时会抛出异常以便上层记录
+    """
+    import json
+    import re
+    import ast
+    from json_repair import repair_json
+
+    if s is None:
+        return None
+    if not isinstance(s, str):
+        return s
+
+    txt = s.strip()
+
+    # 1) 优先 JSON
+    try:
+        return json.loads(txt)
+    except Exception:
+        pass
+
+    # 2) repair_json
+    try:
+        repaired = repair_json(txt)
+        return json.loads(repaired)
+    except Exception:
+        pass
+
+    # 3) 简单清洗
+    try:
+        cleaned = re.sub(r"ObjectId\(['\"]?([0-9a-fA-F]+)['\"]?\)", r'"\1"', txt)
+        cleaned = re.sub(
+            r"(?P<pre>[{,]\s*)(?P<key>[A-Za-z_][A-Za-z0-9_]*)\s*:",
+            r'\g<pre>"\g<key>":',
+            cleaned,
+        )
+        return json.loads(cleaned)
+    except Exception:
+        pass
+
+    # 4) ast.literal_eval 回退
+    try:
+        return ast.literal_eval(txt)
+    except Exception:
+        raise
+
+
+__all__.append("safe_parse_result")

@@ -12,7 +12,7 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Time    : 2024/8/2 21:19
-# @Author  : shaocanfan
+# @Author  : huanghe
 # @File    : MutationLlmModelFineTuning.py
 import json
 import os
@@ -72,7 +72,7 @@ eval_filenames = {
 # ---------------- Agent 方案（仅变异阶段） ---------------- #
 
 
-def _build_agent(system_message: str) -> Optional[AgentExecutor]:
+def _build_agent(system_message: str) -> Optional[Any]:
     """创建一个轻量的 SQL 变异 Agent，用于替代引擎=agent 时的变异生成。
 
     参数:
@@ -369,7 +369,13 @@ def run_muatate_llm(tool, mutate_name):
             data["MutateLLM_OracleCheck"] = process_mutate_llm_result(mutate_name, MutateLLM_Result_json, exec_result)
 
             with open(results_filenames[mutate_name], "a", encoding="utf-8") as w:
-                json.dump(data, w)
+                obj = data
+                # 标注为 Mutate 结果
+                try:
+                    obj["output_prefix"] = "🔧"
+                except Exception:
+                    pass
+                json.dump(obj, w)
                 w.write("\n")
 """
 

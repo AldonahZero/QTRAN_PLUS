@@ -1,12 +1,13 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Time    : 2024/7/23 11:27
-# @Author  : zql
+# @Author  : huanghe
 # @File    : Info_Crawler.py
 # @Intro   : 获取MySQL的关于sql statements的所有信息
 
 import json
 import os
+
 # from exceptiongroup import catch
 # from prompt_toolkit.layout.processors import PasswordProcessor
 from selenium import webdriver
@@ -16,6 +17,7 @@ import re
 from src.Tools.Crawler.crawler_options import set_options
 from urllib.parse import urljoin
 
+
 def is_illustration(tag_name, tag_class, tag_text):
     if tag_text == "":
         #  跳过空文本
@@ -23,7 +25,9 @@ def is_illustration(tag_name, tag_class, tag_text):
     return True
 
 
-def operators_crawler_results(origin_category,html,results_dicname, mysql_results_dic):
+def operators_crawler_results(
+    origin_category, html, results_dicname, mysql_results_dic
+):
     # 获取所有operators的信息：从已爬取好的mysql8.4中检索，以reference html作为key进行检索（注：TiDB的operators链接中，需要将8.0修改为8.4）
     results_files_mysql = os.listdir(mysql_results_dic)
     # 从mysql的对应类别信息中查找到所需信息：以html_new作为查找的key
@@ -33,7 +37,10 @@ def operators_crawler_results(origin_category,html,results_dicname, mysql_result
         if html == value["Reference HTML"]:
             # 修改value的内容
             category_temp = value["Category"]
-            if "Built-In Functions and Operators" in category_temp and len(category_temp) > 1:
+            if (
+                "Built-In Functions and Operators" in category_temp
+                and len(category_temp) > 1
+            ):
                 category_temp.remove("Built-In Functions and Operators")
             value_new = {
                 "HTML": html,
@@ -41,7 +48,7 @@ def operators_crawler_results(origin_category,html,results_dicname, mysql_result
                 "Feature": value["Feature"],
                 "Description": value["Description"],
                 "Examples": value["Examples"],
-                "Category": category_temp
+                "Category": category_temp,
             }
             file_cnt = len(os.listdir(results_dicname))
             result_filename = os.path.join(results_dicname, str(file_cnt) + ".json")
@@ -52,9 +59,13 @@ def operators_crawler_results(origin_category,html,results_dicname, mysql_result
 def functions_crawler_results_subtitle(category, html, results_dicname, function_names):
     timeout = 5  # 等待时间
     options = set_options()
-    driver = webdriver.Chrome(options=options)  # 创建一个Chrome浏览器的WebDriver对象，用于控制浏览器的操作
+    driver = webdriver.Chrome(
+        options=options
+    )  # 创建一个Chrome浏览器的WebDriver对象，用于控制浏览器的操作
     driver.get(html)  # 打开指定的URL:使用WebDriver打开指定的URL，加载页面内容
-    WebDriverWait(driver, timeout)  # 创建一个WebDriverWait对象，设置最大等待时间为50秒，用于等待页面加载完成
+    WebDriverWait(
+        driver, timeout
+    )  # 创建一个WebDriverWait对象，设置最大等待时间为50秒，用于等待页面加载完成
     soup = BeautifulSoup(driver.page_source, "html.parser")
 
     # 获取functions相关文档信息的div块
@@ -77,13 +88,16 @@ def functions_crawler_results_subtitle(category, html, results_dicname, function
         item_class = item.get("class")  # 注意：item_class是列表形式的
         item_text = item.text
         #  跳过非有效文本内容的Tag
-        if not is_illustration(item_name, item_class, item_text):continue
+        if not is_illustration(item_name, item_class, item_text):
+            continue
 
         #  如果是SubTitle，则记录下标
-        if (item_name == 'h2' or item_name == 'h3' or item_name == 'h4') and item_text in function_names:
+        if (
+            item_name == "h2" or item_name == "h3" or item_name == "h4"
+        ) and item_text in function_names:
             subtitle_indexes.append(len(doc_items))
             subtitle_hrefs.append(urljoin(html, item.find("a").get("href")))
-        if item_name == 'pre':
+        if item_name == "pre":
             pre_indexes.append(len(doc_items))
         doc_items.append(item_text)
 
@@ -91,10 +105,12 @@ def functions_crawler_results_subtitle(category, html, results_dicname, function
     for subtitle_index in subtitle_indexes:
         result_temp = {}
         docs_start_index = subtitle_index
-        if subtitle_indexes.index(subtitle_index) == len(subtitle_indexes)-1:
+        if subtitle_indexes.index(subtitle_index) == len(subtitle_indexes) - 1:
             docs_end_index = len(doc_items)
         else:
-            docs_end_index = subtitle_indexes[subtitle_indexes.index(subtitle_index) + 1]
+            docs_end_index = subtitle_indexes[
+                subtitle_indexes.index(subtitle_index) + 1
+            ]
         # result_temp["HTML"] = [subtitle_hrefs[subtitle_indexes.index(subtitle_index)]]
         result_temp["HTML"] = [html]
         result_temp["Title"] = [doc_items[subtitle_index]]
@@ -115,6 +131,7 @@ def functions_crawler_results_subtitle(category, html, results_dicname, function
         with open(result_filename, "w", encoding="utf-8") as w:
             json.dump(result_temp, w, indent=4, ensure_ascii=False)
 
+
 def is_valid_sql_function_name(name):
     """
     判断字符串是否是有效的 SQL 函数名
@@ -124,14 +141,21 @@ def is_valid_sql_function_name(name):
     - 不能是空字符串
     """
     # 使用正则表达式匹配：字母或下划线开头，后面可以是字母、数字或下划线
-    return bool(re.match(r'^[a-zA-Z_][a-zA-Z0-9_]*$', name.replace("(","").replace(")","")))
+    return bool(
+        re.match(r"^[a-zA-Z_][a-zA-Z0-9_]*$", name.replace("(", "").replace(")", ""))
+    )
 
-def functions_crawler_results(origin_category,html, results_dic, mysql_results_dic):
+
+def functions_crawler_results(origin_category, html, results_dic, mysql_results_dic):
     timeout = 5  # 等待时间
     options = set_options()
-    driver = webdriver.Chrome(options=options)  # 创建一个Chrome浏览器的WebDriver对象，用于控制浏览器的操作
+    driver = webdriver.Chrome(
+        options=options
+    )  # 创建一个Chrome浏览器的WebDriver对象，用于控制浏览器的操作
     driver.get(html)  # 打开指定的URL:使用WebDriver打开指定的URL，加载页面内容
-    WebDriverWait(driver, timeout)  # 创建一个WebDriverWait对象，设置最大等待时间为50秒，用于等待页面加载完成
+    WebDriverWait(
+        driver, timeout
+    )  # 创建一个WebDriverWait对象，设置最大等待时间为50秒，用于等待页面加载完成
     soup = BeautifulSoup(driver.page_source, "html.parser")
     mysql_functions = {}  # 存储table中列出的functions names和对应的htmls
     tidb_functions = []  # 存储导航栏中列出的functions names
@@ -166,16 +190,25 @@ def functions_crawler_results(origin_category,html, results_dic, mysql_results_d
 
     # 情况1：处理mysql_functions类型的
     for func_name, func_html in mysql_functions.items():
-        operators_crawler_results(origin_category, func_html, results_dic, mysql_results_dic)
+        operators_crawler_results(
+            origin_category, func_html, results_dic, mysql_results_dic
+        )
     # 情况2：处理tidb_functions类别的
-    functions_crawler_results_subtitle(origin_category, html, results_dic, tidb_functions)
+    functions_crawler_results_subtitle(
+        origin_category, html, results_dic, tidb_functions
+    )
 
-def data_types_crawler_results(origin_category,html, results_dic):
+
+def data_types_crawler_results(origin_category, html, results_dic):
     timeout = 5  # 等待时间
     options = set_options()
-    driver = webdriver.Chrome(options=options)  # 创建一个Chrome浏览器的WebDriver对象，用于控制浏览器的操作
+    driver = webdriver.Chrome(
+        options=options
+    )  # 创建一个Chrome浏览器的WebDriver对象，用于控制浏览器的操作
     driver.get(html)  # 打开指定的URL:使用WebDriver打开指定的URL，加载页面内容
-    WebDriverWait(driver, timeout)  # 创建一个WebDriverWait对象，设置最大等待时间为50秒，用于等待页面加载完成
+    WebDriverWait(
+        driver, timeout
+    )  # 创建一个WebDriverWait对象，设置最大等待时间为50秒，用于等待页面加载完成
     soup = BeautifulSoup(driver.page_source, "html.parser")
     tidb_functions = []  # 存储导航栏中列出的functions names
 
@@ -185,9 +218,13 @@ def data_types_crawler_results(origin_category,html, results_dic):
     for a_item in soup_a_items:
         a_name = a_item.text
         a_html = urljoin(html, a_item.get("href"))
-        if is_valid_sql_function_name(a_name.replace("(", "").replace(")", "").replace("类型", "").strip()):
+        if is_valid_sql_function_name(
+            a_name.replace("(", "").replace(")", "").replace("类型", "").strip()
+        ):
             tidb_functions.append(a_name)
-    functions_crawler_results_subtitle(origin_category, html, results_dic, tidb_functions)
+    functions_crawler_results_subtitle(
+        origin_category, html, results_dic, tidb_functions
+    )
 
 
 def crawler_results(feature_type, htmls_filename, dic_filename):
@@ -200,9 +237,19 @@ def crawler_results(feature_type, htmls_filename, dic_filename):
         for statement_key, statement_value in value.items():
             print(statement_key + ":" + str(statement_value))
             if feature_type == "operator":
-                operators_crawler_results(statement_key,statement_value, dic_filename, dic_filename.replace("tidb", "mysql"))
+                operators_crawler_results(
+                    statement_key,
+                    statement_value,
+                    dic_filename,
+                    dic_filename.replace("tidb", "mysql"),
+                )
             elif feature_type == "function":
-                functions_crawler_results(statement_key,statement_value, dic_filename, dic_filename.replace("tidb", "mysql"))
+                functions_crawler_results(
+                    statement_key,
+                    statement_value,
+                    dic_filename,
+                    dic_filename.replace("tidb", "mysql"),
+                )
             elif feature_type == "datatype":
-                data_types_crawler_results(statement_key,statement_value, dic_filename)
-            print('----------------------')
+                data_types_crawler_results(statement_key, statement_value, dic_filename)
+            print("----------------------")
