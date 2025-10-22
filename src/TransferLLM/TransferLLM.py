@@ -212,8 +212,8 @@ def load_data(output_name, db_name, len_low, len_high, is_random, num):
             json.dump(random_sqlsims, f, indent=4)
         with open(random_dir_index_filename, "w", encoding="utf-8") as f:
             json.dump(random_sql_indexes, f, indent=4)
-        print(random_dir_filename + ":" + str(len(random_sqls)))
-        print(random_dir_sim_filename + ":" + str(len(random_sqlsims)))
+        print("📥 " + random_dir_filename + ":" + str(len(random_sqls)))
+        print("📥 " + random_dir_sim_filename + ":" + str(len(random_sqlsims)))
     else:
         # 全部加载：直接存储所有[len_low,len_high)长度的数据
         with open(dir_filename, "w", encoding="utf-8") as f:
@@ -223,8 +223,8 @@ def load_data(output_name, db_name, len_low, len_high, is_random, num):
         with open(dir_index_filename, "w", encoding="utf-8") as f:
             json.dump(selected_sql_indexes, f, indent=4)
 
-        print(dir_filename + ":" + str(len(selected_sqls)))
-        print(dir_sim_filename + ":" + str(len(selected_sqlsims)))
+        print("📥 " + dir_filename + ":" + str(len(selected_sqls)))
+        print("📥 " + dir_sim_filename + ":" + str(len(selected_sqlsims)))
 
 
 def init_data(output_name, db_name, len_low, len_high, is_random, num):
@@ -1034,8 +1034,7 @@ def _agent_transfer_statement(
     print("📥 Agent Input: " + input_text)
     try:
         res = agent.invoke({"input": input_text})
-    print(f"📥 ✅ Agent 调用成功，返回类型: {type(res)}")
-
+        print(f"📥 ✅ Agent 调用成功，返回类型: {type(res)}")
         output = res.get("output") if isinstance(res, dict) else None
         if not output:
             print(f"📥 ❌ Agent 返回结果中没有 'output' 字段: {res}")
@@ -1065,16 +1064,16 @@ def _agent_transfer_statement(
             if first_brace >= 0 and last_brace > first_brace:
                 txt = txt[first_brace : last_brace + 1]
 
-    print(f"� �🔧 提取的 JSON 文本: {txt}")
+        print(f"📥 🔧 提取的 JSON 文本: {txt}")
 
         # 修复转义
         txt = txt.replace("\\$", "\\\\$")
 
         data = json.loads(txt)
-    print(f"📥 ✅ JSON 解析成功: {data}")
+        print(f"📥 ✅ JSON 解析成功: {data}")
         return data
     except Exception as e:
-    print(f"📥 ❌ Agent Transfer 失败: {type(e).__name__}: {e}")
+        print(f"📥 ❌ Agent Transfer 失败: {type(e).__name__}: {e}")
         import traceback
 
         traceback.print_exc()

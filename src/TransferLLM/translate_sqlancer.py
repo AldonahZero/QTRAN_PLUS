@@ -173,7 +173,7 @@ def sqlancer_translate(
                     json.dump(info, a)
                     a.write("\n")
         else:
-            print(bug_input_filename + " exists.")
+            print("📥 " + bug_input_filename + " exists.")
             with open(bug_input_filename, "r", encoding="utf-8") as r:
                 lines = r.readlines()
             for line in lines:
@@ -243,7 +243,7 @@ def sqlancer_translate(
                     json.dump(make_json_safe(item), a, ensure_ascii=False)
                     a.write("\n")
         else:
-            print(bug_output_transfer_filename + " exists.")
+            print("📥 " + bug_output_transfer_filename + " exists.")
             with open(bug_output_transfer_filename, "r", encoding="utf-8") as r:
                 lines = r.readlines()
             for line in lines:
@@ -672,7 +672,7 @@ def sqlancer_translate(
                 for item in mutate_results:
                     json.dump(make_json_safe(item), a, ensure_ascii=False)
                     a.write("\n")
-        print("------------------------")
+    print("📥 ------------------------")
 
 
 def sqlancer_qtran_run(
