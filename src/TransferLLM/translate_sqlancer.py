@@ -314,6 +314,7 @@ def sqlancer_translate(
                     mutate_llm_model_ID = os.environ.get(
                         "SEMANTIC_MUTATION_LLM_ID", "gpt-4o-mini"
                     )
+                # 调用变异
                 mutate_content, cost = run_muatate_llm_single_sql(
                     tool,
                     client,

@@ -447,21 +447,6 @@ def run_muatate_llm_single_sql(
         engine = os.environ.get("QTRAN_MUTATION_ENGINE", "finetune").lower()
 
         # 1) Agent 路径（仅在关系型/语义变异下启用，对 MongoDB 也可返回 JSON）
-        if engine == "agent":
-            agent_payload = _agent_generate_mutations(
-                sql=user_content if is_mongodb_target else sql,
-                oracle=mutate_stratege or oracle,
-                db_type=db_type,
-                system_message=system_message,  # 传递 system_message 给 Agent
-            )
-            if agent_payload is not None:
-                # 统一为字符串形式返回
-                return json.dumps(agent_payload, ensure_ascii=False), {
-                    "Engine": "agent"
-                }
-            # Agent 失败则回退到微调
-
-        # 2) 微调 LLM 路径（默认）
         formatted_input = [
             {"role": "system", "content": system_message},
             {"role": "user", "content": user_content},
