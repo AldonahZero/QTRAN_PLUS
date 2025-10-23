@@ -452,7 +452,7 @@ def run_muatate_llm_single_sql(
         # 根据引擎选择执行
         engine = os.environ.get("QTRAN_MUTATION_ENGINE", "finetune").lower()
 
-        # 1) Agent 路径（仅在关系型/语义变异下启用，对 MongoDB 也可返回 JSON）
+        # 1) Agent 路径
         formatted_input = [
             {"role": "system", "content": system_message},
             {"role": "user", "content": user_content},

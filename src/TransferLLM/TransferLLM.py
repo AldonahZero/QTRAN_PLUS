@@ -728,40 +728,51 @@ def get_NoSQL_knowledge_string(
                     "You MUST NOT invent other table names. Always reuse tab_0 tab_1.\n"
                 )
             elif str(target_db).lower() in nosql_targets:
-                # 针对 MongoDB 目标添加严格 JSON 输出约束（禁止使用 shell 风格 "db.collection.find()" 形式）
+                # 针对 MongoDB 目标强制使用 Shell 语法
                 if str(target_db).lower() == "mongodb":
                     knowledge_string += """Additional Target-Specific Output Constraints (MongoDB):
-                    You MUST output the field TransferSQL as ONE SINGLE JSON object (no prose, no code fences). DO NOT use JavaScript shell syntax (no `db.` prefix, no chained calls, no semicolons). The JSON MUST be directly parseable by json.loads.
-                    JSON schema (include only necessary keys):{
-                        "op": "insertOne|updateOne|find|findOne|deleteOne|createCollection",
-                        "collection": "<string>",
-                        "document": { ... },                # for insertOne
-                        "filter": { ... },                  # for find / update / delete
-                        "update": { ... },                  # for updateOne (e.g. {"$set": {"value": "X"}})
-                        "sort": { "field": 1|-1 },        # optional
-                        "limit": <int>,                     # optional
-                        "skip": <int>,                      # optional
-                        "projection": { ... },              # optional
-                        "upsert": true|false                # optional (only if updateOne)
-                        }
-                        Requirements:
-                        - No `db.collection.method()` strings; only the pure JSON object.
-                        - Double quotes for all JSON keys & string values.
-                        - Do NOT wrap inside Markdown backticks.
-                        - If original is a key-value write (e.g., Redis SET key value), model as either:
-                        (a) {"op":"insertOne","collection":"kv","document":{"_id":"<key>","value":"<value>"}}
-                        or (b) {"op":"updateOne","collection":"kv","filter":{"_id":"<key>"},"update":{"$set":{"value":"<value>"}},"upsert":true}
-                        - If original is a sorted-set add (Redis ZADD key score member):
-                        {"op":"insertOne","collection":"zset","document":{"key":"<key>","member":"<member>","score":<numeric>}}
-                        - Sorted order (e.g., Redis SORT / ZRANGE ascending by score):
-                        {"op":"find","collection":"zset","filter":{"key":"<key>"},"sort":{"score":1}}
-                        - Random member (Redis ZRANDMEMBER): aggregation may be restricted; emit:
-                        {"op":"find","collection":"zset","filter":{"key":"<key>"},"skip":"RANDOM_PLACEHOLDER","limit":1}
-                        Use the literal string RANDOM_PLACEHOLDER (do NOT pick a number) so the executor can post-process.
-                        - Key lookup (Redis GET key): {"op":"findOne","collection":"kv","filter":{"_id":"<key>"}}
-                        Validation:
-                        - TransferSQL MUST be valid JSON. If any assumption about schema is needed, state it ONLY in Explanation (never inside TransferSQL).
-                        - Never output multiple statements; never output an array.
+                    You MUST output the field TransferSQL as MongoDB Shell command that can be executed directly in mongosh.
+                    
+                    Output Format Requirements:
+                    - Use MongoDB Shell syntax: db.<collection>.<method>(...)
+                    - End each command with a semicolon (;)
+                    - Use proper JavaScript/MongoDB syntax
+                    - Support all MongoDB operations: insertOne, findOne, find, updateOne, deleteOne, aggregate
+                    - Use MongoDB operators: $set, $inc, $exists, $gt, $lt, $eq, $type, etc.
+                    - Include options like upsert true, .sort(), .limit(), .skip() when needed
+                    
+                    Translation Patterns for Redis to MongoDB:
+                    
+                    1. Key-Value Operations:
+                       - SET mykey hello → db.myCollection.insertOne({{ _id: "mykey", value: "hello" }});
+                       - GET mykey → db.myCollection.findOne({{ _id: "mykey" }});
+                       - DEL mykey → db.myCollection.deleteOne({{ _id: "mykey" }});
+                       - EXISTS mykey → db.myCollection.findOne({{ _id: "mykey" }});
+                    
+                    2. Counter Operations:
+                       - SET counter 1 → db.myCollection.insertOne({{ _id: "counter", value: 1 }});
+                       - INCR counter → db.myCollection.updateOne({{ _id: "counter" }}, {{ $inc: {{ value: 1 }} }}, {{ upsert: true }});
+                       - DECR counter → db.myCollection.updateOne({{ _id: "counter" }}, {{ $inc: {{ value: -1 }} }}, {{ upsert: true }});
+                       - GET counter → db.myCollection.findOne({{ _id: "counter" }});
+                    
+                    3. Sorted Set Operations:
+                       - ZADD myset 100 member1 → db.zset.insertOne({{ key: "myset", member: "member1", score: 100 }});
+                       - ZRANGE myset 0 10 → db.zset.find({{ key: "myset" }}).sort({{ score: 1 }}).skip(0).limit(11);
+                       - ZCOUNT myset 0 100 → db.zset.countDocuments({{ key: "myset", score: {{ $gte: 0, $lte: 100 }} }});
+                    
+                    Critical Rules:
+                    - MUST use db.<collection>.<method>() format
+                    - MUST end with semicolon (;)
+                    - Use actual field/key names from the original command
+                    - For key-value storage, use collection name "myCollection" and field "_id" as key
+                    - For sorted sets, use collection name "zset"
+                    - NO markdown code fences, NO explanatory text in TransferSQL field
+                    - TransferSQL should contain ONLY the executable MongoDB Shell command
+                    
+                    Example Output:
+                    Use double curly braces for MongoDB JSON objects in your response.
+                    TransferSQL should be like: db.myCollection.findOne({{ _id: "mykey" }});
+                    Explanation should describe the conversion logic.
                     """
         except Exception as e:
             knowledge_string = ""
@@ -1103,6 +1114,34 @@ def transfer_llm_sql_semantic(
     # * 运行结果与原sql的一致性列表"exec_equalities"
     # * 列表是为返回error进行迭代设计的，能记录多次迭代的过程值
     """
+    # ========== Mem0 记忆管理初始化 ==========
+    use_mem0 = os.environ.get("QTRAN_USE_MEM0", "false").lower() == "true"
+    mem0_manager = None
+    if use_mem0:
+        try:
+            from src.TransferLLM.mem0_adapter import TransferMemoryManager, FallbackMemoryManager
+            try:
+                mem0_manager = TransferMemoryManager(
+                    user_id=f"qtran_{origin_db}_to_{target_db}"
+                )
+                print(f"✅ Mem0 initialized for {origin_db} -> {target_db}")
+            except ImportError:
+                print("⚠️ Mem0 not available, using fallback memory manager")
+                mem0_manager = FallbackMemoryManager(
+                    user_id=f"qtran_{origin_db}_to_{target_db}"
+                )
+            
+            # 开启翻译会话
+            molt = test_info.get("molt", "unknown")
+            mem0_manager.start_session(
+                origin_db=origin_db,
+                target_db=target_db,
+                molt=molt
+            )
+        except Exception as e:
+            print(f"⚠️ Failed to initialize Mem0: {e}, continuing without memory")
+            mem0_manager = None
+    
     # test_info: {'index': 162, 'a_db': 'sqlite', 'b_db': 'duckdb', 'molt': 'norec', 'sqls': 'CREATE TABLE t0(c0);'}
     sql_statement = test_info["sql"]
     sql_statement_processed = sql_statement
@@ -1179,7 +1218,40 @@ def transfer_llm_sql_semantic(
     else:
         feature_knowledge_string = ""
 
-    prompt_template = ChatPromptTemplate.from_template(transfer_llm_string)
+    # ========== Mem0 增强 Prompt ==========
+    if mem0_manager:
+        try:
+            enhanced_prompt = mem0_manager.build_enhanced_prompt(
+                base_prompt=transfer_llm_string,
+                query_sql=sql_statement_processed,
+                origin_db=origin_db,
+                target_db=target_db
+            )
+            # 检查增强后的 prompt 是否引入了格式化问题
+            # 将 Mem0 注入的内容中的大括号转义
+            print("📚 Prompt enhanced with Mem0 historical knowledge")
+            transfer_llm_string = enhanced_prompt
+        except Exception as e:
+            print(f"⚠️ Failed to enhance prompt with Mem0: {e}")
+            import traceback
+            traceback.print_exc()
+
+    # 安全地创建 prompt template，捕获格式化错误
+    try:
+        prompt_template = ChatPromptTemplate.from_template(transfer_llm_string)
+    except Exception as e:
+        print(f"❌ Error creating prompt template: {e}")
+        print(f"🔍 Problematic prompt snippet (first 500 chars):")
+        print(transfer_llm_string[:500])
+        print(f"🔍 Last 500 chars:")
+        print(transfer_llm_string[-500:])
+        # 尝试找出有问题的占位符
+        import re
+        potential_issues = re.findall(r'\{[^{}]+\}', transfer_llm_string)
+        print(f"🔍 Found {len(potential_issues)} potential placeholder issues:")
+        for issue in potential_issues[:10]:  # 只显示前10个
+            print(f"   - {issue}")
+        raise
 
     iterate_llm_string = """  
     The corresponding executable SQL statement that you provided in your most recent response resulted in an error when executed.\
@@ -1356,7 +1428,51 @@ def transfer_llm_sql_semantic(
                 exec_equalities.append(True)
             else:
                 exec_equalities.append(False)
+        
+        # ========== Mem0 记录翻译结果 ==========
+        if mem0_manager and conversation_cnt > 0:
+            try:
+                # 记录成功的翻译
+                if error_messages and error_messages[-1] == "None":
+                    features = test_info.get("SqlPotentialDialectFunction", [])
+                    mem0_manager.record_successful_translation(
+                        origin_sql=sql_statement,
+                        target_sql=output_dict.get("TransferSQL", ""),
+                        origin_db=origin_db,
+                        target_db=target_db,
+                        iterations=conversation_cnt,
+                        features=features
+                    )
+                    print(f"💾 Recorded successful translation (iteration {conversation_cnt})")
+                
+                # 记录错误修正（从失败到成功的转变）
+                if conversation_cnt > 1 and len(error_messages) >= 2:
+                    if error_messages[-2] != "None" and error_messages[-1] == "None":
+                        mem0_manager.record_error_fix(
+                            error_message=error_messages[-2],
+                            fix_sql=output_dict.get("TransferSQL", ""),
+                            origin_db=origin_db,
+                            target_db=target_db,
+                            failed_sql=transfer_results[-2].get("TransferSQL", "") if len(transfer_results) >= 2 else ""
+                        )
+                        print(f"🔧 Recorded error fix pattern")
+            except Exception as e:
+                print(f"⚠️ Failed to record to Mem0: {e}")
+        
         conversation_cnt += 1
+
+    # ========== Mem0 会话结束 ==========
+    if mem0_manager:
+        try:
+            success = len(error_messages) > 0 and error_messages[-1] == "None"
+            final_result = transfer_results[-1].get("TransferSQL", "") if transfer_results else None
+            mem0_manager.end_session(success=success, final_result=final_result)
+            
+            # 打印性能指标
+            if hasattr(mem0_manager, 'get_metrics_report'):
+                print(mem0_manager.get_metrics_report())
+        except Exception as e:
+            print(f"⚠️ Failed to end Mem0 session: {e}")
 
     return (
         costs,

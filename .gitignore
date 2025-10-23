@@ -7,6 +7,7 @@ ENV/
 run_mongodb_mutation_test.sh
 run.sh
 run_agent_tests.sh
+*.sh
 
 *.zip
 # 可选：添加其他常见 Python 忽略项

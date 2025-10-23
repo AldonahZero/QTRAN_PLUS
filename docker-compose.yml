@@ -91,21 +91,36 @@ services:
   etcd:
     image: quay.io/coreos/etcd:v3.5.14
     container_name: etcd_QTRAN
-    command: ["etcd", "--advertise-client-urls", "http://0.0.0.0:2379", "--listen-client-urls", "http://0.0.0.0:2379"]
+    command: [ "etcd", "--advertise-client-urls", "http://0.0.0.0:2379", "--listen-client-urls", "http://0.0.0.0:2379" ]
     ports:
-      - "12379:2379"  # 外部映射端口与 database_connector_args.json 对应
+      - "12379:2379" # 外部映射端口与 database_connector_args.json 对应
     networks:
       - db_network
 
   consul:
     image: hashicorp/consul:1.19
     container_name: consul_QTRAN
-    command: ["agent", "-dev", "-client=0.0.0.0"]
+    command: [ "agent", "-dev", "-client=0.0.0.0" ]
     ports:
-      - "18500:8500"   # HTTP API / UI
-      - "18600:8600/udp"  # DNS 端口
+      - "18500:8500" # HTTP API / UI
+      - "18600:8600/udp" # DNS 端口
     networks:
       - db_network
+
+  qdrant:
+    image: qdrant/qdrant:v1.11.3
+    container_name: qdrant_QTRAN
+    ports:
+      - "6333:6333" # HTTP API (Mem0 使用)
+      - "6334:6334" # gRPC API (可选)
+    volumes:
+      - qdrant_data:/qdrant/storage
+    # 生产环境建议启用认证，取消下面注释即可
+    # environment:
+    #   QDRANT__SERVICE__API_KEY: "your-secret-key"
+    networks:
+      - db_network
+    restart: unless-stopped
 
 networks:
   db_network:
@@ -122,3 +137,4 @@ volumes:
   memcached_data:
   etcd_data:
   consul_data:
+  qdrant_data:
