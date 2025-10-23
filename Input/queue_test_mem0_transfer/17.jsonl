@@ -1,0 +1,8 @@
+{"index": 17, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "set mykey hello;"}
+{"index": 17, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "get mykey;"}
+{"index": 17, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "set lugwtjii hello;"}
+{"index": 17, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "get lugwtjii;"}
+{"index": 17, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "set nnseeina 185256;"}
+{"index": 17, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "get nnseeina;"}
+{"index": 17, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "set qmkqkndf 0.19306496586327673;"}
+{"index": 17, "a_db": "redis", "b_db": "mongodb", "molt": "tlp", "sql": "get qmkqkndf;"}

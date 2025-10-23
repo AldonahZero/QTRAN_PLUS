@@ -129,6 +129,28 @@ def sqlancer_translate(
     - 调用 transfer_llm 执行跨方言转换及错误迭代；
     - 调用 Mutate LLM 获取变异结果并持久化。
     """
+    # ========== Mem0 记忆管理初始化（变异阶段）==========
+    use_mem0 = os.environ.get("QTRAN_USE_MEM0", "false").lower() == "true"
+    mutation_mem0_manager = None
+    if use_mem0:
+        try:
+            from src.MutationLlmModelValidator.mutation_mem0_adapter import (
+                MutationMemoryManager, FallbackMutationMemoryManager
+            )
+            try:
+                mutation_mem0_manager = MutationMemoryManager(
+                    user_id="qtran_mutation_universal"
+                )
+                print(f"✅ Mutation Mem0 initialized")
+            except ImportError:
+                print("⚠️ Mem0 not available for mutation, using fallback")
+                mutation_mem0_manager = FallbackMutationMemoryManager(
+                    user_id="qtran_mutation_fallback"
+                )
+        except Exception as e:
+            print(f"⚠️ Failed to initialize Mutation Mem0: {e}")
+            mutation_mem0_manager = None
+    
     input_filename = os.path.basename(input_filepath).replace(".jsonl", "")
     input_dic = os.path.join(current_dir, "..", "..", "Input", input_filename)
     if not os.path.exists(input_dic):
@@ -315,6 +337,17 @@ def sqlancer_translate(
                     mutate_llm_model_ID = os.environ.get(
                         "SEMANTIC_MUTATION_LLM_ID", "gpt-4o-mini"
                     )
+                # ========== Mem0 开始变异会话 ==========
+                if mutation_mem0_manager:
+                    try:
+                        mutation_mem0_manager.start_session(
+                            db_type=actual_target_db,
+                            oracle_type=bug["molt"],
+                            sql_type="SELECT"  # 假定变异的都是 SELECT 类查询
+                        )
+                    except Exception as e:
+                        print(f"⚠️ Failed to start mutation session: {e}")
+                
                 # 调用变异
                 mutate_content, cost = run_muatate_llm_single_sql(
                     tool,
@@ -324,6 +357,7 @@ def sqlancer_translate(
                     bug["molt"],
                     actual_target_db,  # 使用检测到的实际目标数据库,而非 b_db
                     mutate_sql,
+                    mem0_manager=mutation_mem0_manager  # 传入 Mem0 管理器
                 )
                 mutate_end_time = datetime.now()  # 使用 ISO 8601 格式
                 mutate_results[-1]["MutateTimeCost"] = (
@@ -666,6 +700,49 @@ def sqlancer_translate(
             if transfer_fail_flag:
                 oracle_check_res = {"end": False, "error": "transfer fail"}
             mutate_results[-1]["OracleCheck"] = oracle_check_res
+            
+            # ========== Mem0 记录 Bug 模式 ==========
+            if mutation_mem0_manager and oracle_check_res:
+                try:
+                    # 如果 Oracle 检查失败且不是执行错误，说明发现了潜在 Bug
+                    if oracle_check_res.get("end") == False and oracle_check_res.get("error") in [None, "None"]:
+                        bug_type = oracle_check_res.get("bug_type", "oracle_violation")
+                        
+                        mutation_mem0_manager.record_bug_pattern(
+                            original_sql=mutate_sql,
+                            mutation_sql=str(mutate_results[-1].get("MutateResult", "")),
+                            bug_type=bug_type,
+                            oracle_type=bug["molt"],
+                            db_type=actual_target_db,
+                            oracle_details=oracle_check_res.get("details", {})
+                        )
+                        print(f"🐛 Bug pattern recorded to Mem0: {bug_type}")
+                    
+                    # 记录 Oracle 失败模式（包括执行错误）
+                    elif oracle_check_res.get("end") == False:
+                        mutation_mem0_manager.record_oracle_failure_pattern(
+                            original_sql=mutate_sql,
+                            mutation_sql=str(mutate_results[-1].get("MutateResult", "")),
+                            failure_reason=str(oracle_check_res.get("error", "unknown")),
+                            oracle_type=bug["molt"],
+                            db_type=actual_target_db,
+                            expected_result=before_result,
+                            actual_result=after_result
+                        )
+                    
+                    # 结束会话
+                    mutation_mem0_manager.end_session(
+                        success=oracle_check_res.get("end", False),
+                        summary=f"Oracle: {bug['molt']}, Result: {oracle_check_res.get('end', False)}"
+                    )
+                    
+                    # 打印性能指标
+                    if hasattr(mutation_mem0_manager, 'get_metrics_report'):
+                        print(mutation_mem0_manager.get_metrics_report())
+                        
+                except Exception as e:
+                    print(f"⚠️ Failed to record to Mutation Mem0: {e}")
+            
             with open(bug_output_mutate_filename, "w", encoding="utf-8") as a:
                 pass
             with open(bug_output_mutate_filename, "a", encoding="utf-8") as a:

@@ -381,14 +381,20 @@ def run_muatate_llm(tool, mutate_name):
 
 
 def run_muatate_llm_single_sql(
-    tool, client, model_id, mutate_name, oracle, db_type, sql
+    tool, client, model_id, mutate_name, oracle, db_type, sql, mem0_manager=None
 ):
     """针对单条 SQL 生成候选变体，并返回响应文本与开销统计。
 
     选择引擎：
     - 若环境变量 QTRAN_MUTATION_ENGINE=agent，则优先采用 Agent 方案（LangChain）。
     - 否则使用微调 LLM 路径（现有实现）。
+    
+    新增参数：
+    - mem0_manager: Mem0 记忆管理器（可选），用于增强 prompt 和记录变异
     """
+    import time
+    mutation_start_time = time.time()
+    
     # 为Mutate LLM构造满足特定格式的testing data数据项
     if tool.lower() == "sqlancer":
         # 构造格式化输入词
@@ -443,6 +449,19 @@ def run_muatate_llm_single_sql(
             prompt_data = json.load(r)
             system_message = prompt_data.get(oracle, prompt_data.get("semantic", ""))
 
+        # ========== Mem0 增强 Prompt ==========
+        if mem0_manager:
+            try:
+                system_message = mem0_manager.build_enhanced_prompt(
+                    base_prompt=system_message,
+                    query_sql=sql,
+                    oracle_type=oracle,
+                    db_type=db_type
+                )
+                print("🧬 Mutation prompt enhanced with Mem0 knowledge")
+            except Exception as e:
+                print(f"⚠️ Failed to enhance mutation prompt: {e}")
+
         # 针对 MongoDB，用户消息应包含转换后的 MongoDB 操作
         if is_mongodb_target:
             user_content = f"Seed MongoDB operation (converted from Redis):\n{sql}"
@@ -485,6 +504,36 @@ def run_muatate_llm_single_sql(
         cost["Prompt Tokens"] = getattr(completion.usage, "prompt_tokens", None)
         cost["Completion Tokens"] = getattr(completion.usage, "completion_tokens", None)
         cost["Total Cost (USD)"] = 0
+        
+        # ========== Mem0 记录成功的变异 ==========
+        if mem0_manager and response_content:
+            try:
+                mutation_time = time.time() - mutation_start_time
+                
+                # 解析变异结果
+                try:
+                    mutations_data = json.loads(response_content)
+                    if isinstance(mutations_data, dict) and "mutations" in mutations_data:
+                        mutations = mutations_data["mutations"]
+                        mutated_sqls = [m.get("cmd", "") for m in mutations]
+                    else:
+                        mutated_sqls = [response_content]  # 降级处理
+                except Exception:
+                    mutated_sqls = [response_content]  # 无法解析，使用原始内容
+                
+                # 记录成功的变异模式
+                mem0_manager.record_successful_mutation(
+                    original_sql=sql,
+                    mutated_sqls=mutated_sqls,
+                    oracle_type=oracle,
+                    db_type=db_type,
+                    mutation_strategy=mutate_stratege,
+                    execution_time=mutation_time
+                )
+                print(f"💾 Recorded {len(mutated_sqls)} mutations to Mem0")
+            except Exception as e:
+                print(f"⚠️ Failed to record mutations to Mem0: {e}")
+        
         return response_content, cost
 
 
