@@ -286,74 +286,204 @@ class TransferMemoryManager:
             print(f"⚠️ Failed to search memories: {e}")
             return []
     
+    def get_knowledge_base_info(
+        self,
+        query: str,
+        database: str,
+        limit: int = 3
+    ) -> List[Dict[str, Any]]:
+        """
+        从知识库检索相关信息
+        
+        Args:
+            query: 查询字符串（如操作符、函数、数据类型名称）
+            database: 数据库名称
+            limit: 返回结果数量
+        
+        Returns:
+            相关知识库条目列表
+        """
+        start_time = time.time()
+        
+        # 使用知识库专用的 user_id
+        kb_user_id = f"qtran_kb_{database}"
+        
+        try:
+            memories = self.memory.search(
+                query=query,
+                user_id=kb_user_id,
+                limit=limit
+            )
+            
+            if self.enable_metrics:
+                self.metrics["search_times"].append(time.time() - start_time)
+                self.metrics["hits"].append(1 if memories else 0)
+            
+            return memories
+        except Exception as e:
+            print(f"⚠️ Failed to search knowledge base: {e}")
+            return []
+    
     def build_enhanced_prompt(
         self,
         base_prompt: str,
         query_sql: str,
         origin_db: str,
-        target_db: str
+        target_db: str,
+        include_knowledge_base: bool = True
     ) -> str:
         """
-        使用历史记忆增强 prompt
+        使用历史记忆和知识库增强 prompt
         
         Args:
             base_prompt: 基础 prompt
             query_sql: 待翻译的 SQL
             origin_db: 源数据库
             target_db: 目标数据库
+            include_knowledge_base: 是否包含知识库信息
         
         Returns:
             增强后的 prompt
         """
+        # 1. 获取历史翻译记忆
         memories = self.get_relevant_memories(query_sql, origin_db, target_db, limit=3)
         
-        if not memories:
+        # 2. 获取知识库信息（如果启用）
+        kb_info_origin = []
+        kb_info_target = []
+        
+        if include_knowledge_base:
+            # 从查询 SQL 中提取关键词来查询知识库
+            query_keywords = self._extract_keywords_from_sql(query_sql)
+            
+            if query_keywords:
+                # 查询源数据库知识库
+                kb_info_origin = self.get_knowledge_base_info(
+                    query_keywords,
+                    origin_db,
+                    limit=2
+                )
+                
+                # 查询目标数据库知识库
+                kb_info_target = self.get_knowledge_base_info(
+                    query_keywords,
+                    target_db,
+                    limit=2
+                )
+        
+        # 如果没有任何增强信息，返回原始 prompt
+        if not memories and not kb_info_origin and not kb_info_target:
             return base_prompt
         
-        # 构建记忆上下文
-        memory_context = "\n\n## 📚 Relevant Historical Knowledge (from Mem0):\n"
-        memory_context += "(These are successful patterns from previous translations)\n\n"
+        # 构建增强上下文
+        enhanced_context = ""
         
-        for i, mem in enumerate(memories, 1):
-            memory_text = mem.get('memory', '')
-            metadata = mem.get('metadata', {})
-            mem_type = metadata.get('type', 'unknown')
+        # 3. 添加历史翻译记忆
+        if memories:
+            memory_context = "\n\n## 📚 Relevant Historical Knowledge (from Mem0):\n"
+            memory_context += "(These are successful patterns from previous translations)\n\n"
             
-            # ⚠️ 关键修复：转义记忆文本中的大括号，避免被 Python format() 误解析
-            # MongoDB Shell 语法如 { _id: "key" } 会被当作占位符
-            memory_text_escaped = memory_text.replace('{', '{{').replace('}', '}}')
+            for i, mem in enumerate(memories, 1):
+                memory_text = mem.get('memory', '')
+                metadata = mem.get('metadata', {})
+                mem_type = metadata.get('type', 'unknown')
+                
+                # ⚠️ 关键修复：转义记忆文本中的大括号，避免被 Python format() 误解析
+                # MongoDB Shell 语法如 { _id: "key" } 会被当作占位符
+                memory_text_escaped = memory_text.replace('{', '{{').replace('}', '}}')
+                
+                memory_context += f"### Memory {i} [{mem_type}]:\n"
+                memory_context += f"{memory_text_escaped}\n"
+                
+                # 添加元数据提示
+                if mem_type == 'successful_translation':
+                    iterations = metadata.get('iterations', 'N/A')
+                    memory_context += f"(Completed in {iterations} iterations)\n"
+                elif mem_type == 'error_fix':
+                    memory_context += f"(Common error fix pattern)\n"
+                
+                memory_context += "\n"
             
-            memory_context += f"### Memory {i} [{mem_type}]:\n"
-            memory_context += f"{memory_text_escaped}\n"
-            
-            # 添加元数据提示
-            if mem_type == 'successful_translation':
-                iterations = metadata.get('iterations', 'N/A')
-                memory_context += f"(Completed in {iterations} iterations)\n"
-            elif mem_type == 'error_fix':
-                memory_context += f"(Common error fix pattern)\n"
-            
-            memory_context += "\n"
+            enhanced_context += memory_context
         
-        # 在特征知识部分后插入记忆上下文
+        # 4. 添加源数据库知识库信息
+        if kb_info_origin:
+            kb_context = f"\n\n## 📖 {origin_db.upper()} Knowledge Base:\n"
+            for i, kb_item in enumerate(kb_info_origin, 1):
+                kb_text = kb_item.get('memory', '')
+                kb_text_escaped = kb_text.replace('{', '{{').replace('}', '}}')
+                kb_context += f"{kb_text_escaped}\n\n"
+            enhanced_context += kb_context
+        
+        # 5. 添加目标数据库知识库信息
+        if kb_info_target:
+            kb_context = f"\n\n## 📖 {target_db.upper()} Knowledge Base:\n"
+            for i, kb_item in enumerate(kb_info_target, 1):
+                kb_text = kb_item.get('memory', '')
+                kb_text_escaped = kb_text.replace('{', '{{').replace('}', '}}')
+                kb_context += f"{kb_text_escaped}\n\n"
+            enhanced_context += kb_context
+        
+        # 在特征知识部分后插入增强上下文
         # 查找插入位置（在 feature_knowledge 之后，examples 之前）
         if "{feature_knowledge}" in base_prompt:
             enhanced_prompt = base_prompt.replace(
                 "{feature_knowledge}",
-                "{feature_knowledge}" + memory_context
+                "{feature_knowledge}" + enhanced_context
             )
         else:
             # 如果没有 feature_knowledge 占位符，在 examples 前插入
             if "{examples}" in base_prompt:
                 enhanced_prompt = base_prompt.replace(
                     "{examples}",
-                    memory_context + "{examples}"
+                    enhanced_context + "\n{examples}"
                 )
             else:
-                # 作为最后手段，添加到末尾
-                enhanced_prompt = memory_context + base_prompt
+                # 否则直接追加到末尾
+                enhanced_prompt = base_prompt + enhanced_context
         
         return enhanced_prompt
+    
+    def _extract_keywords_from_sql(self, sql: str) -> str:
+        """
+        从 SQL 中提取关键词用于知识库查询
+        
+        Args:
+            sql: SQL 语句
+        
+        Returns:
+            提取的关键词字符串
+        """
+        import re
+        
+        # 移除注释
+        sql_clean = re.sub(r'--.*$', '', sql, flags=re.MULTILINE)
+        sql_clean = re.sub(r'/\*.*?\*/', '', sql_clean, flags=re.DOTALL)
+        
+        # 提取 SQL 关键词和标识符
+        # 常见的 SQL 关键词
+        sql_keywords = set([
+            'SELECT', 'INSERT', 'UPDATE', 'DELETE', 'CREATE', 'DROP', 'ALTER',
+            'WHERE', 'FROM', 'JOIN', 'GROUP BY', 'ORDER BY', 'HAVING',
+            'DISTINCT', 'COUNT', 'SUM', 'AVG', 'MAX', 'MIN',
+            'INT', 'VARCHAR', 'CHAR', 'TEXT', 'DATE', 'DATETIME', 'TIMESTAMP',
+            'FOREIGN KEY', 'PRIMARY KEY', 'UNIQUE', 'INDEX'
+        ])
+        
+        # 提取所有单词
+        words = re.findall(r'\b[A-Za-z_][A-Za-z0-9_]*\b', sql_clean.upper())
+        
+        # 过滤出可能的函数名、数据类型、操作符
+        keywords = []
+        for word in words:
+            if word in sql_keywords:
+                keywords.append(word)
+            elif len(word) >= 3:  # 至少3个字符
+                keywords.append(word)
+        
+        # 返回前5个关键词
+        unique_keywords = list(dict.fromkeys(keywords))[:5]
+        return ' '.join(unique_keywords) if unique_keywords else sql_clean[:100]
     
     def end_session(self, success: bool, final_result: str = None):
         """

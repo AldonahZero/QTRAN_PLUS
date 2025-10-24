@@ -28,6 +28,7 @@ from langchain.output_parsers import StructuredOutputParser
 from langchain.callbacks import get_openai_callback
 from src.Tools.DatabaseConnect.database_connector import exec_sql_statement
 from src.NoSQLFuzz.nosql_crash_pipeline import run_nosql_sequence
+from src.Tools.json_utils import safe_parse_result
 
 # Optional: Redis KB adapter for prompt augmentation (lazy import)
 try:
@@ -1225,11 +1226,12 @@ def transfer_llm_sql_semantic(
                 base_prompt=transfer_llm_string,
                 query_sql=sql_statement_processed,
                 origin_db=origin_db,
-                target_db=target_db
+                target_db=target_db,
+                include_knowledge_base=True  # 🔥 启用知识库增强
             )
             # 检查增强后的 prompt 是否引入了格式化问题
             # 将 Mem0 注入的内容中的大括号转义
-            print("📚 Prompt enhanced with Mem0 historical knowledge")
+            print("📚 Prompt enhanced with Mem0 (historical knowledge + knowledge base)")
             transfer_llm_string = enhanced_prompt
         except Exception as e:
             print(f"⚠️ Failed to enhance prompt with Mem0: {e}")
@@ -1396,7 +1398,50 @@ def transfer_llm_sql_semantic(
             # print("Prompt_messages: " + prompt_messages[0].content)
             response = conversation.predict(input=prompt_messages[0].content)
             print("output_dict_response: " + response)
-            output_dict = output_parser.parse(response)
+            
+            # 使用 json_repair 修复可能的JSON格式错误
+            try:
+                output_dict = output_parser.parse(response)
+            except (TypeError, json.JSONDecodeError, Exception) as e:
+                print(f"⚠️ JSON解析失败，尝试使用 json_repair 修复: {e}")
+                try:
+                    from json_repair import repair_json
+                    # 提取JSON部分（去除markdown代码块标记）
+                    json_text = response
+                    if "```json" in response:
+                        json_text = response.split("```json")[1].split("```")[0].strip()
+                    elif "```" in response:
+                        json_text = response.split("```")[1].split("```")[0].strip()
+                    
+                    # 使用 repair_json 修复
+                    repaired = repair_json(json_text)
+                    output_dict = json.loads(repaired)
+                    
+                    # 数据结构校正：如果是列表，提取第一个元素
+                    if isinstance(output_dict, list):
+                        if len(output_dict) > 0 and isinstance(output_dict[0], dict):
+                            print(f"⚠️ JSON修复后是列表格式，自动提取第一个元素")
+                            output_dict = output_dict[0]
+                        else:
+                            print(f"❌ JSON修复后的列表格式不正确")
+                            return None, None, None, None, {"error": "Invalid JSON structure"}, "JSON_STRUCTURE_ERROR"
+                    
+                    # 验证必需的key是否存在
+                    if not isinstance(output_dict, dict):
+                        print(f"❌ JSON修复后不是字典格式: {type(output_dict)}")
+                        return None, None, None, None, {"error": "Not a dict"}, "JSON_STRUCTURE_ERROR"
+                    
+                    if "TransferSQL" not in output_dict:
+                        print(f"❌ JSON修复后缺少 'TransferSQL' 字段")
+                        return None, None, None, None, {"error": "Missing TransferSQL"}, "JSON_STRUCTURE_ERROR"
+                    
+                    print(f"✅ JSON修复成功")
+                except Exception as repair_error:
+                    print(f"❌ JSON修复失败: {repair_error}")
+                    print(f"原始响应:\n{response}")
+                    # 返回错误标记，让后续流程处理
+                    return None, None, None, None, {"error": str(e)}, "JSON_PARSE_ERROR"
+            
             # print(response)
             print("output_dict: " + str(output_dict))
             cost["Total Tokens"] = cb.total_tokens
@@ -1614,11 +1659,51 @@ def transfer_llm_nosql_crash(
         cost = {}
         with get_openai_callback() as cb:
             response = conversation.predict(input=prompt_messages[0].content)
-            output_dict = (
-                output_parser.parse(response)
-                if conversation_cnt == 0
-                else iterate_output_parser.parse(response)
-            )
+            
+            # 使用 json_repair 修复可能的JSON格式错误
+            try:
+                output_dict = (
+                    output_parser.parse(response)
+                    if conversation_cnt == 0
+                    else iterate_output_parser.parse(response)
+                )
+            except (TypeError, json.JSONDecodeError, Exception) as e:
+                print(f"⚠️ JSON解析失败 (迭代{conversation_cnt}次)，尝试使用 json_repair 修复: {e}")
+                try:
+                    from json_repair import repair_json
+                    # 提取JSON部分
+                    json_text = response
+                    if "```json" in response:
+                        json_text = response.split("```json")[1].split("```")[0].strip()
+                    elif "```" in response:
+                        json_text = response.split("```")[1].split("```")[0].strip()
+                    
+                    # 使用 repair_json 修复
+                    repaired = repair_json(json_text)
+                    output_dict = json.loads(repaired)
+                    
+                    # 数据结构校正：如果是列表，提取第一个元素
+                    if isinstance(output_dict, list):
+                        if len(output_dict) > 0 and isinstance(output_dict[0], dict):
+                            print(f"⚠️ JSON修复后是列表格式，自动提取第一个元素 (迭代{conversation_cnt}次)")
+                            output_dict = output_dict[0]
+                        else:
+                            print(f"❌ JSON修复后的列表格式不正确 (迭代{conversation_cnt}次)")
+                            output_dict = {"TransferNoSQL": "", "Explanation": f"JSON_STRUCTURE_ERROR"}
+                    
+                    # 验证必需的key
+                    if isinstance(output_dict, dict):
+                        if "TransferNoSQL" not in output_dict:
+                            print(f"❌ JSON修复后缺少 'TransferNoSQL' 字段 (迭代{conversation_cnt}次)")
+                            output_dict["TransferNoSQL"] = ""
+                    
+                    print(f"✅ JSON修复成功 (迭代{conversation_cnt}次)")
+                except Exception as repair_error:
+                    print(f"❌ JSON修复失败: {repair_error}")
+                    print(f"原始响应:\n{response}")
+                    # 标记错误并继续，让后续错误处理流程处理
+                    output_dict = {"TransferNoSQL": "", "Explanation": f"JSON_PARSE_ERROR: {str(e)}"}
+            
             cost["Total Tokens"] = cb.total_tokens
             cost["Prompt Tokens"] = cb.prompt_tokens
             cost["Completion Tokens"] = cb.completion_tokens

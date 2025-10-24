@@ -7,6 +7,7 @@ ENV/
 run_mongodb_mutation_test.sh
 run.sh
 run_agent_tests.sh
+demo_db_detection.sh
 *.sh
 
 *.zip
@@ -59,3 +60,6 @@ run_output.log
 
 sync_dir/
 check_agent_setup.py
+
+
+research/
