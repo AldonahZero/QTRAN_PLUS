@@ -330,7 +330,7 @@ class TransferMemoryManager:
         query_sql: str,
         origin_db: str,
         target_db: str,
-        include_knowledge_base: bool = True
+        include_knowledge_base: bool = None  # None = 自动决定
     ) -> str:
         """
         使用历史记忆和知识库增强 prompt
@@ -340,15 +340,34 @@ class TransferMemoryManager:
             query_sql: 待翻译的 SQL
             origin_db: 源数据库
             target_db: 目标数据库
-            include_knowledge_base: 是否包含知识库信息
+            include_knowledge_base: 是否包含知识库信息（None=自动判断）
         
         Returns:
             增强后的 prompt
-        """
-        # 1. 获取历史翻译记忆
-        memories = self.get_relevant_memories(query_sql, origin_db, target_db, limit=3)
         
-        # 2. 获取知识库信息（如果启用）
+        性能模式（通过环境变量 QTRAN_MEM0_MODE 控制）：
+        - fast: 只用历史记忆，速度最快
+        - balanced: 智能决定是否用知识库（默认）
+        - quality: 总是使用知识库，质量最高
+        """
+        # 检查性能模式
+        mode = os.environ.get("QTRAN_MEM0_MODE", "balanced")
+        
+        # 1. 获取历史翻译记忆（根据模式调整数量）
+        memory_limit = 1 if mode == "fast" else 2
+        memories = self.get_relevant_memories(query_sql, origin_db, target_db, limit=memory_limit)
+        
+        # 2. 智能决定是否使用知识库
+        if include_knowledge_base is None:
+            if mode == "fast":
+                include_knowledge_base = False
+            elif mode == "quality":
+                include_knowledge_base = True
+            else:  # balanced
+                # 自动判断查询复杂度
+                include_knowledge_base = self._is_complex_query(query_sql)
+        
+        # 3. 获取知识库信息（如果启用）
         kb_info_origin = []
         kb_info_target = []
         
@@ -357,18 +376,21 @@ class TransferMemoryManager:
             query_keywords = self._extract_keywords_from_sql(query_sql)
             
             if query_keywords:
+                # 根据模式调整知识库查询数量
+                kb_limit = 1 if mode == "balanced" else 2
+                
                 # 查询源数据库知识库
                 kb_info_origin = self.get_knowledge_base_info(
                     query_keywords,
                     origin_db,
-                    limit=2
+                    limit=kb_limit
                 )
                 
                 # 查询目标数据库知识库
                 kb_info_target = self.get_knowledge_base_info(
                     query_keywords,
                     target_db,
-                    limit=2
+                    limit=kb_limit
                 )
         
         # 如果没有任何增强信息，返回原始 prompt
@@ -378,7 +400,7 @@ class TransferMemoryManager:
         # 构建增强上下文
         enhanced_context = ""
         
-        # 3. 添加历史翻译记忆
+        # 4. 添加历史翻译记忆
         if memories:
             memory_context = "\n\n## 📚 Relevant Historical Knowledge (from Mem0):\n"
             memory_context += "(These are successful patterns from previous translations)\n\n"
@@ -406,7 +428,7 @@ class TransferMemoryManager:
             
             enhanced_context += memory_context
         
-        # 4. 添加源数据库知识库信息
+        # 5. 添加源数据库知识库信息
         if kb_info_origin:
             kb_context = f"\n\n## 📖 {origin_db.upper()} Knowledge Base:\n"
             for i, kb_item in enumerate(kb_info_origin, 1):
@@ -415,7 +437,7 @@ class TransferMemoryManager:
                 kb_context += f"{kb_text_escaped}\n\n"
             enhanced_context += kb_context
         
-        # 5. 添加目标数据库知识库信息
+        # 6. 添加目标数据库知识库信息
         if kb_info_target:
             kb_context = f"\n\n## 📖 {target_db.upper()} Knowledge Base:\n"
             for i, kb_item in enumerate(kb_info_target, 1):
@@ -484,6 +506,52 @@ class TransferMemoryManager:
         # 返回前5个关键词
         unique_keywords = list(dict.fromkeys(keywords))[:5]
         return ' '.join(unique_keywords) if unique_keywords else sql_clean[:100]
+    
+    def _is_complex_query(self, sql: str) -> bool:
+        """
+        判断SQL查询是否复杂（需要知识库支持）
+        
+        Args:
+            sql: SQL 语句
+        
+        Returns:
+            True 如果是复杂查询，False 如果是简单查询
+        """
+        sql_upper = sql.upper()
+        
+        # 简单查询模式（通常不需要知识库）
+        simple_patterns = [
+            'SELECT * FROM',
+            'SELECT COUNT(*) FROM',
+            'INSERT INTO',
+            'UPDATE',
+            'DELETE FROM',
+        ]
+        
+        # 复杂操作关键词（需要知识库）
+        complex_keywords = [
+            'UNION', 'INTERSECT', 'EXCEPT',  # 集合操作
+            'JOIN', 'LEFT JOIN', 'RIGHT JOIN', 'FULL JOIN',  # 连接
+            'GROUP BY', 'HAVING',  # 聚合
+            'COLLATE', 'CAST', 'CONVERT',  # 类型转换
+            'SUBSTRING', 'CONCAT', 'COALESCE',  # 字符串函数
+            'HEX(', 'MIN(', 'MAX(', 'AVG(', 'SUM(',  # 聚合函数
+            'CASE WHEN', 'NULLIF', 'IFNULL',  # 条件表达式
+            'EXISTS', 'IN (SELECT', 'NOT IN (SELECT',  # 子查询
+            'WITH RECURSIVE', 'CTE',  # 公用表表达式
+        ]
+        
+        # 如果包含复杂关键词，返回 True
+        if any(kw in sql_upper for kw in complex_keywords):
+            return True
+        
+        # 如果是简单模式且不包含复杂操作，返回 False
+        for pattern in simple_patterns:
+            if pattern in sql_upper:
+                return False
+        
+        # 默认认为是复杂查询（保守策略）
+        return True
     
     def end_session(self, success: bool, final_result: str = None):
         """
