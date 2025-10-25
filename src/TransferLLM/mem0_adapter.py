@@ -814,6 +814,254 @@ class TransferMemoryManager:
             print(f"✅ Marked recommendation {memory_id} as used")
         except Exception as e:
             print(f"⚠️ Failed to mark recommendation as used: {e}")
+    
+    # ==================== 🔥 CoverageHotspot 管理 ==================== #
+    
+    def add_coverage_hotspot(
+        self,
+        features: List[str],
+        coverage_gain: float,
+        origin_db: str = None,
+        target_db: str = None,
+        mutation_sql: str = None,
+        metadata: Dict[str, Any] = None
+    ):
+        """
+        添加或更新覆盖率热点
+        
+        Args:
+            features: SQL特性列表
+            coverage_gain: 覆盖率增长（百分比）
+            origin_db: 源数据库
+            target_db: 目标数据库
+            mutation_sql: 导致覆盖率增长的变异SQL
+            metadata: 额外元数据
+        """
+        start_time = time.time()
+        
+        # 生成 hotspot_id（基于特性组合）
+        features_sorted = sorted(features)
+        features_key = "_".join(features_sorted).lower()
+        hotspot_id = f"hotspot_{features_key}"
+        
+        # 构建消息
+        features_str = ", ".join(features)
+        message = (
+            f"Coverage Hotspot: {features_str}. "
+            f"Coverage gain: {coverage_gain:.2f}%. "
+            f"Database: {origin_db} -> {target_db}"
+        )
+        
+        # 构建元数据
+        full_metadata = {
+            "type": "coverage_hotspot",
+            "hotspot_id": hotspot_id,
+            "features": features,
+            "coverage_gain": coverage_gain,
+            "origin_db": origin_db or "unknown",
+            "target_db": target_db or "unknown",
+            "mutation_sql": mutation_sql[:200] if mutation_sql else None,
+            "created_at": datetime.now().isoformat(),
+            "occurrence_count": 1,
+            "avg_coverage_gain": coverage_gain,
+            "session_id": self.session_id
+        }
+        
+        if metadata:
+            full_metadata.update(metadata)
+        
+        try:
+            # 检查是否已存在相同的 hotspot
+            existing_hotspots = self.get_coverage_hotspots(
+                features=features,
+                origin_db=origin_db,
+                target_db=target_db,
+                limit=1
+            )
+            
+            if existing_hotspots:
+                # 更新已存在的 hotspot
+                existing = existing_hotspots[0]
+                old_count = existing.get('occurrence_count', 1)
+                old_avg = existing.get('avg_coverage_gain', coverage_gain)
+                
+                # 计算新的平均值
+                new_count = old_count + 1
+                new_avg = (old_avg * old_count + coverage_gain) / new_count
+                
+                full_metadata['occurrence_count'] = new_count
+                full_metadata['avg_coverage_gain'] = new_avg
+                
+                print(f"🔥 Updated hotspot: {features_str} (count: {new_count}, avg gain: {new_avg:.2f}%)")
+            else:
+                print(f"🔥 New hotspot: {features_str} (gain: {coverage_gain:.2f}%)")
+            
+            # 添加到 Mem0
+            self.memory.add(
+                message,
+                user_id=self.user_id,
+                metadata=full_metadata
+            )
+            
+            if self.enable_metrics:
+                self.metrics["add_times"].append(time.time() - start_time)
+                
+        except Exception as e:
+            print(f"⚠️ Failed to add coverage hotspot: {e}")
+    
+    def get_coverage_hotspots(
+        self,
+        features: List[str] = None,
+        origin_db: str = None,
+        target_db: str = None,
+        min_coverage_gain: float = 5.0,
+        min_occurrence: int = 1,
+        limit: int = 5
+    ) -> List[Dict[str, Any]]:
+        """
+        获取覆盖率热点
+        
+        Args:
+            features: 过滤特定特性（完全匹配）
+            origin_db: 过滤源数据库
+            target_db: 过滤目标数据库
+            min_coverage_gain: 最小平均覆盖率增长
+            min_occurrence: 最小出现次数
+            limit: 返回数量
+        
+        Returns:
+            热点列表，按平均覆盖率增长降序排序
+        """
+        start_time = time.time()
+        
+        # 构建查询
+        query = f"Coverage Hotspot with gain >= {min_coverage_gain}%"
+        if features:
+            features_str = ", ".join(features)
+            query += f" features: {features_str}"
+        if origin_db and target_db:
+            query += f" from {origin_db} to {target_db}"
+        
+        try:
+            # 搜索所有热点
+            all_memories = self.memory.search(
+                query=query,
+                user_id=self.user_id,
+                limit=limit * 2  # 多获取一些，然后过滤
+            )
+            
+            # 过滤和排序
+            hotspots = []
+            seen_ids = set()
+            
+            for mem in all_memories:
+                metadata = mem.get("metadata", {})
+                
+                # 检查类型
+                if metadata.get("type") != "coverage_hotspot":
+                    continue
+                
+                # 去重（同一个 hotspot_id 只保留最新的）
+                hotspot_id = metadata.get("hotspot_id")
+                if hotspot_id in seen_ids:
+                    continue
+                seen_ids.add(hotspot_id)
+                
+                # 检查覆盖率增长
+                avg_gain = metadata.get("avg_coverage_gain", 0)
+                if avg_gain < min_coverage_gain:
+                    continue
+                
+                # 检查出现次数
+                occurrence = metadata.get("occurrence_count", 1)
+                if occurrence < min_occurrence:
+                    continue
+                
+                # 检查特性匹配（如果指定）
+                if features:
+                    hotspot_features = set(metadata.get("features", []))
+                    if set(features) != hotspot_features:
+                        continue
+                
+                # 检查数据库匹配
+                if origin_db and metadata.get("origin_db") != origin_db:
+                    continue
+                if target_db and metadata.get("target_db") != target_db:
+                    continue
+                
+                hotspots.append({
+                    "memory_id": mem.get("id"),
+                    "hotspot_id": hotspot_id,
+                    "features": metadata.get("features", []),
+                    "avg_coverage_gain": avg_gain,
+                    "occurrence_count": occurrence,
+                    "origin_db": metadata.get("origin_db"),
+                    "target_db": metadata.get("target_db"),
+                    "created_at": metadata.get("created_at"),
+                    "metadata": metadata
+                })
+            
+            # 按平均覆盖率增长降序排序
+            hotspots.sort(key=lambda x: x["avg_coverage_gain"], reverse=True)
+            
+            if self.enable_metrics:
+                self.metrics["search_times"].append(time.time() - start_time)
+                self.metrics["hits"].append(1 if hotspots else 0)
+            
+            return hotspots[:limit]
+            
+        except Exception as e:
+            print(f"⚠️ Failed to get coverage hotspots: {e}")
+            return []
+    
+    def generate_recommendation_from_hotspot(
+        self,
+        hotspot: Dict[str, Any],
+        priority_boost: int = 2
+    ):
+        """
+        基于覆盖率热点生成 Recommendation
+        
+        Args:
+            hotspot: 热点数据
+            priority_boost: 优先级提升（相对于基础优先级）
+        """
+        # 计算优先级
+        avg_gain = hotspot.get("avg_coverage_gain", 0)
+        occurrence = hotspot.get("occurrence_count", 1)
+        
+        # 基础优先级（基于覆盖率增长）
+        if avg_gain >= 20:
+            base_priority = 9
+        elif avg_gain >= 10:
+            base_priority = 8
+        elif avg_gain >= 5:
+            base_priority = 7
+        else:
+            base_priority = 6
+        
+        # 出现次数加成
+        if occurrence >= 5:
+            base_priority = min(10, base_priority + 1)
+        
+        priority = min(10, base_priority + priority_boost)
+        
+        # 生成 Recommendation
+        self.add_recommendation(
+            target_agent="translation",
+            priority=priority,
+            action="prioritize_high_coverage_features",
+            features=hotspot.get("features", []),
+            reason=f"Coverage hotspot: {avg_gain:.2f}% avg gain, {occurrence} occurrences",
+            origin_db=hotspot.get("origin_db"),
+            target_db=hotspot.get("target_db"),
+            metadata={
+                "hotspot_id": hotspot.get("hotspot_id"),
+                "source": "coverage_hotspot",
+                "avg_coverage_gain": avg_gain,
+                "occurrence_count": occurrence
+            }
+        )
 
 
 class FallbackMemoryManager:

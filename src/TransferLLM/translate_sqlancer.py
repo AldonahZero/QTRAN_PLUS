@@ -129,8 +129,31 @@ def sqlancer_translate(
     - 调用 transfer_llm 执行跨方言转换及错误迭代；
     - 调用 Mutate LLM 获取变异结果并持久化。
     """
-    # ========== Mem0 记忆管理初始化（变异阶段）==========
+    # ========== Mem0 记忆管理初始化 ==========
     use_mem0 = os.environ.get("QTRAN_USE_MEM0", "false").lower() == "true"
+    
+    # 翻译阶段的 Mem0 管理器
+    mem0_manager = None
+    if use_mem0:
+        try:
+            from src.TransferLLM.mem0_adapter import (
+                TransferMemoryManager, FallbackMemoryManager
+            )
+            try:
+                mem0_manager = TransferMemoryManager(
+                    user_id="qtran_transfer_universal"
+                )
+                print(f"✅ Translation Mem0 initialized")
+            except ImportError:
+                print("⚠️ Mem0 not available for translation, using fallback")
+                mem0_manager = FallbackMemoryManager(
+                    user_id="qtran_transfer_fallback"
+                )
+        except Exception as e:
+            print(f"⚠️ Failed to initialize Translation Mem0: {e}")
+            mem0_manager = None
+    
+    # 变异阶段的 Mem0 管理器
     mutation_mem0_manager = None
     if use_mem0:
         try:
@@ -743,6 +766,17 @@ def sqlancer_translate(
                 except Exception as e:
                     print(f"⚠️ Failed to record to Mutation Mem0: {e}")
             
+            # ========== 🔥 MVP 反向反馈机制：生成 Recommendation ==========
+            if mem0_manager and oracle_check_res.get("end") == False:
+                _generate_recommendation_from_oracle(
+                    mem0_manager=mem0_manager,
+                    oracle_result=oracle_check_res,
+                    original_sql=mutate_sql,  # 使用 mutate_sql 而不是 info["sql"]
+                    origin_db=a_db,
+                    target_db=actual_target_db,  # 使用检测到的实际目标数据库
+                    oracle_type=bug.get("molt", "unknown")
+                )
+            
             with open(bug_output_mutate_filename, "w", encoding="utf-8") as a:
                 pass
             with open(bug_output_mutate_filename, "a", encoding="utf-8") as a:
@@ -921,7 +955,7 @@ def _generate_recommendation_from_oracle(
     oracle_type: str
 ):
     """
-    根据 Oracle 检查结果生成 Recommendation
+    根据 Oracle 检查结果生成 Recommendation 和 CoverageHotspot
     
     Args:
         mem0_manager: Mem0 管理器
@@ -940,13 +974,32 @@ def _generate_recommendation_from_oracle(
         bug_type = oracle_result.get("bug_type", "unknown")
         if bug_type == "TLP_violation":
             priority = 9
+            coverage_gain = 15.0  # TLP violation 认为是高价值的覆盖
         elif bug_type == "NoREC_mismatch":
             priority = 8
+            coverage_gain = 12.0
         else:
             priority = 7
+            coverage_gain = 8.0
         
-        # 生成建议
         try:
+            # 1. 🔥 生成 CoverageHotspot（Oracle失败 = 发现了有价值的特性组合）
+            if hasattr(mem0_manager, 'add_coverage_hotspot'):
+                mem0_manager.add_coverage_hotspot(
+                    features=features,
+                    coverage_gain=coverage_gain,
+                    origin_db=origin_db,
+                    target_db=target_db,
+                    mutation_sql=original_sql,
+                    metadata={
+                        "bug_type": bug_type,
+                        "oracle_type": oracle_type,
+                        "source": "oracle_violation"
+                    }
+                )
+                print(f"🔥 Generated hotspot: {', '.join(features)} (gain: {coverage_gain}%)")
+            
+            # 2. 生成 Recommendation
             mem0_manager.add_recommendation(
                 target_agent="translation",
                 priority=priority,
@@ -958,7 +1011,8 @@ def _generate_recommendation_from_oracle(
                 metadata={
                     "bug_type": bug_type,
                     "oracle_type": oracle_type,
-                    "details": oracle_result.get("details", {})
+                    "details": oracle_result.get("details", {}),
+                    "coverage_gain": coverage_gain
                 }
             )
             
