@@ -703,13 +703,82 @@ def get_NoSQL_knowledge_string(
         "clickhouse",
         "monetdb",
     }
-    nosql_targets = {"redis", "mongodb"}
+    nosql_targets = {"redis", "mongodb", "surrealdb"}
     # 初始化返回字符串，避免在异常或非 Redis 分支时未定义
     knowledge_string = ""
+    
+    # === SurrealDB 知识库加载 ===
+    if str(target_db).lower() == "surrealdb":
+        try:
+            repo_root = os.path.dirname(
+                os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            )
+            
+            # 加载 SQL 到 SurrealDB 映射
+            mapping_path = os.path.join(
+                repo_root,
+                "NoSQLFeatureKnowledgeBase",
+                "SurrealDB",
+                "sql_to_surrealdb_mapping.json"
+            )
+            
+            if os.path.exists(mapping_path):
+                with open(mapping_path, "r", encoding="utf-8") as f:
+                    surrealdb_kb = json.load(f)
+                
+                knowledge_string += "\n========== 🔴 CRITICAL SurrealDB Syntax Rules ==========\n\n"
+                
+                # 1. 最关键：CREATE TABLE 语法
+                if "critical_syntax_differences" in surrealdb_kb:
+                    create_table_info = surrealdb_kb["critical_syntax_differences"].get("CREATE_TABLE", {})
+                    knowledge_string += "⚠️  CREATE TABLE Syntax (MOST IMPORTANT!):\n\n"
+                    knowledge_string += f"SQLite pattern: {create_table_info.get('sqlite_pattern', 'N/A')}\n"
+                    knowledge_string += f"SurrealDB pattern: {create_table_info.get('surrealdb_pattern', 'N/A')}\n\n"
+                    knowledge_string += "❌ WRONG Examples (DO NOT USE):\n"
+                    for err in create_table_info.get("common_errors", [])[:3]:
+                        knowledge_string += f"  - {err}\n"
+                    knowledge_string += "\n✅ CORRECT Examples:\n"
+                    for trans in create_table_info.get("correct_translations", [])[:3]:
+                        knowledge_string += f"  Input:  {trans['input']}\n"
+                        knowledge_string += f"  Output: {trans['output']}\n\n"
+                    knowledge_string += f"Note: {create_table_info.get('notes', '')}\n\n"
+                
+                # 2. 类型映射
+                if "type_mappings" in surrealdb_kb:
+                    knowledge_string += "Type Mappings:\n"
+                    for sql_type, surreal_type in surrealdb_kb["type_mappings"].items():
+                        knowledge_string += f"  {sql_type} → {surreal_type}\n"
+                    knowledge_string += "\n"
+                
+                # 3. 聚合函数
+                if "aggregate_functions" in surrealdb_kb:
+                    knowledge_string += "Aggregate Functions:\n"
+                    for func_name, func_info in surrealdb_kb["aggregate_functions"].items():
+                        knowledge_string += f"  {func_name} → {func_info.get('surrealdb', 'N/A')}"
+                        if func_info.get("notes"):
+                            knowledge_string += f" ({func_info['notes']})"
+                        knowledge_string += "\n"
+                    knowledge_string += "\n"
+                
+                # 4. 不支持的特性
+                if "unsupported_features" in surrealdb_kb:
+                    knowledge_string += "⚠️  Unsupported Features (Return comment):\n"
+                    for feature_name in surrealdb_kb["unsupported_features"].keys():
+                        knowledge_string += f"  - {feature_name}\n"
+                    knowledge_string += "\n"
+                
+                knowledge_string += "========================================\n\n"
+                print(f"✅ Loaded SurrealDB knowledge base from: {mapping_path}")
+            else:
+                print(f"⚠️  SurrealDB knowledge base not found: {mapping_path}")
+        
+        except Exception as e:
+            print(f"❌ Failed to load SurrealDB knowledge base: {e}")
+    
     # 特殊处理：如果来源或目标是 Redis，则加载 NoSQL Redis 知识库
     # 目前实现：当 origin_db 为 redis 时，注入 Redis 命令/示例知识；
     # 后续可扩展 target_db == redis 的映射提示（比如 SQL -> Redis）。
-    if str(origin_db).lower() == "redis":
+    elif str(origin_db).lower() == "redis":
         try:
             # repo_root = os.path.dirname(
             #     os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -1201,8 +1270,8 @@ def transfer_llm_sql_semantic(
     # examples_string = ""
 
     if with_knowledge:
-        # 优先使用 NoSQL knowledge (适用于 Redis→MongoDB 等场景)
-        NOSQL_DBS = {"redis", "memcached", "etcd", "consul", "mongodb"}
+        # 优先使用 NoSQL knowledge (适用于 Redis→MongoDB、SQLite→SurrealDB 等场景)
+        NOSQL_DBS = {"redis", "memcached", "etcd", "consul", "mongodb", "surrealdb"}
         if str(origin_db).lower() in NOSQL_DBS or str(target_db).lower() in NOSQL_DBS:
             feature_knowledge_string = get_NoSQL_knowledge_string(
                 origin_db, target_db, with_knowledge, sql_statement_processed
@@ -1557,7 +1626,7 @@ def transfer_llm_nosql_crash(
         "clickhouse",
         "monetdb",
     }
-    NOSQL_DBS = {"redis", "memcached", "etcd", "consul", "mongodb"}
+    NOSQL_DBS = {"redis", "memcached", "etcd", "consul", "mongodb", "surrealdb"}
 
     # 选择要执行 crash 检测的具体 NoSQL 数据库 (优先 target)
     nosql_db = None
