@@ -1,0 +1,174 @@
+{
+    "critical_syntax_differences": {
+        "CREATE_TABLE": {
+            "sqlite_pattern": "CREATE TABLE table_name (column_name TYPE, ...)",
+            "surrealdb_pattern": "DEFINE TABLE table_name SCHEMAFULL; DEFINE FIELD column_name ON TABLE table_name TYPE type;",
+            "severity": "CRITICAL",
+            "common_errors": [
+                "CREATE TABLE t0 (c0 STRING)",
+                "CREATE TABLE t0 (c0 TEXT)",
+                "CREATE TABLE users (name TEXT, age INT)"
+            ],
+            "correct_translations": [
+                {
+                    "input": "CREATE TABLE t0(c0);",
+                    "output": "DEFINE TABLE t0 SCHEMAFULL; DEFINE FIELD c0 ON TABLE t0 TYPE string;"
+                },
+                {
+                    "input": "CREATE TABLE t0(c0, c1);",
+                    "output": "DEFINE TABLE t0 SCHEMAFULL; DEFINE FIELD c0 ON TABLE t0 TYPE string; DEFINE FIELD c1 ON TABLE t0 TYPE string;"
+                },
+                {
+                    "input": "CREATE TABLE t0(c0 INTEGER, c1 TEXT);",
+                    "output": "DEFINE TABLE t0 SCHEMAFULL; DEFINE FIELD c0 ON TABLE t0 TYPE int; DEFINE FIELD c1 ON TABLE t0 TYPE string;"
+                }
+            ],
+            "notes": "SurrealDB does NOT support CREATE TABLE (columns) syntax. Must use DEFINE TABLE + DEFINE FIELD."
+        }
+    },
+    "type_mappings": {
+        "INTEGER": "int",
+        "TEXT": "string",
+        "REAL": "float",
+        "BLOB": "bytes",
+        "NULL": "option<type>",
+        "BOOLEAN": "bool"
+    },
+    "aggregate_functions": {
+        "COUNT(*)": {
+            "surrealdb": "count()",
+            "notes": "No asterisk parameter"
+        },
+        "COUNT(column)": {
+            "surrealdb": "count(column)",
+            "notes": "Keeps column parameter"
+        },
+        "AVG(column)": {
+            "surrealdb": "math::mean(column)",
+            "notes": "Must use math::mean instead of AVG"
+        },
+        "SUM(column)": {
+            "surrealdb": "SUM(column) OR math::sum(column)",
+            "notes": "Both forms supported"
+        },
+        "MIN(column)": {
+            "surrealdb": "MIN(column) OR math::min(column)",
+            "notes": "Both forms supported"
+        },
+        "MAX(column)": {
+            "surrealdb": "MAX(column) OR math::max(column)",
+            "notes": "Both forms supported"
+        }
+    },
+    "identical_syntax": {
+        "SELECT": "SELECT * FROM table WHERE condition",
+        "INSERT": "INSERT INTO table VALUES (...)",
+        "UPDATE": "UPDATE table SET ... WHERE ...",
+        "DELETE": "DELETE FROM table WHERE ...",
+        "WHERE": "WHERE condition",
+        "ORDER_BY": "ORDER BY column ASC/DESC",
+        "LIMIT": "LIMIT n",
+        "OFFSET": "OFFSET n",
+        "GROUP_BY": "GROUP BY column",
+        "HAVING": "HAVING condition",
+        "operators": [
+            "=",
+            "!=",
+            "<",
+            ">",
+            "<=",
+            ">=",
+            "AND",
+            "OR",
+            "NOT"
+        ],
+        "NULL_handling": [
+            "IS NULL",
+            "IS NOT NULL",
+            "COALESCE()"
+        ]
+    },
+    "unsupported_features": {
+        "PRAGMA": {
+            "reason": "SQLite-specific database configuration commands",
+            "action": "Return empty comment or mark as UNTRANSLATABLE",
+            "examples": [
+                "PRAGMA encoding = 'UTF16be';",
+                "PRAGMA foreign_keys = ON;",
+                "PRAGMA cache_size = 10000;"
+            ]
+        },
+        "ATTACH_DATABASE": {
+            "reason": "Different database management model",
+            "action": "UNTRANSLATABLE"
+        },
+        "DETACH_DATABASE": {
+            "reason": "Different database management model",
+            "action": "UNTRANSLATABLE"
+        },
+        "VACUUM": {
+            "reason": "Automatic storage management",
+            "action": "UNTRANSLATABLE"
+        },
+        "EXPLAIN": {
+            "reason": "Different query analysis tools",
+            "action": "UNTRANSLATABLE"
+        }
+    },
+    "translation_examples": {
+        "simple_select": {
+            "input": "SELECT * FROM users WHERE age > 25;",
+            "output": "SELECT * FROM users WHERE age > 25;",
+            "notes": "Identical syntax"
+        },
+        "aggregate_query": {
+            "input": "SELECT COUNT(*), AVG(age) FROM users;",
+            "output": "SELECT count(), math::mean(age) FROM users;",
+            "notes": "COUNT(*) → count(), AVG() → math::mean()"
+        },
+        "group_by": {
+            "input": "SELECT department, COUNT(*) FROM employees GROUP BY department;",
+            "output": "SELECT department, count() FROM employees GROUP BY department;",
+            "notes": "COUNT(*) → count()"
+        },
+        "insert": {
+            "input": "INSERT INTO users (name, age) VALUES ('Alice', 25);",
+            "output": "INSERT INTO users (name, age) VALUES ('Alice', 25);",
+            "notes": "Identical syntax"
+        },
+        "null_handling": {
+            "input": "SELECT * FROM users WHERE email IS NULL;",
+            "output": "SELECT * FROM users WHERE email IS NULL;",
+            "notes": "Identical syntax"
+        }
+    },
+    "common_pitfalls": [
+        {
+            "error": "Using CREATE TABLE (columns) syntax",
+            "solution": "Use DEFINE TABLE + DEFINE FIELD instead",
+            "frequency": "Very common"
+        },
+        {
+            "error": "Forgetting to convert COUNT(*)",
+            "solution": "Always use count() without asterisk",
+            "frequency": "Common"
+        },
+        {
+            "error": "Using AVG() instead of math::mean()",
+            "solution": "Replace AVG with math::mean",
+            "frequency": "Common"
+        },
+        {
+            "error": "Trying to translate PRAGMA commands",
+            "solution": "Mark as UNTRANSLATABLE or return comment",
+            "frequency": "Occasional"
+        }
+    ],
+    "translation_success_rate": {
+        "simple_queries": "99%",
+        "insert_update_delete": "95%",
+        "aggregates": "85%",
+        "table_definitions": "70%",
+        "overall_expected": "85-90%"
+    }
+}

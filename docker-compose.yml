@@ -122,6 +122,17 @@ services:
       - db_network
     restart: unless-stopped
 
+  surrealdb:
+    image: surrealdb/surrealdb:latest
+    container_name: surrealdb_QTRAN
+    command: start --log trace --user root --pass root memory
+    ports:
+      - "8000:8000"
+    volumes:
+      - surrealdb_data:/data
+    networks:
+      - db_network
+
 networks:
   db_network:
     driver: bridge
@@ -138,3 +149,4 @@ volumes:
   etcd_data:
   consul_data:
   qdrant_data:
+  surrealdb_data:

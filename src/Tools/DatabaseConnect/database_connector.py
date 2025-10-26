@@ -49,6 +49,7 @@ class DatabaseConnectionPool:
         dbname,
         pool_size=20,
         max_overflow=20,
+        **kwargs  # 接收额外参数，如 namespace (for SurrealDB)
     ):
         self.dbType = dbType.upper()
         self.host = host
@@ -59,16 +60,35 @@ class DatabaseConnectionPool:
         self.pool_size = pool_size
         self.max_overflow = max_overflow
         self.engine = None
+        # 存储额外的配置参数（如 SurrealDB 的 namespace）
+        for key, value in kwargs.items():
+            setattr(self, key, value)
         self.create_engine()
 
     # 检查连接是否成功
     def check_connection(self):
         try:
-            with self.engine.connect() as connection:
-                self.execSQL("SELECT 1;")
-            return True
+            if self.dbType == "SURREALDB":
+                # SurrealDB 使用 HTTP API，直接测试连接
+                import requests
+                response = requests.get(
+                    f"http://{self.host}:{self.port}/health",
+                    timeout=5
+                )
+                return response.status_code == 200
+            elif self.engine is None:
+                # 其他没有 engine 的数据库类型
+                print(f"数据库类型 {self.dbType} 没有 engine，跳过连接检查")
+                return True
+            else:
+                with self.engine.connect() as connection:
+                    self.execSQL("SELECT 1;")
+                return True
         except OperationalError as e:
             print(f"连接失败: {e}")
+            return False
+        except Exception as e:
+            print(f"连接检查失败: {e}")
             return False
 
     def create_engine(self):
@@ -114,6 +134,21 @@ class DatabaseConnectionPool:
                 self.engine = create_engine(
                     db_path, pool_size=self.pool_size, max_overflow=self.max_overflow
                 )
+            elif self.dbType == "SURREALDB":
+                # SurrealDB 使用 HTTP API，不使用 SQLAlchemy engine
+                self.engine = None
+                # 初始化 SurrealDB 连接参数
+                self.surrealdb_url = f"http://{self.host}:{self.port}/sql"
+                self.surrealdb_auth = (self.username, self.password)
+                # 从 dbname 中提取 namespace 和 database
+                # 格式可能是 "namespace_database" 或直接使用 dbname
+                self.surrealdb_namespace = getattr(self, 'namespace', 'test')
+                self.surrealdb_database = self.dbname if self.dbname else 'test'
+                self.surrealdb_headers = {
+                    "Accept": "application/json",
+                    "NS": self.surrealdb_namespace,
+                    "DB": self.surrealdb_database,
+                }
             else:
                 raise ValueError("Unsupported database type")
         except exc.SQLAlchemyError as e:
@@ -133,7 +168,47 @@ class DatabaseConnectionPool:
         affected_rows = 0  # 初始化受影响的行数
         result = None  # 初始化结果为 None
         try:
-            if self.dbType == "OCEANBASE":
+            if self.dbType == "SURREALDB":
+                # SurrealDB 使用 HTTP API 执行查询
+                import requests
+                response = requests.post(
+                    self.surrealdb_url,
+                    data=query,
+                    headers=self.surrealdb_headers,
+                    auth=self.surrealdb_auth,
+                    timeout=30
+                )
+                end_time = time.time()
+                execution_time = end_time - start_time
+                
+                if response.status_code == 200:
+                    result_json = response.json()
+                    # SurrealDB 返回格式: [{"status": "OK", "result": [...], "time": "..."}]
+                    if isinstance(result_json, list) and len(result_json) > 0:
+                        first_result = result_json[0]
+                        if first_result.get("status") == "OK":
+                            query_result = first_result.get("result", [])
+                            # 转换为类似 SQLAlchemy 的结果格式
+                            if isinstance(query_result, list):
+                                result = [(item,) if not isinstance(item, dict) else tuple(item.values()) for item in query_result]
+                                affected_rows = len(result)
+                            else:
+                                result = []
+                                affected_rows = 0
+                            print(f"SurrealDB affected rows: {affected_rows}")
+                            return result, execution_time, None
+                        else:
+                            # 有错误
+                            error_msg = first_result.get("result", "Unknown error")
+                            print(f"SurrealDB error: {error_msg}")
+                            return None, execution_time, str(error_msg)
+                    else:
+                        return [], execution_time, None
+                else:
+                    error_msg = f"HTTP {response.status_code}: {response.text}"
+                    print(f"SurrealDB HTTP error: {error_msg}")
+                    return None, execution_time, error_msg
+            elif self.dbType == "OCEANBASE":
                 conn = pymysql.connect(
                     host=self.host,
                     port=int(self.port),
@@ -326,6 +401,41 @@ def database_clear(tool, exp, dbType):
                 print("Consul 列取键失败 status=" + str(r.status_code))
         except Exception as e:
             print("Consul 清理失败:", e)
+        return
+    elif dbType.lower() == "surrealdb":
+        # SurrealDB: 删除所有表
+        try:
+            import requests
+            host = args.get("host", "127.0.0.1")
+            port = int(args.get("port", 8000))
+            username = args.get("username", "root")
+            password = args.get("password", "root")
+            namespace = args.get("namespace", "test")
+            database = args.get("database", args.get("dbname", "test"))
+            
+            url = f"http://{host}:{port}/sql"
+            headers = {
+                "Accept": "application/json",
+                "NS": namespace,
+                "DB": database,
+            }
+            auth = (username, password)
+            
+            # 获取所有表名
+            list_tables_query = "INFO FOR DB;"
+            response = requests.post(url, data=list_tables_query, headers=headers, auth=auth, timeout=10)
+            
+            if response.status_code == 200:
+                result = response.json()
+                # 删除所有表
+                # 简单方法：删除整个数据库并重新创建
+                remove_db_query = f"REMOVE DATABASE {database};"
+                requests.post(url, data=remove_db_query, headers=headers, auth=auth, timeout=10)
+                print(f"{args['dbname']} (surrealdb) 数据库已删除")
+            else:
+                print(f"SurrealDB 清理失败: HTTP {response.status_code}")
+        except Exception as e:
+            print("SurrealDB 清理失败:", e)
         return
     elif dbType.lower() in ["duckdb"]:
         db_filepath = os.path.join(current_dir, f'{args["dbname"]}.duckdb')

@@ -179,6 +179,92 @@ class KnowledgeBaseImporter:
             
             print(f"  ✅ Imported SQL to Redis mappings")
     
+    def import_surrealdb_knowledge(self):
+        """导入 SurrealDB 知识库"""
+        print("\n📚 Importing SurrealDB knowledge...")
+        db_name = "surrealdb"
+        
+        # 1. 导入 SQL 到 SurrealDB 映射
+        mapping_path = self.base_path / "NoSQLFeatureKnowledgeBase/SurrealDB/sql_to_surrealdb_mapping.json"
+        if mapping_path.exists():
+            with open(mapping_path, 'r', encoding='utf-8') as f:
+                mapping_data = json.load(f)
+            
+            # 导入关键语法差异（最重要）
+            if "critical_syntax_differences" in mapping_data:
+                for feature_name, feature_info in mapping_data["critical_syntax_differences"].items():
+                    memory_text = self._format_surrealdb_critical_syntax(feature_name, feature_info)
+                    metadata = {
+                        "database": db_name,
+                        "type": "critical_syntax",
+                        "feature_name": feature_name,
+                        "severity": feature_info.get("severity", "HIGH"),
+                        "source": "sql_mapping"
+                    }
+                    self._add_memory(memory_text, db_name, metadata)
+                
+                print(f"  ✅ Imported {len(mapping_data['critical_syntax_differences'])} critical syntax rules")
+            
+            # 导入类型映射
+            if "type_mappings" in mapping_data:
+                memory_text = self._format_surrealdb_type_mappings(mapping_data["type_mappings"])
+                metadata = {
+                    "database": db_name,
+                    "type": "type_mapping",
+                    "feature_name": "data_types",
+                    "source": "sql_mapping"
+                }
+                self._add_memory(memory_text, db_name, metadata)
+                print(f"  ✅ Imported type mappings")
+            
+            # 导入聚合函数映射
+            if "aggregate_functions" in mapping_data:
+                for func_name, func_info in mapping_data["aggregate_functions"].items():
+                    memory_text = self._format_surrealdb_aggregate(func_name, func_info)
+                    metadata = {
+                        "database": db_name,
+                        "type": "aggregate_function",
+                        "feature_name": func_name,
+                        "source": "sql_mapping"
+                    }
+                    self._add_memory(memory_text, db_name, metadata)
+                
+                print(f"  ✅ Imported {len(mapping_data['aggregate_functions'])} aggregate functions")
+            
+            # 导入不支持的特性
+            if "unsupported_features" in mapping_data:
+                for feature_name, feature_info in mapping_data["unsupported_features"].items():
+                    memory_text = self._format_surrealdb_unsupported(feature_name, feature_info)
+                    metadata = {
+                        "database": db_name,
+                        "type": "unsupported",
+                        "feature_name": feature_name,
+                        "source": "sql_mapping"
+                    }
+                    self._add_memory(memory_text, db_name, metadata)
+                
+                print(f"  ✅ Imported {len(mapping_data['unsupported_features'])} unsupported features")
+        
+        # 2. 导入翻译规则
+        rules_path = self.base_path / "NoSQLFeatureKnowledgeBase/SurrealDB/surrealdb_translation_rules.json"
+        if rules_path.exists():
+            with open(rules_path, 'r', encoding='utf-8') as f:
+                rules_data = json.load(f)
+            
+            for rule in rules_data.get("translation_rules", []):
+                memory_text = self._format_surrealdb_rule(rule)
+                metadata = {
+                    "database": db_name,
+                    "type": "translation_rule",
+                    "feature_name": rule.get("rule_id", "unknown"),
+                    "priority": rule.get("priority", "MEDIUM"),
+                    "category": rule.get("category", "unknown"),
+                    "source": "translation_rules"
+                }
+                self._add_memory(memory_text, db_name, metadata)
+            
+            print(f"  ✅ Imported {len(rules_data.get('translation_rules', []))} translation rules")
+    
     def import_sql_database_knowledge(self, db_name: str, knowledge_types: Optional[List[str]] = None):
         """
         导入 SQL 数据库知识
@@ -347,6 +433,67 @@ class KnowledgeBaseImporter:
         
         return "\n".join(parts)
     
+    def _format_surrealdb_critical_syntax(self, feature_name: str, feature_info: Dict) -> str:
+        """格式化 SurrealDB 关键语法差异"""
+        parts = [f"🔴 CRITICAL: {feature_name} - SurrealDB syntax is completely different!"]
+        parts.append(f"SQLite pattern: {feature_info.get('sqlite_pattern', 'N/A')}")
+        parts.append(f"SurrealDB pattern: {feature_info.get('surrealdb_pattern', 'N/A')}")
+        
+        if feature_info.get("common_errors"):
+            parts.append("Common ERRORS:")
+            for err in feature_info["common_errors"][:3]:
+                parts.append(f"  ❌ {err}")
+        
+        if feature_info.get("correct_translations"):
+            parts.append("Correct translations:")
+            for trans in feature_info["correct_translations"][:3]:
+                parts.append(f"  ✅ Input: {trans['input']}")
+                parts.append(f"     Output: {trans['output']}")
+        
+        parts.append(feature_info.get("notes", ""))
+        return "\n".join(parts)
+    
+    def _format_surrealdb_type_mappings(self, type_mappings: Dict) -> str:
+        """格式化 SurrealDB 类型映射"""
+        parts = ["SurrealDB Type Mappings:"]
+        for sql_type, surrealdb_type in type_mappings.items():
+            parts.append(f"  {sql_type} → {surrealdb_type}")
+        return "\n".join(parts)
+    
+    def _format_surrealdb_aggregate(self, func_name: str, func_info: Dict) -> str:
+        """格式化 SurrealDB 聚合函数"""
+        parts = [f"SurrealDB Aggregate: {func_name} → {func_info.get('surrealdb', 'N/A')}"]
+        if func_info.get("notes"):
+            parts.append(f"Note: {func_info['notes']}")
+        return "\n".join(parts)
+    
+    def _format_surrealdb_unsupported(self, feature_name: str, feature_info: Dict) -> str:
+        """格式化 SurrealDB 不支持的特性"""
+        parts = [f"⚠️ UNSUPPORTED: {feature_name}"]
+        parts.append(f"Reason: {feature_info.get('reason', 'N/A')}")
+        parts.append(f"Action: {feature_info.get('action', 'N/A')}")
+        if feature_info.get("examples"):
+            parts.append("Examples:")
+            for ex in feature_info["examples"][:2]:
+                parts.append(f"  - {ex}")
+        return "\n".join(parts)
+    
+    def _format_surrealdb_rule(self, rule: Dict) -> str:
+        """格式化 SurrealDB 翻译规则"""
+        priority = rule.get("priority", "MEDIUM")
+        rule_id = rule.get("rule_id", "unknown")
+        parts = [f"[{priority}] {rule_id}: {rule.get('description', 'N/A')}"]
+        parts.append(f"SQLite: {rule.get('sqlite_pattern', 'N/A')}")
+        parts.append(f"SurrealDB: {rule.get('surrealdb_pattern', 'N/A')}")
+        
+        if rule.get("examples"):
+            for ex in rule["examples"][:2]:
+                parts.append(f"Example: {ex.get('input', '')} → {ex.get('output', '')}")
+                if ex.get("explanation"):
+                    parts.append(f"  ({ex['explanation']})")
+        
+        return "\n".join(parts)
+    
     def _format_sql_to_redis_mapping(self, mapping: Any) -> str:
         """格式化 SQL 到 Redis 的映射"""
         if isinstance(mapping, dict):
@@ -485,7 +632,7 @@ class KnowledgeBaseImporter:
 def main():
     parser = argparse.ArgumentParser(description="Import knowledge bases to Mem0")
     parser.add_argument("--all", action="store_true", help="Import all knowledge bases")
-    parser.add_argument("--nosql", choices=["mongodb", "redis"], help="Import specific NoSQL database")
+    parser.add_argument("--nosql", choices=["mongodb", "redis", "surrealdb"], help="Import specific NoSQL database")
     parser.add_argument("--sql", 
                        choices=["mysql", "postgres", "sqlite", "clickhouse", "duckdb", "mariadb", "monetdb", "tidb"],
                        help="Import specific SQL database")
@@ -521,6 +668,8 @@ def main():
                 importer.import_mongodb_knowledge()
             elif args.nosql == "redis":
                 importer.import_redis_knowledge()
+            elif args.nosql == "surrealdb":
+                importer.import_surrealdb_knowledge()
         
         elif args.sql:
             knowledge_types = None

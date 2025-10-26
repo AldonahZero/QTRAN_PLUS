@@ -1,0 +1,116 @@
+{
+    "database": "SurrealDB",
+    "version": "2.3.10",
+    "query_language": "SurrealQL",
+    "translation_rules": [
+        {
+            "rule_id": "CREATE_TABLE_CRITICAL",
+            "priority": "CRITICAL",
+            "category": "DDL",
+            "sqlite_pattern": "CREATE TABLE {table} ({columns})",
+            "surrealdb_pattern": "DEFINE TABLE {table} SCHEMAFULL; {DEFINE FIELD statements}",
+            "description": "SurrealDB does NOT support CREATE TABLE (columns) syntax",
+            "examples": [
+                {
+                    "input": "CREATE TABLE t0(c0);",
+                    "output": "DEFINE TABLE t0 SCHEMAFULL; DEFINE FIELD c0 ON TABLE t0 TYPE string;",
+                    "explanation": "Must split into DEFINE TABLE + DEFINE FIELD"
+                },
+                {
+                    "input": "CREATE TABLE users(name TEXT, age INTEGER);",
+                    "output": "DEFINE TABLE users SCHEMAFULL; DEFINE FIELD name ON TABLE users TYPE string; DEFINE FIELD age ON TABLE users TYPE int;",
+                    "explanation": "Each column becomes a separate DEFINE FIELD statement"
+                }
+            ],
+            "common_errors": [
+                "CREATE TABLE t0 (c0 STRING)",
+                "CREATE TABLE t0 (c0 TEXT)"
+            ]
+        },
+        {
+            "rule_id": "COUNT_ASTERISK",
+            "priority": "HIGH",
+            "category": "Aggregate",
+            "sqlite_pattern": "COUNT(*)",
+            "surrealdb_pattern": "count()",
+            "description": "COUNT(*) must become count() without asterisk",
+            "examples": [
+                {
+                    "input": "SELECT COUNT(*) FROM users;",
+                    "output": "SELECT count() FROM users;"
+                }
+            ]
+        },
+        {
+            "rule_id": "AVG_FUNCTION",
+            "priority": "HIGH",
+            "category": "Aggregate",
+            "sqlite_pattern": "AVG({column})",
+            "surrealdb_pattern": "math::mean({column})",
+            "description": "AVG must become math::mean",
+            "examples": [
+                {
+                    "input": "SELECT AVG(age) FROM users;",
+                    "output": "SELECT math::mean(age) FROM users;"
+                }
+            ]
+        },
+        {
+            "rule_id": "TYPE_INTEGER",
+            "priority": "MEDIUM",
+            "category": "Type",
+            "sqlite_pattern": "INTEGER",
+            "surrealdb_pattern": "int",
+            "description": "Type name mapping"
+        },
+        {
+            "rule_id": "TYPE_TEXT",
+            "priority": "MEDIUM",
+            "category": "Type",
+            "sqlite_pattern": "TEXT",
+            "surrealdb_pattern": "string",
+            "description": "Type name mapping"
+        },
+        {
+            "rule_id": "TYPE_REAL",
+            "priority": "MEDIUM",
+            "category": "Type",
+            "sqlite_pattern": "REAL",
+            "surrealdb_pattern": "float",
+            "description": "Type name mapping"
+        },
+        {
+            "rule_id": "PRAGMA_UNSUPPORTED",
+            "priority": "CRITICAL",
+            "category": "Unsupported",
+            "sqlite_pattern": "PRAGMA {command}",
+            "surrealdb_pattern": "-- PRAGMA not supported in SurrealDB",
+            "description": "PRAGMA commands have no equivalent",
+            "action": "SKIP or COMMENT"
+        },
+        {
+            "rule_id": "SELECT_IDENTICAL",
+            "priority": "LOW",
+            "category": "DQL",
+            "sqlite_pattern": "SELECT {columns} FROM {table} WHERE {condition}",
+            "surrealdb_pattern": "SELECT {columns} FROM {table} WHERE {condition}",
+            "description": "Basic SELECT syntax is identical"
+        },
+        {
+            "rule_id": "INSERT_IDENTICAL",
+            "priority": "LOW",
+            "category": "DML",
+            "sqlite_pattern": "INSERT INTO {table} VALUES ({values})",
+            "surrealdb_pattern": "INSERT INTO {table} VALUES ({values})",
+            "description": "INSERT syntax is identical"
+        }
+    ],
+    "translation_workflow": [
+        "1. Check if statement contains PRAGMA → mark as UNTRANSLATABLE",
+        "2. Check if statement is CREATE TABLE → split into DEFINE statements",
+        "3. Replace COUNT(*) with count()",
+        "4. Replace AVG() with math::mean()",
+        "5. Map data types (INTEGER→int, TEXT→string)",
+        "6. Keep other SQL syntax unchanged"
+    ]
+}
