@@ -3,8 +3,9 @@ QTRAN 项目入口：解析命令行参数并启动两阶段流程
 
 作用概述：
 - 程序入口，负责解析 --input_filename、--tool 等参数。
-- 调用 qtran_run，根据选择的来源工具（sqlancer / pinolo）驱动“转换阶段(Transfer)”与后续流程数据准备。
+- 调用 qtran_run，根据选择的来源工具（sqlancer / pinolo）驱动"转换阶段(Transfer)"与后续流程数据准备。
 - 在首次运行时，按需创建各数据库与实验环境所需容器/库实例。
+- 🆕 集成轻量级协调机制：基于黑板模式动态调整工作流策略。
 
 关联流程参考：见 abstract.md 中《核心目标》《调用链概览》《阶段一：转换》章节。
 """
@@ -17,6 +18,7 @@ import json
 from src.TransferLLM.translate_sqlancer import sqlancer_qtran_run
 from src.TransferLLM.TransferLLM import pinolo_qtran_run
 from src.Tools.DatabaseConnect.docker_create import docker_create_databases
+from src.Coordinator import SimpleCoordinator
 
 environment_variables = os.environ
 os.environ["http_proxy"] = environment_variables.get("HTTP_PROXY", "")
@@ -67,6 +69,7 @@ def qtran_run(
     iteration_num=4,
     FewShot=False,
     with_knowledge=True,
+    enable_coordinator=True,
 ):
     """
     启动 QTRAN 主流程（转换阶段入口）。
@@ -77,9 +80,11 @@ def qtran_run(
     - temperature/model: LLM 相关设置。
     - error_iteration/iteration_num: 是否进行错误迭代及最大迭代次数。
     - FewShot/with_knowledge: 是否启用 Few-Shot 示例与特征知识库提示。
+    - enable_coordinator: 🆕 是否启用协调器机制。
 
     行为：
     - 初始化并创建不同 fuzzer 和数据库的容器/数据库实例。
+    - 🆕 如果启用协调器，根据黑板状态动态调整工作流参数。
     - 分发到对应的翻译流程：sqlancer_qtran_run 或 pinolo_qtran_run。
     """
     if tool.lower() not in ["pinolo", "sqlancer"]:
@@ -105,6 +110,52 @@ def qtran_run(
         )
 
     resolved_input = _resolve_input_path(input_filename)
+
+    # 🆕 协调器初始化
+    coordinator = None
+    if enable_coordinator and os.environ.get("QTRAN_USE_MEM0", "false").lower() == "true":
+        print("\n" + "="*60)
+        print("🧠 初始化协调器（Coordinator）")
+        print("="*60)
+        coordinator = SimpleCoordinator(user_id="qtran_redis_to_mongodb")
+        if coordinator.initialize_memory_manager():
+            # 轮询黑板状态
+            print("📡 轮询黑板状态...")
+            state = coordinator.poll_state()
+            
+            # 决策策略
+            print("🤔 分析反馈并决策策略...")
+            strategy = coordinator.decide_strategy(state)
+            
+            # 准备基础参数
+            base_params = {
+                "temperature": temperature,
+                "iteration_num": iteration_num,
+                "model": model,
+                "error_iteration": error_iteration,
+                "FewShot": FewShot,
+                "with_knowledge": with_knowledge,
+            }
+            
+            # 应用策略调整参数
+            print("⚙️ 应用策略调整...")
+            adjusted_params = coordinator.adjust_workflow_params(base_params, strategy)
+            
+            # 更新实际使用的参数
+            temperature = adjusted_params["temperature"]
+            iteration_num = adjusted_params["iteration_num"]
+            model = adjusted_params["model"]
+            error_iteration = adjusted_params["error_iteration"]
+            FewShot = adjusted_params["FewShot"]
+            with_knowledge = adjusted_params["with_knowledge"]
+            
+            print("✅ 协调器初始化完成\n")
+        else:
+            print("⚠️ 协调器初始化失败，使用默认参数\n")
+            coordinator = None
+    elif enable_coordinator:
+        print("ℹ️ 协调器未启用：需要设置 QTRAN_USE_MEM0=true")
+        coordinator = None
 
     # 扫描输入文件，获取实际需要的数据库
     required_dbs = scan_databases_from_input(resolved_input)
@@ -164,6 +215,10 @@ def qtran_run(
             FewShot=FewShot,
             with_knowledge=with_knowledge,
         )
+    
+    # 🆕 输出协调器统计报告
+    if coordinator:
+        coordinator.report_stats()
 
 
 def main():
@@ -206,6 +261,12 @@ def main():
         default=True,
         help="Use knowledge-based processing.",
     )
+    parser.add_argument(
+        "--enable_coordinator",
+        type=bool,
+        default=True,
+        help="🆕 Enable coordinator mechanism for dynamic workflow adjustment.",
+    )
 
     args = parser.parse_args()
 
@@ -218,6 +279,7 @@ def main():
         iteration_num=args.iteration_num,
         FewShot=args.FewShot,
         with_knowledge=args.with_knowledge,
+        enable_coordinator=args.enable_coordinator,
     )
 
 
