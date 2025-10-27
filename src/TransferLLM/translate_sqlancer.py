@@ -296,6 +296,7 @@ def sqlancer_translate(
 
         # Step4:mutate llm,将transfer后的最后一句select语句进行mutate并返回结果
         mutate_results = []
+        mutate_sql = None  # 初始化 mutate_sql 避免 UnboundLocalError
         bug_output_mutate_filename = os.path.join(
             output_mutate_dic, str(bug["index"]) + ".jsonl"
         )
@@ -324,15 +325,17 @@ def sqlancer_translate(
                         exec_result_str = mutate_results[-1]["TransferSqlExecResult"][0]
                         if isinstance(exec_result_str, str):
                             exec_result_json = json.loads(exec_result_str)
-                            detected_db_type = exec_result_json.get(
-                                "dbType", ""
-                            ).lower()
-                            if detected_db_type in ["mongodb", "mongo"]:
-                                actual_target_db = "mongodb"
-                                print(
-                                    "📥 "
-                                    + f"[INFO] Detected actual target database: MongoDB (b_db was {b_db})"
-                                )
+                            # 检查解析结果是否为字典
+                            if isinstance(exec_result_json, dict):
+                                detected_db_type = exec_result_json.get(
+                                    "dbType", ""
+                                ).lower()
+                                if detected_db_type in ["mongodb", "mongo"]:
+                                    actual_target_db = "mongodb"
+                                    print(
+                                        "📥 "
+                                        + f"[INFO] Detected actual target database: MongoDB (b_db was {b_db})"
+                                    )
                     except (json.JSONDecodeError, KeyError, IndexError) as e:
                         print(
                             f"[WARN] Failed to detect actual target database: {e}, using b_db={b_db}"
