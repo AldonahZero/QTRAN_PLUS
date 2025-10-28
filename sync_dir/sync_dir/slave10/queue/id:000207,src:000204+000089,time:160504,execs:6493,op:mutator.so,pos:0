@@ -1,5 +1,0 @@
-zinterstore cxewdqlm 2 cxewdqlm cxewdqlm weights 2 3 
- set mykey 2 
- zunionstore aktxlcii 1 aktxlcii 
- get mykey 
- object encoding uvryzsxf

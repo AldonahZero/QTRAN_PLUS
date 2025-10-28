@@ -1,7 +1,0 @@
-hset mmbdyavh woiaydqs -37 
- hincrbyfloat mmbdyavh woiaydqs 1 
- hget mmbdyavh woiaydqs 
- set mykey hello 
- hget mmbdyavh woiaydqs 
- hget mmbdyavh woiaydqs 
- get mykey

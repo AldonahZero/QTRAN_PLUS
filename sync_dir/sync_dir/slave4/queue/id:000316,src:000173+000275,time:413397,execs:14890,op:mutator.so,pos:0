@@ -1,6 +1,0 @@
-zunionstore eeacghhu 2 eeacghhu eeacghhu weights 2 3 
- xadd pbtmpeny * qnoruayj "Hello," 
- set mykey hello 
- copy mykey v0 
- xread streams pbtmpeny 868 
- get mykey

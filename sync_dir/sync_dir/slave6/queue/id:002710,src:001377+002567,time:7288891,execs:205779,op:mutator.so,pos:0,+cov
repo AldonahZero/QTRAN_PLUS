@@ -1,8 +1,0 @@
-xadd pbtmpeny * qnoruayj "Hello," 
- info keyspace 
- xtrim pbtmpeny minid 1000 
- xgroup create pbtmpeny v0 0 
- set atifyowf 1 
- save 
- xreadgroup group lgkcoucb wvocahto count -1 streams pbtmpeny 0 
- get atifyowf

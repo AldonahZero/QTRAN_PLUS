@@ -1,5 +1,0 @@
-set mykey 75 
- copy mykey v0 db cqcngdpy 
- save 
- bitop and hozsqpxd mykey mykey v0 v0 
- get mykey

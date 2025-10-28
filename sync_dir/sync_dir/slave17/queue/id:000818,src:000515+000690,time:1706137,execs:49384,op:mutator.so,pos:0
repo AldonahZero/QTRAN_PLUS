@@ -1,7 +1,0 @@
-hmset zxvatyxz mecdrlck 1 vktahdph 2 qzsoxtro 3 
- set mykey 13121140 
- hset vpkbrssi kumzfjat 41657 
- get mykey 
- hrandfield vpkbrssi -1001 withvalues 
- info latencystats 
- save

@@ -1,6 +1,0 @@
-set mykey 1732498873 
- setbit mykey 474529 1 
- get mykey 
- bitop xor oszvevyb mykey mykey mykey mykey 
- hset etqpfzfm njabbctf 41657 
- psubscribe bar* 

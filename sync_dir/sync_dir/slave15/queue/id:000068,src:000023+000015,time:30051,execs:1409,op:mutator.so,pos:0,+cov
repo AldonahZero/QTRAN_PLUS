@@ -1,4 +1,0 @@
-set mykey 980792 
- get mykey 
- save 
- msetnx lociajcx -304 

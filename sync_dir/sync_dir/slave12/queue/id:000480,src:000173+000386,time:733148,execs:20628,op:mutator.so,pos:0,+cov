@@ -1,5 +1,0 @@
-set mykey 311 
- get mykey 
- select 9 
- hsetnx nbxqjbpm kmvsxosn -1 
- zdiffstore apuzkzbh 2 apuzkzbh apuzkzbh

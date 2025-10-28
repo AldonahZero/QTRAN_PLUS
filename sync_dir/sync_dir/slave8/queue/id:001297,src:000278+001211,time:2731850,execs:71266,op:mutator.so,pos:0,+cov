@@ -1,4 +1,0 @@
-rpush gavreoyp dgtgxvyi 
- lrange gavreoyp 0 1651363291 
- set mykey hello 
- get mykey

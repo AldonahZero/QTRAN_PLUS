@@ -1,8 +1,0 @@
-set mykey 20220044110400301200030414002221202401144302121102214220143414121422201404321434024 
- scan 11 type string 
- incrbyfloat mykey 376 
- get mykey 
- setbit mykey 109990 1 
- get mykey 
- save 
- hsetnx nbxqjbpm kmvsxosn fcjhthwx

@@ -1,6 +1,0 @@
-set v0 -1001 
- xadd ermrdvzf -128711219 jzkwvobt hhtsakbz htuepxnr 1140 aixesdar urasnjsm 
- del ermrdvzf 
- mget v0 v0 v0 v0 v0 v0 v0 v0 
- get v0 
- save

@@ -1,7 +1,0 @@
-set mykey hello 
- zdiffstore oninilnq 0 oninilnq 
- hset elibnlnj lzytosbe 732291 
- save 
- zdiff 2 oninilnq oninilnq withscores 
- bitpos mykey 0 
- get mykey

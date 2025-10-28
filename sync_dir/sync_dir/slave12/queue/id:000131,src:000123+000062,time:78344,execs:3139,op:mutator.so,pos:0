@@ -1,7 +1,0 @@
-set mykey 311 
- incrbyfloat mykey 376 
- set byvkovuh 0.410840142243933 
- get mykey 
- get mykey 
- save 
- hsetnx nbxqjbpm kmvsxosn fcjhthwx

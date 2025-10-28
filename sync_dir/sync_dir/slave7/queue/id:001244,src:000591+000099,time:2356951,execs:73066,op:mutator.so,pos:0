@@ -1,7 +1,0 @@
-geoadd rrimocuc 13.361389 38.115556 vbqhnwvq 15.087269 37.502669 csetpemq 
- set mykey 306 
- get mykey 
- incrbyfloat mykey 468437678864 
- geosearch rrimocuc fromlonlat 76.147738032111761 5.8462077732413036 bybox 3282 4313 km 
- setex dwrwpbrw -157780893686 -657 
- set v0 -1423418636 

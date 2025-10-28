@@ -1,5 +1,0 @@
-set mykey gftsakln 
- save 
- object encoding cmfmndrr 
- lcs mykey mykey 
- get mykey

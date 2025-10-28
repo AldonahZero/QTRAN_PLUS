@@ -1,8 +1,0 @@
-set mykey 0 
- getrange mykey 1221 1496 
- bitfield mykey overflow wrap set i4 3512935256 23450054762 
- getex mykey 
- get mykey 
- getex mykey 
- getex mykey 
- save

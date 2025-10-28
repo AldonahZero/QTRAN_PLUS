@@ -1,7 +1,0 @@
-set mykey hello 
- zinterstore yygrvfbj 2 yygrvfbj yygrvfbj 
- zunion 2 yygrvfbj yygrvfbj weights 1 1 aggregate max withscores 
- zunion 1 yygrvfbj yygrvfbj aggregate min withscores 
- zmpop 2 yygrvfbj yygrvfbj min 
- get mykey 
- save

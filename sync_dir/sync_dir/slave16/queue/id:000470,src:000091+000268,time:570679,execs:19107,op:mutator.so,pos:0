@@ -1,5 +1,0 @@
-set mykey -130831450750 
- get mykey 
- incrby mykey -980 
- incrby mykey 266209281 
- psubscribe bar* 

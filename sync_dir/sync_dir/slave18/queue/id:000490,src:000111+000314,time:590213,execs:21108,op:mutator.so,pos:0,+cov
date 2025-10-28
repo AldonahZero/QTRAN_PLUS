@@ -1,5 +1,0 @@
-set mykey 41788 
- info cpu 
- copy mykey v0 replace 
- get mykey 
- save

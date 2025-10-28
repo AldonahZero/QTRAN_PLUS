@@ -1,8 +1,0 @@
-set jbdjxqbm 197 
- set mykey -2792568265 
- setbit jbdjxqbm 474529 1 
- lcs mykey jbdjxqbm 
- save 
- decrby jbdjxqbm 1651985310 
- get jbdjxqbm 
- setbit jbdjxqbm 244931 1

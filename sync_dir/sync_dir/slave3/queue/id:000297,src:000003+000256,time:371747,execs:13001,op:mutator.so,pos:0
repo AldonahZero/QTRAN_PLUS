@@ -1,4 +1,0 @@
-set mykey hello 
- zunionstore htfkbhnw 1 htfkbhnw 
- zrangestore hvmcjxor hvmcjxor 2 -1 
- get mykey

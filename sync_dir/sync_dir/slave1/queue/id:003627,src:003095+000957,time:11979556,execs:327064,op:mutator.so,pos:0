@@ -1,5 +1,0 @@
-set mykey -16965705105117 
- copy mykey v0 
- copy v0 v1 
- save 
- get mykey

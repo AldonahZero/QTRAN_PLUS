@@ -1,6 +1,0 @@
-set atifyowf 1212044342121342330120333011310343042111112004430110414043434232214144020043403411 
- copy atifyowf v0 
- save 
- copy atifyowf v1 
- bitop and hozsqpxd v0 v0 atifyowf v0 
- get v0

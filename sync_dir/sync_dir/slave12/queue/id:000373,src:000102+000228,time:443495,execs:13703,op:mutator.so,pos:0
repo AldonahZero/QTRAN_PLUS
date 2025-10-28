@@ -1,6 +1,0 @@
-set mykey 18446744073709561 
- get mykey 
- get mykey 
- save 
- lcs mykey mykey len idx minmatchlen 4 withmatchlen 
- hsetnx nbxqjbpm kmvsxosn fcjhthwx

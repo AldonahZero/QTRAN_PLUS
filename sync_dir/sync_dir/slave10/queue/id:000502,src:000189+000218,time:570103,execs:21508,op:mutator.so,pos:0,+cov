@@ -1,4 +1,0 @@
-set iyetwnrz 367747 
- get iyetwnrz 
- bitfield iyetwnrz overflow wrap incrby i4 0 -4224562770 
- object encoding uvryzsxf

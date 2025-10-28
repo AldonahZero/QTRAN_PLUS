@@ -1,6 +1,0 @@
-hset sxuiqhaw ogyzvjgd 742477 
- hincrbyfloat sxuiqhaw ogyzvjgd 1 
- hrandfield sxuiqhaw -1001 
- hget sxuiqhaw ogyzvjgd 
- set mykey hello 
- get mykey

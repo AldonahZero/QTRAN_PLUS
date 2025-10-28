@@ -1,5 +1,0 @@
-set mykey hello 
- msetnx nzgkmxpj fgqixmul triqeesz 0 
- getset mykey -853 
- bitop xor vnayjyje triqeesz 
- get mykey

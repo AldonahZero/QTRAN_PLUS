@@ -1,8 +1,0 @@
-set mykey 1732498873 
- geoadd apctyxsn 0 0 ecyrjbwf 
- geosearch apctyxsn frommember ecyrjbwf bybox 1 1 km 
- get mykey 
- rpush dbmuwins jrjuraql 
- lpos dbmuwins pcebpjol 
- geosearchstore vpwluycf apctyxsn frommember ecyrjbwf bybox 1 1 m 
- psubscribe bar* 

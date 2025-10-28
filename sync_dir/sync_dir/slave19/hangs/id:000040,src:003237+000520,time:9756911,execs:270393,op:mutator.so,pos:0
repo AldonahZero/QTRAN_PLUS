@@ -1,8 +1,0 @@
-set mykey hello 
- zadd lukpltvt 5826 vgjrzjoy 
- sort lukpltvt 
- zscan lukpltvt 1858801073 
- dump lukpltvt 
- zincrby lukpltvt -inf ymtynmse 
- zrandmember lukpltvt -1654890356 
- get mykey

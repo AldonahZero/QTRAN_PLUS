@@ -1,8 +1,0 @@
-geoadd apctyxsn 0 0 "World" 
- set mykey 306 
- type mspahcqu 
- setex jiosoaha 1214754039 3715410429 
- geopos apctyxsn "World" "World" "World" 
- decr mykey 
- save 
- get mykey

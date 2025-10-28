@@ -1,5 +1,0 @@
-set mykey 183 
- get mykey 
- lcs mykey mykey 
- mset mempxxdl qsuvfmsr 
- incrby mykey 301

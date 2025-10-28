@@ -1,8 +1,0 @@
-xadd kvnrwmku 1672351063138-4 mzklxdll "Hello," 
- info latencystats 
- xtrim kvnrwmku minid 1000 
- set atifyowf 1 
- bitfield atifyowf overflow wrap set i37 3541384808 190425890380385 
- xdel kvnrwmku 1672351063138-4 
- save 
- get atifyowf

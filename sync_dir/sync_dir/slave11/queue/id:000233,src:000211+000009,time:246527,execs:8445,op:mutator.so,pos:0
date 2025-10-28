@@ -1,5 +1,0 @@
-set mykey hello 
- msetnx hfyxrqqv 673 
- getset mykey -853 
- bitop xor vnayjyje hfyxrqqv 
- get mykey

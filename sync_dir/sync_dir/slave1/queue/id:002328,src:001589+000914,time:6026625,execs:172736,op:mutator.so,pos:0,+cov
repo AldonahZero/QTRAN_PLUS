@@ -1,8 +1,0 @@
-set mykey 1302230201330004203204022312341214 
- zadd itptsaoa 7 htwcgflx 
- sort itptsaoa store godhjfil 
- zrangestore xervubdq itptsaoa 1 2 byscore 
- zscan xervubdq 96 
- bitop and soigkacb mykey mykey mykey 
- zrandmember xervubdq -10 withscores 
- get mykey

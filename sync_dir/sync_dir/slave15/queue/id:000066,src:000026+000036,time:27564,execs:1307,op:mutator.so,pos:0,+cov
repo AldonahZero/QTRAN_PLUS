@@ -1,4 +1,0 @@
-zunionstore patbwvok 2 patbwvok patbwvok aggregate max 
- set mykey 2300104211 
- get mykey 
- save

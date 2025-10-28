@@ -1,8 +1,0 @@
-zadd mfsvncrq lt incr 9223372036854770000 bexnlycc 
- zcount mfsvncrq -61 41012222144233124332141130332420013340412043231333203133411303211304144121141441033130321400 
- object encoding rwzbgekl 
- geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
- zpopmax mfsvncrq 1 
- set mykey hello 
- strlen mykey 
- get mykey

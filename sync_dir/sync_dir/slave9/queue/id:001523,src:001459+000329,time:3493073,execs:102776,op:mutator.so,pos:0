@@ -1,9 +1,0 @@
-xadd ozsnpvdy 0 rqwzplos "Hello," 
- info keyspace 
- xtrim ozsnpvdy minid 1000 
- xgroup create ozsnpvdy v0 0 
- xgroup createconsumer ozsnpvdy v0 v1 
- xinfo groups ozsnpvdy 
- set atifyowf 1 
- save 
- get atifyowf

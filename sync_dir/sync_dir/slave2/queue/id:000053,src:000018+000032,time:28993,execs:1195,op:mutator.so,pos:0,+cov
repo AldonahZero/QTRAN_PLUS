@@ -1,4 +1,0 @@
-set mykey 41788 
- bitfield mykey overflow fail set i4 0 -12 
- sdiffstore vdxxciyw vdxxciyw vdxxciyw vdxxciyw 
- get mykey

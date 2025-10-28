@@ -1,7 +1,0 @@
-sunionstore sugvxxcg sugvxxcg sugvxxcg 
- geoadd zvdfcdqc 12.758489 38.788135 llxyuaqj 15.087269 37.502669 agjeygrj 
- geosearchstore vpwluycf zvdfcdqc frommember llxyuaqj bybox 1 1 m 
- georadius zvdfcdqc 13.361389 38.115556 500 km storedist aynqlgbb 
- sintercard 2 sugvxxcg sugvxxcg 
- set mykey hello 
- get mykey

@@ -1,4 +1,0 @@
-zrangestore lguhmiyq lguhmiyq 5 0 byscore rev limit 0 2 
- set mykey -20 
- xadd kvnrwmku 123-1 mzklxdll "Hello," 
- get mykey

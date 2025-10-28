@@ -1,5 +1,0 @@
-set mykey 1519 
- setbit mykey 244931 1 
- get mykey 
- bitfield mykey overflow fail set u11 0 101 
- del mykey 

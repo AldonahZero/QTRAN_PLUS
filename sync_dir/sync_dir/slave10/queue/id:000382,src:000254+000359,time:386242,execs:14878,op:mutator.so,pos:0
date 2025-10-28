@@ -1,6 +1,0 @@
-zrangestore xervubdq xervubdq 1 2 byscore 
- set iyetwnrz 1 
- zmpop 2 xervubdq xervubdq max count 1 
- lcs iyetwnrz iyetwnrz 
- xadd kvnrwmku 123-1 mzklxdll "Hello," 
- get iyetwnrz

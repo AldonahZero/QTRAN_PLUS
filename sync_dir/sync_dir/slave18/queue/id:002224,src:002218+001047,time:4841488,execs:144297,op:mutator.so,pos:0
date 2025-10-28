@@ -1,9 +1,0 @@
-sadd waeoxbem wivnjuxe 
- srem waeoxbem njauapzb ayyfdhez iwvsthqc rtyaegfk 
- sdiffstore vdxxciyw waeoxbem vdxxciyw 
- sunionstore iwshcqfl waeoxbem iwshcqfl 
- set mykey -1947844055 
- smembers waeoxbem 
- get mykey 
- get mykey 
- save

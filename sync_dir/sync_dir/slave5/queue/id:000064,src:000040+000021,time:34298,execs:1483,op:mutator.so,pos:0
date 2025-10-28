@@ -1,4 +1,0 @@
-set mykey 197 
- save 
- geoadd rxhuwnnj 12.75 36.50 covgpanv 
- get mykey

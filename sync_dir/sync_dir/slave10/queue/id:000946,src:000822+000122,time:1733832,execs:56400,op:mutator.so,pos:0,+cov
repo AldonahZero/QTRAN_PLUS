@@ -1,9 +1,0 @@
-set iyetwnrz 367747 
- info replication 
- get iyetwnrz 
- sadd nyhlwdwl wwmqswmp 
- sunionstore jkxbqham jkxbqham nyhlwdwl 
- bitpos iyetwnrz 1 39 40 bit 
- smove nyhlwdwl ixkagsos wclrnnso 
- bitfield iyetwnrz overflow fail incrby u36 0 46789140757 
- object encoding uvryzsxf

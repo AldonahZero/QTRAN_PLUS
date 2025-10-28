@@ -1,4 +1,0 @@
-set v0 217 
- get v0 
- bitop and dhgncrmg v0 v0 v0 v0 v0 v0 
- setex ssqwgzfa -240958759673 -179847923191

@@ -1,9 +1,0 @@
-getbit sxzkzlsd 1746579767 
- set mykey 306 
- copy mykey v0 
- hmset hvuspbal puucxmde 9223372036854775808 
- bitfield mykey overflow fail set u17 109990 -255272035 
- bitfield mykey overflow fail set u10 0 11.519764308594048 
- info everything 
- bitfield mykey overflow fail set u44 0 4806867732670 
- get mykey

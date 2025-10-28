@@ -1,6 +1,0 @@
-object encoding rwzbgekl 
- set mykey -12 
- zinterstore phrpwlca 2 phrpwlca phrpwlca aggregate min 
- set v0 hello 
- zincrby phrpwlca -5 mlujlapi 
- get mykey

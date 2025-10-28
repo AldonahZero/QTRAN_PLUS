@@ -1,7 +1,0 @@
-hset eaxejsol bhwulrko 94964 
- set mykey 31543984 
- setbit mykey 1603 1 
- setbit mykey 615 0 
- bitfield mykey overflow fail set i30 0 1519 
- setbit mykey 1004 1 
- get mykey

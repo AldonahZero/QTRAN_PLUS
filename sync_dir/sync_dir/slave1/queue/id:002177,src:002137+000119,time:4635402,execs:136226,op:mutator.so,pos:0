@@ -1,9 +1,0 @@
-slowlog get 1 
- msetnx nzgkmxpj fgqixmul xrgyuudg gftsakln ldvuftez 20 
- keys foo* 
- lcs xrgyuudg nzgkmxpj idx minmatchlen -553 withmatchlen 
- setbit nzgkmxpj 526632498263 1 
- set mykey "Hello," 
- geoadd cqubszoy 13.361389 38.115556 acjnpjwy 15.087269 37.502669 fekagtxv 
- del xrgyuudg 
- get mykey

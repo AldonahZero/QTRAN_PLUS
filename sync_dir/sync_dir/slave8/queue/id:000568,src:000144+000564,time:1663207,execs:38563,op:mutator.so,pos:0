@@ -1,7 +1,0 @@
-set mykey -886864826961 
- copy mykey v0 replace 
- bitpos mykey 0 64 74 bit 
- mget mykey mykey 
- msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
- get mykey 
- psetex vokpjzpp -586 364853510803

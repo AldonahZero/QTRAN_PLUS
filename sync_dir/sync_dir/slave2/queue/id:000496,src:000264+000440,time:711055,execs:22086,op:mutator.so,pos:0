@@ -1,6 +1,0 @@
-hsetnx wqydsukt guwchiwu 13740 
- set mykey 3 
- hmget wqydsukt guwchiwu guwchiwu 
- copy mykey v0 
- hmget wqydsukt guwchiwu guwchiwu 
- get mykey

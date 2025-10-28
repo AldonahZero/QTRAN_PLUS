@@ -1,7 +1,0 @@
-hset eaxejsol bhwulrko 20220044110400301200030414002221202401144302121102214220143414121422201404321434024 
- hrandfield eaxejsol 
- hscan eaxejsol -947 
- psetex elzondzp 123 -3437299314 
- set mykey 2 
- hdel eaxejsol leephdom 
- get mykey

@@ -1,9 +1,0 @@
-set mykey 311 
- geoadd eczuybnf 179.5 244222380 htafotkr 
- incrbyfloat mykey 376 
- bitfield mykey overflow wrap incrby u42 0 4134927976325 
- get mykey 
- get mykey 
- geosearch eczuybnf fromlonlat 32.473946703818598 11.519764308594048 bybox 4483 5834 m 
- save 
- hsetnx nbxqjbpm kmvsxosn fcjhthwx

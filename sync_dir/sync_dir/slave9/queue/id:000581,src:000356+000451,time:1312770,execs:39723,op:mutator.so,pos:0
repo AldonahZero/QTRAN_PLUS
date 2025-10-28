@@ -1,7 +1,0 @@
-sunionstore sugvxxcg sugvxxcg sugvxxcg 
- geoadd zvdfcdqc 12.758489 38.788135 llxyuaqj 30 40 aushbgun 12.799439062548865 35.201864127459075 hsbnbydy 
- set mykey hello 
- geodist zvdfcdqc llxyuaqj llxyuaqj km 
- sdiff sugvxxcg sugvxxcg sugvxxcg sugvxxcg 
- georadius zvdfcdqc 13.361389 38.115556 500 km storedist aynqlgbb 
- get mykey

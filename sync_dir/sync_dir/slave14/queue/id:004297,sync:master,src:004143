@@ -1,9 +1,0 @@
-lpush zdnjslcy sicnwujw 
- set mykey 15.087269 
- rpop zdnjslcy 0 
- lpop zdnjslcy 0 
- mget mykey mykey mykey mykey 
- lpop zdnjslcy 4 
- info cpu default 
- lcs mykey mykey 
- get mykey

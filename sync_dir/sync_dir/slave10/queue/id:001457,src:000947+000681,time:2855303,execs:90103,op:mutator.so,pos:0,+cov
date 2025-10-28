@@ -1,7 +1,0 @@
-set iyetwnrz 33004443334424324132300141132443321231124130204124203324123 
- get iyetwnrz 
- sadd nyhlwdwl wwmqswmp 
- bitpos iyetwnrz 1 39 -371 bit 
- sinterstore ubjuqmxi nyhlwdwl nyhlwdwl 
- bitfield iyetwnrz overflow fail incrby u36 0 46789140757 
- object encoding uvryzsxf

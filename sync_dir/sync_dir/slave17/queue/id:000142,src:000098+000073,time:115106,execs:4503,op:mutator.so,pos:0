@@ -1,5 +1,0 @@
-set mykey hello 
- zinterstore xmawvngf 1 xmawvngf xmawvngf 
- zinterstore zjxdmzot 2 zjxdmzot zjxdmzot aggregate max 
- msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
- get mykey

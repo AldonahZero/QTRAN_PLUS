@@ -1,7 +1,0 @@
-object encoding rwzbgekl 
- xadd pbtmpeny * qnoruayj "Hello," 
- xdel pbtmpeny 1672351062796-3 
- zinterstore zcfialgy 2 zcfialgy zcfialgy 
- set mykey hello 
- zmpop 2 zcfialgy zcfialgy min 
- get mykey

@@ -1,9 +1,0 @@
-set mykey 1732498873 
- geoadd rguvzgcd 45 -1 uqzidutw -135 85.05 yxudgmfh 
- keys foo* 
- geosearch rguvzgcd frommember uqzidutw bybox 1 1 km 
- get mykey 
- geohash rguvzgcd bfpnqfse uqzidutw uqzidutw 
- rpush dbmuwins jrjuraql 
- lpos dbmuwins pcebpjol 
- psubscribe bar* 

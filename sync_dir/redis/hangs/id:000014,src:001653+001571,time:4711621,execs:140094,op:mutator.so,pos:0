@@ -1,7 +1,0 @@
-psetex hcnoouhb 851130245 809 
- setbit hcnoouhb 1672351166 1 
- bitop and tzlrveqd hcnoouhb hcnoouhb hcnoouhb 
- set mykey 1 
- copy mykey v0 
- save 
- get mykey

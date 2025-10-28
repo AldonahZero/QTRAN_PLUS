@@ -1,5 +1,0 @@
-set v1 -1001 
- bitpos v1 1 
- copy v1 v0 
- mget v0 v1 v1 v0 v0 v1 v1 v1 v0 
- get v0

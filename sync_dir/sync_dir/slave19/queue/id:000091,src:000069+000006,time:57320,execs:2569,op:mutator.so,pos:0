@@ -1,5 +1,0 @@
-set mykey 3090148046 
- zinterstore eiilyygi 2 eiilyygi eiilyygi 
- object encoding cmfmndrr 
- lcs mykey mykey 
- get mykey

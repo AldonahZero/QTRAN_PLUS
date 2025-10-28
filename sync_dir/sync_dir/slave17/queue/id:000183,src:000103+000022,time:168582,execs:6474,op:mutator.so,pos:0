@@ -1,5 +1,0 @@
-set mykey hello 
- zinterstore eghgxknb 2 eghgxknb eghgxknb weights 1 2 aggregate sum 
- zremrangebyscore eghgxknb 916054754013 346072200846 
- msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
- get mykey

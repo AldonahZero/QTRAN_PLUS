@@ -1,6 +1,0 @@
-set mykey 13121140 
- hset qdbfnnxy nobplsit 0.43734659228350342 
- get mykey 
- hrandfield qdbfnnxy -3 
- info latencystats 
- save

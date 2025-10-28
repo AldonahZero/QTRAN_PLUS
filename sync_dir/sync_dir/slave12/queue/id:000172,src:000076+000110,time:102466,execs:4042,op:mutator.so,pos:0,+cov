@@ -1,4 +1,0 @@
-set mykey 311 
- get mykey 
- hsetnx nbxqjbpm kmvsxosn 9223372036854775808 
- zdiffstore apuzkzbh 2 apuzkzbh apuzkzbh

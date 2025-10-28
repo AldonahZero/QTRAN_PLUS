@@ -1,5 +1,0 @@
-set mykey hello 
- msetnx nzgkmxpj 9223372036854775808 triqeesz gftsakln ldvuftez 980792 
- msetnx v0 9223372036854775808 v1 gftsakln v2 20 
- bitpos mykey 1 6 12 bit 
- get mykey

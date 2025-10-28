@@ -1,9 +1,0 @@
-set mykey 41788 
- xadd pbtmpeny 342204043101320331101221324320203021303420334043321233224230113334222322421103024432033223144130104114402 qnoruayj "Hello," 
- info all 
- xadd kvnrwmku 123-1 mzklxdll "Hello," 
- xrevrange kvnrwmku -553 - count 1 
- info all 
- get mykey 
- info everything 
- save

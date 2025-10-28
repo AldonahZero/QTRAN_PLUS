@@ -1,8 +1,0 @@
-zunionstore uhnbdhtg -564153445215 uhnbdhtg 
- xadd pbtmpeny * qnoruayj "Hello," 
- set mykey hello 
- pexpireat jtlhungd 1672354063000 
- copy uhnbdhtg v0 
- strlen mykey 
- xread streams pbtmpeny 342204043101320331101221324320203021303420334043321233224230113334222322421103024432033223144130104114402 
- get mykey

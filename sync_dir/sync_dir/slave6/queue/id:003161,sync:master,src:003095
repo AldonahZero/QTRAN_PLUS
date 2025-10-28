@@ -1,5 +1,0 @@
-set v0 2 
- psetex vrrqnomv -851 33 
- lcs v0 vrrqnomv 
- getrange vrrqnomv 1293 -483 
- get vrrqnomv

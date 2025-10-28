@@ -1,5 +1,0 @@
-set atifyowf 1 
- incrbyfloat atifyowf -816 
- geoadd prlpsdxt 12.75 36.995 "Three" 
- save 
- get atifyowf

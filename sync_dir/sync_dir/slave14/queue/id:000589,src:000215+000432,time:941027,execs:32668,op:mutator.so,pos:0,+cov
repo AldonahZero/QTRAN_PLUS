@@ -1,5 +1,0 @@
-set v0 hello 
- save 
- getex v0 
- get v0 
- setex ssqwgzfa -240958759673 -179847923191

@@ -1,3 +1,0 @@
-psubscribe bar* 
- set mykey -12 
- get mykey

@@ -1,8 +1,0 @@
-set mykey 197 
- set wcitbqrq 434532645360 
- setbit mykey 1746579767 1 
- lcs mykey wcitbqrq 
- save 
- decrby wcitbqrq 1651985310 
- get mykey 
- setbit mykey 244931 1

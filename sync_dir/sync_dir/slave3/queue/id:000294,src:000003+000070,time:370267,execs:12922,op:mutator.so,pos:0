@@ -1,4 +1,0 @@
-sinterstore efabqgdi efabqgdi efabqgdi 
- set mykey hello 
- zrangestore hvmcjxor hvmcjxor 2 -1 
- get mykey

@@ -1,5 +1,0 @@
-set mykey 197 
- set v0 -1001 
- bitfield mykey overflow fail incrby u58 266209281 -75299881433 
- save 
- get mykey

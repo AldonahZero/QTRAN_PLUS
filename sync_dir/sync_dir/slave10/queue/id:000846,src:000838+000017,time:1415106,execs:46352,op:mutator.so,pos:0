@@ -1,8 +1,0 @@
-set iyetwnrz 1480 
- info everything 
- get iyetwnrz 
- sadd nyhlwdwl wwmqswmp 
- bitpos iyetwnrz 1 39 40 bit 
- bitfield iyetwnrz overflow fail incrby u36 0 46789140757 
- incr iyetwnrz 
- object encoding uvryzsxf

@@ -1,4 +1,0 @@
-set mykey -5 
- bitfield mykey overflow fail set u10 34034221221402441010400 1519 
- bitop or psmgmghp mykey mykey 
- get mykey

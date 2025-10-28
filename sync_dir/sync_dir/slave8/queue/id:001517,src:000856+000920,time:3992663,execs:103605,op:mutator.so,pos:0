@@ -1,7 +1,0 @@
-hset guumhwbj jkugpthc 493471 
- hget guumhwbj jkugpthc 
- hmget guumhwbj jkugpthc jkugpthc 
- set mykey 2 
- hincrbyfloat guumhwbj jkugpthc 1 
- pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
- get mykey

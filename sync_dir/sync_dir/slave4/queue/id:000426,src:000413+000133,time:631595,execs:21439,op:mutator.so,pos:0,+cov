@@ -1,5 +1,0 @@
-zunionstore uhnbdhtg 3 uhnbdhtg 
- sort uhnbdhtg limit 0 5 desc alpha 
- zcount uhnbdhtg -980 1850704167 
- set mykey hello 
- get mykey

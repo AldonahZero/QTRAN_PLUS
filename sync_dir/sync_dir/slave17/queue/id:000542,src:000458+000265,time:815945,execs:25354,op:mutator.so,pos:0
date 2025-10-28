@@ -1,7 +1,0 @@
-set mykey 41788 
- dump mykey 
- bitop or yxqbavlu mykey mykey 
- get mykey 
- bitpos mykey 1 
- scan 589 type string 
- save

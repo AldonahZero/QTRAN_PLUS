@@ -1,5 +1,0 @@
-save 
- zunionstore uhnbdhtg -564153445215 uhnbdhtg 
- set mykey hello 
- copy uhnbdhtg v0 
- get mykey

@@ -1,9 +1,0 @@
-geoadd ussfykoq 12.758489 38.788135 fawbaerw 12.799439062548865 138.71873944938125 hsbnbydy 
- save 
- geosearchstore vpwluycf ussfykoq frommember fawbaerw bybox 1 1 m 
- georadius ussfykoq 13.361389 38.115556 500 km store xutmxmkt 
- set ubjcxcxl hello 
- geosearch ussfykoq frommember fawbaerw bybox 6596 3128 m 
- copy ussfykoq v0 
- exists fzemrnjb 
- get ubjcxcxl

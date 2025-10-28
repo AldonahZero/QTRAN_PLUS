@@ -1,5 +1,0 @@
-set atifyowf 36.995 
- incrbyfloat atifyowf -816 
- save 
- lcs atifyowf atifyowf len idx minmatchlen 4 withmatchlen 
- get atifyowf

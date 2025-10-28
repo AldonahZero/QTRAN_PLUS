@@ -1,6 +1,0 @@
-set mykey 13121140 
- hset vpkbrssi kumzfjat 0.1067637899456377 
- get mykey 
- hrandfield vpkbrssi -1001 withvalues 
- info latencystats 
- save

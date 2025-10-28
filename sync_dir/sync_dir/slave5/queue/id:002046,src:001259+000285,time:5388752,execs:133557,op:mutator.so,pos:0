@@ -1,7 +1,0 @@
-sunionstore sugvxxcg sugvxxcg sugvxxcg 
- geoadd dfyobgfw 13.361389 38.115556 mnuhsnrm 15.087269 37.502669 hqboudos 
- sort sugvxxcg by weight* 
- set mykey hello 
- sdiff sugvxxcg sugvxxcg sugvxxcg sugvxxcg 
- geosearch dfyobgfw fromlonlat 15 37 bybox 400 400 km asc 
- get mykey

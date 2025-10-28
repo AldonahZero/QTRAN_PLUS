@@ -1,9 +1,0 @@
-set atifyowf 1 
- bitfield atifyowf overflow wrap set i4 1746579767 -255272035 
- incrbyfloat atifyowf -5 
- mget atifyowf atifyowf 
- bitfield atifyowf overflow wrap set i30 0 -9223372036854770000 
- setex tncydqgy 273 12024430563 
- save 
- del tncydqgy 
- get atifyowf

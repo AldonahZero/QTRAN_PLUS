@@ -1,4 +1,0 @@
-scan 11 type string 
- zdiffstore bexbxodv 2 bexbxodv bexbxodv 
- set mykey hello 
- get mykey

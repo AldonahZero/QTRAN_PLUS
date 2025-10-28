@@ -1,8 +1,0 @@
-set mykey -1947844055 
- bitpos mykey 1 12 12 bit 
- get mykey 
- pfadd dbpkzfom 
- setbit mykey 321252 1 
- bitop not xxuevemv mykey 
- get mykey 
- save

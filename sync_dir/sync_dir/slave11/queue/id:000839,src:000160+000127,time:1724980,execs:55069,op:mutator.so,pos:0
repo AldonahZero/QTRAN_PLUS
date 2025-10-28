@@ -1,4 +1,0 @@
-set mykey 366402871 
- bitpos mykey 1 37 37 bit 
- get mykey 
- mget mykey mykey mykey mykey

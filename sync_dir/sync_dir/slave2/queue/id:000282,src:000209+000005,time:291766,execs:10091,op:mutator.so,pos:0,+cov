@@ -1,6 +1,0 @@
-set mykey hello 
- append ibdfxrwx 13121140 
- bitop and tzlrveqd ibdfxrwx mykey ibdfxrwx ibdfxrwx mykey ibdfxrwx mykey 
- sinterstore ubjuqmxi ubjuqmxi ubjuqmxi 
- srandmember ubjuqmxi 
- get mykey

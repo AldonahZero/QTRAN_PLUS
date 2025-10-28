@@ -1,4 +1,0 @@
-set mykey -816 
- get mykey 
- incrbyfloat mykey 652296689642 
- object encoding uvryzsxf

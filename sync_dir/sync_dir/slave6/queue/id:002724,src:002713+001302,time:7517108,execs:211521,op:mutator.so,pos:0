@@ -1,8 +1,0 @@
-xadd ozsnpvdy 870160 rqwzplos 3022132023044442330033400212104223123203243342000333414101110121 
- info keyspace 
- xtrim ozsnpvdy minid 1000 
- xgroup create ozsnpvdy v0 0 
- set atifyowf 1 
- save 
- xreadgroup group v0 wvocahto count 3 streams ozsnpvdy 0 
- get atifyowf

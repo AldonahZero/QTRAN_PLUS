@@ -1,8 +1,0 @@
-xadd ozsnpvdy 123 rqwzplos "Hello," 
- xread streams ozsnpvdy 868 
- info default 
- xtrim ozsnpvdy minid 175656559 
- set atifyowf 1 
- xdel ozsnpvdy -153 
- save 
- get atifyowf

@@ -1,8 +1,0 @@
-set mykey -1947844055 
- get mykey 
- pfadd v0 zelgohmr pfntaoeo 
- setbit mykey 2207018791 1 
- bitop xor zyrfkqiq mykey mykey mykey mykey 
- get mykey 
- copy mykey v0 replace 
- save

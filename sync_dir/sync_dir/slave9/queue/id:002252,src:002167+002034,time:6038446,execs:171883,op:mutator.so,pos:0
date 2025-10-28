@@ -1,5 +1,0 @@
-set svmtenjy -1001 
- save 
- get svmtenjy 
- bgsave 
- getrange svmtenjy 615 917

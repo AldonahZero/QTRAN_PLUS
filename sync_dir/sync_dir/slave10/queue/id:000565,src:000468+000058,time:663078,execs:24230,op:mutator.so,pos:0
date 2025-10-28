@@ -1,6 +1,0 @@
-msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
- hset mmbdyavh woiaydqs 452588 
- hincrbyfloat mmbdyavh woiaydqs -2479703 
- bitop and vbhusavz triqeesz triqeesz triqeesz nzgkmxpj nzgkmxpj nzgkmxpj ldvuftez nzgkmxpj nzgkmxpj ldvuftez 
- set mykey hello 
- get mykey

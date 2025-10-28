@@ -1,6 +1,0 @@
-set mykey 4806867732670 
- getset mykey -205 
- sdiffstore lrkqafqr lrkqafqr lrkqafqr lrkqafqr 
- watch nqjqeqpq tbwlipyh dbsprqpw hmbwqpev fyadlxhi frjrxccy v0 fyadlxhi frjrxccy v0 dbsprqpw hmbwqpev fyadlxhi frjrxccy v0 
- sdiffstore vdxxciyw vdxxciyw vdxxciyw vdxxciyw 
- get mykey

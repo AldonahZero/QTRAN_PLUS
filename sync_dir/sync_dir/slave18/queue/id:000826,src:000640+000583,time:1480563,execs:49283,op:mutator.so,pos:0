@@ -1,6 +1,0 @@
-set mykey 41788 
- info all 
- xadd kvnrwmku 1672351059370-0 mzklxdll "Hello," 
- get mykey 
- info default default 
- save

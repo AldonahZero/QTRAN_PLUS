@@ -1,6 +1,0 @@
-hset eaxejsol bhwulrko 94964 
- zunionstore kmmwzipn 2 kmmwzipn kmmwzipn weights 2 3 aggregate min 
- hset tfpyhbbg jhelnvce 512461 
- set mykey 2 
- setbit mykey 1603 1 
- get mykey

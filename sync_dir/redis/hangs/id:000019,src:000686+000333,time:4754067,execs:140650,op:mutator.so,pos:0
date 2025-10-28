@@ -1,8 +1,0 @@
-set mykey 144022 
- setbit mykey 742477 0 
- decr mykey 
- save 
- xadd ozsnpvdy * rqwzplos "Hello," 
- del ozsnpvdy 
- get mykey 
- hset poksmruc sjszuneh 870160 

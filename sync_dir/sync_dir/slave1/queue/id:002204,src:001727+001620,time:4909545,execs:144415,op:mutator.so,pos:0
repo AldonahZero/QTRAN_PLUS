@@ -1,8 +1,0 @@
-set mykey -1947844055 
- bitpos mykey 0 16 64 bit 
- get mykey 
- pfadd mykey 
- setbit mykey 474529 1 
- mget mykey mykey mykey mykey mykey mykey mykey mykey mykey 
- get mykey 
- save

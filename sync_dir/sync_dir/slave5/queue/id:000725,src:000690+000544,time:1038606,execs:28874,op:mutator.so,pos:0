@@ -1,9 +1,0 @@
-set atifyowf 1 
- bitfield atifyowf overflow wrap set i4 0 23450054762 
- incrbyfloat atifyowf -5 
- slowlog get 1 
- bitfield atifyowf overflow wrap set i30 0 -255272035 
- setex nxlctesp -350 -1552162523 
- save 
- del atifyowf 
- get nxlctesp

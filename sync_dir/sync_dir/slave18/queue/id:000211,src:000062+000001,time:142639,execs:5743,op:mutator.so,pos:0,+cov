@@ -1,5 +1,0 @@
-hset etqpfzfm njabbctf 0.28570057465028975 
- set ebvgkrck 96913381 
- get ebvgkrck 
- save 
- lcs ebvgkrck ebvgkrck len idx minmatchlen 4 withmatchlen

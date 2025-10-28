@@ -1,8 +1,0 @@
-hset eaxejsol bhwulrko 1037 
- hmget eaxejsol bhwulrko bhwulrko 
- hincrby eaxejsol bhwulrko 33224130 
- set mykey 2 
- rpush czowykxw ptecklws 
- hincrbyfloat eaxejsol bhwulrko 1 
- pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
- get mykey

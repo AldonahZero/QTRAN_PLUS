@@ -1,5 +1,0 @@
-set mykey 692 
- copy mykey ycgvtbur replace 
- zinterstore uiamticm 0 uiamticm 
- strlen mykey 
- get mykey

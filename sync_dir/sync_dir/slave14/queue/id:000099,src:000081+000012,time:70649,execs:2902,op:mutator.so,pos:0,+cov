@@ -1,5 +1,0 @@
-object encoding rwzbgekl 
- zinterstore phrpwlca 1 phrpwlca phrpwlca aggregate min 
- sdiffstore pqbjqaal pqbjqaal pqbjqaal pqbjqaal 
- set mykey hello 
- get mykey

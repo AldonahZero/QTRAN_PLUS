@@ -1,7 +1,0 @@
-setex clryemar 9223372036854776 311 
- hmset fhrsgqae nhrsuavj 876130506804 
- setbit clryemar 2537333662 0 
- save 
- sunionstore sugvxxcg sugvxxcg sugvxxcg 
- set mykey hello 
- get mykey

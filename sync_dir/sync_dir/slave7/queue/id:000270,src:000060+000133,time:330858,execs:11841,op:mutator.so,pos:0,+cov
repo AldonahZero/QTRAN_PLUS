@@ -1,5 +1,0 @@
-geoadd vrekwiwa 13.00 36.50 pqkikujz 
- zunionstore patbwvok 2 patbwvok patbwvok aggregate max 
- set mykey 306 
- geopos vrekwiwa pqkikujz pqkikujz pqkikujz 
- get mykey

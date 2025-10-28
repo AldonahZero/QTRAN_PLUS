@@ -1,9 +1,0 @@
-set gpknrlup -1947844055 
- bitpos gpknrlup 1 12 12 bit 
- georadiusbymember ryfiikeh qgorjqxo 1 km 
- get gpknrlup 
- pfadd dbpkzfom 
- setbit gpknrlup 474529 1 
- get gpknrlup 
- object refcount gpknrlup 
- save

@@ -1,5 +1,0 @@
-set mykey -5 
- bitfield mykey overflow fail incrby u58 3717584922 -688 
- bitop or ewxrjkga mykey mykey mykey mykey mykey mykey mykey mykey 
- bitop or psmgmghp mykey mykey 
- get mykey

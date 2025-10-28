@@ -1,5 +1,0 @@
-set mykey hello 
- zadd lukpltvt 5826 cuyoxmkw 
- sort lukpltvt limit 0 10 
- zrem lukpltvt cuyoxmkw vemxiqtq 
- get mykey

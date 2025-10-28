@@ -1,4 +1,0 @@
-set mykey 33224130 
- get mykey 
- decrby mykey -496337536022 
- object encoding uvryzsxf

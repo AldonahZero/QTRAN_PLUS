@@ -1,4 +1,0 @@
-set mykey -5 
- decr mykey 
- bitfield mykey overflow fail set u10 534858847286 1519 
- get mykey

@@ -1,3 +1,0 @@
-scan 11 
- set mykey hello 
- get mykey

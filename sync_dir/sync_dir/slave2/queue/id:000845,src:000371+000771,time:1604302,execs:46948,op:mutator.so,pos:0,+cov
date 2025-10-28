@@ -1,5 +1,0 @@
-exists osmalgof 
- set mykey 3 
- setbit mykey 7 0.93289895166312298 
- copy mykey v0 
- get mykey

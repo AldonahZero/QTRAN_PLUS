@@ -1,7 +1,0 @@
-sunionstore sugvxxcg sugvxxcg sugvxxcg 
- sort sugvxxcg 
- set mykey hello 
- sscan sugvxxcg 380 
- get mykey 
- smismember sugvxxcg vlvtmruq 
- bitop or xqgburdu mykey mykey mykey mykey mykey mykey

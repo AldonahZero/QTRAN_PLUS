@@ -1,6 +1,0 @@
-set mykey -1947844055 
- get mykey 
- decrby mykey 557749488185 
- setbit mykey 474529 1 
- get mykey 
- save

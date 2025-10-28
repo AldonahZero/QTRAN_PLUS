@@ -1,9 +1,0 @@
-lpush asjdswpq syrsobfe ndlfegrn 
- set mykey 15.087269 
- mget mykey mykey mykey mykey 
- sort asjdswpq by weight* get object* get # 
- lpop asjdswpq 
- rpoplpush asjdswpq xbfaqjuv 
- info cpu default 
- lcs mykey mykey 
- get mykey

@@ -1,6 +1,0 @@
-set mykey -853 
- hset ybfrqahd kbhgtyjv 0.1067637899456377 
- lpush jqknbzjm xbtoynzn 
- del jqknbzjm 
- select 8 
- get mykey

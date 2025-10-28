@@ -1,4 +1,0 @@
-set mykey 640571532137 
- get mykey 
- del mykey 
- ttl wrzagplh

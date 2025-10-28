@@ -1,9 +1,0 @@
-sunionstore sugvxxcg sugvxxcg sugvxxcg 
- lpush crvliqip pnihvhwo 
- ltrim crvliqip 8 24 
- zinterstore uiamticm 0 uiamticm 
- info replication 
- llen crvliqip 
- set mykey 568645835187 
- get mykey 
- smismember sugvxxcg vlvtmruq 

@@ -1,7 +1,0 @@
-set wcitbqrq 986906 
- setbit wcitbqrq 96913381 0 
- get wcitbqrq 
- getrange wcitbqrq 651 52 
- mset jmvjdgip 533 
- save 
- type ibxacnjy

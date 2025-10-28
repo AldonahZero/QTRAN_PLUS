@@ -1,6 +1,0 @@
-set mykey 140244133014011140103024420341240422110004223143 
- bitop and vbhusavz mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey 
- get mykey 
- geoadd apctyxsn 0 0 ecyrjbwf 
- geodist apctyxsn ecyrjbwf ecyrjbwf 
- save

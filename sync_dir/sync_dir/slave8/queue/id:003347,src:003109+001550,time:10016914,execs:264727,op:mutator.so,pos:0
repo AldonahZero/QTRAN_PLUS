@@ -1,9 +1,0 @@
-set mykey -853 
- lpush fjawhzfz hfgcwmoq swywrupx 
- lmove fjawhzfz mjlnxcti left right 
- info cpu all 
- lpop fjawhzfz 
- lmove fjawhzfz ffqedvxb left right 
- del fjawhzfz 
- select 8 
- get mykey

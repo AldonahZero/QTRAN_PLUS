@@ -1,4 +1,0 @@
-set mykey -1615510574 
- hmset rlvtchzi tyubwqfl 41788 
- getex mykey 
- get mykey

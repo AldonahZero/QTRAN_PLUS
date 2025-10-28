@@ -1,6 +1,0 @@
-set mykey 1732498873 
- lcs mykey mykey 
- geoadd rguvzgcd 45 65 uqzidutw -135 85.05 "Hello" 
- get mykey 
- rpush dbmuwins jrjuraql 
- psubscribe bar* 

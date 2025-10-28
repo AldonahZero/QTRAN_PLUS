@@ -1,0 +1,6 @@
+{"index": 2, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "CREATE TABLE t0(c0 DOUBLE  NULL , c1 BIGINT ZEROFILL   STORAGE DISK COMMENT 'asdf'  ) "}
+{"index": 2, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "select TABLE_NAME, ENGINE from information_schema.TABLES where table_schema = 'mysql_db60'"}
+{"index": 2, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "INSERT HIGH_PRIORITY INTO t0(c1, c0) VALUES('0.4114846692856472', NULL)"}
+{"index": 2, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "CREATE INDEX i0 ON t0(c1, c0 DESC) ALGORITHM COPY"}
+{"index": 2, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "CREATE UNIQUE INDEX i1 USING BTREE ON t0(( EXISTS (SELECT 1 wHERE FALSE))) INVISIBLE"}
+{"index": 2, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "select TABLE_NAME, ENGINE from information_schema.TABLES where table_schema = 'mysql_db60'"}

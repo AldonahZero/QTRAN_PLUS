@@ -1,9 +1,0 @@
-psetex fyxeqwfz -757 876130506804 
- rpush tgschcpi ffcijwxa 
- lrange tgschcpi -1268180117 8350634485 
- del fyxeqwfz 
- rpop tgschcpi 
- set wcitbqrq 986906 
- get wcitbqrq 
- lmpop 1 tgschcpi left 
- save

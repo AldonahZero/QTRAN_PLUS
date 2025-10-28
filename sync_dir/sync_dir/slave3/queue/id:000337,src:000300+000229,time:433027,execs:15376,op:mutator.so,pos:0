@@ -1,5 +1,0 @@
-set mykey 1158 
- get mykey 
- zdiffstore dfgxahpo 3 dfgxahpo dfgxahpo dfgxahpo 
- save 
- ttl imwdrgeh

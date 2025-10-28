@@ -1,8 +1,0 @@
-zunionstore laaotcmr 4 laaotcmr laaotcmr weights 2 3 aggregate sum 
- zintercard 1 laaotcmr limit 0 
- xadd pbtmpeny * qnoruayj "Hello," 
- set mykey hello 
- copy pbtmpeny v0 
- xread streams pbtmpeny 868 
- del v0 pbtmpeny laaotcmr 
- get mykey

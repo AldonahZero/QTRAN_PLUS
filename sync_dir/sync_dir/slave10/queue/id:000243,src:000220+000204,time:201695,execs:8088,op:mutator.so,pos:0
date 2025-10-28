@@ -1,5 +1,0 @@
-zrangestore xervubdq xervubdq 1 2 byscore 
- set mykey -20 
- zmpop 1 xervubdq min count 2 
- xadd kvnrwmku 123-1 mzklxdll "Hello," 
- get mykey

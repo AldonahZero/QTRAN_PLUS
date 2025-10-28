@@ -1,8 +1,0 @@
-msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 v0 20 v1 20 v2 20 
- select 9 
- set mykey "Hello," 
- strlen v1 
- geoadd cqubszoy 13.361389 38.115556 acjnpjwy 15.087269 37.502669 fekagtxv 
- del nzgkmxpj mykey triqeesz 
- del ldvuftez v0 v2 
- get v1

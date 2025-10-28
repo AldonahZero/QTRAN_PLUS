@@ -1,7 +1,0 @@
-lpush zdnjslcy sicnwujw 
- set mykey -91681715143 
- watch esuizsof 
- rpop zdnjslcy 1 
- mget mykey mykey mykey mykey 
- lcs mykey mykey 
- get mykey

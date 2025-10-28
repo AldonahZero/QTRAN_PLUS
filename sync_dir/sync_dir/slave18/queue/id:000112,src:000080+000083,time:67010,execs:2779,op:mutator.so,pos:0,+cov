@@ -1,4 +1,0 @@
-set mykey 41788 
- info errorstats 
- get mykey 
- save

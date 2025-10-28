@@ -1,4 +1,0 @@
-set mykey -5 
- bitfield mykey overflow fail set u58 1000 1519 
- bitop xor gtmzalcd mykey mykey mykey mykey mykey 
- get mykey

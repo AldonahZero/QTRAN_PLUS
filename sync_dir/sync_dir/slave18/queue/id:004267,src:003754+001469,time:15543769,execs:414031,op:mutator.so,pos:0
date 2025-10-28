@@ -1,9 +1,0 @@
-sunionstore sugvxxcg sugvxxcg sugvxxcg 
- lpush crvliqip pnihvhwo 
- ltrim crvliqip -671 24 
- info replication 
- llen crvliqip 
- set mykey 568645835187 
- ltrim crvliqip -701 -1 
- get mykey 
- smismember sugvxxcg vlvtmruq 

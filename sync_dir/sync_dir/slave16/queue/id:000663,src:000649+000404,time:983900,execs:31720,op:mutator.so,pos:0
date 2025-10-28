@@ -1,9 +1,0 @@
-set mykey 1732498873 
- bitop xor vnayjyje mykey 
- geoadd rguvzgcd 45 -1 uqzidutw -135 85.05 yxudgmfh 
- geosearch rguvzgcd frommember uqzidutw bybox 1 1 km 
- get mykey 
- info keyspace 
- rpush dbmuwins jrjuraql 
- zunionstore ozmbxkpt 2 ozmbxkpt ozmbxkpt weights 2 3 aggregate max 
- psubscribe bar* 

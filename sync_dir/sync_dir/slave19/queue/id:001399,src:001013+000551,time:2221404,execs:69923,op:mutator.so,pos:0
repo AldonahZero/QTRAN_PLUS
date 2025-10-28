@@ -1,5 +1,0 @@
-hset elibnlnj lzytosbe 732291 
- set mykey 31543984 
- hincrby elibnlnj lzytosbe 3 
- setbit mykey 615 0 
- get mykey

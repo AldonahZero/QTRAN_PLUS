@@ -1,5 +1,0 @@
-zrangestore jzylmnye jzylmnye 5 6 
- set mykey -20 
- zmpop 2 jzylmnye jzylmnye max count 1 
- xadd kvnrwmku 123-1 mzklxdll "Hello," 
- get mykey

@@ -1,5 +1,0 @@
-zrangestore rpondvdz rpondvdz 0 -1 limit 1 2 
- set mykey -20 
- zrandmember rpondvdz 8 withscores 
- xadd kvnrwmku 123-1 mzklxdll "Hello," 
- get mykey

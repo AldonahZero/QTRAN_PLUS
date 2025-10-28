@@ -1,3 +1,0 @@
-hmset hvuspbal puucxmde 9223372036854775808 
- set mykey 9223372036854775808 
- get mykey

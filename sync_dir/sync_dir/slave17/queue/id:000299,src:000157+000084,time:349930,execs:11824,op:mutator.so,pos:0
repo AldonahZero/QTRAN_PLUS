@@ -1,6 +1,0 @@
-set mykey 1293 
- dump mykey 
- get mykey 
- bitcount odjxbqlj 15 63 bit 
- scan 589 type string 
- save

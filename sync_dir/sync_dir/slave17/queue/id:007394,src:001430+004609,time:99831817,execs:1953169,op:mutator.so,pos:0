@@ -1,7 +1,0 @@
-shutdown abort 
- set v19 1293 
- shutdown nosave 
- incrbyfloat v19 -5 
- setex v60 273 12024430563 
- save 
- get v19

@@ -1,6 +1,0 @@
-psetex hcnoouhb 851130245 809 
- set mykey 1 
- copy mykey v0 
- save 
- bitop xor gtmzalcd mykey v0 mykey mykey v0 
- get mykey

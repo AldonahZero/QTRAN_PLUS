@@ -1,4 +1,0 @@
-set mykey -75299881433 
- get mykey 
- zdiffstore vmgqtrcr 2 vmgqtrcr vmgqtrcr 
- save

@@ -1,8 +1,0 @@
-set nholpqmz 0.8284480026124269 
- bitpos nholpqmz 0 9 25 bit 
- incrbyfloat nholpqmz 376 
- get nholpqmz 
- setbit nholpqmz 7 0 
- get nholpqmz 
- save 
- hsetnx nbxqjbpm kmvsxosn fcjhthwx

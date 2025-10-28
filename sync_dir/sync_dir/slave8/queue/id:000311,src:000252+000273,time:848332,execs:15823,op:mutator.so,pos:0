@@ -1,6 +1,0 @@
-set mykey 9223372036854775807 
- bitpos mykey 0 -2255963835 -1 bit 
- zrangestore phxykmhg phxykmhg 2 -1 byscore rev limit 1 2 
- sunionstore hczdthan hczdthan hczdthan 
- get mykey 
- psetex vokpjzpp -586 364853510803

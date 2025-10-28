@@ -1,6 +1,0 @@
-object encoding rwzbgekl 
- zinterstore xmawvngf 2 xmawvngf xmawvngf aggregate min 
- set mykey hello 
- zincrby xmawvngf -inf ymtynmse 
- dump mykey 
- get mykey

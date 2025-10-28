@@ -1,7 +1,0 @@
-set mykey 0 
- incrbyfloat mykey 286 
- bitfield mykey overflow wrap set i37 3541384808 190425890380385 
- dump mykey 
- get mykey 
- save 
- mset jmvjdgip 533 

@@ -1,6 +1,0 @@
-hset mmbdyavh woiaydqs -1537183413 
- hincrbyfloat mmbdyavh woiaydqs 1 
- hrandfield mmbdyavh -1001 
- hget mmbdyavh woiaydqs 
- set mykey hello 
- get mykey

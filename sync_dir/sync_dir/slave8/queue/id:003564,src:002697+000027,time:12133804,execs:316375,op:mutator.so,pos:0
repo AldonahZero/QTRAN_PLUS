@@ -1,6 +1,0 @@
-set mykey "Hello," 
- bitfield mykey overflow fail incrby u36 5009431 -866 
- bitfield mykey overflow fail incrby u48 0 -461934581148 
- pexpire mykey 100 
- getrange mykey -2276873893 821 
- get mykey

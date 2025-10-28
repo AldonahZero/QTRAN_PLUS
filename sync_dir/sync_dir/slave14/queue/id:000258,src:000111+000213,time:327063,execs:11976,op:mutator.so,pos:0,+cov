@@ -1,7 +1,0 @@
-object encoding rwzbgekl 
- zinterstore zcfialgy 2 zcfialgy zcfialgy 
- ttl qumwzudn 
- zpopmax zcfialgy 1 
- set mykey hello 
- zrem zcfialgy ebhxqosc zwzmncsw 
- get mykey

@@ -1,4 +1,0 @@
-set mykey hello 
- zinterstore yygrvfbj 1302230201330004203204022312341214 yygrvfbj yygrvfbj 
- get mykey 
- save

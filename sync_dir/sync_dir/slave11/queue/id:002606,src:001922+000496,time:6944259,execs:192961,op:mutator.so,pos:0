@@ -1,7 +1,0 @@
-lpush fjawhzfz hfgcwmoq swywrupx 
- set mykey 3101433443114 
- lrem fjawhzfz 3 cbdejtcw 
- rpop fjawhzfz 1 
- mget mykey mykey mykey mykey 
- lcs mykey mykey 
- get mykey

@@ -1,6 +1,0 @@
-set mykey 175656559 
- save 
- msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
- getset mykey -853 
- bitop xor vnayjyje triqeesz 
- get mykey

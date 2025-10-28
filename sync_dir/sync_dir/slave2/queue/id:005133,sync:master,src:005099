@@ -1,8 +1,0 @@
-set mykey -20 
- xadd jbdjxqbm maxlen ~ 1000 123-1 hognxfnw "Hello," 
- incrby mykey 301 
- decr mykey 
- dump jbdjxqbm 
- xreadgroup group lgkcoucb wvocahto count 3 streams jbdjxqbm 0 
- incr mykey 
- get mykey

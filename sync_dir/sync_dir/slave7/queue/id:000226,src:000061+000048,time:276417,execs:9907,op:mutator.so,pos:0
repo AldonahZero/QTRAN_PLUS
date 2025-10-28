@@ -1,6 +1,0 @@
-geoadd vrekwiwa 13.00 36.50 pqkikujz 
- set mykey 306 
- geopos vrekwiwa pqkikujz pqkikujz pqkikujz 
- decr mykey 
- bitfield mykey overflow wrap incrby i25 0 6413502 
- get mykey

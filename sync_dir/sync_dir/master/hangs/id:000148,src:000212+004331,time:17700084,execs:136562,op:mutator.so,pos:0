@@ -1,5 +1,0 @@
-set wtqtwhmc 0.52120220173206278 
- copy wtqtwhmc v0 replace 
- bitfield v0 overflow fail incrby i35 1421721372 -4224562770 
- strlen v0 
- get v0

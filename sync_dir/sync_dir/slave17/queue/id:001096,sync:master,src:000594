@@ -1,5 +1,0 @@
-set mykey -16965705105117 
- msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 v0 20 
- get mykey 
- save 
- ttl imwdrgeh

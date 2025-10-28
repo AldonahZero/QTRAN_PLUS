@@ -1,4 +1,0 @@
-set mykey 41788 
- info latencystats default 
- get mykey 
- save

@@ -1,8 +1,0 @@
-set mykey 197 
- set v0 -1766619827 
- setbit mykey 474529 1 
- lcs mykey v0 
- save 
- decrby v0 1651985310 
- get mykey 
- setbit v0 244931 1

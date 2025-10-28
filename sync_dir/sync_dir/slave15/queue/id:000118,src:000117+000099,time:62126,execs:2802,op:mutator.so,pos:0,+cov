@@ -1,4 +1,0 @@
-set mykey -2479703 
- get mykey 
- getex mykey 
- save

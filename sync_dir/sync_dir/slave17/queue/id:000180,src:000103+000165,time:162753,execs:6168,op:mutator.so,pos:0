@@ -1,5 +1,0 @@
-set mykey hello 
- zinterstore xmawvngf 2 xmawvngf xmawvngf 
- zremrangebyscore xmawvngf 916054754013 346072200846 
- msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 v0 20 v1 20 v2 20 v3 20 v4 20 
- get mykey

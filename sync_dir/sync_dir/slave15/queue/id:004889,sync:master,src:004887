@@ -1,5 +1,0 @@
-geoadd ussfykoq 12.758489 38.788135 "world" 17.241510 -1 yqcyaxfl 
- geopos ussfykoq "world" "world" 
- set mykey 306 
- geopos ussfykoq "world" "world" "world" "world" "world" "world" 
- get mykey

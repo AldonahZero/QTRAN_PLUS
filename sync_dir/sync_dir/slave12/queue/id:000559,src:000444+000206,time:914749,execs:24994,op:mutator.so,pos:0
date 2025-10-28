@@ -1,9 +1,0 @@
-set mykey 311 
- setex nxlctesp -350 -1552162523 
- geoadd zxbxcfqc 10 20 rgymuqbf 30 40 aushbgun 
- incrbyfloat mykey 376 
- get mykey 
- geopos zxbxcfqc rgymuqbf rgymuqbf 
- get mykey 
- save 
- hsetnx nbxqjbpm kmvsxosn fcjhthwx

@@ -1,9 +1,0 @@
-zunionstore uhnbdhtg -564153445215 uhnbdhtg 
- xadd pbtmpeny * qnoruayj 41788 
- xrange pbtmpeny -830067951618 1496 
- set mykey hello 
- xrevrange pbtmpeny 20718949856 -261649974743 
- copy uhnbdhtg v0 
- xrevrange pbtmpeny 443589382080 -214 
- xread streams pbtmpeny -886864826961 
- get mykey

@@ -1,9 +1,0 @@
-set mykey 41788 
- watch nqjqeqpq zexfuhuk frjrxccy 
- sinterstore pqczlznr pqczlznr 
- srandmember pqczlznr 
- info default default 
- sunion pqczlznr pqczlznr 
- get mykey 
- decr mykey 
- save

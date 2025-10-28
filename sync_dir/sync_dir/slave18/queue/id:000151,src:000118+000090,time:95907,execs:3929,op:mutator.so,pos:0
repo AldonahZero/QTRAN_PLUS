@@ -1,5 +1,0 @@
-set mykey 41788 
- info everything 
- mget mykey mykey 
- get mykey 
- save

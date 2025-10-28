@@ -1,7 +1,0 @@
-info cpu latencystats 
- set mykey 0 
- get mykey 
- incrbyfloat mykey 1072727848 
- getex mykey 
- info latencystats 
- save

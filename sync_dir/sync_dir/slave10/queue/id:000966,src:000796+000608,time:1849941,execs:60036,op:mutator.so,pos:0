@@ -1,8 +1,0 @@
-zunionstore hwsksdce 1 hwsksdce weights 0 
- set ebvgkrck 38.115556 
- xadd kvnrwmku 123-1 mzklxdll 9223372036854775808 
- zlexcount hwsksdce 2119604741 1694667920 
- incrby ebvgkrck 443 
- copy kvnrwmku v0 
- decr ebvgkrck 
- get ebvgkrck

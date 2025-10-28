@@ -1,7 +1,0 @@
-geoadd ussfykoq 12.758489 85.05 "world" 17.241510 38.788135 yqcyaxfl 
- save 
- geosearchstore vpwluycf ussfykoq frommember "world" bybox 1 1 m 
- set ubjcxcxl hello 
- geosearch ussfykoq frommember "world" bybox 6596 3128 m 
- exists fzemrnjb 
- get ubjcxcxl

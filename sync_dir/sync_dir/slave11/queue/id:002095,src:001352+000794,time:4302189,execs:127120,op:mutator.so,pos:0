@@ -1,7 +1,0 @@
-set mykey 1732498873 
- geoadd eapvvold -1 37.00 nkmmorea 
- geosearchstore xzkgjufz eapvvold fromlonlat 0 0 byradius 1 km 
- geosearch eapvvold frommember nkmmorea byradius 1 km 
- get mykey 
- rpush dbmuwins jrjuraql 
- psubscribe bar* 

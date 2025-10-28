@@ -1,8 +1,0 @@
-set rkfvndig 197 
- set v0 -9223372036854775808 
- setbit rkfvndig 474529 1 
- lcs v0 rkfvndig 
- save 
- decrby v0 1651985310 
- get rkfvndig 
- setbit v0 244931 1

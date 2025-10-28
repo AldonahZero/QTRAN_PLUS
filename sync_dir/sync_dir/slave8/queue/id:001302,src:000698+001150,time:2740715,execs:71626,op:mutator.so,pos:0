@@ -1,5 +1,0 @@
-set kcppjyka 101 
- lcs kcppjyka kcppjyka 
- copy kcppjyka v0 replace 
- strlen kcppjyka 
- get kcppjyka

@@ -1,7 +1,0 @@
-info cpu all 
- set atifyowf 1 
- expire atifyowf 100 gt 
- zrangestore ugswuldi ugswuldi 0 -1 
- save 
- zscore ugswuldi vhsqhvnm 
- get atifyowf

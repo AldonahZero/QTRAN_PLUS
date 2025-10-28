@@ -1,4 +1,0 @@
-set mykey hello 
- zadd lukpltvt 34112201010423243030210424234344320420 vgjrzjoy 
- sort lukpltvt limit 0 10 
- get mykey

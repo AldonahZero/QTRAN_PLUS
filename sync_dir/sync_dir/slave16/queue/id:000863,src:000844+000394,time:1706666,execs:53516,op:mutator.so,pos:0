@@ -1,8 +1,0 @@
-set mykey 0 
- geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
- bitpos mykey 0 5 6 bit 
- geosearch rguvzgcd frommember uqzidutw bybox 1 1 km 
- get mykey 
- rpush dbmuwins jrjuraql 
- bitfield mykey overflow fail incrby u42 0 4134927976325 
- psubscribe bar* 

@@ -1,9 +1,0 @@
-getbit sxzkzlsd 1746579767 
- set atifyowf 1 
- copy atifyowf v0 
- hmset hvuspbal puucxmde 9223372036854775808 
- bitfield v0 overflow fail set i30 109990 -255272035 
- bitfield atifyowf overflow wrap set i11 0 1519 
- info everything 
- bitfield atifyowf overflow fail set u44 0 4806867732670 
- get atifyowf

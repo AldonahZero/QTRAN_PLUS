@@ -1,5 +1,0 @@
-set mykey 212 
- get mykey 
- geoadd ussfykoq 12.758489 38.788135 yqcyaxfl 12.758489 38.788135 yqcyaxfl 12.748489955781654 37 xxkpmdgk 
- save 
- sinterstore ubjuqmxi ubjuqmxi ubjuqmxi

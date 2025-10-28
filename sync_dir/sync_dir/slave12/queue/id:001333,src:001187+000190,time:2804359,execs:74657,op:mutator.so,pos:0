@@ -1,8 +1,0 @@
-psetex vokpjzpp -586 364853510803 
- set mykey 0 
- get mykey 
- getex mykey 
- info errorstats 
- info cpu default 
- bitop or ewxrjkga mykey mykey mykey mykey mykey mykey mykey mykey 
- save

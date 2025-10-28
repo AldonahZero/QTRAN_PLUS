@@ -1,6 +1,0 @@
-hsetnx nbxqjbpm kmvsxosn -645611437338 
- geoadd mdexzjor 13.361389 38.115556 xyookjrw 15.087269 37.502669 agjeygrj 
- set mykey hello 
- hscan nbxqjbpm 0 match foo* count 10000 
- hincrbyfloat nbxqjbpm kmvsxosn 1 
- get mykey

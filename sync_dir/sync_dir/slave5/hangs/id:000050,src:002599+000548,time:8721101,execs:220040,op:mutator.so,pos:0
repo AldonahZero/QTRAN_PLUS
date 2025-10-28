@@ -1,8 +1,0 @@
-sadd waeoxbem wivnjuxe 
- sdiff waeoxbem waeoxbem waeoxbem waeoxbem 
- set mykey -1947844055 
- smembers waeoxbem 
- srandmember waeoxbem -128711219 
- get mykey 
- get mykey 
- save

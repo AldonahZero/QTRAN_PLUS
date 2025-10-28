@@ -1,7 +1,0 @@
-set mykey -20 
- xadd jbdjxqbm maxlen ~ 1000 123-1 hognxfnw "Hello," 
- del jbdjxqbm 
- setbit mykey 935 0 
- save 
- setbit mykey 935 0 
- get mykey

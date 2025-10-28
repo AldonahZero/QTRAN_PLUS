@@ -1,8 +1,0 @@
-sadd waeoxbem wivnjuxe 
- set mykey -1947844055 
- smembers waeoxbem 
- get mykey 
- scard waeoxbem 
- sintercard 5 waeoxbem waeoxbem waeoxbem limit -591038726079 
- get mykey 
- save

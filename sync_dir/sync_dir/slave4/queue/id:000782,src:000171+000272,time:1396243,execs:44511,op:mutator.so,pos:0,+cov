@@ -1,6 +1,0 @@
-getbit eeoiflzb -244 
- zunionstore uhnbdhtg -564153445215 uhnbdhtg 
- xadd pbtmpeny * qnoruayj 12111043 
- set mykey hello 
- copy uhnbdhtg v0 
- get mykey

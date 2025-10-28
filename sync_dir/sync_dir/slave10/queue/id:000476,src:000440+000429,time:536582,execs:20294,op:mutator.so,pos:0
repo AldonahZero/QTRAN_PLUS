@@ -1,6 +1,0 @@
-msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
- hmset hvuspbal puucxmde 9223372036854775808 
- hset mmbdyavh woiaydqs 452588 
- hincrbyfloat mmbdyavh woiaydqs 1 
- set mykey hello 
- get mykey

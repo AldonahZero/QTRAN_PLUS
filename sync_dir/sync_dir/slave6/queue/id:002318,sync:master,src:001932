@@ -1,7 +1,0 @@
-object encoding rwzbgekl 
- zinterstore zcfialgy 2 zcfialgy zcfialgy 
- zremrangebyscore zcfialgy -750 734 
- set mykey hello 
- zmpop 2 zcfialgy zcfialgy min 
- zremrangebyscore zcfialgy -750 734 
- get mykey

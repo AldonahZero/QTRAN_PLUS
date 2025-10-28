@@ -1,5 +1,0 @@
-set mykey hello 
- zadd lukpltvt 630 vgjrzjoy 
- sort lukpltvt limit 0 10 
- zpopmin lukpltvt 0 
- get mykey

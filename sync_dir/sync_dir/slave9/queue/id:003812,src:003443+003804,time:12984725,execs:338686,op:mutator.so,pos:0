@@ -1,7 +1,0 @@
-hsetnx wqydsukt guwchiwu -830067951618 
- expire wqydsukt -10 lt 
- hincrby wqydsukt guwchiwu 3 
- hincrby wqydsukt guwchiwu 1 
- set mykey 3 
- copy mykey v0 
- get mykey

@@ -1,7 +1,0 @@
-set mykey 1732498873 
- setbit mykey 474529 1 
- get mykey 
- hset etqpfzfm njabbctf 41657 
- sunionstore tthbpxad tthbpxad tthbpxad tthbpxad 
- psubscribe bar* 
- del etqpfzfm 

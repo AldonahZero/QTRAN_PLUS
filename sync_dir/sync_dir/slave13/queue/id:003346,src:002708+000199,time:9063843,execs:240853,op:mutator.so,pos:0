@@ -1,5 +1,0 @@
-set wcitbqrq 986906 
- getrange wcitbqrq 671 805 
- zrangestore rpondvdz rpondvdz 0 -1 limit 1 2 
- getrange wcitbqrq 671 805 
- get wcitbqrq

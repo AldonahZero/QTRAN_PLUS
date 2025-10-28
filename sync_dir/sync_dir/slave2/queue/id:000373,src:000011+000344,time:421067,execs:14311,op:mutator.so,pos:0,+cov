@@ -1,4 +1,0 @@
-set mykey hello 
- mset mhnoojoh -886864826961 
- getrange mykey 227 821 
- get mykey

@@ -1,5 +1,0 @@
-object encoding rwzbgekl 
- zinterstore phrpwlca 2 phrpwlca phrpwlca aggregate min 
- set mykey 10241231341031203420214422113031321304032040412101323223440100334334214432421232140111422434321134 
- zincrby phrpwlca -5 mlujlapi 
- get mykey

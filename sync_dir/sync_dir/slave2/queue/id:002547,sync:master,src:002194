@@ -1,6 +1,0 @@
-psetex vrrqnomv 315 33 
- set mykey 1 
- copy vrrqnomv v1 
- copy mykey v0 
- save 
- get mykey

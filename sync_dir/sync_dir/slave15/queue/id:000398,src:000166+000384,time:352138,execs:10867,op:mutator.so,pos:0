@@ -1,5 +1,0 @@
-bgsave 
- set mykey -75299881433 
- bitop not xxuevemv mykey 
- get mykey 
- save

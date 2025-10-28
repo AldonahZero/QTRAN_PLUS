@@ -1,5 +1,0 @@
-hset ucukoxrm auydyooj 0.21973279221902267 
- set mykey 31543984 
- hincrby ucukoxrm auydyooj 3 
- setbit mykey 615 0 
- get mykey

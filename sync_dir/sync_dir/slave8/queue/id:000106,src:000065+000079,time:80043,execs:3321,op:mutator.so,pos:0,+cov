@@ -1,5 +1,0 @@
-set mykey -886864826961 
- zunionstore qsltfdln 2 qsltfdln qsltfdln 
- bitpos mykey 0 33 -1 bit 
- get mykey 
- psetex vokpjzpp -586 364853510803

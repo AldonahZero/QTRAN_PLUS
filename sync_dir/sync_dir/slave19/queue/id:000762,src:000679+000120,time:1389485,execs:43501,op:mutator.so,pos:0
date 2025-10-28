@@ -1,6 +1,0 @@
-msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
- xadd ermrdvzf * jzkwvobt hhtsakbz aixesdar urasnjsm 
- xrevrange ermrdvzf 20718949856 35 
- xinfo stream ermrdvzf 
- set mykey 3090148046 
- get mykey

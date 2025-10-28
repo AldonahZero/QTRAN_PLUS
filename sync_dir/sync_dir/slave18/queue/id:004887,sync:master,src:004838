@@ -1,9 +1,0 @@
-lpush kfxdvljk rptpxozi xqfdftkh 
- set mykey 15.087269 
- lpop kfxdvljk 1 
- lrange kfxdvljk 0 1 
- mget mykey mykey mykey mykey 
- lpop kfxdvljk 1 
- info cpu default 
- lcs mykey mykey 
- get mykey

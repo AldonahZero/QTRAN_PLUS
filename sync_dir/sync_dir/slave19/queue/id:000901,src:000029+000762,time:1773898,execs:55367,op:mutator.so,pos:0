@@ -1,3 +1,0 @@
-set mykey 1496 
- bitop xor gvtzczpz mykey mykey mykey 
- get mykey

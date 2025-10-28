@@ -1,7 +1,0 @@
-xadd pbtmpeny * qnoruayj "Hello," 
- xgroup create pbtmpeny v0 0 
- info latencystats 
- xtrim pbtmpeny maxlen 1000 
- set atifyowf 1 
- save 
- get atifyowf

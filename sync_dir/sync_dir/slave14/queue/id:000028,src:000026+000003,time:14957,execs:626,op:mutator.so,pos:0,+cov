@@ -1,4 +1,0 @@
-object encoding rwzbgekl 
- zinterstore zcfialgy -927878178156 zcfialgy zcfialgy 
- set mykey hello 
- get mykey

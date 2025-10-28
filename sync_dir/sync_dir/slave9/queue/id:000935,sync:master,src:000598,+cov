@@ -1,8 +1,0 @@
-hset eaxejsol bhwulrko 94964 
- zunionstore patbwvok 2 patbwvok patbwvok aggregate max 
- hset tfpyhbbg jhelnvce 512461 
- zintercard 2 patbwvok patbwvok 
- set mykey 2 
- setbit mykey 1603 1 
- zcount patbwvok -539 -1154401951 
- get mykey

@@ -1,7 +1,0 @@
-set mykey 13033323022411214443443303234220120324324344401012232221143311233 
- object encoding cmfmndrr 
- lcs mykey mykey 
- geoadd eapvvold -1 37.00 nkmmorea 
- setbit mykey 109990 1 
- georadius eapvvold 15 37 200 km asc 
- get mykey

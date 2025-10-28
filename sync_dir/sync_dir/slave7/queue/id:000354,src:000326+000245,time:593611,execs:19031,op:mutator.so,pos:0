@@ -1,6 +1,0 @@
-msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
- set mykey -413873936 
- bitop or gvtzczpz ldvuftez triqeesz nzgkmxpj 
- hmset hvuspbal puucxmde 3022132023044442330033400212104223123203243342000333414101110121 
- bitfield mykey overflow fail set u10 0 1519 
- get triqeesz

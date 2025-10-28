@@ -1,5 +1,0 @@
-geoadd vrekwiwa 13.00 36.50 pqkikujz 
- zunionstore hwsksdce 1 hwsksdce weights 0 
- set mykey 306 
- geopos vrekwiwa pqkikujz pqkikujz pqkikujz 
- get mykey

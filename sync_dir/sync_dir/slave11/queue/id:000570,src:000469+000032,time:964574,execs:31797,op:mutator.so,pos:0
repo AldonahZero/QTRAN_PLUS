@@ -1,7 +1,0 @@
-set mykey hello 
- zdiffstore oninilnq 0 oninilnq 
- zlexcount oninilnq 80 901 
- zcount oninilnq -486 3512935256 
- hset elibnlnj lzytosbe 732291 
- zdiff 0 oninilnq oninilnq withscores 
- get mykey

@@ -1,6 +1,0 @@
-set mykey 197 
- set v0 -909494108478 
- save 
- decrby mykey 83 
- decr mykey 
- get mykey

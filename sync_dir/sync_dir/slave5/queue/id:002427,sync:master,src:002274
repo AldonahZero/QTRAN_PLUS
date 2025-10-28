@@ -1,7 +1,0 @@
-info cpu all 
- set atifyowf 1 
- expire atifyowf 0 
- zrangestore ugswuldi ugswuldi 0 -1 
- save 
- bitop or jlgjivks atifyowf atifyowf atifyowf atifyowf atifyowf atifyowf atifyowf atifyowf atifyowf atifyowf atifyowf atifyowf atifyowf atifyowf atifyowf 
- get atifyowf

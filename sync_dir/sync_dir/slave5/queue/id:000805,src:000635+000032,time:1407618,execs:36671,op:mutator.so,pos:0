@@ -1,5 +1,0 @@
-set mmdwmsin 197 
- copy mmdwmsin v0 
- save 
- bitop not xxuevemv mmdwmsin 
- get mmdwmsin

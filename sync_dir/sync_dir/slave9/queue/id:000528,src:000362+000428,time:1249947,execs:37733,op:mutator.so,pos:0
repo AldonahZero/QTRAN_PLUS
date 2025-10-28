@@ -1,7 +1,0 @@
-setex rtkcmqut 9223372036854776 311 
- hmset pctalcqn tnvszhuf -9223372036854775808 
- save 
- sunionstore sugvxxcg sugvxxcg sugvxxcg 
- set mykey hello 
- mget mykey mykey mykey mykey mykey mykey mykey 
- get mykey

@@ -1,9 +1,0 @@
-sadd waeoxbem wivnjuxe 
- set mykey -1947844055 
- get mykey 
- sinter waeoxbem waeoxbem 
- sort waeoxbem by d* get s* store frxxuubj 
- get mykey 
- smismember waeoxbem mjfyyibq 
- smembers waeoxbem 
- save

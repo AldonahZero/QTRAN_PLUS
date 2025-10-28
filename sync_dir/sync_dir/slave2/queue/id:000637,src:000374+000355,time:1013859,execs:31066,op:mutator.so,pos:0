@@ -1,5 +1,0 @@
-set mykey hello 
- mset mhnoojoh -886864826961 
- mget mhnoojoh mhnoojoh 
- select 2 
- get mykey

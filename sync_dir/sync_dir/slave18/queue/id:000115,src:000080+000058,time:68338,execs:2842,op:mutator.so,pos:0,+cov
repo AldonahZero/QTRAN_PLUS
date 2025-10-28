@@ -1,4 +1,0 @@
-set mykey 41788 
- info replication 
- get mykey 
- save

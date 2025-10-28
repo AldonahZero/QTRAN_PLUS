@@ -1,7 +1,0 @@
-geoadd rrimocuc 13.361389 38.115556 vbqhnwvq 17.241510 38.788135 nxmjeqgx 15 35.202000 slkadwaf 12.750000 35.202000 esifgdfx 12.748489955781654 37 xxkpmdgk 15 38.798135872540925 akgkxqcy 17.251510044218346 37 esifgdfx 
- set mykey 306 
- get mykey 
- incrbyfloat mykey 468437678864 
- geosearch rrimocuc frommember vbqhnwvq byradius 151 km 
- setex dwrwpbrw -157780893686 -657 
- set v0 -1423418636 

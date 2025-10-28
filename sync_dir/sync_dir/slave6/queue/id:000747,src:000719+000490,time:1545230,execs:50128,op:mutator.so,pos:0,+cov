@@ -1,5 +1,0 @@
-set mykey "Hello," 
- bitfield mykey overflow wrap incrby i37 0 37999704017 
- pexpire mykey 100 
- getrange mykey -2276873893 821 
- get mykey

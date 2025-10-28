@@ -1,5 +1,0 @@
-set mykey 4 
- expire mykey 2 
- get mykey 
- bitop and cujtnfoc mykey mykey 
- psubscribe bar* 

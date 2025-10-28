@@ -1,8 +1,0 @@
-sadd waeoxbem wivnjuxe 
- sunionstore vedaznzm vedaznzm waeoxbem waeoxbem 
- srandmember vedaznzm 0 
- set mykey -1947844055 
- smembers waeoxbem 
- get mykey 
- get mykey 
- save

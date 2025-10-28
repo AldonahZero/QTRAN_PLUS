@@ -1,4 +1,0 @@
-set mykey 1000 
- object encoding cmfmndrr 
- lcs mykey mykey 
- get mykey

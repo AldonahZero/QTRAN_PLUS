@@ -1,7 +1,0 @@
-sunionstore hczdthan hczdthan hczdthan 
- lpush ekhmombx pgasgnev 
- set mykey -1615510574 
- lpos ekhmombx btsxeomi 
- hmset rlvtchzi tyubwqfl -1 
- getex mykey 
- get mykey

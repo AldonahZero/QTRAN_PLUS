@@ -1,6 +1,0 @@
-msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
- hset mmbdyavh woiaydqs 452588 
- hincrbyfloat mmbdyavh woiaydqs 1 
- set mykey hello 
- lcs mykey triqeesz 
- get mykey

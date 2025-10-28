@@ -1,5 +1,0 @@
-hset eaxejsol bhwulrko -15956 
- set mykey 2 
- setbit mykey 526632498263 1 
- hincrby eaxejsol bhwulrko -739 
- get mykey

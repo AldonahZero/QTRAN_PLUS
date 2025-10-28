@@ -1,6 +1,0 @@
-set byvkovuh 0.410840142243933 
- incrbyfloat byvkovuh 376 
- get byvkovuh 
- get byvkovuh 
- save 
- hsetnx nbxqjbpm kmvsxosn fcjhthwx

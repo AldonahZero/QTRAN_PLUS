@@ -1,5 +1,0 @@
-lpush zdnjslcy sicnwujw 
- set mykey 17.251510044218346 
- mget mykey mykey mykey mykey 
- lcs mykey mykey 
- get mykey

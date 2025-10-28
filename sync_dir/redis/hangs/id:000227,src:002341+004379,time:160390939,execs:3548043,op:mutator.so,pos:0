@@ -1,8 +1,0 @@
-shutdown abort 
- set atifyowf 1 
- setbit atifyowf 2537333662 0 
- incrbyfloat atifyowf -5 
- setex tncydqgy 273 12024430563 
- save 
- expire tncydqgy 100 lt 
- get atifyowf

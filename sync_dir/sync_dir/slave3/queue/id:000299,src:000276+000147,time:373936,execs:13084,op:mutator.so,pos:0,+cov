@@ -1,4 +1,0 @@
-set mykey 1158 
- exists umuloaaf 
- get mykey 
- save

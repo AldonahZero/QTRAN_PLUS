@@ -1,6 +1,0 @@
-set mykey 1293 
- get mykey 
- rename mykey vecnxanv 
- zdiffstore oninilnq 0 oninilnq 
- scan 589 type string 
- save

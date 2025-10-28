@@ -1,9 +1,0 @@
-object encoding rwzbgekl 
- zinterstore zcfialgy 2 zcfialgy zcfialgy 
- hmset rwwxotsj pvcpgagg 0 
- hlen rwwxotsj 
- ttl qumwzudn 
- zdiffstore bexbxodv 2 bexbxodv bexbxodv zcfialgy zcfialgy 
- object refcount wsbgiznp 
- set mykey hello 
- get mykey

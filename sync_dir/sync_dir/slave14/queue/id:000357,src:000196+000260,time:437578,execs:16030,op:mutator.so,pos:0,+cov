@@ -1,7 +1,0 @@
-object encoding rwzbgekl 
- zinterstore phrpwlca 2 phrpwlca phrpwlca aggregate min 
- set mykey hello 
- zunion 2 phrpwlca phrpwlca 
- zpopmax phrpwlca 
- zincrby phrpwlca -inf ymtynmse 
- get mykey

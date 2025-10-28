@@ -1,6 +1,0 @@
-set mykey -853 
- lpush jqknbzjm xbtoynzn 
- del jqknbzjm 
- pttl syxqcnso 
- select 8 
- get mykey

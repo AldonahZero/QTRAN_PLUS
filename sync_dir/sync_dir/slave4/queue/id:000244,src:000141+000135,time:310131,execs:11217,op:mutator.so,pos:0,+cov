@@ -1,6 +1,0 @@
-zunionstore uhnbdhtg -564153445215 uhnbdhtg 
- set mykey hello 
- zremrangebyrank uhnbdhtg -629174849777 244222380 
- copy uhnbdhtg v0 
- psetex ujoqjgxd 890 13033323022411214443443303234220120324324344401012232221143311233 
- get mykey

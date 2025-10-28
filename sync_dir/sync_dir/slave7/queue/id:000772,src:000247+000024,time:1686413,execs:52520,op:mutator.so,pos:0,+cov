@@ -1,7 +1,0 @@
-geoadd vrekwiwa 13.00 -179 pqkikujz 
- set mykey 306 
- geodist vrekwiwa pqkikujz pqkikujz 
- get mykey 
- incrbyfloat mykey 468437678864 
- getset mykey -401 
- setex dwrwpbrw -157780893686 -657

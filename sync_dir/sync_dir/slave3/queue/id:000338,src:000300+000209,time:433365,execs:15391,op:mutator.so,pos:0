@@ -1,4 +1,0 @@
-set mykey 3600000 
- get mykey 
- save 
- ttl imwdrgeh

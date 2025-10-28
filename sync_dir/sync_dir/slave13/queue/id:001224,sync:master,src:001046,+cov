@@ -1,6 +1,0 @@
-set mykey 0 
- get mykey 
- save 
- sunionstore hczdthan hczdthan 
- smembers hczdthan 
- mset jmvjdgip 533 

@@ -1,6 +1,0 @@
-msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
- set mykey -1000 
- hmset hvuspbal puucxmde 9223372036854775808 
- bitfield mykey overflow fail set u10 0 1519 
- incr mykey 
- get triqeesz

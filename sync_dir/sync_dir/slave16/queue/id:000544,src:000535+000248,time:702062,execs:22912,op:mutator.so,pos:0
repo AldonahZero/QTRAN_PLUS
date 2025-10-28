@@ -1,8 +1,0 @@
-set mykey 1732498873 
- bitop xor vnayjyje mykey 
- geoadd rguvzgcd 45 -1 uqzidutw -135 85.05 yxudgmfh 
- geosearch rguvzgcd fromlonlat 15 65.204186651485145 bybox 400 400 km asc 
- get mykey 
- pexpire mykey 100 
- rpush dbmuwins jrjuraql 
- psubscribe bar* 

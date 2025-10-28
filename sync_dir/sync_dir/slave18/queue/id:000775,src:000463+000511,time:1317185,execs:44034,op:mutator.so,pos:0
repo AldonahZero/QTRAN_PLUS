@@ -1,4 +1,0 @@
-set mykey 268099350 
- mget mykey mykey mykey mykey 
- get mykey 
- save

@@ -1,9 +1,0 @@
-hsetnx wqydsukt cnccrocs 431103432304423324232111121433412320002201403040441112042400012111414303233333424422230312420441303442302130143040423114331043401212332232001024400020204 
- hscan wqydsukt -911 
- hrandfield wqydsukt -1001 withvalues 
- xadd pbtmpeny * qnoruayj "Hello," 
- set mykey 3 
- xrange pbtmpeny -907475635831 728 
- xinfo stream pbtmpeny full 
- copy mykey v0 
- get mykey

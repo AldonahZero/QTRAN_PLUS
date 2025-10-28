@@ -1,7 +1,0 @@
-psetex hcnoouhb -731 809 
- copy hcnoouhb v2 
- set vkxhdmjo 1 
- copy hcnoouhb v1 
- copy v1 v0 
- save 
- get v0

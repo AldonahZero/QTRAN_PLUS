@@ -1,8 +1,0 @@
-set mykey -853 
- lpush jqknbzjm xbtoynzn 
- info cpu all 
- hset sxuiqhaw ogyzvjgd 742477 
- lpop jqknbzjm 
- del jqknbzjm 
- select 8 
- get mykey

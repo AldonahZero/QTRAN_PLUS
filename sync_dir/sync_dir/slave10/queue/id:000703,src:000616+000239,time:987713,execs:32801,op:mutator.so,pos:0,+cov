@@ -1,9 +1,0 @@
-zrangestore xervubdq xervubdq 1 2 byscore 
- rename rttrwsgi chnwlzlu 
- set mykey -20 
- zmpop 2 xervubdq xervubdq max count 1 
- lcs mykey mykey 
- xadd kvnrwmku 123-1 mzklxdll "Hello," 
- xclaim kvnrwmku ptprebxr oyubeety 10 1672351058363-2 
- zremrangebylex xervubdq 199 966336966942 
- get mykey

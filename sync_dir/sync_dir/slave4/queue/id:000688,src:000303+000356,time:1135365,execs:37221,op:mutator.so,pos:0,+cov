@@ -1,4 +1,0 @@
-set mykey 1519 
- setbit mykey 474529 -830067951618 
- get mykey 
- del mykey 

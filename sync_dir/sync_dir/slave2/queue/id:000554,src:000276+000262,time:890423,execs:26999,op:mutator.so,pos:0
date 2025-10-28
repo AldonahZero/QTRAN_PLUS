@@ -1,8 +1,0 @@
-zdiffstore dfgxahpo 3 dfgxahpo dfgxahpo dfgxahpo 
- zremrangebyrank dfgxahpo -466997190130 -722765104250 
- set mykey 5009431 
- getset mykey -205 
- sdiffstore lrkqafqr lrkqafqr lrkqafqr lrkqafqr 
- bitop and hozsqpxd mykey mykey mykey mykey 
- sdiffstore vdxxciyw vdxxciyw vdxxciyw vdxxciyw 
- get mykey

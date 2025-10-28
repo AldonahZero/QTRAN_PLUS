@@ -1,8 +1,0 @@
-xadd ozsnpvdy 4303233220312434302313400044210440230231230 rqwzplos "Hello," 
- xrevrange ozsnpvdy 119 37999704017 
- psubscribe bar* 
- info latencystats 
- xtrim ozsnpvdy minid 1000 
- set atifyowf 1 
- save 
- get atifyowf

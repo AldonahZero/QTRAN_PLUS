@@ -1,5 +1,0 @@
-set mykey 41788 
- bitop or ewxrjkga mykey mykey mykey mykey mykey mykey mykey mykey 
- incrbyfloat mykey -816 
- save 
- get mykey

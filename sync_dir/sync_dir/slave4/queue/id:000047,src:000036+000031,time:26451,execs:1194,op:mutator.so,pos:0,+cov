@@ -1,4 +1,0 @@
-msetnx lociajcx -304 
- zunionstore uhnbdhtg 1 uhnbdhtg 
- set mykey hello 
- get mykey

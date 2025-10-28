@@ -1,4 +1,0 @@
-set mykey hello 
- hset jqqlhsms vtsdkeze 814317 
- expire jqqlhsms 100 
- get mykey

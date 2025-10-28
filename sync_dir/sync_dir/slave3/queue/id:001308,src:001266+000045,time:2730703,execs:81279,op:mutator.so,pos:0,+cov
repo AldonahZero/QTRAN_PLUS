@@ -1,8 +1,0 @@
-hset eaxejsol bhwulrko 94964 
- hset tfpyhbbg jhelnvce 512461 
- xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm 
- pexpiretime esokfbxc 
- set mykey 2 
- xread streams ermrdvzf 342374360348 
- setbit mykey 1603 1 
- get mykey

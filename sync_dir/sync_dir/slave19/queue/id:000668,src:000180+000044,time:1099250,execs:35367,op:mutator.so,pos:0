@@ -1,4 +1,0 @@
-set mykey -853 
- lcs mykey mykey idx minmatchlen 1694667920 withmatchlen 
- decr mykey 
- get mykey

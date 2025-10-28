@@ -1,8 +1,0 @@
-lpush zdnjslcy sicnwujw 
- set mykey 15.087269 
- lpushx zdnjslcy bibpljvn lyqzfnlb ccsnseuf ccsnseuf ccsnseuf lyqzfnlb ccsnseuf lyqzfnlb ccsnseuf lyqzfnlb ccsnseuf ccsnseuf ccsnseuf ccsnseuf lyqzfnlb ccsnseuf ccsnseuf ccsnseuf ccsnseuf ccsnseuf ccsnseuf lyqzfnlb ccsnseuf ccsnseuf ccsnseuf ccsnseuf lyqzfnlb ccsnseuf ccsnseuf ccsnseuf ccsnseuf ccsnseuf ccsnseuf lyqzfnlb ccsnseuf ccsnseuf ccsnseuf ccsnseuf lyqzfnlb ccsnseuf ccsnseuf ccsnseuf ccsnseuf lyqzfnlb ccsnseuf ccsnseuf ccsnseuf ccsnseuf ccsnseuf ccsnseuf lyqzfnlb ccsnseuf ccsnseuf 
- mget mykey mykey mykey mykey 
- lpop zdnjslcy 45 
- info cpu default 
- lcs mykey mykey 
- get mykey

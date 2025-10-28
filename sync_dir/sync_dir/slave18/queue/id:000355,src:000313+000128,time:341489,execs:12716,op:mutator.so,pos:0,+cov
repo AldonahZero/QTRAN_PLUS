@@ -1,7 +1,0 @@
-sinterstore khjmraoa khjmraoa khjmraoa 
- set mykey -37 
- zrangestore ugswuldi ugswuldi 0 -1 
- hset mmbdyavh woiaydqs 452588 
- setnx gbjlvscx -37 
- bitfield mykey overflow fail set i4 0 -12 
- get mykey

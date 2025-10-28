@@ -1,4 +1,0 @@
-geoadd vrekwiwa 13.00 17.250000 pqkikujz 
- set mykey 306 
- geopos vrekwiwa pqkikujz pqkikujz pqkikujz 
- get mykey

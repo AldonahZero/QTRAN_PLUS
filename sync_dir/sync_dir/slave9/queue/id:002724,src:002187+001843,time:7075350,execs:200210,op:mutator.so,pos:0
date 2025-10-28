@@ -1,8 +1,0 @@
-xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm 
- info keyspace 
- xtrim ermrdvzf minid 1000 
- xgroup create ermrdvzf v0 0 
- set atifyowf 1 
- xgroup create ermrdvzf qdfegscc 18446744073709561 
- save 
- get atifyowf

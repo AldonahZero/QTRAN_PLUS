@@ -1,3 +1,0 @@
-set mykey 0.52120220173206278 
- lcs mykey mykey len idx minmatchlen -141546319304 withmatchlen 
- get mykey

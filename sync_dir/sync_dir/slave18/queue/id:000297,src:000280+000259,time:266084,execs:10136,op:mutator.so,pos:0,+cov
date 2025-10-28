@@ -1,6 +1,0 @@
-set mykey -37 
- zrangestore ugswuldi ugswuldi 0 -1 
- hset mmbdyavh woiaydqs 452588 
- setnx gbjlvscx -37 
- bitfield mykey overflow wrap set i44 0 -16965705105117 
- get mykey

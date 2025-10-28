@@ -1,6 +1,0 @@
-set ebvgkrck 20220044110400301200030414002221202401144302121102214220143414121422201404321434024 
- bitop xor vnayjyje ebvgkrck 
- incr ebvgkrck 
- zrangestore ugswuldi ugswuldi 0 -1 
- setnx gbjlvscx -37 
- get ebvgkrck

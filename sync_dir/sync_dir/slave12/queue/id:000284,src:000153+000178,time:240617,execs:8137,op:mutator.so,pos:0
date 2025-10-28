@@ -1,9 +1,0 @@
-set mykey 311 
- incrbyfloat mykey 376 
- get mykey 
- sunionstore jkxbqham jkxbqham jkxbqham 
- setbit mykey 109990 1 
- append cxvmrkml 12111043 
- get mykey 
- save 
- hsetnx nbxqjbpm kmvsxosn fcjhthwx

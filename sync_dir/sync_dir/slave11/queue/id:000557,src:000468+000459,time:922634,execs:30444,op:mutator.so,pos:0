@@ -1,7 +1,0 @@
-set mykey hello 
- zdiffstore oninilnq 0 oninilnq 
- zcount oninilnq -486 3512935256 
- hset rnywltyy nvdvtkfi 0.60307109337443066 
- hgetall rnywltyy 
- zdiff 2 oninilnq oninilnq withscores 
- get mykey

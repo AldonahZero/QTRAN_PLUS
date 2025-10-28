@@ -1,7 +1,0 @@
-set mykey hello 
- zinterstore yygrvfbj 2 yygrvfbj yygrvfbj 
- get mykey 
- sdiffstore zakcrnfs zakcrnfs zakcrnfs 
- zcard yygrvfbj 
- srandmember zakcrnfs 1212044342121342330120333011310343042111112004430110414043434232214144020043403411 
- save

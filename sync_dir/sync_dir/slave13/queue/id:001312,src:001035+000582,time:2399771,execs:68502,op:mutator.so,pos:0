@@ -1,5 +1,0 @@
-info cpu all 
- set atifyowf 1 
- info cpu default 
- save 
- get atifyowf

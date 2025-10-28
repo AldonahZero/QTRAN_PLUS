@@ -1,9 +1,0 @@
-set mykey 41788 
- rpush czowykxw ptecklws 
- get mykey 
- lmpop 2 czowykxw czowykxw right count 3 
- set v0 -16965705105117 
- bitpos v0 0 9 25 bit 
- type bcqswfel 
- bitfield v0 overflow fail set i4 0 -12 
- hset rfllxsdf iubquuor 0.41507778056668015 

@@ -1,7 +1,0 @@
-set mykey 0.8284480026124269 
- xadd kvnrwmku 123-1 mzklxdll "Hello," 
- rpush ukbzhzcm bkfxggih 
- save 
- zdiffstore dfgxahpo 3 dfgxahpo dfgxahpo dfgxahpo 
- zrem dfgxahpo rdbfzafx 
- get mykey

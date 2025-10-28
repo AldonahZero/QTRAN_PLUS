@@ -1,7 +1,0 @@
-hset ybfrqahd kbhgtyjv 743 
- set mykey 13033323022411214443443303234220120324324344401012232221143311233 
- object encoding cmfmndrr 
- lcs mykey mykey 
- geoadd defhyxzz -45 65.50900022111811438208 vnjyzinq 17.241510 38.788135 yqcyaxfl 12.692799634687903 38.798135872540925 jlvrddvb 17.200560937451133 35.201864127459075 bdzjcmzp 
- geosearchstore vpwluycf defhyxzz frommember vnjyzinq bybox 1 490812232946 m 
- get mykey

@@ -1,7 +1,0 @@
-setex clryemar 200 311 
- sunionstore iwshcqfl iwshcqfl iwshcqfl 
- hmset rwwxotsj pvcpgagg 0 
- set mykey 1293 
- get mykey 
- del rwwxotsj clryemar iwshcqfl 
- save

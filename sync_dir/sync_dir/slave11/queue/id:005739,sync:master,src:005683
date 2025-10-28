@@ -1,8 +1,0 @@
-slowlog get 1 
- set v0 2 
- psetex vrrqnomv 315 0.93289895166312298 
- lcs v0 v0 
- lcs v0 vrrqnomv 
- lcs v0 vrrqnomv 
- getrange vrrqnomv 1293 -483 
- get vrrqnomv

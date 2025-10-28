@@ -1,6 +1,0 @@
-set mykey -37 
- zrangestore rpondvdz rpondvdz 0 -1 limit 1 2 
- setbit mykey 384 0 
- sort rpondvdz store rxvgbsvg 
- setnx gbjlvscx -37 
- get mykey

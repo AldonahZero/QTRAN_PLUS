@@ -1,6 +1,0 @@
-set iyetwnrz -30789371 
- copy iyetwnrz v0 
- bgsave schedule 
- save 
- bitop xor soigkacb v0 iyetwnrz iyetwnrz 
- get v0

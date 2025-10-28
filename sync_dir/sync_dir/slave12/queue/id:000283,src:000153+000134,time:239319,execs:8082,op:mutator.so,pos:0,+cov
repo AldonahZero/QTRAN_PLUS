@@ -1,9 +1,0 @@
-set mykey 311 
- incrbyfloat mykey 376 
- get mykey 
- setbit mykey 109990 1 
- setex ztbcxsbx 871662918 -479 
- append cxvmrkml 12111043 
- get mykey 
- save 
- hsetnx nbxqjbpm kmvsxosn fcjhthwx

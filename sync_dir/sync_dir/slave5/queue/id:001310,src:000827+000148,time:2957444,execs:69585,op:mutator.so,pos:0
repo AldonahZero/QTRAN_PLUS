@@ -1,9 +1,0 @@
-info cpu all 
- set atifyowf 1 
- expire atifyowf 0 
- getex atifyowf 
- get atifyowf 
- zrangestore ugswuldi ugswuldi 0 0 
- zrandmember ugswuldi 1 withscores 
- save 
- get atifyowf

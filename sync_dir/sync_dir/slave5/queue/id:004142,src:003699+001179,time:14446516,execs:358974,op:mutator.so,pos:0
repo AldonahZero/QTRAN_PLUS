@@ -1,9 +1,0 @@
-set mykey 13121140 
- hset eaxejsol bhwulrko 442032033403101411321312001210340140113032221110441121231031132123201331341123322401213311320313140241112122323300141312440000120430203344003103111144304000300232 
- copy bhwulrko v0 
- xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm 
- get mykey 
- hget eaxejsol v0 
- info everything 
- hmget eaxejsol v0 bhwulrko 
- save

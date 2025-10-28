@@ -1,8 +1,0 @@
-set mykey 1732498873 
- geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
- geosearch rguvzgcd frommember uqzidutw bybox 1 -2255963835 km 
- get mykey 
- rpush dbmuwins jrjuraql 
- geosearchstore vpwluycf rguvzgcd frommember uqzidutw bybox 1 1 m 
- copy dbmuwins v0 replace 
- psubscribe bar* 

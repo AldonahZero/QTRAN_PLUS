@@ -1,5 +1,0 @@
-set mykey 212 
- info all 
- get mykey 
- dump mykey 
- save

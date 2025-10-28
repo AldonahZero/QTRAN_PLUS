@@ -1,5 +1,0 @@
-set mykey 4806867732670 
- bitpos mykey 0 39 39 bit 
- bitpos mykey 0 9 838 bit 
- save 
- get mykey

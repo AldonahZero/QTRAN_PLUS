@@ -1,8 +1,0 @@
-xadd pbtmpeny * qnoruayj "Hello," 
- info keyspace 
- xgroup create pbtmpeny v1 0 
- xgroup create pbtmpeny v57 0 
- set atifyowf 1 
- save 
- xgroup destroy pbtmpeny v1 
- get atifyowf

@@ -1,9 +1,0 @@
-set mykey 41788 
- info all 
- xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar cgvkbmhf aixesdar urasnjsm 
- xrevrange ermrdvzf -553 - count 1 
- info cpu all 
- info all 
- get mykey 
- info all default 
- save

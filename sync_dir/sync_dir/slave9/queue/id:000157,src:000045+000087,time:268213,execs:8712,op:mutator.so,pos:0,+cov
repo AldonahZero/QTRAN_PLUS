@@ -1,5 +1,0 @@
-setex clryemar 9223372036854776 311 
- sunionstore sugvxxcg sugvxxcg sugvxxcg 
- set mykey hello 
- expire sugvxxcg 18446744073709561 
- get mykey

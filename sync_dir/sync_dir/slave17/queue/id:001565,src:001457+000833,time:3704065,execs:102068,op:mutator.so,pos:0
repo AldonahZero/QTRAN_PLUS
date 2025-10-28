@@ -1,7 +1,0 @@
-set mykey hello 
- zinterstore zjxdmzot 2 zjxdmzot zjxdmzot aggregate max 
- msetnx nzgkmxpj -727161270 triqeesz gftsakln ldvuftez 20 
- zmscore zjxdmzot mzqjfhjv 
- lcs nzgkmxpj ldvuftez minmatchlen 4 withmatchlen 
- zunionstore patbwvok 2 patbwvok zjxdmzot aggregate max 
- get mykey

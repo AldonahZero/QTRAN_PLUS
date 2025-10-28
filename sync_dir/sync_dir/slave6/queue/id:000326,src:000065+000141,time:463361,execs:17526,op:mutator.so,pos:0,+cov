@@ -1,5 +1,0 @@
-set mykey hello 
- getex mykey 
- get mykey 
- zunionstore patbwvok 2 patbwvok patbwvok aggregate max 
- mset mempxxdl qsuvfmsr 

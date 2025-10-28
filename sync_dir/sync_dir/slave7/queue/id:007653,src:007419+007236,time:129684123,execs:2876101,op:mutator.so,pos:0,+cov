@@ -1,9 +1,0 @@
-psetex rewnmixu 10 33 
- set mykey 1 
- copy rewnmixu v1 
- rpush dbmuwins ckssplvd 
- copy mykey v0 
- save 
- save 
- del v0 dbmuwins mykey 
- get v1

@@ -1,6 +1,0 @@
-object encoding rwzbgekl 
- zinterstore zcfialgy -1 zcfialgy zcfialgy 
- set mykey hello 
- zincrby zcfialgy -inf ymtynmse 
- zremrangebyrank zcfialgy -629174849777 244222380 
- get mykey

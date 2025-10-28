@@ -1,7 +1,0 @@
-set nnseeina 185256 
- incrbyfloat nnseeina 376 
- get nnseeina 
- setbit nnseeina 7 0 
- get nnseeina 
- save 
- hsetnx nbxqjbpm kmvsxosn fcjhthwx

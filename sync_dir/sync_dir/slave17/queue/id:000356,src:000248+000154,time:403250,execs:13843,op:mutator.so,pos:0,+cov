@@ -1,5 +1,0 @@
-set mykey hello 
- zadd lukpltvt 5826 vgjrzjoy 
- bitop not xxuevemv mykey 
- sort lukpltvt limit 0 10 
- get mykey

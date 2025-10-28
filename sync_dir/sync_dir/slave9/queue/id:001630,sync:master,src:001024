@@ -1,7 +1,0 @@
-set mykey -1947844055 
- get mykey 
- pfadd iknmweqf zelgohmr pfntaoeo 
- setbit mykey 474529 1 
- bitop not xxuevemv mykey 
- get mykey 
- save

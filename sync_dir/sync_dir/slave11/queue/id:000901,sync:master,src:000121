@@ -1,4 +1,0 @@
-set mykey 3187965519 
- getex mykey 
- mget mykey 
- get mykey

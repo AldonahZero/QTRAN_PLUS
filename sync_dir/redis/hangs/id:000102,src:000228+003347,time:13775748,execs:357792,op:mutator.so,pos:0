@@ -1,8 +1,0 @@
-set mykey 311 
- bitpos mykey 31120121213221301000243100044320231101323444420334241010344213104440003132204 9 25 bit 
- incrbyfloat mykey 376 
- get mykey 
- setbit mykey 1887718428 0 
- get mykey 
- save 
- hsetnx nbxqjbpm kmvsxosn fcjhthwx

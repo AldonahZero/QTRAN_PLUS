@@ -1,8 +1,0 @@
-xadd pbtmpeny * qnoruayj "Hello," 
- zunionstore nmakcyab 0 nmakcyab 
- info default all 
- xgroup create pbtmpeny v0 1672351063080-1 
- copy pbtmpeny v1 
- set atifyowf 1 
- save 
- get atifyowf

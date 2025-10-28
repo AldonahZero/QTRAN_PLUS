@@ -1,5 +1,0 @@
-hset eaxejsol bhwulrko 94964 
- set mykey 2 
- setbit mykey 526632498263 1 
- get mykey 
- bitop xor oszvevyb mykey mykey mykey mykey

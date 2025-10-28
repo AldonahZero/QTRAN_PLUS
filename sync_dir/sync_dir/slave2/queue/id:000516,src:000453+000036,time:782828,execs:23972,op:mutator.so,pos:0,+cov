@@ -1,9 +1,0 @@
-zdiffstore dfgxahpo 3 dfgxahpo dfgxahpo dfgxahpo 
- zrem dfgxahpo nwzlneoa hxxaywfp 
- set mykey 5009431 
- getset mykey -205 
- zrangestore phxykmhg phxykmhg 2 -1 byscore rev limit 1 2 
- zrandmember dfgxahpo 3 
- sdiffstore lrkqafqr lrkqafqr lrkqafqr lrkqafqr 
- sdiffstore vdxxciyw vdxxciyw vdxxciyw vdxxciyw 
- get mykey

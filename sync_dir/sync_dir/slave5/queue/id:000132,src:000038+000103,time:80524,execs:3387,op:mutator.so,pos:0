@@ -1,5 +1,0 @@
-set mykey 197 
- set v0 -1001 
- save 
- lcs v0 v0 
- get mykey

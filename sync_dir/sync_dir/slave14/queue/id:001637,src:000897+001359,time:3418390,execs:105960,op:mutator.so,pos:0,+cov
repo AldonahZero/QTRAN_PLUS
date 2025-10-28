@@ -1,7 +1,0 @@
-set v0 13.361389 
- get v0 
- incr v0 
- lpush asjdswpq syrsobfe ndlfegrn 
- lmove asjdswpq bthygztq right left 
- ltrim bthygztq 5 -3940493144 
- setex ssqwgzfa -240958759673 -179847923191

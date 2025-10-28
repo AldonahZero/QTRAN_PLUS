@@ -1,8 +1,0 @@
-msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
- del nzgkmxpj triqeesz ldvuftez 
- xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm 
- xgroup create ermrdvzf v0 0 
- xrevrange ermrdvzf + - count 1 
- xinfo stream ermrdvzf full 
- set mykey 3090148046 
- get mykey

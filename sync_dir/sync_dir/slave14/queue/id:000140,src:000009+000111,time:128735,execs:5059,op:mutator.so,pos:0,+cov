@@ -1,4 +1,0 @@
-set mykey hello 
- zunionstore szndqvoq 2 szndqvoq szndqvoq 
- setex ztbcxsbx 871662918 -479 
- get mykey

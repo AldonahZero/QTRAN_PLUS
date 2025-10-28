@@ -1,6 +1,0 @@
-set aprunafz 0.067275570271199375 
- get aprunafz 
- incrbyfloat aprunafz 1072727848 
- getex aprunafz 
- info replication 
- save

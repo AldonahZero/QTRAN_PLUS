@@ -1,4 +1,0 @@
-set mykey 430 
- incrby mykey -116904786842 
- get mykey 
- del mykey 

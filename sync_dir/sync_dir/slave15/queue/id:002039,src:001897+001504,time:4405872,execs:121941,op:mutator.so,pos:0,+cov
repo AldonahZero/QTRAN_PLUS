@@ -1,8 +1,0 @@
-lpush fjawhzfz hfgcwmoq swywrupx 
- set mykey 15.087269 
- sort fjawhzfz by weight* 
- mget mykey mykey mykey mykey 
- info cpu all 
- lpop fjawhzfz 1 
- lcs mykey mykey 
- get mykey

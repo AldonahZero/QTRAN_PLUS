@@ -1,5 +1,0 @@
-set mykey -15956 
- get mykey 
- getex mykey 
- info cpu all 
- save

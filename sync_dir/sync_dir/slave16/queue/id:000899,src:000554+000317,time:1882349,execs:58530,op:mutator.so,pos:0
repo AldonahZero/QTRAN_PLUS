@@ -1,6 +1,0 @@
-set mykey 68.303476990341892 
- get mykey 
- psetex elzondzp 123 -3437299314 
- incrbyfloat mykey -75299881433 
- hset etqpfzfm njabbctf 41657 
- psubscribe bar* 

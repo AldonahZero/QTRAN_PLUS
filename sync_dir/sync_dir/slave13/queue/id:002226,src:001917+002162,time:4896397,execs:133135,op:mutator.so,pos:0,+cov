@@ -1,8 +1,0 @@
-zunionstore uhnbdhtg -564153445215 uhnbdhtg 
- xadd kvnrwmku -452128890181 mzklxdll "Hello," 
- set mykey hello 
- copy uhnbdhtg v0 
- xread streams kvnrwmku 868 
- xclaim kvnrwmku cghcphip qcdrshmz 0 1-0 force 
- zlexcount uhnbdhtg [ lfwwktai ( dhvrhadi 
- get mykey

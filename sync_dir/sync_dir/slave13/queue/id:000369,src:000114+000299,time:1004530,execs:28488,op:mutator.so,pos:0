@@ -1,4 +1,0 @@
-set mykey -41 
- geoadd zvdfcdqc 12.758489 38.788135 llxyuaqj 17.241510 38.788135 nxmjeqgx 17.250000 35.202000 slkadwaf 15 35.201864127459075 "member1" 15 35.201864127459075 "member1" 
- save 
- get mykey

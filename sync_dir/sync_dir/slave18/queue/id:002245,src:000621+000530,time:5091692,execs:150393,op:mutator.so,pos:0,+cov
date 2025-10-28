@@ -1,6 +1,0 @@
-set mykey 212 
- bitop or yxqbavlu mykey mykey 
- scan 342 count 1 
- get mykey 
- geoadd apctyxsn 0 0 ecyrjbwf 
- save

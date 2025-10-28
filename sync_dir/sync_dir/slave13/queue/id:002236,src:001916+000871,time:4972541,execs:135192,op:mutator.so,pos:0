@@ -1,8 +1,0 @@
-lpush asjdswpq syrsobfe ndlfegrn 
- set mykey 15.087269 
- lmove asjdswpq ekfzqeis left right 
- mget mykey mykey mykey mykey 
- info cpu default 
- lpushx ekfzqeis fdrgoskt 
- lcs mykey mykey 
- get mykey

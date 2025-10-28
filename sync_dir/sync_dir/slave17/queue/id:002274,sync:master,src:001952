@@ -1,7 +1,0 @@
-set mykey 0.8284480026124269 
- rpush ukbzhzcm "member2" 
- linsert ukbzhzcm after kbdshcel dbjcavlt 
- save 
- lpos ukbzhzcm pcebpjol 
- zdiffstore dfgxahpo 3 dfgxahpo dfgxahpo dfgxahpo 
- get mykey

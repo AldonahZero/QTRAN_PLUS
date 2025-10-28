@@ -1,4 +1,0 @@
-set mykey "Hello," 
- zunionstore laaotcmr 2 laaotcmr laaotcmr weights 2 3 aggregate sum 
- getrange mykey 227 821 
- get mykey

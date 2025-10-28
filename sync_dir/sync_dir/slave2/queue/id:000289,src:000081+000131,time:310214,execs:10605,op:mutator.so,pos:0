@@ -1,4 +1,0 @@
-set mykey 3 
- copy mykey v0 
- zunionstore hwsksdce 1 hwsksdce weights 0 
- get mykey

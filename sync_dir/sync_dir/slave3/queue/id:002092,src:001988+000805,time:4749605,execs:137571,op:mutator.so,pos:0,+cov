@@ -1,5 +1,0 @@
-set mykey 512461 
- geoadd vrekwiwa 13.00 36.50 pqkikujz 
- keys foo* 
- get mykey 
- setex ssqwgzfa -240958759673 -179847923191

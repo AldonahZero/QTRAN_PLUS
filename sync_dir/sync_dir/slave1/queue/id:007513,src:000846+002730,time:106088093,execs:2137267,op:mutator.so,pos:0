@@ -1,8 +1,0 @@
-hsetnx roftorbl khrrkjgs 20203044342403203340321422240240421003320034044114013323122104244030111130421242331133131131420241444320444103413334114130000 
- sadd prxsktod qmziehnr 
- copy roftorbl v0 
- scan 976 type string 
- set mykey -1615510574 
- hmset rlvtchzi tyubwqfl -1 
- getex mykey 
- get mykey

@@ -1,5 +1,0 @@
-set mykey -629174849777 
- info latencystats 
- get mykey 
- dump mykey 
- save

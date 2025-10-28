@@ -1,6 +1,0 @@
-set mykey 1732498873 
- geoadd vrekwiwa 13.00 36.50 pqkikujz 
- geosearch vrekwiwa fromlonlat 15 37 byradius 143 km asc 
- get mykey 
- rpush dbmuwins jrjuraql 
- psubscribe bar* 

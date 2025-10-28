@@ -1,4 +1,0 @@
-set mykey 9223372036854775807 
- get mykey 
- hsetnx nbxqjbpm kmvsxosn fcjhthwx 
- zdiffstore apuzkzbh 2 apuzkzbh apuzkzbh

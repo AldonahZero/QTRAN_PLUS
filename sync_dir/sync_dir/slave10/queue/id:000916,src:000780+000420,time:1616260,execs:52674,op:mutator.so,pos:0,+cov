@@ -1,8 +1,0 @@
-getbit yrruxsym 1421721372 
- set mykey 1672351169 
- setex v0 1214754039 3715410429 
- xadd kvnrwmku 1672351062858-4 mzklxdll "Hello," 
- keys foo* 
- del mykey 
- save 
- get v0

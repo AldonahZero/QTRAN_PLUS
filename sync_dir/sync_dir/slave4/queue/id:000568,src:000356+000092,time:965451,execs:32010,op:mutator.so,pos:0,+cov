@@ -1,5 +1,0 @@
-set mykey 119 
- psetex vrrqnomv 315 33 
- bitfield mykey overflow fail incrby u9 0 -688 
- lcs mykey mykey 
- get mykey

@@ -1,5 +1,0 @@
-set mykey -37 
- zrangestore rpondvdz rpondvdz 0 -1 limit 1 2 
- zincrby rpondvdz 10 svqlyond 
- setnx gbjlvscx -37 
- get mykey

@@ -1,5 +1,0 @@
-zinterstore cxewdqlm 5 cxewdqlm cxewdqlm weights 2 3 
- zunionstore hwsksdce 3 hwsksdce weights 0 
- set mykey 2 
- get mykey 
- object encoding uvryzsxf

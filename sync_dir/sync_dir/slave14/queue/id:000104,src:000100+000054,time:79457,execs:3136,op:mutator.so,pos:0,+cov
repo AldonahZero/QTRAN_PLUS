@@ -1,6 +1,0 @@
-object encoding rwzbgekl 
- zrangestore rwcbicsk rwcbicsk 5 6 byscore 
- exists bvzkzmmj 
- zinterstore phrpwlca 1 phrpwlca phrpwlca aggregate min 
- set mykey hello 
- get mykey

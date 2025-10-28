@@ -1,9 +1,0 @@
-object encoding rwzbgekl 
- zinterstore teqiuuzn 3 teqiuuzn teqiuuzn teqiuuzn weights 0 0 1 
- set mykey hello 
- zincrby teqiuuzn -5 mlujlapi 
- zdiffstore apuzkzbh 2 teqiuuzn apuzkzbh 
- psetex zvshusdd 3410102305 3090148046 
- zunion 2 teqiuuzn teqiuuzn weights 1 1 aggregate min withscores 
- zcount teqiuuzn -539 -1154401951 
- get mykey

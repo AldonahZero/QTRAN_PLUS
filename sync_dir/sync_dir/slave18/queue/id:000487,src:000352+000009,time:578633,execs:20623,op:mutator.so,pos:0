@@ -1,7 +1,0 @@
-set mykey -37 
- zinterstore teqiuuzn 3 teqiuuzn teqiuuzn teqiuuzn weights 0 0 1 
- zrangestore ugswuldi ugswuldi 0 -1 
- hset mmbdyavh woiaydqs 3 
- setnx gbjlvscx -37 
- bitfield mykey overflow fail set i4 0 -12 
- get mykey

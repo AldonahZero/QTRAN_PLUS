@@ -1,7 +1,0 @@
-xadd ermrdvzf * jzkwvobt hhtsakbz aixesdar urasnjsm 
- xread streams ermrdvzf 868 
- info latencystats 
- xtrim ermrdvzf minid 175656559 
- set atifyowf 1 
- save 
- get atifyowf

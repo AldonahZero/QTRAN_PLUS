@@ -1,6 +1,0 @@
-set mykey hello 
- zinterstore yygrvfbj 2 yygrvfbj yygrvfbj 
- zmpop 1 yygrvfbj max count 2 
- get mykey 
- zremrangebyrank yygrvfbj 143110221304012404203333 989189047 
- save

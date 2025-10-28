@@ -1,5 +1,0 @@
-set bpvfxtud 31543984 
- copy bpvfxtud v0 
- save 
- bitop and hozsqpxd v0 bpvfxtud bpvfxtud bpvfxtud 
- get bpvfxtud

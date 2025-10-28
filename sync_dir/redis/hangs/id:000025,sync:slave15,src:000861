@@ -1,7 +1,0 @@
-set kcppjyka 0.71402199692745782 
- setbit kcppjyka 1672354063 1 
- getrange kcppjyka 1221 1496 
- get kcppjyka 
- getex kcppjyka 
- incr kcppjyka 
- save

@@ -1,7 +1,0 @@
-msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
- set mykey "Hello," 
- geoadd cqubszoy 13.361389 38.115556 acjnpjwy 15.087269 38.788135 fekagtxv 
- del triqeesz 
- georadius cqubszoy 15 37 200 km asc 
- geosearch cqubszoy fromlonlat 59.149620271823181 65.204186651485145 byradius 151 km 
- get mykey

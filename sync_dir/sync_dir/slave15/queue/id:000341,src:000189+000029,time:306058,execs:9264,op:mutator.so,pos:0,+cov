@@ -1,5 +1,0 @@
-set mykey 9223372036854775808 
- get mykey 
- getex mykey 
- info cpu default 
- save

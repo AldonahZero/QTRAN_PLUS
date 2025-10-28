@@ -1,5 +1,0 @@
-save 
- set mykey -3 
- mget mykey mykey mykey mykey 
- get mykey 
- save

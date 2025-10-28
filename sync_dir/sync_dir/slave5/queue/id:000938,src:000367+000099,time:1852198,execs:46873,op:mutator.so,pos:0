@@ -1,5 +1,0 @@
-set mykey 31120121213221301000243100044320231101323444420334241010344213104440003132204 
- copy mykey v0 db cqcngdpy 
- save 
- bitop and hozsqpxd mykey mykey v0 v0 
- get mykey

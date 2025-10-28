@@ -1,8 +1,0 @@
-sunionstore iwshcqfl iwshcqfl iwshcqfl 
- info cpu all 
- set atifyowf 1 
- expire atifyowf 0 
- get atifyowf 
- zrangestore ugswuldi ugswuldi 0 0 
- save 
- get atifyowf

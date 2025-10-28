@@ -1,5 +1,0 @@
-set rkfvndig 0.50729305926118651 
- setbit rkfvndig 35194 0 
- get rkfvndig 
- save 
- type ibxacnjy

@@ -1,8 +1,0 @@
-set mykey 41788 
- rpush czowykxw ptecklws 
- get mykey 
- rpushx czowykxw gtefhsbg 
- zinterstore cxewdqlm 2 cxewdqlm cxewdqlm weights 2 3 
- sort czowykxw by weight* get object* get # store otevgjjg 
- lmpop 2 czowykxw czowykxw right count 1 
- hset rfllxsdf iubquuor 0.41507778056668015 

@@ -1,8 +1,0 @@
-set ebvgkrck -15956 
- bitpos ebvgkrck 1 
- get ebvgkrck 
- pfadd dbpkzfom 
- setbit ebvgkrck 474529 1 
- bitpos ebvgkrck 0 56 71 bit 
- get ebvgkrck 
- save

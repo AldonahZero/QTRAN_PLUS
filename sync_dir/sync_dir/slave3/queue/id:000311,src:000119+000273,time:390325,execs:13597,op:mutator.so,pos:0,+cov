@@ -1,5 +1,0 @@
-hset eaxejsol bhwulrko 5834 
- pexpire eaxejsol 100 
- set mykey 2 
- geoadd ussfykoq 12.758489 38.788135 fawbaerw 17.241510 38.788135 yqcyaxfl 
- get mykey

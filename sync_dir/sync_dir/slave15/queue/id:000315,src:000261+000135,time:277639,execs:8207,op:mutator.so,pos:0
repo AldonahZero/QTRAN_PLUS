@@ -1,7 +1,0 @@
-set dssplpey 41788 
- bitpos dssplpey 1 12 12 bit 
- get dssplpey 
- pfadd dbpkzfom 
- setbit dssplpey 474529 1 
- get dssplpey 
- save

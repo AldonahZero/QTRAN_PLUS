@@ -1,5 +1,0 @@
-set mykey 197 
- set v0 -1001 
- bitfield mykey overflow fail set i4 2363377987 23450054762 
- save 
- get mykey

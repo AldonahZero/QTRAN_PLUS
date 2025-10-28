@@ -1,4 +1,0 @@
-set mykey -4 
- incr mykey 
- get mykey 
- save

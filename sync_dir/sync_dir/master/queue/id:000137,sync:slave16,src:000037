@@ -1,4 +1,0 @@
-set mykey 692 
- get mykey 
- zrangestore twrfmpbc twrfmpbc 0 -1 
- psubscribe bar* 

@@ -1,6 +1,0 @@
-set atifyowf 1212044342121342330120333011310343042111112004430110414043434232214144020043403411 
- incrbyfloat atifyowf -5 
- save 
- bitop or psmgmghp atifyowf atifyowf 
- incr atifyowf 
- get atifyowf

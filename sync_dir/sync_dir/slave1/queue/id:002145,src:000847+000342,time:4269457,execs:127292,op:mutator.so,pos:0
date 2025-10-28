@@ -1,9 +1,0 @@
-hset jqqlhsms vtsdkeze 814317 
- ttl ucglluvp 
- dump vtsdkeze 
- set mykey hello 
- pexpire mykey 500 
- getex mykey 
- expire jqqlhsms 2 
- expire mykey 100 lt 
- get mykey

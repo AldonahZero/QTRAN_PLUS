@@ -1,0 +1,10 @@
+{"index": 3, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "CREATE TABLE t0(c0 FLOAT ZEROFILL  COMMENT 'asdf'  PRIMARY KEY NOT NULL COLUMN_FORMAT DEFAULT, c1 FLOAT ZEROFILL  COMMENT 'asdf' , c2 INT  STORAGE DISK COLUMN_FORMAT DYNAMIC COMMENT 'asdf'  ) "}
+{"index": 3, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "CREATE INDEX i51 USING HASH ON t2(c0 ASC, c1 DESC) ALGORITHM DEFAULT"}
+{"index": 3, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "CREATE UNIQUE INDEX i0 ON t2(c0 DESC) ALGORITHM DEFAULT"}
+{"index": 3, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "INSERT LOW_PRIORITY IGNORE INTO t2(c0) VALUES(NULL)"}
+{"index": 3, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "select TABLE_NAME, ENGINE from information_schema.TABLES where table_schema = 'mysql_db62'"}
+{"index": 3, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "INSERT LOW_PRIORITY INTO t2(c0, c1) VALUES(NULL, '-1274795433')"}
+{"index": 3, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "INSERT INTO t2(c0, c1) VALUES('\tJ5]&gdV', 617672651)"}
+{"index": 3, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "INSERT IGNORE INTO t2(c1, c0) VALUES(0.7828581754164686, NULL)"}
+{"index": 3, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "INSERT HIGH_PRIORITY IGNORE INTO t2(c1, c0) VALUES(NULL, NULL)"}
+{"index": 3, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "select TABLE_NAME, ENGINE from information_schema.TABLES where table_schema = 'mysql_db62'"}

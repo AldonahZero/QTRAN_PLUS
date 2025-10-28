@@ -1,6 +1,0 @@
-set mykey hello 
- append ibdfxrwx 13121140 
- sinterstore ubjuqmxi ubjuqmxi ubjuqmxi 
- sintercard 1 ubjuqmxi limit -1 
- srandmember ubjuqmxi 50 
- get mykey

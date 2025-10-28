@@ -1,8 +1,0 @@
-set mykey 311 
- bitpos mykey 1 15 67 bit 
- incrbyfloat mykey 376 
- get mykey 
- setbit mykey 7 0 
- get mykey 
- save 
- hsetnx nbxqjbpm kmvsxosn fcjhthwx

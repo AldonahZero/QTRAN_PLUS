@@ -1,7 +1,0 @@
-set mykey 0.8284480026124269 
- mget mykey mykey mykey mykey mykey mykey mykey 
- rpush ukbzhzcm bkfxggih 
- ltrim ukbzhzcm 4 13 
- save 
- zdiffstore dfgxahpo 0 dfgxahpo dfgxahpo dfgxahpo 
- get mykey

@@ -1,6 +1,0 @@
-psetex mykey 123 -3437299314 
- set v2 1 
- copy mykey v1 
- copy mykey v0 
- save 
- get mykey

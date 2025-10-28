@@ -1,6 +1,0 @@
-zadd mfsvncrq lt incr 1 bexnlycc 
- object encoding rwzbgekl 
- set mykey hello 
- strlen mykey 
- copy bexnlycc v0 
- get mykey

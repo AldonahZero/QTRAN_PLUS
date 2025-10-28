@@ -1,4 +1,0 @@
-save 
- set mykey 9223372036854775808 
- copy mykey pyaiiarv 
- get mykey

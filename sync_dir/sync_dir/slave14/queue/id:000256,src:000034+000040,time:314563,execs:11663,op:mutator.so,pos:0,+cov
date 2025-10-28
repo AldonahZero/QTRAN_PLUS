@@ -1,5 +1,0 @@
-object encoding rwzbgekl 
- zinterstore zcfialgy 2 zcfialgy zcfialgy 
- set mykey hello 
- zmpop 1 zcfialgy min count 0 
- get mykey

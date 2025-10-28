@@ -1,5 +1,0 @@
-hset cjwjwixe iubquuor 0.41507778056668015 
- set mykey 31543984 
- hincrby cjwjwixe iubquuor 3 
- setbit mykey 615 0 
- get mykey

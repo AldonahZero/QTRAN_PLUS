@@ -1,5 +1,0 @@
-psetex hcnoouhb 851130245 -37 
- set mykey 1 
- copy mykey v0 
- save 
- get mykey

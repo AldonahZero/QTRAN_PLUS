@@ -1,7 +1,0 @@
-set mykey 1142 
- hmset hvuspbal puucxmde 9223372036854775808 
- info cpu default 
- bitpos mykey 1 12 12 bit 
- bitfield mykey overflow wrap set i15 0 -15956 
- xadd jbdjxqbm maxlen ~ 1000 123-1 hognxfnw "Hello," 
- get mykey

@@ -1,6 +1,0 @@
-set mykey -1947844055 
- get mykey 
- pfadd iknmweqf zelgohmr wibqsopn nbjrszep klxmnqhn sltjtveu cqvidjzw ckehfpxv rmjzogox erhrygyu ckgvwjnx gjbqrlnm 
- setbit mykey 286 1 
- get mykey 
- save

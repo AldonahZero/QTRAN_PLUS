@@ -1,6 +1,0 @@
-set atifyowf 1 
- copy atifyowf v0 
- incrbyfloat atifyowf -816 
- geoadd prlpsdxt 12.75 36.995 trqpgcxr 
- save 
- get atifyowf

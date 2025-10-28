@@ -1,5 +1,0 @@
-set ebvgkrck 9223372036854775807 
- incr ebvgkrck 
- zrangestore ugswuldi ugswuldi 0 -1 
- setnx gbjlvscx -37 
- get ebvgkrck

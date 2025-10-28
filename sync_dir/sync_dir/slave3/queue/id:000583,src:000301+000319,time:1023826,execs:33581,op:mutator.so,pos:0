@@ -1,4 +1,0 @@
-set mykey 1158 
- sdiffstore pqbjqaal pqbjqaal pqbjqaal pqbjqaal pqbjqaal 
- get mykey 
- save

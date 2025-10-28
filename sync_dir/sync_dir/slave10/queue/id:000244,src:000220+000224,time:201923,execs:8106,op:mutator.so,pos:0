@@ -1,5 +1,0 @@
-zrangestore cfncftfi cfncftfi 0 5 byscore limit 0 2 
- set mykey -20 
- zmpop 2 cfncftfi cfncftfi max count 1 
- xadd kvnrwmku 123-1 mzklxdll "Hello," 
- get mykey

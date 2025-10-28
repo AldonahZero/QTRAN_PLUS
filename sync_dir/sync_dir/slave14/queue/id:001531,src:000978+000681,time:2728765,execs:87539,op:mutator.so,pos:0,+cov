@@ -1,7 +1,0 @@
-set mykey 1732498873 
- geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
- get mykey 
- geodist rguvzgcd uqzidutw uqzidutw mi 
- pexpiretime htnfuoac 
- rpush dbmuwins jrjuraql 
- psubscribe bar* 

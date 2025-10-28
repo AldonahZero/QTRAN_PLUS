@@ -1,7 +1,0 @@
-rpush lweoenet svaobjcy 
- lrange lweoenet 0 1 
- object encoding rwzbgekl 
- zinterstore phrpwlca 2 phrpwlca phrpwlca aggregate min 
- set mykey hello 
- zincrby phrpwlca 1898181473 mlujlapi 
- get mykey

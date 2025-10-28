@@ -1,6 +1,0 @@
-hset ybfrqahd kbhgtyjv 917460 
- hincrbyfloat ybfrqahd kbhgtyjv 1 
- hget ybfrqahd kbhgtyjv 
- set mykey hello 
- hget ybfrqahd kbhgtyjv 
- get mykey

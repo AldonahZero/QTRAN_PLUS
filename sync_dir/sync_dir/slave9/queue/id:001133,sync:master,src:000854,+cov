@@ -1,6 +1,0 @@
-set v0 -9223372036854775808 
- incrbyfloat v0 -5 
- save 
- incr v0 
- bitpos v0 1 12 -261649974743 bit 
- get v0

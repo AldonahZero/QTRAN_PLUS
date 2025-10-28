@@ -1,5 +1,0 @@
-hset eaxejsol bhwulrko -1 
- set mykey 31543984 
- hincrby eaxejsol bhwulrko 3 
- setbit mykey 615 0 
- get mykey

@@ -1,5 +1,0 @@
-set mykey 197 
- set nholpqmz -1001 
- save 
- lcs nholpqmz mykey 
- get mykey

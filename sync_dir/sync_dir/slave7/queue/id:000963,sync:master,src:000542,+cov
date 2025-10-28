@@ -1,6 +1,0 @@
-hset eaxejsol bhwulrko 0.87838079541846215 
- hmget eaxejsol bhwulrko bhwulrko 
- set mykey 2 
- hincrbyfloat eaxejsol bhwulrko 1 
- pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
- get mykey

@@ -1,4 +1,0 @@
-set mykey 2300104211 
- get mykey 
- copy mykey v0 
- save

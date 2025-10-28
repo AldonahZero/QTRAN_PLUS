@@ -1,6 +1,0 @@
-set aprunafz 35.201864127459075 
- psetex vrrqnomv 315 33 
- lcs aprunafz vrrqnomv 
- getrange aprunafz 1293 -483 
- getrange vrrqnomv 1293 -483 
- get vrrqnomv

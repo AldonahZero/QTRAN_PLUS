@@ -1,5 +1,0 @@
-zadd pqfcfqcy 34 qrxzgoil 
- object encoding pqfcfqcy 
- set mykey hello 
- strlen mykey 
- get mykey

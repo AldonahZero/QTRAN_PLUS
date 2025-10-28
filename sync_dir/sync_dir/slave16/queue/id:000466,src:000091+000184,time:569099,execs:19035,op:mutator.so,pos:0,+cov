@@ -1,4 +1,0 @@
-set mykey 4 
- get mykey 
- incrby mykey -980 
- psubscribe bar* 

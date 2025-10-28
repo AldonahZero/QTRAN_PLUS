@@ -1,8 +1,0 @@
-set mykey 13033323022411214443443303234220120324324344401012232221143311233 
- object encoding cmfmndrr 
- lcs mykey mykey 
- geoadd rrimocuc 13.361389 38.115556 vbqhnwvq 15.087269 37.502669 csetpemq 
- setbit mykey 109990 1 
- zinterstore xmawvngf 2 xmawvngf xmawvngf 
- georadius rrimocuc 13.361389 38.115556 500 km store xutmxmkt 
- get mykey

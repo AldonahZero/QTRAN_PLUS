@@ -1,6 +1,0 @@
-info cpu all 
- set atifyowf 1 
- zrangestore ugswuldi ugswuldi 0 -1 
- zrangestore jzylmnye ugswuldi 5 6 
- save 
- get atifyowf

@@ -1,5 +1,0 @@
-lpush zdnjslcy sicnwujw 
- set mykey 2100 
- mget mykey mykey mykey 
- lcs mykey mykey 
- get mykey

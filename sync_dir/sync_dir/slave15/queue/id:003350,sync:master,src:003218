@@ -1,9 +1,0 @@
-pfadd mykey "hello" smvbejzf nyxzfynr 
- hset poksmruc sjszuneh 870160 
- dump poksmruc 
- set mykey 2 
- hincrby poksmruc sjszuneh 2 
- hincrbyfloat poksmruc sjszuneh 1 
- hincrbyfloat poksmruc sjszuneh 1 
- pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
- get mykey

@@ -1,8 +1,0 @@
-sunionstore sugvxxcg sugvxxcg sugvxxcg 
- geoadd prlpsdxt 12.75 36.995 trqpgcxr 
- sort sugvxxcg by weight* get object* get # store otevgjjg 
- georadius prlpsdxt 13.361389 38.115556 500 km storedist aynqlgbb 
- set mykey hello 
- sdiff sugvxxcg sugvxxcg sugvxxcg sugvxxcg 
- smismember sugvxxcg mnqctonh fdbsvldm 
- get mykey

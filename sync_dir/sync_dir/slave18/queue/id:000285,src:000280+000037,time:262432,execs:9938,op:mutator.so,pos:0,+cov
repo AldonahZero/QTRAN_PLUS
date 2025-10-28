@@ -1,6 +1,0 @@
-set mykey 630 
- zrangestore ugswuldi ugswuldi 0 -1 
- hset mmbdyavh woiaydqs 452588 
- setnx gbjlvscx -37 
- bitfield mykey overflow fail set u38 0 196603812187 
- get mykey

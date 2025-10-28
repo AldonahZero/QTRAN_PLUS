@@ -1,7 +1,0 @@
-xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf 
- info keyspace 
- xgroup create ermrdvzf v0 0 
- xtrim ermrdvzf minid 1000 
- set atifyowf 1 
- save 
- get atifyowf

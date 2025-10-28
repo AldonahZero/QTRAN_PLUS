@@ -1,5 +1,0 @@
-set mykey 1142 
- get mykey 
- getex mykey 
- info cpu default 
- save

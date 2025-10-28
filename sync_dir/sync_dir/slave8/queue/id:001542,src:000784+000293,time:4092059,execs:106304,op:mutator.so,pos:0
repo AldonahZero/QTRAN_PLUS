@@ -1,5 +1,0 @@
-hset poksmruc sjszuneh 923963394 
- set mykey 31543984 
- hincrby poksmruc sjszuneh 3 
- setbit mykey 615 0 
- get mykey

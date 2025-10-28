@@ -1,9 +1,0 @@
-set mykey 1293 
- get mykey 
- msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 v0 20 v1 20 v2 20 v3 20 v4 20 
- msetnx v6 fgqixmul v14 gftsakln v15 20 v16 20 v17 20 v18 20 v19 20 v20 20 v5 20 v21 20 v7 20 v8 20 v9 20 v10 20 v11 20 v12 20 v22 20 v23 20 v24 20 v25 20 v26 20 v13 20 v27 20 v32 20 v33 20 v34 20 v35 20 v36 20 v28 20 v29 20 v30 20 v31 20 v37 20 v38 20 v39 20 v40 20 v41 20 v42 20 v43 20 v44 20 v45 20 v46 20 v47 20 v48 20 v49 20 v50 20 v51 20 v52 20 v53 20 v54 20 v55 20 v56 20 v57 20 v58 20 v59 20 v60 20 v61 20 
- zdiffstore oninilnq 0 oninilnq 
- del mykey nzgkmxpj v8 
- scan 589 type string 
- bitfield triqeesz overflow wrap set u48 0 190425890380385 
- save

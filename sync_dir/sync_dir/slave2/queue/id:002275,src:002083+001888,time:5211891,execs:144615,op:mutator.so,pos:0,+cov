@@ -1,9 +1,0 @@
-lpush kfxdvljk rptpxozi xqfdftkh 
- set mykey 15.087269 
- lpop kfxdvljk 2 
- mget mykey mykey mykey mykey 
- linsert kfxdvljk after rahvenfl hnhweucm 
- lpop kfxdvljk -123 
- info cpu default 
- lcs mykey mykey 
- get mykey

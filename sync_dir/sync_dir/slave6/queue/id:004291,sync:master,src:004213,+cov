@@ -1,6 +1,0 @@
-set wcitbqrq 986906 
- setbit wcitbqrq 321252 0 
- decrby wcitbqrq -9223372036854775808 
- get wcitbqrq 
- incr wcitbqrq 
- save

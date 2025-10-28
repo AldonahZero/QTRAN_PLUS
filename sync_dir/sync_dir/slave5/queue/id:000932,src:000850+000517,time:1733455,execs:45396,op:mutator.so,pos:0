@@ -1,7 +1,0 @@
-set v0 -1001 
- mget v0 v0 v0 
- rpush ukbzhzcm bkfxggih 
- ltrim ukbzhzcm 4 13 
- save 
- zdiffstore dfgxahpo 0 dfgxahpo dfgxahpo dfgxahpo 
- get v0

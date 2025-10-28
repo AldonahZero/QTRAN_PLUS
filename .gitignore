@@ -61,5 +61,5 @@ run_output.log
 sync_dir/
 check_agent_setup.py
 
-
+mydata/
 research/

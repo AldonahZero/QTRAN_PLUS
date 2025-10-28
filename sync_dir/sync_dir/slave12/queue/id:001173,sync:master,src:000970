@@ -1,6 +1,0 @@
-set mykey hello 
- zinterstore yygrvfbj 2 yygrvfbj yygrvfbj 
- zmpop 2 yygrvfbj yygrvfbj min 
- zinterstore phrpwlca 2 phrpwlca yygrvfbj aggregate min 
- get mykey 
- save

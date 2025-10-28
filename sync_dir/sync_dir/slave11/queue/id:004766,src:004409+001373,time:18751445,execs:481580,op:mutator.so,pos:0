@@ -1,5 +1,0 @@
-set mykey -408729133852 
- zadd v37 0 srveglnh 
- expire v37 100 gt 
- expire mykey 100 gt 
- get mykey

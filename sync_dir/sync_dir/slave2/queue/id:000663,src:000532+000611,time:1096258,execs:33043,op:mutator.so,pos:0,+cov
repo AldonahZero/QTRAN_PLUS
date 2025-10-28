@@ -1,5 +1,0 @@
-set mykey 3 
- sadd odholsda pukmiumo 
- copy mykey v0 db cqcngdpy 
- getex v0 
- get mykey

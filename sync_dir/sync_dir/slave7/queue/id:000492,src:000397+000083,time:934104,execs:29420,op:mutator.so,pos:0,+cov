@@ -1,6 +1,0 @@
-set mykey 306 
- copy mykey v0 db cqcngdpy 
- hmset hvuspbal puucxmde 9223372036854775808 
- info everything 
- bitfield v0 overflow fail set u34 0 23450054762 
- get mykey

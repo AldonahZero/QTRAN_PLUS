@@ -1,8 +1,0 @@
-xadd pbtmpeny * qnoruayj "Hello," 
- xread streams pbtmpeny 868 
- xautoclaim pbtmpeny cwxbpfcr xolfcipk 0 0-0 
- info default 
- xtrim pbtmpeny minid 175656559 
- set atifyowf 1 
- save 
- get atifyowf

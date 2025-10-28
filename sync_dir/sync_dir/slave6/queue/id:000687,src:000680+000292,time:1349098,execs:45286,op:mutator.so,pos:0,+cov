@@ -1,8 +1,0 @@
-set mykey 1000000 
- setbit mykey 43 0 
- decr mykey 
- save 
- xadd ozsnpvdy * rqwzplos "Hello," 
- del ozsnpvdy 
- get mykey 
- hset rfllxsdf iubquuor 0.41507778056668015 

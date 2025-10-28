@@ -1,8 +1,0 @@
-sadd waeoxbem wivnjuxe 
- set mykey -1947844055 
- srandmember waeoxbem 0 
- spop waeoxbem 
- smembers waeoxbem 
- get mykey 
- get mykey 
- save

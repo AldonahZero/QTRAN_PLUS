@@ -1,9 +1,0 @@
-zadd mfsvncrq lt incr 1 bexnlycc 
- zrandmember mfsvncrq -3 
- zadd hleuhsey 0 srveglnh 
- object encoding rwzbgekl 
- geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
- set mykey hello 
- zrangestore gdjwzzhv mfsvncrq 0 1 
- strlen mykey 
- get mykey

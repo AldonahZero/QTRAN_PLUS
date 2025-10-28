@@ -1,7 +1,0 @@
-hmset zxvatyxz mecdrlck 1 vktahdph 2 ccsnseuf 3 qzsoxtro 3 mdhtawrn 3 
- set mykey 1519 
- hmset v0 dherajck 1 vktahdph 2 v10 2 qzsoxtro 3 fjawhzfz 1158 mdhtawrn 3 
- get mykey 
- hscan zxvatyxz 64 
- hrandfield zxvatyxz 2 withvalues 
- del mykey 

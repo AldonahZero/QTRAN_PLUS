@@ -1,9 +1,0 @@
-object encoding rwzbgekl 
- xadd pbtmpeny 3-0 qnoruayj "Hello," 
- zinterstore zcfialgy 2 zcfialgy zcfialgy 
- xreadgroup group hciwgwgc faydiclj streams pbtmpeny 0-1 
- xreadgroup group pnmycwuk alqfgudg streams pbtmpeny 0 
- xreadgroup group pnmycwuk alqfgudg streams pbtmpeny 0 
- set mykey hello 
- zmpop 2 zcfialgy zcfialgy min 
- get mykey

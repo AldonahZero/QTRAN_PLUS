@@ -1,9 +1,0 @@
-set mykey 311 
- geoadd eczuybnf 179.5 36 htafotkr 
- incrbyfloat mykey 376 
- bitfield mykey overflow wrap incrby u58 1672351075 -688 
- get mykey 
- bitpos mykey 1 64 431 bit 
- get mykey 
- save 
- hsetnx nbxqjbpm kmvsxosn fcjhthwx

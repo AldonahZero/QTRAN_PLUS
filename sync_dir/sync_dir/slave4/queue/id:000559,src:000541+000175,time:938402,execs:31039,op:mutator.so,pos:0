@@ -1,6 +1,0 @@
-zunionstore uhnbdhtg 3 uhnbdhtg 
- zmpop -1 uhnbdhtg max 
- sort uhnbdhtg limit 934673624548 -3 desc alpha 
- zcount uhnbdhtg -980 1850704167 
- set mykey hello 
- get mykey

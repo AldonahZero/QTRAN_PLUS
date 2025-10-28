@@ -1,6 +1,0 @@
-zadd pqfcfqcy 34 qrxzgoil 
- object encoding rwzbgekl 
- set mykey hello 
- zmpop -1 pqfcfqcy max 
- strlen mykey 
- get mykey

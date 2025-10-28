@@ -1,6 +1,0 @@
-set mykey 41788 
- info all 
- xadd kvnrwmku 123-1 mzklxdll "Hello," 
- get mykey 
- info cpu errorstats 
- save

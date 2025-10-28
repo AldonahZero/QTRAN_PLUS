@@ -1,6 +1,0 @@
-set mykey 41788 
- info keyspace 
- get mykey 
- lpush mfgdbqzi ymrnmwug 
- zadd njlgirpq 0 pvifqyzb 
- save

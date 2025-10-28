@@ -1,4 +1,0 @@
-hmset pctalcqn tnvszhuf -9223372036854775808 
- set mykey 497546620433 
- get mykey 
- save

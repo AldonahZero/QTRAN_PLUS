@@ -1,7 +1,0 @@
-hsetnx wqydsukt guwchiwu -830067951618 
- expire wqydsukt 200 xx 
- set mykey 3 
- info cpu everything 
- bitop or jlgjivks mykey mykey mykey mykey mykey mykey mykey mykey mykey 
- copy mykey v0 
- get mykey

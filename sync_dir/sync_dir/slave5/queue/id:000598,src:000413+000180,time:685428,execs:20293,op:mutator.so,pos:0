@@ -1,5 +1,0 @@
-hsetnx nbxqjbpm kmvsxosn -645611437338 
- set mykey hello 
- hincrbyfloat nbxqjbpm kmvsxosn 1 
- hset ybfrqahd kbhgtyjv 917460 
- get mykey

@@ -1,7 +1,0 @@
-hset poksmruc sjszuneh -830067951618 
- set mykey hello 
- hmget poksmruc sjszuneh sjszuneh 
- get mykey 
- hincrbyfloat poksmruc sjszuneh 34431331414143121134444422104440132041123042313142030414432111342230233434014203202112111443441041332101 
- geoadd eapvvold -1 37.00 nkmmorea 
- psetex vokpjzpp -586 364853510803

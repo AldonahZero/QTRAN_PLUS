@@ -1,6 +1,0 @@
-set mykey 197 
- set v0 -1001 
- save 
- msetnx hfyxrqqv 673 
- decrby v0 1651985310 
- get mykey

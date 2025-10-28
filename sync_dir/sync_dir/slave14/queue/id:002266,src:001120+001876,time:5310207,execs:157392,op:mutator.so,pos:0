@@ -1,6 +1,0 @@
-hset qdbfnnxy nobplsit 0.43734659228350342 
- hmget qdbfnnxy nobplsit nobplsit 
- set mykey 2 
- hincrbyfloat qdbfnnxy nobplsit 401404201341241132211401110422242302223101311244433030143140430241243241130223 
- pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
- get mykey

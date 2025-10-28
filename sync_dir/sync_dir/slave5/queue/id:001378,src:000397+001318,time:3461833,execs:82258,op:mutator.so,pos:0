@@ -1,6 +1,0 @@
-set atifyowf 1 
- incrbyfloat atifyowf -5 
- setex jiosoaha 1214754039 3715410429 
- lcs jiosoaha atifyowf 
- save 
- get atifyowf

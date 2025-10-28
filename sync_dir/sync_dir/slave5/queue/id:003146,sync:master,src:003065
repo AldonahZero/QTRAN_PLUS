@@ -1,7 +1,0 @@
-lpush asjdswpq syrsobfe ndlfegrn 
- set mykey 15.087269 
- lrange asjdswpq 0 -1 
- rpop asjdswpq 1 
- mget mykey mykey mykey mykey 
- lcs mykey mykey 
- get mykey

@@ -1,7 +1,0 @@
-set mykey 197 
- del mykey 
- set v0 -909494108478 
- setbit v0 474529 1 
- save 
- decrby v0 1651985310 
- get v0

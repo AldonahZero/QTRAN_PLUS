@@ -1,7 +1,0 @@
-geoadd vrekwiwa 13.00 36.50 pqkikujz 
- set mykey -3155498710 
- type mspahcqu 
- geopos vrekwiwa pqkikujz pqkikujz pqkikujz 
- decr mykey 
- save 
- get mykey

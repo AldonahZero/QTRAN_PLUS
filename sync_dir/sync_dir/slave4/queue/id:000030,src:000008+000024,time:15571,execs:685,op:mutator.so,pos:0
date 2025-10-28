@@ -1,3 +1,0 @@
-zunionstore nchjerwp 2 nchjerwp nchjerwp weights 2 3 
- set mykey hello 
- get mykey

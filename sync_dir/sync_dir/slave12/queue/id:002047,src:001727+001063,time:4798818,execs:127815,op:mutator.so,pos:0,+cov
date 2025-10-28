@@ -1,8 +1,0 @@
-lpush fjawhzfz hfgcwmoq swywrupx 
- set mykey 15.087269 
- lmove fjawhzfz ekfzqeis right right 
- mget mykey mykey mykey mykey 
- info cpu default 
- lcs mykey mykey 
- lset fjawhzfz -2 ovhawxpv 
- get mykey

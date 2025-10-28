@@ -1,4 +1,0 @@
-set mykey 0 
- getex mykey 
- mget mykey 
- get mykey

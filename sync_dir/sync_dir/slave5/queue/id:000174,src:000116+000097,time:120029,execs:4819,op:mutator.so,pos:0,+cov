@@ -1,5 +1,0 @@
-set atifyowf 1 
- incrbyfloat atifyowf -inf 
- save 
- incr atifyowf 
- get atifyowf

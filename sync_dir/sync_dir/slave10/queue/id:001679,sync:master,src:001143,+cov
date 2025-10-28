@@ -1,7 +1,0 @@
-set mykey 0 
- hset mmbdyavh woiaydqs 452588 
- get mykey 
- getex mykey 
- scan 201 type string 
- info errorstats 
- save

@@ -1,8 +1,0 @@
-set mykey -1947844055 
- get mykey 
- pfadd dbpkzfom 
- setbit mykey 474529 1 
- bitcount dxvdlqeh 
- get mykey 
- setbit mykey 1603 1 
- save

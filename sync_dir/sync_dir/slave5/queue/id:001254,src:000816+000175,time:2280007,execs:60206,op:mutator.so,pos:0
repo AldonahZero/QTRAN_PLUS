@@ -1,7 +1,0 @@
-set atifyowf 1 
- incrbyfloat atifyowf -5 
- bitfield atifyowf overflow wrap set i30 0 -255272035 
- setex tncydqgy 273 12024430563 
- pfcount xvvikrvg sngoraro 
- save 
- get atifyowf

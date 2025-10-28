@@ -1,6 +1,0 @@
-object encoding rwzbgekl 
- zinterstore phrpwlca 2 phrpwlca phrpwlca aggregate min 
- set mykey hello 
- zincrby phrpwlca -inf ymtynmse 
- zremrangebyrank phrpwlca -629174849777 41012222144233124332141130332420013340412043231333203133411303211304144121141441033130321400 
- get mykey

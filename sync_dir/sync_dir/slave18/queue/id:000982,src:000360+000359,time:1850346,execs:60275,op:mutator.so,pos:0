@@ -1,7 +1,0 @@
-set mykey -37 
- zrangestore rpondvdz rpondvdz 0 -1 limit 1 2 
- subscribe bsdvmjvg 
- setnx gbjlvscx -37 
- zremrangebyrank rpondvdz -909494108478 1302230201330004203204022312341214 
- getex gbjlvscx 
- get mykey

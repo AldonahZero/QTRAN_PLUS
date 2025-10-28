@@ -1,5 +1,0 @@
-set mykey hello 
- getex mykey 
- pfcount mykey 
- mget mykey 
- get mykey

@@ -1,5 +1,0 @@
-set mykey 533 
- scan 945 count 5 
- get mykey 
- sadd vatjiafn upeelqpe 
- mget mykey mykey mykey mykey

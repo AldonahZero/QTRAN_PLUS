@@ -1,5 +1,0 @@
-set mykey 5826 
- lcs mykey mykey idx minmatchlen 4 withmatchlen 
- decr mykey 
- get mykey 
- zrangestore ncpxhtjz ncpxhtjz 0 41012222144233124332141130332420013340412043231333203133411303211304144121141441033130321400 

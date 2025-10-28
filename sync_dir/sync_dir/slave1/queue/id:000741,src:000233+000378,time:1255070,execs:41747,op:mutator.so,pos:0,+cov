@@ -1,7 +1,0 @@
-sunionstore hczdthan hczdthan hczdthan 
- set mykey -1615510574 
- sunion hczdthan hczdthan 
- hmset rlvtchzi tyubwqfl -1 
- sdiffstore zakcrnfs hczdthan zakcrnfs 
- getex mykey 
- get mykey

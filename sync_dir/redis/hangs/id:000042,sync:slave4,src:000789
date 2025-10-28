@@ -1,7 +1,0 @@
-lpush zdnjslcy sicnwujw 
- set mykey 15.087269 
- mget mykey mykey mykey mykey 
- setbit mykey 58430 1 
- info cpu cpu 
- lcs mykey mykey 
- get mykey

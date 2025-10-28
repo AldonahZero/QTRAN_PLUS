@@ -1,5 +1,0 @@
-zunionstore qbbgmoug 2 qbbgmoug qbbgmoug 
- set mykey hello 
- get mykey 
- bitop and vbhusavz mykey mykey mykey mykey mykey mykey mykey mykey mykey mykey 
- save

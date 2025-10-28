@@ -1,5 +1,0 @@
-set mykey 692 
- copy mykey v0 db cqcngdpy 
- bitfield v0 overflow fail incrby u9 0 -4224562770 
- strlen mykey 
- get mykey

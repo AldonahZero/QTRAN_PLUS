@@ -1,9 +1,0 @@
-set mykey -1615510574 
- set v0 353926132597 
- lpush jqknbzjm ymrnmwug 
- setbit mykey 179517 0 
- lmove jqknbzjm ekfzqeis right right 
- get mykey 
- lmove ekfzqeis mjlnxcti left right 
- getbit eeoiflzb -244 
- object encoding uvryzsxf

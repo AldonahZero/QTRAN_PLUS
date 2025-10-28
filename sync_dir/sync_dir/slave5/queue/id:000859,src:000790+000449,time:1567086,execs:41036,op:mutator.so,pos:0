@@ -1,7 +1,0 @@
-set rkfvndig 197 
- mget rkfvndig rkfvndig rkfvndig 
- rpush ukbzhzcm bkfxggih 
- ltrim ukbzhzcm 4 13 
- save 
- zdiffstore dfgxahpo 0 dfgxahpo dfgxahpo dfgxahpo 
- get rkfvndig

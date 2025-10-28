@@ -1,7 +1,0 @@
-set mykey 175656559 
- getset mykey -205 
- get mykey 
- scan 122 count 5 
- strlen mykey 
- get mykey 
- hset rfllxsdf iubquuor 0.41507778056668015 

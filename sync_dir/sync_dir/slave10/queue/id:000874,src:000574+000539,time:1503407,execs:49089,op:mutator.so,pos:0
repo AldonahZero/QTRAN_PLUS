@@ -1,8 +1,0 @@
-set mykey 38.115556 
- xadd jbdjxqbm maxlen ~ 1000 123-1 hognxfnw "Hello," 
- geoadd mdexzjor 13.361389 38.115556 xyookjrw 17.241510 38.788135 nxmjeqgx 17.250000 35.202000 slkadwaf 
- keys foo* 
- del jbdjxqbm 
- expire mykey -10 lt 
- save 
- get mykey

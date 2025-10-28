@@ -1,4 +1,0 @@
-set mykey 9 
- get mykey 
- hsetnx nbxqjbpm kmvsxosn fcjhthwx 
- zdiffstore apuzkzbh 2 apuzkzbh apuzkzbh

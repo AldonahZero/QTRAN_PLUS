@@ -1,8 +1,0 @@
-zadd pqfcfqcy 34 qrxzgoil 
- object encoding rwzbgekl 
- zinterstore ygwlbjwg 3 pqfcfqcy pqfcfqcy pqfcfqcy weights 0 -371 1 
- mset jmvjdgip 533 
- shutdown nosave 
- set mykey hello 
- strlen mykey 
- get mykey

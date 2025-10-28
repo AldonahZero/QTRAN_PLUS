@@ -1,7 +1,0 @@
-setex jiosoaha 1214754039 3715410429 
- hmset pctalcqn tnvszhuf -9223372036854775808 
- save 
- sunionstore sugvxxcg sugvxxcg sugvxxcg 
- set mykey hello 
- mget jiosoaha jiosoaha mykey jiosoaha jiosoaha mykey mykey 
- get mykey

@@ -1,8 +1,0 @@
-set pfoiothj 1140 
- save 
- setbit pfoiothj 362392 0 
- mget pfoiothj pfoiothj pfoiothj 
- msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
- getset triqeesz -853 
- bitop xor vnayjyje triqeesz 
- get triqeesz

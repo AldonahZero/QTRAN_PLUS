@@ -1,6 +1,0 @@
-set mykey hello 
- getex mykey 
- lcs mykey mykey idx minmatchlen 4 withmatchlen 
- pfcount xvvikrvg cjwjwixe sngoraro 
- mget mykey 
- get mykey

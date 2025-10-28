@@ -1,4 +1,0 @@
-set mykey 54 
- sinterstore efabqgdi efabqgdi efabqgdi 
- get mykey 
- del mykey 

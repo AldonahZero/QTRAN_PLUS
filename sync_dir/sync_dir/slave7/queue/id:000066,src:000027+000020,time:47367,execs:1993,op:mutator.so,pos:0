@@ -1,4 +1,0 @@
-geoadd vrekwiwa 13.00 36.50 "World" 
- set mykey 306 
- geopos vrekwiwa "World" "World" "World" 
- get mykey

@@ -1,5 +1,0 @@
-set mykey hello 
- msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
- getset mykey -853 
- bitop or psmgmghp ldvuftez ldvuftez 
- get mykey

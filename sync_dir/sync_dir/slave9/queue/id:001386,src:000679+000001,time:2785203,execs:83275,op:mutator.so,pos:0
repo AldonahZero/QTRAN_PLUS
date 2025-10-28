@@ -1,9 +1,0 @@
-sunionstore sugvxxcg sugvxxcg sugvxxcg 
- lpush crvliqip pnihvhwo 
- info replication 
- llen crvliqip 
- lrange crvliqip 0 -1 
- set mykey 568645835187 
- get mykey 
- lpos crvliqip pnihvhwo rank -1 
- smismember sugvxxcg vlvtmruq 

@@ -1,4 +1,0 @@
-set mykey -408729133852 
- zadd ojhkbklj 0 avnctvuo 
- get mykey 
- zmscore ojhkbklj "member1" "member2" "member3"

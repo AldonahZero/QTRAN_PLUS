@@ -1,6 +1,0 @@
-psetex tkpddeko 5 809 
- set mykey 1 
- copy mykey v1 
- copy mykey v0 
- save 
- get mykey

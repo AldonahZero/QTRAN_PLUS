@@ -1,7 +1,0 @@
-geoadd vrekwiwa 13.00 36.50 pqkikujz 
- set mykey 0.19306496586327673 
- geopos vrekwiwa pqkikujz pqkikujz pqkikujz 
- mget mykey mykey mykey 
- xadd jbdjxqbm maxlen ~ 1000 123-1 hognxfnw "Hello," 
- decr mykey 
- get mykey

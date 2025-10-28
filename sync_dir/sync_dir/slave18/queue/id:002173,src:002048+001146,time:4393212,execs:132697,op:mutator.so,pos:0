@@ -1,8 +1,0 @@
-set mykey 1732498873 
- setbit mykey 474529 1 
- mget mykey mykey mykey mykey mykey mykey mykey mykey mykey 
- select 8 
- get mykey 
- decr mykey 
- hset etqpfzfm njabbctf 41657 
- psubscribe bar* 

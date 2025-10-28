@@ -1,5 +1,0 @@
-set mykey 9223372036854775808 
- bitfield mykey overflow fail set u58 0 1519 
- bitop and hozsqpxd mykey mykey mykey mykey 
- incrby mykey -517 
- get mykey

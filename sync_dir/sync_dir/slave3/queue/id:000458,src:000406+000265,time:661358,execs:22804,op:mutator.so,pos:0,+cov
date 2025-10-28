@@ -1,8 +1,0 @@
-info default 
- hset etqpfzfm bhwulrko 1037 
- hmget etqpfzfm bhwulrko bhwulrko 
- set mykey 2 
- rpush czowykxw ptecklws 
- hincrbyfloat etqpfzfm bhwulrko 1 
- pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
- get mykey

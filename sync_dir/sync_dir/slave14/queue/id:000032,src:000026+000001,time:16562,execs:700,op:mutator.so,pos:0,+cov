@@ -1,4 +1,0 @@
-object encoding rwzbgekl 
- zinterstore zjxdmzot 2 zjxdmzot zjxdmzot aggregate max 
- set mykey hello 
- get mykey

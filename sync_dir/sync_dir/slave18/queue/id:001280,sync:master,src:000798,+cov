@@ -1,6 +1,0 @@
-set mykey 197 
- set wtnzbqnd -909494108478 
- setbit mykey 474529 1 
- save 
- decrby mykey 1651985310 
- get mykey

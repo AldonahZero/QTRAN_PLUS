@@ -1,5 +1,0 @@
-set mykey 1293 
- hmset hvuspbal puucxmde 9223372036854775808 
- get mykey 
- scan 589 type string 
- save

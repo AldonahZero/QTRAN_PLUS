@@ -1,9 +1,0 @@
-msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
- del nzgkmxpj triqeesz ldvuftez 
- xadd jbdjxqbm maxlen ~ 1000 123-1 hognxfnw "Hello," 
- xgroup create jbdjxqbm v0 0 
- xrevrange jbdjxqbm + - count 1 
- xinfo stream jbdjxqbm full count 31440401144203104333141242024402133410404002213224414211024401421144411204314404100243430103230230003001240012033432014301322442332311022122432243233223421412400232221424331401440333113043 
- set mykey 3090148046 
- xgroup create jbdjxqbm v1 0 
- get mykey

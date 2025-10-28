@@ -1,6 +1,0 @@
-set mykey 212 
- append tchynrao gkwunbmg 
- info latencystats 
- get mykey 
- dump mykey 
- save

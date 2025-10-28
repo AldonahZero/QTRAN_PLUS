@@ -1,5 +1,0 @@
-hset mmbdyavh woiaydqs 2 
- hincrbyfloat mmbdyavh woiaydqs 1 
- set mykey hello 
- hlen mmbdyavh 
- get mykey

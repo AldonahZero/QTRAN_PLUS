@@ -1,6 +1,0 @@
-hset eaxejsol bhwulrko 94964 
- psetex mykey 123 -3437299314 
- hmget eaxejsol bhwulrko bhwulrko 
- set v0 2 
- hmget eaxejsol bhwulrko bhwulrko 
- get mykey

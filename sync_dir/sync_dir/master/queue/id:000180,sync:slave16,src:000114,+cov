@@ -1,4 +1,0 @@
-set mykey 1732498873 
- get mykey 
- hset etqpfzfm njabbctf 17.200560937451133 
- psubscribe bar* 

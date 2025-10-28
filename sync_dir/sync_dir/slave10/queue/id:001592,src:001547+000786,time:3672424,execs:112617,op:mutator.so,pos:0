@@ -1,6 +1,0 @@
-hset elibnlnj lzytosbe 732291 
- hincrbyfloat elibnlnj lzytosbe 1 
- hrandfield elibnlnj -1 
- hget elibnlnj lzytosbe 
- set mykey hello 
- get mykey

@@ -1,3 +1,0 @@
-set mykey -5 
- bitfield mykey overflow fail set i35 0 1519 
- get mykey

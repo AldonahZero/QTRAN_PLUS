@@ -1,7 +1,0 @@
-xadd pbtmpeny * qnoruayj "Hello," 
- info keyspace 
- xgroup create pbtmpeny v0 0 
- save 
- set atifyowf 1 
- save 
- get atifyowf

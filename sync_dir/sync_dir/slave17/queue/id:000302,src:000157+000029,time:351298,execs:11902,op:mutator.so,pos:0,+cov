@@ -1,5 +1,0 @@
-set aprunafz 0.067275570271199375 
- dump aprunafz 
- get aprunafz 
- scan 589 type string 
- save

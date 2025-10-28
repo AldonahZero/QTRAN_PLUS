@@ -1,5 +1,0 @@
-set atifyowf 85.0511 
- set mykey 85.0511 
- bitfield atifyowf overflow fail set i4 3763997854 -12 
- save 
- get atifyowf

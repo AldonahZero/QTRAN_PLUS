@@ -1,7 +1,0 @@
-lpush zdnjslcy sicnwujw 
- set mykey 3101433443114 
- lrem zdnjslcy 132000133030121231010030411111424043043024042044232021123022204202104131441311104324234343421433410 cbdejtcw 
- rpop zdnjslcy 1 
- mget mykey mykey mykey mykey 
- lcs mykey mykey 
- get mykey

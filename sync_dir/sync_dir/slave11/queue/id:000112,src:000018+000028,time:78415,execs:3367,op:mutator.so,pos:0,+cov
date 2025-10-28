@@ -1,3 +1,0 @@
-set ubjcxcxl hello 
- bitfield ubjcxcxl overflow wrap set i15 0 -15956 
- get ubjcxcxl

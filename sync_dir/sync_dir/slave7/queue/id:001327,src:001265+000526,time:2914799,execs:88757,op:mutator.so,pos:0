@@ -1,9 +1,0 @@
-info cpu all 
- sdiffstore evrzhssa evrzhssa evrzhssa 
- set atifyowf 1 
- sdiffstore vdxxciyw evrzhssa vdxxciyw evrzhssa 
- expire atifyowf 0 
- zrangestore ugswuldi ugswuldi 0 -1 
- save 
- bitop xor oszvevyb atifyowf atifyowf atifyowf atifyowf 
- get atifyowf

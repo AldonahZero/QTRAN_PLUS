@@ -1,5 +1,0 @@
-set atifyowf 0.87838079541846215 
- incrbyfloat atifyowf -816 
- bitop xor vnayjyje atifyowf 
- save 
- get atifyowf

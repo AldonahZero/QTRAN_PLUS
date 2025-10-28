@@ -1,7 +1,0 @@
-set wcitbqrq 986906 
- setbit wcitbqrq 321252 0 
- mget wcitbqrq wcitbqrq 
- bitpos wcitbqrq 1 15 67 bit 
- get wcitbqrq 
- save 
- type ibxacnjy

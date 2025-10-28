@@ -1,7 +1,0 @@
-xadd jbdjxqbm maxlen ~ 1000 123-1 hognxfnw "Hello," 
- info keyspace 
- xtrim jbdjxqbm minid 1000 
- xgroup create jbdjxqbm v0 0 
- set atifyowf 1 
- save 
- get atifyowf

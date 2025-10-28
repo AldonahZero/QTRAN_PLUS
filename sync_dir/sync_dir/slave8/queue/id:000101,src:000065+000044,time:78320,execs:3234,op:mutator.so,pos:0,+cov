@@ -1,4 +1,0 @@
-set mykey -886864826961 
- bitpos mykey 0 33 17179869184 bit 
- get mykey 
- psetex vokpjzpp -586 364853510803

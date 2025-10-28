@@ -1,6 +1,0 @@
-save 
- set mykey 5 
- zadd mfsvncrq lt incr 4303233220312434302313400044210440230231230 bexnlycc 
- zunion 2 mfsvncrq mfsvncrq weights 1 1 aggregate min withscores 
- zrange mfsvncrq 5 5 
- get mykey

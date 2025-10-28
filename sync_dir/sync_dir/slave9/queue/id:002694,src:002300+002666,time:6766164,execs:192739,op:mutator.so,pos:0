@@ -1,8 +1,0 @@
-zadd pqfcfqcy 34 qrxzgoil 
- object encoding rwzbgekl 
- zinterstore ygwlbjwg 3 pqfcfqcy pqfcfqcy pqfcfqcy weights 0 0 1 
- mset jmvjdgip 533 
- set mykey hello 
- zdiff 8 pqfcfqcy ygwlbjwg ygwlbjwg ygwlbjwg ygwlbjwg ygwlbjwg pqfcfqcy ygwlbjwg 
- strlen mykey 
- get mykey

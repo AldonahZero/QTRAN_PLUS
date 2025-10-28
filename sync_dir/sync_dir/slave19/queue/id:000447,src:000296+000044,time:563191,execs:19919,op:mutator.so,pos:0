@@ -1,6 +1,0 @@
-set mykey -853 
- sunionstore hczdthan hczdthan hczdthan 
- lpush jqknbzjm xbtoynzn 
- del jqknbzjm 
- select 8 
- get mykey

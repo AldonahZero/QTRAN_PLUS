@@ -1,5 +1,0 @@
-zunionstore uhnbdhtg 1 uhnbdhtg 
- set mykey hello 
- zdiff 8 uhnbdhtg uhnbdhtg uhnbdhtg uhnbdhtg uhnbdhtg uhnbdhtg uhnbdhtg uhnbdhtg 
- mset qdbourmn 1152402751 
- get mykey

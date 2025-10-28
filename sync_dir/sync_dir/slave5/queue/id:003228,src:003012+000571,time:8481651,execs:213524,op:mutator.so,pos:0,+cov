@@ -1,5 +1,0 @@
-set mykey hello 
- zadd lukpltvt 5826 yltirhnm 
- sort lukpltvt desc 
- zcount lukpltvt -486 3512935256 
- get mykey

@@ -1,6 +1,0 @@
-set atifyowf 1 
- incrbyfloat atifyowf -5 
- bitfield atifyowf overflow fail set u10 0 1519 
- setex tncydqgy 273 12024430563 
- save 
- get atifyowf

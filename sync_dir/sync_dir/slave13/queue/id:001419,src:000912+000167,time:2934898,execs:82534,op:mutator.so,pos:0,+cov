@@ -1,5 +1,0 @@
-set atifyowf 13.361389 
- setbit atifyowf 321252 1 
- incrbyfloat atifyowf -816 
- save 
- get atifyowf

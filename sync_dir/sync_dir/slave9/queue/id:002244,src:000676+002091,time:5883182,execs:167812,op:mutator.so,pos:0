@@ -1,9 +1,0 @@
-sunionstore sugvxxcg sugvxxcg sugvxxcg 
- lpush fjawhzfz hfgcwmoq hello 
- rpushx fjawhzfz gtefhsbg 
- info replication 
- llen fjawhzfz 
- set mykey 568645835187 
- get mykey 
- lpos fjawhzfz hiyitdrx rank -1 
- smismember sugvxxcg vlvtmruq 

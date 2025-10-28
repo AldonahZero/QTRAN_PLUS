@@ -1,9 +1,0 @@
-xadd pbtmpeny * qnoruayj "Hello," 
- info default all 
- xgroup create pbtmpeny v0 0 
- xlen pbtmpeny 
- set atifyowf 1 
- xautoclaim pbtmpeny cwxbpfcr xolfcipk -91 0-0 
- save 
- xautoclaim pbtmpeny cwxbpfcr xolfcipk 0 0-0 
- get atifyowf

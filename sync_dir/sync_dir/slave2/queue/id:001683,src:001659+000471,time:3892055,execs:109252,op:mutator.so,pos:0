@@ -1,8 +1,0 @@
-hsetnx wqydsukt guwchiwu ssnvzsid 
- xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm aixesdar urasnjsm 
- set mykey 3 
- copy wqydsukt v0 
- xtrim ermrdvzf minid 1000 
- xadd v1 * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm 
- xreadgroup group lgkcoucb wvocahto count 3 streams ermrdvzf 0 
- get mykey

@@ -1,5 +1,0 @@
-hset eaxejsol bhwulrko 1413991819 
- copy bhwulrko v0 
- set mykey 2 
- zdiffstore wtxnpcue 4 wtxnpcue wtxnpcue wtxnpcue wtxnpcue 
- get mykey

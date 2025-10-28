@@ -1,7 +1,0 @@
-hsetnx wqydsukt guwchiwu ssnvzsid 
- xadd jbdjxqbm maxlen ~ 1000 123-1 hognxfnw "Hello," 
- set mykey 3 
- copy jbdjxqbm v0 
- xtrim v0 minid 1000 
- xreadgroup group lgkcoucb wvocahto count 3 streams v0 0 
- get mykey

@@ -1,4 +1,0 @@
-set mykey 41788 
- decrby mykey 1904074908 
- sdiffstore evrzhssa evrzhssa evrzhssa 
- get mykey

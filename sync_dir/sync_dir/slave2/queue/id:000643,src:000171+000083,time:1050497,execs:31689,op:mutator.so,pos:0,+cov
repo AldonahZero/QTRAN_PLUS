@@ -1,6 +1,0 @@
-set mykey 4806867732670 
- pfcount tdlwqegs 
- getset mykey -205 
- sdiffstore lrkqafqr lrkqafqr lrkqafqr lrkqafqr 
- sdiffstore vdxxciyw vdxxciyw vdxxciyw vdxxciyw 
- get mykey

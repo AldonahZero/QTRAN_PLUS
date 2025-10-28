@@ -1,4 +1,0 @@
-hset ucukoxrm auydyooj 0.21973279221902267 
- hincrbyfloat ucukoxrm auydyooj 1 
- set mykey hello 
- get mykey

@@ -1,5 +1,0 @@
-set mykey -15956 
- save 
- get mykey 
- strlen mykey 
- getrange mykey 615 917

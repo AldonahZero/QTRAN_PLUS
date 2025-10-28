@@ -1,6 +1,0 @@
-zunionstore qbbgmoug -564153445215 qbbgmoug 
- xadd pbtmpeny * qnoruayj "Hello," 
- set mykey hello 
- copy pbtmpeny v0 
- xread streams pbtmpeny 868 
- get mykey

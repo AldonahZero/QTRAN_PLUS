@@ -1,5 +1,0 @@
-hsetnx wqydsukt guwchiwu -830067951618 
- expire guwchiwu 200 xx 
- set mykey 3 
- copy mykey v0 
- get mykey

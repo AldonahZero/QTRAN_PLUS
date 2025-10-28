@@ -1,5 +1,0 @@
-set bpvfxtud 0.50853072177084657 
- copy bpvfxtud v0 
- save 
- bitop or ewxrjkga v0 v0 v0 v0 bpvfxtud v0 bpvfxtud v0 
- get bpvfxtud

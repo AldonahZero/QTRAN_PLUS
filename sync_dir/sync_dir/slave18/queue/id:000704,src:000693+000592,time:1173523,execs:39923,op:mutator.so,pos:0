@@ -1,6 +1,0 @@
-set mykey 41788 
- watch nqjqeqpq frjrxccy frjrxccy frjrxccy 
- sinterstore pqczlznr pqczlznr 
- info default default 
- get mykey 
- save

@@ -1,6 +1,0 @@
-sunionstore hczdthan hczdthan hczdthan 
- set mykey -1615510574 
- hmset rlvtchzi tyubwqfl -1 
- getex mykey 
- getset mykey 1732498873 
- get mykey

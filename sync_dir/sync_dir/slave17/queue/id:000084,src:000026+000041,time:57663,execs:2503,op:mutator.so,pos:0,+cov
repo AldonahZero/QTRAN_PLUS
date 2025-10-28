@@ -1,4 +1,0 @@
-set wcitbqrq 986906 
- get wcitbqrq 
- save 
- bitfield wcitbqrq overflow wrap set i30 0 -255272035 

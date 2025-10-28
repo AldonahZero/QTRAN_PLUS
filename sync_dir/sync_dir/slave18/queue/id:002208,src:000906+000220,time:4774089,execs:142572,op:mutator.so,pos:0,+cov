@@ -1,7 +1,0 @@
-set mykey 41788 
- info all 
- xadd v0 maxlen ~ 1000 -861 hognxfnw "Hello," 
- xrevrange v0 + - count 440243323433341321034433113130221031341302031132233004020043030024400244140042104140014 
- get mykey 
- info default default 
- save

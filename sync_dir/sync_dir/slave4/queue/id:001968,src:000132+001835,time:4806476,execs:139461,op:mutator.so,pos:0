@@ -1,4 +1,0 @@
-set mykey -5 
- bitfield mykey overflow fail incrby u9 0 695 
- mget mykey mykey mykey mykey mykey mykey mykey mykey 
- get mykey

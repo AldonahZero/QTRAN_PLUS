@@ -1,8 +1,0 @@
-lpush zdnjslcy sicnwujw 
- set mykey 15.087269 
- lmove zdnjslcy ekfzqeis right right 
- bitfield mykey overflow fail set u44 0 4806867732670 
- mget mykey mykey mykey mykey 
- info cpu default 
- lcs mykey mykey 
- get mykey

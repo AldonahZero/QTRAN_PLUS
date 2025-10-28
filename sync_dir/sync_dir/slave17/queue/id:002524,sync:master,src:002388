@@ -1,5 +1,0 @@
-set wkopvyjn 980792 
- bitpos wkopvyjn 1 37 37 bit 
- copy wkopvyjn v0 
- mget wkopvyjn v0 v0 wkopvyjn wkopvyjn v0 wkopvyjn wkopvyjn v0 
- get wkopvyjn

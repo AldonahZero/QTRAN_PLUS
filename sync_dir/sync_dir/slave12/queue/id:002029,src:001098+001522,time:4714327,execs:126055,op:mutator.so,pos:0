@@ -1,8 +1,0 @@
-set qgvrznec 197 
- set v0 -9223372036854775808 
- setbit qgvrznec 474529 1 
- lcs v0 qgvrznec 
- save 
- decrby v0 1651985310 
- get qgvrznec 
- setbit v0 244931 1

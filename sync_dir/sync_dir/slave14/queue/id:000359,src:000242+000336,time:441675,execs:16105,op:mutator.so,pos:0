@@ -1,5 +1,0 @@
-object encoding rwzbgekl 
- zinterstore zcfialgy -1552051564 zcfialgy zcfialgy 
- set mykey hello 
- scan 401404201341241132211401110422242302223101311244433030143140430241243241130223 type string 
- get mykey

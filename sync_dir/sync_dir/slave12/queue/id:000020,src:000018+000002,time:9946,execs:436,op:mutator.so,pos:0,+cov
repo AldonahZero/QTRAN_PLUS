@@ -1,4 +1,0 @@
-set mykey 311 
- rpush drzkkxfj dgwqiyoc 
- incr mykey 
- get mykey

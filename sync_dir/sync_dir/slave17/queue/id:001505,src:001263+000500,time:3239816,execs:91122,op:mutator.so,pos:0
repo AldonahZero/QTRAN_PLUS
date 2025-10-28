@@ -1,8 +1,0 @@
-set viwkkqsv 0.54804732676038859 
- set v0 -9223372036854775808 
- setbit v0 474529 1 
- lcs viwkkqsv v0 
- save 
- decrby v0 1651985310 
- get viwkkqsv 
- setbit v0 244931 1

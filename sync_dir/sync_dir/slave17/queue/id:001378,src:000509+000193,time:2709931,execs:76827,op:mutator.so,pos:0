@@ -1,6 +1,0 @@
-set mykey hello 
- zadd mfsvncrq lt incr -2792568265 bexnlycc 
- sort mfsvncrq limit 0 10 
- zremrangebyrank mfsvncrq 385 -772121370 
- zpopmin mfsvncrq 
- get mykey

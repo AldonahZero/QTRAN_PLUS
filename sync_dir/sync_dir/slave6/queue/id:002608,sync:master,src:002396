@@ -1,5 +1,0 @@
-set mykey -518673690 
- bitpos mykey 1 37 37 bit 
- copy mykey v0 
- mget mykey mykey mykey mykey mykey mykey mykey mykey mykey 
- get mykey

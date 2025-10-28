@@ -1,6 +1,0 @@
-set mykey hello 
- zadd lukpltvt 5826 vgjrzjoy 
- sort lukpltvt limit 0 10 
- zinterstore zjxdmzot 2 lukpltvt lukpltvt aggregate max 
- strlen mykey 
- get mykey

@@ -1,7 +1,0 @@
-set mykey 1037 
- bitpos mykey 0 -2255963835 -1 bit 
- get mykey 
- bitpos mykey 0 -2255963835 -1 bit 
- getbit hjiklcge 822705243631 
- bitpos mykey 0 -2255963835 -1 bit 
- psetex vokpjzpp -586 364853510803

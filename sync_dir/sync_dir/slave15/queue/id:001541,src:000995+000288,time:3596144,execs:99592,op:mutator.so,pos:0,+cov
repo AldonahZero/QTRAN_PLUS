@@ -1,6 +1,0 @@
-set mykey 1732498873 
- geoadd cqubszoy 13.361389 38.115556 v0 15.087269 37.502669 fekagtxv 
- geosearch cqubszoy frommember v0 byradius 156 km 
- get mykey 
- rpush dbmuwins jrjuraql 
- psubscribe bar* 

@@ -1,3 +1,0 @@
-zunionstore laaotcmr 5 laaotcmr laaotcmr weights 2 3 aggregate sum 
- set mykey hello 
- get mykey

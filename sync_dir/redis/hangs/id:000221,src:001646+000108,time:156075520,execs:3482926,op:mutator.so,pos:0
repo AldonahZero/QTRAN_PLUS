@@ -1,8 +1,0 @@
-info all all 
- set mykey 0 
- bitfield mykey overflow fail set u10 3512935256 1519 
- get mykey 
- incrbyfloat mykey 1072727848 
- getex mykey 
- info commandstats 
- save

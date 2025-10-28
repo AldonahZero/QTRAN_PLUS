@@ -1,9 +1,0 @@
-set mykey 59043849380 
- bitfield mykey overflow fail set u11 21 101 
- incrbyfloat mykey 376 
- get mykey 
- setbit mykey 1421721372 1 
- dump mykey 
- get mykey 
- save 
- hsetnx nbxqjbpm kmvsxosn fcjhthwx

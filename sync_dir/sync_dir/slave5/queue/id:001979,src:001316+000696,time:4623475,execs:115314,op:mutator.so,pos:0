@@ -1,8 +1,0 @@
-info cpu all 
- zrangestore ncpxhtjz ncpxhtjz 0 0 
- zrangestore ugswuldi ugswuldi 0 0 
- set atifyowf 1 
- expire atifyowf 200 xx 
- zrangestore v0 ugswuldi 0 -1 
- save 
- get atifyowf

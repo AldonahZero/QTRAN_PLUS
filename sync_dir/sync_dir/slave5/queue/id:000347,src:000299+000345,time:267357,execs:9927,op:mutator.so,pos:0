@@ -1,6 +1,0 @@
-set atifyowf 535172217 
- incrbyfloat atifyowf -5 
- save 
- incr atifyowf 
- bitpos atifyowf 1 7 9 byte 
- get atifyowf

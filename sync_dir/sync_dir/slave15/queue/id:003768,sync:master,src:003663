@@ -1,9 +1,0 @@
-slowlog get 5 
- set mykey -874394400 
- zadd mfsvncrq lt incr 1 bexnlycc 
- zrangestore phxykmhg mfsvncrq 2 -1 byscore rev limit 1 2 
- sort mfsvncrq by weight* get # get # 
- sort mfsvncrq by weight* get object* get # 
- object encoding sotkufci 
- zrange mfsvncrq 98 98 
- get mykey

@@ -1,5 +1,0 @@
-set nnseeina 185256 
- bitpos nnseeina 1 
- copy nnseeina v0 
- mget nnseeina v0 v0 nnseeina v0 v0 v0 v0 v0 
- get nnseeina

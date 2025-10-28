@@ -1,5 +1,0 @@
-set dutytnuo -521 
- bitpos dutytnuo 1 37 37 bit 
- copy dutytnuo v0 db cqcngdpy 
- mget v0 v0 
- get v0

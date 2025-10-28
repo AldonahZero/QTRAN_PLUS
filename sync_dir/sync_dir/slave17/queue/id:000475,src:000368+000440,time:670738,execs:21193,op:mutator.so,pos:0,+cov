@@ -1,5 +1,0 @@
-set mykey 13121140 
- hset ucukoxrm auydyooj 0.21973279221902267 
- get mykey 
- info everything 
- save

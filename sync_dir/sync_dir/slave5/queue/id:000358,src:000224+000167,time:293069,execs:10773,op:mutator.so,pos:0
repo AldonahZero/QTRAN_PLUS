@@ -1,6 +1,0 @@
-set mykey 1 
- copy mykey v0 
- save 
- bitop and hozsqpxd mykey mykey v0 v0 
- incr v0 
- get mykey

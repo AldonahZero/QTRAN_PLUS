@@ -1,5 +1,0 @@
-set iyetwnrz -1 
- bitpos iyetwnrz 1 
- copy iyetwnrz v0 
- mget iyetwnrz v0 v0 iyetwnrz v0 v0 iyetwnrz iyetwnrz v0 
- get iyetwnrz

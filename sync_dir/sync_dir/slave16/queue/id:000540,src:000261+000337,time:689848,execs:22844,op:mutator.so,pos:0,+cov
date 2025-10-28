@@ -1,7 +1,0 @@
-set mykey 1732498873 
- bitop not xxuevemv mykey 
- geoadd rguvzgcd 45 -1 uqzidutw -135 85.05 yxudgmfh 
- geosearch rguvzgcd frommember uqzidutw bybox 1 1 km 
- get mykey 
- rpush dbmuwins jrjuraql 
- psubscribe bar* 

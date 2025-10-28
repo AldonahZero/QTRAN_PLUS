@@ -1,5 +1,0 @@
-set mykey hello 
- geoadd prlpsdxt 12.75 36.995 trqpgcxr 
- zadd lukpltvt 5826 vgjrzjoy 
- sort lukpltvt limit 0 10 
- get mykey

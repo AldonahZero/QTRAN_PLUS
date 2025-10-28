@@ -1,9 +1,0 @@
-xadd pbtmpeny 15 qnoruayj "Hello," 
- xrevrange pbtmpeny 119 37999704017 
- xtrim pbtmpeny minid 1000 
- info latencystats 
- xgroup create pbtmpeny v0 0 
- xtrim pbtmpeny minid 1000 
- set atifyowf 1 
- save 
- get atifyowf

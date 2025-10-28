@@ -1,4 +1,0 @@
-set atifyowf 1 
- incrbyfloat atifyowf 21142876716 
- save 
- get atifyowf

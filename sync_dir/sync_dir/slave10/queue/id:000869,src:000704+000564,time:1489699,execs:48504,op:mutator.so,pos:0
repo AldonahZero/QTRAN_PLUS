@@ -1,9 +1,0 @@
-zrangestore gdjwzzhv gdjwzzhv 0 1 
- set mykey -20 
- zmpop 2 gdjwzzhv gdjwzzhv max count 1 
- dump mykey 
- lcs mykey mykey 
- xadd kvnrwmku 123-1 mzklxdll "Hello," 
- xclaim kvnrwmku ptprebxr oyubeety 10 1672351058363-2 
- zremrangebylex gdjwzzhv 199 966336966942 
- get mykey

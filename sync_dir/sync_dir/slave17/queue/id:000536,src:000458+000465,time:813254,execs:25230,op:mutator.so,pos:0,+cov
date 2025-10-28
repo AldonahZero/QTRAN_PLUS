@@ -1,7 +1,0 @@
-set wcitbqrq 1302230201330004203204022312341214 
- dump wcitbqrq 
- bitop xor vnayjyje wcitbqrq 
- get wcitbqrq 
- bitpos wcitbqrq 1 
- scan 589 type string 
- save

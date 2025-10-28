@@ -1,6 +1,0 @@
-set mykey 1732498873 
- get mykey 
- object encoding osxfsfri 
- hset etqpfzfm njabbctf 0.28570057465028975 
- zunionstore moztfmde 2 moztfmde moztfmde aggregate min 
- psubscribe bar* 

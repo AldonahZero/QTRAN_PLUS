@@ -1,9 +1,0 @@
-set gpknrlup -1947844055 
- bitpos gpknrlup 1 12 12 bit 
- get gpknrlup 
- object refcount gpknrlup 
- pfadd dbpkzfom 
- setbit gpknrlup 474529 1 
- get gpknrlup 
- object refcount gpknrlup 
- save

@@ -1,7 +1,0 @@
-info cpu all 
- set atifyowf 1 
- expire atifyowf 100 lt 
- sunionstore iwshcqfl iwshcqfl iwshcqfl 
- zrangestore ugswuldi ugswuldi 0 -1 
- save 
- get atifyowf

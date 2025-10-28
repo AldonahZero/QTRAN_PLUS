@@ -1,9 +1,0 @@
-zadd mfsvncrq lt incr 1 bexnlycc 
- zadd hleuhsey 0 srveglnh 
- object encoding rwzbgekl 
- geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
- set mykey hello 
- zrangestore lguhmiyq hleuhsey 5 0 byscore rev limit 0 2 
- strlen mykey 
- zinterstore teqiuuzn 3 lguhmiyq hleuhsey mfsvncrq weights 0 0 1 
- get mykey

@@ -1,9 +1,0 @@
-zunionstore uhnbdhtg -564153445215 uhnbdhtg 
- xadd ermrdvzf 68 jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm 
- xinfo stream ermrdvzf full count 1 
- xrange ermrdvzf 363 1496 
- set mykey hello 
- xrange ermrdvzf 363 1496 
- copy uhnbdhtg v0 
- xread streams ermrdvzf 868 
- get mykey

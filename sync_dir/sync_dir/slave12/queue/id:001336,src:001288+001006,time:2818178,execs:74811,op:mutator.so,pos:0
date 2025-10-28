@@ -1,9 +1,0 @@
-set mykey -1947844055 
- zadd mfsvncrq lt incr 715 bexnlycc 
- zinterstore eiilyygi 2 mfsvncrq mfsvncrq weights 2 3 
- bitpos mykey 1 12 12 bit 
- get mykey 
- pfadd dbpkzfom 
- setbit mykey 474529 1 
- get mykey 
- save

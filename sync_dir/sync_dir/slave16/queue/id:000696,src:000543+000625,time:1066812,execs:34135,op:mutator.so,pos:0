@@ -1,9 +1,0 @@
-set mykey 1732498873 
- bitop xor vnayjyje mykey 
- geoadd rguvzgcd 45 -1 uqzidutw -135 85.05 yxudgmfh 
- lpush fjawhzfz hfgcwmoq swywrupx 
- geosearch rguvzgcd frommember uqzidutw bybox 1 1 km 
- get mykey 
- bitcount dfvpuuxw 0 6 bit 
- rpush dbmuwins jrjuraql 
- psubscribe bar* 

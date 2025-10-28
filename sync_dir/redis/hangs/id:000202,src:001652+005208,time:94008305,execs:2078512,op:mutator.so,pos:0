@@ -1,7 +1,0 @@
-set mykey 190425890380385 
- bitfield mykey overflow fail incrby i22 1746579767 37999704017 
- get mykey 
- getex mykey 
- info cpu default 
- bitop or ewxrjkga mykey mykey mykey mykey mykey mykey mykey mykey 
- save

@@ -1,7 +1,0 @@
-set dssplpey 41788 
- setbit dssplpey 474529 1 
- save 
- get dssplpey 
- hset etqpfzfm njabbctf 41657 
- psubscribe bar* 
- del etqpfzfm 

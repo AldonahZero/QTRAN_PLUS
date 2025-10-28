@@ -1,5 +1,0 @@
-set mykey -219 
- save 
- get mykey 
- bgsave 
- getrange mykey 319 591

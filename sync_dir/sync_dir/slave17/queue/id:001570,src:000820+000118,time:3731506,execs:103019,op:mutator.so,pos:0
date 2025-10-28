@@ -1,7 +1,0 @@
-set mykey 13121140 
- hset vpkbrssi kumzfjat 2100 
- hscan vpkbrssi -975425340689 
- get mykey 
- hrandfield vpkbrssi -1001 withvalues 
- info latencystats 
- save

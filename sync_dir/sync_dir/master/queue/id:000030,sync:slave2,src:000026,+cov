@@ -1,4 +1,0 @@
-set mykey hello 
- mget mykey mykey mykey mykey mykey mykey mykey 
- sinterstore ubjuqmxi ubjuqmxi ubjuqmxi 
- get mykey

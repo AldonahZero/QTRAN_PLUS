@@ -1,5 +1,0 @@
-set mykey -1 
- lcs mykey mykey len idx minmatchlen 4 withmatchlen 
- setex xkdssvaz -677476395 2933400064 
- get mykey 
- object encoding uvryzsxf

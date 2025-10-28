@@ -1,8 +1,0 @@
-lpush zdnjslcy sicnwujw 
- rpushx zdnjslcy ckpdvjhn 
- set mykey 15.087269 
- lrange zdnjslcy 0 -1 
- rpop zdnjslcy 1 
- mget mykey mykey mykey mykey 
- lcs mykey mykey 
- get mykey

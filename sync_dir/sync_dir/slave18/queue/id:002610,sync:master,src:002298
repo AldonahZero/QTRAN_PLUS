@@ -1,6 +1,0 @@
-set mykey hello 
- psetex uplbvoxp 626435290 -819157934 
- msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 v0 20 v1 20 v2 20 v3 20 
- getset mykey -853 
- psetex hcnoouhb 851130245 809 
- get mykey

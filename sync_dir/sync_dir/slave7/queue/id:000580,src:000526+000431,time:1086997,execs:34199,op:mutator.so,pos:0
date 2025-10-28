@@ -1,7 +1,0 @@
-geoadd dfyobgfw 13.361389 38.115556 mnuhsnrm 15.087269 37.502669 hqboudos 
- set mykey 306 
- get mykey 
- incrbyfloat mykey 468437678864 
- geosearch dfyobgfw frommember mnuhsnrm bybox 1 1 km 
- setex dwrwpbrw -157780893686 -657 
- set v0 -1423418636 

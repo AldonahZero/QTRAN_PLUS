@@ -1,8 +1,0 @@
-sadd rgrypzgn wivnjuxe 
- sunionstore xmawvngf rgrypzgn xmawvngf 
- sdiffstore vdxxciyw xmawvngf vdxxciyw vdxxciyw vdxxciyw rgrypzgn 
- set mykey -1947844055 
- smembers xmawvngf 
- get mykey 
- get mykey 
- save

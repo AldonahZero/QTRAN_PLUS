@@ -1,9 +1,0 @@
-xadd ozsnpvdy 123 rqwzplos "Hello," 
- info keyspace 
- copy ozsnpvdy v2 
- xtrim ozsnpvdy minid 1000 
- xgroup create ozsnpvdy v0 667 
- copy ozsnpvdy v1 replace 
- set atifyowf 1 
- save 
- get atifyowf

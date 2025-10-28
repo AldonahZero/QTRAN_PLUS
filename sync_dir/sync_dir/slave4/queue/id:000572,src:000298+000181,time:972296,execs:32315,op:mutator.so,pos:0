@@ -1,4 +1,0 @@
-set dssplpey 41788 
- incr dssplpey 
- lcs dssplpey dssplpey 
- get dssplpey

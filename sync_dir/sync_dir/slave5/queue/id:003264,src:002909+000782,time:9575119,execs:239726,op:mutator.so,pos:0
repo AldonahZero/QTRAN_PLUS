@@ -1,6 +1,0 @@
-set xnamybte 0.61333727818603501 
- xadd fftdmanx maxlen ~ 1000 123-1 hognxfnw "Hello," 
- dump xnamybte 
- incr xnamybte 
- dump fftdmanx 
- get xnamybte

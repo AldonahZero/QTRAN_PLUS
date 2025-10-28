@@ -1,8 +1,0 @@
-zrangestore xervubdq xervubdq 1 2 byscore 
- set mykey -20 
- zmpop 2 xervubdq xervubdq max count 1 
- lcs mykey mykey 
- zremrangebyscore xervubdq -241560015474 -267735765905 
- xadd kvnrwmku 123-1 mzklxdll "Hello," 
- zremrangebylex xervubdq 199 966336966942 
- get mykey

@@ -1,9 +1,0 @@
-set mykey 41788 
- info all 
- xadd kvnrwmku 123-1 mzklxdll "Hello," 
- xrevrange kvnrwmku 783031900312 - count 1 
- info cpu all 
- info all 
- get mykey 
- info all default 
- save

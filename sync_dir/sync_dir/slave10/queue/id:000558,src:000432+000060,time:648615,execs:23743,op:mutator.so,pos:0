@@ -1,4 +1,0 @@
-hset mmbdyavh woiaydqs 2 
- hincrbyfloat mmbdyavh woiaydqs 17179869184 
- set mykey hello 
- get mykey

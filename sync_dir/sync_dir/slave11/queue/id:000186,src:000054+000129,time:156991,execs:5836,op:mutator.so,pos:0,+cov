@@ -1,6 +1,0 @@
-set mykey hello 
- getrange mykey 227 821 
- zdiffstore oninilnq 0 oninilnq 
- hset elibnlnj lzytosbe 732291 
- zdiff 2 oninilnq oninilnq withscores 
- get mykey

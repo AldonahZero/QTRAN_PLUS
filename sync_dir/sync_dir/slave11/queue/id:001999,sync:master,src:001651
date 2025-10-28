@@ -1,5 +1,0 @@
-hsetnx nbxqjbpm kmvsxosn -665 
- set mykey hello 
- hgetall nbxqjbpm 
- hincrbyfloat nbxqjbpm kmvsxosn 31120121213221301000243100044320231101323444420334241010344213104440003132204 
- get mykey

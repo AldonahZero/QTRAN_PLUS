@@ -1,7 +1,0 @@
-hset eaxejsol bhwulrko 94964 
- zunionstore patbwvok 2 patbwvok patbwvok aggregate max 
- hset tfpyhbbg jhelnvce 512461 
- zinter 2 patbwvok patbwvok withscores 
- set mykey 2 
- setbit mykey 1603 1 
- get mykey

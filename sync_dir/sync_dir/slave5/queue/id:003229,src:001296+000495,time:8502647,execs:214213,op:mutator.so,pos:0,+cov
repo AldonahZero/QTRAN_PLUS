@@ -1,6 +1,0 @@
-hsetnx kvwxuxms kmvsxosn 41004121123313221144002334141403224324040202303431033304033202100140022313240022303203234003 
- copy kmvsxosn v0 
- set mykey hello 
- hgetall kvwxuxms 
- hincrbyfloat kvwxuxms v0 1 
- get mykey

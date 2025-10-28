@@ -1,5 +1,0 @@
-set mykey -1615510574 
- decrby mykey 329530968949 
- hmset rlvtchzi tyubwqfl -1 
- getex mykey 
- get mykey

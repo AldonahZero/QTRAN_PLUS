@@ -1,6 +1,0 @@
-set syivdted hello 
- dump syivdted 
- get syivdted 
- bitpos syivdted 1 
- scan 589 type string 
- save

@@ -1,8 +1,0 @@
-zunionstore qbbgmoug -564153445215 qbbgmoug 
- xadd pbtmpeny * qnoruayj 41788 
- xinfo stream pbtmpeny full 
- xrange pbtmpeny 9223372036854775808 1496 
- set mykey hello 
- copy pbtmpeny v0 
- xread streams pbtmpeny 868 
- get mykey

@@ -1,5 +1,0 @@
-object encoding rwzbgekl 
- zrangestore rpondvdz rpondvdz 0 -1 limit 1 2 
- zinterstore phrpwlca 1 phrpwlca phrpwlca aggregate min 
- set mykey hello 
- get mykey

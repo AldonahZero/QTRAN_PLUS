@@ -1,7 +1,0 @@
-hset poksmruc sjszuneh 6596 
- hget poksmruc sjszuneh 
- hmget poksmruc sjszuneh sjszuneh 
- set mykey 2 
- hincrbyfloat poksmruc sjszuneh 1 
- pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
- get mykey

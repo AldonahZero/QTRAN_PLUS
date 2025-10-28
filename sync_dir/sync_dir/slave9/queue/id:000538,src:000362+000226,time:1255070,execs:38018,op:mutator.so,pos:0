@@ -1,7 +1,0 @@
-setex ztbcxsbx 871662918 266209281 
- hmset pctalcqn tnvszhuf -9223372036854775808 
- save 
- sunionstore sugvxxcg sugvxxcg sugvxxcg 
- set mykey hello 
- mget mykey mykey mykey ztbcxsbx ztbcxsbx mykey ztbcxsbx 
- get mykey

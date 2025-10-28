@@ -1,6 +1,0 @@
-hsetnx wqydsukt guwchiwu 3022132023044442330033400212104223123203243342000333414101110121 
- set mykey 1732498873 
- hrandfield wqydsukt -20 withvalues 
- get mykey 
- hset etqpfzfm njabbctf 4 
- psubscribe bar* 

@@ -1,8 +1,0 @@
-sadd htuepxnr wivnjuxe 
- sunionstore xmawvngf xmawvngf htuepxnr 
- sdiffstore vdxxciyw xmawvngf htuepxnr vdxxciyw vdxxciyw htuepxnr 
- set mykey -1947844055 
- smembers vdxxciyw 
- get mykey 
- get mykey 
- save

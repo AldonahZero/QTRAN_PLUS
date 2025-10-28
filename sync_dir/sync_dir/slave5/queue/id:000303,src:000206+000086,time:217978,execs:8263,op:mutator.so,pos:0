@@ -1,6 +1,0 @@
-set iyetwnrz 367747 
- incrbyfloat iyetwnrz -5 
- save 
- incr iyetwnrz 
- bitpos iyetwnrz 1 12 12 bit 
- get iyetwnrz

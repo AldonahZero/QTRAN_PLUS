@@ -1,7 +1,0 @@
-sunionstore sugvxxcg sugvxxcg sugvxxcg 
- geoadd prlpsdxt 12.75 36.995 trqpgcxr 
- geopos prlpsdxt trqpgcxr trqpgcxr 
- set mykey hello 
- sdiff sugvxxcg sugvxxcg sugvxxcg sugvxxcg 
- copy mykey v0 replace 
- get mykey

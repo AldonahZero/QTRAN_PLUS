@@ -1,5 +1,0 @@
-set mykey 311 
- zrangestore phxykmhg phxykmhg 2 -1 byscore limit 1 2 
- get mykey 
- save 
- hsetnx nbxqjbpm kmvsxosn fcjhthwx

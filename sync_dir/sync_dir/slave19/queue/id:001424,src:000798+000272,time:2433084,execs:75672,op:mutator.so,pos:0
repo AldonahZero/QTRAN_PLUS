@@ -1,7 +1,0 @@
-set mykey -853 
- lpush kfxdvljk rptpxozi xqfdftkh 
- lpush fjawhzfz hfgcwmoq swywrupx 
- info cpu all 
- del fjawhzfz 
- select 8 
- get mykey

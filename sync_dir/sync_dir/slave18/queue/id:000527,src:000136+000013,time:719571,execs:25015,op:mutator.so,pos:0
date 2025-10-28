@@ -1,5 +1,0 @@
-zrangestore rwcbicsk rwcbicsk 5 6 byscore 
- set mykey -37 
- zrangestore v0 rwcbicsk 5 6 byscore 
- setnx gbjlvscx -37 
- get mykey

@@ -1,7 +1,0 @@
-sunionstore sugvxxcg sugvxxcg sugvxxcg 
- geoadd rguvzgcd 45 65 uqzidutw 17.241510 38.788135 nxmjeqgx 17.250000 35.202000 slkadwaf 12.750000 35.202000 esifgdfx 12.748489955781654 37 xxkpmdgk 15 38.798135872540925 akgkxqcy 
- sort sugvxxcg by weight* 
- set mykey hello 
- sdiff sugvxxcg sugvxxcg sugvxxcg sugvxxcg 
- geosearch rguvzgcd fromlonlat 15 37 bybox 1 13740 km asc 
- get mykey

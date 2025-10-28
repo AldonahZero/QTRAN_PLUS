@@ -1,7 +1,0 @@
-set mykey 1732498873 
- setbit mykey 403 1 
- get mykey 
- bitop xor vnayjyje mykey 
- hset etqpfzfm njabbctf 41657 
- watch ppkargvp tbwlipyh dbsprqpw hmbwqpev fyadlxhi dbsprqpw hmbwqpev fyadlxhi hmbwqpev fyadlxhi dbsprqpw hmbwqpev fyadlxhi dbsprqpw hmbwqpev fyadlxhi 
- psubscribe bar* 

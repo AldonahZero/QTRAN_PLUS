@@ -1,5 +1,0 @@
-set mykey "Hello," 
- pexpire mykey 100 
- getrange mykey 34034221221402441010400 821 
- zrangestore lguhmiyq lguhmiyq 5 0 byscore rev limit 0 2 
- get mykey

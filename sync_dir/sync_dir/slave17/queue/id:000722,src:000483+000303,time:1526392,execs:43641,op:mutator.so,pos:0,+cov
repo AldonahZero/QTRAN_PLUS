@@ -1,6 +1,0 @@
-set mykey 13121140 
- hset vpkbrssi kumzfjat 41657 
- get mykey 
- info cpu default 
- hdel vpkbrssi wepjfdme 
- save

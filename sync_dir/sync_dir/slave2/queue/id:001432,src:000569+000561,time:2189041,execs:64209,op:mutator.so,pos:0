@@ -1,5 +1,0 @@
-set mykey -443013490849 
- setnx zqikteif 34112201010423243030210424234344320420 
- lcs zqikteif mykey 
- copy mykey pyaiiarv 
- get mykey

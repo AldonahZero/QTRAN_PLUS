@@ -1,6 +1,0 @@
-set mykey 9223372036854775807 
- get mykey 
- getex mykey 
- info cpu default 
- bitop or ewxrjkga mykey mykey mykey mykey mykey mykey mykey mykey 
- save

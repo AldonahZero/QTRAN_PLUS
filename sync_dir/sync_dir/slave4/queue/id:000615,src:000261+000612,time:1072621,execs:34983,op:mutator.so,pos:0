@@ -1,4 +1,0 @@
-sunionstore tthbpxad tthbpxad tthbpxad tthbpxad 
- set mykey -5 
- bitfield mykey overflow fail set u58 1603 1519 
- get mykey

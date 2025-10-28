@@ -1,3 +1,0 @@
-object encoding rwzbgekl 
- set mykey hello 
- get mykey

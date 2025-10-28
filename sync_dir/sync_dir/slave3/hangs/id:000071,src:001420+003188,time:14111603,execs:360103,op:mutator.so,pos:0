@@ -1,8 +1,0 @@
-set ozmbxkpt 197 
- set v0 -9223372036854775808 
- setbit v0 257854938 1 
- lcs v0 ozmbxkpt 
- save 
- decrby v0 1651985310 
- get v0 
- setbit v0 244931 1

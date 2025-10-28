@@ -1,9 +1,0 @@
-xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf htuepxnr "Three" 
- info keyspace 
- xgroup create ermrdvzf v0 0 
- xgroup create ermrdvzf v1 0 
- xgroup create ermrdvzf v2 0 
- set atifyowf 1 
- save 
- xgroup destroy ermrdvzf v0 
- get atifyowf

@@ -1,6 +1,0 @@
-sunionstore sugvxxcg sugvxxcg sugvxxcg 
- geoadd vrekwiwa 13.00 36.50 pqkikujz 
- georadius vrekwiwa 13.361389 38.115556 500 km storedist aynqlgbb 
- sintercard 2 sugvxxcg sugvxxcg 
- set mykey hello 
- get mykey

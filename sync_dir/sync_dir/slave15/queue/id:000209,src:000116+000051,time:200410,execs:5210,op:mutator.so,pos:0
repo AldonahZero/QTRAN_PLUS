@@ -1,5 +1,0 @@
-set mykey 0 
- get mykey 
- zunionstore hwsksdce 1 hwsksdce weights 0 
- save 
- mset jmvjdgip 533 

@@ -1,7 +1,0 @@
-msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
- xadd jbdjxqbm maxlen ~ 1000 123-1 hognxfnw "Hello," 
- xrevrange jbdjxqbm 4 35 
- xinfo stream jbdjxqbm 
- set mykey 3090148046 
- xdel jbdjxqbm 0-1 
- get mykey

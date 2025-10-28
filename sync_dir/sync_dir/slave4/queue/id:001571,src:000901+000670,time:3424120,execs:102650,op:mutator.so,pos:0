@@ -1,6 +1,0 @@
-set atifyowf 1 
- psetex vrrqnomv 315 33 
- lcs vrrqnomv atifyowf 
- getrange vrrqnomv 1293 903 
- incrbyfloat atifyowf 1 
- get vrrqnomv

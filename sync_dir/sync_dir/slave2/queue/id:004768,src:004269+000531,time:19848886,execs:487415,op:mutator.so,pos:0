@@ -1,9 +1,0 @@
-sunionstore hczdthan hczdthan hczdthan 
- lpush kfxdvljk xqfdftkh xqfdftkh 
- set mykey -1615510574 
- lpos kfxdvljk svpxwbje rank -1 
- hmset rlvtchzi tyubwqfl -1 
- lrem kfxdvljk -219 xqfdftkh 
- getex mykey 
- lmpop 2 kfxdvljk kfxdvljk right count 2 
- get mykey

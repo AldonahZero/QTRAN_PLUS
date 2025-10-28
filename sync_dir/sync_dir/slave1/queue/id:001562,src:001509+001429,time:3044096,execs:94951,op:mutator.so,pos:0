@@ -1,7 +1,0 @@
-set mykey 1302230201330004203204022312341214 
- zadd mfsvncrq lt incr 1047952948 bexnlycc 
- sort mfsvncrq store godhjfil 
- zscan mfsvncrq 96 
- bitop and soigkacb mykey mykey mykey 
- zrandmember mfsvncrq 2 withscores 
- get mykey

@@ -1,6 +1,0 @@
-set mykey 1672351167000 
- copy mykey v0 
- bgsave schedule 
- save 
- bitop xor soigkacb v0 mykey v0 mykey v0 v0 v0 v0 mykey mykey v0 v0 mykey v0 mykey mykey v0 
- get v0

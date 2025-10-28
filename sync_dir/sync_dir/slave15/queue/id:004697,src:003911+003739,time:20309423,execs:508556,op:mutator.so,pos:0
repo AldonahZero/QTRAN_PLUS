@@ -1,9 +1,0 @@
-xadd pbtmpeny * qnoruayj "Hello," 
- info cpu all 
- xgroup create pbtmpeny v0 -947 
- set atifyowf 1 
- xgroup createconsumer pbtmpeny v0 v1 
- xinfo consumers pbtmpeny v0 
- save 
- xgroup delconsumer pbtmpeny v0 v1 
- get atifyowf

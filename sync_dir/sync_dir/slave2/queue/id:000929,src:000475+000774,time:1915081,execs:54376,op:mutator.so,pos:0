@@ -1,8 +1,0 @@
-hsetnx wqydsukt guwchiwu -830067951618 
- expire wqydsukt 200 xx 
- set mykey 3 
- hincrbyfloat wqydsukt guwchiwu 17179869184 
- info cpu default 
- bitfield mykey overflow wrap incrby i37 0 37999704017 
- copy mykey v0 
- get mykey

@@ -1,8 +1,0 @@
-xadd ozsnpvdy 0-1 rqwzplos 20220044110400301200030414002221202401144302121102214220143414121422201404321434024 
- info keyspace 
- xtrim ozsnpvdy minid -93 
- xgroup create ozsnpvdy v0 0 
- set atifyowf 1 
- xdel ozsnpvdy -634 
- save 
- get atifyowf

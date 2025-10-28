@@ -1,6 +1,0 @@
-object encoding rwzbgekl 
- zinterstore phrpwlca 2 phrpwlca phrpwlca aggregate min 
- set mykey hello 
- zincrby phrpwlca 17179869184 v0 
- dump phrpwlca 
- get mykey

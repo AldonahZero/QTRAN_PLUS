@@ -1,7 +1,0 @@
-zunionstore uhnbdhtg -564153445215 uhnbdhtg 
- zmpop 2 uhnbdhtg uhnbdhtg min count 2 
- xadd pbtmpeny * qnoruayj "Hello," 
- set mykey hello 
- copy uhnbdhtg v0 
- xread streams pbtmpeny 342204043101320331101221324320203021303420334043321233224230113334222322421103024432033223144130104114402 
- get mykey

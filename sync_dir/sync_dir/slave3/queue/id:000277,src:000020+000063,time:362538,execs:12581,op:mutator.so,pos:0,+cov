@@ -1,4 +1,0 @@
-set mykey 41788 
- get mykey 
- save 
- sinterstore pahvaasm pahvaasm pahvaasm

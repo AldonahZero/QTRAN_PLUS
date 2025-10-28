@@ -1,4 +1,0 @@
-set ebvgkrck -732047846881 
- get ebvgkrck 
- save 
- lcs ebvgkrck ebvgkrck len idx minmatchlen 4 withmatchlen

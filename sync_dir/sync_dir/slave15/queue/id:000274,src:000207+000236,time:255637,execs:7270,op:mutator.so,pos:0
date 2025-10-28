@@ -1,5 +1,0 @@
-set mykey 9223372036854775807 
- getrange mykey 786 1059 
- get mykey 
- save 
- mset jmvjdgip 533 

@@ -1,7 +1,0 @@
-set mykey -16965705105117 
- getrange mykey 1221 1496 
- get mykey 
- getex mykey 
- getrange mykey 28 901 
- incr mykey 
- save

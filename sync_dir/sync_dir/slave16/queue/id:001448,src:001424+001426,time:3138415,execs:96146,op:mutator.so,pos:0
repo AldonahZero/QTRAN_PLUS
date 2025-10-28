@@ -1,9 +1,0 @@
-psetex hcnoouhb 851130245 809 
- set mykey 1732498873 
- geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
- mset dwspoulc 568645835187 
- geosearch rguvzgcd frommember uqzidutw bybox 1 1 km 
- get mykey 
- rpush dbmuwins jrjuraql 
- lcs mykey mykey idx minmatchlen 4 
- psubscribe bar* 

@@ -1,5 +1,0 @@
-set v19 1293 
- get v19 
- scan 589 type string 
- save 
- copy v19 v0 

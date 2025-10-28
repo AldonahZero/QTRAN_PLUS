@@ -1,8 +1,0 @@
-sadd waeoxbem wivnjuxe 
- sunionstore xmawvngf waeoxbem waeoxbem 
- set mykey -1947844055 
- smembers waeoxbem 
- sdiff waeoxbem xmawvngf xmawvngf 
- get mykey 
- get mykey 
- save

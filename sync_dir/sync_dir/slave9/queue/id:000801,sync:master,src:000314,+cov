@@ -1,4 +1,0 @@
-set mykey 783031900312 
- incr mykey 
- get mykey 
- psubscribe bar* 

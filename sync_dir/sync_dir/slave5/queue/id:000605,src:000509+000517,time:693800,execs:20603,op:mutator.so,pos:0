@@ -1,5 +1,0 @@
-info cpu all 
- set atifyowf 1 
- zrangestore cfncftfi cfncftfi 0 5 byscore limit 0 2 
- save 
- get atifyowf

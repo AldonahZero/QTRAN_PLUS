@@ -1,4 +1,0 @@
-ttl ucglluvp 
- set mykey 366402871 
- getex mykey 
- get mykey

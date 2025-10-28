@@ -1,4 +1,0 @@
-set mykey -5 
- object encoding sotkufci 
- bitpos mykey 0 7 9 byte 
- get mykey

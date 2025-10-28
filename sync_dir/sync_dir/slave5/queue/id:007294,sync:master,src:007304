@@ -1,8 +1,0 @@
-msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
- xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm aixesdar urasnjsm 
- xrevrange ermrdvzf 9223372036854775808 35 
- xinfo stream ermrdvzf 
- xrevrange ermrdvzf 9223372036854775808 459355913782 
- set mykey 3090148046 
- xdel ermrdvzf -131822750965 
- get mykey

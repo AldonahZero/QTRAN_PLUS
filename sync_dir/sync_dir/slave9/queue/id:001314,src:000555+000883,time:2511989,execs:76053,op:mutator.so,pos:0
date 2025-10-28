@@ -1,8 +1,0 @@
-setex clryemar 935 311 
- hmset fhrsgqae nhrsuavj 31543984 
- del fhrsgqae 
- msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
- save 
- sunionstore sugvxxcg sugvxxcg sugvxxcg 
- set mykey hello 
- get mykey

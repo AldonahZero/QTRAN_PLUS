@@ -1,7 +1,0 @@
-lpush zdnjslcy sicnwujw 
- set mykey 15.087269 
- lmove zdnjslcy tqpmmsxn right left 
- mget mykey mykey mykey mykey 
- info cpu default 
- lcs mykey mykey 
- get mykey

@@ -1,7 +1,0 @@
-geoadd vrekwiwa 13.00 36.50 pqkikujz 
- set mykey 306 
- geopos vrekwiwa pqkikujz pqkikujz pqkikujz 
- geoadd apctyxsn 0 0 ecyrjbwf 
- hsetnx roftorbl khrrkjgs upthqfxe 
- decr mykey 
- get mykey

@@ -1,5 +1,0 @@
-set ebvgkrck 1 
- bitfield ebvgkrck overflow fail set i4 0 -12 
- get ebvgkrck 
- save 
- copy ebvgkrck v0 

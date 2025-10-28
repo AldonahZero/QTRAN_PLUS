@@ -1,5 +1,0 @@
-set v1 5009431 
- bitpos v1 1 
- copy v1 v0 db cqcngdpy 
- mget v1 v1 v0 v1 v1 v1 v0 v0 v0 v0 v1 v1 v1 v0 v1 v1 v1 v0 v1 v0 v1 v0 v1 v1 v0 v0 v0 v0 v0 v0 v1 v0 v1 v1 v1 v1 v0 
- get v1

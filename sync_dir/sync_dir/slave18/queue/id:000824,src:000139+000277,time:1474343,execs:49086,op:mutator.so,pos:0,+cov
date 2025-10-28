@@ -1,5 +1,0 @@
-set mykey -37 
- zrangestore phxykmhg phxykmhg 2 -1 byscore rev limit 1 2 
- setnx gbjlvscx -37 
- dump phxykmhg 
- get mykey

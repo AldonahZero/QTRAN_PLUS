@@ -1,6 +1,0 @@
-set mykey -1000 
- getrange mykey 1221 1496 
- get mykey 
- getex mykey 
- getex mykey 
- save

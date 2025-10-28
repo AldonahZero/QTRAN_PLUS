@@ -1,4 +1,0 @@
-set mykey -9223372036854770000 
- getex mykey 
- lpush crvliqip pnihvhwo 
- get mykey

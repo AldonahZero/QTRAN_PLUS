@@ -1,7 +1,0 @@
-set mykey 311 
- save 
- incrbyfloat mykey -218 
- get mykey 
- get mykey 
- save 
- hsetnx nbxqjbpm kmvsxosn fcjhthwx

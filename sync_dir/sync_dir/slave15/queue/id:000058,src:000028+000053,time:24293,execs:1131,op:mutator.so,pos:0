@@ -1,4 +1,0 @@
-set mykey hello 
- zinterstore yygrvfbj 2 yygrvfbj 
- get mykey 
- save

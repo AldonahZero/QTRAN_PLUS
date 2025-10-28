@@ -1,8 +1,0 @@
-set mykey -37 
- zrangestore ugswuldi ugswuldi 0 -1 
- del ugswuldi 
- hset mmbdyavh woiaydqs 3 
- setnx gbjlvscx -37 
- bitfield mykey overflow fail set i4 0 -12 
- incr mykey 
- get mykey

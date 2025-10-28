@@ -1,6 +1,0 @@
-hsetnx nbxqjbpm kmvsxosn -645611437338 
- set mykey hello 
- select 3 
- hscan nbxqjbpm 425 
- hincrbyfloat nbxqjbpm kmvsxosn 1 
- get mykey

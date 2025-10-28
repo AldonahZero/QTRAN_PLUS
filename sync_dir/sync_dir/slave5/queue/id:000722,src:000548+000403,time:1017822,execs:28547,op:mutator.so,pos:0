@@ -1,8 +1,0 @@
-set aprunafz 0.067275570271199375 
- set v0 -9223372036854775808 
- setbit v0 474529 1 
- lcs v0 aprunafz 
- save 
- decrby v0 1651985310 
- get aprunafz 
- setbit v0 244931 1

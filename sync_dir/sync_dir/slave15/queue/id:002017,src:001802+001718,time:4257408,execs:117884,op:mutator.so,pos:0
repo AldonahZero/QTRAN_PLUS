@@ -1,7 +1,0 @@
-lpush asjdswpq syrsobfe ndlfegrn 
- set mykey 3101433443114 
- lrem asjdswpq 3 cbdejtcw 
- rpop asjdswpq 1 
- mget mykey mykey mykey mykey 
- lcs mykey mykey 
- get mykey

@@ -1,9 +1,0 @@
-xadd pbtmpeny * qnoruayj "Hello," 
- xread streams pbtmpeny 868 
- xreadgroup group lgkcoucb wvocahto count 3 streams pbtmpeny 0 
- xlen pbtmpeny 
- info latencystats 
- xtrim pbtmpeny minid 175656559 
- set atifyowf 1 
- save 
- get atifyowf

@@ -1,6 +1,0 @@
-set mykey -886864826961 
- sadd oxqeuijg fypuatkn 
- bitpos mykey 0 33 -1 bit 
- zdiffstore vmgqtrcr 2 vmgqtrcr vmgqtrcr 
- get mykey 
- psetex vokpjzpp -586 364853510803

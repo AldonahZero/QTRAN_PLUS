@@ -1,5 +1,0 @@
-set ebvgkrck -10 
- lcs ebvgkrck ebvgkrck 
- bitop xor gtmzalcd ebvgkrck ebvgkrck ebvgkrck ebvgkrck ebvgkrck 
- get ebvgkrck 
- save

@@ -1,8 +1,0 @@
-set mykey 1519 
- hmset rwwxotsj pvcpgagg 0 
- get mykey 
- hrandfield rwwxotsj 2 withvalues 
- hrandfield rwwxotsj 3 withvalues 
- hrandfield rwwxotsj 3 withvalues 
- hrandfield rwwxotsj 3 
- del mykey 

@@ -1,6 +1,0 @@
-info cpu all 
- set atifyowf 1 
- expire atifyowf 9223372036854776 
- zrangestore ugswuldi ugswuldi 0 -1 
- save 
- get atifyowf

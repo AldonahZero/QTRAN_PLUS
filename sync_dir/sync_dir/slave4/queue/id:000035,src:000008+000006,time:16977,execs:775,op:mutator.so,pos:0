@@ -1,3 +1,0 @@
-zunionstore uhnbdhtg -1 uhnbdhtg 
- set mykey hello 
- get mykey

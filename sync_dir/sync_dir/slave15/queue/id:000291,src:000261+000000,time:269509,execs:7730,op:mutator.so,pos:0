@@ -1,7 +1,0 @@
-set v0 -10910337 
- bitpos v0 1 12 12 bit 
- get v0 
- pfadd dbpkzfom 
- setbit v0 474529 1 
- get v0 
- save

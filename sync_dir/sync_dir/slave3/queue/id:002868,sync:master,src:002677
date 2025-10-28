@@ -1,8 +1,0 @@
-sadd waeoxbem wivnjuxe 
- set mykey -1947844055 
- srandmember waeoxbem -517 
- smembers waeoxbem 
- sort waeoxbem by weight* 
- get mykey 
- get mykey 
- save

@@ -1,5 +1,0 @@
-msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 v0 20 v1 20 v2 20 
- hset mmbdyavh woiaydqs 4004101004221223443131220413022304114342403210330011213442210334301420341232231303344330221100410314433 
- hincrbyfloat mmbdyavh woiaydqs 1 
- set mykey hello 
- get mykey

@@ -1,4 +1,0 @@
-set mykey 41788 
- sdiffstore vdxxciyw vdxxciyw vdxxciyw vdxxciyw 
- sort vdxxciyw by weight* 
- get mykey

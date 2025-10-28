@@ -1,4 +1,0 @@
-set mykey 41788 
- getex mykey 
- sdiffstore vdxxciyw vdxxciyw vdxxciyw vdxxciyw 
- get mykey

@@ -1,7 +1,0 @@
-set mykey 1732498873 
- geoadd ussfykoq 12.758489 38.788135 fawbaerw 17.241510 38.788135 nxmjeqgx 17.250000 35.202000 slkadwaf 12.750000 35.202000 esifgdfx 
- geosearchstore xzkgjufz ussfykoq fromlonlat 0 0 byradius 1 km 
- geosearch ussfykoq frommember fawbaerw byradius 3120 km 
- get mykey 
- rpush dbmuwins jrjuraql 
- psubscribe bar* 

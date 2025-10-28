@@ -1,7 +1,0 @@
-hsetnx wqydsukt guwchiwu ssnvzsid 
- xadd pbtmpeny * qnoruayj "Hello," 
- set mykey 3 
- xinfo stream pbtmpeny full 
- hlen wqydsukt 
- copy mykey v0 
- get mykey

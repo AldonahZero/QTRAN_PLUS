@@ -1,5 +1,0 @@
-set mykey 3541384808 
- get mykey 
- incrbyfloat mykey -465 
- bitfield mykey overflow fail incrby u9 0 -688 
- save

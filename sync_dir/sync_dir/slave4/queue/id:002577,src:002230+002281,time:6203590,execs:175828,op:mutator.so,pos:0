@@ -1,9 +1,0 @@
-object encoding rwzbgekl 
- xadd jbdjxqbm maxlen ~ 1000 123-1 hognxfnw "Hello," 
- xinfo groups jbdjxqbm 
- xgroup create jbdjxqbm v0 1671116695331-3 
- xdel jbdjxqbm 1672351062796-3 
- zinterstore zcfialgy 2 zcfialgy zcfialgy 
- set mykey hello 
- zmpop 2 zcfialgy zcfialgy min 
- get mykey

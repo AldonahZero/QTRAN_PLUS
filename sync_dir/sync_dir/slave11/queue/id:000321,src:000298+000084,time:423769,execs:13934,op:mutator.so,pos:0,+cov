@@ -1,4 +1,0 @@
-set mykey hello 
- hset elibnlnj lzytosbe 2 
- expire mykey 0 
- get mykey

@@ -1,5 +1,0 @@
-set mykey 692 
- copy mykey ycgvtbur replace 
- bitfield ycgvtbur overflow fail incrby i25 5 -665 
- strlen mykey 
- get mykey

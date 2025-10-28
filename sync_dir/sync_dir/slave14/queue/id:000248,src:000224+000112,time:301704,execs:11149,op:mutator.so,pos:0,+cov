@@ -1,7 +1,0 @@
-object encoding rwzbgekl 
- zinterstore zcfialgy 2 zcfialgy zcfialgy 
- ttl qumwzudn 
- zdiffstore bexbxodv 2 bexbxodv bexbxodv zcfialgy zcfialgy 
- set mykey hello 
- zunion 2 zcfialgy zcfialgy withscores 
- get mykey

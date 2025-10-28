@@ -1,9 +1,0 @@
-hsetnx wqydsukt guwchiwu ssnvzsid 
- info all all 
- set mykey 0 
- get mykey 
- zadd mfsvncrq lt incr 923963394 bexnlycc 
- incrbyfloat mykey 1072727848 
- getex mykey 
- info all all 
- save

@@ -1,5 +1,0 @@
-set mykey "Hello," 
- getrange mykey 34034221221402441010400 821 
- zrangestore ncpxhtjz ncpxhtjz 0 0 
- zremrangebyscore ncpxhtjz 419665711661 724775841 
- get mykey

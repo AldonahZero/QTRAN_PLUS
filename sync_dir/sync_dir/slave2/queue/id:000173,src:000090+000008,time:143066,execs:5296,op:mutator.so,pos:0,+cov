@@ -1,6 +1,0 @@
-set mykey 41788 
- getset mykey -205 
- sdiffstore lrkqafqr lrkqafqr lrkqafqr lrkqafqr 
- decr mykey 
- sdiffstore vdxxciyw vdxxciyw vdxxciyw vdxxciyw 
- get mykey

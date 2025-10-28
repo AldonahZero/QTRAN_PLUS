@@ -1,6 +1,0 @@
-set mykey 692 
- geoadd rguvzgcd 45 -909010031 uqzidutw -135 85.05 yxudgmfh 
- copy mykey ycgvtbur replace 
- bitfield ycgvtbur overflow fail incrby i35 0 -4224562770 
- strlen mykey 
- get mykey

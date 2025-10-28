@@ -1,8 +1,0 @@
-xadd jbdjxqbm maxlen ~ 1000 1672351058192-0 hognxfnw "Hello," 
- info keyspace 
- xgroup create jbdjxqbm v0 0 
- xpending jbdjxqbm v0 idle 9000 - + 10 yxaavztx 
- xautoclaim jbdjxqbm xvphynbr odlgomhl 123123123 0-0 count 23 
- set atifyowf 1 
- save 
- get atifyowf

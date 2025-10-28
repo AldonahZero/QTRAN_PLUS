@@ -1,6 +1,0 @@
-set mykey 3090148046 
- object encoding cmfmndrr 
- persist imqjodth 
- lcs mykey mykey 
- slowlog get 0 
- get mykey

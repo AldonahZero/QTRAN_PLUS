@@ -1,8 +1,0 @@
-set prpilarn 1732498873 
- geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
- get prpilarn 
- pexpiretime mykey 
- geodist rguvzgcd uqzidutw uqzidutw 
- pexpiretime htnfuoac 
- rpush dbmuwins jrjuraql 
- psubscribe bar* 

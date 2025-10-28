@@ -1,7 +1,0 @@
-lpush asjdswpq syrsobfe ndlfegrn 
- set mykey 15.087269 
- mget mykey mykey mykey mykey 
- lpushx asjdswpq bibpljvn lyqzfnlb ccsnseuf ccsnseuf ccsnseuf 
- info cpu all 
- lcs mykey mykey 
- get mykey

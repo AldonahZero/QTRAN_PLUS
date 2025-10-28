@@ -1,9 +1,0 @@
-set mykey -1947844055 
- get mykey 
- pfadd dbpkzfom 
- setbit mykey 1496 1 
- bitfield mykey overflow wrap set i4 0 23450054762 
- get mykey 
- setbit mykey 1603 1 
- bitfield mykey overflow wrap set u10 0 1519 
- save

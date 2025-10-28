@@ -1,6 +1,0 @@
-lpush zdnjslcy sicnwujw 
- set mykey 15.087269 
- mget mykey mykey mykey mykey 
- info default default 
- lcs mykey mykey 
- get mykey

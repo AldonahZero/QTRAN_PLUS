@@ -1,4 +1,0 @@
-set mykey hello 
- expire mykey 50 
- setnx bzbpoqtr -918481240011 
- get mykey

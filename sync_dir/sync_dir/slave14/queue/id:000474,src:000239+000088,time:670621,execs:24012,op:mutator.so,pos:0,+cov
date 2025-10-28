@@ -1,6 +1,0 @@
-object encoding rwzbgekl 
- zinterstore zcfialgy 2 zcfialgy zcfialgy 
- set mykey hello 
- zpopmin zcfialgy 
- scan 589 type string 
- get mykey

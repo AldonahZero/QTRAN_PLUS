@@ -1,6 +1,0 @@
-pfadd jalgwgha "hello" smvbejzf v1 
- hset jalgwgha bhwulrko 1037 
- set mykey 2 
- hincrbyfloat jalgwgha bhwulrko 1 
- pfadd jalgwgha "hello" "World" nyxzfynr 
- get mykey

@@ -1,6 +1,0 @@
-sinterstore cjuxravx cjuxravx cjuxravx cjuxravx 
- set mykey -1947844055 
- get mykey 
- setbit mykey 3763997854 1 
- get mykey 
- save

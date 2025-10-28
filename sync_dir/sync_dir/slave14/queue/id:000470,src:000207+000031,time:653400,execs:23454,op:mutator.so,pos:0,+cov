@@ -1,6 +1,0 @@
-sdiffstore xhpqrqvn xhpqrqvn xhpqrqvn 
- set mykey hello 
- sintercard 2 xhpqrqvn xhpqrqvn 
- setex ztbcxsbx 871662918 -479 
- psetex uplbvoxp 626435290 -819157934 
- get mykey

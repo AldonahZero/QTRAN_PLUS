@@ -1,9 +1,0 @@
-set mykey -853 
- lpush jqknbzjm xbtoynzn 
- info cpu all 
- lpop jqknbzjm 0 
- lindex jqknbzjm -125 
- del jqknbzjm 
- select 8 
- incrby mykey 443 
- get mykey

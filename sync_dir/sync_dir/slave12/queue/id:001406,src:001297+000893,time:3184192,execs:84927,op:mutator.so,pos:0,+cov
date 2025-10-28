@@ -1,4 +1,0 @@
-set mykey 311 
- lpush fjawhzfz hfgcwmoq swywrupx 
- lmpop 1 fjawhzfz right count 10 
- get mykey

@@ -1,5 +1,0 @@
-set mykey hello 
- copy mykey v1 db cqcngdpy 
- msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 v0 20 
- bitop or jlgjivks nzgkmxpj nzgkmxpj v1 v0 nzgkmxpj ldvuftez triqeesz v1 mykey 
- get mykey

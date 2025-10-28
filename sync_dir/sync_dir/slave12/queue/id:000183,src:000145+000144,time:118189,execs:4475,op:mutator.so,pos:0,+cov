@@ -1,8 +1,0 @@
-geoadd mdexzjor 13.361389 38.115556 xyookjrw 15.087269 37.502669 agjeygrj 
- set mykey 311 
- incrbyfloat mykey 376 
- get mykey 
- setbit mykey 7 0 
- get mykey 
- save 
- hsetnx nbxqjbpm kmvsxosn fcjhthwx

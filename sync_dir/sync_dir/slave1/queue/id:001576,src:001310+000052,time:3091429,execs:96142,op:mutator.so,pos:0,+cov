@@ -1,6 +1,0 @@
-xadd pbtmpeny 4303233220312434302313400044210440230231230 qnoruayj "Hello," 
- info keyspace 
- xgroup create pbtmpeny v0 0 
- set atifyowf 1 
- save 
- get atifyowf

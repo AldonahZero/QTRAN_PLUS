@@ -1,7 +1,0 @@
-set mykey -10910337 
- xadd ermrdvzf * jzkwvobt 13033323022411214443443303234220120324324344401012232221143311233 htuepxnr cgvkbmhf aixesdar urasnjsm 
- get mykey 
- xread streams ermrdvzf 672937363699 
- dump ermrdvzf 
- copy ermrdvzf v0 
- save

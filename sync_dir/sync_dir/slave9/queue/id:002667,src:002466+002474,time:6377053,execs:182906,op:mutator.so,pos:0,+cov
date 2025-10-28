@@ -1,9 +1,0 @@
-sadd waeoxbem wivnjuxe 
- sunionstore xmawvngf waeoxbem waeoxbem 
- del xmawvngf 
- set mykey -1947844055 
- smembers waeoxbem 
- get mykey 
- sinterstore pahvaasm pahvaasm pahvaasm 
- get mykey 
- save

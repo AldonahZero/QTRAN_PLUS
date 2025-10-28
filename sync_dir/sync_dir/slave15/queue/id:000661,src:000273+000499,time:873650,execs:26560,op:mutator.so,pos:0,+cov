@@ -1,5 +1,0 @@
-set mykey -12 
- get mykey 
- incrby mykey 301 
- save 
- mset jmvjdgip 533 

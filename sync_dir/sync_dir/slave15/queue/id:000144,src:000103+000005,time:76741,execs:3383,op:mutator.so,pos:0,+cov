@@ -1,5 +1,0 @@
-set mykey -1947844055 
- get mykey 
- setbit mykey 1887718428 1 
- get mykey 
- save

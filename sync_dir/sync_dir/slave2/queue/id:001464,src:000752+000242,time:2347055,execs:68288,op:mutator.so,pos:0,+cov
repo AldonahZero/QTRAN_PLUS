@@ -1,7 +1,0 @@
-hsetnx wqydsukt guwchiwu ssnvzsid 
- xadd pbtmpeny * qnoruayj -813 
- xautoclaim pbtmpeny xvphynbr odlgomhl 123123123 0-0 count 23 
- set mykey 3 
- xinfo stream pbtmpeny 
- copy mykey v0 
- get mykey

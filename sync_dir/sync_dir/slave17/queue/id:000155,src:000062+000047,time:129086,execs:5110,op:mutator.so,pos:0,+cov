@@ -1,4 +1,0 @@
-set mykey -15956 
- get mykey 
- scan 589 type string 
- save

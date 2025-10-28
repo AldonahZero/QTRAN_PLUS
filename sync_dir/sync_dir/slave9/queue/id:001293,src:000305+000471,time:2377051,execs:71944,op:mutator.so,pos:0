@@ -1,7 +1,0 @@
-setex clryemar 5 311 
- lcs clryemar clryemar len idx minmatchlen 4 withmatchlen 
- scan 822 count 5 
- sunionstore sugvxxcg sugvxxcg sugvxxcg 
- sismember sugvxxcg ikjrxbvw 
- set mykey hello 
- get mykey

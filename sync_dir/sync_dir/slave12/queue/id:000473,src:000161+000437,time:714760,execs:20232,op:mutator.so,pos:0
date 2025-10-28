@@ -1,8 +1,0 @@
-set mykey 311 
- incrbyfloat mykey 376 
- get mykey 
- setbit mykey 461829634 0 
- get mykey 
- scan 117 type string 
- save 
- hsetnx nbxqjbpm kmvsxosn fcjhthwx

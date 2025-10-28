@@ -1,6 +1,0 @@
-set mykey hello 
- set v0 -3940493144 
- msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
- getset mykey -853 
- bitop xor vnayjyje triqeesz 
- get mykey

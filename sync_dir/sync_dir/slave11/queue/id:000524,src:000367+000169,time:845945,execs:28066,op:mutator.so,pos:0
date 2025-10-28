@@ -1,4 +1,0 @@
-set ubjcxcxl hello 
- bitfield ubjcxcxl overflow wrap incrby u58 0 -688 
- bitfield ubjcxcxl overflow wrap incrby u9 0 695 
- get ubjcxcxl

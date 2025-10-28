@@ -1,6 +1,0 @@
-set mykey hello 
- zadd lukpltvt 5826 vgjrzjoy 
- zrandmember lukpltvt 0 
- sort lukpltvt 
- zrandmember lukpltvt -732047846881 
- get mykey

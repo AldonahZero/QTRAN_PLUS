@@ -1,4 +1,0 @@
-set mykey -37 
- setnx gbjlvscx 980792 
- bitpos gbjlvscx 1 8 74 bit 
- get mykey

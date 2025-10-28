@@ -1,5 +1,0 @@
-set mykey 1293 
- get mykey 
- scan 68 
- save 
- copy mykey v0 

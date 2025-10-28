@@ -1,5 +1,0 @@
-set mykey 41788 
- info replication memory 
- get mykey 
- del mykey 
- save

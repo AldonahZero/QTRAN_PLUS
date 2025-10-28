@@ -1,6 +1,0 @@
-pexpireat imxpdbqg 1672351169000 
- set mykey 197 
- set v0 -1001 
- bitfield mykey overflow fail set i30 109990 -255272035 
- save 
- get mykey

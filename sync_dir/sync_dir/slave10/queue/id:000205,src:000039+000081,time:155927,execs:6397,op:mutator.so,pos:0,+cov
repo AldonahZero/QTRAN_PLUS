@@ -1,4 +1,0 @@
-set mykey 2 
- bitfield mykey overflow fail incrby i4 0 46789140757 
- get mykey 
- object encoding uvryzsxf

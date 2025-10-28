@@ -1,8 +1,0 @@
-info cpu all 
- set atifyowf 1 
- zrangestore phxykmhg phxykmhg 2 -1 byscore rev limit 1 2 
- expire atifyowf 0 
- zrangestore ugswuldi ugswuldi 0 -1 
- save 
- bitop xor oszvevyb atifyowf atifyowf atifyowf atifyowf 
- get atifyowf

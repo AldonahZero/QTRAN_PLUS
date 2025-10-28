@@ -1,6 +1,0 @@
-object encoding rwzbgekl 
- xadd jbdjxqbm maxlen ~ 1000 123-1 hognxfnw "Hello," 
- zinterstore zcfialgy 2 zcfialgy zcfialgy 
- set mykey "Hello," 
- zmpop 2 zcfialgy zcfialgy min 
- get mykey

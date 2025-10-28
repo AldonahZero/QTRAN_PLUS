@@ -1,7 +1,0 @@
-set mykey 1732498873 
- geoadd rguvzgcd 45 65 uqzidutw -135 85.05 yxudgmfh 
- get mykey 
- pexpiretime mykey 
- rpush dbmuwins jrjuraql 
- lmpop 2 dbmuwins dbmuwins right count 1 
- psubscribe bar* 

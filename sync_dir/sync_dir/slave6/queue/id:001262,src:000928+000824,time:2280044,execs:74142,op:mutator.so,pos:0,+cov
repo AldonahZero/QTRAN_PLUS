@@ -1,6 +1,0 @@
-sunionstore sugvxxcg sugvxxcg sugvxxcg 
- info commandstats 
- set mykey hello 
- get mykey 
- smismember sugvxxcg vlvtmruq 
- zunionstore kmmwzipn 7 kmmwzipn kmmwzipn weights 2 3 aggregate min

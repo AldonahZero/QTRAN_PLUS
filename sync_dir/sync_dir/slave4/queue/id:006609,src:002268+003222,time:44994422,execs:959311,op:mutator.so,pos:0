@@ -1,8 +1,0 @@
-set v79 306 
- copy v79 v0 
- hmset hvuspbal puucxmde 9223372036854775808 
- bitfield v79 overflow fail set i30 0 1519 
- bitfield v0 overflow wrap set i44 0 -16965705105117 
- info everything 
- bitfield v79 overflow fail set u44 0 4806867732670 
- get v0

@@ -1,6 +1,0 @@
-getbit eaxfawkn -749 
- set mykey hello 
- strlen mykey 
- zinterstore yygrvfbj 2 yygrvfbj yygrvfbj 
- get mykey 
- save

@@ -1,9 +1,0 @@
-set mykey 13121140 
- hset vpkbrssi xanegthe 41657 
- copy xanegthe v0 
- xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr cgvkbmhf aixesdar urasnjsm 
- get mykey 
- hget vpkbrssi xanegthe 
- info everything 
- hmget vpkbrssi v0 v0 
- save

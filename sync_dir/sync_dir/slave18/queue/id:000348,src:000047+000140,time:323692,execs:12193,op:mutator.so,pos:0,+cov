@@ -1,5 +1,0 @@
-set ebvgkrck 3659958828 
- bitfield ebvgkrck overflow fail set u34 0 23450054762 
- incrby ebvgkrck 548 
- get ebvgkrck 
- save

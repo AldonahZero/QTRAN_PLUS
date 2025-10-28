@@ -1,7 +1,0 @@
-msetnx nzgkmxpj fgqixmul triqeesz gftsakln ldvuftez 20 
- setbit triqeesz 362392 0 
- set mykey "Hello," 
- geoadd cqubszoy 13.361389 38.115556 acjnpjwy 15.087269 37.502669 fekagtxv 
- del triqeesz 
- xadd ozsnpvdy 3410025659 rqwzplos "Hello," 
- get mykey

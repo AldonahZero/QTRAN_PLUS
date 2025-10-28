@@ -1,6 +1,0 @@
-set mykey hello 
- getex mykey 
- pfcount muowgurr 
- mget mykey 
- bitfield mykey overflow wrap incrby i25 28 -424 
- get mykey

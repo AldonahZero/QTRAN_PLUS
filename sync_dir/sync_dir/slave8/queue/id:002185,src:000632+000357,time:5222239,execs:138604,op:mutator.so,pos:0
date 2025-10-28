@@ -1,7 +1,0 @@
-hset poksmruc sjszuneh 293 
- set mykey hello 
- get mykey 
- hincrbyfloat poksmruc sjszuneh 1 
- geoadd eapvvold -1 37.00 nkmmorea 
- hrandfield poksmruc -517 withvalues 
- psetex vokpjzpp -586 364853510803

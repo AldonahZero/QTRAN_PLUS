@@ -1,5 +1,0 @@
-set mykey hello 
- msetnx rtpjmxgn -335208959567 
- getset mykey -853 
- bitop xor vnayjyje rtpjmxgn 
- get mykey

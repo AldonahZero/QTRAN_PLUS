@@ -1,7 +1,0 @@
-sadd waeoxbem wivnjuxe 
- set mykey -1947844055 
- smembers waeoxbem 
- srandmember waeoxbem -10 
- get mykey 
- get mykey 
- save

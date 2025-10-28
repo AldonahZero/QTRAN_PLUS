@@ -1,9 +1,0 @@
-lpush fjawhzfz hfgcwmoq swywrupx 
- set mykey 15.087269 
- sort fjawhzfz 
- mget mykey mykey mykey mykey 
- lpos fjawhzfz kprjvznp count 0 maxlen 1 
- info cpu all 
- lcs mykey mykey 
- lpos fjawhzfz kprjvznp count -750 maxlen 1 
- get mykey

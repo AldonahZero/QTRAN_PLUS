@@ -1,5 +1,0 @@
-set mykey 1519 
- hmset zxvatyxz mecdrlck 1 vktahdph 2 ccsnseuf 3 qzsoxtro 3 mdhtawrn 3 
- get mykey 
- hrandfield zxvatyxz 2 
- del mykey 

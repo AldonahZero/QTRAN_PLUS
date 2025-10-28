@@ -1,8 +1,0 @@
-hset eaxejsol bhwulrko 94964 
- zunionstore patbwvok 2 patbwvok patbwvok aggregate max 
- hset tfpyhbbg jhelnvce 512461 
- del tfpyhbbg 
- set mykey 2 
- dump patbwvok 
- setbit mykey 1603 1 
- get mykey

@@ -1,6 +1,0 @@
-set mykey 185256 
- bitpos mykey 1 37 37 bit 
- copy mykey v0 
- bitfield mykey overflow fail set u44 3512935256 4806867732670 
- mget mykey mykey mykey mykey mykey mykey mykey mykey mykey 
- get mykey

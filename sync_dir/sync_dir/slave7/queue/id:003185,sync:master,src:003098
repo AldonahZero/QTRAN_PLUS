@@ -1,9 +1,0 @@
-zadd mfsvncrq lt incr 1 bexnlycc 
- zincrby mfsvncrq 175656559 ymtynmse 
- zadd hleuhsey 0 srveglnh 
- object encoding rwzbgekl 
- geoadd defhyxzz -45 65.50900022111811438208 vnjyzinq 17.241510 38.788135 nxmjeqgx 17.241510 0.50853072177084657 nxmjeqgx 12.750000 35.202000 esifgdfx 12.748489955781654 37 xxkpmdgk 
- set mykey hello 
- zrangestore xervubdq mfsvncrq 1 2 byscore 
- strlen mykey 
- get mykey

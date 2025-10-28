@@ -1,8 +1,0 @@
-hset eaxejsol bhwulrko 94964 
- psetex elzondzp 123 -3437299314 
- scan 790 count 5 
- append guadkaxa 401431120 
- set mykey 2 
- hscan eaxejsol 0 match foo* count 10000 
- hrandfield eaxejsol -989751670970 
- get mykey

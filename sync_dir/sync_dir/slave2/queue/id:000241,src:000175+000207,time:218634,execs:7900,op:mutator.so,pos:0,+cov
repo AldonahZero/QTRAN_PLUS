@@ -1,7 +1,0 @@
-zdiffstore dfgxahpo 3 dfgxahpo dfgxahpo dfgxahpo 
- set mykey 41788 
- getset mykey -205 
- zscore dfgxahpo yuueumjs 
- sdiffstore lrkqafqr lrkqafqr lrkqafqr lrkqafqr 
- sdiffstore vdxxciyw vdxxciyw vdxxciyw vdxxciyw 
- get mykey

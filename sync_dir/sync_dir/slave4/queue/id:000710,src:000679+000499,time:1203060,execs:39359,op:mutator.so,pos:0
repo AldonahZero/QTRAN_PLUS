@@ -1,6 +1,0 @@
-set mykey 54 
- bitfield mykey overflow fail incrby u34 0 -688 
- info cpu everything 
- get mykey 
- del mykey 
- hset imchqraj qmjpskpl 125287 

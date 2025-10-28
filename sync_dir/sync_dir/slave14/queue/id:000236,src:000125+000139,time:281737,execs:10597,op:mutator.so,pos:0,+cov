@@ -1,7 +1,0 @@
-object encoding rwzbgekl 
- zinterstore phrpwlca 2 phrpwlca phrpwlca aggregate min 
- zmpop 1 phrpwlca max 
- zscan phrpwlca 1858801073 
- set mykey hello 
- zincrby phrpwlca 1898181473 mlujlapi 
- get mykey

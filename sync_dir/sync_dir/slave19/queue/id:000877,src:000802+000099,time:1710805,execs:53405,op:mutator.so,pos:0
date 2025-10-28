@@ -1,8 +1,0 @@
-set mykey -853 
- sunionstore vafurdjm vafurdjm 
- lpush jqknbzjm xbtoynzn 
- info cpu all 
- lpop jqknbzjm 
- del jqknbzjm 
- select 8 
- get mykey

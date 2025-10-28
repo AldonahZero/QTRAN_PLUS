@@ -1,7 +1,0 @@
-hsetnx roftorbl khrrkjgs 143102223 
- save 
- set mykey 5 
- hmget roftorbl khrrkjgs khrrkjgs 
- zadd mfsvncrq lt incr 1 bexnlycc 
- zcount mfsvncrq 3074229146 41012222144233124332141130332420013340412043231333203133411303211304144121141441033130321400 
- get mykey

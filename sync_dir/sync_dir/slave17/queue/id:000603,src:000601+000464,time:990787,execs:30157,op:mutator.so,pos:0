@@ -1,8 +1,0 @@
-set wcitbqrq 1302230201330004203204022312341214 
- dump wcitbqrq 
- bitop not yxqbavlu wcitbqrq wcitbqrq 
- decr wcitbqrq 
- get wcitbqrq 
- bitpos wcitbqrq 257854938 
- scan 589 type string 
- save

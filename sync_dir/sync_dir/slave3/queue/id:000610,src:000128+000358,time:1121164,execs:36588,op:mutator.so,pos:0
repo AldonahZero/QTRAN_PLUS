@@ -1,5 +1,0 @@
-hset imchqraj qmjpskpl 125287 
- set mykey 31543984 
- hincrby imchqraj qmjpskpl 3 
- setbit mykey 615 0 
- get mykey

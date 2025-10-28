@@ -1,7 +1,0 @@
-zadd mfsvncrq lt incr 1 bexnlycc 
- object encoding rwzbgekl 
- zmscore mfsvncrq mzqjfhjv 
- zinterstore cpkmmnvr 2 mfsvncrq mfsvncrq 
- set mykey hello 
- strlen mykey 
- get mykey

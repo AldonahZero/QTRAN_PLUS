@@ -1,7 +1,0 @@
-hsetnx roftorbl khrrkjgs 4806867732670 
- save 
- set mykey 5 
- hgetall roftorbl 
- hmget roftorbl khrrkjgs khrrkjgs 
- zadd mfsvncrq lt incr 1 bexnlycc 
- get mykey

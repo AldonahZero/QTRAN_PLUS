@@ -1,5 +1,0 @@
-hset etqpfzfm njabbctf 17.200560937451133 
- set mykey 2 
- hincrbyfloat etqpfzfm njabbctf 1 
- pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
- get mykey

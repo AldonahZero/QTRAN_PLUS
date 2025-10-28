@@ -1,8 +1,0 @@
-set mykey 311 
- get mykey 
- select 9 
- bitpos mykey 0 7 9 byte 
- scan 791 count 5 
- hsetnx nbxqjbpm kmvsxosn -853 
- mget mykey mykey mykey mykey mykey mykey mykey mykey mykey 
- zdiffstore apuzkzbh 2 apuzkzbh apuzkzbh

@@ -1,4 +1,0 @@
-set mykey -765379281605 
- getset mykey -86799210909 
- get mykey 
- object encoding uvryzsxf

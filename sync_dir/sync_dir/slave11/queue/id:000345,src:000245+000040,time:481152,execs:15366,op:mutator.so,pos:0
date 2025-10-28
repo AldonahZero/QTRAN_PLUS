@@ -1,5 +1,0 @@
-set mykey hello 
- msetnx ifqahivc -3155498710 
- getset mykey -853 
- bitop xor soigkacb mykey ifqahivc ifqahivc 
- get mykey

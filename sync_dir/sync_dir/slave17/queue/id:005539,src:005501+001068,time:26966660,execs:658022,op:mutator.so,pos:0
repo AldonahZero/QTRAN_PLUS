@@ -1,8 +1,0 @@
-set nzgkmxpj 1140 
- save 
- setbit nzgkmxpj 814317 0 
- msetnx v0 fgqixmul triqeesz gftsakln ldvuftez 20 
- getset triqeesz -853 
- bitop xor vnayjyje triqeesz 
- bitcount nzgkmxpj 
- get triqeesz

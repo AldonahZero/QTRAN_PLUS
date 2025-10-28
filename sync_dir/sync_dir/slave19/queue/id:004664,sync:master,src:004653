@@ -1,9 +1,0 @@
-set mykey -853 
- info everything everything 
- lpush jqknbzjm xbtoynzn 
- lpush fjawhzfz hfgcwmoq swywrupx 
- info everything everything 
- del jqknbzjm 
- lrem fjawhzfz 1 tlbtkqcm 
- select 8 
- get mykey

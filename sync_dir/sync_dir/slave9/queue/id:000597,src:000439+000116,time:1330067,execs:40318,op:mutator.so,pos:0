@@ -1,8 +1,0 @@
-setex ztbcxsbx 871662918 -479 
- lcs ztbcxsbx ztbcxsbx 
- append guadkaxa 401431120 
- sunionstore sugvxxcg sugvxxcg sugvxxcg 
- sismember sugvxxcg ikjrxbvw 
- mget ztbcxsbx guadkaxa ztbcxsbx ztbcxsbx ztbcxsbx guadkaxa guadkaxa 
- set mykey hello 
- get mykey

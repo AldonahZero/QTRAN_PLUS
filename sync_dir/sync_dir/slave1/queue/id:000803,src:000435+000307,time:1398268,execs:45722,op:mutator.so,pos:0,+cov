@@ -1,7 +1,0 @@
-pfadd jalgwgha erunuxpp smvbejzf nyxzfynr 
- hset gxdttyyp wuttehlz 0.019224562691163533 
- ttl ucglluvp 
- hrandfield gxdttyyp -1001 
- set mykey hello 
- getex mykey 
- get mykey

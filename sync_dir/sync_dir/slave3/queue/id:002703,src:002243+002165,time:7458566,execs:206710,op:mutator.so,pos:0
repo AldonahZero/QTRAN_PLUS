@@ -1,9 +1,0 @@
-xadd pbtmpeny 0-1 qnoruayj "Hello," 
- info keyspace 
- xadd v1 1526569498055-0 qnoruayj "Hello," 
- xtrim pbtmpeny minid 1000 
- xgroup create pbtmpeny v0 1671116695581-3 
- set atifyowf 1 
- save 
- xinfo stream pbtmpeny full count 1 
- get atifyowf

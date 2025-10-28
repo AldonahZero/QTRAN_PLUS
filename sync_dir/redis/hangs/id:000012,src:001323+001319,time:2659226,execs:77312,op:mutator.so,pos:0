@@ -1,9 +1,0 @@
-set atifyowf 1 
- incrbyfloat atifyowf -5 
- dump atifyowf 
- bitfield atifyowf overflow wrap incrby i37 3717584922 37999704017 
- setex tncydqgy 273 12024430563 
- zunionstore ozmbxkpt 2 ozmbxkpt ozmbxkpt weights 2 3 aggregate max 
- save 
- pfadd iknmweqf zelgohmr gjbqrlnm 
- get atifyowf

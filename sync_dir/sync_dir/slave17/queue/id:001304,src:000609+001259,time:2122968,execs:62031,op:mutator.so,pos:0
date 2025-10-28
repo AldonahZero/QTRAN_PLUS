@@ -1,8 +1,0 @@
-set wcitbqrq 1375142478 
- dump wcitbqrq 
- bitop not xxuevemv wcitbqrq 
- get wcitbqrq 
- bitpos wcitbqrq 1 
- scan 589 type string 
- bitop or gvtzczpz wcitbqrq wcitbqrq wcitbqrq 
- save

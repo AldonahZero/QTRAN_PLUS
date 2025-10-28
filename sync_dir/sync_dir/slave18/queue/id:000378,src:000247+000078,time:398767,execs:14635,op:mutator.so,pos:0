@@ -1,7 +1,0 @@
-set mykey -37 
- zrangestore rpondvdz rpondvdz 0 -1 limit 1 2 
- setnx gbjlvscx -37 
- zrem rpondvdz vzxzhncg 
- getex gbjlvscx 
- mget mykey gbjlvscx mykey 
- get mykey

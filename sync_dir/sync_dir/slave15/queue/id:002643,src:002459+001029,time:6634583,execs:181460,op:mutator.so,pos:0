@@ -1,6 +1,0 @@
-psetex tkpddeko 851130245 809 
- set mykey 0.8284480026124269 
- copy mykey v1 
- copy mykey v0 
- save 
- get mykey

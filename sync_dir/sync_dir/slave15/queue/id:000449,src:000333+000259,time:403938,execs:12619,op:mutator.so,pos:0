@@ -1,5 +1,0 @@
-set mykey -10910337 
- xadd ermrdvzf * jzkwvobt hhtsakbz htuepxnr -731270755 aixesdar urasnjsm 
- incrbyfloat mykey -618 
- get mykey 
- save

@@ -1,4 +1,0 @@
-set mykey 41788 
- lcs mykey mykey 
- get mykey 
- save

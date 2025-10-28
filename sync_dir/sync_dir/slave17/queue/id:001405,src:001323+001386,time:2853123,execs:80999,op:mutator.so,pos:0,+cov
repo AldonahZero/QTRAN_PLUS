@@ -1,6 +1,0 @@
-set mykey hello 
- zadd lukpltvt 5826 vgjrzjoy 
- zunion 2 lukpltvt lukpltvt weights 1 1 aggregate min withscores 
- lpush asjdswpq syrsobfe ndlfegrn 
- sort lukpltvt by d* get s* store frxxuubj 
- get mykey

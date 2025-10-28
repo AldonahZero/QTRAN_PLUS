@@ -1,7 +1,0 @@
-set mykey 1732498873 
- geoadd vrekwiwa 13.00 36.50 pqkikujz 
- geosearch vrekwiwa frommember pqkikujz bybox 1 1 km 
- georadius vrekwiwa 1 1 1 km store vkbzxeof 
- get mykey 
- rpush dbmuwins jrjuraql 
- psubscribe bar* 

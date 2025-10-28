@@ -1,4 +1,0 @@
-set mykey 4806867732670 
- get mykey 
- decrby mykey 558 
- save

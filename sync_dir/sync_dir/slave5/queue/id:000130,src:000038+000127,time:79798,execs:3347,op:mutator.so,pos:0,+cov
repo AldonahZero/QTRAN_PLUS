@@ -1,5 +1,0 @@
-set mykey 197 
- set v0 -1001 
- bitfield mykey overflow fail set i4 0 -12 
- save 
- get mykey

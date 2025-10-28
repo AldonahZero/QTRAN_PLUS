@@ -1,5 +1,0 @@
-set atifyowf 0.87838079541846215 
- incrbyfloat atifyowf -816 
- bitpos atifyowf 0 33 -1 bit 
- save 
- get atifyowf

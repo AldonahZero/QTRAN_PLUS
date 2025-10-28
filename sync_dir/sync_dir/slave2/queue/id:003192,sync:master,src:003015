@@ -1,4 +1,0 @@
-set ubjcxcxl hello 
- bitfield ubjcxcxl overflow fail incrby u36 0 46789140757 
- bitfield ubjcxcxl overflow fail incrby u36 0 46789140757 
- get ubjcxcxl

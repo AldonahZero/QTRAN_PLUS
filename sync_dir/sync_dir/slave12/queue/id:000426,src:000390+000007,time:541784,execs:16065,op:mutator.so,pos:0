@@ -1,9 +1,0 @@
-set mykey -316 
- bitpos mykey 1 12 12 bit 
- incrbyfloat mykey 376 
- get mykey 
- setbit mykey 1151 0 
- get mykey 
- save 
- copy mykey v0 
- hsetnx nbxqjbpm kmvsxosn fcjhthwx
