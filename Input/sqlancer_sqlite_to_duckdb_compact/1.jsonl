@@ -1,0 +1,5 @@
+{"index": 1, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t1 (c0 BLOB NOT NULL ON CONFLICT ROLLBACK UNIQUE CHECK ( (~ (c0))) )"}
+{"index": 1, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT OR IGNORE INTO rt0(c0, c2) VALUES (0.2523918470333718, x'a8f4')"}
+{"index": 1, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT OR ROLLBACK INTO rt0(c1) VALUES (0.6787814078160072)"}
+{"index": 1, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT OR IGNORE INTO t1(c0) VALUES (NULL)"}
+{"index": 1, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT rtreecheck('rt0')"}

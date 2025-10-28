@@ -1,0 +1,6 @@
+{"index": 2, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0 (c0 REAL , c1 BLOB , c2 INTEGER , c3 BLOB , c4 TEXT )"}
+{"index": 2, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO vt1(vt1, rank) VALUES('usermerge', 8)"}
+{"index": 2, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO vt1(vt1, rank) VALUES('pgsz', '42940')"}
+{"index": 2, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO vt1(vt1) VALUES('optimize')"}
+{"index": 2, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE INDEX IF NOT EXISTS i32 ON t0(CASE 1.253020319E9  WHEN x'' THEN c4 ELSE c2 END COLLATE BINARY COLLATE NOCASE,(+ (c1)) COLLATE NOCASE ASC,((((c0 COLLATE BINARY)OR(((c4)/(c1)))))OR(c3)),((((NULL)AND(0.04595528125148207)))OR('-536314176')),(NULL IN ())) WHERE LOWER(DISTINCT (('ZI*bO{')*(c4)))"}
+{"index": 2, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT ALL * FROM vt1 WHERE (x'') ORDER BY 0.7104733336560086 DESC  NULLS FIRST"}
