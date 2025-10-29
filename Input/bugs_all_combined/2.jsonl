@@ -1,0 +1,5 @@
+{"index": 2, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE IF NOT EXISTS t0 (c0 TEXT , c1 INTEGER , c2 BLOB NOT NULL ON CONFLICT FAIL CHECK ( ((c1) NOT NULL)) UNIQUE )"}
+{"index": 2, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO vt2(vt2) VALUES('automerge=10')"}
+{"index": 2, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO vt2(vt2) VALUES('automerge=14')"}
+{"index": 2, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT OR IGNORE INTO sqlite_stat1 VALUES('vt2', 't0', '308970174 -947799447 noskipscan')"}
+{"index": 2, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT rtreecheck('rt1')"}

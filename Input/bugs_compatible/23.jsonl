@@ -1,0 +1,6 @@
+{"index": 23, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "CREATE TABLE t0(c0 TINYTEXT  COMMENT 'asdf'  COLUMN_FORMAT DEFAULT, c1 INT ZEROFILL , c2 DECIMAL ZEROFILL  COLUMN_FORMAT FIXED STORAGE MEMORY   UNIQUE COMMENT 'asdf' ) "}
+{"index": 23, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "CREATE INDEX i1 USING HASH ON t0(c0) VISIBLE"}
+{"index": 23, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "CREATE INDEX i1 USING HASH ON t0(c0 ASC) ALGORITHM DEFAULT"}
+{"index": 23, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "CREATE INDEX i1 USING HASH ON t0(c1, c0) VISIBLE"}
+{"index": 23, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "CREATE INDEX i1 ON t0(c1 DESC, c0 ASC) ALGORITHM= INPLACE"}
+{"index": 23, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "select TABLE_NAME, ENGINE from information_schema.TABLES where table_schema = 'mysql_db49'"}

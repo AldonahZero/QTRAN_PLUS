@@ -1,0 +1,5 @@
+{"index": 18, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "CREATE TABLE IF NOT EXISTS t0(c0 INT(124) ZEROFILL  COMMENT 'asdf'  ) "}
+{"index": 18, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "select TABLE_NAME, ENGINE from information_schema.TABLES where table_schema = 'mysql_db20'"}
+{"index": 18, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "INSERT INTO t0(c0) VALUES(0.305791225398635), (\"\"), (\"+b)\")"}
+{"index": 18, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "INSERT LOW_PRIORITY INTO t0(c0) VALUES(1724568134)"}
+{"index": 18, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "INSERT IGNORE INTO t0(c0) VALUES(1.7976931348623157E308)"}

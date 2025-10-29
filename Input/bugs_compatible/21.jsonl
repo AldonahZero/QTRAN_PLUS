@@ -1,0 +1,5 @@
+{"index": 21, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "CREATE TABLE t0(c0 DECIMAL  COLUMN_FORMAT DYNAMIC STORAGE MEMORY COMMENT 'asdf'  UNIQUE) "}
+{"index": 21, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "INSERT DELAYED INTO t0(c0) VALUES(-1222260142)"}
+{"index": 21, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "CREATE INDEX i0 ON t0(c0 DESC) VISIBLE"}
+{"index": 21, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "select TABLE_NAME, ENGINE from information_schema.TABLES where table_schema = 'mysql_db39'"}
+{"index": 21, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "CREATE INDEX i1 ON t0((COALESCE(t0.c0, NULL)))"}

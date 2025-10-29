@@ -6,8 +6,8 @@
 ## 📊 数据来源
 - **日志目录**: `/root/sqlancer/logs/duckdb/`
 - **日志文件数量**: 87 个
-- **有效日志**: 34 个
-- **生成测试用例**: 68 条
+- **有效日志**: 13 个
+- **生成测试用例**: 26 条
 
 ## 🎯 配置规则
 
@@ -26,8 +26,9 @@
 
 1. ✅ 至少包含 1 条 `CREATE TABLE` 语句
 2. ✅ 至少包含 1 条 `SELECT` 语句
-3. ✅ SQL 总数在 3-20 条之间
-4. ❌ 跳过注释行和空行
+3. ✅ SQL 总数在 **3-10 条**之间（避免测试用例过长）
+4. ✅ 单条 SQL 长度不超过 **500 字符**
+5. ❌ 跳过注释行和空行
 
 ## 📈 统计数据
 
@@ -37,25 +38,33 @@
   - mysql → mariadb: 10 条
 
 ### 更新后
-- **总测试用例**: 93 条 (+68)
+- **总测试用例**: 51 条 (+26)
 
 ### 数据库分布
 
 **a_db (源数据库)**:
-- duckdb: **68 条** 🆕
+- duckdb: **26 条** 🆕
 - sqlite: 15 条
 - mysql: 10 条
 
 **b_db (目标数据库)**:
-- mariadb: 44 条 (+34)
-- postgres: 34 条 (+34)
+- mariadb: 31 条 (+13)
+- postgres: 13 条 (+13)
 - duckdb: 5 条
 - monetdb: 5 条
 - tidb: 5 条
 
+### SQL 长度统计
+
+**DuckDB 测试用例**:
+- SQL 数量范围: 3-10 条
+- 平均 SQL 数量: 7 条
+- 单条 SQL 最长: 498 字符
+- 单条 SQL 平均: 103 字符
+
 ## 📝 测试用例示例
 
-### 示例 1: DuckDB → MariaDB
+### 示例 1: DuckDB → MariaDB (5条SQL)
 ```json
 {
   "index": 26,
@@ -63,28 +72,27 @@
   "b_db": "mariadb",
   "molt": "tlp (aggregate max)",
   "sqls": [
-    "CREATE TABLE t0(c0 TIMESTAMP, PRIMARY KEY(c0));",
-    "CREATE TABLE t1(c0 DATE NOT NULL, c1 VARCHAR NOT NULL DEFAULT(-0.0), ...);",
+    "CREATE TABLE t0(c0 BIGINT UNIQUE CHECK(c0) DEFAULT(0.42178835095406697), PRIMARY KEY(c0));",
+    "CREATE TABLE t1(c0 DOUBLE DEFAULT(-1131633603), PRIMARY KEY(c0));",
+    "VACUUM;",
     "ANALYZE;",
-    "INSERT INTO t0(c0) VALUES (DATE '1970-01-24'), (DATE '1970-01-19');",
-    "INSERT INTO t1(c1, c0) VALUES (')', '1970-01-17'), (...);",
-    ...
+    "EXPLAIN SELECT ((false NOT IN (t1.c0, t1.c0, '-1131633603')) IN (t1.c0)), ..."
   ]
 }
 ```
 
-### 示例 2: DuckDB → PostgreSQL
+### 示例 2: DuckDB → PostgreSQL (4条SQL)
 ```json
 {
-  "index": 27,
+  "index": 28,
   "a_db": "duckdb",
-  "b_db": "postgres",
-  "molt": "tlp (where)",
+  "b_db": "mariadb",
+  "molt": "tlp (aggregate max)",
   "sqls": [
-    "CREATE TABLE t0(c0 TIMESTAMP, PRIMARY KEY(c0));",
-    "CREATE TABLE t1(c0 DATE NOT NULL, c1 VARCHAR NOT NULL DEFAULT(-0.0), ...);",
+    "CREATE TABLE t53(c0 VARCHAR UNIQUE);",
+    "CREATE VIEW v0(c0) AS SELECT -745140234 FROM t53 WHERE ...",
     "ANALYZE;",
-    ...
+    "EXPLAIN SELECT DATE '1970-01-11' FROM v0, t53 LIMIT 1028311312 OFFSET 258476178;"
   ]
 }
 ```
@@ -130,14 +138,19 @@ print(f'✅ 已提取 {len(duckdb_cases)} 条 DuckDB 测试用例到 Input/duckd
 ```bash
 # 验证文件行数
 wc -l Input/bugs_all_combined.jsonl
-# 预期: 93
+# 预期: 51
 
-# 验证 JSON 格式
+# 验证 JSON 格式和数据质量
 python3 -c "
 import json
 with open('Input/bugs_all_combined.jsonl', 'r') as f:
     data = [json.loads(line) for line in f if line.strip()]
+
+duckdb_cases = [d for d in data if d['a_db'] == 'duckdb']
+
 print(f'✅ 所有 {len(data)} 条数据格式正确')
+print(f'✅ DuckDB 测试用例: {len(duckdb_cases)} 条')
+print(f'✅ SQL 数量范围: {min(len(c[\"sqls\"]) for c in duckdb_cases)}-{max(len(c[\"sqls\"]) for c in duckdb_cases)} 条')
 "
 ```
 

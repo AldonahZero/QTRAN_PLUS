@@ -1,0 +1,7 @@
+{"index": 16, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "CREATE TABLE t0(c0 LONGTEXT  STORAGE DISK COMMENT 'asdf'  NULL) "}
+{"index": 16, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "select TABLE_NAME, ENGINE from information_schema.TABLES where table_schema = 'mysql_db13'"}
+{"index": 16, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "CREATE INDEX i0 USING BTREE ON t0(c0) ALGORITHM DEFAULT"}
+{"index": 16, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "CREATE INDEX i0 USING HASH ON t0(c0(3)) ALGORITHM COPY"}
+{"index": 16, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "INSERT DELAYED INTO t0(c0) VALUES(-487725558)"}
+{"index": 16, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "INSERT HIGH_PRIORITY INTO t2(c0) VALUES('\tN%l ''')"}
+{"index": 16, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "INSERT INTO t2(c0) VALUES('*{5 !r''')"}

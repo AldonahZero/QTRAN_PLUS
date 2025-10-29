@@ -1,0 +1,5 @@
+{"index": 1, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t1 (c0 INT COLLATE BINARY )"}
+{"index": 1, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT OR IGNORE INTO sqlite_stat1 VALUES('t1', 'null', ' sz=-1940322153 noskipscan')"}
+{"index": 1, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT OR IGNORE INTO sqlite_stat1 VALUES('t1', 't1', '2 sz=1019224007 unordered noskipscan')"}
+{"index": 1, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT OR IGNORE INTO sqlite_stat1 VALUES('t1', 'rt0', ' noskipscan')"}
+{"index": 1, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT rtreecheck('rt0')"}

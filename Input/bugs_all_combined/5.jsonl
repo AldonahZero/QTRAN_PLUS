@@ -1,0 +1,5 @@
+{"index": 5, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0 (c0 TEXT )"}
+{"index": 5, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT rtreecheck('rt1')"}
+{"index": 5, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT OR REPLACE INTO t0 VALUES ('1066945868')"}
+{"index": 5, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT OR ABORT INTO t0 VALUES ('761427523')"}
+{"index": 5, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT OR IGNORE INTO sqlite_stat1 VALUES('t0', 't0', ' sz=1061108701 unordered')"}

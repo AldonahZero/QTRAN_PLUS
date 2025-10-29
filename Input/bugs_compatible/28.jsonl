@@ -1,0 +1,4 @@
+{"index": 28, "a_db": "duckdb", "b_db": "mariadb", "molt": "tlp (aggregate max)", "sql": "CREATE TABLE t53(c0 VARCHAR UNIQUE);"}
+{"index": 28, "a_db": "duckdb", "b_db": "mariadb", "molt": "tlp (aggregate max)", "sql": "CREATE VIEW v0(c0) AS SELECT -745140234 FROM t53 WHERE ((t53.c0) ::INTEGER) GROUP BY ((3.115384594064574E-4) ::DATE) LIMIT 628664846 OFFSET 1121128158;"}
+{"index": 28, "a_db": "duckdb", "b_db": "mariadb", "molt": "tlp (aggregate max)", "sql": "ANALYZE;"}
+{"index": 28, "a_db": "duckdb", "b_db": "mariadb", "molt": "tlp (aggregate max)", "sql": "EXPLAIN SELECT DATE '1970-01-11' FROM v0, t53 LIMIT 1028311312 OFFSET 258476178;"}

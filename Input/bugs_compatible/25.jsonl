@@ -1,0 +1,3 @@
+{"index": 25, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "CREATE TABLE t0(c0 FLOAT , c1 DECIMAL  PRIMARY KEY STORAGE DISK) "}
+{"index": 25, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "select TABLE_NAME, ENGINE from information_schema.TABLES where table_schema = 'mysql_db51'"}
+{"index": 25, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "CREATE INDEX i0 ON t0(c1 ASC) VISIBLE ALGORITHM COPY"}

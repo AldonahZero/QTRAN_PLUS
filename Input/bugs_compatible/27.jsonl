@@ -1,0 +1,5 @@
+{"index": 27, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE TABLE t0(c0 BIGINT UNIQUE CHECK(c0) DEFAULT(0.42178835095406697), PRIMARY KEY(c0));"}
+{"index": 27, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE TABLE t1(c0 DOUBLE DEFAULT(-1131633603), PRIMARY KEY(c0));"}
+{"index": 27, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "VACUUM;"}
+{"index": 27, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "ANALYZE;"}
+{"index": 27, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "EXPLAIN SELECT ((false NOT IN (t1.c0, t1.c0, '-1131633603')) IN (t1.c0)), TIMESTAMP '1970-01-20 06:44:13', t1.c0 FROM t1 GROUP BY t1.c0, ((t1.c0)OR(t1.c0)), (('*,') ::DOUBLE) HAVING t1.c0 ORDER BY t1.c0 DESC, t1.c0 ASC, ACOS(-1577109987);"}

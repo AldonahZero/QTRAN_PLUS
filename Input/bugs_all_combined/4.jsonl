@@ -1,0 +1,5 @@
+{"index": 4, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE IF NOT EXISTS t0 (c0 TEXT , c1 TEXT , c2 BLOB , c3 REAL , c4 INT )"}
+{"index": 4, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT rtreecheck('rt1')"}
+{"index": 4, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT OR IGNORE INTO sqlite_stat1 VALUES('t0', 'null', '-1091510283 0 0 noskipscan')"}
+{"index": 4, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT OR IGNORE INTO sqlite_stat1 VALUES('rt1', 'null', '1323876060 noskipscan')"}
+{"index": 4, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT OR IGNORE INTO sqlite_stat1 VALUES('t0', 't0', ' unordered')"}

@@ -1,0 +1,6 @@
+{"index": 3, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0 (c0 REAL )"}
+{"index": 3, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT OR IGNORE INTO sqlite_stat1 VALUES('t0', 'rt1', '')"}
+{"index": 3, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT OR IGNORE INTO sqlite_stat1 VALUES('rt1', 'null', ' sz=-909922619 unordered')"}
+{"index": 3, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT OR IGNORE INTO sqlite_stat1 VALUES('rt1', 'rt1', ' sz=-909922619 unordered')"}
+{"index": 3, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE INDEX IF NOT EXISTS i79 ON t0((((c0, c0, c0, c0, c0)) NOT BETWEEN ((c0, c0, c0, c0, c0)) AND ((c0, c0, c0, c0, c0))) DESC)"}
+{"index": 3, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT rtreecheck('rt1')"}

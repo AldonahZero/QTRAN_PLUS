@@ -1,0 +1,6 @@
+{"index": 19, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "CREATE TABLE IF NOT EXISTS t0(c0 TEXT  COMMENT 'asdf'  STORAGE MEMORY) "}
+{"index": 19, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "select TABLE_NAME, ENGINE from information_schema.TABLES where table_schema = 'mysql_db30'"}
+{"index": 19, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "CREATE INDEX i0 ON t0(c0)"}
+{"index": 19, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "CREATE INDEX i0 USING HASH ON t0(c0(3)) VISIBLE ALGORITHM DEFAULT"}
+{"index": 19, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "CREATE INDEX i1 USING BTREE ON t0((IF(t0.c0, t0.c0, 0.5584839863722544)), (( EXISTS (SELECT 1)) XOR ((t0.c0) > (t0.c0)))) ALGORITHM DEFAULT"}
+{"index": 19, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "INSERT DELAYED INTO t0(c0) VALUES(\"\")"}

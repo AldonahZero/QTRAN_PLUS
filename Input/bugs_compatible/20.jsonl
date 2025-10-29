@@ -1,0 +1,4 @@
+{"index": 20, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "CREATE TABLE t0(c0 FLOAT  STORAGE MEMORY NULL COMMENT 'asdf'  ) "}
+{"index": 20, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "select TABLE_NAME, ENGINE from information_schema.TABLES where table_schema = 'mysql_db35'"}
+{"index": 20, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "CREATE INDEX i0 ON t0(c0)"}
+{"index": 20, "a_db": "mysql", "b_db": "mariadb", "molt": "tlp (where)", "sql": "CREATE INDEX i1 ON t0(c0)"}
