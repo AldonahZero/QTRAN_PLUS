@@ -1231,13 +1231,13 @@ def transfer_llm_sql_semantic(
     #   {format_instructions} - StructuredOutputParser 给出的输出格式说明，要求模型按结构返回
 
     transfer_llm_string = """  
-    You are an INTJ (MBTI) database engineering expert known for strategic, analytical, precise thinking. Let's think step by step. You are an expert in sql statement translation between different database.\
+    Let's think step by step.You are an expert in sql statement translation between different database.\
     With the assistance of feature knowledge,transfer the following {origin_db} statement to executable {target_db} statement with similar semantics.\
     {origin_db} statement: {sql_statement}\
 
     Transfer should ensure following requirements:
     1. All column names and feature variables remain unchanged.
-    2. Keep all data values EXACTLY as they are in the original statement. This includes NULL values, empty strings (''), zeros (0), and all other literal values. ONLY remove non-deterministic functions that produce random results (such as CURRENT_TIMESTAMP(), RANDOM(), NOW()). NEVER modify, delete, or substitute actual data values or table names.
+    2. Strictly forbid meaningless features(such as NULL,0), features with random return value(such as current_time).
     3. Transfer as far as possible, and ensure similar semantics.\
 
     Transfer by carrying out following instructions step by step.\
@@ -1493,12 +1493,34 @@ def transfer_llm_sql_semantic(
                             output_dict = output_dict[0]
                         else:
                             print(f"❌ JSON修复后的列表格式不正确")
-                            return None, None, None, None, {"error": "Invalid JSON structure"}, "JSON_STRUCTURE_ERROR"
+                            # 返回 9 个值以匹配调用方期望
+                            return (
+                                [],  # costs
+                                [],  # transfer_results
+                                [],  # exec_results
+                                [],  # exec_times
+                                ["JSON_STRUCTURE_ERROR"],  # error_messages
+                                "None",  # origin_exec_result
+                                "0",  # origin_exec_time
+                                "JSON structure error: Invalid list format",  # origin_error_message
+                                []  # exec_equalities
+                            )
                     
                     # 验证必需的key是否存在
                     if not isinstance(output_dict, dict):
                         print(f"❌ JSON修复后不是字典格式: {type(output_dict)}")
-                        return None, None, None, None, {"error": "Not a dict"}, "JSON_STRUCTURE_ERROR"
+                        # 返回 9 个值以匹配调用方期望
+                        return (
+                            [],  # costs
+                            [],  # transfer_results
+                            [],  # exec_results
+                            [],  # exec_times
+                            ["JSON_STRUCTURE_ERROR"],  # error_messages
+                            "None",  # origin_exec_result
+                            "0",  # origin_exec_time
+                            f"JSON structure error: Not a dict, got {type(output_dict)}",  # origin_error_message
+                            []  # exec_equalities
+                        )
                     
                     if "TransferSQL" not in output_dict:
                         print(f"❌ JSON修复后缺少 'TransferSQL' 字段")
