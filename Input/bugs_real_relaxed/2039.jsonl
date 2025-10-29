@@ -1,0 +1,3 @@
+{"index": 2039, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "CREATE TABLE t0(c0 TEXT);"}
+{"index": 2039, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES (\"a\");"}
+{"index": 2039, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "SELECT * FROM t0 WHERE GREATEST((-1) & (-1), -t0.c0); -- expected: row is fetched, actual: row is not fetched"}

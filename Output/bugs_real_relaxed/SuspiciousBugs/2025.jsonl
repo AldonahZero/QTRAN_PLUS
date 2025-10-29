@@ -1,0 +1,4 @@
+{"index": 2025, "sql": "CREATE TABLE t0(c0 TEXT);", "TransferResult": ["CREATE TABLE t0(c0 TEXT)"]}
+{"index": 2025, "sql": "INSERT IGNORE INTO t0(c0) VALUES(\"\\n123\");", "TransferResult": ["INSERT IGNORE INTO t0(c0) VALUES(\"\\n123\");"]}
+{"index": 2025, "sql": "SELECT * FROM t0 WHERE COALESCE(t0.c0); -- expected: row is fetched, actual: no row is fetched", "TransferResult": ["SELECT * FROM t0 WHERE NOT(t0.c0 <=> NULL);"]}
+{"index": 2025, "sql": "SELECT * FROM t0 WHERE IFNULL(t0.c0, 1); -- expected: row is fetched, actual: no row is fetched", "TransferResult": ["SELECT * FROM t0 WHERE NOT(t0.c0 <=> 1);"], "TransferSqlExecResult": ["[('\\n123',)]"], "MutateResult": "SELECT SUM(count) FROM (SELECT (NOT(t0.c0 <=> 1)) as count FROM t0) as asdf;", "MutateSqlExecResult": "[(Decimal('1'),)]"}

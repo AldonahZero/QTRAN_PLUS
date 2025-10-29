@@ -1,0 +1,3 @@
+{"index": 2014, "sql": "CREATE TABLE t0 (c0 TEXT);", "TransferResult": ["CREATE TABLE t0 (c0 TEXT)"]}
+{"index": 2014, "sql": "INSERT INTO t0(c0) VALUES ('1.0');", "TransferResult": ["INSERT INTO t0(c0) VALUES ('1.0')"]}
+{"index": 2014, "sql": "SELECT CAST(c0 AS NUMERIC) FROM t0; -- expected: 1, actual: 1.0", "TransferResult": ["SELECT CAST(c0 AS DOUBLE) FROM t0"], "TransferSqlExecResult": ["[(1.0,)]"], "MutateResult": "SELECT SUM(CAST((CAST(c0 AS DOUBLE)) AS INTEGER)) FROM t0;", "MutateSqlExecResult": "[(1,)]"}

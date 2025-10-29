@@ -1,0 +1,14 @@
+{
+  "index": 2013,
+  "input": "bugs_real_relaxed",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0 WHERE (((0 IS NOT FALSE) OR NOT (0 IS FALSE OR (t0.c0 IN (-1)))) IS 0); -- fetches no row",
+    "transfer_sql": "SELECT * FROM t0 WHERE (((0 IS NOT FALSE) OR NOT (0 IS FALSE OR (t0.c0 IN (-1)))) = FALSE);",
+    "mutate_sql": "SELECT SUM(CAST((((0 IS NOT FALSE) OR NOT (0 IS FALSE OR (t0.c0 IN (-1)))) = FALSE) AS INTEGER)) FROM t0;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

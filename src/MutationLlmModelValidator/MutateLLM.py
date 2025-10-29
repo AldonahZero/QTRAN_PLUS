@@ -450,7 +450,9 @@ def run_muatate_llm_single_sql(
             system_message = prompt_data.get(oracle, prompt_data.get("semantic", ""))
 
         # ========== Mem0 增强 Prompt ==========
-        if mem0_manager:
+        # 双重检查：同时检查 mem0_manager 对象和环境变量
+        use_mutation_mem0 = os.environ.get("QTRAN_MUTATION_USE_MEM0", "false").lower() == "true"
+        if mem0_manager and use_mutation_mem0:
             try:
                 system_message = mem0_manager.build_enhanced_prompt(
                     base_prompt=system_message,
@@ -506,7 +508,8 @@ def run_muatate_llm_single_sql(
         cost["Total Cost (USD)"] = 0
         
         # ========== Mem0 记录成功的变异 ==========
-        if mem0_manager and response_content:
+        # 双重检查：确保环境变量也启用了变异阶段 Mem0
+        if mem0_manager and use_mutation_mem0 and response_content:
             try:
                 mutation_time = time.time() - mutation_start_time
                 

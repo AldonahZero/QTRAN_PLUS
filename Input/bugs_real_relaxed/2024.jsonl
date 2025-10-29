@@ -1,0 +1,2 @@
+{"index": 2024, "a_db": "mysql", "b_db": "tidb", "molt": "norec", "sql": "CREATE TABLE t0(c0 INT) ENGINE = MyISAM;"}
+{"index": 2024, "a_db": "mysql", "b_db": "tidb", "molt": "norec", "sql": "select * from information_schema.TABLES; -- unexpected (when executed with multiple threads): Duplicate entry 'triggerbug21-t0' for key 'PRIMARY'"}

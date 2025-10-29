@@ -1,0 +1,3 @@
+{"index": 2028, "sql": "CREATE TABLE t0(c0 TEXT);", "TransferResult": ["CREATE TABLE t0(c0 TEXT)"]}
+{"index": 2028, "sql": "INSERT INTO t0(c0) VALUES(0.9);", "TransferResult": ["INSERT INTO t0(c0) VALUES(0.9)"]}
+{"index": 2028, "sql": "SELECT * FROM t0 WHERE t0.c0; -- expected: row is fetched, actual: row is not fetched", "TransferResult": ["SELECT * FROM t0 WHERE t0.c0 IS NOT NULL"], "TransferSqlExecResult": ["[('0.9',)]"], "MutateResult": "SELECT SUM(count) FROM (SELECT (t0.c0 IS NOT NULL) AS count FROM t0) AS asdf;", "MutateSqlExecResult": "[(Decimal('1'),)]"}

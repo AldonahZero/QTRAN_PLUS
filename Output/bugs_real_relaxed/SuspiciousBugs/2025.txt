@@ -1,0 +1,11 @@
+CREATE TABLE t0(c0 TEXT);
+INSERT IGNORE INTO t0(c0) VALUES("\n123");
+SELECT * FROM t0 WHERE COALESCE(t0.c0); -- expected: row is fetched, actual: no row is fetched
+SELECT * FROM t0 WHERE IFNULL(t0.c0, 1); -- expected: row is fetched, actual: no row is fetched
+
+
+CREATE TABLE t0(c0 TEXT)
+INSERT IGNORE INTO t0(c0) VALUES("\n123");
+SELECT * FROM t0 WHERE NOT(t0.c0 <=> NULL);
+SELECT * FROM t0 WHERE NOT(t0.c0 <=> 1);
+SELECT SUM(count) FROM (SELECT (NOT(t0.c0 <=> 1)) as count FROM t0) as asdf;

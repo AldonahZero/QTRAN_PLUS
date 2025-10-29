@@ -1,0 +1,9 @@
+CREATE TABLE t0(c0 TEXT);
+INSERT INTO t0(c0) VALUES(0.9);
+SELECT * FROM t0 WHERE t0.c0; -- expected: row is fetched, actual: row is not fetched
+
+
+CREATE TABLE t0(c0 TEXT)
+INSERT INTO t0(c0) VALUES(0.9)
+SELECT * FROM t0 WHERE t0.c0 IS NOT NULL
+SELECT SUM(count) FROM (SELECT (t0.c0 IS NOT NULL) AS count FROM t0) AS asdf;

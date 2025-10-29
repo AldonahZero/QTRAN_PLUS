@@ -1,0 +1,14 @@
+{
+  "index": 2002,
+  "input": "bugs_real_relaxed",
+  "suspicious_view": {
+    "sql": "SELECT * FROM test WHERE (c0 LIKE '+/'); -- fetches no row",
+    "transfer_sql": "SELECT * FROM test WHERE (CAST(c0 AS VARCHAR) LIKE '+/')",
+    "mutate_sql": "SELECT SUM(CAST(((CAST(c0 AS VARCHAR) LIKE '+/') IS TRUE) AS INTEGER)) FROM test;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

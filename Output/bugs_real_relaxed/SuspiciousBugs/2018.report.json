@@ -1,0 +1,14 @@
+{
+  "index": 2018,
+  "input": "bugs_real_relaxed",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0 WHERE (t0.c3 COLLATE NOCASE) BETWEEN 1 AND '5'; -- expected: no row is fetched, actual: row is fetched",
+    "transfer_sql": "SELECT * FROM t0 WHERE (t0.c3) BETWEEN CAST(1 AS TEXT) AND '5';",
+    "mutate_sql": "SELECT SUM(CAST(((t0.c3) BETWEEN CAST(1 AS TEXT) AND '5') AS INTEGER)) FROM t0;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

@@ -1,0 +1,14 @@
+{
+  "index": 2028,
+  "input": "bugs_real_relaxed",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0 WHERE t0.c0; -- expected: row is fetched, actual: row is not fetched",
+    "transfer_sql": "SELECT * FROM t0 WHERE t0.c0 IS NOT NULL",
+    "mutate_sql": "SELECT SUM(count) FROM (SELECT (t0.c0 IS NOT NULL) AS count FROM t0) AS asdf;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

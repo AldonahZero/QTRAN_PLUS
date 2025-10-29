@@ -1,0 +1,5 @@
+{"index": 2031, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "CREATE TABLE t0(c0 TEXT);"}
+{"index": 2031, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES(\"0.5\");"}
+{"index": 2031, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "SELECT * FROM t0 WHERE t0.c0 AND 1; -- expected: 0.5, actual: no row is fetched"}
+{"index": 2031, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "SELECT * FROM t0 WHERE t0.c0 OR 0; -- expected: 0.5, actual: no row is fetched"}
+{"index": 2031, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "SELECT * FROM t0 WHERE t0.c0 XOR 0;  -- expected: 0.5, actual: no row is fetched"}

@@ -1,0 +1,5 @@
+{"index": 2034, "sql": "CREATE TABLE t0(c0 INT);", "TransferResult": ["CREATE TABLE t0(c0 INT)"]}
+{"index": 2034, "sql": "CREATE TABLE t1(c0 INT) ENGINE = MEMORY;", "TransferResult": ["CREATE TABLE t1(c0 INT)"]}
+{"index": 2034, "sql": "INSERT INTO t0(c0) VALUES(0);", "TransferResult": ["INSERT INTO t0(c0) VALUES(0)"]}
+{"index": 2034, "sql": "INSERT INTO t1(c0) VALUES(-1);", "TransferResult": ["INSERT INTO t1(c0) VALUES(-1)"]}
+{"index": 2034, "sql": "SELECT * FROM t0, t1 WHERE (CAST(t1.c0 AS UNSIGNED)) > (IFNULL(\"u\", t0.c0)); -- expected: row is fetched, actual: no row is fetched", "TransferResult": ["SELECT * FROM t0, t1 WHERE (CAST(t1.c0 AS UNSIGNED)) > (IFNULL(\"u\", t0.c0));"], "TransferSqlExecResult": ["[(0, -1)]"], "MutateResult": "SELECT SUM(count) FROM (SELECT ((CAST(t1.c0 AS UNSIGNED)) > (IFNULL(\"u\", t0.c0))) > 0 as count FROM t0, t1) as asdf;", "MutateSqlExecResult": "[(Decimal('1'),)]"}

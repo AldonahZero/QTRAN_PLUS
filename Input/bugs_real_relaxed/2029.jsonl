@@ -1,0 +1,4 @@
+{"index": 2029, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "CREATE TABLE t0(c0 BIGINT UNSIGNED);"}
+{"index": 2029, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES(NULL);"}
+{"index": 2029, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "SELECT * FROM t0 WHERE CAST(COALESCE(t0.c0, -1) AS UNSIGNED); -- expected: row is selected, actual: no row is selected"}
+{"index": 2029, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "SELECT * FROM t0 WHERE CAST(IFNULL(t0.c0, -1) AS UNSIGNED); -- expected: row is selected, actual: no row is selected"}

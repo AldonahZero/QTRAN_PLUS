@@ -1,0 +1,14 @@
+{
+  "index": 2037,
+  "input": "bugs_real_relaxed",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0 WHERE t0.c1 < (t0.c0 & t0.c0) AND t0.c0 = -1; -- expected: fetches row, actual: does not fetch the row",
+    "transfer_sql": "SELECT * FROM t0 WHERE NOT(t0.c1 <=> (t0.c0 & t0.c0)) AND t0.c0 = -1;",
+    "mutate_sql": "SELECT SUM(count) FROM (SELECT (NOT(t0.c1 <=> (t0.c0 & t0.c0)) AND t0.c0 = -1) as count FROM t0) as asdf;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

@@ -1,0 +1,5 @@
+{"index": 2004, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "PRAGMA foreign_keys=true;"}
+{"index": 2004, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0 (c0 UNIQUE, c1 UNIQUE, FOREIGN KEY(c0) REFERENCES t0(c1));"}
+{"index": 2004, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT OR FAIL INTO t0(c0, c1) VALUES (0, 1);"}
+{"index": 2004, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT OR FAIL INTO t0(c0, c1) VALUES (0, 2);"}
+{"index": 2004, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM t0; -- returns no row"}

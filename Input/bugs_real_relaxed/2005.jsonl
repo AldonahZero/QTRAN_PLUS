@@ -1,0 +1,6 @@
+{"index": 2005, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0);"}
+{"index": 2005, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t1(c0 INTEGER PRIMARY KEY);"}
+{"index": 2005, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "PRAGMA reverse_unordered_selects=true;"}
+{"index": 2005, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t1(c0) VALUES (0);"}
+{"index": 2005, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES ('a');"}
+{"index": 2005, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM t1, t0 WHERE t1.c0 < t0.c0; -- no row is fetched"}

@@ -1,0 +1,14 @@
+{
+  "index": 2010,
+  "input": "bugs_real_relaxed",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0, t1 WHERE (t1.c1 >= CAST(8366271098608253588 AS REAL) AND t1.c1 <= CAST(8366271098608253588 AS REAL)); -- fetches row",
+    "transfer_sql": "SELECT * FROM t0, t1 WHERE (t1.c1 >= 8366271098608253588 AND t1.c1 <= 8366271098608253588); -- fetches row",
+    "mutate_sql": "SELECT SUM(count) FROM (SELECT (t1.c1 >= 8366271098608253588 AND t1.c1 <= 8366271098608253588) :: INTEGER as count FROM t0, t1);"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

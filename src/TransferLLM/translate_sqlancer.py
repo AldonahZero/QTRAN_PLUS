@@ -372,7 +372,8 @@ def sqlancer_translate(
                         "SEMANTIC_MUTATION_LLM_ID", "gpt-4o-mini"
                     )
                 # ========== Mem0 开始变异会话 ==========
-                if mutation_mem0_manager:
+                # 双重检查：确保环境变量也启用了变异阶段 Mem0
+                if mutation_mem0_manager and use_mutation_mem0:
                     try:
                         mutation_mem0_manager.start_session(
                             db_type=actual_target_db,
@@ -736,7 +737,8 @@ def sqlancer_translate(
             mutate_results[-1]["OracleCheck"] = oracle_check_res
             
             # ========== Mem0 记录 Bug 模式 ==========
-            if mutation_mem0_manager and oracle_check_res:
+            # 双重检查：确保环境变量也启用了变异阶段 Mem0
+            if mutation_mem0_manager and use_mutation_mem0 and oracle_check_res:
                 try:
                     # 如果 Oracle 检查失败且不是执行错误，说明发现了潜在 Bug
                     if oracle_check_res.get("end") == False and oracle_check_res.get("error") in [None, "None"]:

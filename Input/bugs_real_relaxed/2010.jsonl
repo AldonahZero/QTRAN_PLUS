@@ -1,0 +1,7 @@
+{"index": 2010, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0 (c0);"}
+{"index": 2010, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t1 (c1 REAL);"}
+{"index": 2010, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t1(c1) VALUES (8366271098608253588);"}
+{"index": 2010, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES ('a');"}
+{"index": 2010, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM t1 WHERE (t1.c1 = CAST(8366271098608253588 AS REAL)); -- fetches row"}
+{"index": 2010, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM t0, t1 WHERE (t1.c1 = CAST(8366271098608253588 AS REAL)); -- fetches no row"}
+{"index": 2010, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM t0, t1 WHERE (t1.c1 >= CAST(8366271098608253588 AS REAL) AND t1.c1 <= CAST(8366271098608253588 AS REAL)); -- fetches row"}

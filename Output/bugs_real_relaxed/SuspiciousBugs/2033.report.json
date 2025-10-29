@@ -1,0 +1,14 @@
+{
+  "index": 2033,
+  "input": "bugs_real_relaxed",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0, t1 WHERE (CAST(t1.c0 AS UNSIGNED)) > (IFNULL(\"u\", t0.c0)); -- expected: row is fetched, actual: no row is fetched",
+    "transfer_sql": "SELECT * FROM t0, t1 WHERE (CAST(t1.c0 AS UNSIGNED)) > (IFNULL(\"u\", t0.c0));",
+    "mutate_sql": "SELECT SUM(count) FROM (SELECT ((CAST(t1.c0 AS UNSIGNED)) > (IFNULL(\"u\", t0.c0))) as count FROM t0, t1) as asdf;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

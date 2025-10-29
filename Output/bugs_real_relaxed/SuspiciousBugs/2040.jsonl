@@ -1,0 +1,3 @@
+{"index": 2040, "sql": "CREATE TABLE t0(c0 TEXT);", "TransferResult": ["CREATE TABLE t0(c0 TEXT)"]}
+{"index": 2040, "sql": "INSERT INTO t0(c0) VALUES (\"a\");", "TransferResult": ["INSERT INTO t0(c0) VALUES ('a')"]}
+{"index": 2040, "sql": "SELECT * FROM t0 WHERE GREATEST((-1) & (-1), -t0.c0); -- expected: row is fetched, actual: row is not fetched", "TransferResult": ["SELECT * FROM t0 WHERE GREATEST((-1) & (-1), -t0.c0)"], "TransferSqlExecResult": ["[('a',)]"], "MutateResult": "SELECT SUM((GREATEST((-1) & (-1), -t0.c0)) > 0) FROM t0;", "MutateSqlExecResult": "[(Decimal('1'),)]"}

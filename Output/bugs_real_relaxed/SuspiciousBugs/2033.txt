@@ -1,0 +1,13 @@
+CREATE TABLE t0(c0 INT);
+CREATE TABLE t1(c0 INT) ENGINE = MEMORY;
+INSERT INTO t0(c0) VALUES(0);
+INSERT INTO t1(c0) VALUES(-1);
+SELECT * FROM t0, t1 WHERE (CAST(t1.c0 AS UNSIGNED)) > (IFNULL("u", t0.c0)); -- expected: row is fetched, actual: no row is fetched
+
+
+CREATE TABLE t0(c0 INT)
+CREATE TABLE t1(c0 INT) ENGINE = MEMORY
+INSERT INTO t0(c0) VALUES(0)
+INSERT INTO t1(c0) VALUES(-1)
+SELECT * FROM t0, t1 WHERE (CAST(t1.c0 AS UNSIGNED)) > (IFNULL("u", t0.c0));
+SELECT SUM(count) FROM (SELECT ((CAST(t1.c0 AS UNSIGNED)) > (IFNULL("u", t0.c0))) as count FROM t0, t1) as asdf;

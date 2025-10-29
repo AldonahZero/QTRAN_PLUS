@@ -1,0 +1,4 @@
+{"index": 2036, "a_db": "mysql", "b_db": "tidb", "molt": "norec", "sql": "SET SESSION sort_buffer_size = 18446744073709551615;"}
+{"index": 2036, "a_db": "mysql", "b_db": "tidb", "molt": "norec", "sql": "CREATE TABLE t0(c0 INT UNIQUE, c1 INT UNIQUE);"}
+{"index": 2036, "a_db": "mysql", "b_db": "tidb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES(1), (2), (3);"}
+{"index": 2036, "a_db": "mysql", "b_db": "tidb", "molt": "norec", "sql": "SELECT * FROM t0 WHERE NOT((t0.c1 IS NULL) AND ((t0.c0) != (1))); -- unexpected: ERROR 5 (HY000): Out of memory (Needed 24 bytes)"}

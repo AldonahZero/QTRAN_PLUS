@@ -1,0 +1,14 @@
+{
+  "index": 2003,
+  "input": "bugs_real_relaxed",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0 WHERE (LIKELY(~c0) OR TRUE); -- no row fetched",
+    "transfer_sql": "SELECT * FROM t0 WHERE (c0 IS NULL OR TRUE);",
+    "mutate_sql": "SELECT SUM(CAST(((c0 IS NULL) OR TRUE) AS INTEGER)) FROM t0;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

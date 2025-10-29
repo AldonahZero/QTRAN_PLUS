@@ -1,0 +1,5 @@
+{"index": 2033, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "CREATE TABLE t0(c0 INT);"}
+{"index": 2033, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "CREATE TABLE t1(c0 INT) ENGINE = MEMORY;"}
+{"index": 2033, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES(0);"}
+{"index": 2033, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "INSERT INTO t1(c0) VALUES(-1);"}
+{"index": 2033, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "SELECT * FROM t0, t1 WHERE (CAST(t1.c0 AS UNSIGNED)) > (IFNULL(\"u\", t0.c0)); -- expected: row is fetched, actual: no row is fetched"}

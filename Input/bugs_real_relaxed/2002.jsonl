@@ -1,0 +1,4 @@
+{"index": 2002, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE test (c0 REAL);"}
+{"index": 2002, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE INDEX index_0 ON test(c0 COLLATE NOCASE);"}
+{"index": 2002, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO test(c0) VALUES ('+/');"}
+{"index": 2002, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM test WHERE (c0 LIKE '+/'); -- fetches no row"}

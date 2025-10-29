@@ -1,0 +1,14 @@
+{
+  "index": 2031,
+  "input": "bugs_real_relaxed",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0 WHERE t0.c0 XOR 0;  -- expected: 0.5, actual: no row is fetched",
+    "transfer_sql": "SELECT * FROM t0 WHERE t0.c0 XOR 0",
+    "mutate_sql": "SELECT SUM(count) FROM (SELECT (t0.c0 XOR 0) > 0 as count FROM t0) as asdf;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

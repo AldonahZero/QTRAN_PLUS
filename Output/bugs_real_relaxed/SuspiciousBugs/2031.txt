@@ -1,0 +1,13 @@
+CREATE TABLE t0(c0 TEXT);
+INSERT INTO t0(c0) VALUES("0.5");
+SELECT * FROM t0 WHERE t0.c0 AND 1; -- expected: 0.5, actual: no row is fetched
+SELECT * FROM t0 WHERE t0.c0 OR 0; -- expected: 0.5, actual: no row is fetched
+SELECT * FROM t0 WHERE t0.c0 XOR 0;  -- expected: 0.5, actual: no row is fetched
+
+
+CREATE TABLE t0(c0 TEXT)
+INSERT INTO t0(c0) VALUES('0.5')
+SELECT * FROM t0 WHERE t0.c0 AND 1
+SELECT * FROM t0 WHERE t0.c0 OR 0
+SELECT * FROM t0 WHERE t0.c0 XOR 0
+SELECT SUM(count) FROM (SELECT (t0.c0 XOR 0) > 0 as count FROM t0) as asdf;

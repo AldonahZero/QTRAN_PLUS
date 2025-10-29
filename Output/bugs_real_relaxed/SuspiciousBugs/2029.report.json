@@ -1,0 +1,14 @@
+{
+  "index": 2029,
+  "input": "bugs_real_relaxed",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0 WHERE CAST(IFNULL(t0.c0, -1) AS UNSIGNED); -- expected: row is selected, actual: no row is selected",
+    "transfer_sql": "SELECT * FROM t0 WHERE NOT(t0.c0 <=> -1);",
+    "mutate_sql": "SELECT SUM(count) FROM (SELECT (NOT(t0.c0 <=> -1)) as count FROM t0) as asdf;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

@@ -1,0 +1,4 @@
+{"index": 2003, "sql": "CREATE TABLE t0(c0);", "TransferResult": ["CREATE TABLE IF NOT EXISTS t0 (c0 TEXT)"]}
+{"index": 2003, "sql": "CREATE INDEX index_0 ON t0(c0) WHERE (~c0) NOT NULL;", "TransferResult": ["CREATE INDEX index_0 ON t0(c0)"]}
+{"index": 2003, "sql": "INSERT INTO t0(c0) VALUES (NULL);", "TransferResult": ["INSERT INTO t0(c0) VALUES (NULL)"]}
+{"index": 2003, "sql": "SELECT * FROM t0 WHERE (LIKELY(~c0) OR TRUE); -- no row fetched", "TransferResult": ["SELECT * FROM t0 WHERE (c0 IS NULL OR TRUE);"], "TransferSqlExecResult": ["[(None,)]"], "MutateResult": "SELECT SUM(CAST(((c0 IS NULL) OR TRUE) AS INTEGER)) FROM t0;", "MutateSqlExecResult": "[(1,)]"}

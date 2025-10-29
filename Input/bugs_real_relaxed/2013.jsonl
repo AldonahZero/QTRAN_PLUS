@@ -1,0 +1,3 @@
+{"index": 2013, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0);"}
+{"index": 2013, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES ('val');"}
+{"index": 2013, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM t0 WHERE (((0 IS NOT FALSE) OR NOT (0 IS FALSE OR (t0.c0 IN (-1)))) IS 0); -- fetches no row"}

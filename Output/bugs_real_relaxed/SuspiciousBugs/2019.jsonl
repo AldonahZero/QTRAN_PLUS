@@ -1,0 +1,3 @@
+{"index": 2019, "sql": "CREATE TABLE t0(c0 TINYINT);", "TransferResult": ["CREATE TABLE t0(c0 TINYINT)"]}
+{"index": 2019, "sql": "INSERT INTO t0(c0) VALUES(NULL);", "TransferResult": ["INSERT INTO t0(c0) VALUES(NULL)"]}
+{"index": 2019, "sql": "SELECT * FROM t0 WHERE NOT(t0.c0 <=> 2035382037); -- expected: row is fetched, actual: no row is fetched", "TransferResult": ["SELECT * FROM t0 WHERE NOT(t0.c0 <=> 2035382037);"], "TransferSqlExecResult": ["[(None,)]"], "MutateResult": "SELECT SUM(count) FROM (SELECT (NOT(t0.c0 <=> 2035382037)) as count FROM t0) as asdf;", "MutateSqlExecResult": "[(Decimal('1'),)]"}

@@ -1,0 +1,4 @@
+{"index": 2025, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "CREATE TABLE t0(c0 TEXT);"}
+{"index": 2025, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "INSERT IGNORE INTO t0(c0) VALUES(\"\\n123\");"}
+{"index": 2025, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "SELECT * FROM t0 WHERE COALESCE(t0.c0); -- expected: row is fetched, actual: no row is fetched"}
+{"index": 2025, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "SELECT * FROM t0 WHERE IFNULL(t0.c0, 1); -- expected: row is fetched, actual: no row is fetched"}

@@ -1,0 +1,5 @@
+{"index": 2012, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c1, c2);"}
+{"index": 2012, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0(c1, c2) VALUES  ('a', 1);"}
+{"index": 2012, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE INDEX i0 ON t0(\"C3\");"}
+{"index": 2012, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "ALTER TABLE t0 RENAME COLUMN c1 TO c3;"}
+{"index": 2012, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT DISTINCT * FROM t0; -- fetches C3|1 rather than a|1"}
