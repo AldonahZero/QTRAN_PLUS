@@ -1,0 +1,2 @@
+{"index": 10, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE TABLE t0(c0 DOUBLE DEFAULT('Fb\\j'), PRIMARY KEY(c0))"}
+{"index": 10, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE TABLE t1(c0 VARCHAR DEFAULT(DATE '1970-01-04'), c1 DOUBLE DEFAULT('261858787'), PRIMARY KEY(c0, c1))"}

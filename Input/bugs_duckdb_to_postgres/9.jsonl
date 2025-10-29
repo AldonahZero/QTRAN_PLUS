@@ -1,0 +1,8 @@
+{"index": 9, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE TABLE t0(c0 BOOLEAN DEFAULT(''), PRIMARY KEY(c0))"}
+{"index": 9, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "INSERT INTO t0(c0) VALUES (191843906), (0.8711092944080331)"}
+{"index": 9, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "INSERT INTO t0(c0) VALUES (DATE '1970-01-03')"}
+{"index": 9, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "INSERT INTO t0(c0) VALUES (DEFAULT), ('')"}
+{"index": 9, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "INSERT INTO t0(c0) VALUES (191843906)"}
+{"index": 9, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "INSERT INTO t0(c0) VALUES (0.9568992205278091), (false), (1.91843906E8)"}
+{"index": 9, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE VIEW v0(c0, c1, c2) AS SELECT false, ((t0.c0 IN (t0.c0)) NOT BETWEEN 'Cp' AND BIT_COUNT((((t0.c0) IS NOT NULL) NOT IN ((TIMESTAMP '1970-01-25 12:55:42' LIKE t0.c0 ESCAPE DATE '1970-01-08'))))), (((t0.c0 NOT IN (t0.c0))) ::DOUBLE) FROM t0 GROUP BY false ORDER BY ((t0.c0) COLLATE POSIX) OFFSET 632499491"}
+{"index": 9, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE VIEW v0(c0) AS SELECT (CASE (t0.c0 BETWEEN t0.c0 AND t0.c0) WHEN t0.c0 THEN ' x' ELSE t0.c0 END ) FROM t0 GROUP BY TIMESTAMP '1969-12-18 01:22:43' HAVING (CASE DATE '1970-01-19' WHEN (CASE 0.9457718021246173 WHEN t0.c0 THEN -1335752856 WHEN TIMESTAMP '1970-01-12 16:22:21' THEN t0.c0 WHEN t0.c0 THEN DATE '1970-01-09' ELSE t0.c0 END ) THEN t0.c0 ELSE STDDEV_SAMP(-683107651) END ) ORDER BY TIMESTAMP '1970-01-17 14:06:40' OFFSET 653792173"}

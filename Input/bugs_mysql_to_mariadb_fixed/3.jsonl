@@ -1,0 +1,7 @@
+{"index": 3, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "CREATE TABLE IF NOT EXISTS t0(c0 INT(124) ZEROFILL  COMMENT 'asdf'  ) "}
+{"index": 3, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "CREATE UNIQUE INDEX i0 USING HASH ON t0(((+ (t0.c0)))) INVISIBLE"}
+{"index": 3, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES(0.305791225398635), (\"\"), (\"+b)\")"}
+{"index": 3, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "INSERT LOW_PRIORITY INTO t0(c0) VALUES(1724568134)"}
+{"index": 3, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "INSERT IGNORE INTO t0(c0) VALUES(1.7976931348623157E308)"}
+{"index": 3, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "CREATE INDEX i0 USING HASH ON t0(c0) INVISIBLE"}
+{"index": 3, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES(209963640)"}

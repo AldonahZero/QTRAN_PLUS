@@ -1,0 +1,4 @@
+{"index": 4, "sql": "CREATE TABLE IF NOT EXISTS t0(c0 TEXT  COMMENT 'asdf'  STORAGE MEMORY) ", "TransferResult": ["CREATE TABLE IF NOT EXISTS t0(c0 TEXT COMMENT 'asdf')"]}
+{"index": 4, "sql": "CREATE INDEX i0 ON t0(c0)", "TransferResult": ["CREATE INDEX i0 ON t0(c0)"]}
+{"index": 4, "sql": "CREATE INDEX i0 USING HASH ON t0(c0(3)) VISIBLE ALGORITHM DEFAULT", "TransferResult": ["CREATE INDEX i1 USING HASH ON t0(c0(3))"]}
+{"index": 4, "sql": "INSERT DELAYED INTO t0(c0) VALUES(\"\")", "TransferResult": ["INSERT INTO t0(c0) VALUES('')"], "TransferSqlExecResult": ["None"], "MutateResult": "SELECT SUM(count) FROM (SELECT ('' != 'NULL') as count FROM t0) as asdf;", "MutateSqlExecResult": "[(Decimal('1'),)]"}

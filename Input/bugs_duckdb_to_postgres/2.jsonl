@@ -1,0 +1,8 @@
+{"index": 2, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE TABLE t0(c0 FLOAT4 DEFAULT(DATE '1969-12-11'), c1 INT2 UNIQUE)"}
+{"index": 2, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "INSERT INTO t0(c0, c1) VALUES (TIMESTAMP '1969-12-11 21:53:14', DATE '1969-12-09')"}
+{"index": 2, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "INSERT INTO t0(c0, c1) VALUES (DEFAULT, 'J5'), (false, '')"}
+{"index": 2, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "INSERT INTO t0(c0, c1) VALUES (DATE '1969-12-11', TIMESTAMP '1970-01-07 12:43:46')"}
+{"index": 2, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "INSERT INTO t0(c0, c1) VALUES (1014660089, 2082266539), (false, 2082266539)"}
+{"index": 2, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "INSERT INTO t0(c0) VALUES (0.2438093440206024)"}
+{"index": 2, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE VIEW v0(c0) AS SELECT t0.c0 FROM t0 WHERE (((CASE 1828165601 WHEN DATE '1969-12-15' THEN '.!' ELSE t0.rowid END ))>((false BETWEEN DATE '1969-12-25' AND 0.1492547494684724))) HAVING (FIRST('2082266539') LIKE ((t0.c1)OR(t0.rowid)) ESCAPE ((true)OR(1722443363))) ORDER BY (((('')OR(TIMESTAMP '1969-12-11 21:53:14')))OR(((t0.c0) ::BOOL))) LIMIT 1795907241"}
+{"index": 2, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE VIEW v0(c0) AS SELECT t0.c1 FROM t0 WHERE (((t0.rowid)%(t0.rowid)) BETWEEN ((t0.rowid)OR(false)) AND t0.c1) GROUP BY t0.c1 LIMIT 489756383"}

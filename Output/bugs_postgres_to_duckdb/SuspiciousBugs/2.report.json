@@ -1,0 +1,14 @@
+{
+  "index": 2,
+  "input": "bugs_postgres_to_duckdb",
+  "suspicious_view": {
+    "sql": "INSERT INTO t1(c0) VALUES(((((139476815)+(((NULL)/(-341666226)))))+(family('44.193.97.113'))))",
+    "transfer_sql": "INSERT INTO t1(c0) VALUES(((((139476815)+(((NULL)/(-341666226)))))+(NULL)))",
+    "mutate_sql": "SELECT c0 FROM t1 WHERE NULL UNION ALL SELECT c0 FROM t1 WHERE NOT (NULL) UNION ALL SELECT c0 FROM t1 WHERE (NULL) IS NULL;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

@@ -131,6 +131,7 @@ def sqlancer_translate(
     """
     # ========== Mem0 记忆管理初始化 ==========
     use_mem0 = os.environ.get("QTRAN_USE_MEM0", "false").lower() == "true"
+    use_mutation_mem0 = os.environ.get("QTRAN_MUTATION_USE_MEM0", "false").lower() == "true"
     
     # 翻译阶段的 Mem0 管理器
     mem0_manager = None
@@ -155,7 +156,7 @@ def sqlancer_translate(
     
     # 变异阶段的 Mem0 管理器
     mutation_mem0_manager = None
-    if use_mem0:
+    if use_mutation_mem0:
         try:
             from src.MutationLlmModelValidator.mutation_mem0_adapter import (
                 MutationMemoryManager, FallbackMutationMemoryManager
@@ -173,6 +174,13 @@ def sqlancer_translate(
         except Exception as e:
             print(f"⚠️ Failed to initialize Mutation Mem0: {e}")
             mutation_mem0_manager = None
+    
+    # 打印 Mem0 配置状态
+    print(f"\n{'='*60}")
+    print(f"🔧 Mem0 Configuration:")
+    print(f"   Translation Phase: {'✅ Enabled' if mem0_manager else '❌ Disabled'}")
+    print(f"   Mutation Phase:    {'✅ Enabled' if mutation_mem0_manager else '❌ Disabled'}")
+    print(f"{'='*60}\n")
     
     input_filename = os.path.basename(input_filepath).replace(".jsonl", "")
     input_dic = os.path.join(current_dir, "..", "..", "Input", input_filename)

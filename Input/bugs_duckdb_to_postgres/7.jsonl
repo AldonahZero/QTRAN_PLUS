@@ -1,0 +1,7 @@
+{"index": 7, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE TABLE t0(c0 INTEGER DEFAULT(''), PRIMARY KEY(c0))"}
+{"index": 7, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE TABLE t1(c0 DATE, PRIMARY KEY(c0))"}
+{"index": 7, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "INSERT INTO t1(c0) VALUES (307106499)"}
+{"index": 7, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "INSERT INTO t0(c0) VALUES (DEFAULT)"}
+{"index": 7, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "INSERT INTO t0(c0) VALUES (0.2643482754137265)"}
+{"index": 7, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "INSERT INTO t0(c0) VALUES (DATE '1970-01-09')"}
+{"index": 7, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "INSERT INTO t0(c0) VALUES (DEFAULT)"}

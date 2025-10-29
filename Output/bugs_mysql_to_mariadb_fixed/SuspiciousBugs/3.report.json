@@ -1,0 +1,14 @@
+{
+  "index": 3,
+  "input": "bugs_mysql_to_mariadb_fixed",
+  "suspicious_view": {
+    "sql": "INSERT INTO t0(c0) VALUES(209963640)",
+    "transfer_sql": "INSERT INTO t0(c0) VALUES(209963640)",
+    "mutate_sql": "SELECT SUM(count) FROM (SELECT (209963640) IS TRUE as count FROM t0) as asdf;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

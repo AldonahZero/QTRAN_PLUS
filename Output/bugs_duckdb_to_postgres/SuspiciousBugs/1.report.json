@@ -1,0 +1,14 @@
+{
+  "index": 1,
+  "input": "bugs_duckdb_to_postgres",
+  "suspicious_view": {
+    "sql": "INSERT INTO t1(c2, c0, c1) VALUES ('', true, -805450823)",
+    "transfer_sql": "INSERT INTO t1(c2, c0, c1) VALUES ('1969-12-21', -805450823, 1)",
+    "mutate_sql": "SELECT c2, c0, c1 FROM t1 WHERE NOT (c0 <= c0) UNION ALL SELECT c2, c0, c1 FROM t1 WHERE NOT (NOT (c0 <= c0)) UNION ALL SELECT c2, c0, c1 FROM t1 WHERE (NOT (c0 <= c0)) IS NULL;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

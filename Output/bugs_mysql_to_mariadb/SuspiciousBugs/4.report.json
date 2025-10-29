@@ -1,0 +1,14 @@
+{
+  "index": 4,
+  "input": "bugs_mysql_to_mariadb",
+  "suspicious_view": {
+    "sql": "select TABLE_NAME, ENGINE from information_schema.TABLES where table_schema = 'mysql_db63'",
+    "transfer_sql": "SELECT TABLE_NAME, ENGINE FROM information_schema.TABLES WHERE table_schema = 'mysql_db63'",
+    "mutate_sql": "SELECT SUM(count) FROM (SELECT (table_schema = 'mysql_db63') AS count FROM information_schema.TABLES) as asdf;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

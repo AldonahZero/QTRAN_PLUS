@@ -1,0 +1,3 @@
+{"index": 5, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE TABLE t0(c0 INT2)"}
+{"index": 5, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE TABLE t1(c0 DATE UNIQUE NOT NULL, PRIMARY KEY(c0))"}
+{"index": 5, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE VIEW v0(c0) AS SELECT ((0.3516278094260231)<=(t0.c0)) FROM t0 WHERE (('0.3516278094260231' NOT IN (t0.rowid)) BETWEEN '' AND ((TIMESTAMP '1969-12-17 12:13:31')AND(t0.c0))) OFFSET 334795971"}

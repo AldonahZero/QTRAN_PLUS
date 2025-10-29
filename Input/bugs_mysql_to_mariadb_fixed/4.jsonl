@@ -1,0 +1,4 @@
+{"index": 4, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "CREATE TABLE IF NOT EXISTS t0(c0 TEXT  COMMENT 'asdf'  STORAGE MEMORY) "}
+{"index": 4, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "CREATE INDEX i0 ON t0(c0)"}
+{"index": 4, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "CREATE INDEX i0 USING HASH ON t0(c0(3)) VISIBLE ALGORITHM DEFAULT"}
+{"index": 4, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "INSERT DELAYED INTO t0(c0) VALUES(\"\")"}

@@ -1,0 +1,8 @@
+{"index": 4, "sql": "CREATE TABLE t0(c0 MEDIUMINT  PRIMARY KEY COLUMN_FORMAT DEFAULT NOT NULL COMMENT 'asdf'  STORAGE DISK) ", "TransferResult": ["CREATE TABLE t0(c0 MEDIUMINT PRIMARY KEY NOT NULL COMMENT 'asdf')"]}
+{"index": 4, "sql": "select TABLE_NAME, ENGINE from information_schema.TABLES where table_schema = 'mysql_db63'", "TransferResult": ["SELECT TABLE_NAME, ENGINE FROM information_schema.TABLES WHERE table_schema = 'mysql_db63'"]}
+{"index": 4, "sql": "select TABLE_NAME, ENGINE from information_schema.TABLES where table_schema = 'mysql_db63'", "TransferResult": ["SELECT TABLE_NAME, ENGINE FROM information_schema.TABLES WHERE table_schema = 'mysql_db63'"]}
+{"index": 4, "sql": "INSERT INTO t0(c0) VALUES(0.28851714860346456)", "TransferResult": ["INSERT INTO t0(c0) VALUES(0.28851714860346456)"]}
+{"index": 4, "sql": "CREATE INDEX i0 USING HASH ON t0(( EXISTS (SELECT 1 wHERE FALSE)), (t0.c0), ((- ((CASE t0.c0 WHEN t0.c0 THEN t0.c0 ELSE 998639601 END))))) INVISIBLE", "TransferResult": ["CREATE INDEX i0 ON t0(c0) USING HASH"]}
+{"index": 4, "sql": "INSERT IGNORE INTO t0(c0) VALUES(1341291920)", "TransferResult": ["INSERT IGNORE INTO t0(c0) VALUES(1341291920)"]}
+{"index": 4, "sql": "INSERT INTO t0(c0) VALUES(0.6538581146496587)", "TransferResult": ["INSERT INTO t0(c0) VALUES(0.6538581146496587)"]}
+{"index": 4, "sql": "select TABLE_NAME, ENGINE from information_schema.TABLES where table_schema = 'mysql_db63'", "TransferResult": ["SELECT TABLE_NAME, ENGINE FROM information_schema.TABLES WHERE table_schema = 'mysql_db63'"], "TransferSqlExecResult": ["[]"], "MutateResult": "SELECT SUM(count) FROM (SELECT (table_schema = 'mysql_db63') AS count FROM information_schema.TABLES) as asdf;", "MutateSqlExecResult": "[(Decimal('0'),)]"}

@@ -1237,7 +1237,7 @@ def transfer_llm_sql_semantic(
 
     Transfer should ensure following requirements:
     1. All column names and feature variables remain unchanged.
-    2. Strictly forbid meaningless features(such as NULL,0), features with random return value(such as current_time).
+    2. Keep all data values EXACTLY as they are in the original statement. This includes NULL values, empty strings (''), zeros (0), and all other literal values. ONLY remove non-deterministic functions that produce random results (such as CURRENT_TIMESTAMP(), RANDOM(), NOW()). NEVER modify, delete, or substitute actual data values or table names.
     3. Transfer as far as possible, and ensure similar semantics.\
 
     Transfer by carrying out following instructions step by step.\

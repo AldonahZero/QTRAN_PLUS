@@ -1,0 +1,6 @@
+{"index": 1, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "CREATE TABLE t0(c0 LONGTEXT  STORAGE DISK COMMENT 'asdf'  NULL) "}
+{"index": 1, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "CREATE UNIQUE INDEX i76 USING BTREE ON t0(c0 ASC) INVISIBLE ALGORITHM DEFAULT"}
+{"index": 1, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "CREATE INDEX i0 USING BTREE ON t0(c0) ALGORITHM DEFAULT"}
+{"index": 1, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "INSERT DELAYED INTO t0(c0) VALUES(-487725558)"}
+{"index": 1, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "INSERT HIGH_PRIORITY INTO t2(c0) VALUES('\tN%l ''')"}
+{"index": 1, "a_db": "mysql", "b_db": "mariadb", "molt": "norec", "sql": "INSERT INTO t2(c0) VALUES('*{5 !r''')"}
