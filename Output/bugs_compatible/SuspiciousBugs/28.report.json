@@ -1,0 +1,14 @@
+{
+  "index": 28,
+  "input": "bugs_compatible",
+  "suspicious_view": {
+    "sql": "EXPLAIN SELECT DATE '1970-01-11' FROM v0, t53 LIMIT 1028311312 OFFSET 258476178;",
+    "transfer_sql": "EXPLAIN SELECT DATE('1970-01-11') FROM v0, t53 LIMIT 1028311312 OFFSET 258476178;",
+    "mutate_sql": "SELECT MAX(agg0) FROM (SELECT DATE('1970-01-11') as agg0 FROM v0, t53 WHERE 'NM' UNION ALL SELECT DATE('1970-01-11') as agg0 FROM v0, t53 WHERE NOT ('NM') UNION ALL SELECT DATE('1970-01-11') as agg0 FROM v0, t53 WHERE ('NM') IS NULL) as asdf;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

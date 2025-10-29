@@ -1,0 +1,5 @@
+{"index": 21, "sql": "CREATE TABLE t0(c0 DECIMAL  COLUMN_FORMAT DYNAMIC STORAGE MEMORY COMMENT 'asdf'  UNIQUE) ", "TransferResult": ["CREATE TABLE t0(c0 DECIMAL UNIQUE COMMENT 'asdf')"]}
+{"index": 21, "sql": "INSERT DELAYED INTO t0(c0) VALUES(-1222260142)", "TransferResult": ["INSERT INTO t0(c0) VALUES(-1222260142)"]}
+{"index": 21, "sql": "CREATE INDEX i0 ON t0(c0 DESC) VISIBLE", "TransferResult": ["CREATE INDEX i0 ON t0(c0 DESC)"]}
+{"index": 21, "sql": "select TABLE_NAME, ENGINE from information_schema.TABLES where table_schema = 'mysql_db39'", "TransferResult": ["SELECT TABLE_NAME, ENGINE FROM information_schema.TABLES WHERE table_schema = 'mysql_db39'"]}
+{"index": 21, "sql": "CREATE INDEX i1 ON t0((COALESCE(t0.c0, NULL)))", "TransferResult": ["CREATE INDEX i1 ON t0(c0)"], "TransferSqlExecResult": ["None"], "MutateResult": "SELECT c0 FROM t0 WHERE 0.7693037899416226 UNION ALL SELECT c0 FROM t0 WHERE NOT (0.7693037899416226) UNION ALL SELECT c0 FROM t0 WHERE (0.7693037899416226) IS NULL;", "MutateSqlExecResult": "[(Decimal('-1222260142'),)]"}

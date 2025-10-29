@@ -1,0 +1,14 @@
+{
+  "index": 39,
+  "input": "bugs_compatible",
+  "suspicious_view": {
+    "sql": "CREATE VIEW v0(c0) AS SELECT DATE '292278994-08-17' FROM t0 WHERE true GROUP BY DATE '1969-12-24' LIMIT 1686272814;",
+    "transfer_sql": "CREATE VIEW v0(c0) AS SELECT DATE '1969-12-24' FROM t0 WHERE true GROUP BY DATE '1969-12-24' LIMIT 1686272814",
+    "mutate_sql": "SELECT c0 FROM v0* WHERE ('040226') ILIKE ANY (ARRAY[('0237'),('192.54.123.157'),('88.243.138.204')]) UNION ALL SELECT c0 FROM v0* WHERE NOT (('040226') ILIKE ANY (ARRAY[('0237'),('192.54.123.157'),('88.243.138.204')])) UNION ALL SELECT c0 FROM v0* WHERE (('040226') ILIKE ANY (ARRAY[('0237'),('192.54.123.157'),('88.243.138.204')])) IS NULL;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

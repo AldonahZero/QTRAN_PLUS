@@ -1,0 +1,14 @@
+{
+  "index": 16,
+  "input": "bugs_compatible",
+  "suspicious_view": {
+    "sql": "INSERT INTO t2(c0) VALUES('*{5 !r''')",
+    "transfer_sql": "INSERT INTO t0(c0) VALUES('*{5 !r''')",
+    "mutate_sql": "SELECT('*{5 !r''') FROM t0 WHERE 1803934793 UNION ALL SELECT('*{5 !r''') FROM t0 WHERE NOT (1803934793) UNION ALL SELECT('*{5 !r''') FROM t0 WHERE (1803934793) IS NULL;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

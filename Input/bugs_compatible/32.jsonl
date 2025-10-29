@@ -1,0 +1,9 @@
+{"index": 32, "a_db": "duckdb", "b_db": "mariadb", "molt": "tlp (aggregate max)", "sql": "CREATE TABLE t0(c0 TIMESTAMP);"}
+{"index": 32, "a_db": "duckdb", "b_db": "mariadb", "molt": "tlp (aggregate max)", "sql": "CREATE TABLE t1(c0 BOOL);"}
+{"index": 32, "a_db": "duckdb", "b_db": "mariadb", "molt": "tlp (aggregate max)", "sql": "VACUUM;"}
+{"index": 32, "a_db": "duckdb", "b_db": "mariadb", "molt": "tlp (aggregate max)", "sql": "INSERT INTO t1(c0) VALUES (true);"}
+{"index": 32, "a_db": "duckdb", "b_db": "mariadb", "molt": "tlp (aggregate max)", "sql": "INSERT INTO t0(c0) VALUES (-520626891);"}
+{"index": 32, "a_db": "duckdb", "b_db": "mariadb", "molt": "tlp (aggregate max)", "sql": "INSERT INTO t1(c0) VALUES (true), (1709599207);"}
+{"index": 32, "a_db": "duckdb", "b_db": "mariadb", "molt": "tlp (aggregate max)", "sql": "EXPLAIN SELECT t1.rowid FROM t1, t0 WHERE t0.c0 GROUP BY (('1709599207')NOT SIMILAR TO(0.3758746063037349)) ORDER BY -944813051 DESC LIMIT 1760138561 OFFSET 1121201362;"}
+{"index": 32, "a_db": "duckdb", "b_db": "mariadb", "molt": "tlp (aggregate max)", "sql": "EXPLAIN SELECT DATE '1969-12-13' FROM t0 NATURAL FULL JOIN t1 GROUP BY t1.c0 HAVING FIRST(t0.c0) ORDER BY DATE '1970-01-15' LIMIT 1933451574 OFFSET 972953511;"}
+{"index": 32, "a_db": "duckdb", "b_db": "mariadb", "molt": "tlp (aggregate max)", "sql": "INSERT INTO t0(c0) VALUES (DATE '1970-01-13');"}

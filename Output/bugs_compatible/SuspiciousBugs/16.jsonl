@@ -1,0 +1,7 @@
+{"index": 16, "sql": "CREATE TABLE t0(c0 LONGTEXT  STORAGE DISK COMMENT 'asdf'  NULL) ", "TransferResult": ["CREATE TABLE t0(c0 TEXT COMMENT 'asdf')"]}
+{"index": 16, "sql": "select TABLE_NAME, ENGINE from information_schema.TABLES where table_schema = 'mysql_db13'", "TransferResult": ["SELECT TABLE_NAME, ENGINE FROM information_schema.TABLES WHERE table_schema = 'mysql_db13'"]}
+{"index": 16, "sql": "CREATE INDEX i0 USING BTREE ON t0(c0) ALGORITHM DEFAULT", "TransferResult": ["CREATE INDEX i0 ON t0(c0) USING BTREE"]}
+{"index": 16, "sql": "CREATE INDEX i0 USING HASH ON t0(c0(3)) ALGORITHM COPY", "TransferResult": ["CREATE INDEX i1 USING HASH ON t0(c0(3))"]}
+{"index": 16, "sql": "INSERT DELAYED INTO t0(c0) VALUES(-487725558)", "TransferResult": ["INSERT INTO t0(c0) VALUES(-487725558)"]}
+{"index": 16, "sql": "INSERT HIGH_PRIORITY INTO t2(c0) VALUES('\tN%l ''')", "TransferResult": ["INSERT INTO t0(c0) VALUES('\tN%l ''')"]}
+{"index": 16, "sql": "INSERT INTO t2(c0) VALUES('*{5 !r''')", "TransferResult": ["INSERT INTO t0(c0) VALUES('*{5 !r''')"], "TransferSqlExecResult": ["None"], "MutateResult": "SELECT('*{5 !r''') FROM t0 WHERE 1803934793 UNION ALL SELECT('*{5 !r''') FROM t0 WHERE NOT (1803934793) UNION ALL SELECT('*{5 !r''') FROM t0 WHERE (1803934793) IS NULL;", "MutateSqlExecResult": "[(\"*{5 !r'\",), (\"*{5 !r'\",), (\"*{5 !r'\",)]"}

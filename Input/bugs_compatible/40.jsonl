@@ -1,0 +1,9 @@
+{"index": 40, "a_db": "duckdb", "b_db": "mariadb", "molt": "tlp (aggregate max)", "sql": "CREATE TABLE t0(c0 VARCHAR DEFAULT(false), PRIMARY KEY(c0));"}
+{"index": 40, "a_db": "duckdb", "b_db": "mariadb", "molt": "tlp (aggregate max)", "sql": "INSERT INTO t0(c0) VALUES (0.4941694442741521), (TIMESTAMP '1970-01-01 23:21:26'), (1954691183);"}
+{"index": 40, "a_db": "duckdb", "b_db": "mariadb", "molt": "tlp (aggregate max)", "sql": "INSERT INTO t0(c0) VALUES (-1592074959);"}
+{"index": 40, "a_db": "duckdb", "b_db": "mariadb", "molt": "tlp (aggregate max)", "sql": "EXPLAIN SELECT ('' NOT IN (((84086674) COLLATE NOACCENT))) FROM t0 HAVING 'u[L}k' ORDER BY t0.c0 OFFSET 193937041;"}
+{"index": 40, "a_db": "duckdb", "b_db": "mariadb", "molt": "tlp (aggregate max)", "sql": "EXPLAIN SELECT SQRT(((((t0.c0)OR(t0.c0)))AND(''))) FROM t0 WHERE t0.c0 GROUP BY t0.c0, 1183104795, (DATE '1970-01-10' LIKE 0.7932265363947975 ESCAPE t0.c0) ORDER BY -1592074959 ASC OFFSET 1178486508;"}
+{"index": 40, "a_db": "duckdb", "b_db": "mariadb", "molt": "tlp (aggregate max)", "sql": "EXPLAIN SELECT t0.c0 FROM t0 WHERE RTRIM(t0.c0) GROUP BY t0.c0 HAVING VAR_POP(true) ORDER BY true, DATE '1969-12-25' DESC, (- 2126535315) ASC;"}
+{"index": 40, "a_db": "duckdb", "b_db": "mariadb", "molt": "tlp (aggregate max)", "sql": "EXPLAIN SELECT t0.c0 FROM t0 ORDER BY ((XOR(((false) IS NOT NULL), 0.7932265363947975)) COLLATE POSIX) ASC LIMIT 755658238;"}
+{"index": 40, "a_db": "duckdb", "b_db": "mariadb", "molt": "tlp (aggregate max)", "sql": "EXPLAIN SELECT t0.c0 FROM t0 OFFSET 2056324387;"}
+{"index": 40, "a_db": "duckdb", "b_db": "mariadb", "molt": "tlp (aggregate max)", "sql": "VACUUM;"}

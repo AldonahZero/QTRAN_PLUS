@@ -1,0 +1,10 @@
+{"index": 47, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE TABLE t0(c0 TIMESTAMP DEFAULT(false), PRIMARY KEY(c0));"}
+{"index": 47, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE TABLE t1(c0 VARCHAR CHECK(c0), PRIMARY KEY(c0));"}
+{"index": 47, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE VIEW v84(c0, c1, c2) AS SELECT true, true, NULL FROM t1, t0 WHERE t1.c0 LIMIT 991436900 OFFSET 985152508;"}
+{"index": 47, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "INSERT INTO t0(c0) VALUES (false), ('?u?Hrx_n');"}
+{"index": 47, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "INSERT INTO t1(c0) VALUES (0.3309049659407479);"}
+{"index": 47, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "INSERT INTO t0(c0) VALUES (0.13969236409662167);"}
+{"index": 47, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "INSERT INTO t0(c0) VALUES (DEFAULT);"}
+{"index": 47, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "INSERT INTO t1(c0) VALUES ('655867745');"}
+{"index": 47, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "ANALYZE;"}
+{"index": 47, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "DROP VIEW v84;"}

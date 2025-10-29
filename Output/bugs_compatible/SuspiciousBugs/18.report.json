@@ -1,0 +1,14 @@
+{
+  "index": 18,
+  "input": "bugs_compatible",
+  "suspicious_view": {
+    "sql": "INSERT IGNORE INTO t0(c0) VALUES(1.7976931348623157E308)",
+    "transfer_sql": "INSERT IGNORE INTO t0(c0) VALUES(1.7976931348623157E308)",
+    "mutate_sql": "SELECT 1.7976931348623157E308 FROM t0 WHERE 992646858 UNION ALL SELECT 1.7976931348623157E308 FROM t0 WHERE NOT (992646858) UNION ALL SELECT 1.7976931348623157E308 FROM t0 WHERE (992646858) IS NULL;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

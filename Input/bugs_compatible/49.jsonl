@@ -1,0 +1,6 @@
+{"index": 49, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE TABLE t0(c0 INT1);"}
+{"index": 49, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE TABLE t1(c0 VARCHAR DEFAULT(1814980766), PRIMARY KEY(c0));"}
+{"index": 49, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "INSERT INTO t1(c0) VALUES (DEFAULT), (true);"}
+{"index": 49, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE VIEW v0(c0, c1, c2) AS SELECT false, ((DATE '1970-01-22')NOT SIMILAR TO(t1.c0)), t1.c0 FROM t0, t1 WHERE ((t0.rowid)NOT LIKE(t0.c0)) HAVING (VAR_POP(t1.c0) LIKE ((t0.rowid)/(t0.c0)) ESCAPE ((TIMESTAMP '1970-01-22 00:09:40')AND(t1.c0))) ORDER BY REGEXP_REPLACE(((((t1.c0)SIMILAR TO(0.8250385074835151))) ::VARCHAR), ((t0.c0) ::DOUBLE), (0.2471857741450879 IN (t0.rowid))) OFFSET 1323099948;"}
+{"index": 49, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE VIEW v0(c0) AS SELECT t0.c0 FROM t0, t1 HAVING MIN(1814980766) OFFSET 56045309;"}
+{"index": 49, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE VIEW v0(c0, c1, c2, c3, c4) AS SELECT TIMESTAMP '1970-01-22 16:50:39', t0.c0, t1.c0, DATE '1970-01-08', t0.c0 FROM t1 RIGHT  JOIN t0 ON TIMESTAMP '1969-12-23 23:34:22' WHERE t0.c0 OFFSET 662950406;"}

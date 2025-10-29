@@ -1,0 +1,5 @@
+{"index": 2001, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE test (c0);"}
+{"index": 2001, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE INDEX index_0 ON test(c0 LIKE '');"}
+{"index": 2001, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "PRAGMA case_sensitive_like=false;"}
+{"index": 2001, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "VACUUM;"}
+{"index": 2001, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * from test; -- Error: malformed database schema (index_0) - non-deterministic functions prohibited in index expressions"}

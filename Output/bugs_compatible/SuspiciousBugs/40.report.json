@@ -1,0 +1,14 @@
+{
+  "index": 40,
+  "input": "bugs_compatible",
+  "suspicious_view": {
+    "sql": "VACUUM;",
+    "transfer_sql": "OPTIMIZE TABLE t0",
+    "mutate_sql": "SELECT MAX(agg0) FROM (SELECT MAX(0) as agg0 FROM t0 WHERE 0 UNION ALL SELECT MAX(0) as agg0 FROM t0 WHERE NOT (0) UNION ALL SELECT MAX(0) as agg0 FROM t0 WHERE (0) IS NULL) as asdf;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

@@ -1,0 +1,5 @@
+{"index": 31, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE TABLE t0(c0 VARCHAR DEFAULT(-1856451069), PRIMARY KEY(c0));"}
+{"index": 31, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE TABLE t83(c0 TIMESTAMP DEFAULT(207322098), c1 FLOAT4);"}
+{"index": 31, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "EXPLAIN SELECT t83.c0 FROM t83, t0 GROUP BY '6IzY7' ORDER BY t83.c0 ASC, ((NULLIF(-294231582, ((('' NOT IN (false, DATE '1969-12-12', t83.c1))) ::DATE)))&(t83.c1)) DESC, '' LIMIT 1317623390;"}
+{"index": 31, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "EXPLAIN SELECT (NOT ((t83.rowid)>=(false))) FROM t83 HAVING t83.c0 LIMIT 664952171 OFFSET 1430607469;"}
+{"index": 31, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "EXPLAIN SELECT (NOT t0.c0) FROM t0 WHERE (t0.c0 NOT IN (((t0.c0) COLLATE NOCASE))) GROUP BY t0.c0 OFFSET 1001593469;"}

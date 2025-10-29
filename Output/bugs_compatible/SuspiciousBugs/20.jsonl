@@ -1,0 +1,4 @@
+{"index": 20, "sql": "CREATE TABLE t0(c0 FLOAT  STORAGE MEMORY NULL COMMENT 'asdf'  ) ", "TransferResult": ["CREATE TABLE t0(c0 FLOAT NULL COMMENT 'asdf')"]}
+{"index": 20, "sql": "select TABLE_NAME, ENGINE from information_schema.TABLES where table_schema = 'mysql_db35'", "TransferResult": ["SELECT TABLE_NAME, ENGINE FROM information_schema.TABLES WHERE table_schema = 'mysql_db35'"]}
+{"index": 20, "sql": "CREATE INDEX i0 ON t0(c0)", "TransferResult": ["CREATE INDEX i0 ON t0(c0)"]}
+{"index": 20, "sql": "CREATE INDEX i1 ON t0(c0)", "TransferResult": ["CREATE INDEX i1 ON t0(c0)"], "TransferSqlExecResult": ["None"], "MutateResult": "SELECT t0.c0 FROM t0 UNION ALL SELECT t0.c0 FROM t0 WHERE NOT (1) UNION ALL SELECT t0.c0 FROM t0 WHERE (1) IS NULL;", "MutateSqlExecResult": "[]"}

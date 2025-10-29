@@ -1,0 +1,10 @@
+{"index": 37, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE TABLE t0(c0 VARCHAR COLLATE NOACCENT, PRIMARY KEY(c0));"}
+{"index": 37, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "ANALYZE;"}
+{"index": 37, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE VIEW v0(c0) AS SELECT true FROM t0 WHERE (t0.c0 LIKE UPPER(t0.c0) ESCAPE 2073646991) HAVING 0.568331473041262;"}
+{"index": 37, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "CREATE VIEW v0(c0) AS SELECT DATE '1970-01-25' FROM t0 WHERE (NOT true) GROUP BY t0.c0 ORDER BY t0.c0, ((true) IS NOT NULL), DATE '1969-12-30' DESC;"}
+{"index": 37, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "INSERT INTO t0(c0) VALUES ('}^#9'), (0.24081025011281632), ('');"}
+{"index": 37, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "INSERT INTO t0(c0) VALUES (true), ('-150093060');"}
+{"index": 37, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "VACUUM;"}
+{"index": 37, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "INSERT INTO t0(c0) VALUES (true);"}
+{"index": 37, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "INSERT INTO t0(c0) VALUES (DEFAULT);"}
+{"index": 37, "a_db": "duckdb", "b_db": "postgres", "molt": "tlp (where)", "sql": "INSERT INTO t0(c0) VALUES (TIMESTAMP '1969-12-11 21:36:04');"}

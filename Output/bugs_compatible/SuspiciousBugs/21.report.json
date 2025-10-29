@@ -1,0 +1,14 @@
+{
+  "index": 21,
+  "input": "bugs_compatible",
+  "suspicious_view": {
+    "sql": "CREATE INDEX i1 ON t0((COALESCE(t0.c0, NULL)))",
+    "transfer_sql": "CREATE INDEX i1 ON t0(c0)",
+    "mutate_sql": "SELECT c0 FROM t0 WHERE 0.7693037899416226 UNION ALL SELECT c0 FROM t0 WHERE NOT (0.7693037899416226) UNION ALL SELECT c0 FROM t0 WHERE (0.7693037899416226) IS NULL;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}
