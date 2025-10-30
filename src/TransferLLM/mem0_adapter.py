@@ -144,10 +144,11 @@ class TransferMemoryManager:
         origin_db: str,
         target_db: str,
         iterations: int,
-        features: List[str] = None
+        features: List[str] = None,
+        context_sqls: List[str] = None
     ):
         """
-        记录成功的翻译案例
+        记录成功的翻译案例（改进版：包含DDL上下文）
         
         Args:
             origin_sql: 源 SQL
@@ -156,16 +157,51 @@ class TransferMemoryManager:
             target_db: 目标数据库
             iterations: 迭代次数
             features: 涉及的特征列表
+            context_sqls: 上下文SQL列表（如前面的DDL语句）
         """
         start_time = time.time()
+        
+        # 提取表结构信息作为上下文
+        table_context = ""
+        column_types = {}
+        
+        if context_sqls:
+            for ctx_sql in context_sqls:
+                ctx_upper = ctx_sql.upper()
+                # 提取CREATE TABLE信息
+                if "CREATE TABLE" in ctx_upper:
+                    # 简单提取表名和列类型（不完全解析，只提取关键信息）
+                    table_context += ctx_sql[:150] + "; "
+                    
+                    # 尝试提取列类型信息
+                    if "(" in ctx_sql and ")" in ctx_sql:
+                        cols_part = ctx_sql[ctx_sql.find("("):ctx_sql.rfind(")")+1]
+                        # 提取c0, c1等列及其类型
+                        import re
+                        col_matches = re.findall(r'(c\d+)\s+(INT|BOOL|TEXT|VARCHAR|REAL|DOUBLE|FLOAT|NUMERIC|CHAR)', cols_part, re.IGNORECASE)
+                        for col_name, col_type in col_matches:
+                            column_types[col_name.lower()] = col_type.upper()
         
         # 截断过长的 SQL 以避免存储过大
         origin_snippet = origin_sql[:200] if len(origin_sql) > 200 else origin_sql
         target_snippet = target_sql[:200] if len(target_sql) > 200 else target_sql
         
+        # 构建带上下文的message
         message = (
             f"Successfully translated SQL from {origin_db} to {target_db} "
             f"in {iterations} iterations. "
+        )
+        
+        # 添加表结构上下文（如果有）
+        if table_context:
+            message += f"Context: {table_context.strip()[:200]} "
+        
+        # 添加列类型信息（如果有）
+        if column_types:
+            col_info = ", ".join([f"{col}:{typ}" for col, typ in list(column_types.items())[:3]])
+            message += f"Column types: {col_info}. "
+        
+        message += (
             f"Original: {origin_snippet}{'...' if len(origin_sql) > 200 else ''} "
             f"Translated: {target_snippet}{'...' if len(target_sql) > 200 else ''}"
         )
@@ -183,6 +219,8 @@ class TransferMemoryManager:
                     "target_db": target_db,
                     "iterations": iterations,
                     "features": features or [],
+                    "context_sqls": context_sqls[:3] if context_sqls else [],  # 保存前3条上下文SQL
+                    "column_types": column_types,  # 保存列类型信息
                     "session_id": self.session_id,
                     "timestamp": datetime.now().isoformat()
                 }
@@ -1082,7 +1120,8 @@ class FallbackMemoryManager:
         self.session_id = f"{origin_db}_to_{target_db}_{molt}_{uuid.uuid4().hex[:8]}"
         return self.session_id
     
-    def record_successful_translation(self, origin_sql, target_sql, origin_db, target_db, iterations, features=None):
+    def record_successful_translation(self, origin_sql, target_sql, origin_db, target_db, iterations, features=None, context_sqls=None):
+        """记录成功的翻译（包含DDL上下文）"""
         # 简单的文件追加
         filepath = os.path.join(self.storage_dir, f"{self.user_id}_success.jsonl")
         with open(filepath, 'a', encoding='utf-8') as f:
@@ -1093,6 +1132,7 @@ class FallbackMemoryManager:
                 "target_db": target_db,
                 "iterations": iterations,
                 "features": features,
+                "context_sqls": context_sqls[:3] if context_sqls else [],  # 保存前3条上下文
                 "timestamp": datetime.now().isoformat()
             }, f)
             f.write('\n')

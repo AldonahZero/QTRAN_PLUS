@@ -252,6 +252,14 @@ def sqlancer_translate(
                 )
             for info in bug_input:
                 transfer_start_time = datetime.now()  # 使用 ISO 8601 格式
+                
+                # 构建上下文SQL：使用之前已成功翻译的SQL作为上下文
+                context_sqls = []
+                for prev_output in transfer_outputs:
+                    # 提取之前翻译的SQL
+                    prev_sql = prev_output.get("sql", "")
+                    context_sqls.append(prev_sql)
+                
                 (
                     costs,
                     transfer_results,
@@ -273,6 +281,7 @@ def sqlancer_translate(
                     origin_db=a_db,
                     target_db=b_db,
                     test_info=info,
+                    context_sqls=context_sqls,  # 传入上下文SQL
                 )
                 transfer_end_time = datetime.now()  # 使用 ISO 8601 格式
                 info["SqlExecResult"] = origin_exec_result

@@ -1,0 +1,5 @@
+SELECT SIN(1e1000); -- -nan
+
+
+SELECT SIN(1e308);
+SELECT SIN(1e308) FROM pg_catalog.pg_tables WHERE pg_catalog.pg_tables.tablename IS NOT NULL UNION ALL SELECT SIN(1e308) FROM pg_catalog.pg_tables WHERE NOT (pg_catalog.pg_tables.tablename IS NOT NULL) UNION ALL SELECT SIN(1e308) FROM pg_catalog.pg_tables WHERE (pg_catalog.pg_tables.tablename IS NOT NULL) IS NULL;

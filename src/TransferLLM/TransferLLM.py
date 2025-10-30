@@ -1173,6 +1173,7 @@ def transfer_llm_sql_semantic(
     target_db,
     test_info,
     use_redis_kb: bool = False,
+    context_sqls: List[str] = None,
 ):
     """
     # transfer llm:单条sql语句的转换及结果处理
@@ -1577,9 +1578,10 @@ def transfer_llm_sql_semantic(
                         origin_db=origin_db,
                         target_db=target_db,
                         iterations=conversation_cnt,
-                        features=features
+                        features=features,
+                        context_sqls=context_sqls  # 传入DDL上下文
                     )
-                    print(f"💾 Recorded successful translation (iteration {conversation_cnt})")
+                    print(f"💾 Recorded successful translation with context (iteration {conversation_cnt})")
                 
                 # 记录错误修正（从失败到成功的转变）
                 if conversation_cnt > 1 and len(error_messages) >= 2:
@@ -1876,6 +1878,7 @@ def transfer_llm(
     target_db,
     test_info,
     use_redis_kb: bool = False,
+    context_sqls: List[str] = None,
 ):
     """调度入口:
     根据测试策略(molt)决定使用哪种测试方法:
@@ -1921,6 +1924,7 @@ def transfer_llm(
             target_db,
             test_info,
             use_redis_kb=use_redis_kb,
+            context_sqls=context_sqls,
         )
     elif molt in CRASH_STRATEGIES:
         # 使用崩溃/挂起检测(适用于稳定性测试)

@@ -258,10 +258,10 @@ class SimpleCoordinator:
         print("\n" + "="*60)
         print("📊 协调器运行统计")
         print("="*60)
-        print(f"  总 Recommendation 数: {self.stats['total_recommendations']}")
+        # print(f"  总 Recommendation 数: {self.stats['total_recommendations']}")
         print(f"  高优先级建议数: {self.stats['high_priority_count']}")
-        print(f"  应用的建议数: {self.stats['applied_recommendations']}")
-        print(f"  检测到的 Hotspot 数: {self.stats['hotspots_count']}")
+        # print(f"  应用的建议数: {self.stats['applied_recommendations']}")
+        # print(f"  检测到的 Hotspot 数: {self.stats['hotspots_count']}")
         print(f"  策略调整次数: {self.stats['strategy_adjustments']}")
         print("="*60 + "\n")
 
