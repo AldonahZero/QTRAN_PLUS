@@ -615,48 +615,188 @@ def sqlancer_translate(
 
             if before_error_message or after_error_message:
                 # 如果是mutate前和后的语句有执行fail的情况
-                oracle_check_res = {
-                    "end": False,
-                    "error": "exec fail"
-                }
+                oracle_check_res = {"end": False, "error": "exec fail"}
             else:
-                converted_before_result = execSQL_result_convertor(before_result)
-                converted_after_result = execSQL_result_convertor(after_result)
-                # 创建 Result 对象
-                before_result_object = Result(converted_before_result["column_names"],
-                                              converted_before_result["column_types"],
-                                              converted_before_result["rows"])
-                after_result_object = Result(converted_after_result["column_names"],
-                                             converted_after_result["column_types"],
-                                             converted_after_result["rows"])
+                # -------- TLP Oracle 检查 -------- #
+                # 检查是否为 TLP 变异(通过 oracle 字段判断)
+                if is_tlp_mutation(mutate_results[-1]):
+                    try:
+                        # 为 TLP 准备变异结果列表
+                        # mutate_results[-1] 包含了所有分区的执行结果
+                        tlp_results = []
 
-                oracle_check, error = Check(before_result_object, after_result_object, True,
-                                            True)  # check result->another_result是否符合is_upper
-                oracle_check_res = {
-                    "end": oracle_check,
-                    "error": error
-                }
-                # 判断是否为sqlancer的特殊情况：0==None(表示个数时)
-                if converted_before_result['rows'] == [['0']] and converted_after_result['rows'] == [['None']]:
-                    oracle_check_res = {
-                        "end": True,
-                        "error": None
-                    }
+                        # 解析 mutations 数组
+                        mutate_result_str = mutate_results[-1].get("MutateResult", "{}")
+                        if isinstance(mutate_result_str, str):
+                            parsed_mutate = json.loads(mutate_result_str)
+                        else:
+                            parsed_mutate = mutate_result_str
+
+                        mutations = parsed_mutate.get("mutations", [])
+
+                        # 解析执行结果列表
+                        exec_result_str = mutate_results[-1].get(
+                            "MutateSqlExecResult", "[]"
+                        )
+                        if isinstance(exec_result_str, str):
+                            exec_results = json.loads(exec_result_str)
+                        else:
+                            exec_results = exec_result_str
+
+                        # 组装每个分区的结果
+                        for i, (mutation, exec_result) in enumerate(
+                            zip(mutations, exec_results)
+                        ):
+                            tlp_results.append(
+                                {
+                                    "MutateResult": json.dumps(
+                                        {"mutations": [mutation]}
+                                    ),
+                                    "MutateSqlExecResult": exec_result,
+                                }
+                            )
+
+                        # 调用 TLP 检查器
+                        oracle_check_res = check_tlp_oracle(tlp_results)
+
+                    except Exception as e:
+                        oracle_check_res = {
+                            "end": False,
+                            "error": f"TLP oracle check failed: {str(e)}",
+                            "bug_type": "tlp_check_error",
+                        }
+                else:
+                    # -------- 非 TLP: 使用原有的 Oracle 检查逻辑 -------- #
+                    converted_before_result = execSQL_result_convertor(before_result)
+                    converted_after_result = execSQL_result_convertor(after_result)
+
+                    # -------- KV 专用 oracle -------- #
+                    # 识别条件：原始 before_result/after_result 为 dict 且含 'type' 且前缀 kv_
+                    is_kv_before = isinstance(before_result, dict) and str(
+                        before_result.get("type", "")
+                    ).startswith("kv_")
+                    is_kv_after = isinstance(after_result, dict) and str(
+                        after_result.get("type", "")
+                    ).startswith("kv_")
+                    if is_kv_before and is_kv_after:
+                        # 简化策略：
+                        # 1) 对 kv_get：值相等 (包含均为 None) 则通过
+                        # 2) 对写操作 (kv_set/kv_delete) -> after 不报错即可通过（不可比值）
+                        # 3) kv_range：列表元素集合一致（忽略顺序）
+                        bt = before_result.get("type")
+                        at = after_result.get("type")
+                        bval = before_result.get("value")
+                        aval = after_result.get("value")
+                        passed = False
+                        err = None
+                        if bt == "kv_get" and at == "kv_get":
+                            passed = bval == aval
+                        elif bt in {"kv_set", "kv_delete"} and at in {
+                            "kv_set",
+                            "kv_delete",
+                        }:
+                            # 认为写后再次写或删除语义不应引入直接差异（缺乏更强 oracle，此处放宽）
+                            passed = True
+                        elif bt == "kv_range" and at == "kv_range":
+                            try:
+                                bset = {str(x) for x in (bval or [])}
+                                aset = {str(x) for x in (aval or [])}
+                                passed = bset == aset
+                            except Exception:
+                                passed = False
+                        else:
+                            # 类型不同，保守判定失败
+                            passed = False
+                            err = f"kv oracle type mismatch: {bt} vs {at}"
+                        oracle_check_res = {"end": passed, "error": err}
+                    else:
+                        # -------- 关系型/通用 oracle -------- #
+                        before_result_object = Result(
+                            converted_before_result["column_names"],
+                            converted_before_result["column_types"],
+                            converted_before_result["rows"],
+                        )
+                        after_result_object = Result(
+                            converted_after_result["column_names"],
+                            converted_after_result["column_types"],
+                            converted_after_result["rows"],
+                        )
+                        oracle_check, error = Check(
+                            before_result_object, after_result_object, True, True
+                        )  # check result->another_result是否符合is_upper
+                        oracle_check_res = {"end": oracle_check, "error": error}
+                        # 判断是否为sqlancer的特殊情况：0==None(表示个数时)
+                        if converted_before_result["rows"] == [
+                            ["0"]
+                        ] and converted_after_result["rows"] == [["None"]]:
+                            oracle_check_res = {"end": True, "error": None}
 
             # 如果ddls中有transfer失败的情况
             if transfer_fail_flag:
-                oracle_check_res = {
-                    "end": False,
-                    "error": "transfer fail"
-                }
+                oracle_check_res = {"end": False, "error": "transfer fail"}
             mutate_results[-1]["OracleCheck"] = oracle_check_res
+            
+            # ========== Mem0 记录 Bug 模式 ==========
+            # 双重检查：确保环境变量也启用了变异阶段 Mem0
+            if mutation_mem0_manager and use_mutation_mem0 and oracle_check_res:
+                try:
+                    # 如果 Oracle 检查失败且不是执行错误，说明发现了潜在 Bug
+                    if oracle_check_res.get("end") == False and oracle_check_res.get("error") in [None, "None"]:
+                        bug_type = oracle_check_res.get("bug_type", "oracle_violation")
+                        
+                        mutation_mem0_manager.record_bug_pattern(
+                            original_sql=mutate_sql,
+                            mutation_sql=str(mutate_results[-1].get("MutateResult", "")),
+                            bug_type=bug_type,
+                            oracle_type=bug["molt"],
+                            db_type=actual_target_db,
+                            oracle_details=oracle_check_res.get("details", {})
+                        )
+                        print(f"🐛 Bug pattern recorded to Mem0: {bug_type}")
+                    
+                    # 记录 Oracle 失败模式（包括执行错误）
+                    elif oracle_check_res.get("end") == False:
+                        mutation_mem0_manager.record_oracle_failure_pattern(
+                            original_sql=mutate_sql,
+                            mutation_sql=str(mutate_results[-1].get("MutateResult", "")),
+                            failure_reason=str(oracle_check_res.get("error", "unknown")),
+                            oracle_type=bug["molt"],
+                            db_type=actual_target_db,
+                            expected_result=before_result,
+                            actual_result=after_result
+                        )
+                    
+                    # 结束会话
+                    mutation_mem0_manager.end_session(
+                        success=oracle_check_res.get("end", False),
+                        summary=f"Oracle: {bug['molt']}, Result: {oracle_check_res.get('end', False)}"
+                    )
+                    
+                    # 打印性能指标
+                    if hasattr(mutation_mem0_manager, 'get_metrics_report'):
+                        print(mutation_mem0_manager.get_metrics_report())
+                        
+                except Exception as e:
+                    print(f"⚠️ Failed to record to Mutation Mem0: {e}")
+            
+            # ========== 🔥 MVP 反向反馈机制：生成 Recommendation ==========
+            if mem0_manager and oracle_check_res.get("end") == False:
+                _generate_recommendation_from_oracle(
+                    mem0_manager=mem0_manager,
+                    oracle_result=oracle_check_res,
+                    original_sql=mutate_sql,  # 使用 mutate_sql 而不是 info["sql"]
+                    origin_db=a_db,
+                    target_db=actual_target_db,  # 使用检测到的实际目标数据库
+                    oracle_type=bug.get("molt", "unknown")
+                )
+            
             with open(bug_output_mutate_filename, "w", encoding="utf-8") as a:
                 pass
             with open(bug_output_mutate_filename, "a", encoding="utf-8") as a:
                 for item in mutate_results:
-                    json.dump(item, a)
-                    a.write('\n')
-        print('------------------------')
+                    json.dump(make_json_safe(item), a, ensure_ascii=False)
+                    a.write("\n")
+    print("📥 ------------------------")
 
 
 def sqlancer_qtran_run(
