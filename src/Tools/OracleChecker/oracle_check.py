@@ -182,6 +182,8 @@ def usage_example():
 # 将得到的list结构的sql执行结果，转换格式
 def execSQL_result_convertor(exec_result):
     """
+    SQL数据库专用转换器（保持原有简单逻辑，避免干扰bug检测）
+    
     标准格式如下：
             column_names = ["c1", "c2", "c3"]
             column_types = ["int", "string", "int"]
@@ -193,24 +195,49 @@ def execSQL_result_convertor(exec_result):
     :return:
     """
     converted_result = {"column_names": [], "column_types": [], "rows": []}
+    
+    if exec_result == None:
+        return converted_result
+    
+    if len(exec_result) > 0:
+        for i in range(len(exec_result[0])):
+            converted_result["column_names"].append("c" + str(i))
+            converted_result["column_types"].append(type(exec_result[0][i]))
 
-    # 1) None -> 空结果
+    for item in exec_result:
+        temp = []
+        for j in range(len(exec_result[0])):
+            temp.append(str(item[j]))
+        converted_result["rows"].append(temp)
+    
+    return converted_result
+
+
+def convert_nosql_result_to_standard(exec_result):
+    """
+    NoSQL数据库专用转换器：处理KV/文档结构
+    
+    支持统一的 NoSQL KV 结果结构，例如：
+        {"type":"kv_get","success":True,"value":"hello","meta":{...}}
+    
+    转换策略：
+      - 如果 value 是 list => 每个元素一行，单列 value
+      - 如果 value 是 dict => 展平为两列 key/value
+      - 其它标量 => 单行单列 value
+    """
+    converted_result = {"column_names": [], "column_types": [], "rows": []}
+    
     if exec_result is None:
         return converted_result
-
-    # 2) 支持我们统一的 NoSQL KV 结果结构(dict)，例如：
-    #    {"type":"kv_get","success":True,"value":"hello","meta":{...}}
-    #    转换策略：
-    #      - 如果 value 是 list => 每个元素一行，单列 value
-    #      - 如果 value 是 dict => 展平为两列 key/value
-    #      - 其它标量 => 单行单列 value
+    
+    # 统一的 NoSQL KV 结果结构
     if (
         isinstance(exec_result, dict)
         and "type" in exec_result
         and "value" in exec_result
     ):
         val = exec_result.get("value")
-        # 列名定义
+        
         if isinstance(val, list):
             converted_result["column_names"] = ["value"]
             converted_result["column_types"] = ["str"]
@@ -228,38 +255,8 @@ def execSQL_result_convertor(exec_result):
             if val is not None:
                 converted_result["rows"].append([str(val)])
         return converted_result
-
-    # 3) 原始关系型结果：期望 list-like 且内部元素可索引（行序列）
-    if isinstance(exec_result, (list, tuple)) and exec_result:
-        # 行可能是 tuple/list；如果首行不是序列（例如单标量），统一包一层
-        first_row = exec_result[0]
-        if not isinstance(first_row, (list, tuple)):
-            # 单列场景，全部当作一列'value'
-            converted_result["column_names"] = ["c0"]
-            converted_result["column_types"] = [type(first_row).__name__]
-            for r in exec_result:
-                converted_result["rows"].append([str(r)])
-            return converted_result
-        # 正常二维
-        col_count = len(first_row)
-        for i in range(col_count):
-            converted_result["column_names"].append("c" + str(i))
-            converted_result["column_types"].append(type(first_row[i]).__name__)
-        for row in exec_result:
-            try:
-                converted_result["rows"].append([str(row[i]) for i in range(col_count)])
-            except Exception:
-                # 行长度异常，补齐/截断
-                safe = []
-                for i in range(col_count):
-                    try:
-                        safe.append(str(row[i]))
-                    except Exception:
-                        safe.append("<ERR>")
-                converted_result["rows"].append(safe)
-        return converted_result
-
-    # 4) 其它无法识别的类型，退化为单值表
+    
+    # 退化处理：其它无法识别的类型
     converted_result["column_names"] = ["value"]
     converted_result["column_types"] = [type(exec_result).__name__]
     converted_result["rows"].append([str(exec_result)])
