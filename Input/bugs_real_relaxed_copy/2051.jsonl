@@ -1,0 +1,4 @@
+{"index": 2051, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0 TEXT);"}
+{"index": 2051, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE VIEW v0(c0) AS SELECT t0.c0 FROM t0;"}
+{"index": 2051, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES ('0');"}
+{"index": 2051, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT 0 IN (c0) FROM v0; -- expected: 0, actual: 1"}

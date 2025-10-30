@@ -1,0 +1,4 @@
+{"index": 2065, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0 (c0);"}
+{"index": 2065, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE INDEX i0 ON t0(1) WHERE c0 NOT NULL;"}
+{"index": 2065, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES (NULL);"}
+{"index": 2065, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM t0 WHERE '' BETWEEN t0.c0 AND 1 IN (FALSE); -- unexpected: row is not fetched"}

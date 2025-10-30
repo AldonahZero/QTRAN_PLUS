@@ -1,0 +1,4 @@
+{"index": 2111, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0);"}
+{"index": 2111, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0 VALUES('0');"}
+{"index": 2111, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE VIEW v0(c0) AS SELECT CAST(0 AS INT) FROM t0;"}
+{"index": 2111, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM t0, v0 WHERE 0 >= t0.c0 AND t0.c0 = v0.c0; -- unexpected: fetches row"}

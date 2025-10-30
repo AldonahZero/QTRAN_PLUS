@@ -1,0 +1,3 @@
+{"index": 2079, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0 TEXT PRIMARY KEY);"}
+{"index": 2079, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES ('');"}
+{"index": 2079, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM t0 WHERE (t0.c0, TRUE) > (CAST('' AS REAL), FALSE); -- unexpected: row is not fetched"}

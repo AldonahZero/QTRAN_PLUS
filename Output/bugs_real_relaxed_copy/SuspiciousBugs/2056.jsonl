@@ -1,0 +1,4 @@
+{"index": 2056, "sql": "CREATE TABLE t0(c0);", "TransferResult": ["CREATE TABLE t0 (c0 INTEGER)"]}
+{"index": 2056, "sql": "CREATE VIEW v0(c0) AS SELECT LOWER(CAST('1e500' AS TEXT)) FROM t0;", "TransferResult": ["CREATE VIEW v0 (c0) AS SELECT LOWER(CAST('1e500' AS VARCHAR)) FROM t0"]}
+{"index": 2056, "sql": "INSERT INTO t0(c0) VALUES (NULL);", "TransferResult": ["INSERT INTO t0 (c0) VALUES (1)"]}
+{"index": 2056, "sql": "SELECT v0.c0 FROM v0, t0 WHERE t0.rowid NOT IN (0, 0, v0.c0); -- expected: '1e500', actual: Inf", "TransferResult": ["SELECT v0.c0 FROM v0, t0 WHERE t0.rowid NOT IN (1, 1, CAST(v0.c0 AS FLOAT))"], "TransferSqlExecResult": ["[('1e500',)]"], "MutateResult": "SELECT SUM(CAST((v0.c0 NOT IN (1, 1, CAST(v0.c0 AS FLOAT))) AS INTEGER)) FROM v0, t0;", "MutateSqlExecResult": "[(0,)]"}

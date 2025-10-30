@@ -1,0 +1,3 @@
+{"index": 2118, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE TABLE t0(c0 INT);"}
+{"index": 2118, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES (NULL);"}
+{"index": 2118, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "SELECT * FROM t0 WHERE c0 = c0; -- expected: {}, actual: {NULL}"}

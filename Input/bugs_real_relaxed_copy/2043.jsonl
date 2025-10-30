@@ -1,0 +1,5 @@
+{"index": 2043, "a_db": "postgres", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0 BOOLEAN, c1 BOOLEAN, UNIQUE(c1));"}
+{"index": 2043, "a_db": "postgres", "b_db": "duckdb", "molt": "norec", "sql": "CREATE STATISTICS s1 ON c0, c1 FROM t0;"}
+{"index": 2043, "a_db": "postgres", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES(TRUE);"}
+{"index": 2043, "a_db": "postgres", "b_db": "duckdb", "molt": "norec", "sql": "ANALYZE t0;"}
+{"index": 2043, "a_db": "postgres", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM t0 WHERE (t0.c0 AND t0.c1) >= TRUE; -- ERROR:  negative bitmapset member not allowed"}

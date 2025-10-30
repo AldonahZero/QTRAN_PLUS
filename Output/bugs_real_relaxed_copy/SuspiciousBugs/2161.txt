@@ -1,0 +1,9 @@
+CREATE TABLE t0(c0 VARCHAR);
+INSERT INTO t0 VALUES (0);
+SELECT * FROM t0 WHERE c0 LIKE '' AND c0 < true; -- Assertion `tableFilter[0].comparison_type == ExpressionType::COMPARE_GREATERTHAN || tableFilter[0].comparison_type == ExpressionType::COMPARE_GREATERTHANOREQUALTO' failed.
+
+
+CREATE TABLE t0(c0 VARCHAR, PRIMARY KEY(c0))
+INSERT INTO t0(c0) VALUES ('')
+SELECT * FROM t0 WHERE c0 LIKE '%' AND c0 < 'true'
+SELECT SUM(CAST((c0 LIKE '%') AND (c0 < 'true') AS INTEGER)) FROM t0;

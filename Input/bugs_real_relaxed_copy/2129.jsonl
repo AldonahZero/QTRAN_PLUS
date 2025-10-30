@@ -1,0 +1,6 @@
+{"index": 2129, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE TABLE t0(c0 INT);"}
+{"index": 2129, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE TABLE t1(c0 INT8, c1 DOUBLE);"}
+{"index": 2129, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t1(c0) VALUES (0);"}
+{"index": 2129, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t1(c1, c0) VALUES (1, 1);"}
+{"index": 2129, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t0 VALUES (0);"}
+{"index": 2129, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "SELECT * FROM t1 JOIN t0 ON t1.c1 WHERE NOT (t1.c0<<-1); -- expected: {1|1|0}, actual: {}"}

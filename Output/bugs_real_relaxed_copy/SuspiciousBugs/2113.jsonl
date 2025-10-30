@@ -1,0 +1,4 @@
+{"index": 2113, "sql": "CREATE TABLE t0(c0 REAL, c1 REAL GENERATED ALWAYS AS (c0));", "TransferResult": ["CREATE TABLE t0 (c0 REAL, c1 REAL GENERATED ALWAYS AS (c0))"]}
+{"index": 2113, "sql": "INSERT INTO t0(c0) VALUES (1);", "TransferResult": ["INSERT INTO t0 (c0) VALUES (1)"]}
+{"index": 2113, "sql": "SELECT * FROM t0 GROUP BY c0; -- expected: 1.0|1.0, actual: 1.0|1", "TransferResult": ["SELECT c0, c1 FROM t0 GROUP BY c0, c1;"]}
+{"index": 2113, "sql": "SELECT * FROM t0; -- 1.0|1.0", "TransferResult": ["SELECT c0, c1 FROM t0;"], "TransferSqlExecResult": ["[(1.0, 1.0)]"], "MutateResult": "SELECT COUNT(*) FROM (SELECT (c0, c1) IS TRUE FROM t0);", "MutateSqlExecResult": "[(1,)]"}

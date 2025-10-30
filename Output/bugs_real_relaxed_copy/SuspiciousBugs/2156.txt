@@ -1,0 +1,13 @@
+CREATE TABLE t0(c0 VARCHAR);
+INSERT INTO t0(c0) VALUES (0);
+UPDATE t0 SET c0=0;
+UPDATE t0 SET c0=true;
+SELECT * FROM t0 WHERE t0.c0 = true; -- expected: {true}, actual: {}
+
+
+CREATE TABLE t0(c0 VARCHAR, PRIMARY KEY(c0))
+INSERT INTO t0(c0) VALUES ('default_value')
+UPDATE t0 SET c0='default_value'
+UPDATE t0 SET c0='default_value'
+SELECT * FROM t0 WHERE t0.c0 = 'default_value'
+SELECT SUM((t0.c0 = 'default_value')::INTEGER) FROM t0;

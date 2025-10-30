@@ -1,0 +1,5 @@
+{"index": 2114, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "PRAGMA encoding = 'UTF-16';"}
+{"index": 2114, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0 TEXT);"}
+{"index": 2114, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES ('\uc706'), (1);"}
+{"index": 2114, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT MAX(CASE 1 WHEN 1 THEN t0.c0 END) FROM t0; -- \uc706"}
+{"index": 2114, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT MAX(t0.c0) FROM t0; -- 1"}

@@ -1,0 +1,3 @@
+{"index": 2067, "sql": "CREATE TABLE t0(c0 REAL UNIQUE);", "TransferResult": ["CREATE TABLE t0 (c0 DOUBLE UNIQUE)"]}
+{"index": 2067, "sql": "INSERT INTO t0(c0) VALUES(2.07093491255203046E18);", "TransferResult": ["INSERT INTO t0 (c0) VALUES (2.07093491255203046E18);"]}
+{"index": 2067, "sql": "SELECT * FROM t0 WHERE c0 IN ('2070934912552030444'); -- unexpected: row is fetched", "TransferResult": ["SELECT * FROM t0 WHERE c0 IN (2070934912552030444);"], "TransferSqlExecResult": ["[(2.0709349125520305e+18,)]"], "MutateResult": "SELECT SUM(count) FROM (SELECT (c0 IN (2070934912552030444))::INTEGER as count FROM t0);", "MutateSqlExecResult": "[(1,)]"}

@@ -1,0 +1,6 @@
+{"index": 2083, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0);"}
+{"index": 2083, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t1(c0);"}
+{"index": 2083, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t1(c0) VALUES (0);"}
+{"index": 2083, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE INDEX i0 ON t0(0) WHERE NULL IN (c0);"}
+{"index": 2083, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE VIEW v0(c0) AS SELECT t0.c0 FROM t1 LEFT JOIN t0;"}
+{"index": 2083, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT COUNT(*) FROM v0 WHERE NULL IN (v0.c0); -- expected: 0, actual: 1"}

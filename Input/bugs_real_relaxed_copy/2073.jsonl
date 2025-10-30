@@ -1,0 +1,4 @@
+{"index": 2073, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0 PRIMARY KEY, c1);"}
+{"index": 2073, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES (x'bb'), (0);"}
+{"index": 2073, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT COUNT(*) FROM t0 WHERE INSTR(x'aabb', t0.c0) ORDER BY t0.c0, t0.c1; -- 1"}
+{"index": 2073, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM t0 WHERE INSTR(x'aabb', t0.c0) ORDER BY t0.c0, t0.c1; -- no row is fetched"}

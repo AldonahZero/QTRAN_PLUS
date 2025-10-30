@@ -1,0 +1,3 @@
+{"index": 2078, "sql": "CREATE TABLE t0(c0 COLLATE NOCASE, c1);", "TransferResult": ["CREATE TABLE t0 (c0 VARCHAR, c1 VARCHAR)"]}
+{"index": 2078, "sql": "INSERT INTO t0 VALUES('a', 'A');", "TransferResult": ["INSERT INTO t0 VALUES ('a', 'A')"]}
+{"index": 2078, "sql": "SELECT * FROM t0 WHERE (+ t0.c1, 1) >= (t0.c0, 1); -- expected: row is not fetched, actual: row is fetched", "TransferResult": ["SELECT * FROM t0 WHERE (t0.c1 >= t0.c0);"], "TransferSqlExecResult": ["[]"], "MutateResult": "SELECT SUM(CAST((t0.c1 >= t0.c0) AS INTEGER)) FROM t0;", "MutateSqlExecResult": "[(0,)]"}

@@ -1,0 +1,4 @@
+{"index": 2074, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0);"}
+{"index": 2074, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES (0);"}
+{"index": 2074, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE VIEW v0(c0) AS SELECT t0.rowid FROM t0 ORDER BY 1;"}
+{"index": 2074, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT COUNT(*) FROM v0 WHERE ABS('1') = v0.c0; -- expected: 1, actual: 0"}

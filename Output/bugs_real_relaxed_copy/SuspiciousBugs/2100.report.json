@@ -1,0 +1,14 @@
+{
+  "index": 2100,
+  "input": "bugs_real_relaxed_copy",
+  "suspicious_view": {
+    "sql": "SELECT COUNT(*) FROM t0, t1 WHERE (SELECT AVG(0) FILTER(WHERE t1.c1)); -- segmentation fault",
+    "transfer_sql": "SELECT COUNT(*) FROM t0, t1 WHERE t1.c1 IS NOT NULL",
+    "mutate_sql": "SELECT SUM(count) FROM (SELECT (t1.c1 IS NOT NULL) :: INTEGER as count FROM t0, t1);"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

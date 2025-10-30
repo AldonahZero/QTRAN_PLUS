@@ -1,0 +1,14 @@
+{
+  "index": 2056,
+  "input": "bugs_real_relaxed_copy",
+  "suspicious_view": {
+    "sql": "SELECT v0.c0 FROM v0, t0 WHERE t0.rowid NOT IN (0, 0, v0.c0); -- expected: '1e500', actual: Inf",
+    "transfer_sql": "SELECT v0.c0 FROM v0, t0 WHERE t0.rowid NOT IN (1, 1, CAST(v0.c0 AS FLOAT))",
+    "mutate_sql": "SELECT SUM(CAST((v0.c0 NOT IN (1, 1, CAST(v0.c0 AS FLOAT))) AS INTEGER)) FROM v0, t0;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

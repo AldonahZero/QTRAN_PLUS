@@ -1,0 +1,4 @@
+{"index": 2165, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE TABLE t0(c0 INT UNIQUE, c1 DATE);"}
+{"index": 2165, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "ALTER TABLE t0 ALTER c1 TYPE INT;"}
+{"index": 2165, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES(-1);"}
+{"index": 2165, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "SELECT * FROM t0 WHERE c0 < 0; -- Segmentation fault"}

@@ -1,0 +1,14 @@
+{
+  "index": 2127,
+  "input": "bugs_real_relaxed_copy",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0 LEFT JOIN t1 ON t0.c0 <= t1.c0; -- Not implemented: Unimplemented type for nested loop join!",
+    "transfer_sql": "SELECT * FROM t0 LEFT JOIN t1 ON t0.c0 <= t1.c0",
+    "mutate_sql": "SELECT SUM(count) FROM (SELECT CAST((t0.c0 <= t1.c0) AS INTEGER) as count FROM t0 LEFT JOIN t1 ON t0.c0 <= t1.c0) as res;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

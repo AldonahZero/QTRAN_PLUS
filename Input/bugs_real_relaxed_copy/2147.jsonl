@@ -1,0 +1,3 @@
+{"index": 2147, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE TABLE t0(c0 INT);"}
+{"index": 2147, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t0 VALUES (NULL), (0), (1);"}
+{"index": 2147, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "SELECT * FROM t0 WHERE CASE WHEN c0 THEN 0 ELSE CASE '0.1' WHEN c0 THEN '' END END; -- Assertion `other.auxiliary->type == VectorBufferType::STRING_BUFFER' failed."}

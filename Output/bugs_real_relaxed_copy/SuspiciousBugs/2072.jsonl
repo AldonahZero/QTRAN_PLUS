@@ -1,0 +1,3 @@
+{"index": 2072, "sql": "CREATE TABLE t0(c0 UNIQUE);", "TransferResult": ["CREATE TABLE t0 (c0 INTEGER UNIQUE)"]}
+{"index": 2072, "sql": "INSERT INTO t0 VALUES (-1);", "TransferResult": ["INSERT INTO t0 VALUES (1)"]}
+{"index": 2072, "sql": "SELECT * FROM t0 WHERE t0.c0 GLOB '-*'; -- unexpected: row is not fetched", "TransferResult": ["SELECT * FROM t0 WHERE CAST(t0.c0 AS VARCHAR) LIKE '-%'"], "TransferSqlExecResult": ["[]"], "MutateResult": "SELECT SUM(CAST((CAST(t0.c0 AS VARCHAR) LIKE '-%') AS INTEGER)) FROM t0;", "MutateSqlExecResult": "[(0,)]"}

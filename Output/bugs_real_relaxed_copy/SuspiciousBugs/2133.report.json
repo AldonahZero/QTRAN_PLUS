@@ -1,0 +1,14 @@
+{
+  "index": 2133,
+  "input": "bugs_real_relaxed_copy",
+  "suspicious_view": {
+    "sql": "SELECT t1.c0 FROM t1 JOIN t0 ON t1.c0 IN (t0.c0) WHERE t1.c0<=t0.c0; -- expected: {1.0}, actual: {4.67454452791745e-310}",
+    "transfer_sql": "SELECT t1.c0 FROM t1 JOIN t0 ON t1.c0::FLOAT = t0.c0::FLOAT WHERE t1.c0::FLOAT <= t0.c0::FLOAT;",
+    "mutate_sql": "SELECT SUM((t1.c0::FLOAT <= t0.c0::FLOAT)::INTEGER) FROM t1 JOIN t0 ON t1.c0::FLOAT = t0.c0::FLOAT;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

@@ -1,0 +1,5 @@
+{"index": 2052, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0 UNIQUE, c1);"}
+{"index": 2052, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0(c1) VALUES (0);"}
+{"index": 2052, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES (0);"}
+{"index": 2052, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE VIEW v0(c0, c1) AS SELECT t0.c1, t0.c0 FROM t0 WHERE CAST(t0.rowid AS INT) = 1;"}
+{"index": 2052, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT v0.c0, MIN(v0.c1) FROM v0; -- expected: 0|, actual: |"}

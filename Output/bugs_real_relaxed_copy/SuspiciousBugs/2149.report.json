@@ -1,0 +1,14 @@
+{
+  "index": 2149,
+  "input": "bugs_real_relaxed_copy",
+  "suspicious_view": {
+    "sql": "SELECT SUM(-1) FROM t0; -- expected: {-1}, actual: {1.8446744073709552e+19}",
+    "transfer_sql": "SELECT SUM(CAST(-1 AS BIGINT)) FROM t0",
+    "mutate_sql": "SELECT SUM((CAST(-1 AS BIGINT))::INTEGER) FROM t0;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

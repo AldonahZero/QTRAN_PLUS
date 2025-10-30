@@ -1,0 +1,2 @@
+{"index": 2152, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE TABLE t0(c0 VARCHAR);"}
+{"index": 2152, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "SELECT * FROM t0 WHERE PREFIX(t0.c0, ''); -- Error: std::bad_alloc"}

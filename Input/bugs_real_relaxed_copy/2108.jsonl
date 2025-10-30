@@ -1,0 +1,6 @@
+{"index": 2108, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE VIRTUAL TABLE rt0 USING rtree(c0, c1, c2);"}
+{"index": 2108, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0);"}
+{"index": 2108, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0 VALUES (0), (1);"}
+{"index": 2108, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO rt0(c0) VALUES (0), (1);"}
+{"index": 2108, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE VIEW v0 AS SELECT 0 LIMIT 0;"}
+{"index": 2108, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM t0 LEFT JOIN rt0 INNER JOIN v0; -- sqlite3.c:185720: rtreeRelease: Assertion `pRtree->nNodeRef==0 || pRtree->bCorrupt' failed."}

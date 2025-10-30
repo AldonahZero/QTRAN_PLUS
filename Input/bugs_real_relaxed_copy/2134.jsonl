@@ -1,0 +1,7 @@
+{"index": 2134, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE TABLE t0(c0 REAL);"}
+{"index": 2134, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE TABLE t1(c0 INT2);"}
+{"index": 2134, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE TABLE t2(c0 INT);"}
+{"index": 2134, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t0 VALUES (-1);"}
+{"index": 2134, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t1 VALUES (0);"}
+{"index": 2134, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t2 VALUES (0), (0);"}
+{"index": 2134, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "SELECT * FROM t1, t2, t0 WHERE CONCAT(t1.c0) OR t0.c0; -- Segmentation fault"}

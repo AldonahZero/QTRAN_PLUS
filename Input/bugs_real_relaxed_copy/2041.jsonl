@@ -1,8 +1,8 @@
-{"index": 2041, "a_db": "postgresql", "b_db": "duckdb", "molt": "norec", "sql": "-- requires another open transaction holding a snapshot"}
-{"index": 2041, "a_db": "postgresql", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0 TEXT);"}
-{"index": 2041, "a_db": "postgresql", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES('b'), ('a');"}
-{"index": 2041, "a_db": "postgresql", "b_db": "duckdb", "molt": "norec", "sql": "ANALYZE;"}
-{"index": 2041, "a_db": "postgresql", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES (NULL);"}
-{"index": 2041, "a_db": "postgresql", "b_db": "duckdb", "molt": "norec", "sql": "UPDATE t0 SET c0 = 'a';"}
-{"index": 2041, "a_db": "postgresql", "b_db": "duckdb", "molt": "norec", "sql": "CREATE INDEX i0 ON t0(c0);"}
-{"index": 2041, "a_db": "postgresql", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM t0 WHERE 'baaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' > t0.c0; -- unexpected: ERROR: found unexpected null value in index \"i0\""}
+{"index": 2041, "a_db": "postgres", "b_db": "duckdb", "molt": "norec", "sql": "-- requires another open transaction holding a snapshot"}
+{"index": 2041, "a_db": "postgres", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0 TEXT);"}
+{"index": 2041, "a_db": "postgres", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES('b'), ('a');"}
+{"index": 2041, "a_db": "postgres", "b_db": "duckdb", "molt": "norec", "sql": "ANALYZE;"}
+{"index": 2041, "a_db": "postgres", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES (NULL);"}
+{"index": 2041, "a_db": "postgres", "b_db": "duckdb", "molt": "norec", "sql": "UPDATE t0 SET c0 = 'a';"}
+{"index": 2041, "a_db": "postgres", "b_db": "duckdb", "molt": "norec", "sql": "CREATE INDEX i0 ON t0(c0);"}
+{"index": 2041, "a_db": "postgres", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM t0 WHERE 'baaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' > t0.c0; -- unexpected: ERROR: found unexpected null value in index \"i0\""}

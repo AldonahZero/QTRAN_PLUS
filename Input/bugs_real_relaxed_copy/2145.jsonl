@@ -1,0 +1,4 @@
+{"index": 2145, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE TABLE t0(c0 INT);"}
+{"index": 2145, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES (0);"}
+{"index": 2145, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE VIEW v0(c0) AS SELECT 1 FROM t0;"}
+{"index": 2145, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "SELECT * FROM v0 ORDER BY 'a'; --  Assertion `types.size() > 0' failed (original test case crashed)"}

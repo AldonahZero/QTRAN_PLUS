@@ -1,0 +1,14 @@
+{
+  "index": 2051,
+  "input": "bugs_real_relaxed_copy",
+  "suspicious_view": {
+    "sql": "SELECT 0 IN (c0) FROM v0; -- expected: 0, actual: 1",
+    "transfer_sql": "SELECT '0' IN (SELECT c0 FROM v0)",
+    "mutate_sql": "SELECT SUM(CAST(('0' IN (SELECT c0 FROM v0)) AS INTEGER));"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

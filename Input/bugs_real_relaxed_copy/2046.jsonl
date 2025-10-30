@@ -1,0 +1,7 @@
+{"index": 2046, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t1 (c1 , c2, c3, c4 , PRIMARY KEY (c4, c3));"}
+{"index": 2046, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t1(c3) VALUES (0), (0), (0), (0), (0), (0), (0), (0), (0), (0), (NULL), (1), (0);"}
+{"index": 2046, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "UPDATE t1 SET c2 = 0;"}
+{"index": 2046, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t1(c1) VALUES (0), (0), (NULL), (0), (0);"}
+{"index": 2046, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "ANALYZE t1;"}
+{"index": 2046, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "UPDATE t1 SET c3 = 1;"}
+{"index": 2046, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT DISTINCT * FROM t1 WHERE t1.c3 = 1; -- expected: |0|1|, 0||1|, ||1|, actual: |0|1|"}

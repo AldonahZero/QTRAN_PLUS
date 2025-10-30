@@ -1,0 +1,5 @@
+{"index": 2058, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0 (c0, c1 NOT NULL DEFAULT 1, c2, PRIMARY KEY (c0, c1));"}
+{"index": 2058, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0(c2) VALUES (NULL), (NULL), (NULL), (NULL), (NULL), (NULL), (NULL), (NULL), (NULL), (NULL), (NULL);"}
+{"index": 2058, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0(c2) VALUES ('a');"}
+{"index": 2058, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "ANALYZE t0;"}
+{"index": 2058, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT DISTINCT * FROM t0 WHERE NULL IS t0.c0; -- unexpected: |1|a is not part of the result set"}

@@ -1,0 +1,3 @@
+{"index": 2087, "a_db": "postgres", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0 CHAR(2) COLLATE \"C\", c1 CHAR(2) COLLATE \"POSIX\");"}
+{"index": 2087, "a_db": "postgres", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0 VALUES('', '');"}
+{"index": 2087, "a_db": "postgres", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM t0 WHERE t0.c1 NOT IN (t0.c0); -- unexpected: cache lookup failed for collation 0"}

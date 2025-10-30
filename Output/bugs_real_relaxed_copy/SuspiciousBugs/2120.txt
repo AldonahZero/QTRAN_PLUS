@@ -1,0 +1,13 @@
+CREATE TABLE t0(c0 BOOL);
+CREATE TABLE t1(c0 BOOL);
+INSERT INTO t1(c0) VALUES (0);
+INSERT INTO t0(c0) VALUES (0);
+SELECT t0.c0 FROM t0, t1 WHERE t1.c0 < t0.c0; -- Error: Not implemented: Unimplemented type for sort
+
+
+CREATE TABLE t0(c0 BOOLEAN)
+CREATE TABLE t1(c0 BOOLEAN)
+INSERT INTO t1(c0) VALUES (FALSE)
+INSERT INTO t0(c0) VALUES (FALSE)
+SELECT t0.c0 FROM t0, t1 WHERE t1.c0 < t0.c0
+SELECT SUM(count) FROM (SELECT ((t1.c0 < t0.c0))::INTEGER as count FROM t0, t1) as res;

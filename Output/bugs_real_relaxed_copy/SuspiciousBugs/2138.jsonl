@@ -1,0 +1,5 @@
+{"index": 2138, "sql": "CREATE TABLE t0(c0 VARCHAR, c1 DOUBLE UNIQUE);", "TransferResult": ["CREATE TABLE t0(c0 VARCHAR, c1 DOUBLE PRECISION UNIQUE)"]}
+{"index": 2138, "sql": "INSERT INTO t0(c0) VALUES (NULL);", "TransferResult": ["INSERT INTO t0(c0) VALUES ('')"]}
+{"index": 2138, "sql": "UPDATE t0 SET c0=0;", "TransferResult": ["UPDATE t0 SET c0=''"]}
+{"index": 2138, "sql": "INSERT INTO t0(c0, c1) VALUES (0, 0);", "TransferResult": ["INSERT INTO t0(c0, c1) VALUES ('default_value', 0.0)"]}
+{"index": 2138, "sql": "SELECT * FROM t0 WHERE 1 > c1; -- Segmentation fault", "TransferResult": ["SELECT * FROM t0 WHERE t0.c1 < 1"], "TransferSqlExecResult": ["[('default_value', 0.0)]"], "MutateResult": "SELECT SUM(CAST((t0.c1 < 1) AS INTEGER)) FROM t0;", "MutateSqlExecResult": "[(1,)]"}

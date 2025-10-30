@@ -1,0 +1,9 @@
+CREATE TABLE t0(c0 CHAR(2) COLLATE "C", c1 CHAR(2) COLLATE "POSIX");
+INSERT INTO t0 VALUES('', '');
+SELECT * FROM t0 WHERE t0.c1 NOT IN (t0.c0); -- unexpected: cache lookup failed for collation 0
+
+
+CREATE TABLE t0(c0 CHAR(2), c1 CHAR(2));
+INSERT INTO t0 VALUES(' ', ' ');
+SELECT * FROM t0 WHERE t0.c1 NOT IN (SELECT t0.c0);
+SELECT SUM(CAST((NOT (t0.c1 IN (SELECT t0.c0))) AS INTEGER)) FROM t0;

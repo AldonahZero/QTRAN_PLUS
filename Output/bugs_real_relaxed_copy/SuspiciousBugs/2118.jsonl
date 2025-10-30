@@ -1,0 +1,3 @@
+{"index": 2118, "sql": "CREATE TABLE t0(c0 INT);", "TransferResult": ["CREATE TABLE t0(c0 INT)"]}
+{"index": 2118, "sql": "INSERT INTO t0(c0) VALUES (NULL);", "TransferResult": ["INSERT INTO t0(c0) VALUES (0)"]}
+{"index": 2118, "sql": "SELECT * FROM t0 WHERE c0 = c0; -- expected: {}, actual: {NULL}", "TransferResult": ["SELECT * FROM t0 WHERE c0 IS NOT NULL;"], "TransferSqlExecResult": ["[(0,)]"], "MutateResult": "SELECT SUM((i)::INTEGER) FROM (SELECT (c0 IS NOT NULL)::INTEGER as i FROM t0) as res;", "MutateSqlExecResult": "[(1,)]"}

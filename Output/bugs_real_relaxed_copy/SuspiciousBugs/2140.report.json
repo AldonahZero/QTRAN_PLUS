@@ -1,0 +1,14 @@
+{
+  "index": 2140,
+  "input": "bugs_real_relaxed_copy",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0, t1 GROUP BY t0.c0, t1.c0 HAVING t1.c0!=MAX(t1.c0) UNION ALL SELECT * FROM t0, t1 GROUP BY t0.c0, t1.c0 HAVING NOT t1.c0>MAX(t1.c0); -- nondeterministic",
+    "transfer_sql": "SELECT * FROM t0, t1 GROUP BY t0.c0, t1.c0 HAVING t1.c0 != MAX(t1.c0) UNION ALL SELECT * FROM t0, t1 GROUP BY t0.c0, t1.c0 HAVING NOT t1.c0 > MAX(t1.c0);",
+    "mutate_sql": "SELECT SUM(count) FROM (SELECT ((t1.c0 != MAX(t1.c0))::INTEGER) as count FROM t0, t1 GROUP BY t0.c0, t1.c0 UNION ALL SELECT ((NOT (t1.c0 > MAX(t1.c0)))::INTEGER) as count FROM t0, t1 GROUP BY t0.c0, t1.c0) as res;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

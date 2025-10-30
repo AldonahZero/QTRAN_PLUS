@@ -1,0 +1,4 @@
+{"index": 2048, "sql": "CREATE TABLE t0 (c0, c1);", "TransferResult": ["CREATE TABLE t0 (c0 INTEGER, c1 INTEGER)"]}
+{"index": 2048, "sql": "CREATE INDEX i0 ON t0(c1, c1 + 1 DESC);", "TransferResult": ["CREATE INDEX i0 ON t0(c1)"]}
+{"index": 2048, "sql": "INSERT INTO t0(c0) VALUES (1);", "TransferResult": ["INSERT INTO t0 (c0, c1) VALUES (1, 2)"]}
+{"index": 2048, "sql": "SELECT MIN(t0.c1), t0.c0 FROM t0 WHERE t0.c1 ISNULL; -- expected: NULL | 1, actual: NULL | NULL", "TransferResult": ["SELECT MIN(t0.c1) AS min_c1, ANY_VALUE(t0.c0) AS c0 FROM t0 WHERE t0.c1 IS NULL"], "TransferSqlExecResult": ["[(None, None)]"], "MutateResult": "SELECT SUM(CAST((t0.c1 IS NULL) AS INTEGER)) FROM t0;", "MutateSqlExecResult": "[(0,)]"}

@@ -1,0 +1,14 @@
+{
+  "index": 2111,
+  "input": "bugs_real_relaxed_copy",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0, v0 WHERE 0 >= t0.c0 AND t0.c0 = v0.c0; -- unexpected: fetches row",
+    "transfer_sql": "SELECT * FROM t0, v0 WHERE 1 >= t0.c0 AND t0.c0 = v0.c0; -- unexpected: fetches row",
+    "mutate_sql": "SELECT SUM(CAST((1 >= t0.c0 AND t0.c0 = v0.c0) AS INTEGER)) FROM t0, v0;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

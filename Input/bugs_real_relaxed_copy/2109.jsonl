@@ -1,0 +1,2 @@
+{"index": 2109, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0);"}
+{"index": 2109, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT (0, 0) IN(SELECT MIN(c0), NTILE(0) OVER()) FROM t0; -- sqlite3.c:103486: exprSrcCount: Assertion `0' failed."}

@@ -1,0 +1,4 @@
+{"index": 2144, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE TABLE t0(c1 BIGINT);"}
+{"index": 2144, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t0(c1) VALUES (2);"}
+{"index": 2144, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t0(c1) VALUES (9223372036854775807);"}
+{"index": 2144, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "SELECT SUM(t0.c1) FROM t0; -- expected: {9223372036854776000}, actual: {-9223372036854775807}"}

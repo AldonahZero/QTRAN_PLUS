@@ -1,0 +1,14 @@
+{
+  "index": 2156,
+  "input": "bugs_real_relaxed_copy",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0 WHERE t0.c0 = true; -- expected: {true}, actual: {}",
+    "transfer_sql": "SELECT * FROM t0 WHERE t0.c0 = 'default_value'",
+    "mutate_sql": "SELECT SUM((t0.c0 = 'default_value')::INTEGER) FROM t0;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

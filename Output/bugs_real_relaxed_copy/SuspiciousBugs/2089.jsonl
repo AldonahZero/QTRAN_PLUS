@@ -1,0 +1,5 @@
+{"index": 2089, "sql": "CREATE TABLE t0(c0 boolean, c1 boolean, c2 boolean);", "TransferResult": ["CREATE TABLE t0(c0 BOOLEAN, c1 BOOLEAN, c2 BOOLEAN)"]}
+{"index": 2089, "sql": "INSERT INTO t0 VALUES(FALSE, FALSE, FALSE);", "TransferResult": ["INSERT INTO t0 VALUES(FALSE, FALSE, FALSE)"]}
+{"index": 2089, "sql": "CREATE STATISTICS s0 ON c0, c2 FROM t0;", "TransferResult": ["ANALYZE t0 (c0, c2);"]}
+{"index": 2089, "sql": "ANALYZE;", "TransferResult": ["ANALYZE;"]}
+{"index": 2089, "sql": "SELECT * FROM t0 WHERE t0.c2 OR t0.c1 OR t0.c0; -- TRAP: FailedAssertion(\"clauses != NIL\", File: \"mcv.c\", Line: 1551)", "TransferResult": ["SELECT * FROM t0 WHERE t0.c0 = TRUE OR t0.c1 = TRUE OR t0.c2 = TRUE;"], "TransferSqlExecResult": ["[]"], "MutateResult": "SELECT SUM(CAST((t0.c0 = TRUE OR t0.c1 = TRUE OR t0.c2 = TRUE) AS INTEGER)) FROM t0;", "MutateSqlExecResult": "[(0,)]"}

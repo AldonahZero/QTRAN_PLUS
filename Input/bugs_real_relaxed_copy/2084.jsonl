@@ -1,0 +1,5 @@
+{"index": 2084, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0);"}
+{"index": 2084, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t1(c0);"}
+{"index": 2084, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE VIEW v0(c0) AS SELECT t0.c0 FROM t1 LEFT JOIN t0;"}
+{"index": 2084, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t1(c0) VALUES (0);"}
+{"index": 2084, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM v0 WHERE (v0.c0, x'') != (NULL, 0); -- unexpected: row is not fetched"}

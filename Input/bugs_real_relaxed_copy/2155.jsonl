@@ -1,0 +1,4 @@
+{"index": 2155, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0 INT);"}
+{"index": 2155, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE VIEW v0(c0) AS SELECT CAST(t0.c0 AS INTEGER) FROM t0;"}
+{"index": 2155, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES (0);"}
+{"index": 2155, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM t0 LEFT JOIN v0 ON v0.c0 >= '0' WHERE TRUE UNION SELECT 0,0 WHERE 0; -- expected: {0|0}, actual:{0|NULL}"}

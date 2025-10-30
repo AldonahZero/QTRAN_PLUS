@@ -1,0 +1,14 @@
+{
+  "index": 2098,
+  "input": "bugs_real_relaxed_copy",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0 LEFT JOIN vt0 ON c2 IN (0) WHERE c1 IN (NULL);",
+    "transfer_sql": "SELECT * FROM t0 LEFT JOIN vt0 ON c2 IN (1) WHERE c1 IN (1)",
+    "mutate_sql": "SELECT SUM(CAST((c1 IN (1)) AND (c2 IN (1)) AS INTEGER)) FROM t0 LEFT JOIN vt0 ON c2 IN (1);"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

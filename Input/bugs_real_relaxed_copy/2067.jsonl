@@ -1,0 +1,3 @@
+{"index": 2067, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0 REAL UNIQUE);"}
+{"index": 2067, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES(2.07093491255203046E18);"}
+{"index": 2067, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM t0 WHERE c0 IN ('2070934912552030444'); -- unexpected: row is fetched"}

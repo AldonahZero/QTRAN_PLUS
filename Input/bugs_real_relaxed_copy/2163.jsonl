@@ -1,0 +1,3 @@
+{"index": 2163, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE TABLE t0(c0 VARCHAR COLLATE NOCASE);"}
+{"index": 2163, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES ('a'), ('A');"}
+{"index": 2163, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "SELECT t0.c0 FROM t0 GROUP BY t0.c0; -- expected: {'a'} or {'A'}, actual: {'a', 'A'}"}

@@ -1,0 +1,14 @@
+{
+  "index": 2065,
+  "input": "bugs_real_relaxed_copy",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0 WHERE '' BETWEEN t0.c0 AND 1 IN (FALSE); -- unexpected: row is not fetched",
+    "transfer_sql": "SELECT * FROM t0 WHERE 0 BETWEEN t0.c0 AND 1",
+    "mutate_sql": "SELECT SUM(CAST((0 BETWEEN t0.c0 AND 1) AS INTEGER)) FROM t0;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

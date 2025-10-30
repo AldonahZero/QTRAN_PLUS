@@ -1,0 +1,3 @@
+{"index": 2060, "sql": "CREATE TABLE t0(c0 TEXT UNIQUE, c1);", "TransferResult": ["CREATE TABLE t0 (c0 TEXT UNIQUE, c1 TEXT)"]}
+{"index": 2060, "sql": "INSERT INTO t0(c0) VALUES (-1);", "TransferResult": ["INSERT INTO t0 (c0) VALUES (1)"]}
+{"index": 2060, "sql": "SELECT * FROM t0 WHERE - x'ce' >= t0.c0; -- unexpected: row is not fetched", "TransferResult": ["SELECT * FROM t0 WHERE -1 >= CAST(t0.c0 AS INTEGER);"], "TransferSqlExecResult": ["[]"], "MutateResult": "SELECT SUM(CAST((-1 >= CAST(t0.c0 AS INTEGER)) AS INTEGER)) FROM t0;", "MutateSqlExecResult": "[(0,)]"}

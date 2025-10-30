@@ -1,0 +1,14 @@
+{
+  "index": 2066,
+  "input": "bugs_real_relaxed_copy",
+  "suspicious_view": {
+    "sql": "SELECT CAST(+ t0.c0 AS BLOB) LIKE 0 FROM t0; -- expected: 0, actual: 1",
+    "transfer_sql": "SELECT CAST(t0.c0 AS VARCHAR) LIKE '1' FROM t0;",
+    "mutate_sql": "SELECT SUM(CAST((CAST(t0.c0 AS VARCHAR) LIKE '1') AS INTEGER)) FROM t0;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

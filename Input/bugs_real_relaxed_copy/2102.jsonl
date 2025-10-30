@@ -1,0 +1,3 @@
+{"index": 2102, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0 UNIQUE);"}
+{"index": 2102, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0 VALUES(0);"}
+{"index": 2102, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM t0 WHERE (0, t0.c0) IN(SELECT DENSE_RANK() OVER(), LAG(0) OVER() FROM t0); -- sqlite3.c:87244: sqlite3VdbeExec: Assertion `memIsValid(pRec)' failed."}

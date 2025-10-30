@@ -1,0 +1,6 @@
+{"index": 2095, "sql": "CREATE TABLE t0(c0);", "TransferResult": ["CREATE TABLE t0 (c0 INTEGER)"]}
+{"index": 2095, "sql": "CREATE TABLE t1(c0);", "TransferResult": ["CREATE TABLE t1 (c0 INTEGER)"]}
+{"index": 2095, "sql": "CREATE INDEX i0 ON t0(1) WHERE c0 ISNULL;", "TransferResult": ["CREATE INDEX i0 ON t0(c0)"]}
+{"index": 2095, "sql": "INSERT INTO t0(c0) VALUES (1);", "TransferResult": ["INSERT INTO t0 (c0) VALUES (1)"]}
+{"index": 2095, "sql": "INSERT INTO t1(c0) VALUES (1);", "TransferResult": ["INSERT INTO t1 (c0) VALUES (1)"]}
+{"index": 2095, "sql": "SELECT * FROM t1 LEFT JOIN t0 WHERE t0.c0 ISNULL; -- unexpected: row is fetched", "TransferResult": ["SELECT * FROM t1 LEFT JOIN t0 ON t0.c0 IS NULL"], "TransferSqlExecResult": ["[(1, None)]"], "MutateResult": "SELECT SUM(CAST((t0.c0 IS NULL) IS TRUE AS INTEGER)) FROM t1 LEFT JOIN t0 ON t0.c0 IS NULL;", "MutateSqlExecResult": "[(1,)]"}

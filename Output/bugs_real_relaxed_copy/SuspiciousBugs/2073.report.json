@@ -1,0 +1,14 @@
+{
+  "index": 2073,
+  "input": "bugs_real_relaxed_copy",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0 WHERE INSTR(x'aabb', t0.c0) ORDER BY t0.c0, t0.c1; -- no row is fetched",
+    "transfer_sql": "SELECT * FROM t0 WHERE POSITION(CAST(t0.c0 AS VARCHAR) IN x'aabb') > 0 ORDER BY t0.c0, t0.c1;",
+    "mutate_sql": "SELECT SUM(CAST((POSITION(CAST(t0.c0 AS VARCHAR) IN x'aabb') > 0) AS INTEGER)) FROM t0;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

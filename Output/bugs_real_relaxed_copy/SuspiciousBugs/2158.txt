@@ -1,0 +1,9 @@
+CREATE TABLE t0(c0 VARCHAR);
+INSERT INTO t0(c0) VALUES (''), (0);
+SELECT * FROM t0 WHERE t0.c0 = ''; -- expected: {''}, actual: {}
+
+
+CREATE TABLE t0(c0 VARCHAR, PRIMARY KEY(c0))
+INSERT INTO t0(c0) VALUES ('')
+SELECT * FROM t0 WHERE t0.c0 = ''
+SELECT SUM(CAST((t0.c0 = '') AS INTEGER)) FROM t0;

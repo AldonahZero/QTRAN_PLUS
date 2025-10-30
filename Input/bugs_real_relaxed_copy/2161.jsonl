@@ -1,0 +1,3 @@
+{"index": 2161, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE TABLE t0(c0 VARCHAR);"}
+{"index": 2161, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t0 VALUES (0);"}
+{"index": 2161, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "SELECT * FROM t0 WHERE c0 LIKE '' AND c0 < true; -- Assertion `tableFilter[0].comparison_type == ExpressionType::COMPARE_GREATERTHAN || tableFilter[0].comparison_type == ExpressionType::COMPARE_GREATERTHANOREQUALTO' failed."}

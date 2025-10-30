@@ -1,0 +1,3 @@
+{"index": 2097, "sql": "CREATE TABLE t0(c0 AS (1), c1);", "TransferResult": ["CREATE TABLE t0 (c0 INTEGER, c1 INTEGER)"]}
+{"index": 2097, "sql": "CREATE TABLE t1(c0);", "TransferResult": ["CREATE TABLE t1 (c0 INTEGER)"]}
+{"index": 2097, "sql": "SELECT * FROM t0, t1 WHERE t0.c0 == 0; -- out of memory", "TransferResult": ["SELECT * FROM t0, t1 WHERE t0.c0 = 0"], "TransferSqlExecResult": ["[]"], "MutateResult": "SELECT SUM(CAST((t0.c0 = 0) AS INTEGER)) FROM t0, t1;", "MutateSqlExecResult": "[(None,)]"}

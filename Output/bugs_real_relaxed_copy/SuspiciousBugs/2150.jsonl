@@ -1,0 +1,2 @@
+{"index": 2150, "sql": "CREATE TABLE t0(c0 INT);", "TransferResult": ["CREATE TABLE t0(c0 INT)"]}
+{"index": 2150, "sql": "SELECT * FROM t0 GROUP BY -4.40304405E8 ORDER BY (CASE 1 WHEN 0 THEN 0 ELSE -440304405 END); -- Assertion `!entry.first->Equals(&expr)' failed.", "TransferResult": ["SELECT * FROM t0 GROUP BY 1 ORDER BY (CASE WHEN 1 = 1 THEN -440304405 ELSE 0 END);"], "TransferSqlExecResult": ["[]"], "MutateResult": "SELECT SUM(count) FROM (SELECT ((1 = 1)::INTEGER) as count FROM t0 GROUP BY 1) as res;", "MutateSqlExecResult": "[(None,)]"}

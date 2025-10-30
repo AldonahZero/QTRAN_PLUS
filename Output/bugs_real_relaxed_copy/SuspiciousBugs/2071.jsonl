@@ -1,0 +1,4 @@
+{"index": 2071, "sql": "CREATE TABLE t0(c0 COLLATE NOCASE);", "TransferResult": ["CREATE TABLE t0 (c0 TEXT)"]}
+{"index": 2071, "sql": "INSERT INTO t0(c0) VALUES ('B');", "TransferResult": ["INSERT INTO t0 (c0) VALUES ('B')"]}
+{"index": 2071, "sql": "CREATE VIEW v0(c0, c1) AS SELECT DISTINCT t0.c0, 'a' FROM t0;", "TransferResult": ["CREATE VIEW v0(c0, c1) AS SELECT DISTINCT t0.c0, 'a' FROM t0"]}
+{"index": 2071, "sql": "SELECT v0.c1 >= v0.c0 FROM v0; -- actual: 1, expected: 0", "TransferResult": ["SELECT v0.c1 >= v0.c0 FROM v0"], "TransferSqlExecResult": ["[(True,)]"], "MutateResult": "SELECT SUM(CAST((v0.c1 >= v0.c0) AS INTEGER)) FROM v0;", "MutateSqlExecResult": "[(1,)]"}

@@ -1,0 +1,5 @@
+{"index": 2096, "sql": "CREATE TABLE t0(c0);", "TransferResult": ["CREATE TABLE t0 (c0 INTEGER)"]}
+{"index": 2096, "sql": "CREATE VIRTUAL TABLE rt0 USING rtree(c0, c1, c2);", "TransferResult": ["SELECT 'Function rtreecheck does not exist in DuckDB'"]}
+{"index": 2096, "sql": "INSERT INTO rt0(c2) VALUES(NULL);", "TransferResult": ["SELECT 'Inserting NULL values is not allowed'"]}
+{"index": 2096, "sql": "INSERT INTO t0 VALUES(0);", "TransferResult": ["INSERT INTO t0 VALUES (1)"]}
+{"index": 2096, "sql": "SELECT * FROM rt0, t0 WHERE (t0.c0, 0) > (rt0.c2, 0); -- unexpected: row is fetched", "TransferResult": ["SELECT * FROM t0 WHERE (t0.c0, 1) > (1, 1);"], "TransferSqlExecResult": ["[]"], "MutateResult": "SELECT SUM(CAST(((t0.c0, 1) > (1, 1)) AS INTEGER)) FROM t0;", "MutateSqlExecResult": "[(0,)]"}

@@ -1,0 +1,14 @@
+{
+  "index": 2095,
+  "input": "bugs_real_relaxed_copy",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t1 LEFT JOIN t0 WHERE t0.c0 ISNULL; -- unexpected: row is fetched",
+    "transfer_sql": "SELECT * FROM t1 LEFT JOIN t0 ON t0.c0 IS NULL",
+    "mutate_sql": "SELECT SUM(CAST((t0.c0 IS NULL) IS TRUE AS INTEGER)) FROM t1 LEFT JOIN t0 ON t0.c0 IS NULL;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

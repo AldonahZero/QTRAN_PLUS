@@ -1,0 +1,5 @@
+{"index": 2043, "sql": "CREATE TABLE t0(c0 BOOLEAN, c1 BOOLEAN, UNIQUE(c1));", "TransferResult": ["CREATE TABLE t0(c0 BOOLEAN, c1 BOOLEAN, UNIQUE(c1))"]}
+{"index": 2043, "sql": "CREATE STATISTICS s1 ON c0, c1 FROM t0;", "TransferResult": ["CREATE INDEX i1 ON t0(c0, c1)"]}
+{"index": 2043, "sql": "INSERT INTO t0(c0) VALUES(TRUE);", "TransferResult": ["INSERT INTO t0(c0) VALUES(TRUE)"]}
+{"index": 2043, "sql": "ANALYZE t0;", "TransferResult": ["ANALYZE t0"]}
+{"index": 2043, "sql": "SELECT * FROM t0 WHERE (t0.c0 AND t0.c1) >= TRUE; -- ERROR:  negative bitmapset member not allowed", "TransferResult": ["SELECT * FROM t0 WHERE (t0.c0 AND t0.c1) = TRUE"], "TransferSqlExecResult": ["[]"], "MutateResult": "SELECT SUM(CAST(((t0.c0 AND t0.c1) = TRUE) AS INTEGER)) FROM t0;", "MutateSqlExecResult": "[(None,)]"}

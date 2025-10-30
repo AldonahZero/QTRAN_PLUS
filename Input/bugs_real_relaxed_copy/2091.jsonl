@@ -1,0 +1,3 @@
+{"index": 2091, "a_db": "postgres", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0 TEXT);"}
+{"index": 2091, "a_db": "postgres", "b_db": "duckdb", "molt": "norec", "sql": "CREATE INDEX i0 ON t0(c0 bpchar_ops);"}
+{"index": 2091, "a_db": "postgres", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM t0 WHERE t0.c0 LIKE ''; -- ERROR:  no = operator for opfamily 426"}

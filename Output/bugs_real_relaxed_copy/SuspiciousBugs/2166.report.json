@@ -1,0 +1,14 @@
+{
+  "index": 2166,
+  "input": "bugs_real_relaxed_copy",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0 WHERE LEFT(t0.c0, -1); -- Segmentation fault",
+    "transfer_sql": "SELECT * FROM t0 WHERE t0.c0 IS TRUE",
+    "mutate_sql": "SELECT SUM(count) FROM (SELECT (t0.c0 IS TRUE)::INTEGER as count FROM t0) as res;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

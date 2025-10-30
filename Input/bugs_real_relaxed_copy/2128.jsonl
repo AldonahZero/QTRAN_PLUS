@@ -1,0 +1,5 @@
+{"index": 2128, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE TABLE t0(c0 INT);"}
+{"index": 2128, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE UNIQUE INDEX i0 ON t0(c0);"}
+{"index": 2128, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES (1);"}
+{"index": 2128, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES (1); -- Failed to commit: Constraint: PRIMARY KEY or UNIQUE constraint violated: duplicated key"}
+{"index": 2128, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "SELECT * FROM t0 WHERE t0.c0 = 1; -- expected: {1}, actual: {}"}

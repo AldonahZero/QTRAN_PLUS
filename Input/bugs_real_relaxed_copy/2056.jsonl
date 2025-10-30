@@ -1,0 +1,4 @@
+{"index": 2056, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0);"}
+{"index": 2056, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE VIEW v0(c0) AS SELECT LOWER(CAST('1e500' AS TEXT)) FROM t0;"}
+{"index": 2056, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES (NULL);"}
+{"index": 2056, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT v0.c0 FROM v0, t0 WHERE t0.rowid NOT IN (0, 0, v0.c0); -- expected: '1e500', actual: Inf"}

@@ -1,0 +1,5 @@
+{"index": 2096, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0);"}
+{"index": 2096, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE VIRTUAL TABLE rt0 USING rtree(c0, c1, c2);"}
+{"index": 2096, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO rt0(c2) VALUES(NULL);"}
+{"index": 2096, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0 VALUES(0);"}
+{"index": 2096, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM rt0, t0 WHERE (t0.c0, 0) > (rt0.c2, 0); -- unexpected: row is fetched"}

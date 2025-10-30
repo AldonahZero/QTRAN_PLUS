@@ -1,0 +1,14 @@
+{
+  "index": 2134,
+  "input": "bugs_real_relaxed_copy",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t1, t2, t0 WHERE CONCAT(t1.c0) OR t0.c0; -- Segmentation fault",
+    "transfer_sql": "SELECT * FROM t1 CROSS JOIN t2 WHERE t1.c0 IS NOT NULL OR t2.c0 IS NOT NULL;",
+    "mutate_sql": "SELECT SUM((t1.c0 IS NOT NULL OR t2.c0 IS NOT NULL)::INTEGER) FROM t1 CROSS JOIN t2;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

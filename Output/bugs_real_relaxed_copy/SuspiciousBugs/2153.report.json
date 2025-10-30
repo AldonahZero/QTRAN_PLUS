@@ -1,0 +1,14 @@
+{
+  "index": 2153,
+  "input": "bugs_real_relaxed_copy",
+  "suspicious_view": {
+    "sql": "SELECT t0.c1 FROM t0 WHERE '' = t0.c0; -- expected: {1}, actual: {''}",
+    "transfer_sql": "SELECT t0.c1 FROM t0 WHERE t0.c0 = ''",
+    "mutate_sql": "SELECT SUM(count) FROM (SELECT (t0.c0 = '')::INTEGER as count FROM t0) as res;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

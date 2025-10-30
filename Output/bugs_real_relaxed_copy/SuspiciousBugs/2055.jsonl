@@ -1,0 +1,4 @@
+{"index": 2055, "sql": "CREATE TABLE t0(c0);", "TransferResult": ["CREATE TABLE t0 (c0 INTEGER)"]}
+{"index": 2055, "sql": "CREATE VIEW v0(c0) AS SELECT TYPEOF(1) FROM t0;", "TransferResult": ["CREATE VIEW v0 AS SELECT t0.c0 FROM t0"]}
+{"index": 2055, "sql": "INSERT INTO t0(c0) VALUES (0), (1);", "TransferResult": ["INSERT INTO t0 (c0) VALUES (1)"]}
+{"index": 2055, "sql": "SELECT * FROM t0 LEFT JOIN v0 ON t0.c0 WHERE NOT(v0.c0 = 'a'); -- unexpected: fetches no row", "TransferResult": ["SELECT * FROM t0 LEFT JOIN v0 ON t0.c0 WHERE NOT(v0.c0 = 1)"], "TransferSqlExecResult": ["[]"], "MutateResult": "SELECT SUM(CAST((NOT(v0.c0 = 1)) AS INTEGER)) FROM t0 LEFT JOIN v0 ON t0.c0;", "MutateSqlExecResult": "[(0,)]"}

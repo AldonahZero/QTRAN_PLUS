@@ -1,0 +1,4 @@
+{"index": 2073, "sql": "CREATE TABLE t0(c0 PRIMARY KEY, c1);", "TransferResult": ["CREATE TABLE t0 (c0 INTEGER, c1 INTEGER, PRIMARY KEY (c0))"]}
+{"index": 2073, "sql": "INSERT INTO t0(c0) VALUES (x'bb'), (0);", "TransferResult": ["INSERT INTO t0 (c0) VALUES (187)"]}
+{"index": 2073, "sql": "SELECT COUNT(*) FROM t0 WHERE INSTR(x'aabb', t0.c0) ORDER BY t0.c0, t0.c1; -- 1", "TransferResult": ["SELECT COUNT(*) FROM t0 WHERE POSITION(CAST(t0.c0 AS VARCHAR) IN x'aabb') > 0 GROUP BY t0.c0, t0.c1;"]}
+{"index": 2073, "sql": "SELECT * FROM t0 WHERE INSTR(x'aabb', t0.c0) ORDER BY t0.c0, t0.c1; -- no row is fetched", "TransferResult": ["SELECT * FROM t0 WHERE POSITION(CAST(t0.c0 AS VARCHAR) IN x'aabb') > 0 ORDER BY t0.c0, t0.c1;"], "TransferSqlExecResult": ["[]"], "MutateResult": "SELECT SUM(CAST((POSITION(CAST(t0.c0 AS VARCHAR) IN x'aabb') > 0) AS INTEGER)) FROM t0;", "MutateSqlExecResult": "[(0,)]"}

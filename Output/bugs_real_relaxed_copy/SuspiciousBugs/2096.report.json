@@ -1,0 +1,14 @@
+{
+  "index": 2096,
+  "input": "bugs_real_relaxed_copy",
+  "suspicious_view": {
+    "sql": "SELECT * FROM rt0, t0 WHERE (t0.c0, 0) > (rt0.c2, 0); -- unexpected: row is fetched",
+    "transfer_sql": "SELECT * FROM t0 WHERE (t0.c0, 1) > (1, 1);",
+    "mutate_sql": "SELECT SUM(CAST(((t0.c0, 1) > (1, 1)) AS INTEGER)) FROM t0;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

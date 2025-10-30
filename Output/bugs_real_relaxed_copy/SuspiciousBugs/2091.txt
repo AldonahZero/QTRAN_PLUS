@@ -1,0 +1,9 @@
+CREATE TABLE t0(c0 TEXT);
+CREATE INDEX i0 ON t0(c0 bpchar_ops);
+SELECT * FROM t0 WHERE t0.c0 LIKE ''; -- ERROR:  no = operator for opfamily 426
+
+
+CREATE TABLE t0(c0 TEXT)
+CREATE INDEX i0 ON t0(c0)
+SELECT * FROM t0 WHERE t0.c0 LIKE '%';
+SELECT SUM(CAST((t0.c0 LIKE '%') AS INTEGER)) FROM t0;

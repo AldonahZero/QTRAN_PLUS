@@ -1,0 +1,14 @@
+{
+  "index": 2064,
+  "input": "bugs_real_relaxed_copy",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0 WHERE t0.c1 IS FALSE BETWEEN FALSE AND TRUE; -- unexpected: row is not fetched",
+    "transfer_sql": "SELECT * FROM t0 WHERE t0.c1 = FALSE",
+    "mutate_sql": "SELECT SUM(count) FROM (SELECT (t0.c1 = FALSE)::INTEGER as count FROM t0);"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

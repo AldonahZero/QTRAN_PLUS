@@ -1,0 +1,13 @@
+CREATE TABLE t0(c0 INT);
+CREATE TABLE t1(c0 INT);
+INSERT INTO t0(c0) VALUES (0);
+INSERT INTO t1(c0) VALUES (0);
+SELECT * FROM t1, t0 WHERE NOT ((t1.c0 AND t0.c0) < 0); -- expected: {0|0}, actual: {}
+
+
+CREATE TABLE t0(c0 INT)
+CREATE TABLE t1(c0 INT, PRIMARY KEY(c0))
+INSERT INTO t0(c0) VALUES (1)
+INSERT INTO t1(c0) VALUES (1)
+SELECT * FROM t1, t0 WHERE NOT (t1.c0 < 1 OR t0.c0 < 1);
+SELECT SUM(count) FROM (SELECT (NOT (t1.c0 < 1 OR t0.c0 < 1))::INTEGER as count FROM t1, t0) as res;

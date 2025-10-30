@@ -1,0 +1,14 @@
+{
+  "index": 2113,
+  "input": "bugs_real_relaxed_copy",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0; -- 1.0|1.0",
+    "transfer_sql": "SELECT c0, c1 FROM t0;",
+    "mutate_sql": "SELECT COUNT(*) FROM (SELECT (c0, c1) IS TRUE FROM t0);"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

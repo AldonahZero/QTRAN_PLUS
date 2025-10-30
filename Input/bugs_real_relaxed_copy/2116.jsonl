@@ -1,0 +1,5 @@
+{"index": 2116, "a_db": "mysql", "b_db": "tidb", "molt": "norec", "sql": "CREATE TABLE t0(c0 INT);"}
+{"index": 2116, "a_db": "mysql", "b_db": "tidb", "molt": "norec", "sql": "CREATE TABLE t1(c0 DOUBLE);"}
+{"index": 2116, "a_db": "mysql", "b_db": "tidb", "molt": "norec", "sql": "INSERT INTO t0 VALUES(0);"}
+{"index": 2116, "a_db": "mysql", "b_db": "tidb", "molt": "norec", "sql": "INSERT INTO t1 VALUES('-0');"}
+{"index": 2116, "a_db": "mysql", "b_db": "tidb", "molt": "norec", "sql": "SELECT * FROM t0, t1 WHERE t0.c0 = t1.c0; -- expected: {0, -0}, actual: {}"}

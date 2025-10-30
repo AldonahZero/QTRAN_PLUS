@@ -1,0 +1,6 @@
+{"index": 2095, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0);"}
+{"index": 2095, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t1(c0);"}
+{"index": 2095, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE INDEX i0 ON t0(1) WHERE c0 ISNULL;"}
+{"index": 2095, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES (1);"}
+{"index": 2095, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t1(c0) VALUES (1);"}
+{"index": 2095, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM t1 LEFT JOIN t0 WHERE t0.c0 ISNULL; -- unexpected: row is fetched"}

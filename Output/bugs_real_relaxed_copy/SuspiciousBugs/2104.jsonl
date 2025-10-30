@@ -1,0 +1,3 @@
+{"index": 2104, "sql": "CREATE TABLE t0(c0);", "TransferResult": ["CREATE TABLE t0 (c0 INTEGER)"]}
+{"index": 2104, "sql": "CREATE INDEX i0 ON t0((c0 NOTNULL) COLLATE BINARY);", "TransferResult": ["CREATE INDEX i0 ON t0(c0)"]}
+{"index": 2104, "sql": "SELECT * FROM t0 WHERE(c0 NOTNULL) COLLATE BINARY BETWEEN 0 AND c0; -- sqlite3.c:98025: sqlite3ExprSkipCollateAndLikely: Assertion `pExpr->op==TK_COLLATE' failed.", "TransferResult": ["SELECT * FROM t0 WHERE c0 BETWEEN 0 AND c0"], "TransferSqlExecResult": ["[]"], "MutateResult": "SELECT SUM((c0 BETWEEN 0 AND c0)::INTEGER) FROM t0;", "MutateSqlExecResult": "[(None,)]"}

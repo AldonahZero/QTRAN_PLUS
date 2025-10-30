@@ -1,0 +1,7 @@
+{"index": 2121, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE TABLE t0(c0 VARCHAR, c1 DOUBLE);"}
+{"index": 2121, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE TABLE t1(c0 DOUBLE, PRIMARY KEY(c0));"}
+{"index": 2121, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES (0), (0), (0), (0);"}
+{"index": 2121, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES (NULL), (NULL);"}
+{"index": 2121, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t1(c0) VALUES (0), (1);"}
+{"index": 2121, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": ""}
+{"index": 2121, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "SELECT t0.c0 FROM t0, t1; -- A fatal error has been detected by the Java Runtime Environment"}

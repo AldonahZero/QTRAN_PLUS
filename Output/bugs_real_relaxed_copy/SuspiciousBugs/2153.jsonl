@@ -1,0 +1,4 @@
+{"index": 2153, "sql": "CREATE TABLE t0(c0 VARCHAR, c1 VARCHAR);", "TransferResult": ["CREATE TABLE t0(c0 VARCHAR, c1 VARCHAR)"]}
+{"index": 2153, "sql": "INSERT INTO t0(c0) VALUES(0), ('');", "TransferResult": ["INSERT INTO t0(c0) VALUES ('')"]}
+{"index": 2153, "sql": "UPDATE t0 SET c1 = 1;", "TransferResult": ["UPDATE t0 SET c1 = ''"]}
+{"index": 2153, "sql": "SELECT t0.c1 FROM t0 WHERE '' = t0.c0; -- expected: {1}, actual: {''}", "TransferResult": ["SELECT t0.c1 FROM t0 WHERE t0.c0 = ''"], "TransferSqlExecResult": ["[('',)]"], "MutateResult": "SELECT SUM(count) FROM (SELECT (t0.c0 = '')::INTEGER as count FROM t0) as res;", "MutateSqlExecResult": "[(1,)]"}

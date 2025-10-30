@@ -1,0 +1,4 @@
+{"index": 2111, "sql": "CREATE TABLE t0(c0);", "TransferResult": ["CREATE TABLE t0 (c0 INTEGER)"]}
+{"index": 2111, "sql": "INSERT INTO t0 VALUES('0');", "TransferResult": ["INSERT INTO t0 VALUES (1)"]}
+{"index": 2111, "sql": "CREATE VIEW v0(c0) AS SELECT CAST(0 AS INT) FROM t0;", "TransferResult": ["CREATE VIEW v0 (c0) AS SELECT CAST(1 AS INT) FROM t0"]}
+{"index": 2111, "sql": "SELECT * FROM t0, v0 WHERE 0 >= t0.c0 AND t0.c0 = v0.c0; -- unexpected: fetches row", "TransferResult": ["SELECT * FROM t0, v0 WHERE 1 >= t0.c0 AND t0.c0 = v0.c0; -- unexpected: fetches row"], "TransferSqlExecResult": ["[(1, 1)]"], "MutateResult": "SELECT SUM(CAST((1 >= t0.c0 AND t0.c0 = v0.c0) AS INTEGER)) FROM t0, v0;", "MutateSqlExecResult": "[(1,)]"}

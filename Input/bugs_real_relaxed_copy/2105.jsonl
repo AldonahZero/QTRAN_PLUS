@@ -1,0 +1,4 @@
+{"index": 2105, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE VIRTUAL TABLE vt0 USING fts5(c0);"}
+{"index": 2105, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0);"}
+{"index": 2105, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE VIEW v0(c0) AS SELECT 0 GROUP BY 1;"}
+{"index": 2105, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM v0, t0 LEFT JOIN vt0 ON vt0.c0 MATCH 1 WHERE v0.c0 == 0; -- sqlite3.c:143296: constructAutomaticIndex: Assertion `!ExprHasProperty(pExpr, EP_FromJoin) || pExpr->iRightJoinTable!=pSrc->iCursor || pLoop->prereq!=0' failed."}

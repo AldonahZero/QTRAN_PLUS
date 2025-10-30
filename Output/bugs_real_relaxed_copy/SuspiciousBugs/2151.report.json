@@ -1,0 +1,14 @@
+{
+  "index": 2151,
+  "input": "bugs_real_relaxed_copy",
+  "suspicious_view": {
+    "sql": "SELECT t0.c0 FROM t0 WHERE NOT (0 BETWEEN 0 AND t0.c0::BOOL); -- expected: {}, actual: {-1}",
+    "transfer_sql": "SELECT * FROM t0 WHERE t0.c0 <> 0",
+    "mutate_sql": "SELECT SUM(CAST((t0.c0 <> 0) AS INTEGER)) FROM t0;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

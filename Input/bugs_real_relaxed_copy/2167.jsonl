@@ -1,0 +1,6 @@
+{"index": 2167, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE TABLE t0(c0 VARCHAR);"}
+{"index": 2167, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE TABLE t1(c0 VARCHAR);"}
+{"index": 2167, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t0 VALUES('');"}
+{"index": 2167, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t1 VALUES(0);"}
+{"index": 2167, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE VIEW v0 AS SELECT 0 FROM t0, t1 WHERE t0.c0 = t1.c0;"}
+{"index": 2167, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "SELECT * FROM v0 RIGHT JOIN t1 ON 1; -- Assertion `!finalized' failed"}

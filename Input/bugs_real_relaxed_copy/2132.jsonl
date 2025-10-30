@@ -1,0 +1,5 @@
+{"index": 2132, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE TABLE t0(c0 INT);"}
+{"index": 2132, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE TABLE t1(c0 INT);"}
+{"index": 2132, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES (0);"}
+{"index": 2132, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t1(c0) VALUES (0), (0), (1), (-1);"}
+{"index": 2132, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "SELECT * FROM t0, t1 WHERE LN(t1.c0) < t0.c0; -- does not terminate"}

@@ -1,0 +1,4 @@
+{"index": 2057, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0 (c0, c1);"}
+{"index": 2057, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE INDEX i0 ON t0(CAST(c0 AS NUMERIC));"}
+{"index": 2057, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0(c0, c1) VALUES ('a', -1);"}
+{"index": 2057, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM t0 INDEXED BY i0 WHERE CAST(t0.c0 AS NUMERIC) > LOWER(t0.c1) GROUP BY t0.rowid; -- expected: row is fetched, actual: no row is fetched"}

@@ -1,0 +1,13 @@
+CREATE TABLE t0(c0 TEXT, c1 REAL, c2, PRIMARY KEY(c2, c0, c1));
+CREATE INDEX i0 ON t0(c1 IN (c0));
+INSERT INTO t0(c0, c2) VALUES (0, NULL) ON CONFLICT(c2, c1, c0) DO NOTHING;
+UPDATE t0 SET c2 = x'';
+SELECT * FROM t0 WHERE t0.c2 IS NULL; -- unexpected: row is fetched
+
+
+CREATE TABLE t0 (c0 TEXT, c1 REAL, c2 TEXT, PRIMARY KEY (c2, c0, c1))
+CREATE INDEX i0 ON t0(c1)
+INSERT INTO t0(c0, c1, c2) VALUES (1, 2, 'default_value') ON CONFLICT(c2, c1, c0) DO NOTHING
+UPDATE t0 SET c2 = ''
+SELECT * FROM t0 WHERE t0.c2 = 'default_value';
+SELECT SUM(CAST((t0.c2 = 'default_value') AS INTEGER)) FROM t0;

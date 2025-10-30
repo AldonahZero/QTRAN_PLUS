@@ -1,0 +1,14 @@
+{
+  "index": 2048,
+  "input": "bugs_real_relaxed_copy",
+  "suspicious_view": {
+    "sql": "SELECT MIN(t0.c1), t0.c0 FROM t0 WHERE t0.c1 ISNULL; -- expected: NULL | 1, actual: NULL | NULL",
+    "transfer_sql": "SELECT MIN(t0.c1) AS min_c1, ANY_VALUE(t0.c0) AS c0 FROM t0 WHERE t0.c1 IS NULL",
+    "mutate_sql": "SELECT SUM(CAST((t0.c1 IS NULL) AS INTEGER)) FROM t0;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

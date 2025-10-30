@@ -1,0 +1,5 @@
+{"index": 2120, "sql": "CREATE TABLE t0(c0 BOOL);", "TransferResult": ["CREATE TABLE t0(c0 BOOLEAN)"]}
+{"index": 2120, "sql": "CREATE TABLE t1(c0 BOOL);", "TransferResult": ["CREATE TABLE t1(c0 BOOLEAN)"]}
+{"index": 2120, "sql": "INSERT INTO t1(c0) VALUES (0);", "TransferResult": ["INSERT INTO t1(c0) VALUES (FALSE)"]}
+{"index": 2120, "sql": "INSERT INTO t0(c0) VALUES (0);", "TransferResult": ["INSERT INTO t0(c0) VALUES (FALSE)"]}
+{"index": 2120, "sql": "SELECT t0.c0 FROM t0, t1 WHERE t1.c0 < t0.c0; -- Error: Not implemented: Unimplemented type for sort", "TransferResult": ["SELECT t0.c0 FROM t0, t1 WHERE t1.c0 < t0.c0"], "TransferSqlExecResult": ["[]"], "MutateResult": "SELECT SUM(count) FROM (SELECT ((t1.c0 < t0.c0))::INTEGER as count FROM t0, t1) as res;", "MutateSqlExecResult": "[(0,)]"}

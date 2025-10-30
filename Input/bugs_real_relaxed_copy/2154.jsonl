@@ -1,0 +1,3 @@
+{"index": 2154, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE TABLE t0(c0 BOOLEAN);"}
+{"index": 2154, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t0 VALUES (NULL), (false);"}
+{"index": 2154, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "SELECT DISTINCT t0.c0 FROM t0; -- expected: {NULL, false}, actual: {NULL, NULL}"}

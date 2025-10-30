@@ -1,0 +1,7 @@
+{"index": 2082, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0);"}
+{"index": 2082, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE INDEX i0 ON t0(0) WHERE c0 GLOB c0;"}
+{"index": 2082, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0 VALUES (0);"}
+{"index": 2082, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE UNIQUE INDEX i1 ON t0(0);"}
+{"index": 2082, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE UNIQUE INDEX i2 ON t0(0);"}
+{"index": 2082, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "REPLACE INTO t0 VALUES(0);"}
+{"index": 2082, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT COUNT(*) FROM t0 WHERE t0.c0 GLOB t0.c0; -- expected: 1, actual: 2"}

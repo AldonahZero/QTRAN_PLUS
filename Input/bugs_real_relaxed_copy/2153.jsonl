@@ -1,0 +1,4 @@
+{"index": 2153, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE TABLE t0(c0 VARCHAR, c1 VARCHAR);"}
+{"index": 2153, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES(0), ('');"}
+{"index": 2153, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "UPDATE t0 SET c1 = 1;"}
+{"index": 2153, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "SELECT t0.c1 FROM t0 WHERE '' = t0.c0; -- expected: {1}, actual: {''}"}

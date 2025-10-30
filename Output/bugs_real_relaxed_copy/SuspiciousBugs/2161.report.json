@@ -1,0 +1,14 @@
+{
+  "index": 2161,
+  "input": "bugs_real_relaxed_copy",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0 WHERE c0 LIKE '' AND c0 < true; -- Assertion `tableFilter[0].comparison_type == ExpressionType::COMPARE_GREATERTHAN || tableFilter[0].comparison_type == ExpressionType::COMPARE_GREATERTHANOREQUALTO' failed.",
+    "transfer_sql": "SELECT * FROM t0 WHERE c0 LIKE '%' AND c0 < 'true'",
+    "mutate_sql": "SELECT SUM(CAST((c0 LIKE '%') AND (c0 < 'true') AS INTEGER)) FROM t0;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

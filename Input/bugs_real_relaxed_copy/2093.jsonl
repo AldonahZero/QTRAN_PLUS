@@ -1,0 +1,4 @@
+{"index": 2093, "a_db": "postgres", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0 int);"}
+{"index": 2093, "a_db": "postgres", "b_db": "duckdb", "molt": "norec", "sql": "CREATE VIEW v0 AS SELECT * FROM t0;"}
+{"index": 2093, "a_db": "postgres", "b_db": "duckdb", "molt": "norec", "sql": "CREATE OR REPLACE VIEW v0 AS SELECT * FROM v0;"}
+{"index": 2093, "a_db": "postgres", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM information_schema.tables; -- server process (PID 2461) was terminated by signal 11: Segmentation fault"}

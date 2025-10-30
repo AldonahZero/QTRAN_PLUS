@@ -1,0 +1,4 @@
+{"index": 2100, "sql": "CREATE TABLE t0(c0);", "TransferResult": ["CREATE TABLE t0 (c0 INTEGER)"]}
+{"index": 2100, "sql": "CREATE TABLE t1(c0, c1 UNIQUE);", "TransferResult": ["CREATE TABLE t1 (c0 INTEGER, c1 INTEGER UNIQUE)"]}
+{"index": 2100, "sql": "INSERT INTO t0(c0) VALUES(NULL);", "TransferResult": ["INSERT INTO t0 (c0) VALUES (1)"]}
+{"index": 2100, "sql": "SELECT COUNT(*) FROM t0, t1 WHERE (SELECT AVG(0) FILTER(WHERE t1.c1)); -- segmentation fault", "TransferResult": ["SELECT COUNT(*) FROM t0, t1 WHERE t1.c1 IS NOT NULL"], "TransferSqlExecResult": ["[(0,)]"], "MutateResult": "SELECT SUM(count) FROM (SELECT (t1.c1 IS NOT NULL) :: INTEGER as count FROM t0, t1);", "MutateSqlExecResult": "[(None,)]"}

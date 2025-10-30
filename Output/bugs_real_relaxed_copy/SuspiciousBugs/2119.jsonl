@@ -1,0 +1,3 @@
+{"index": 2119, "sql": "CREATE TABLE t0(c0 NUMERIC UNIQUE);", "TransferResult": ["CREATE TABLE t0(c0 NUMERIC UNIQUE)"]}
+{"index": 2119, "sql": "INSERT INTO t0(c0) VALUES (1163404482), (0), (488566);", "TransferResult": ["INSERT INTO t0(c0) VALUES (1163404482), (488566)"]}
+{"index": 2119, "sql": "SELECT * FROM t0 WHERE 0.1 < c0; -- expected: {}, actual: {1163404482.0, 488566.0}", "TransferResult": ["SELECT * FROM t0 WHERE 0.1 < c0;"], "TransferSqlExecResult": ["[(Decimal('1163404482'),), (Decimal('488566'),)]"], "MutateResult": "SELECT SUM(CAST((0.1 < c0) AS INTEGER)) FROM t0;", "MutateSqlExecResult": "[(2,)]"}

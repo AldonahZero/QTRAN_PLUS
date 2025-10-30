@@ -1,0 +1,3 @@
+{"index": 2136, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE TABLE t0(c0 DATE);"}
+{"index": 2136, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t0 VALUES (-10000000);"}
+{"index": 2136, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "SELECT c0 FROM t0; -- double free or corruption (out)"}

@@ -1,0 +1,4 @@
+{"index": 2098, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0);"}
+{"index": 2098, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE VIRTUAL TABLE vt0 USING rtree(c0, c1, c2);"}
+{"index": 2098, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES(0);"}
+{"index": 2098, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM t0 LEFT JOIN vt0 ON c2 IN (0) WHERE c1 IN (NULL);"}

@@ -1,0 +1,14 @@
+{
+  "index": 2159,
+  "input": "bugs_real_relaxed_copy",
+  "suspicious_view": {
+    "sql": "SELECT t0.rowid FROM t0 WHERE t0.rowid ORDER BY CASE ((t0.c0) ::BOOL) WHEN 1 THEN t0.rowid END; -- expected: {0, 2}, actual: {140671047175328, 2}",
+    "transfer_sql": "SELECT t0.ctid FROM t0 WHERE t0.c0 IS NOT NULL ORDER BY CASE WHEN (t0.c0)::BOOL THEN t0.ctid END;",
+    "mutate_sql": "SELECT SUM(count) FROM (SELECT (t0.c0 IS NOT NULL)::INTEGER as count FROM t0 ORDER BY CASE WHEN (t0.c0)::BOOL THEN t0.ctid END) as res;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

@@ -1,0 +1,5 @@
+{"index": 2140, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE TABLE t0(c0 INT);"}
+{"index": 2140, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE TABLE t1(c0 VARCHAR);"}
+{"index": 2140, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t1 VALUES (0.9201898334673894), (0);"}
+{"index": 2140, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t0 VALUES (0);"}
+{"index": 2140, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "SELECT * FROM t0, t1 GROUP BY t0.c0, t1.c0 HAVING t1.c0!=MAX(t1.c0) UNION ALL SELECT * FROM t0, t1 GROUP BY t0.c0, t1.c0 HAVING NOT t1.c0>MAX(t1.c0); -- nondeterministic"}

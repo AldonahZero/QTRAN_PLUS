@@ -1,0 +1,13 @@
+CREATE TABLE t0(c0 INT);
+CREATE TABLE t1(c0 INT);
+INSERT INTO t1(c0) VALUES (0);
+INSERT INTO t0(c0) VALUES (0);
+SELECT * FROM t0 LEFT JOIN t1 ON t0.c0 <= t1.c0; -- Not implemented: Unimplemented type for nested loop join!
+
+
+CREATE TABLE t0(c0 INT)
+CREATE TABLE t1(c0 INT, PRIMARY KEY(c0))
+INSERT INTO t1(c0) VALUES (1)
+INSERT INTO t0(c0) VALUES (1)
+SELECT * FROM t0 LEFT JOIN t1 ON t0.c0 <= t1.c0
+SELECT SUM(count) FROM (SELECT CAST((t0.c0 <= t1.c0) AS INTEGER) as count FROM t0 LEFT JOIN t1 ON t0.c0 <= t1.c0) as res;

@@ -1,0 +1,14 @@
+{
+  "index": 2164,
+  "input": "bugs_real_relaxed_copy",
+  "suspicious_view": {
+    "sql": "SELECT MIN(CAST(c0 AS BIGINT) << 63) FROM t0; -- expected: {-9223372036854775808}, actual: {NULL}",
+    "transfer_sql": "SELECT MIN(CAST(c0 AS BIGINT) << 63) FROM t0 WHERE c0 IS NOT NULL",
+    "mutate_sql": "SELECT SUM(count) FROM (SELECT CAST((MIN(CAST(c0 AS BIGINT) << 63)) IS NOT NULL AS INTEGER) as count FROM t0) as res;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}
