@@ -9,20 +9,15 @@
 
 from typing import Tuple, Sequence
 from sqlalchemy.engine.row import Row
-from typing import List, Tuple, Optional, Union, Sequence
+from typing import List, Tuple, Optional, Union,Sequence
 from time import time
 import pymysql
 from sqlalchemy import create_engine, text
 
 
 class Result:
-    def __init__(
-        self,
-        column_names: List[str],
-        column_types: List[str],
-        rows: List[List[str]],
-        err: Optional[Exception] = None,
-    ):
+    def __init__(self, column_names: List[str], column_types: List[str], rows: List[List[str]],
+                 err: Optional[Exception] = None):
         self.column_names = column_names
         self.column_types = column_types
         self.rows = rows
@@ -30,12 +25,7 @@ class Result:
 
     def to_string(self) -> str:
         result_str = "ColumnName(ColumnType)s: "
-        result_str += " ".join(
-            [
-                f"{name}({type_})"
-                for name, type_ in zip(self.column_names, self.column_types)
-            ]
-        )
+        result_str += " ".join([f"{name}({type_})" for name, type_ in zip(self.column_names, self.column_types)])
         result_str += "\n"
         for i, row in enumerate(self.rows):
             result_str += f"row {i}: {' '.join(row)}\n"
@@ -53,11 +43,9 @@ class Result:
         if not self.err:
             return -1, Exception("[Result.GetErrorCode]result.err == None")
         else:
-            return -1, Exception(
-                f"[Result.GetErrorCode]not mysql.connector.Error {type(self.err).__name__}"
-            )
+            return -1, Exception(f"[Result.GetErrorCode]not mysql.connector.Error {type(self.err).__name__}")
 
-    def cmp(self, another: "Result") -> Tuple[int, Optional[Exception]]:
+    def cmp(self, another: 'Result') -> Tuple[int, Optional[Exception]]:
         if self.err:
             return -2, Exception("[Result.CMP]self error")
         if another.err:
@@ -113,16 +101,7 @@ class Result:
                 return 1, None
             return 2, None
 
-
-def Check(
-    originResult: Result, mutatedResult: Result, isUpper: bool, isSame: bool
-) -> Tuple[bool, str]:
-    """
-    预言机判断：
-    - isSame=True：要求完全相等；
-    - isSame=False：允许包含关系，若 isUpper=True 则 mutated 是 origin 的超集，反之是子集。
-    返回 (是否满足, 错误或 None)。
-    """
+def Check(originResult: Result, mutatedResult: Result, isUpper: bool, isSame: bool) -> Tuple[bool, str]:
     cmp, err = originResult.cmp(mutatedResult)
     if err:
         return False, err
@@ -141,37 +120,41 @@ def Check(
 
 
 def convert_to_result(data: Sequence[Row]) -> Result:
-    """将 SQLAlchemy Row 列表转换为 Result 结构。空结果返回空列与空行。"""
     if not data:
         return Result(column_names=[], column_types=[], rows=[], err=None)
-
+    
     first_row = data[0]
     column_names = list(first_row.keys())
-
+    
     # 假设所有列的数据类型为字符串
-    column_types = ["str" for _ in column_names]
-
+    column_types = ['str' for _ in column_names]
+    
     # 将数据行转换为字符串的列表
     rows = [[str(row[key]) for key in column_names] for row in data]
     return Result(column_names=column_names, column_types=column_types, rows=rows)
-
 
 # 示例用法
 def usage_example():
     column_names = ["ID", "Name", "Age"]
     column_types = ["int", "string", "int"]
 
-    rows = [["1", "Alice", "30"], ["2", "Bob", "25"], ["3", "Charlie", "35"]]
+    rows = [
+        ["1", "Alice", "30"],
+        ["2", "Bob", "25"],
+        ["3", "Charlie", "35"]
+    ]
 
-    another_rows = [["2", "Bob", "25"], ["3", "Charlie", "35"]]
+    another_rows = [
+        ["2", "Bob", "25"],
+        ["3", "Charlie", "35"]
+    ]
+
 
     # 创建 Result 对象
     result = Result(column_names, column_types, rows)
     another_result = Result(column_names, column_types, another_rows)
     is_upper = True
-    end, error = Check(
-        result, another_result, is_upper
-    )  # check result->another_result是否符合is_upper
+    end, error = Check(result, another_result, is_upper) # check result->another_result是否符合is_upper
     # Check result: False,check "result->another_result"是否为upper，显然不是故返回false
     if error:
         print(f"Error occurred: {error}")
@@ -192,75 +175,22 @@ def execSQL_result_convertor(exec_result):
             ]
     :return:
     """
-    converted_result = {"column_names": [], "column_types": [], "rows": []}
-
-    # 1) None -> 空结果
-    if exec_result is None:
+    converted_result = {
+        "column_names": [],
+        "column_types": [],
+        "rows": []
+    }
+    if exec_result == None:
         return converted_result
-
-    # 2) 支持我们统一的 NoSQL KV 结果结构(dict)，例如：
-    #    {"type":"kv_get","success":True,"value":"hello","meta":{...}}
-    #    转换策略：
-    #      - 如果 value 是 list => 每个元素一行，单列 value
-    #      - 如果 value 是 dict => 展平为两列 key/value
-    #      - 其它标量 => 单行单列 value
-    if (
-        isinstance(exec_result, dict)
-        and "type" in exec_result
-        and "value" in exec_result
-    ):
-        val = exec_result.get("value")
-        # 列名定义
-        if isinstance(val, list):
-            converted_result["column_names"] = ["value"]
-            converted_result["column_types"] = ["str"]
-            for v in val:
-                converted_result["rows"].append([str(v)])
-        elif isinstance(val, dict):
-            # 统一为 key,value 两列
-            converted_result["column_names"] = ["key", "value"]
-            converted_result["column_types"] = ["str", "str"]
-            for k, v in val.items():
-                converted_result["rows"].append([str(k), str(v)])
-        else:  # 标量 / None
-            converted_result["column_names"] = ["value"]
-            converted_result["column_types"] = ["str"]
-            if val is not None:
-                converted_result["rows"].append([str(val)])
-        return converted_result
-
-    # 3) 原始关系型结果：期望 list-like 且内部元素可索引（行序列）
-    if isinstance(exec_result, (list, tuple)) and exec_result:
-        # 行可能是 tuple/list；如果首行不是序列（例如单标量），统一包一层
-        first_row = exec_result[0]
-        if not isinstance(first_row, (list, tuple)):
-            # 单列场景，全部当作一列'value'
-            converted_result["column_names"] = ["c0"]
-            converted_result["column_types"] = [type(first_row).__name__]
-            for r in exec_result:
-                converted_result["rows"].append([str(r)])
-            return converted_result
-        # 正常二维
-        col_count = len(first_row)
-        for i in range(col_count):
+    if len(exec_result) > 0:
+        for i in range(len(exec_result[0])):
             converted_result["column_names"].append("c" + str(i))
-            converted_result["column_types"].append(type(first_row[i]).__name__)
-        for row in exec_result:
-            try:
-                converted_result["rows"].append([str(row[i]) for i in range(col_count)])
-            except Exception:
-                # 行长度异常，补齐/截断
-                safe = []
-                for i in range(col_count):
-                    try:
-                        safe.append(str(row[i]))
-                    except Exception:
-                        safe.append("<ERR>")
-                converted_result["rows"].append(safe)
-        return converted_result
+            converted_result["column_types"].append(type(exec_result[0][i]))
 
-    # 4) 其它无法识别的类型，退化为单值表
-    converted_result["column_names"] = ["value"]
-    converted_result["column_types"] = [type(exec_result).__name__]
-    converted_result["rows"].append([str(exec_result)])
+    for item in exec_result:
+        temp = []
+        for j in range(len(exec_result[0])):
+            temp.append(str(item[j]))
+        converted_result["rows"].append(temp)
+    print(converted_result)
     return converted_result
