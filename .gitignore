@@ -64,9 +64,11 @@ check_agent_setup.py
 research/
 tools/
 
-# 爬虫敏感配置文件（包含Token等密钥）
-mydata/bugjson/crawler_env
-mydata/bugjson/crawler_config.py
-mydata/bugjson/*_new.json
-mydata/bugjson/bugs_multi_source.json
-mydata/bugjson/*.backup*
+# 爬虫敏感配置文件（包含Token等密钥）- 新目录结构
+mydata/bugjson/crawler/crawler_env
+mydata/bugjson/crawler/crawler_config.py
+mydata/bugjson/data/*_new.json
+mydata/bugjson/data/bugs_multi_source.json
+mydata/bugjson/backup/*.backup*
+mydata/bugjson/__pycache__/
+mydata/bugjson/reorganize.py

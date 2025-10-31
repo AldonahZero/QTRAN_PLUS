@@ -40,9 +40,15 @@ class BaseBugCrawler(ABC):
     
     def save_bugs(self, filename: str):
         """保存bugs到JSON文件"""
-        with open(filename, 'w', encoding='utf-8') as f:
+        # 保存到data目录
+        from pathlib import Path
+        data_dir = Path(__file__).parent.parent / "data"
+        data_dir.mkdir(exist_ok=True)
+        output_path = data_dir / filename
+        
+        with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(self.bugs, f, indent=4, ensure_ascii=False)
-        print(f"  💾 {self.dbms_name}: 保存 {len(self.bugs)} 个bugs到 {filename}")
+        print(f"  💾 {self.dbms_name}: 保存 {len(self.bugs)} 个bugs到 {output_path}")
 
 
 class SQLiteBugCrawler(BaseBugCrawler):
@@ -512,9 +518,14 @@ def main():
     if all_bugs:
         print("\n" + "=" * 70)
         print("💾 保存所有新爬取的bugs...")
-        with open("bugs_multi_source.json", 'w', encoding='utf-8') as f:
+        from pathlib import Path
+        data_dir = Path(__file__).parent.parent / "data"
+        data_dir.mkdir(exist_ok=True)
+        output_file = data_dir / "bugs_multi_source.json"
+        
+        with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(all_bugs, f, indent=4, ensure_ascii=False)
-        print(f"  ✅ 保存 {len(all_bugs)} 个bugs到 bugs_multi_source.json")
+        print(f"  ✅ 保存 {len(all_bugs)} 个bugs到 {output_file}")
     
     # 统计
     from collections import Counter
