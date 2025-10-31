@@ -1,0 +1,16 @@
+# Bug爬虫环境变量配置文件
+# 复制此文件为 crawler_env 并填入实际值
+# 然后在 bug-crawler.service 中添加: EnvironmentFile=/root/QTRAN/mydata/bugjson/crawler_env
+
+# GitHub Personal Access Token (推荐设置，提高API限制从60次/小时到5000次/小时)
+# 创建Token: https://github.com/settings/tokens
+# 需要的权限: public_repo, read:org
+GITHUB_TOKEN=your_github_token_here
+
+# MySQL Bugzilla配置（可选）
+BUGZILLA_API_KEY=your_bugzilla_api_key
+
+# MariaDB Jira配置（可选）
+JIRA_USERNAME=your_jira_username
+JIRA_PASSWORD=your_jira_password
+

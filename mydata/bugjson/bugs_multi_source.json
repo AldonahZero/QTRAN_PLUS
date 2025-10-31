@@ -1,0 +1,1961 @@
+[
+    {
+        "date": "31/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19578"
+        },
+        "oracle": "PQS",
+        "reporter": "no23reason",
+        "status": "open",
+        "title": "sniff_csv regression in 1.3 and newer",
+        "test": [
+            "SELECT Delimiter, Quote, Escape, HasHeader, Columns FROM sniff_csv(\"repro.csv\", strict_mode=false);"
+        ]
+    },
+    {
+        "date": "31/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19575"
+        },
+        "oracle": "error",
+        "reporter": "robotslacker",
+        "status": "open",
+        "title": "[1.4.1] Interesting error with like expression on some character. (Invalid unicode)"
+    },
+    {
+        "date": "31/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19574"
+        },
+        "oracle": "unknown",
+        "reporter": "artjomPlaunov",
+        "status": "fixed",
+        "title": "WAL Index Replay optimizations"
+    },
+    {
+        "date": "31/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19570"
+        },
+        "oracle": "crash",
+        "reporter": "Captain32",
+        "status": "open",
+        "title": "There is a race condition between `Append` and `Scan`"
+    },
+    {
+        "date": "30/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19552"
+        },
+        "oracle": "unknown",
+        "reporter": "J-Meyers",
+        "status": "open",
+        "title": "FILE_SIZE_BYTES for Parquet doesn't work properly in parallel",
+        "test": [
+            "COPY (",
+            "WITH n AS (",
+            "SELECT 4230875 AS nrows",
+            ")",
+            "SELECT",
+            "COPY 'combined_synthetic.parquet' TO 'output.parquet' (FILE_SIZE_BYTES '16MB');"
+        ]
+    },
+    {
+        "date": "30/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19549"
+        },
+        "oracle": "PQS",
+        "reporter": "rustyconover",
+        "status": "open",
+        "title": "ETA inaccuracy for progress bar when scanning Kafka topic"
+    },
+    {
+        "date": "29/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19545"
+        },
+        "oracle": "unknown",
+        "reporter": "baikal",
+        "status": "open",
+        "title": "casting BLOB to VARCHAR oddity"
+    },
+    {
+        "date": "29/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19535"
+        },
+        "oracle": "unknown",
+        "reporter": "rustyconover",
+        "status": "fixed",
+        "title": "Optional Prefixing for `UNNEST` on `STRUCT` Types",
+        "test": [
+            "SELECT unnest(a), unnest(b)",
+            "FROM",
+            "(SELECT {'fruit': 'apple'} AS a),",
+            "(SELECT {'fruit': 'banana'} AS b);",
+            "SELECT unnest(a, prefix := 'a_'), unnest(b, prefix := 'b_')",
+            "FROM",
+            "(SELECT {'fruit': 'apple'} AS a),",
+            "(SELECT {'fruit': 'banana'} AS b);"
+        ]
+    },
+    {
+        "date": "28/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19517"
+        },
+        "oracle": "unknown",
+        "reporter": "xtfmkh",
+        "status": "open",
+        "title": "select *     +join",
+        "test": [
+            "SELECT  data.* not LIKE '%学时'  , data.* like '%学时'  from data;",
+            "SELECT  data.* not LIKE '%学时'  , data.* like '%学时'  from data,   dgjs;",
+            "CREATE TABLE \"data\"(\"学期\" DOUBLE,\"教学班名称\" VARCHAR,\"课程号\" VARCHAR,\"课程名称\" VARCHAR,\"课程性质\" VARCHAR,\"教师信息\" VARCHAR,",
+            "\"任务总学时\" DOUBLE,\"课程总学时\" DOUBLE,\"讲课学时\" DOUBLE,\"实验学时\" DOUBLE,\"实践学时\" VARCHAR);",
+            "CREATE TABLE dgjs(\"课程名称\" VARCHAR, \"教学班\" VARCHAR, \"课程代码\" VARCHAR, \"学年\" VARCHAR, \"学期\" VARCHAR, \"教师名称\" VARCHAR, \"课程课外指导总学时\" VARCHAR, \"课程实验总学时\" VARCHAR, \"课程上机总学时\" VARCHAR, \"课程实践总学时\" VARCHAR, \"课程总学时\" VARCHAR);",
+            "SELECT  data.* not LIKE '%学时'  , data.* like '%学时'  from data;",
+            "SELECT  data.* not LIKE '%学时'  , data.* like '%学时'  from data, dgjs;"
+        ]
+    },
+    {
+        "date": "27/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19516"
+        },
+        "oracle": "crash",
+        "reporter": "soerenwolfers",
+        "status": "open",
+        "title": "Internal error on `pg_typeof(#1)`",
+        "test": [
+            "SELECT pg_typeof(#1) FROM (SELECT 1);"
+        ]
+    },
+    {
+        "date": "27/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19515"
+        },
+        "oracle": "crash",
+        "reporter": "matixlol",
+        "status": "open",
+        "title": "Invalid Error: Copied statement differs from original result / INTERNAL Error: error while applying buffered appends / segfault"
+    },
+    {
+        "date": "27/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19514"
+        },
+        "oracle": "error",
+        "reporter": "dbeer1",
+        "status": "open",
+        "title": "Regression in 1.4.x when inserting from a table with missing columns"
+    },
+    {
+        "date": "27/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19513"
+        },
+        "oracle": "error",
+        "reporter": "VasilyevAlexander",
+        "status": "open",
+        "title": "No usable way to insert UUID into table column with type UUID using C Client"
+    },
+    {
+        "date": "27/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19512"
+        },
+        "oracle": "PQS",
+        "reporter": "pjsousa79",
+        "status": "open",
+        "title": "`errors_as_json` always reports the same error position when running queries via json_execute_serialized_sql()",
+        "test": [
+            "SET errors_as_json = true;",
+            "COPY (",
+            "SELECT * FROM json_execute_serialized_sql(",
+            "json_serialize_sql('SELECT * FROM foo.bar')",
+            ")",
+            "json_serialize_sql('SELECT * FROM foo.bar')",
+            "json_serialize_sql('SELECT 1,2,3,4,5,6,7,8,* FROM foo.bar')"
+        ]
+    },
+    {
+        "date": "27/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19506"
+        },
+        "oracle": "PQS",
+        "reporter": "ahmed-shameem",
+        "status": "open",
+        "title": "Array Slicing does not work as expected in DuckDB",
+        "test": [
+            "CREATE TABLE arrtest_s (",
+            "a    int2[],",
+            "b    int2[][]",
+            ");",
+            "INSERT INTO arrtest_s VALUES ('{1,2,3,4,5}', '{{1,2,3}, {4,5,6}, {7,8,9}}');",
+            "CREATE TABLE arrtest_s (",
+            "a    int2[],",
+            "b    int2[][]",
+            ");",
+            "INSERT INTO arrtest_s VALUES ([1,2,3,4,5], [[1,2,3],[4,5,6],[7,8,9]]);"
+        ]
+    },
+    {
+        "date": "27/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19504"
+        },
+        "oracle": "PQS",
+        "reporter": "frafra",
+        "status": "open",
+        "title": "Regression due to optimization in 1.4.0",
+        "test": [
+            "CREATE TABLE documents (",
+            "document_identifier VARCHAR,",
+            "text_content VARCHAR,",
+            "author VARCHAR,",
+            "doc_version INTEGER"
+        ]
+    },
+    {
+        "date": "27/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19501"
+        },
+        "oracle": "PQS",
+        "reporter": "soerenwolfers",
+        "status": "open",
+        "title": "`round` gives incorrect results for some floating point inputs",
+        "test": [
+            "SELECT round(2.675::DOUBLE, 2)"
+        ]
+    },
+    {
+        "date": "27/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19500"
+        },
+        "oracle": "crash",
+        "reporter": "Captain32",
+        "status": "open",
+        "title": "A slow query can block all write transactions!"
+    },
+    {
+        "date": "27/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19499"
+        },
+        "oracle": "error",
+        "reporter": "lschneiderbauer",
+        "status": "open",
+        "title": "1.4 (OOM) regression: failing query with 1.4",
+        "test": [
+            "SET memory_limit = '16GB';",
+            "SET preserve_insertion_order = FALSE;",
+            "CREATE OR REPLACE TABLE t1 AS (",
+            "SELECT * FROM 't1.parquet'",
+            ");"
+        ]
+    },
+    {
+        "date": "26/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19498"
+        },
+        "oracle": "crash",
+        "reporter": "robotslacker",
+        "status": "fixed",
+        "title": "[1.4.1] Window function. Crash with duckdb_pdqsort::pdqsort_detail::pdqsort_loop"
+    },
+    {
+        "date": "26/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19497"
+        },
+        "oracle": "PQS",
+        "reporter": "dustin",
+        "status": "open",
+        "title": "Cannot partition on a function of timestamptz on copy"
+    },
+    {
+        "date": "26/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19495"
+        },
+        "oracle": "error",
+        "reporter": "ericemc3",
+        "status": "fixed",
+        "title": "DISTINCT ON (COLUMNS('...')) fails while DISTINCT COLUMNS('...') works",
+        "test": [
+            "FROM (VALUES(1,1,2),(1,1,3)) AS t(key1,key2,v)",
+            "SELECT DISTINCT ON(key1,key2) *;",
+            "FROM (VALUES(1,1,2),(1,1,3)) AS t(key1,key2,v)",
+            "SELECT DISTINCT columns('key');",
+            "FROM (VALUES(1,1,2),(1,1,3)) AS t(key1,key2,v)",
+            "SELECT DISTINCT ON(columns('key')) *;"
+        ]
+    },
+    {
+        "date": "26/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19493"
+        },
+        "oracle": "unknown",
+        "reporter": "dentiny",
+        "status": "open",
+        "title": "File open for multiple times",
+        "test": [
+            "FORCE INSTALL shellfs FROM community;",
+            "INSTALL shellfs;",
+            "select",
+            "max(c1) - min(c1)",
+            "from read_csv("
+        ]
+    },
+    {
+        "date": "25/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19491"
+        },
+        "oracle": "PQS",
+        "reporter": "soerenwolfers",
+        "status": "open",
+        "title": "`round_even` gives incorrect results for some floating point inputs",
+        "test": [
+            "SELECT round_even(2.675::DOUBLE, 2)"
+        ]
+    },
+    {
+        "date": "25/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19489"
+        },
+        "oracle": "error",
+        "reporter": "genericallyterrible",
+        "status": "open",
+        "title": "[1.4.1] Error creating table macro with reference to a CTE",
+        "test": [
+            "CREATE OR REPLACE TEMP MACRO err_repro() AS TABLE (",
+            "FROM named_cte",
+            "SELECT 1",
+            ");",
+            "CREATE OR REPLACE TEMP MACRO indirection_fix(tbl_name) AS TABLE (",
+            "FROM query_table(tbl_name)",
+            "SELECT new_val: val + 1",
+            ");",
+            "WITH named_cte AS ( SELECT val: 2 )"
+        ]
+    },
+    {
+        "date": "24/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19487"
+        },
+        "oracle": "unknown",
+        "reporter": "lzm0",
+        "status": "fixed",
+        "title": "`array_to_string` on empty list return `NULL` instead of empty string"
+    },
+    {
+        "date": "24/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19482"
+        },
+        "oracle": "unknown",
+        "reporter": "ericemc3",
+        "status": "open",
+        "title": "The second execution of the same request takes twice as long, even after a DROP TABLE",
+        "test": [
+            "CREATE OR REPLACE TABLE t1 AS",
+            "SELECT",
+            "*,",
+            "COUNT(*) OVER w AS nbDupExactComm",
+            "FROM read_parquet('2025-09-27_123.parquet')"
+        ]
+    },
+    {
+        "date": "24/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19479"
+        },
+        "oracle": "error",
+        "reporter": "rustyconover",
+        "status": "fixed",
+        "title": "`json_transform` requires a constant structure, but can't use a subquery.",
+        "test": [
+            "D select partition, unnest(json_transform(value, '{\"action\":\"VARCHAR\",\"name\":\"VARCHAR\"}')) from tributary_scan_topic('topic_json_1', \"bootstrap.servers\" := 'pkc-921jm.us-east-2.aws.confluent.cloud:9092', \"schema.registry.url\" := 'https://psrc-1ry6vno.us-east-2.aws.confluent.cloud');",
+            "100% ▕██████████████████████████████████████▏ (00:00:04.05 elapsed)",
+            "┌───────────┬─────────┬─────────┐",
+            "│ partition │ action  │  name   │",
+            "│   int32   │ varchar │ varchar │",
+            "create table bar (v text);",
+            "insert into bar values ('{\"action\":\"VARCHAR\",\"name\":\"VARCHAR\"}');",
+            "select json_transform('{\"action\": \"bounce\", \"name\": \"Rusty\"}', (select v from bar));"
+        ]
+    },
+    {
+        "date": "23/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19478"
+        },
+        "oracle": "crash",
+        "reporter": "loicalleyne",
+        "status": "open",
+        "title": "ADBC - Arrow record batch ingestion fails when column name is reserved keyword"
+    },
+    {
+        "date": "22/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19469"
+        },
+        "oracle": "error",
+        "reporter": "MarcusParadies",
+        "status": "open",
+        "title": "Potential error in constraint violation message when checking foreign key constraints"
+    },
+    {
+        "date": "22/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19468"
+        },
+        "oracle": "error",
+        "reporter": "rayGoMoon",
+        "status": "open",
+        "title": "Due to UNIQUE or PRIMARY KEY constraint, the size of duckdb database file keeps growing"
+    },
+    {
+        "date": "21/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19458"
+        },
+        "oracle": "crash",
+        "reporter": "xubobbs",
+        "status": "open",
+        "title": "crash in read db table",
+        "test": [
+            "select * from client_asset_dsmock_gj_client_asset_networkcard;"
+        ]
+    },
+    {
+        "date": "21/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19457"
+        },
+        "oracle": "unknown",
+        "reporter": "soerenwolfers",
+        "status": "open",
+        "title": "`round_even` does not accept decimals, leads to unintuitive behavior",
+        "test": [
+            "SELECT round_even(4.025::NUMERIC, 2)",
+            "select roundBankers(cast(4.025 as decimal(4, 3)), 2);  -- 4.02",
+            "select roundBankers(4.025, 2); -- 4.03"
+        ]
+    },
+    {
+        "date": "20/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19455"
+        },
+        "oracle": "crash",
+        "reporter": "robotslacker",
+        "status": "open",
+        "title": "Merge into failed . INTERNAL Error: logical operator type mismatch",
+        "test": [
+            "create or replace table aaa (id int, status varchar, flag int, starttime datetime, endtime datetime);",
+            "merge into aaa",
+            "using (",
+            "select \t1 as id, 'xx' as status, 1 as flag, now() as starttime, null as endtime",
+            ") as upserts"
+        ]
+    },
+    {
+        "date": "20/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19454"
+        },
+        "oracle": "unknown",
+        "reporter": "BrynjarM",
+        "status": "open",
+        "title": "CSV `COPY TO` to S3 doesn’t respect FILE_SIZE_BYTES"
+    },
+    {
+        "date": "18/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19447"
+        },
+        "oracle": "error",
+        "reporter": "jgrg",
+        "status": "fixed",
+        "title": "[1.4.1] Error creating macro: No files found that match the pattern \"/dev/stdin\"",
+        "test": [
+            "CREATE OR REPLACE TEMPORARY MACRO cin() AS TABLE FROM read_csv('/dev/stdin');"
+        ]
+    },
+    {
+        "date": "17/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19443"
+        },
+        "oracle": "unknown",
+        "reporter": "CurtHagenlocher",
+        "status": "fixed",
+        "title": "[ADBC] GetParameterSchema returns blank for first parameter name"
+    },
+    {
+        "date": "16/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19427"
+        },
+        "oracle": "error",
+        "reporter": "Tritlo",
+        "status": "open",
+        "title": "No public ABI way to get a bignum from the C api"
+    },
+    {
+        "date": "16/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19425"
+        },
+        "oracle": "error",
+        "reporter": "Boshomi",
+        "status": "fixed",
+        "title": "Table with text in quotation marks causes error in case of move storage format"
+    },
+    {
+        "date": "16/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19421"
+        },
+        "oracle": "PQS",
+        "reporter": "MPizzotti",
+        "status": "open",
+        "title": "Hive Partitioning incorrect number of files"
+    },
+    {
+        "date": "15/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19414"
+        },
+        "oracle": "unknown",
+        "reporter": "lab1702",
+        "status": "open",
+        "title": "winget version of DuckDB CLI is out of date"
+    },
+    {
+        "date": "15/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19411"
+        },
+        "oracle": "PQS",
+        "reporter": "niger-prequel",
+        "status": "open",
+        "title": "DuckDB Produces a CSV it cannot read when single quote column is present",
+        "test": [
+            "INSTALL SPATIAL;",
+            "LOAD SPATIAL;",
+            "COPY (",
+            "SELECT * FROM (",
+            "SELECT"
+        ]
+    },
+    {
+        "date": "15/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19404"
+        },
+        "oracle": "error",
+        "reporter": "milancio42",
+        "status": "fixed",
+        "title": "OOM in array_agg when cast to FLOAT[1000]"
+    },
+    {
+        "date": "14/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19396"
+        },
+        "oracle": "PQS",
+        "reporter": "rynoV",
+        "status": "open",
+        "title": "`insert or ignore` throws constraint exception instead of ignoring"
+    },
+    {
+        "date": "14/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19391"
+        },
+        "oracle": "crash",
+        "reporter": "cmdlineluser",
+        "status": "open",
+        "title": "`ORDER BY` inside `LIST` aggregation OOM crash",
+        "test": [
+            "set memory_limit = '6.4g';",
+            "copy (",
+            "with",
+            "dates as (select unnest(generate_series(date '2010-01-01', date '2010-8-01', interval '1 day')) as day),",
+            "ids   as (select unnest(generate_series(1, 150_000)) as id)"
+        ]
+    },
+    {
+        "date": "13/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19377"
+        },
+        "oracle": "PQS",
+        "reporter": "nas2011",
+        "status": "open",
+        "title": "Array With Values Shows Null Depending On Query",
+        "test": [
+            "select accession, esm_embed",
+            "from (select accession, esm_embed from embeddings)",
+            "limit 50 offset 110;",
+            "select accession, esm_embed",
+            "from embeddings",
+            "where accession in (select accession from embeddings limit 50 offset 110);"
+        ]
+    },
+    {
+        "date": "13/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19375"
+        },
+        "oracle": "crash",
+        "reporter": "argjulian",
+        "status": "fixed",
+        "title": "Error Reading/Writing Large List Column to/from Parquet",
+        "test": [
+            "FROM read_parquet('ducklake-0199c969-939e-7614-9a4e-7f9ff71064b9.txt')",
+            "FROM read_parquet('ducklake-0199ca6e-e95d-77a0-b7f0-b89838f53744.txt')"
+        ]
+    },
+    {
+        "date": "13/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19386"
+        },
+        "oracle": "error",
+        "reporter": "alippai",
+        "status": "fixed",
+        "title": "tzfile pathname syntax not recognized"
+    },
+    {
+        "date": "13/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19366"
+        },
+        "oracle": "error",
+        "reporter": "OneCyrus",
+        "status": "fixed",
+        "title": "1.4.1: malformed JSON when running through view",
+        "test": [
+            "create or replace view test_malformed_json as",
+            "select * from '/workspaces/hosts_inventory.parquet';",
+            "select",
+            "key,",
+            "unnest(",
+            "describe from test_malformed_json",
+            "describe from '/workspaces/hosts_inventory.parquet'"
+        ]
+    },
+    {
+        "date": "12/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19358"
+        },
+        "oracle": "unknown",
+        "reporter": "rustyconover",
+        "status": "open",
+        "title": "Cast of `ROW` to `JSON` should produce a JSON array",
+        "test": [
+            "select row('a', 5)::json;",
+            "select row('a', 5)::json;"
+        ]
+    },
+    {
+        "date": "12/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19357"
+        },
+        "oracle": "crash",
+        "reporter": "tekumara",
+        "status": "fixed",
+        "title": "Expected unified vector format of type VARCHAR, but found type INT32",
+        "test": [
+            "SELECT json_object(NULL, 'two') AS KEEP_NULL_2;",
+            "SELECT TO_JSON({'key_1': 'one'}) AS WITHOUT_KEEP_NULL, JSON_OBJECT('key_1', 'one', 'key_2', NULL) AS KEEP_NULL_1, JSON_OBJECT('key_1', 'one', NULL, 'two') AS KEEP_NULL_2;"
+        ]
+    },
+    {
+        "date": "11/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19356"
+        },
+        "oracle": "unknown",
+        "reporter": "pkhokhlov",
+        "status": "fixed",
+        "title": "DuckDB .pl() uses 2-3x more memory than .arrow() + pl.from_arrow(rechunk=False)"
+    },
+    {
+        "date": "11/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19355"
+        },
+        "oracle": "crash",
+        "reporter": "Jasper0209",
+        "status": "open",
+        "title": "[Internal Error / FATAL] Unknown expression type invalidates database (DuckDB v1.4.1)"
+    },
+    {
+        "date": "11/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19354"
+        },
+        "oracle": "error",
+        "reporter": "2-5",
+        "status": "fixed",
+        "title": "`ATTACH 'test.db' (STORAGE_VERSION 'v1.4.1')`: The version string 'v1.4.1' is not a known DuckDB version"
+    },
+    {
+        "date": "11/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19346"
+        },
+        "oracle": "unknown",
+        "reporter": "dioptre",
+        "status": "open",
+        "title": "Detach broken"
+    },
+    {
+        "date": "10/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19343"
+        },
+        "oracle": "error",
+        "reporter": "dioptre",
+        "status": "open",
+        "title": "Failed to create checkpoint because of error - Could not remove file *.wal"
+    },
+    {
+        "date": "10/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19339"
+        },
+        "oracle": "error",
+        "reporter": "jivanic-demystdata",
+        "status": "open",
+        "title": "[icu extension] Installing it in an env without internet fails with `\"Failed to download extension icu\"` and installing it from a custom path fails with `\"The extension is already installed but the origin is different.\"`"
+    },
+    {
+        "date": "10/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19333"
+        },
+        "oracle": "unknown",
+        "reporter": "jenkoian",
+        "status": "fixed",
+        "title": "DuckDB hangs when using ATTACH IF NOT EXISTS on subsequent connections to databases that have previously attached a database file."
+    },
+    {
+        "date": "09/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19327"
+        },
+        "oracle": "PQS",
+        "reporter": "decarbonise",
+        "status": "fixed",
+        "title": "Wrong result for DISTINCT and LEFT JOIN"
+    },
+    {
+        "date": "09/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19323"
+        },
+        "oracle": "error",
+        "reporter": "paultiq",
+        "status": "open",
+        "title": "Repeated Copies to Parquet get Slower on Windows"
+    },
+    {
+        "date": "08/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19314"
+        },
+        "oracle": "PQS",
+        "reporter": "forestkeeper",
+        "status": "fixed",
+        "title": "Wrong results in scalar subquery with aggregation in out query target list"
+    },
+    {
+        "date": "08/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19313"
+        },
+        "oracle": "PQS",
+        "reporter": "forestkeeper",
+        "status": "open",
+        "title": "having without group by return wrong result"
+    },
+    {
+        "date": "08/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19312"
+        },
+        "oracle": "error",
+        "reporter": "forestkeeper",
+        "status": "fixed",
+        "title": "nth_value must > 0 in PG while Duckdb accept nth_value = 0"
+    },
+    {
+        "date": "08/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19311"
+        },
+        "oracle": "crash",
+        "reporter": "murfffi",
+        "status": "open",
+        "title": "[ADBC] GetParameterSchema returns 1 parameter even for statements with no parameters"
+    },
+    {
+        "date": "08/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19307"
+        },
+        "oracle": "crash",
+        "reporter": "szarnyasg",
+        "status": "open",
+        "title": "Internal error happens when combining a secret, list comprehension, read_json and httpfs",
+        "test": [
+            "CREATE OR REPLACE PERSISTENT SECRET minio (TYPE s3, PROVIDER config, KEY_ID 'redacted', SECRET 'redacted');",
+            "FROM read_json([",
+            "printf('https://community-extensions.duckdb.org/download-stats-weekly/2025-%s.json', x)",
+            "FOR x IN ['09-22', '09-29']",
+            "]);",
+            "DROP SECRET minio;"
+        ]
+    },
+    {
+        "date": "08/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19305"
+        },
+        "oracle": "error",
+        "reporter": "MPizzotti",
+        "status": "open",
+        "title": "COPY TO .parquet OOM error"
+    },
+    {
+        "date": "08/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19298"
+        },
+        "oracle": "unknown",
+        "reporter": "forestkeeper",
+        "status": "open",
+        "title": "pg_size_pretty return different in the 'mB' vs 'Mib'",
+        "test": [
+            "SELECT size, pg_size_pretty(size), pg_size_pretty(-1 * size) FROM",
+            "(VALUES (10::bigint), (1000::bigint), (1000000::bigint),",
+            "(1000000000::bigint), (1000000000000::bigint),",
+            "(1000000000000000::bigint)) x(size);",
+            "SELECT size, pg_size_pretty(size), pg_size_pretty(-1 * size) FROM",
+            "(VALUES (10::bigint), (1000::bigint), (1000000::bigint),",
+            "(1000000000::bigint), (1000000000000::bigint),",
+            "(1000000000000000::bigint)) x(size);"
+        ]
+    },
+    {
+        "date": "08/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19297"
+        },
+        "oracle": "error",
+        "reporter": "ErikJansenIRefact",
+        "status": "fixed",
+        "title": "Binder error with nested list_transform",
+        "test": [
+            "with stage as (",
+            "select",
+            "[1,2,3] as c1,",
+            "[4,5,6] as c2",
+            ")"
+        ]
+    },
+    {
+        "date": "07/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19295"
+        },
+        "oracle": "unknown",
+        "reporter": "klonuo",
+        "status": "fixed",
+        "title": "Cannot start UI after upgrading to 1.4.1"
+    },
+    {
+        "date": "07/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19292"
+        },
+        "oracle": "unknown",
+        "reporter": "soerenwolfers",
+        "status": "open",
+        "title": "temp table gets merged with proper table",
+        "test": [
+            "create temp table asdf as (select 1);",
+            "create table asdf (a int);",
+            "insert into asdf values (2);",
+            "select * from asdf;"
+        ]
+    },
+    {
+        "date": "07/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19291"
+        },
+        "oracle": "unknown",
+        "reporter": "prmoore77",
+        "status": "fixed",
+        "title": "duckdb_library_version() - reports version: v1.5.0-dev195 (for git tag: v1.4.1)"
+    },
+    {
+        "date": "07/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19284"
+        },
+        "oracle": "error",
+        "reporter": "derhuerst",
+        "status": "fixed",
+        "title": "reordering of referenced table seems to causes \"key ... does not exist in the referenced table\"",
+        "test": [
+            "CREATE TABLE stops (",
+            "stop_id TEXT PRIMARY KEY,",
+            "parent_station TEXT,",
+            ");",
+            "INSERT INTO stops"
+        ]
+    },
+    {
+        "date": "07/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19281"
+        },
+        "oracle": "unknown",
+        "reporter": "dentiny",
+        "status": "open",
+        "title": "Compilation warning on v1.4.0"
+    },
+    {
+        "date": "06/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19277"
+        },
+        "oracle": "error",
+        "reporter": "soerenwolfers",
+        "status": "open",
+        "title": "No filter pushdown on expressions that can throw errors",
+        "test": [
+            "SET THREADS = 1;",
+            "EXPLAIN ANALYZE",
+            "SELECT * FROM '/tmp/polars.parquet' WHERE sqrt(column_0) < 0.001",
+            "SET THREADS = 1;",
+            "EXPLAIN ANALYZE",
+            "SELECT * FROM '/tmp/polars.parquet' WHERE file_row_number IN (SELECT file_row_number FROM '/tmp/polars.parquet' WHERE sqrt(column_0) < 0.001)"
+        ]
+    },
+    {
+        "date": "06/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19276"
+        },
+        "oracle": "error",
+        "reporter": "zixiao-ye",
+        "status": "fixed",
+        "title": "Build DuckDB with Python failed"
+    },
+    {
+        "date": "05/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19267"
+        },
+        "oracle": "PQS",
+        "reporter": "DmitryH777",
+        "status": "open",
+        "title": "read_csv with encoding = 'windows-1251-2000' reads fullwidth characters / fails to detect delimiter"
+    },
+    {
+        "date": "05/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19264"
+        },
+        "oracle": "error",
+        "reporter": "baikal",
+        "status": "fixed",
+        "title": ".dump fails when schema other than \"main\" exists"
+    },
+    {
+        "date": "05/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19262"
+        },
+        "oracle": "unknown",
+        "reporter": "tobwen",
+        "status": "open",
+        "title": "[CLI] Fix keyboard navigation & escape sequence handling [HAS FIX]"
+    },
+    {
+        "date": "04/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19258"
+        },
+        "oracle": "PQS",
+        "reporter": "soerenwolfers",
+        "status": "open",
+        "title": "currval incorrectly constant folded",
+        "test": [
+            "CREATE OR REPLACE SEQUENCE seq;",
+            "SELECT",
+            "x,",
+            "CASE",
+            "WHEN x THEN"
+        ]
+    },
+    {
+        "date": "03/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19251"
+        },
+        "oracle": "crash",
+        "reporter": "thomas-daniels",
+        "status": "fixed",
+        "title": "Extra inequality in AsOf Join may trigger internal error",
+        "test": [
+            "create temp table tbl1 as select unnest(range(1000)) % 10 as x, '2022-01-01'::timestamp + to_days(unnest(range(1000))) as ts;",
+            "create temp table tbl2 as select unnest(range(1000)) % 10 as x, '2022-01-01'::timestamp + to_hours(unnest(range(1000))) as ts;",
+            "from tbl1 asof join tbl2 on tbl1.x = tbl2.x and tbl1.ts >= tbl2.ts and (tbl1.ts - tbl2.ts) < interval '1' hours;",
+            "create temp table prices as (from 'https://duckdb.org/data/prices.csv');",
+            "create temp table holdings as (from 'https://duckdb.org/data/holdings.csv');",
+            "SELECT h.ticker, h.when, price * shares AS value",
+            "FROM holdings h",
+            "ASOF JOIN prices p"
+        ]
+    },
+    {
+        "date": "03/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19245"
+        },
+        "oracle": "error",
+        "reporter": "hbirler",
+        "status": "open",
+        "title": "Postgres incompatibility with aggregations in subqueries",
+        "test": [
+            "WITH",
+            "T0(t00, t01) AS (VALUES(1,1),(1,1)),",
+            "T1(t10, t11) AS (VALUES(1,1),(1,1)),",
+            "T2(t20, t21) AS (VALUES(1,1),(1,1))",
+            "SELECT ("
+        ]
+    },
+    {
+        "date": "02/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19242"
+        },
+        "oracle": "unknown",
+        "reporter": "forestkeeper",
+        "status": "fixed",
+        "title": "NULL compare problem in >,< operator"
+    },
+    {
+        "date": "02/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19241"
+        },
+        "oracle": "PQS",
+        "reporter": "forestkeeper",
+        "status": "open",
+        "title": "select Any transform return wrong result",
+        "test": [
+            "create table tenk1(",
+            "unique1 int4,",
+            "unique2 int4,",
+            "two int4,",
+            "four int4,"
+        ]
+    },
+    {
+        "date": "02/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19239"
+        },
+        "oracle": "error",
+        "reporter": "liquidcarbon",
+        "status": "open",
+        "title": "Custom ordering with GROUP BY ALL",
+        "test": [
+            "CREATE TABLE df AS SELECT 'aBcaBc' AS name, x FROM range(0, 6) r(x);",
+            "SELECT name, SUM(x) FROM df GROUP BY ALL ORDER BY name;",
+            "SELECT name, SUM(x) FROM df GROUP BY name ORDER BY LOWER(name);",
+            "SELECT name, SUM(x) FROM df GROUP BY name ORDER BY CASE WHEN name ='B' THEN 1 ELSE 0 END;",
+            "SELECT name, SUM(x) FROM df GROUP BY ALL ORDER BY LOWER(name);"
+        ]
+    },
+    {
+        "date": "02/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19238"
+        },
+        "oracle": "crash",
+        "reporter": "nargotik",
+        "status": "fixed",
+        "title": "MERGE into Iceberg table with TIMESTAMPTZ columns crashes (Vector::Reference used on vector of different type)",
+        "test": [
+            "ATTACH 'ducklake:metadata.ducklake' AS my_ducklake;",
+            "CREATE TABLE my_ducklake.tablename (",
+            "id INTEGER,",
+            "nome VARCHAR,",
+            "updated_at TIMESTAMPTZ,"
+        ]
+    },
+    {
+        "date": "02/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19236"
+        },
+        "oracle": "unknown",
+        "reporter": "jacob-tolar-bridg",
+        "status": "open",
+        "title": "Elapsed time reported is incorect",
+        "test": [
+            "INSTALL shellfs FROM community;",
+            "LOAD shellfs;",
+            "select",
+            "max(c1) - min(c1)",
+            "from read_csv("
+        ]
+    },
+    {
+        "date": "02/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19233"
+        },
+        "oracle": "error",
+        "reporter": "krlmlr",
+        "status": "open",
+        "title": "Errors in valgrind"
+    },
+    {
+        "date": "02/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19230"
+        },
+        "oracle": "unknown",
+        "reporter": "joseph-isaacs",
+        "status": "open",
+        "title": "Table Function `pushdown_complex_filter` creates suboptimal plans if filters are deleted"
+    },
+    {
+        "date": "01/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19223"
+        },
+        "oracle": "PQS",
+        "reporter": "forestkeeper",
+        "status": "fixed",
+        "title": "date_part function return wrong result for infinite or -infinite timestamp"
+    },
+    {
+        "date": "01/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19221"
+        },
+        "oracle": "error",
+        "reporter": "soerenwolfers",
+        "status": "fixed",
+        "title": "Cannot use `file_row_number`, `filename`, `file_index` with `WITH ORDINALITY`",
+        "test": [
+            "COPY (FROM range(1)) TO '/tmp/test.parquet';",
+            "SELECT",
+            "file_row_number,",
+            "FROM read_parquet('/tmp/test.parquet') WITH ORDINALITY"
+        ]
+    },
+    {
+        "date": "01/10/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19217"
+        },
+        "oracle": "PQS",
+        "reporter": "MPizzotti",
+        "status": "open",
+        "title": "COLUMNS() function incorrect behaviour",
+        "test": [
+            "CREATE OR REPLACE TABLE mytable (id INT, dim__record_date DATE);",
+            "SELECT",
+            "columns(cy.*) as '\\\\0__current_year',",
+            "columns(fs.* LIKE 'fct__%') as '\\\\0__previous_year',",
+            "FROM mytable cy"
+        ]
+    },
+    {
+        "date": "30/09/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19211"
+        },
+        "oracle": "error",
+        "reporter": "swilliams-ao",
+        "status": "fixed",
+        "title": "INSERT OR IGNORE does not gracefully drop records violating UNIQUE constraints in version 1.4.0"
+    },
+    {
+        "date": "30/09/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19195"
+        },
+        "oracle": "unknown",
+        "reporter": "xin-luo-dragon",
+        "status": "open",
+        "title": "DuckDB read_avro returns int64 for avro timestamp type"
+    },
+    {
+        "date": "29/09/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19190"
+        },
+        "oracle": "unknown",
+        "reporter": "szarnyasg",
+        "status": "fixed",
+        "title": "Missing results for index lookup",
+        "test": [
+            "CREATE TABLE comment AS SELECT id, replyOf FROM 'comment.parquet';",
+            "CREATE INDEX idx_comment_replyOf ON comment(replyOf);",
+            "SELECT id FROM comment WHERE replyOf = 687195512455;"
+        ]
+    },
+    {
+        "date": "29/09/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19189"
+        },
+        "oracle": "unknown",
+        "reporter": "matthewbayer",
+        "status": "open",
+        "title": "Hive Partitioned writes out of Hive spec for null values"
+    },
+    {
+        "date": "29/09/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19182"
+        },
+        "oracle": "unknown",
+        "reporter": "ahmed-shameem",
+        "status": "open",
+        "title": "DuckDB does not handle NULLs correctly in subquery",
+        "test": [
+            "CREATE TABLE outer_tab (f1 int4, f2 int4);",
+            "INSERT INTO outer_tab VALUES (0, 0);",
+            "INSERT INTO outer_tab VALUES (1, 0);",
+            "CREATE TABLE inner_tab(c1 int8, c2 int8);",
+            "INSERT INTO inner_tab VALUES(0, null);",
+            "SELECT * FROM outer_tab WHERE (f1, f2) NOT IN (SELECT * FROM inner_tab);",
+            "SELECT * FROM outer_tab WHERE (f1, f2) NOT IN (SELECT * FROM inner_tab);"
+        ]
+    },
+    {
+        "date": "29/09/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19180"
+        },
+        "oracle": "error",
+        "reporter": "OneCyrus",
+        "status": "fixed",
+        "title": "writing to S3 fails with \"no such file or directory\""
+    },
+    {
+        "date": "29/09/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19178"
+        },
+        "oracle": "unknown",
+        "reporter": "kyle-cheung",
+        "status": "open",
+        "title": "[1.4.0] DuckDB optimizer is not column pruning, queries running up over 10x longer compared to 1.3.2"
+    },
+    {
+        "date": "28/09/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19175"
+        },
+        "oracle": "crash",
+        "reporter": "rustyconover",
+        "status": "open",
+        "title": "`Function::EraseArgument` and deserialization exception",
+        "test": [
+            "SELECT datasketch_quantiles(16, 5.0::float);"
+        ]
+    },
+    {
+        "date": "28/09/2025",
+        "dbms": "DuckDB",
+        "links": {
+            "bugreport": "https://github.com/duckdb/duckdb/issues/19172"
+        },
+        "oracle": "error",
+        "reporter": "paulmelis",
+        "status": "fixed",
+        "title": "Dump of DB leads to unparseable result",
+        "test": [
+            "duckdb test2.db < dump.sql"
+        ]
+    },
+    {
+        "date": "31/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-38000"
+        },
+        "oracle": "unknown",
+        "reporter": "Mark Callaghan",
+        "status": "open",
+        "title": "deadlock during TPROC-C with 40 virtual users"
+    },
+    {
+        "date": "30/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37998"
+        },
+        "oracle": "unknown",
+        "reporter": "Robert Humphries",
+        "status": "open",
+        "title": "(Column) CHECK constraints can cause CREATE TABLE (SELECT) queries to fail"
+    },
+    {
+        "date": "30/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37997"
+        },
+        "oracle": "unknown",
+        "reporter": "Vladislav Vaintroub",
+        "status": "closed",
+        "title": "Windows : WITH_ZLIB=bundled produces errors if hashicorp_key_management is compiled"
+    },
+    {
+        "date": "30/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37996"
+        },
+        "oracle": "unknown",
+        "reporter": "Vladislav Vaintroub",
+        "status": "open",
+        "title": "CMake cleanup: stop overwriting ZLIB_FOUND /ZLIB_LIBRARIES and similar"
+    },
+    {
+        "date": "30/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37994"
+        },
+        "oracle": "unknown",
+        "reporter": "Saahil Alam",
+        "status": "in progress",
+        "title": "Race condition between checkpoint and .ibd file creation"
+    },
+    {
+        "date": "30/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37993"
+        },
+        "oracle": "unknown",
+        "reporter": "Mitchell Lee",
+        "status": "open",
+        "title": "Very specific OOM from everywhere."
+    },
+    {
+        "date": "29/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37992"
+        },
+        "oracle": "unknown",
+        "reporter": "Mark Callaghan",
+        "status": "open",
+        "title": "select with large in-list has too much mutex contention"
+    },
+    {
+        "date": "29/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37991"
+        },
+        "oracle": "unknown",
+        "reporter": "Ramesh Sivaraman",
+        "status": "in progress",
+        "title": "Galera cluster crashes when granting permission to non existing user after setting max_error_count and wsrep_ignore_apply_errors to zero"
+    },
+    {
+        "date": "28/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37990"
+        },
+        "oracle": "unknown",
+        "reporter": "Andrei Elkin",
+        "status": "open",
+        "title": "redundant Table map events in binlog "
+    },
+    {
+        "date": "28/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37988"
+        },
+        "oracle": "unknown",
+        "reporter": "John Jove",
+        "status": "open",
+        "title": "Incompatible behavior with MySQL when cast negative number to unsigned "
+    },
+    {
+        "date": "28/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37986"
+        },
+        "oracle": "unknown",
+        "reporter": "Jan Lindström",
+        "status": "open",
+        "title": "Test failure on galera.galera_provider_options_long"
+    },
+    {
+        "date": "28/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37985"
+        },
+        "oracle": "unknown",
+        "reporter": "Ramesh Sivaraman",
+        "status": "open",
+        "title": "Assertion `thd->transaction->stmt.is_empty()' failed in bool trans_check(THD*)"
+    },
+    {
+        "date": "28/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37984"
+        },
+        "oracle": "unknown",
+        "reporter": "Jan Lindström",
+        "status": "open",
+        "title": "Test failure on galera.MDEV-34647"
+    },
+    {
+        "date": "28/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37983"
+        },
+        "oracle": "unknown",
+        "reporter": "Saahil Alam",
+        "status": "open",
+        "title": " Assertion `ctx0->old_table->get_ref_count() == 1' failed"
+    },
+    {
+        "date": "28/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37982"
+        },
+        "oracle": "unknown",
+        "reporter": "Saahil Alam",
+        "status": "open",
+        "title": "bool fil_names_clear(lsn_t, bool): Assertion `it->max_lsn > 0' failed"
+    },
+    {
+        "date": "28/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37981"
+        },
+        "oracle": "unknown",
+        "reporter": "Jan Lindström",
+        "status": "open",
+        "title": "Test failure  on galera.galera_temporary_sequences"
+    },
+    {
+        "date": "28/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37980"
+        },
+        "oracle": "unknown",
+        "reporter": "Yuchen Pei",
+        "status": "open",
+        "title": "fix spider rdiff files header paths"
+    },
+    {
+        "date": "27/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37979"
+        },
+        "oracle": "unknown",
+        "reporter": "Elena Stepanova",
+        "status": "open",
+        "title": "sys.ps_setup_save does not restore SQL_LOG_BIN after error, causes replication discrepancy"
+    },
+    {
+        "date": "27/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37978"
+        },
+        "oracle": "unknown",
+        "reporter": "Saahil Alam",
+        "status": "open",
+        "title": "Log checkpoint is accessing a freed tablespace"
+    },
+    {
+        "date": "27/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37977"
+        },
+        "oracle": "unknown",
+        "reporter": "Arcadiy Ivanov",
+        "status": "open",
+        "title": "InnoDB deadlock report incorrectly reports rolledback transaction number"
+    },
+    {
+        "date": "27/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37976"
+        },
+        "oracle": "unknown",
+        "reporter": "Saahil Alam",
+        "status": "open",
+        "title": "Assertion `!ext || index->is_primary()' failed"
+    },
+    {
+        "date": "27/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37975"
+        },
+        "oracle": "unknown",
+        "reporter": "Saahil Alam",
+        "status": "open",
+        "title": "Crash in page_validate() inside ibuf_merge_or_delete_for_page()"
+    },
+    {
+        "date": "27/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37974"
+        },
+        "oracle": "unknown",
+        "reporter": "Arcadiy Ivanov",
+        "status": "confirmed",
+        "title": "Improper deadlock with DELETE/DELETE/INSERT "
+    },
+    {
+        "date": "27/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37973"
+        },
+        "oracle": "unknown",
+        "reporter": "Saahil Alam",
+        "status": "open",
+        "title": "InnoDB: Failing assertion: page_offset(rec) <= page_header_get_field(page, PAGE_HEAP_TOP)"
+    },
+    {
+        "date": "27/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37972"
+        },
+        "oracle": "unknown",
+        "reporter": "Elena Stepanova",
+        "status": "open",
+        "title": "Presence of Spider on a replica breaks XA replication"
+    },
+    {
+        "date": "27/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37971"
+        },
+        "oracle": "unknown",
+        "reporter": "Jingzhou Fu",
+        "status": "open",
+        "title": "CHECK TABLE command can be executed by users with the table-level CREATE or GRANT OPTION privilege"
+    },
+    {
+        "date": "27/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37969"
+        },
+        "oracle": "unknown",
+        "reporter": "Misagh Laghaei",
+        "status": "confirmed",
+        "title": "sphinx_snippets() UDF fails to resolve hostname"
+    },
+    {
+        "date": "27/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37968"
+        },
+        "oracle": "unknown",
+        "reporter": "Ramesh Sivaraman",
+        "status": "open",
+        "title": "Assertion `table->s->table_category == TABLE_CATEGORY_SYSTEM || table->s->table_category == TABLE_CATEGORY_STATISTICS' failed in bool open_system_tables_for_read(THD *, TABLE_LIST *)"
+    },
+    {
+        "date": "27/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37967"
+        },
+        "oracle": "unknown",
+        "reporter": "Saahil Alam",
+        "status": "open",
+        "title": "buf_block_t* buf_page_get_low(page_id_t, ulint, rw_lock_type_t, buf_block_t*, ulint, mtr_t*, dberr_t*, bool): Assertion `s' failed"
+    },
+    {
+        "date": "27/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37966"
+        },
+        "oracle": "unknown",
+        "reporter": "Ramesh Sivaraman",
+        "status": "open",
+        "title": "Galera cluster goes to hang mode when running RQG on release build"
+    },
+    {
+        "date": "27/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37964"
+        },
+        "oracle": "unknown",
+        "reporter": "bulan",
+        "status": "needs feedback",
+        "title": "Mariabackup - try increasing innodb_log_file_size"
+    },
+    {
+        "date": "26/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37963"
+        },
+        "oracle": "unknown",
+        "reporter": "Roel Van de Paar",
+        "status": "open",
+        "title": "wait_while_table_is_used() variation on MDEV-26805 stack in GTT branch"
+    },
+    {
+        "date": "26/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37962"
+        },
+        "oracle": "unknown",
+        "reporter": "Rex Johnston",
+        "status": "closed",
+        "title": "straight_join ignoring impossible condition"
+    },
+    {
+        "date": "25/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37960"
+        },
+        "oracle": "unknown",
+        "reporter": "Michiel",
+        "status": "open",
+        "title": "point in time backup with parallel mariadb-dump --dir"
+    },
+    {
+        "date": "25/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37959"
+        },
+        "oracle": "unknown",
+        "reporter": "Kristian Nielsen",
+        "status": "open",
+        "title": "Deadlock on \"PREPARE <stmt>\" causes invalid XA state, assertion \"!thd->transaction->xid_state.is_explicit_XA() || thd->lex->xa_opt == XA_ONE_PHASE\""
+    },
+    {
+        "date": "25/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37958"
+        },
+        "oracle": "unknown",
+        "reporter": "Roel Van de Paar",
+        "status": "open",
+        "title": "SIGSEGV and UBSAN invalid-enum-load  in ha_mroonga::storage_create_foreign_key on INSERT"
+    },
+    {
+        "date": "25/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37957"
+        },
+        "oracle": "unknown",
+        "reporter": "Roel Van de Paar",
+        "status": "open",
+        "title": "Assertion `(*tables)->reginfo.lock_type >= TL_READ_SKIP_LOCKED' failed on HANDLER READ"
+    },
+    {
+        "date": "25/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37956"
+        },
+        "oracle": "unknown",
+        "reporter": "Roel Van de Paar",
+        "status": "open",
+        "title": "ASAN heap-use-after-free and SIGSEGV in mysql_ha_close_table on DROP DATABASE"
+    },
+    {
+        "date": "25/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37955"
+        },
+        "oracle": "unknown",
+        "reporter": "Roel Van de Paar",
+        "status": "confirmed",
+        "title": "Mroonga: ASAN stack-buffer-overflow from open_table_def, Assertions `strlen(db) <= (64*3)' in MDL_key::mdl_key_init and `is_null() || is_empty() || !check_name(*this)' failed in Lex_ident_db::Lex_ident_db on DROP TABLE"
+    },
+    {
+        "date": "24/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37954"
+        },
+        "oracle": "unknown",
+        "reporter": "Roel Van de Paar",
+        "status": "confirmed",
+        "title": "SIGSEGV in srw_lock_impl<true>::wr_lock, Assertion `!trx->read_only' and UBSAN invalid-null-argument in trx_undo_report_row_operation"
+    },
+    {
+        "date": "24/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37953"
+        },
+        "oracle": "unknown",
+        "reporter": "Saahil Alam",
+        "status": "confirmed",
+        "title": "SIGSEGV|Dec_ptr_and_buffer::Dec_ptr_and_buffer|VDec_op::VDec_op"
+    },
+    {
+        "date": "24/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37952"
+        },
+        "oracle": "unknown",
+        "reporter": "Roel Van de Paar",
+        "status": "open",
+        "title": "Mroonga: UBSAN invalid-null-argument and SIGSEGV in __strcmp_evex from mrn_default_tokenizer_update on SET"
+    },
+    {
+        "date": "24/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37951"
+        },
+        "oracle": "unknown",
+        "reporter": "Peng Zongrui",
+        "status": "confirmed",
+        "title": "SHOW TABLES allows users with only GRANT OPTION privilege to read all table names in the database \"mysql\""
+    },
+    {
+        "date": "24/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37950"
+        },
+        "oracle": "unknown",
+        "reporter": "Peng Zongrui",
+        "status": "open",
+        "title": "INSERT ... RETURNING exposes columns for which the user lacks SELECT privilege"
+    },
+    {
+        "date": "24/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37948"
+        },
+        "oracle": "unknown",
+        "reporter": "Peng Zongrui",
+        "status": "open",
+        "title": "ALTER TABLE ... TRUNCATE PARTITION does not check for ALTER privilege"
+    },
+    {
+        "date": "24/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37947"
+        },
+        "oracle": "unknown",
+        "reporter": "Sergei Golubchik",
+        "status": "closed",
+        "title": "Item_func_hex doesn't check for max_allowed_packet"
+    },
+    {
+        "date": "24/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37946"
+        },
+        "oracle": "unknown",
+        "reporter": "Saahil Alam",
+        "status": "open",
+        "title": "Deadlock when reading an encrypted page during SET GLOBAL innodb_read_reads or innodb_write_threads"
+    },
+    {
+        "date": "24/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37945"
+        },
+        "oracle": "unknown",
+        "reporter": "Daniel Black",
+        "status": "closed",
+        "title": "release notes for Q4 2025 for activities outside of MDEVs"
+    },
+    {
+        "date": "24/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37944"
+        },
+        "oracle": "unknown",
+        "reporter": "Shiyang Ye",
+        "status": "confirmed",
+        "title": " INNER JOIN Returns Different Results Than LEFT JOIN INTERSECT RIGHT JOIN with Complex WHERE Clause"
+    },
+    {
+        "date": "24/10/2025",
+        "dbms": "MariaDB",
+        "links": {
+            "bugreport": "https://jira.mariadb.org/browse/MDEV-37943"
+        },
+        "oracle": "unknown",
+        "reporter": "Shiyang Ye",
+        "status": "open",
+        "title": "INNER JOIN Returns Different Results Than LEFT JOIN INTERSECT RIGHT JOIN"
+    }
+]
