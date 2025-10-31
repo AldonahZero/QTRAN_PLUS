@@ -1,0 +1,2 @@
+{"index": 2103, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0 UNIQUE);"}
+{"index": 2103, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM t0 WHERE(c0, 0) IN(SELECT FIRST_VALUE(0) OVER(), 0); -- Segmentation fault"}

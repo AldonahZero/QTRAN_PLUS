@@ -1,0 +1,9 @@
+CREATE TABLE t0(c0 INT);
+CREATE TABLE t1(c0 INT);
+SELECT * FROM t0 RIGHT JOIN t1 ON t0.c0!=t1.c0; -- Error: Unhandled type for empty NL join
+
+
+CREATE TABLE t0(c0 INT);
+CREATE TABLE t1(c0 INT);
+SELECT * FROM t0 RIGHT JOIN t1 ON t0.c0 <> t1.c0;
+SELECT SUM(count) FROM (SELECT (t0.c0 <> t1.c0)::INTEGER as count FROM t0 RIGHT JOIN t1 ON t0.c0 <> t1.c0) as res;

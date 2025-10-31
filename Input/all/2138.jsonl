@@ -1,0 +1,5 @@
+{"index": 2138, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE TABLE t0(c0 VARCHAR, c1 DOUBLE UNIQUE);"}
+{"index": 2138, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES (NULL);"}
+{"index": 2138, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "UPDATE t0 SET c0=0;"}
+{"index": 2138, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t0(c0, c1) VALUES (0, 0);"}
+{"index": 2138, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "SELECT * FROM t0 WHERE 1 > c1; -- Segmentation fault"}

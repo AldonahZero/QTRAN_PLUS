@@ -1,0 +1,9 @@
+CREATE TABLE t0(c0 COLLATE NOCASE);
+INSERT INTO t0(c0) VALUES ('a');
+SELECT * FROM t0 WHERE CAST(t0.c0 AS TEXT) = 'A'; -- expected: no row is fetched, actual: a
+
+
+CREATE TABLE t0 (c0 VARCHAR)
+INSERT INTO t0 (c0) VALUES ('a')
+SELECT * FROM t0 WHERE t0.c0 = 'A'
+SELECT SUM(CAST((t0.c0 = 'A') AS INTEGER)) FROM t0;

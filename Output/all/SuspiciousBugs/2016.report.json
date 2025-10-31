@@ -1,0 +1,14 @@
+{
+  "index": 2016,
+  "input": "all",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0 WHERE CAST(t0.c0 AS TEXT) = 'A'; -- expected: no row is fetched, actual: a",
+    "transfer_sql": "SELECT * FROM t0 WHERE t0.c0 = 'A'",
+    "mutate_sql": "SELECT SUM(CAST((t0.c0 = 'A') AS INTEGER)) FROM t0;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

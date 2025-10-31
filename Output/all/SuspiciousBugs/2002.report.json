@@ -1,0 +1,14 @@
+{
+  "index": 2002,
+  "input": "all",
+  "suspicious_view": {
+    "sql": "SELECT * FROM test WHERE (c0 LIKE '+/'); -- fetches no row",
+    "transfer_sql": "SELECT * FROM test WHERE (c0 IS NULL);",
+    "mutate_sql": "SELECT SUM(CAST((c0 IS NULL) AS INTEGER)) FROM test;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

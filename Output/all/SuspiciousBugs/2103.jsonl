@@ -1,0 +1,2 @@
+{"index": 2103, "sql": "CREATE TABLE t0(c0 UNIQUE);", "TransferResult": ["CREATE TABLE t0 (c0 VARCHAR UNIQUE)"]}
+{"index": 2103, "sql": "SELECT * FROM t0 WHERE(c0, 0) IN(SELECT FIRST_VALUE(0) OVER(), 0); -- Segmentation fault", "TransferResult": ["SELECT * FROM t0 WHERE c0 IS NOT NULL"], "TransferSqlExecResult": ["[]"], "MutateResult": "SELECT SUM(CAST((c0 IS NOT NULL) AS INTEGER)) FROM t0;", "MutateSqlExecResult": "[(None,)]"}

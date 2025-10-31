@@ -1,0 +1,5 @@
+{"index": 2133, "sql": "CREATE TABLE t0(c0 INT);", "TransferResult": ["CREATE TABLE t0(c0 INT)"]}
+{"index": 2133, "sql": "CREATE TABLE t1(c0 FLOAT);", "TransferResult": ["CREATE TABLE t1(c0 FLOAT8)"]}
+{"index": 2133, "sql": "INSERT INTO t0(c0) VALUES (1), (0);", "TransferResult": ["INSERT INTO t0(c0) VALUES (1), (2)"]}
+{"index": 2133, "sql": "INSERT INTO t1(c0) VALUES (1);", "TransferResult": ["INSERT INTO t1(c0) VALUES (1)"]}
+{"index": 2133, "sql": "SELECT t1.c0 FROM t1 JOIN t0 ON t1.c0 IN (t0.c0) WHERE t1.c0<=t0.c0; -- expected: {1.0}, actual: {4.67454452791745e-310}", "TransferResult": ["SELECT t1.c0 FROM t1 JOIN t0 ON t1.c0 = t0.c0 WHERE t1.c0 <= t0.c0;"], "TransferSqlExecResult": ["[(1.0,)]"], "MutateResult": "SELECT SUM((t1.c0 <= t0.c0)::INTEGER) FROM t1 JOIN t0 ON t1.c0 = t0.c0;", "MutateSqlExecResult": "[(1,)]"}

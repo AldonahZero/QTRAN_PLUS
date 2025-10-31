@@ -1,0 +1,3 @@
+{"index": 2119, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "CREATE TABLE t0(c0 NUMERIC UNIQUE);"}
+{"index": 2119, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES (1163404482), (0), (488566);"}
+{"index": 2119, "a_db": "duckdb", "b_db": "postgres", "molt": "norec", "sql": "SELECT * FROM t0 WHERE 0.1 < c0; -- expected: {}, actual: {1163404482.0, 488566.0}"}

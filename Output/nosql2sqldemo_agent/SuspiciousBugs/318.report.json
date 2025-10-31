@@ -1,0 +1,14 @@
+{
+  "index": 318,
+  "input": "nosql2sqldemo_agent",
+  "suspicious_view": {
+    "sql": "SELECT COUNT(*) FROM t0 WHERE SUBSTR(t0.c0, ','); -- expected: 1, actual: 2",
+    "transfer_sql": "db.t0.countDocuments({ c0: { $regex: ',' } })",
+    "mutate_sql": "{\"mutations\":[{\"cmd\":\"{\\\"op\\\":\\\"countDocuments\\\",\\\"collection\\\":\\\"t0\\\",\\\"filter\\\":{\\\"c0\\\":{\\\"$regex\\\":\\\",\\\"}}}\",\"category\":\"optimized\",\"oracle\":\"norec_opt\"},{\"cmd\":\"{\\\"op\\\":\\\"find\\\",\\\"collection\\\":\\\"t0\\\",\\\"filter\\\":{\\\"c0\\\":{\\\"$regex\\\":\\\",\\\"}}}\",\"category\":\"reference\",\"oracle\":\"norec_ref\"},{\"cmd\":\"{\\\"op\\\":\\\"find\\\",\\\"collection\\\":\\\"t0\\\",\\\"filter\\\":{\\\"c0\\\":{\\\"$regex\\\":\\\",\\\"}},\\\"hint\\\":{\\\"$natural\\\":1}}\",\"category\":\"reference_alt\",\"oracle\":\"norec_ref\"},{\"cmd\":\"{\\\"op\\\":\\\"countDocuments\\\",\\\"collection\\\":\\\"t0\\\",\\\"filter\\\":{\\\"c0\\\":{\\\"$regex\\\":\\\",\\\"}}}\",\"category\":\"count_check\",\"oracle\":\"norec_count\"}]}"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

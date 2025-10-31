@@ -1,0 +1,14 @@
+{
+  "index": 2049,
+  "input": "all",
+  "suspicious_view": {
+    "sql": "SELECT * FROM v0, t0 WHERE t0.c1 <= v0.c0; -- unexpected: row is not fetched",
+    "transfer_sql": "SELECT * FROM v0, t0 WHERE CAST(t0.c1 AS DOUBLE) <= CAST(v0.c0 AS DOUBLE)",
+    "mutate_sql": "SELECT SUM(CAST((CAST(t0.c1 AS DOUBLE) <= CAST(v0.c0 AS DOUBLE)) AS INTEGER)) FROM v0, t0;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

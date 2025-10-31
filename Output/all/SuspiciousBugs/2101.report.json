@@ -1,0 +1,14 @@
+{
+  "index": 2101,
+  "input": "all",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0 WHERE (1 BETWEEN CAST(t0.c0 AS TEXT) AND t0.c0); -- unexpected: row is fetched",
+    "transfer_sql": "SELECT * FROM t0 WHERE (1 BETWEEN t0.c0 AND t0.c0)",
+    "mutate_sql": "SELECT SUM(CAST(((1 BETWEEN t0.c0 AND t0.c0)) AS INTEGER)) FROM t0;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

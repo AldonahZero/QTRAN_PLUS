@@ -1,0 +1,14 @@
+{
+  "index": 2134,
+  "input": "all",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t1, t2, t0 WHERE CONCAT(t1.c0) OR t0.c0; -- Segmentation fault",
+    "transfer_sql": "SELECT * FROM t1, t2, t0 WHERE t1.c0 <> 0 OR t0.c0 <> 0",
+    "mutate_sql": "SELECT SUM(count) FROM (SELECT (t1.c0 <> 0 OR t0.c0 <> 0)::INTEGER as count FROM t1, t2, t0) as res;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

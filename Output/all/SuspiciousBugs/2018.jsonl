@@ -1,0 +1,3 @@
+{"index": 2018, "sql": "CREATE TABLE t0 (c3 TEXT);", "TransferResult": ["CREATE TABLE t0 (c3 VARCHAR)"]}
+{"index": 2018, "sql": "INSERT INTO t0(c3) VALUES ('0');", "TransferResult": ["INSERT INTO t0(c3) VALUES ('0')"]}
+{"index": 2018, "sql": "SELECT * FROM t0 WHERE (t0.c3 COLLATE NOCASE) BETWEEN 1 AND '5'; -- expected: no row is fetched, actual: row is fetched", "TransferResult": ["SELECT * FROM t0 WHERE (t0.c3) BETWEEN '1' AND '5';"], "TransferSqlExecResult": ["[]"], "MutateResult": "SELECT SUM(CAST(((t0.c3) BETWEEN '1' AND '5') IS TRUE AS INTEGER)) FROM t0;", "MutateSqlExecResult": "[(0,)]"}

@@ -1,0 +1,9 @@
+CREATE TABLE t0(c0 BOOL);
+INSERT INTO t0 VALUES (0);
+SELECT * FROM t0 WHERE 1 AND 0.4; -- expected: {0}, actual: {}
+
+
+db.createCollection('t0'); db.t0.createIndex({ c0: 1 }); db.t0.insert({ c0: false })
+db.t0.insert({ c0: true })
+db.t0.find({ c0: true })
+{"mutations":[{"cmd":"{\"op\":\"find\",\"collection\":\"t0\",\"filter\":{\"c0\":true}}","category":"original","oracle":"tlp_base"},{"cmd":"{\"op\":\"find\",\"collection\":\"t0\",\"filter\":{\"c0\":true,\"c0\":{\"$type\":\"boolean\"}}}","category":"tlp_true","oracle":"tlp_partition"},{"cmd":"{\"op\":\"find\",\"collection\":\"t0\",\"filter\":{\"c0\":true,\"c0\":{\"$not\":{\"$type\":\"boolean\"}},\"c0\":{\"$exists\":true}}}","category":"tlp_false","oracle":"tlp_partition"},{"cmd":"{\"op\":\"find\",\"collection\":\"t0\",\"filter\":{\"c0\":true,\"c0\":{\"$exists\":false}}}","category":"tlp_null","oracle":"tlp_partition"}]}

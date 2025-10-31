@@ -11,4 +11,3 @@
 {"index": 359, "a_db": "tidb", "b_db": "mongodb", "molt": "tlp", "sqls": ["CREATE TABLE t0(c0 INT, c1 TEXT AS (0.9));", "INSERT INTO t0(c0) VALUES (0);", "SELECT 0 FROM t0 WHERE false UNION SELECT 0 FROM t0 WHERE NOT t0.c1; -- expected: {0}, actual: {}"]}
 {"index": 367, "a_db": "tidb", "b_db": "mongodb", "molt": "tlp", "sqls": ["CREATE TABLE t0(c0 BOOL);", "INSERT INTO t0 VALUES (0);", "SELECT * FROM t0 WHERE 1 AND 0.4; -- expected: {0}, actual: {}"]}
 {"index": 362, "a_db": "tidb", "b_db": "mongodb", "molt": "tlp", "sqls": ["CREATE TABLE t0(c0 INT, c1 TEXT AS (0.9));", "INSERT INTO t0(c0) VALUES (0);", "SELECT 0 FROM t0 WHERE false UNION SELECT 0 FROM t0 WHERE NOT t0.c1; -- expected: {0}, actual: {}"]}
-{"index": 362, "a_db": "tidb", "b_db": "mongodb", "molt": "tlp", "sqls": ["CREATE TABLE t0(c0 INT, c1 TEXT AS (0.9));", "INSERT INTO t0(c0) VALUES (0);", "SELECT 0 FROM t0 WHERE false UNION SELECT 0 FROM t0 WHERE NOT t0.c1; -- expected: {0}, actual: {}"]}

@@ -1,0 +1,14 @@
+{
+  "index": 2115,
+  "input": "all",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0, t1 WHERE t0.c0 = t1.c0; -- expected: {0, -0}, actual: {}",
+    "transfer_sql": "SELECT * FROM t0, t1 WHERE NOT(t0.c0 <=> '1')",
+    "mutate_sql": "SELECT SUM((NOT(t0.c0 <=> '1')) IS TRUE) FROM t0, t1;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

@@ -1,0 +1,7 @@
+{"index": 2010, "sql": "CREATE TABLE t0 (c0);", "TransferResult": ["CREATE TABLE t0 (c0 VARCHAR)"]}
+{"index": 2010, "sql": "CREATE TABLE t1 (c1 REAL);", "TransferResult": ["CREATE TABLE t1 (c1 DOUBLE)"]}
+{"index": 2010, "sql": "INSERT INTO t1(c1) VALUES (8366271098608253588);", "TransferResult": ["INSERT INTO t1 (c1) VALUES (8366271098608253588);"]}
+{"index": 2010, "sql": "INSERT INTO t0(c0) VALUES ('a');", "TransferResult": ["INSERT INTO t0 (c0) VALUES ('a');"]}
+{"index": 2010, "sql": "SELECT * FROM t1 WHERE (t1.c1 = CAST(8366271098608253588 AS REAL)); -- fetches row", "TransferResult": ["SELECT * FROM t1 WHERE (t1.c1 = CAST(8366271098608253588 AS DOUBLE));"]}
+{"index": 2010, "sql": "SELECT * FROM t0, t1 WHERE (t1.c1 = CAST(8366271098608253588 AS REAL)); -- fetches no row", "TransferResult": ["SELECT * FROM t0, t1 WHERE (t1.c1 = CAST(8366271098608253588 AS DOUBLE));"]}
+{"index": 2010, "sql": "SELECT * FROM t0, t1 WHERE (t1.c1 >= CAST(8366271098608253588 AS REAL) AND t1.c1 <= CAST(8366271098608253588 AS REAL)); -- fetches row", "TransferResult": ["SELECT * FROM t0, t1 WHERE (t1.c1 >= CAST(8366271098608253588 AS DOUBLE) AND t1.c1 <= CAST(8366271098608253588 AS DOUBLE));"], "TransferSqlExecResult": ["[('a', 8.366271098608254e+18)]"], "MutateResult": "SELECT SUM(CAST(((t1.c1 >= CAST(8366271098608253588 AS DOUBLE)) AND (t1.c1 <= CAST(8366271098608253588 AS DOUBLE))) AS INTEGER)) FROM t0, t1;", "MutateSqlExecResult": "[(1,)]"}

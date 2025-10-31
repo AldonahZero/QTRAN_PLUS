@@ -1,0 +1,5 @@
+{"index": 2127, "sql": "CREATE TABLE t0(c0 INT);", "TransferResult": ["CREATE TABLE t0(c0 INT);"]}
+{"index": 2127, "sql": "CREATE TABLE t1(c0 INT);", "TransferResult": ["CREATE TABLE t1(c0 INT);"]}
+{"index": 2127, "sql": "INSERT INTO t1(c0) VALUES (0);", "TransferResult": ["INSERT INTO t1(c0) VALUES (1163404482);"]}
+{"index": 2127, "sql": "INSERT INTO t0(c0) VALUES (0);", "TransferResult": ["INSERT INTO t0(c0) VALUES (1163404482);"]}
+{"index": 2127, "sql": "SELECT * FROM t0 LEFT JOIN t1 ON t0.c0 <= t1.c0; -- Not implemented: Unimplemented type for nested loop join!", "TransferResult": ["SELECT * FROM t0 LEFT JOIN t1 ON t0.c0 <= t1.c0;"], "TransferSqlExecResult": ["[(1163404482, 1163404482)]"], "MutateResult": "SELECT SUM(count) FROM (SELECT ((t0.c0 <= t1.c0))::INTEGER as count FROM t0 LEFT JOIN t1 ON t0.c0 <= t1.c0) as res;", "MutateSqlExecResult": "[(1,)]"}

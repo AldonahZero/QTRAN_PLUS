@@ -1,0 +1,15 @@
+PRAGMA encoding = 'UTF16be';
+CREATE TABLE t0(c0, c1);
+INSERT INTO t0(c0) VALUES (x'00');
+CREATE INDEX i0 ON t0(c0 COLLATE BINARY);
+INSERT INTO t0(c0) VALUES (1);
+SELECT COUNT(*) FROM t0 WHERE SUBSTR(t0.c0, ','); -- expected: 1, actual: 2
+
+
+db.getSiblingDB('admin').runCommand({ setParameter: 1, logLevel: 0 })
+db.createCollection('t0')
+db.t0.insertOne({ c0: new BinData(0, 'AA==') })
+db.t0.createIndex({ c0: 1 }, { collation: { locale: 'en', strength: 1 } })
+db.t0.insertOne({ c0: 1 })
+db.t0.countDocuments({ c0: { $regex: ',' } })
+{"mutations":[{"cmd":"{\"op\":\"countDocuments\",\"collection\":\"t0\",\"filter\":{\"c0\":{\"$regex\":\",\"}}}","category":"optimized","oracle":"norec_opt"},{"cmd":"{\"op\":\"find\",\"collection\":\"t0\",\"filter\":{\"c0\":{\"$regex\":\",\"}}}","category":"reference","oracle":"norec_ref"},{"cmd":"{\"op\":\"find\",\"collection\":\"t0\",\"filter\":{\"c0\":{\"$regex\":\",\"}},\"hint\":{\"$natural\":1}}","category":"reference_alt","oracle":"norec_ref"},{"cmd":"{\"op\":\"countDocuments\",\"collection\":\"t0\",\"filter\":{\"c0\":{\"$regex\":\",\"}}}","category":"count_check","oracle":"norec_count"}]}

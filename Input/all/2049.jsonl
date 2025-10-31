@@ -1,0 +1,4 @@
+{"index": 2049, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0, c1 TEXT);"}
+{"index": 2049, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE VIEW v0(c0) AS SELECT SUM(t0.c1) FROM t0;"}
+{"index": 2049, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0(c0, c1) VALUES ('a', 1);"}
+{"index": 2049, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM v0, t0 WHERE t0.c1 <= v0.c0; -- unexpected: row is not fetched"}

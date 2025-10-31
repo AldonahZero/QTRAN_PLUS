@@ -1,0 +1,4 @@
+{"index": 2123, "sql": "CREATE TABLE t0(c0 INT);", "TransferResult": ["CREATE TABLE t0(c0 INT)"]}
+{"index": 2123, "sql": "CREATE TABLE t1(c1 BOOLEAN);", "TransferResult": ["CREATE TABLE t1(c1 BOOLEAN)"]}
+{"index": 2123, "sql": "INSERT INTO t0(c0) VALUES (1);", "TransferResult": ["INSERT INTO t0(c0) VALUES (1)"]}
+{"index": 2123, "sql": "SELECT * FROM t0 RIGHT JOIN t1 on true; -- expected: {}, actual: {1|false}", "TransferResult": ["SELECT * FROM t0 RIGHT JOIN t1 ON TRUE"], "TransferSqlExecResult": ["[]"], "MutateResult": "SELECT SUM(count) FROM (SELECT (TRUE)::INTEGER as count FROM t0 RIGHT JOIN t1 ON TRUE) as res;", "MutateSqlExecResult": "[(None,)]"}

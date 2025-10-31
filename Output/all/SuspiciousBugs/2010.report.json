@@ -1,0 +1,14 @@
+{
+  "index": 2010,
+  "input": "all",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0, t1 WHERE (t1.c1 >= CAST(8366271098608253588 AS REAL) AND t1.c1 <= CAST(8366271098608253588 AS REAL)); -- fetches row",
+    "transfer_sql": "SELECT * FROM t0, t1 WHERE (t1.c1 >= CAST(8366271098608253588 AS DOUBLE) AND t1.c1 <= CAST(8366271098608253588 AS DOUBLE));",
+    "mutate_sql": "SELECT SUM(CAST(((t1.c1 >= CAST(8366271098608253588 AS DOUBLE)) AND (t1.c1 <= CAST(8366271098608253588 AS DOUBLE))) AS INTEGER)) FROM t0, t1;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

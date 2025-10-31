@@ -1,0 +1,9 @@
+CREATE TABLE t0(c0 TEXT);
+INSERT INTO t0(c0) VALUES ("a");
+SELECT * FROM t0 WHERE GREATEST((-1) & (-1), -t0.c0); -- expected: row is fetched, actual: row is not fetched
+
+
+CREATE TABLE t0(c0 TEXT) ENGINE = Aria
+INSERT INTO t0(c0) VALUES ('a')
+SELECT * FROM t0 WHERE NOT(t0.c0 <=> '1')
+SELECT SUM(count) FROM (SELECT (NOT(t0.c0 <=> '1')) as count FROM t0) as asdf;

@@ -1,0 +1,14 @@
+{
+  "index": 2008,
+  "input": "all",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0 WHERE t0.c0 IS NOT 1; -- returns no row",
+    "transfer_sql": "SELECT * FROM t0 WHERE t0.c0 IS NOT NULL",
+    "mutate_sql": "SELECT SUM(CAST((t0.c0 IS NOT NULL) as INTEGER)) FROM t0;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

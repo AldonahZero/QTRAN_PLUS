@@ -1,0 +1,14 @@
+{
+  "index": 2067,
+  "input": "all",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0 WHERE c0 IN ('2070934912552030444'); -- unexpected: row is fetched",
+    "transfer_sql": "SELECT * FROM t0 WHERE c0 IN (2070934912552030444);",
+    "mutate_sql": "SELECT SUM(CAST((c0 IN (2070934912552030444)) AS INTEGER)) FROM t0;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

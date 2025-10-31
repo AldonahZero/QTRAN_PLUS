@@ -1,0 +1,4 @@
+{"index": 2069, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0 COLLATE NOCASE, c1);"}
+{"index": 2069, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE INDEX i0 ON t0(0) WHERE c0 >= c1;"}
+{"index": 2069, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "REPLACE INTO t0 VALUES('a', 'B');"}
+{"index": 2069, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM t0 WHERE t0.c1 <= t0.c0; -- unexpected: row is not fetched"}

@@ -1,0 +1,14 @@
+{
+  "index": 367,
+  "input": "nosql2sqldemo_agent",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0 WHERE 1 AND 0.4; -- expected: {0}, actual: {}",
+    "transfer_sql": "db.t0.find({ c0: true })",
+    "mutate_sql": "{\"mutations\":[{\"cmd\":\"{\\\"op\\\":\\\"find\\\",\\\"collection\\\":\\\"t0\\\",\\\"filter\\\":{\\\"c0\\\":true}}\",\"category\":\"original\",\"oracle\":\"tlp_base\"},{\"cmd\":\"{\\\"op\\\":\\\"find\\\",\\\"collection\\\":\\\"t0\\\",\\\"filter\\\":{\\\"c0\\\":true,\\\"c0\\\":{\\\"$type\\\":\\\"boolean\\\"}}}\",\"category\":\"tlp_true\",\"oracle\":\"tlp_partition\"},{\"cmd\":\"{\\\"op\\\":\\\"find\\\",\\\"collection\\\":\\\"t0\\\",\\\"filter\\\":{\\\"c0\\\":true,\\\"c0\\\":{\\\"$not\\\":{\\\"$type\\\":\\\"boolean\\\"}},\\\"c0\\\":{\\\"$exists\\\":true}}}\",\"category\":\"tlp_false\",\"oracle\":\"tlp_partition\"},{\"cmd\":\"{\\\"op\\\":\\\"find\\\",\\\"collection\\\":\\\"t0\\\",\\\"filter\\\":{\\\"c0\\\":true,\\\"c0\\\":{\\\"$exists\\\":false}}}\",\"category\":\"tlp_null\",\"oracle\":\"tlp_partition\"}]}"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

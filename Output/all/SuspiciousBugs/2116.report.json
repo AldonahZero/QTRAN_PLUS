@@ -1,0 +1,14 @@
+{
+  "index": 2116,
+  "input": "all",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0, t1 WHERE t0.c0 = t1.c0; -- expected: {0, -0}, actual: {}",
+    "transfer_sql": "SELECT * FROM t0, t1 WHERE GREATEST(t0.c0, 0) = GREATEST(t1.c0, 0);",
+    "mutate_sql": "SELECT SUM(count) FROM (SELECT CAST((GREATEST(t0.c0, 0) = GREATEST(t1.c0, 0)) AS UNSIGNED) as count FROM t0, t1) as asdf;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

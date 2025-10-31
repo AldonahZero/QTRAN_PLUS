@@ -1,0 +1,24 @@
+{
+  "index": 479,
+  "input": "nosql2sqldemo_agent",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0 WHERE t0.c0 NOT BETWEEN '֣a' AND NULL; -- expected: {0}, actual: {}",
+    "transfer_sql": "db.t0.find({ c0: { $not: { $gte: '֣a', $lte: 'sample_value' } } })",
+    "mutate_sql": "{\"mutations\":[{\"cmd\":\"{\\\"op\\\":\\\"find\\\",\\\"collection\\\":\\\"t0\\\",\\\"filter\\\":{\\\"c0\\\":{\\\"$not\\\":{\\\"$gte\\\":\\\"֣a\\\",\\\"$lte\\\":\\\"sample_value\\\"}}}}\",\"category\":\"original\",\"oracle\":\"tlp_base\"},{\"cmd\":\"{\\\"op\\\":\\\"find\\\",\\\"collection\\\":\\\"t0\\\",\\\"filter\\\":{\\\"c0\\\":{\\\"$not\\\":{\\\"$gte\\\":\\\"֣a\\\",\\\"$lte\\\":\\\"sample_value\\\"}},\\\"value\\\":{\\\"$type\\\":\\\"string\\\"}}}\",\"category\":\"tlp_true\",\"oracle\":\"tlp_partition\"},{\"cmd\":\"{\\\"op\\\":\\\"find\\\",\\\"collection\\\":\\\"t0\\\",\\\"filter\\\":{\\\"c0\\\":{\\\"$not\\\":{\\\"$gte\\\":\\\"֣a\\\",\\\"$lte\\\":\\\"sample_value\\\"}},\\\"value\\\":{\\\"$not\\\":{\\\"$type\\\":\\\"string\\\"}},\\\"value\\\":{\\\"$exists\\\":true}}}\",\"category\":\"tlp_false\",\"oracle\":\"tlp_partition\"},{\"cmd\":\"{\\\"op\\\":\\\"find\\\",\\\"collection\\\":\\\"t0\\\",\\\"filter\\\":{\\\"c0\\\":{\\\"$not\\\":{\\\"$gte\\\":\\\"֣a\\\",\\\"$lte\\\":\\\"sample_value\\\"}},\\\"value\\\":{\\\"$exists\\\":false}}}\",\"category\":\"tlp_null\",\"oracle\":\"tlp_partition\"}]}"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null,
+    "bug_type": "TLP_violation",
+    "details": {
+      "original_count": 0,
+      "tlp_true_count": 0,
+      "tlp_false_count": 0,
+      "tlp_null_count": 1,
+      "partition_sum": 1,
+      "difference": -1,
+      "explanation": "TLP invariant violated: 0 ≠ 0 + 0 + 1"
+    }
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

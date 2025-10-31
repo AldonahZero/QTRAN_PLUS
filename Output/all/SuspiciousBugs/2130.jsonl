@@ -1,0 +1,3 @@
+{"index": 2130, "sql": "CREATE TABLE t0(c0 BOOL UNIQUE);", "TransferResult": ["CREATE TABLE t0(c0 BOOLEAN UNIQUE)"]}
+{"index": 2130, "sql": "INSERT INTO t0(c0) VALUES (0);", "TransferResult": ["INSERT INTO t0(c0) VALUES (TRUE), (FALSE)"]}
+{"index": 2130, "sql": "SELECT * FROM t0 WHERE t0.c0 = true; -- Error: Invalid type: Invalid Type [BOOL]: Invalid type for index", "TransferResult": ["SELECT * FROM t0 WHERE t0.c0 = TRUE"], "TransferSqlExecResult": ["[(True,)]"], "MutateResult": "SELECT SUM((t0.c0 = TRUE)::INTEGER) FROM t0;", "MutateSqlExecResult": "[(1,)]"}

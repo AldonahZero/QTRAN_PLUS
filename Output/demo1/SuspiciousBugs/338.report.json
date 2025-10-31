@@ -3,8 +3,8 @@
   "input": "demo1",
   "suspicious_view": {
     "sql": "SELECT HEX(MIN(a)) FROM (SELECT CHAR(0, 1) COLLATE NOCASE as a UNION SELECT CHAR(0, 0) as a); -- 0000",
-    "transfer_sql": "SELECT HEX(MIN(a)) FROM (SELECT CHAR(0, 1) AS a UNION SELECT CHAR(0, 0) AS a) AS temp",
-    "mutate_sql": "SELECT MIN(agg0) FROM (SELECT MIN(a) as agg0 FROM (SELECT CHAR(0, 1) AS a UNION SELECT CHAR(0, 0) AS a) AS temp WHERE '2278628577' UNION ALL SELECT MIN(a) as agg0 FROM (SELECT CHAR(0, 1) AS a UNION SELECT CHAR(0, 0) AS a) AS temp WHERE NOT ('2278628577') UNION ALL SELECT MIN(a) as agg0 FROM (SELECT CHAR(0, 1) AS a UNION SELECT CHAR(0, 0) AS a) AS temp WHERE ('2278628577') IS NULL) as asdf;"
+    "transfer_sql": "SELECT HEX(MIN(a)) FROM (SELECT CHAR(0, 1) AS a UNION SELECT CHAR(0, 0) AS a) AS subquery;",
+    "mutate_sql": "SELECT MIN(agg0) FROM (SELECT MIN(a) as agg0 FROM (SELECT CHAR(0, 1) AS a UNION SELECT CHAR(0, 0) AS a) AS subquery WHERE EXISTS (SELECT 1) UNION ALL SELECT MIN(a) as agg0 FROM (SELECT CHAR(0, 1) AS a UNION SELECT CHAR(0, 0) AS a) AS subquery WHERE NOT (EXISTS (SELECT 1)) UNION ALL SELECT MIN(a) as agg0 FROM (SELECT CHAR(0, 1) AS a UNION SELECT CHAR(0, 0) AS a) AS subquery WHERE (EXISTS (SELECT 1)) IS NULL) as asdf;"
   },
   "oracle_check": {
     "end": false,

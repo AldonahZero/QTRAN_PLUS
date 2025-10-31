@@ -1,0 +1,14 @@
+{
+  "index": 592,
+  "input": "nosql2sqldemo_agent",
+  "suspicious_view": {
+    "sql": "SELECT SIN(1e1000); -- -nan",
+    "transfer_sql": "db.collection.aggregate([{ $project: { result: { $sin: 1 } } }])",
+    "mutate_sql": "{\"mutations\":[{\"cmd\":\"[{ \\\"$project\\\": { \\\"result\\\": { \\\"$sin\\\": 1 } } }]\",\"category\":\"original\",\"oracle\":\"tlp_base\"},{\"cmd\":\"[{ \\\"$project\\\": { \\\"result\\\": { \\\"$sin\\\": 1 }, \\\"temp_val\\\": { \\\"$type\\\": \\\"number\\\"} } }]\",\"category\":\"tlp_true\",\"oracle\":\"tlp_partition\"},{\"cmd\":\"[{ \\\"$project\\\": { \\\"result\\\": { \\\"$sin\\\": 1 }, \\\"temp_val\\\": { \\\"$not\\\": { \\\"$type\\\": \\\"number\\\"} }, \\\"temp_val\\\": { \\\"$exists\\\": true } } }]\",\"category\":\"tlp_false\",\"oracle\":\"tlp_partition\"},{\"cmd\":\"[{ \\\"$project\\\": { \\\"result\\\": { \\\"$sin\\\": 1 }, \\\"temp_val\\\": { \\\"$exists\\\": false } } }]\",\"category\":\"tlp_null\",\"oracle\":\"tlp_partition\"}]}"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

@@ -1,0 +1,9 @@
+CREATE TABLE t0(c0 COLLATE NOCASE, c1);
+INSERT INTO t0 VALUES('a', 'A');
+SELECT * FROM t0 WHERE (+ t0.c1, 1) >= (t0.c0, 1); -- expected: row is not fetched, actual: row is fetched
+
+
+CREATE TABLE t0 (c0 VARCHAR, c1 VARCHAR)
+INSERT INTO t0 VALUES ('a', 'A')
+SELECT * FROM t0 WHERE t0.c1 >= t0.c0
+SELECT SUM(CAST((t0.c1 >= t0.c0) AS INTEGER)) FROM t0;

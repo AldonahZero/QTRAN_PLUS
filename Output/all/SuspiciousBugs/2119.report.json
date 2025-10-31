@@ -1,0 +1,14 @@
+{
+  "index": 2119,
+  "input": "all",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0 WHERE 0.1 < c0; -- expected: {}, actual: {1163404482.0, 488566.0}",
+    "transfer_sql": "SELECT * FROM t0 WHERE c0 > 0.1;",
+    "mutate_sql": "SELECT SUM(count) FROM (SELECT ((c0 > 0.1))::INTEGER as count FROM t0) as res;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

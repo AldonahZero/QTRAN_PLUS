@@ -1,0 +1,14 @@
+{
+  "index": 2023,
+  "input": "all",
+  "suspicious_view": {
+    "sql": "select * from information_schema.TABLES; -- unexpected (when executed with multiple threads): Duplicate entry 'triggerbug21-t0' for key 'PRIMARY'",
+    "transfer_sql": "SELECT * FROM information_schema.TABLES;",
+    "mutate_sql": "SELECT SUM(count) FROM (SELECT (1) as count FROM information_schema.TABLES) as asdf;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

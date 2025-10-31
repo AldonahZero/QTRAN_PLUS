@@ -5,9 +5,9 @@ INSERT INTO t1(c0) VALUES (0);
 SELECT COUNT(*) FROM v0 WHERE (v0.c0, x'') != (NULL, 0); -- unexpected: row is not fetched
 
 
-db.createCollection('t0'); db.t0.createIndex({ c0: 1 })
-db.createCollection('t1'); db.t1.createIndex({ c0: 1 })
-db.t0.aggregate([ { $lookup: { from: 't1', localField: 'c0', foreignField: 'c0', as: 'joinedData' } }, { $project: { c0: 1 } } ])
-db.t1.insertOne({ c0: 1 })
-db.v0.aggregate([{ $match: { $expr: { $and: [{ $ne: ['$c0', null] }, { $ne: ['$c0', 0] }] } } }, { $count: 'count' }])
-{"mutations":[{"cmd":"{\"op\":\"aggregate\",\"collection\":\"v0\",\"pipeline\":[{\"$match\":{\"$expr\":{\"$and\":[{\"$ne\":[\"$c0\",null]},{\"$ne\":[\"$c0\",0]}]}}},{\"$count\":\"count\"}]}","category":"optimized","oracle":"norec_opt"},{"cmd":"{\"op\":\"find\",\"collection\":\"v0\",\"filter\":{\"$and\":[{\"$ne\":[\"$c0\",null]},{\"$ne\":[\"$c0\",0]}]}},{\"$project\":{\"count\":1}}","category":"reference","oracle":"norec_ref"},{"cmd":"{\"op\":\"aggregate\",\"collection\":\"v0\",\"pipeline\":[{\"$match\":{\"$expr\":{\"$and\":[{\"$ne\":[\"$c0\",null]},{\"$ne\":[\"$c0\",0]}]}}}]}","category":"reference_alt","oracle":"norec_ref"},{"cmd":"{\"op\":\"countDocuments\",\"collection\":\"v0\",\"filter\":{\"$and\":[{\"$ne\":[\"$c0\",null]},{\"$ne\":[\"$c0\",0]}]}}","category":"count_check","oracle":"norec_count"}]}
+db.t0.insertOne({ c0: 'meaningful_value' })
+db.t1.insertOne({ c0: 'meaningful_value' })
+db.createView('v0', 't1', [ { $lookup: { from: 't0', localField: 'c0', foreignField: 'c0', as: 'joined' } }, { $project: { c0: 1 } } ])
+db.t1.insertOne({ c0: 'meaningful_value' })
+db.v0.aggregate([{ $match: { c0: { $ne: '' } } }, { $count: 'count' }])
+{"mutations":[{"cmd":"{\"op\":\"aggregate\",\"collection\":\"v0\",\"pipeline\":[{\"$match\":{\"c0\":{\"$ne\":\"\"}}},{\"$count\":\"count\"}]}","category":"optimized","oracle":"norec_opt"},{"cmd":"{\"op\":\"find\",\"collection\":\"v0\",\"filter\":{\"c0\":{\"$ne\":\"\"}}}","category":"reference","oracle":"norec_ref"},{"cmd":"{\"op\":\"find\",\"collection\":\"v0\",\"filter\":{\"c0\":{\"$ne\":\"\"}},\"hint\":{\"$natural\":1}}","category":"reference_alt","oracle":"norec_ref"},{"cmd":"{\"op\":\"countDocuments\",\"collection\":\"v0\",\"filter\":{\"c0\":{\"$ne\":\"\"}}}","category":"count_check","oracle":"norec_count"}]}

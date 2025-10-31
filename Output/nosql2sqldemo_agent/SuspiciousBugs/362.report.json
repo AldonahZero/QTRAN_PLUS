@@ -1,0 +1,14 @@
+{
+  "index": 362,
+  "input": "nosql2sqldemo_agent",
+  "suspicious_view": {
+    "sql": "SELECT 0 FROM t0 WHERE false UNION SELECT 0 FROM t0 WHERE NOT t0.c1; -- expected: {0}, actual: {}",
+    "transfer_sql": "db.t0.find({ c1: { $exists: false } }).map(() => 1)",
+    "mutate_sql": "{\"mutations\":[{\"cmd\":\"{\\\"op\\\":\\\"find\\\",\\\"collection\\\":\\\"t0\\\",\\\"filter\\\":{\\\"c1\\\":{\\\"$exists\\\":false}}}\",\"category\":\"original\",\"oracle\":\"tlp_base\"},{\"cmd\":\"{\\\"op\\\":\\\"find\\\",\\\"collection\\\":\\\"t0\\\",\\\"filter\\\":{\\\"c1\\\":{\\\"$exists\\\":false,\\\"$type\\\":\\\"number\\\"}}}\",\"category\":\"tlp_true\",\"oracle\":\"tlp_partition\"},{\"cmd\":\"{\\\"op\\\":\\\"find\\\",\\\"collection\\\":\\\"t0\\\",\\\"filter\\\":{\\\"c1\\\":{\\\"$exists\\\":false,\\\"$not\\\":{\\\"$type\\\":\\\"number\\\"}},\\\"c1\\\":{\\\"$exists\\\":true}}}\",\"category\":\"tlp_false\",\"oracle\":\"tlp_partition\"},{\"cmd\":\"{\\\"op\\\":\\\"find\\\",\\\"collection\\\":\\\"t0\\\",\\\"filter\\\":{\\\"c1\\\":{\\\"$exists\\\":false},\\\"c1\\\":{\\\"$exists\\\":false}}}\",\"category\":\"tlp_null\",\"oracle\":\"tlp_partition\"}]}"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

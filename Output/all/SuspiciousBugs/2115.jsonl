@@ -1,0 +1,5 @@
+{"index": 2115, "sql": "CREATE TABLE t0(c0 INT);", "TransferResult": ["CREATE TABLE t0(c0 INT) ENGINE = Aria"]}
+{"index": 2115, "sql": "CREATE TABLE t1(c0 DOUBLE);", "TransferResult": ["CREATE TABLE t1(c0 DOUBLE) ENGINE = Aria"]}
+{"index": 2115, "sql": "INSERT INTO t0 VALUES(0);", "TransferResult": ["INSERT INTO t0(c0) VALUES(1)"]}
+{"index": 2115, "sql": "INSERT INTO t1 VALUES('-0');", "TransferResult": ["INSERT INTO t1(c0) VALUES('1')"]}
+{"index": 2115, "sql": "SELECT * FROM t0, t1 WHERE t0.c0 = t1.c0; -- expected: {0, -0}, actual: {}", "TransferResult": ["SELECT * FROM t0, t1 WHERE NOT(t0.c0 <=> '1')"], "TransferSqlExecResult": ["[]"], "MutateResult": "SELECT SUM((NOT(t0.c0 <=> '1')) IS TRUE) FROM t0, t1;", "MutateSqlExecResult": "[(Decimal('0'),)]"}

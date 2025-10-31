@@ -1,0 +1,2 @@
+{"index": 2106, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE t0(c0 UNIQUE);"}
+{"index": 2106, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM t0 WHERE (t0.c0, 1) IN(SELECT NTILE(1) OVER(), 0 FROM t0); -- sqlite3.c:90197: sqlite3VdbeExec: Assertion `pC!=0' failed."}

@@ -21,7 +21,7 @@ import json
 import random
 import time
 import re
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, List
 from langchain.prompts import ChatPromptTemplate
 from langchain.output_parsers import ResponseSchema
 from langchain.output_parsers import StructuredOutputParser

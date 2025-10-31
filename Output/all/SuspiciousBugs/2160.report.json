@@ -1,0 +1,14 @@
+{
+  "index": 2160,
+  "input": "all",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0 WHERE DATE '2000-01-01' < t0.c0; -- expected: {2000-01-02}, actual: {}",
+    "transfer_sql": "SELECT * FROM t0 WHERE '2000-01-01' < t0.c0",
+    "mutate_sql": "SELECT SUM(count) FROM (SELECT ('2000-01-01' < t0.c0)::INTEGER as count FROM t0) as res;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

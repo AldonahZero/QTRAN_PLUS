@@ -1,0 +1,4 @@
+{"index": 2064, "sql": "CREATE TABLE t0(c1);", "TransferResult": ["CREATE TABLE t0 (c1 VARCHAR)"]}
+{"index": 2064, "sql": "CREATE INDEX i0 ON t0(1) WHERE c1 NOTNULL;", "TransferResult": ["CREATE INDEX i0 ON t0 (c1)"]}
+{"index": 2064, "sql": "INSERT INTO t0(c1) VALUES (NULL);", "TransferResult": ["INSERT INTO t0 (c1) VALUES ('default_value')"]}
+{"index": 2064, "sql": "SELECT * FROM t0 WHERE t0.c1 IS FALSE BETWEEN FALSE AND TRUE; -- unexpected: row is not fetched", "TransferResult": ["SELECT * FROM t0 WHERE t0.c1 = FALSE"], "TransferSqlExecResult": ["[]"], "MutateResult": "SELECT SUM(CAST((t0.c1 = FALSE) AS INTEGER)) FROM t0;", "MutateSqlExecResult": "[(0,)]"}

@@ -1,0 +1,14 @@
+{
+  "index": 162,
+  "input": "demo1",
+  "suspicious_view": {
+    "sql": "SELECT COUNT(*) FROM v0 WHERE (v0.c0, x'') != (NULL, 0); -- unexpected: row is not fetched",
+    "transfer_sql": "SELECT COUNT(*) FROM v0 WHERE (v0.c0, '') != (1, '');",
+    "mutate_sql": "SELECT SUM(CAST(((v0.c0, '') != (1, '')) AS INTEGER)) FROM v0;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

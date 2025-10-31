@@ -1,0 +1,14 @@
+{
+  "index": 2072,
+  "input": "all",
+  "suspicious_view": {
+    "sql": "SELECT * FROM t0 WHERE t0.c0 GLOB '-*'; -- unexpected: row is not fetched",
+    "transfer_sql": "SELECT * FROM t0 WHERE t0.c0 LIKE '-%'",
+    "mutate_sql": "SELECT SUM(CAST((t0.c0 LIKE '-%') AS INTEGER)) FROM t0;"
+  },
+  "oracle_check": {
+    "end": false,
+    "error": null
+  },
+  "reason": "Oracle check failed with no execution error: results mismatch under MOLT."
+}

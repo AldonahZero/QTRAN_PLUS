@@ -1,0 +1,4 @@
+{"index": 2002, "sql": "CREATE TABLE test (c0 REAL);", "TransferResult": ["CREATE TABLE test (c0 DOUBLE);"]}
+{"index": 2002, "sql": "CREATE INDEX index_0 ON test(c0 COLLATE NOCASE);", "TransferResult": ["CREATE INDEX index_0 ON test(c0);"]}
+{"index": 2002, "sql": "INSERT INTO test(c0) VALUES ('+/');", "TransferResult": ["INSERT INTO test(c0) VALUES (NULL);"]}
+{"index": 2002, "sql": "SELECT * FROM test WHERE (c0 LIKE '+/'); -- fetches no row", "TransferResult": ["SELECT * FROM test WHERE (c0 IS NULL);"], "TransferSqlExecResult": ["[(None,)]"], "MutateResult": "SELECT SUM(CAST((c0 IS NULL) AS INTEGER)) FROM test;", "MutateSqlExecResult": "[(1,)]"}

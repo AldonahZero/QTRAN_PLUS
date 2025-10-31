@@ -1,0 +1,4 @@
+{"index": 2008, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE TABLE IF NOT EXISTS t0 (c0);"}
+{"index": 2008, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "CREATE INDEX IF NOT EXISTS i0 ON t0(1) WHERE c0 NOT NULL;"}
+{"index": 2008, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "INSERT INTO t0(c0) VALUES(NULL);"}
+{"index": 2008, "a_db": "sqlite", "b_db": "duckdb", "molt": "norec", "sql": "SELECT * FROM t0 WHERE t0.c0 IS NOT 1; -- returns no row"}

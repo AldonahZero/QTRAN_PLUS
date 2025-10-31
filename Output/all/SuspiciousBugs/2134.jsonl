@@ -1,0 +1,7 @@
+{"index": 2134, "sql": "CREATE TABLE t0(c0 REAL);", "TransferResult": ["CREATE TABLE t0(c0 REAL)"]}
+{"index": 2134, "sql": "CREATE TABLE t1(c0 INT2);", "TransferResult": ["CREATE TABLE t1(c0 SMALLINT)"]}
+{"index": 2134, "sql": "CREATE TABLE t2(c0 INT);", "TransferResult": ["CREATE TABLE t2(c0 INTEGER)"]}
+{"index": 2134, "sql": "INSERT INTO t0 VALUES (-1);", "TransferResult": ["INSERT INTO t0(c0) VALUES (-1)"]}
+{"index": 2134, "sql": "INSERT INTO t1 VALUES (0);", "TransferResult": ["INSERT INTO t1(c0) VALUES (1)"]}
+{"index": 2134, "sql": "INSERT INTO t2 VALUES (0), (0);", "TransferResult": ["INSERT INTO t2(c0) VALUES (1), (1)"]}
+{"index": 2134, "sql": "SELECT * FROM t1, t2, t0 WHERE CONCAT(t1.c0) OR t0.c0; -- Segmentation fault", "TransferResult": ["SELECT * FROM t1, t2, t0 WHERE t1.c0 <> 0 OR t0.c0 <> 0"], "TransferSqlExecResult": ["[(1, 1, -1.0), (1, 1, -1.0)]"], "MutateResult": "SELECT SUM(count) FROM (SELECT (t1.c0 <> 0 OR t0.c0 <> 0)::INTEGER as count FROM t1, t2, t0) as res;", "MutateSqlExecResult": "[(2,)]"}

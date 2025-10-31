@@ -1,0 +1,4 @@
+{"index": 2049, "sql": "CREATE TABLE t0(c0, c1 TEXT);", "TransferResult": ["CREATE TABLE t0 (c0 VARCHAR, c1 TEXT)"]}
+{"index": 2049, "sql": "CREATE VIEW v0(c0) AS SELECT SUM(t0.c1) FROM t0;", "TransferResult": ["CREATE VIEW v0(c0) AS SELECT SUM(CAST(t0.c1 AS DOUBLE)) FROM t0"]}
+{"index": 2049, "sql": "INSERT INTO t0(c0, c1) VALUES ('a', 1);", "TransferResult": ["INSERT INTO t0 (c0, c1) VALUES ('a', 1)"]}
+{"index": 2049, "sql": "SELECT * FROM v0, t0 WHERE t0.c1 <= v0.c0; -- unexpected: row is not fetched", "TransferResult": ["SELECT * FROM v0, t0 WHERE CAST(t0.c1 AS DOUBLE) <= CAST(v0.c0 AS DOUBLE)"], "TransferSqlExecResult": ["[(1.0, 'a', '1')]"], "MutateResult": "SELECT SUM(CAST((CAST(t0.c1 AS DOUBLE) <= CAST(v0.c0 AS DOUBLE)) AS INTEGER)) FROM v0, t0;", "MutateSqlExecResult": "[(1,)]"}

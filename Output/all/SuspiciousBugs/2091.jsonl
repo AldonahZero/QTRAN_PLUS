@@ -1,0 +1,3 @@
+{"index": 2091, "sql": "CREATE TABLE t0(c0 TEXT);", "TransferResult": ["CREATE TABLE t0(c0 VARCHAR)"]}
+{"index": 2091, "sql": "CREATE INDEX i0 ON t0(c0 bpchar_ops);", "TransferResult": ["CREATE INDEX i0 ON t0(c0)"]}
+{"index": 2091, "sql": "SELECT * FROM t0 WHERE t0.c0 LIKE ''; -- ERROR:  no = operator for opfamily 426", "TransferResult": ["SELECT * FROM t0 WHERE t0.c0 LIKE '%';"], "TransferSqlExecResult": ["[]"], "MutateResult": "SELECT SUM(CAST((t0.c0 LIKE '%') AS INTEGER)) FROM t0;", "MutateSqlExecResult": "[(None,)]"}

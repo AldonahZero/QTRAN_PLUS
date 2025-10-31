@@ -1,0 +1,9 @@
+CREATE TABLE t0(c0 TINYINT);
+INSERT INTO t0(c0) VALUES(NULL);
+SELECT * FROM t0 WHERE NOT(t0.c0 <=> 2035382037); -- expected: row is fetched, actual: no row is fetched
+
+
+CREATE TABLE t0(c0 TINYINT);
+INSERT INTO t0(c0) VALUES(0);
+SELECT * FROM t0 WHERE NOT(t0.c0 <=> 203);
+SELECT SUM(count) FROM (SELECT (NOT(t0.c0 <=> 203)) as count FROM t0) as asdf;

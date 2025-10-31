@@ -1,0 +1,11 @@
+CREATE TABLE t0(c0 TEXT);
+INSERT INTO t0(c0) VALUES(0);
+CREATE INDEX i0 ON t0(c0(1));
+SELECT * FROM t0 WHERE t0.c0 NOT BETWEEN '֣a' AND NULL; -- expected: {0}, actual: {}
+
+
+db.createCollection('t0')
+db.t0.insertOne({ c0: 'sample_value' })
+db.t0.createIndex({ c0: 1 })
+db.t0.find({ c0: { $not: { $gte: '֣a', $lte: 'sample_value' } } })
+{"mutations":[{"cmd":"{\"op\":\"find\",\"collection\":\"t0\",\"filter\":{\"c0\":{\"$not\":{\"$gte\":\"֣a\",\"$lte\":\"sample_value\"}}}}","category":"original","oracle":"tlp_base"},{"cmd":"{\"op\":\"find\",\"collection\":\"t0\",\"filter\":{\"c0\":{\"$not\":{\"$gte\":\"֣a\",\"$lte\":\"sample_value\"}},\"value\":{\"$type\":\"string\"}}}","category":"tlp_true","oracle":"tlp_partition"},{"cmd":"{\"op\":\"find\",\"collection\":\"t0\",\"filter\":{\"c0\":{\"$not\":{\"$gte\":\"֣a\",\"$lte\":\"sample_value\"}},\"value\":{\"$not\":{\"$type\":\"string\"}},\"value\":{\"$exists\":true}}}","category":"tlp_false","oracle":"tlp_partition"},{"cmd":"{\"op\":\"find\",\"collection\":\"t0\",\"filter\":{\"c0\":{\"$not\":{\"$gte\":\"֣a\",\"$lte\":\"sample_value\"}},\"value\":{\"$exists\":false}}}","category":"tlp_null","oracle":"tlp_partition"}]}
